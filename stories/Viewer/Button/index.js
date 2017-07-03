@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf} from '@kadira/storybook';
+import {storiesOf} from '@storybook/react';
 import Markdown from '../../utils/Components/Markdown';
 import TabbedView from '../../utils/Components/TabbedView';
 import CodeExample from '../../utils/Components/CodeExample';
@@ -7,7 +7,7 @@ import Readme from '../../../src/Viewer/Button/README.md';
 import ReadmeTestKit from '../../../src/Viewer/Button/README.TESTKIT.md';
 
 import ExampleControlled from './ExampleControlled';
-import ExampleControlledRaw from '!raw!./ExampleControlled';
+import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
 
 storiesOf('Viewer', module)
   .add('Button', () => (
