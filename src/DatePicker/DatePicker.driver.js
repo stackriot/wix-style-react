@@ -30,9 +30,8 @@ function datePickerDriverFactory(component, wrapper = document.body) {
     pickDay(day) {
       this.getDatePickerPopup().querySelector(`[aria-label='day-${day}']`).click();
     },
-    selectDate(_newDate) {
+    selectDate(newDate) {
       this.showDatePickerModal();
-      const newDate = moment(_newDate);
       const currentMonth = this.getCurrentMonth();
       const monthDiff = newDate.clone().startOf('month').diff(currentMonth, 'month');
 
