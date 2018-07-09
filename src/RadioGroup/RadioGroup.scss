@@ -33,7 +33,7 @@
 
 .radio-wrapper, .radio-wrapper > *
 {
-    cursor:initial;
+    cursor:pointer;
     box-sizing:border-box;
 }
 
@@ -46,7 +46,6 @@
 {
     display: flex;
     flex-direction: row;
-    cursor: pointer;
 }
 
 :global(.rtl) .radio-wrapper {
