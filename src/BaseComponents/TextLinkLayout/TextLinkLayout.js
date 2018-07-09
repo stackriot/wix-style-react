@@ -34,12 +34,12 @@ export default class TextLinkLayout extends WixComponent {
       isHover: false
     };
 
-    this.setHover = this.setHover.bind(this);
+    this.toggleHover = this.toggleHover.bind(this);
   }
 
-  setHover(hover) {
+  toggleHover() {
     this.setState({
-      isHover: hover
+      isHover: !this.state.isHover
     });
   }
 
@@ -85,8 +85,8 @@ export default class TextLinkLayout extends WixComponent {
         role="link"
         className={className}
         style={style}
-        onMouseLeave={() => this.setHover(false)}
-        onMouseEnter={() => this.setHover(true)}
+        onMouseLeave={this.toggleHover}
+        onMouseEnter={this.toggleHover}
         >
         {children}
       </div>
