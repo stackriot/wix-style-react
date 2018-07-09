@@ -57,15 +57,6 @@ const datePickerDriverFactory = ({element, wrapper}) => {
       });
     },
 
-    getYearDropdownDriver: () => {
-      ReactTestUtils.Simulate.click(element.querySelector('[data-hook="datepicker-year-dropdown-button"]'));
-
-      return dropdownLayoutDriverFactory({
-        element: wrapper.querySelector('[data-hook="datepicker-year-dropdown-menu"]'),
-        wrapper
-      });
-    },
-
     mouseClickOutside: () => document.body.dispatchEvent(new Event('click', {cancelable: true}))
   };
 
