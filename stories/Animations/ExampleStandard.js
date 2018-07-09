@@ -25,12 +25,11 @@ class AnimatedExample extends React.Component {
       scale: false,
       height: false,
       width: false,
-      translate: true,
+      translate: false,
       sequenceDelay: true,
       reverse: false,
-      translateSizeIn: 100,
-      translateSizeOut: 20,
-      direction: 'LEFT',
+      translateSize: 100,
+      direction: 'left',
       timing: 'large',
       show: true
     };
@@ -70,23 +69,6 @@ class AnimatedExample extends React.Component {
     return this.state.reverse ? 'reverse' : true;
   }
 
-  buildTranslateString() {
-    const {translateSizeIn, translateSizeOut} = this.state;
-    let size = translateSizeIn === translateSizeOut ? `{size: ${translateSizeIn}}` : `{size: {in: ${translateSizeIn}, out: ${translateSizeOut}`;
-
-    return ` translate={${size}, to: "${this.state.direction}"}}`;
-  }
-
-  buildTranslateObject() {
-
-    const {translateSizeIn, translateSizeOut, direction} = this.state;
-
-    return {
-      to: direction,
-      size: translateSizeIn === translateSizeOut ? translateSizeIn : {in: translateSizeIn, out: translateSizeOut}
-    }
-  }
-
   render() {
     return (
       <div style={{height: '250px'}}>
@@ -118,23 +100,17 @@ class AnimatedExample extends React.Component {
                   Translate Options
                 </Col>
                 <Col span="6">
-                  Size In
+                  Size
                   <Dropdown
-                    selectedId={this.state.translateSizeIn}
-                    onSelect={option => this.setState({translateSizeIn: option.id})}
-                    options={this.sizeOptions}
-                  />
-                  Size Out
-                  <Dropdown
-                    selectedId={this.state.translateSizeOut}
-                    onSelect={option => this.setState({translateSizeOut: option.id})}
+                    selectedId={100}
+                    onSelect={option => this.setState({translateSize: option.id})}
                     options={this.sizeOptions}
                   />
                 </Col>
                 <Col span="6">
-                  Direction To Show
+                  Direction
                   <Dropdown
-                    selectedId={this.state.direction}
+                    selectedId="TOP"
                     onSelect={option => this.setState({direction: option.id})}
                     options={this.directionOptions}
                   />
@@ -161,7 +137,7 @@ class AnimatedExample extends React.Component {
                 {this.state.scale ? ' scale' : ''}
                 {this.state.height ? ' height' : ''}
                 {this.state.width ? ' width' : ''}
-                {this.state.translate ? this.buildTranslateString() : ''}
+                {this.state.translate ? ` translate={{size: ${this.state.translateSize}, to: "${this.state.direction}"}}` : ''}
                 {this.state.sequenceDelay ? ' sequenceDelay' : ''}{this.state.sequenceDelay && this.state.reverse ? '="reverse"' : ''}
                 &gt;&lt;/Animator&gt;</pre>
               <br />
@@ -170,7 +146,10 @@ class AnimatedExample extends React.Component {
                           scale={this.state.scale}
                           height={this.state.height}
                           width={this.state.width}
-                          translate={this.state.translate ? this.buildTranslateObject() : false}
+                          translate={this.state.translate ? {
+                              to: this.state.direction,
+                              size: this.state.translateSize
+                            } : false}
                           sequenceDelay={this.getSequenceDelayValue()}
                           timing={this.state.timing === 'none' ? false : this.state.timing}>
                   {this.state.show && <MockDiv>Some Content in Here</MockDiv>}

@@ -4,7 +4,6 @@ import {bool, node, string, object, oneOfType} from 'prop-types';
 import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import Duration from './services/duration';
 import Child from './animator-child';
-import ClassManager from './services/class-manager';
 
 class Animator extends Component {
 
@@ -14,7 +13,6 @@ class Animator extends Component {
   constructor(props) {
     super(props);
     this.duration = new Duration();
-    this.classManager = new ClassManager();
 
     this.transitionName = {
       enter: css.enter,
@@ -31,7 +29,7 @@ class Animator extends Component {
     const duration = this.duration.get(this.props);
     const childrenLength = this.children.length;
     return (
-      <div className={this.classManager.getParent(this.props)}>
+      <div>
         {this.children.map((child, index) =>
           <ReactCSSTransitionGroup
             key={index}

@@ -1,6 +1,7 @@
 import css from './../Animator.scss';
 import toPairs from 'lodash.topairs';
 
+
 /*
  *
  * React Element Structure
@@ -46,12 +47,7 @@ class CssClass {
         return ['sequenceDelay', `childSequenceDelay-${this.getSequenceIndex(props)}`];
       },
       translate: ({to = 'TOP', size = 100}) => {
-        size = typeof size === 'number' ? {in: size, out: size} : size;
-        const list = ['translate', `translate-${to.toLowerCase()}`, `translate-${size.in}`];
-        if (size.in !== size.out) {
-          list.push(`translate-out-${size.out}`);
-        }
-        return list;
+        return ['translate', `translate-${to.toLowerCase()}`, `translate-${size}`];
       }
     };
 
@@ -73,19 +69,12 @@ class CssClass {
 
   getSequenceIndex(props) {
     const {index, sequenceDelay, childrenLength} = props;
-    return sequenceDelay === 'reverse' ? childrenLength - index : index + 1;
+    return sequenceDelay === 'reverse' ? childrenLength - index - 1 : index;
   }
 
   getClassFromProp([propName, propValue], props) {
     const classGetter = this.propToClassMap[propName];
     return typeof classGetter === 'function' ? classGetter(propValue, props) : propName;
-  }
-
-  getClassString(list) {
-    return this
-      .flattenArray(list)
-      .map(item => css[item])
-      .join(' ');
   }
 
   getClassForLayer(props, layer, baseClassNames = []) {
@@ -94,19 +83,22 @@ class CssClass {
       .map(propDetails => this.getClassFromProp(propDetails, props))
       .concat(baseClassNames);
 
-    return this.getClassString(list);
+    return this
+      .flattenArray(list)
+      .map(item => css[item])
+      .join(' ');
   }
 
-  getChild(props /* Child props */) {
+  getChild(props) {
     return {
-      layer1: this.getClassForLayer(props, this.layer1, props.translate ? ['translate-wrapper'] : []),
+      layer1: this.getClassForLayer(props, this.layer1),
       layer2: this.getClassForLayer(props, this.layer2, ['child']),
       layer3: this.getClassForLayer(props, this.layer3)
     };
   }
 
-  getParent(props /* Parent props */) {
-    return this.getClassString([props.children[0] ? 'animate-in' : 'animate-out']);
+  getParent() {
+    return '';
   }
 
 }
