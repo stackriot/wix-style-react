@@ -87,49 +87,31 @@ export default class ComponentMetaInfoGetter extends React.PureComponent {
 
   getParsedSource(componentSourcePromise) {
     return componentSourcePromise.then(source => {
-      const parsedSource = parser(source);
+      const parsedSourceRaw = parser(source);
+      const {
+        composes = [],
+        ...parsedSource
+      } = parsedSourceRaw;
 
-      return this.getAllPropTypesFromParsedSource(parsedSource).then(collectedProps => {
-        parsedSource.props = {
-          ...collectedProps,
-          ...parsedSource.props
-        };
-        return parsedSource;
-      });
+      if (composes.length) {
+        const promises = composes.map(dependencyModulePath => this.getComponentSource(dependencyModulePath));
+
+        return Promise.all(promises).then(dependencySources => {
+          parsedSource.props = dependencySources.reduce(
+            (acc, dependencySource) => {
+              const parsedDependencySource = parser(dependencySource);
+              return {
+                ...parsedDependencySource.props,
+                ...acc
+              };
+            },
+            parsedSource.props
+          );
+
+          return parsedSource;
+        });
+      }
     });
-  }
-
-  getAllPropTypesFromParsedSource(parsedSource, collectedProps = {}) {
-    const {
-      composes = [],
-      props
-    } = parsedSource;
-
-    if (composes.length) {
-      const componentSourcePromises = composes.map(dependencyPath => this.getComponentSource(dependencyPath));
-
-      return Promise.all(componentSourcePromises)
-         .then(dependencySources => {
-           const collectedPropPromises = dependencySources.map(source => this.getAllPropTypesFromParsedSource(parser(source)));
-
-           return Promise.all(collectedPropPromises).then(collectedResults =>
-             collectedResults.reduce(
-               (acc, props) => ({
-                 ...props,
-                 ...acc
-               }),
-               {}
-             )
-           );
-         });
-    }
-
-    const result = {
-      ...props,
-      ...collectedProps
-    };
-
-    return Promise.resolve(result);
   }
 
   getComponentReadme() {
@@ -142,6 +124,6 @@ export default class ComponentMetaInfoGetter extends React.PureComponent {
 
   loadMdFile(fileName) {
     const baseName = fileName.endsWith('.md') ? fileName.replace(/\.md$/gi, '') : fileName;
-    return import(`wix-style-react/${this.props.componentSrcFolder}/${baseName}.md`).catch(() => {});
+    return import(`wix-style-react/${this.props.componentSrcFolder}/${baseName}.md`).catch(console.error);
   }
 }
