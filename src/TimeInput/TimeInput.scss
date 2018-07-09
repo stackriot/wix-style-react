@@ -35,10 +35,8 @@
 
 .ampm {
     margin-top: 1px;
-    margin-right: 3px;
-    margin-left: 3px;
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 14px;
+    line-height: 14px;
     text-transform: uppercase;
     color: $D10;
     @include FontRoman();
