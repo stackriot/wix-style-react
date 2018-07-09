@@ -5,23 +5,25 @@ import BaseTextLink from '../../BaseComponents/TextLink';
 
 export default class TextLink extends WixComponent {
 
-  static propTypes = {
-    ...BaseTextLink.propTypes,
-    link: PropTypes.string.isRequired,
-    disabled: PropTypes.bool,
-    download: PropTypes.bool,
-    rel: PropTypes.string,
-    target: PropTypes.string,
-    ariaLabel: PropTypes.string
-  };
+  static propTypes = Object.assign({},
+  BaseTextLink.propTypes,
+    {
+      link: PropTypes.string.isRequired,
+      disabled: PropTypes.bool,
+      download: PropTypes.bool,
+      rel: PropTypes.string,
+      target: PropTypes.string,
+      ariaLabel: PropTypes.string
+    }
+  );
 
-  static defaultProps = {
-    ...BaseTextLink.defaultProps,
+  static defaultProps = Object.assign({},
+  BaseTextLink.defaultProps, {
     disabled: false,
     download: false,
     rel: null,
     target: null
-  };
+  });
 
   render() {
     return (

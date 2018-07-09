@@ -5,28 +5,31 @@ import TextLinkLayout from '../../BaseComponents/TextLinkLayout';
 
 export default class BaseTextLink extends WixComponent {
 
-  static propTypes = {
-    ...TextLinkLayout.propTypes,
-    link: PropTypes.string.isRequired,
-    disabled: PropTypes.bool,
-    download: PropTypes.bool,
-    rel: PropTypes.string,
-    target: PropTypes.string,
-    ariaLabel: PropTypes.string,
-    color: PropTypes.string,
-    onMouseEnter: PropTypes.func,
-    onMouseLeave: PropTypes.func,
-    onClick: PropTypes.func
-  };
+  static propTypes = Object.assign({},
+    TextLinkLayout.propTypes,
+    {
+      link: PropTypes.string.isRequired,
+      disabled: PropTypes.bool,
+      download: PropTypes.bool,
+      rel: PropTypes.string,
+      target: PropTypes.string,
+      ariaLabel: PropTypes.string,
+      color: PropTypes.string,
+      onMouseEnter: PropTypes.func,
+      onMouseLeave: PropTypes.func,
+      onClick: PropTypes.func
+    }
+  );
 
-  static defaultProps = {
-    ...TextLinkLayout.defaultProps,
-    disabled: false,
-    download: false,
-    rel: null,
-    target: null,
-    onClick: () => {}
-  };
+  static defaultProps = Object.assign({},
+    TextLinkLayout.defaultProps, {
+      disabled: false,
+      download: false,
+      rel: null,
+      target: null,
+      onClick: () => {}
+    }
+  );
 
   render() {
     const {ariaLabel, disabled, link, children, download, rel, target, onMouseEnter, onMouseLeave, onClick} = this.props;

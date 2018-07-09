@@ -121,7 +121,7 @@ function Story(props) {
                 {examples}
               </div>
 
-              {actualSource && <AutoDocs source={actualSource} parsedSource={parsedSource}/>}
+              {source && <AutoDocs source={source} parsedSource={parsedSource}/>}
 
               {actualReadmeTestKit && <Markdown source={actualReadmeTestKit}/>}
             </TabbedView>
