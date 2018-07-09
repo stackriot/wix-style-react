@@ -8,10 +8,6 @@ import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common'
 import {timeInputTestkitFactory} from '../../testkit';
 import {timeInputTestkitFactory as enzymeTimeInputTestkitFactory} from '../../testkit/enzyme';
 
-const defaultMoment = moment();
-const defaultMomentWithAM = moment('2014-04-25T01:00:00.00Z');
-const defaultMomentWithPM = moment('2014-04-25T13:00:00.00Z');
-
 describe('TimeInput', () => {
   const createDriver = createDriverFactory(timeInputDriverFactory);
   const format12Hours = time => time.format('hh:mm');
@@ -20,7 +16,7 @@ describe('TimeInput', () => {
   describe('Time display', () => {
     it(`should render the given default value`, () => {
       const props = {
-        defaultValue: defaultMoment
+        defaultValue: moment()
       };
       const driver = createDriver(<TimePicker {...props}/>);
       expect(driver.getValue()).toBe(format12Hours(props.defaultValue));
@@ -28,7 +24,7 @@ describe('TimeInput', () => {
 
     it(`should render the current time if no default value were passed `, () => {
       const driver = createDriver(<TimePicker/>);
-      const currentTime = defaultMoment;
+      const currentTime = moment();
       const currentTimeHours = format12Hours(currentTime).substring(0, 2);
       const currentTimeMinutes = format12Hours(currentTime).substring(3, 5);
       const inputTimeHours = driver.getValue().substring(0, 2);
@@ -40,7 +36,7 @@ describe('TimeInput', () => {
 
     it(`should allow rendering time in 24 hours mode`, () => {
       const props = {
-        defaultValue: defaultMoment,
+        defaultValue: moment(),
         disableAmPm: true
       };
       const driver = createDriver(<TimePicker {...props}/>);
@@ -49,7 +45,7 @@ describe('TimeInput', () => {
 
     it(`should display am/pm indicator when in 12 hours mode`, () => {
       const props = {
-        defaultValue: defaultMoment,
+        defaultValue: moment(),
         disableAmPm: false
       };
       const driver = createDriver(<TimePicker {...props}/>);
@@ -58,7 +54,7 @@ describe('TimeInput', () => {
 
     it(`should display AM indicator when in 12 hours mode and the time displayed is AM`, () => {
       const props = {
-        defaultValue: defaultMomentWithAM,
+        defaultValue: moment('1/25/1982 9:30 AM'),
         disableAmPm: false
       };
       const driver = createDriver(<TimePicker {...props}/>);
@@ -67,7 +63,7 @@ describe('TimeInput', () => {
 
     it(`should display AM indicator when in 12 hours mode and the time displayed is PM`, () => {
       const props = {
-        defaultValue: defaultMomentWithPM,
+        defaultValue: moment('1/25/1982 9:30 PM'),
         disableAmPm: false
       };
       const driver = createDriver(<TimePicker {...props}/>);
@@ -100,7 +96,7 @@ describe('TimeInput', () => {
 
     it(`should increase input value by 20 minutes upon clicking the input's up ticker`, () => {
       const props = {
-        defaultValue: defaultMoment
+        defaultValue: moment()
       };
       const driver = createDriver(<TimePicker {...props}/>);
       driver.clickTickerUp();
@@ -109,7 +105,7 @@ describe('TimeInput', () => {
 
     it(`should decrease input value by 20 minutes upon clicking the input's down ticker`, () => {
       const props = {
-        defaultValue: defaultMoment
+        defaultValue: moment()
       };
       const driver = createDriver(<TimePicker {...props}/>);
       driver.clickTickerDown();
@@ -118,7 +114,7 @@ describe('TimeInput', () => {
 
     it(`should allow to change time using keyboard's input`, () => {
       const props = {
-        defaultValue: defaultMoment
+        defaultValue: moment()
       };
       const driver = createDriver(<TimePicker {...props}/>);
       driver.setValue('12:00');
@@ -128,7 +124,7 @@ describe('TimeInput', () => {
 
     it(`should not allow to enter non numeric charecters using keyboard's input, it should bring back the privous valid value`, () => {
       const props = {
-        defaultValue: defaultMomentWithAM
+        defaultValue: moment('1/25/1982 9:30 AM')
       };
       const driver = createDriver(<TimePicker {...props}/>);
       driver.setValue('blabla');
@@ -138,7 +134,7 @@ describe('TimeInput', () => {
 
     it(`should not allow to enter invalid time using keyboard's input, it should bring back the privous valid value`, () => {
       const props = {
-        defaultValue: defaultMomentWithAM
+        defaultValue: moment('1/25/1982 9:30 AM')
       };
       const driver = createDriver(<TimePicker {...props}/>);
       driver.setValue('99:99');
@@ -148,7 +144,7 @@ describe('TimeInput', () => {
 
     it(`should allow toggling between am/pm when in 12 hours mode`, () => {
       const props = {
-        defaultValue: defaultMomentWithPM,
+        defaultValue: moment('1/25/1982 9:30 PM'),
         disableAmPm: false
       };
       const driver = createDriver(<TimePicker {...props}/>);
