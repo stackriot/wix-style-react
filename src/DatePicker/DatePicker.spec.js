@@ -43,6 +43,17 @@ describe('DatePicker', () => {
       });
     });
 
+    it('should show correct value from props', () => {
+      const date = new Date(2017, 9, 2);
+      const {inputDriver} = createDriver(<DatePicker onChange={noop} value={date}/>);
+      expect(inputDriver.getValue()).toBe('10/02/2017');
+    });
+
+    it('should show empty value', () => {
+      const {inputDriver} = createDriver(<DatePicker onChange={noop}/>);
+      expect(inputDriver.getValue()).toBe('');
+    });
+
     it('has prefix by default', () => {
       const {inputDriver} = createDriver(<DatePicker onChange={noop}/>);
       expect(inputDriver.hasPrefix()).toBe(true);
@@ -187,6 +198,7 @@ describe('DatePicker', () => {
       const newDate = onChange.mock.calls[0][0];
       expect(newDate.getMonth()).toEqual(now.getMonth());
       expect(newDate.getDate()).toEqual(now.getDate());
+
     });
 
     describe('navbar arrow navigation', () => {
@@ -593,26 +605,6 @@ describe('DatePicker', () => {
     it('should display translated weekdays', () => {
       const {calendarDriver} = setup();
       expect(calendarDriver.getNthWeekDayName(0)).toEqual('lu');
-    });
-  });
-
-  describe('`value` prop', () => {
-    it('should show correct value from props', () => {
-      const {inputDriver} = createDriver(<DatePicker onChange={noop} value={new Date(2017, 9, 2)}/>);
-      expect(inputDriver.getValue()).toBe('10/02/2017');
-    });
-
-    it('should show empty value', () => {
-      const {inputDriver} = createDriver(<DatePicker onChange={noop}/>);
-      expect(inputDriver.getValue()).toBe('');
-    });
-
-    describe('when undefined', () => {
-      it('should display `placeholderText`', () => {
-        const {inputDriver} = createDriver(<DatePicker value={undefined} placeholderText="hello" onChange={noop}/>);
-        expect(inputDriver.getValue()).toBe('');
-        expect(inputDriver.getPlaceholder()).toBe('hello');
-      });
     });
   });
 
