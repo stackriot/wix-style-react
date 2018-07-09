@@ -142,7 +142,6 @@ class Page extends WixComponent {
     this._setContainerScrollTopThreshold(PageTail && hasGradientClassName);
     const imageHeight = `${headerHeight + (PageTail ? -tailHeight : 39)}px`;
     const gradientHeight = gradientCoverTail ? `${headerHeight + (PageTail ? -SCROLL_TOP_THRESHOLD : 39)}px` : imageHeight;
-    const calculatedHeaderHeight = !minimized ? headerHeight : PageTail ? headerHeight - 78 : headerHeight - 54;
 
     return (
       <div className={s.page}>
@@ -181,7 +180,7 @@ class Page extends WixComponent {
           data-hook="page-scrollable-content"
           ref={r => this.scrollableContentRef = r}
           >
-          <div className={s.contentPlaceholder} style={{height: `${calculatedHeaderHeight}px`}}/>
+          <div className={s.contentPlaceholder} style={{height: `${headerHeight}px`}}/>
           {
             hasBackgroundImage &&
               <div
