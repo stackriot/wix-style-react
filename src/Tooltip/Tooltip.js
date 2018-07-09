@@ -41,8 +41,6 @@ class Tooltip extends WixComponent {
     disabled: PropTypes.bool,
     maxWidth: PropTypes.string,
     onClickOutside: PropTypes.func,
-    color: PropTypes.string,
-    lineHeight: PropTypes.string,
 
     /**
      * Callback to be called when the tooltip has been shown
@@ -138,8 +136,6 @@ class Tooltip extends WixComponent {
           maxWidth={this.props.maxWidth}
           size={this.props.size}
           textAlign={this.props.textAlign}
-          lineHeight={this.props.lineHeight}
-          color={this.props.color}
           >
           {this.props.content}
         </TooltipContent>);
