@@ -8,12 +8,22 @@ import styles from './TooltipContent.scss';
 
 const renderSubtreeIntoContainer = ReactDOM.unstable_renderSubtreeIntoContainer;
 
-/** A Tooltip component */
 class Tooltip extends WixComponent {
-  static displayName = 'Tooltip';
+
+  componentElements() {
+    const elements = super.componentElements();
+    return this._mountNode ? elements.concat(this._mountNode) : elements;
+  }
+
+  onClickOutside(e) {
+    if (this.props.shouldCloseOnClickOutside) {
+      this.hide();
+    }
+
+    this.props.onClickOutside && this.props.onClickOutside(e);
+  }
 
   static propTypes = {
-    /** alignment of the tooltip's text  */
     textAlign: PropTypes.string,
     children: PropTypes.node,
     content: PropTypes.node.isRequired,
@@ -27,36 +37,27 @@ class Tooltip extends WixComponent {
     active: PropTypes.bool,
     bounce: PropTypes.bool,
     disabled: PropTypes.bool,
-
-    /** The tooltip max width  */
     maxWidth: PropTypes.string,
-
-    /** Callback when cliking outside  */
     onClickOutside: PropTypes.func,
-
-    /** override the theme text color of the tooltip  */
     color: PropTypes.string,
-
-    /** override the theme text line height of the tooltip  */
     lineHeight: PropTypes.string,
 
-    /** Callback to be called when the tooltip has been shown */
+    /**
+     * Callback to be called when the tooltip has been shown
+     */
     onShow: PropTypes.func,
-
-    /** Callback to be called when the tooltip has been hidden */
+    /**
+     * Callback to be called when the tooltip has been hidden
+     */
     onHide: PropTypes.func,
-
-    /** z index of the tooltip  */
     zIndex: PropTypes.number,
 
     /**
-      * In some cases when you need a tooltip scroll with your element, you can append the tooltip to the direct parent, just
-      * don't forget to apply `relative`, `absolute` positioning. And be aware that some of your styles may leak into
-      * tooltip content.
-      */
+     * By default tooltip is appended to a body, to avoid CSS collisions.
+     * But if you want your tooltip to scroll with a content, append tooltip to a parent.
+     * Just make sure the CSS are not leaked.
+     */
     appendToParent: PropTypes.bool,
-
-    /** Element to attach the tooltip to  */
     appendTo: PropTypes.any,
 
     /**
@@ -78,7 +79,9 @@ class Tooltip extends WixComponent {
     shouldCloseOnClickOutside: PropTypes.bool,
     relative: PropTypes.bool,
 
-    /** Allows changing the padding of the content */
+    /**
+     * Allows changing the padding of the content
+     */
     padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   };
 
@@ -114,20 +117,6 @@ class Tooltip extends WixComponent {
     visible: false,
     hidden: true
   };
-
-  componentElements() {
-    const elements = super.componentElements();
-    return this._mountNode ? elements.concat(this._mountNode) : elements;
-  }
-
-  onClickOutside(e) {
-    if (this.props.shouldCloseOnClickOutside) {
-      this.hide();
-    }
-
-    this.props.onClickOutside && this.props.onClickOutside(e);
-  }
-
 
   componentDidUpdate() {
     if (this._mountNode && this.state.visible) {

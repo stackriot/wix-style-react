@@ -1,9 +1,9 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import AutoDocs from '../utils/Components/AutoDocs';
+import Markdown from '../utils/Components/Markdown';
 import CodeExample from '../utils/Components/CodeExample';
+import Readme from '../../src/GoogleAddressInput/README.md';
 
-import GoogleAddressInputSource from '!raw-loader!wix-style-react/GoogleAddressInput/GoogleAddressInput';
 import ExampleControlled from './ExampleControlled';
 import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
 
@@ -12,14 +12,12 @@ import ExampleControlledWithFooter from './ExampleControlledWithFooter';
 storiesOf('Core', module)
   .add('GoogleAddressInput', () => (
     <div>
-      <AutoDocs source={GoogleAddressInputSource}/>
+      <Markdown source={Readme}/>
 
       <h1>Usage examples</h1>
-
       <CodeExample title="Controlled input" code={ExampleControlledRaw}>
         <ExampleControlled/>
       </CodeExample>
-
       <CodeExample title="Controlled input - with a footer" code={ExampleControlledRaw}>
         <ExampleControlledWithFooter/>
       </CodeExample>
