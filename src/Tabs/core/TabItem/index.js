@@ -31,7 +31,7 @@ class TabItem extends React.Component {
     };
 
     return (
-      <li {...containerProps} data-hook={item.dataHook}>
+      <li {...containerProps}>
         <span ref={el => initHasTooltip(el)}>
           {item.title}
         </span>
