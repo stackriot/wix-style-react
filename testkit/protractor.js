@@ -141,6 +141,5 @@ export {
   toggleSwitchTestkitFactory,
   textTestkitFactory,
   labelTestkitFactory,
-  floatingHelperTestkitFactory,
-  linearProgressBarTestkitFactory
+  floatingHelperTestkitFactory
 } from 'wix-ui-backoffice/dist/src/testkit/protractor';
