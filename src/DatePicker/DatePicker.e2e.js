@@ -1,28 +1,25 @@
 import eyes from 'eyes.it';
 import {datePickerTestkitFactory, getStoryUrl} from '../../testkit/protractor';
-import autoExampleDriver from '../../stories/utils/Components/AutoExample/protractor.driver';
+import autoExampleTestkitFactory from '../../stories/utils/Components/AutoExample/protractor.driver';
 
 describe('DatePicker', () => {
   const storyUrl = getStoryUrl('Core', 'DatePicker');
+  const autoExampleDriver = autoExampleTestkitFactory({dataHook: 'auto-example'});
   const {inputDriver, calendarDriver} = datePickerTestkitFactory({dataHook: 'storybook-datepicker'});
 
-  beforeAll(() => {
+  beforeEach(() => {
     browser.get(storyUrl);
   });
 
-  afterEach(() => {
-    autoExampleDriver.reset();
-  });
-
   eyes.it('should not open calendar when disabled', () => {
-    autoExampleDriver.setProps({disabled: true});
+    autoExampleDriver.get.toggle('storybook-DatePicker-disabled-toggle').click();
     inputDriver.click();
 
     expect(calendarDriver.exists()).toBe(false);
   });
 
   eyes.it('should not close calendar on selecting date with click when shouldCloseOnSelect prop set to false', () => {
-    autoExampleDriver.setProps({shouldCloseOnSelect: false});
+    autoExampleDriver.get.toggle('storybook-DatePicker-shouldCloseOnSelect-toggle').click();
     inputDriver.click();
     calendarDriver.clickOnNthAvailableDay(1);
 
@@ -82,8 +79,13 @@ describe('DatePicker', () => {
   });
 
   describe('with year and month dropdown', () => {
+    beforeEach(() => {
+      browser.get(storyUrl);
+      autoExampleDriver.get.toggle('storybook-DatePicker-showYearDropdown-toggle').click();
+      autoExampleDriver.get.toggle('storybook-DatePicker-showMonthDropdown-toggle').click();
+    });
+
     eyes.it('should select 2027 year', () => {
-      autoExampleDriver.setProps({showYearDropdown: true, showMonthDropdown: true});
       inputDriver.click();
       calendarDriver.openYearDropdownOptions();
       calendarDriver.clickOnNthYear();
@@ -93,7 +95,6 @@ describe('DatePicker', () => {
     });
 
     eyes.it('should select February', () => {
-      autoExampleDriver.setProps({showYearDropdown: true, showMonthDropdown: true});
       inputDriver.click();
       calendarDriver.openMonthDropdownOptions();
       calendarDriver.clickOnNthMonth(2);
@@ -103,7 +104,6 @@ describe('DatePicker', () => {
     });
 
     eyes.it('should select January and 2027 year', () => {
-      autoExampleDriver.setProps({showYearDropdown: true, showMonthDropdown: true});
       inputDriver.click();
       calendarDriver.openYearDropdownOptions();
       calendarDriver.clickOnNthYear();

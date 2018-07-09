@@ -106,23 +106,15 @@ export default class extends Component {
       * ```
       */
     componentProps: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-    exampleProps: PropTypes.object,
-
-    /**
-      * when true, display only component preview without interactive props nor code example
-      */
-    isInteractive: PropTypes.bool
+    exampleProps: PropTypes.object
   }
 
   static defaultProps = {
     source: '',
     component: () => null,
     componentProps: {},
-    exampleProps: {},
-    isInteractive: true
+    exampleProps: {}
   }
-
-  _initialPropsState = {};
 
   constructor(props) {
     super(props);
@@ -135,15 +127,9 @@ export default class extends Component {
         ...(this.prepareComponentProps(this.props.componentProps))
       },
       funcValues: {},
-      funcAnimate: {},
-      isRtl: false
+      funcAnimate: {}
     };
-
-    this._initialPropsState = this.state.propsState;
   }
-
-  resetState = () =>
-    this.setState({propsState: this._initialPropsState});
 
   componentWillReceiveProps(nextProps) {
     this.setState({
@@ -177,19 +163,27 @@ export default class extends Component {
 
 
   controllableComponentGetters = {
-    string: () => <Input/>,
-    bool: () => <Toggle/>,
+    string: ({dataHook}) => <Input dataHook={dataHook}/>,
+    bool: ({dataHook}) => <Toggle dataHook={dataHook}/>,
 
-    enum: ({type}) =>
-      <List values={type.value.map(({value}) => stripQuotes(value))}/>,
+    enum: ({dataHook, type}) =>
+      <List
+        dataHook={dataHook}
+        values={type.value.map(({value}) => stripQuotes(value))}
+        />,
 
-    node: ({propKey}) => {
+    node: ({propKey, dataHook}) => {
       if (this.props.exampleProps[propKey]) {
-        return <NodesList values={this.props.exampleProps[propKey]}/>;
+        return (
+          <NodesList
+            dataHook={dataHook}
+            values={this.props.exampleProps[propKey]}
+            />
+        );
       }
     },
 
-    func: ({propKey}) => {
+    func: ({propKey, dataHook}) => {
       let classNames = styles.example;
       if (this.state.funcAnimate[propKey]) {
         classNames += ` ${styles.active}`;
@@ -197,19 +191,20 @@ export default class extends Component {
       }
 
       if (this.props.exampleProps[propKey]) {
-        return <div className={classNames}>{this.state.funcValues[propKey] || 'Interaction preview'}</div>;
-      }
-    },
-
-    arrayOf: ({propKey}) => {
-      if (this.props.exampleProps[propKey]) {
-        return <NodesList values={this.props.exampleProps[propKey]}/>;
+        return <div data-hook={dataHook} className={classNames}>{this.state.funcValues[propKey] || 'Interaction preview'}</div>;
       }
     }
   }
 
   getPropControlComponent = (propKey, type) => {
-    return (this.controllableComponentGetters[type.name] || (() => null))({propKey, type});
+    const types = {
+      bool: 'toggle',
+      string: 'input',
+      enum: 'radioGroup'
+    };
+
+    const dataHook = `storybook-${this.parsedComponent.displayName}-${propKey}-${types[type.name] || 'input'}`;
+    return (this.controllableComponentGetters[type.name] || (() => null))({propKey, type, dataHook});
   }
 
   componentToString = component =>
@@ -251,10 +246,6 @@ export default class extends Component {
       )
     };
 
-    if (!this.props.isInteractive) {
-      return React.createElement(component, componentPropsState);
-    }
-
     return (
       <Wrapper dataHook="auto-example">
         <Options>
@@ -271,10 +262,7 @@ export default class extends Component {
           ) }
         </Options>
 
-        <Preview
-          isRtl={this.state.isRtl}
-          onToggleRtl={isRtl => this.setState({isRtl})}
-          >
+        <Preview>
           {React.createElement(component, componentPropsState)}
         </Preview>
 

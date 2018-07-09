@@ -1,36 +1,32 @@
 import eyes from 'eyes.it';
 import {radioGroupTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
-import autoExampleDriver from '../../stories/utils/Components/AutoExample/protractor.driver';
 
 describe('RadioGroup', () => {
   const storyUrl = getStoryUrl('4. Selection', '4.3 Radio Button Group');
-  const dataHook = 'storybook-radiogroup';
-  const radioGroupDriver = radioGroupTestkitFactory({dataHook});
-
-  beforeAll(() => {
-    browser.get(storyUrl);
-  });
-
-  afterEach(() => {
-    autoExampleDriver.reset();
-  });
+  const dataHook = 'story-radio-group';
 
   eyes.it('should select the second option in a group', () => {
-    waitForVisibilityOf(radioGroupDriver.element(), 'Cannot find RadioGroup')
+    const driver = radioGroupTestkitFactory({dataHook});
+
+    browser.get(storyUrl);
+
+    waitForVisibilityOf(driver.element(), 'Cannot find RadioGroup')
       .then(() => {
-        radioGroupDriver.selectByIndex(1).click();
-        expect(radioGroupDriver.isRadioChecked(1)).toBe(true);
+        driver.selectByIndex(1).click();
+        expect(driver.isRadioChecked(1)).toBe(true);
       });
   });
 
-  eyes.it('should not select disabled option', () => {
-    autoExampleDriver.setProps({disabledRadios: [4]});
+  eyes.it('should do not select disabled option', () => {
+    const driver = radioGroupTestkitFactory({dataHook});
 
-    waitForVisibilityOf(radioGroupDriver.element(), 'Cannot find RadioGroup')
+    browser.get(storyUrl);
+
+    waitForVisibilityOf(driver.element(), 'Cannot find RadioGroup')
       .then(() => {
-        expect(radioGroupDriver.isRadioDisabled(3)).toBe(true);
-        radioGroupDriver.selectByIndex(3).click();
-        expect(radioGroupDriver.isRadioChecked(3)).toBe(false);
+        expect(driver.isRadioDisabled(3)).toBe(true);
+        driver.selectByIndex(3).click();
+        expect(driver.isRadioChecked(3)).toBe(false);
       });
   });
 });

@@ -59,14 +59,13 @@ RadioGroup.propTypes = {
   vAlign: PropTypes.oneOf(['center', 'top']),
 
   /** Make the entire control disabled */
-  disabled: PropTypes.bool,
+  disabled: PropTypes.string,
 
   /** Decided which type of child controls to render */
-  type: PropTypes.oneOf(['default', 'button']),
+  type: PropTypes.string,
 
   /** Display direction of the radios */
   display: PropTypes.oneOf(['vertical', 'horizontal']),
-
   children: PropTypes.arrayOf((propValue, key) => {
     if (propValue[key].type.name !== 'RadioButton') {
       return new Error(`RadioGroup: Invalid Prop children was given. Validation failed on child number ${key}`);
@@ -74,9 +73,7 @@ RadioGroup.propTypes = {
   }),
 
   /** Vertical spacing between radio buttons */
-  spacing: PropTypes.string,
-
-  lineHeight: PropTypes.string
+  spacing: PropTypes.string
 };
 
 RadioGroup.defaultProps = {
@@ -86,8 +83,7 @@ RadioGroup.defaultProps = {
   vAlign: 'center',
   display: 'vertical',
   spacing: '12px',
-  lineHeight: '24px',
-  type: 'default'
+  lineHeight: '24px'
 };
 
 RadioGroup.Radio = RadioButton;
