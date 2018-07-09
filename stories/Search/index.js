@@ -1,43 +1,46 @@
+import React from 'react';
+
 import story from '../utils/Components/Story';
 
-const settings = {
-  category: '3. Inputs',
-  storyName: '3.9 Search',
-  dataHook: 'storybook-search',
-  options: [
-    'The quick',
-    'brown',
-    'fox',
-    'jumps over',
-    'the lazy',
-    'dog',
-    'Option1',
-    'Option2',
-    'Option3',
-    'Option4',
-    'Option5',
-    'last Option'
-  ].map((value, index) => ({id: index, value}))
-};
+import Component from '../../src/Search';
+import source from '!raw-loader!wix-style-react/Search/Search';
+import readmeTestkit from '../../src/Search/README.TESTKIT.md';
+
+import {
+  category,
+  storyName,
+  options,
+  dataHook
+} from './SearchStory.helpers';
+
+const Search = props => (
+  <div
+    style={{
+      width: 200  // ATM Input's clear-button expands input container, which causes width-jump effect, thus need to limit
+    }}
+    >
+    <Component
+      {...props}
+      dataHook={dataHook}
+      />
+  </div>
+);
 
 story({
-  category: settings.category,
-  storyName: settings.storyName,
-  componentSrcFolder: 'Search',
-
+  category,
+  storyName,
+  name: 'Search',
+  source,
+  readmeTestkit,
+  component: Search,
   componentProps: setState => ({
-    dataHook: settings.dataHook,
+    options,
     value: '',
-    options: settings.options,
-
-    onChange: e =>
-      setState({value: e.target.value}),
-
-    onSelect: option =>
-      setState({value: option.value})
-  }),
-
-  exampleProps: {
-    onSelect: option => option.value
-  }
+    onChange(e) {
+      setState({value: e.target.value});
+    },
+    onSelect(option) {
+      setState({value: option.value});
+    }
+  })
 });
