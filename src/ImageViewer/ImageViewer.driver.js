@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
-import {buttonTestkitFactory} from 'wix-style-react/dist/testkit';
 
 const imageViewerDriverFactory = ({component, wrapper, element}) => {
 
@@ -10,8 +9,8 @@ const imageViewerDriverFactory = ({component, wrapper, element}) => {
 
   const image = () => byHook('image-viewer-image');
   const addImageButton = () => byHook('add-image');
-  const updateImageButton = () => buttonTestkitFactory({wrapper: element, dataHook: 'update-image'});
-  const removeImageButton = () => buttonTestkitFactory({wrapper: element, dataHook: 'remove-image'});
+  const updateImageButton = () => byHook('update-image');
+  const removeImageButton = () => byHook('remove-image');
   const errorIcon = () => byHook('error-tooltip');
 
   return {
@@ -21,8 +20,8 @@ const imageViewerDriverFactory = ({component, wrapper, element}) => {
     isImageVisible: () => !!image(),
     isErrorVisible: () => !!errorIcon(),
     clickAdd: () => ReactTestUtils.Simulate.click(addImageButton()),
-    clickUpdate: () => updateImageButton().click(),
-    clickRemove: () => removeImageButton().click(),
+    clickUpdate: () => ReactTestUtils.Simulate.click(updateImageButton()),
+    clickRemove: () => ReactTestUtils.Simulate.click(removeImageButton()),
     exists: () => !!element,
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
