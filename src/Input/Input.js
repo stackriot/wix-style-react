@@ -70,6 +70,7 @@ class Input extends Component {
       theme,
       disabled,
       error,
+      width,
       tooltipPlacement,
       onTooltipShow,
       autocomplete,
@@ -101,7 +102,7 @@ class Input extends Component {
 
     const inputElement = (
       <input
-        style={{textOverflow}}
+        style={{textOverflow, width}}
         ref={input => this.input = input}
         className={inputClassNames}
         id={id}
@@ -246,6 +247,7 @@ Input.defaultProps = {
   roundInput: false,
   textOverflow: 'clip',
   maxLength: 524288,
+  width: 'initial',
   withSelection: false,
   clearButton: false
 };
@@ -394,6 +396,7 @@ Input.propTypes = {
 
   /** Inputs value */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   withSelection: PropTypes.bool,
   required: PropTypes.bool
 };
