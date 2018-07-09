@@ -1,6 +1,14 @@
 @import '../common';
 @import '../Typography/Typography';
 
+.breadcrumbs-container {
+  margin-left: -10px;
+
+  &.absolute {
+    position: absolute;
+  }
+}
+
 .header-container {
   display: flex;
   justify-content: flex-start;
@@ -12,18 +20,11 @@
   flex: 1;
 }
 
-.breadcrumbs-container {
-  margin-left: -10px;
-
-  &.absolute {
-    position: absolute;
-  }
-}
-
 .back-button {
   position: relative;
   top: 6px;
   left: -12px;
+  float: left;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -61,11 +62,7 @@
 }
 
 .title-container {
-  display: flex;
-
-  &.minimized {
-    position: absolute;
-  }
+  float: left;
 }
 
 .title {

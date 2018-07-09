@@ -104,8 +104,8 @@ Toggle.propTypes = {
 };
 
 
-const List = ({value, values = [], onChange, showDropDown, ...props}) =>
-  showDropDown || values.length > 3 ?
+const List = ({value, values = [], onChange, ...props}) =>
+  values.length > 3 ?
     <Dropdown
       options={values.map(v => ({id: v, value: v}))}
       selectedId={value}
@@ -129,8 +129,7 @@ const List = ({value, values = [], onChange, showDropDown, ...props}) =>
 List.propTypes = {
   value: PropTypes.string,
   values: PropTypes.arrayOf(PropTypes.string),
-  onChange: PropTypes.func,
-  showDropDown: PropTypes.bool
+  onChange: PropTypes.func
 };
 
 class NodesList extends React.Component {
