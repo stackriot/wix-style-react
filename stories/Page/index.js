@@ -3,7 +3,7 @@ import {storiesOf} from '@storybook/react';
 import story from 'story';
 import Page from '../../src/Page';
 import Button from '../../src/Backoffice/Button';
-import SomeContentComponent from './SomeContentComponent';
+import Content from './Content';
 import Breadcrumbs from './Breadcrumbs';
 import SomeTailComponent from './SomeTailComponent';
 
@@ -23,7 +23,7 @@ const header = (
 
 const content = (
   <Page.Content>
-    <SomeContentComponent/>
+    <Content/>
   </Page.Content>
 );
 
