@@ -1,42 +1,65 @@
 import React from 'react';
-import {func, string, bool, object, any, oneOf} from 'prop-types';
+import {func, node, string, bool} from 'prop-types';
 import WixComponent from '../../BaseComponents/WixComponent';
-import styles from './styles';
-import {withStyles} from '../../providers/WixStyleProvider';
-import Prefix from './components/Prefix';
-import Suffix from './components/Suffix';
+import {withStyles} from './withStyles';
 
 class Button extends WixComponent {
   static propTypes = {
-    children: any,
+    children: node,
+    prefixIcon: node,
+    suffixIcon: node,
     type: string,
     onClick: func,
     onMouseEnter: func,
     onMouseLeave: func,
-    disabled: bool,
-    height: oneOf(['small', 'medium', 'large']),
-    classes: object,
-    skin: oneOf(['fullblue', 'emptyblue'])
+    disabled: bool
   }
 
-  static defaultProps = {
-    height: 'medium',
-    skin: 'fullblue'
+  constructor(props) {
+    super(props);
+    this.addPrefix = this.addPrefix.bind(this);
+    this.addSuffix = this.addSuffix.bind(this);
+    this.addIcon = this.addIcon.bind(this);
+  }
+
+  addIcon(className, icon, height) {
+    const iconSize = height === 'small' ? '8px' : height === 'medium' ? '12px' : '16px';
+    const dataHook = className === this.props.wixStyles.prefix ? 'btn-prefix' : 'btn-suffix';
+
+    return (
+      icon ?
+        <div className={className} data-hook={dataHook}>
+          {React.cloneElement(icon, {size: iconSize})}
+        </div> :
+        null
+    );
+  }
+
+  addPrefix() {
+    const {wixStyles, prefixIcon, height} = this.props;
+    return this.addIcon(wixStyles.prefix, prefixIcon, height);
+  }
+
+  addSuffix() {
+    const {wixStyles, suffixIcon, height} = this.props;
+    return this.addIcon(wixStyles.suffix, suffixIcon, height);
   }
 
   render() {
-    const {disabled, onClick, children, type, onMouseEnter, onMouseLeave, classes} = this.props;
+    const {disabled, onClick, children, type, onMouseEnter, onMouseLeave, wixStyles} = this.props;
 
     return (
       <button
-        className={classes.button}
+        className={wixStyles.button}
         onClick={onClick}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
         disabled={disabled}
         type={type}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         >
+        {this.addPrefix()}
         {children}
+        {this.addSuffix()}
       </button>
     );
   }
@@ -44,7 +67,4 @@ class Button extends WixComponent {
 
 Button.displayName = 'Button';
 
-Button.Prefix = Prefix;
-Button.Suffix = Suffix;
-
-export default withStyles(Button, styles);
+export default withStyles(Button);
