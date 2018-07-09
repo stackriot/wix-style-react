@@ -35,7 +35,8 @@ import '../stories/StatsWidget';
 import '../stories/Tag';
 import '../stories/TimeInput';
 import '../stories/ToggleSwitch';
-import '../stories/Tooltip/Core';
+// require('../stories/Tooltip/Core');
+import '../stories/Tooltip_New/Core';
 import '../stories/Selector';
 import '../stories/ThemedButton';
 import '../stories/ThemedInput';
@@ -95,8 +96,9 @@ import '../stories/Tabs' // 6.3 Tabs
 
 
 // 7. Tooltips
+// require('../stories/Tooltip/Composite/CompositeStory'); // TODO: remove if deprecated
 // 7.1 Tooltip, 7.2 Popover, 7.3 Popover Menu
-import '../stories/Tooltip/Composite/CompositeStory';
+import '../stories/Tooltip_New/Composite/CompositeStory';
 
 
 // 8. Notification Bars
