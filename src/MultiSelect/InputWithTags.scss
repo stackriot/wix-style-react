@@ -2,6 +2,7 @@
 
 .input {
   min-width: 30px;
+  margin: -1px;
 }
 
 .emptyInput {
@@ -30,7 +31,7 @@
 }
 
 .hasMaxHeight {
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 // Override <Input>'s default focus style
