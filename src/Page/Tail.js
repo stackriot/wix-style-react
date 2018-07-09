@@ -1,13 +1,11 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
-const Tail = ({children, minimized}) => React.cloneElement(children, {minimized});
+const Tail = ({children}) => children;
 
 Tail.displayName = 'Page.Tail';
 
 Tail.propTypes = {
-  children: PropTypes.element.isRequired,
-  minimized: PropTypes.bool
+  children: PropTypes.element.isRequired
 };
 
 export default Tail;
