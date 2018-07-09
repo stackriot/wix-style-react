@@ -19,4 +19,9 @@ export default () =>
         items={itemsWithLinks}
         />
     </div>
+    <div className={`${styles.onGrayBackground} ${styles.exampleWrapper} rtl`}>RTL
+      <Breadcrumbs
+        items={items}
+        />
+    </div>
   </div>;

@@ -71,7 +71,8 @@ import '../stories/TextLink/index.story.js'; // 5.8 Text Link
 
 // 6. Navigation
 import '../stories/SideMenu'; // 6.1 SideMenu
-import '../stories/Breadcrumbs/index.story.js'; // 6.2 + Breadcrumbs
+import '../stories/Breadcrubms/CompositeStory'; // 6.2 Breadcrumbs
+import '../stories/Breadcrubms'; // 6.2 + Breadcrumbs
 import '../stories/Tabs'; // 6.3 Tabs
 
 
