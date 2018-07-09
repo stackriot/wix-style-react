@@ -8,14 +8,15 @@ describe('DrillView', () => {
     const dataHook = 'side-menu';
     const driver = drillViewTestkitFactory({dataHook});
 
-    await browser.get(storyUrl);
-    await waitForVisibilityOf(driver.element(), 'Cannot find DrillView');
+    browser.get(storyUrl);
 
-    await driver.clickSubMenu(1);
-    await waitForVisibilityOf(driver.getBackLink(), 'Cannot find BackLink');
+    waitForVisibilityOf(driver.element(), 'Cannot find DrillView');
+    driver.clickSubMenu(1);
 
-    await driver.clickBackLink();
-    await browser.wait(async () => await driver.hasSingleDrillViewPanel());
+    waitForVisibilityOf(driver.getBackLink(), 'Cannot find BackLink');
+    driver.clickBackLink();
+
+    await browser.wait(() => driver.hasSingleDrillViewPanel());
     expect(await driver.hasNoTransitionClassesInDrillView()).toBe(true);
   });
 });
