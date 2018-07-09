@@ -2,10 +2,9 @@ import React from 'react';
 import {node, bool, func, oneOf, string} from 'prop-types';
 import uniqueId from 'lodash/uniqueId';
 import classNames from 'classnames';
-import CheckboxChecked from 'wix-ui-icons-common/system/CheckboxChecked';
-import CheckboxIndeterminate from 'wix-ui-icons-common/system/CheckboxIndeterminate';
 
 import styles from './Checkbox.scss';
+import SvgV from '../svg/V';
 import WixComponent from '../BaseComponents/WixComponent';
 import Label from '../Label/Label';
 
@@ -69,17 +68,18 @@ class Checkbox extends WixComponent {
 
     const classname = classNames(
       styles.root,
-      indeterminate ? styles.indeterminate :
-      checked ? styles.checked :
-      styles.unchecked,
+      checked ? styles.checked : styles.unchecked,
       {
         [styles.hover]: hover,
         [styles.active]: active,
         [styles.disabled]: disabled,
         [styles.hasError]: hasError,
         [styles.hasFocus]: this.state.isFocused
+
       }
     );
+
+    const checkedSymbol = indeterminate ? <div className={styles.indeterminate}/> : <SvgV/>;
 
     return (
       <div className={classname}>
@@ -103,7 +103,7 @@ class Checkbox extends WixComponent {
               className={styles.inner}
               onClick={e => e.stopPropagation()}
               >
-              {indeterminate ? <CheckboxIndeterminate/> : <CheckboxChecked/>}
+              {checkedSymbol}
             </div>
           </div>
 

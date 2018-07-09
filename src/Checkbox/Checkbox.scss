@@ -56,15 +56,10 @@
     height: 18px;
 
     > svg {
-      width: 12px;
-      height: 12px;
+      width: 13px;
+      height: 13px;
     }
   }
-}
-
-.indeterminate .large .inner > svg {
-  width: 10px;
-  height: 10px;
 }
 
 .inner {
@@ -76,16 +71,22 @@
   left: 0;
   width: 14px;
   height: 14px;
-  color: $D80;
 
   > svg {
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
+    fill: $D80;
   }
 }
 
+.indeterminate {
+  background-color: $D80;
+  width: 8px;
+  height: 2px;
+}
+
 /* Checked State */
-.checked, .indeterminate {
+.checked {
   .checkbox {
     border: 1px solid $B10;
     background-color: $B10;
@@ -138,8 +139,12 @@
   &.checked .checkbox {
     border-color: $D60;
 
-    .inner {
-      color: $D55;
+    .inner > svg {
+      fill: $D55;
+    }
+
+    .inner .indeterminate {
+      background-color: $D55;
     }
   }
 }

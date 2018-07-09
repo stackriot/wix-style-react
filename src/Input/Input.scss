@@ -356,12 +356,8 @@ $material-gap: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
 
-  > svg {
-    width: 10px;
-    height: 10px;
-  }
+  path { stroke: #fff; }
 }
 
 .help {

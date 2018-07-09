@@ -5,7 +5,6 @@ import classnames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
 import Text from '../Text';
 import BreadcrumbsPathFactory from './BreadcrumbsPathFactory';
-import BreadcrumbsChevronRight from 'wix-ui-icons-common/system/BreadcrumbsChevronRight';
 
 /**
   * a way to visualise current navigation path
@@ -123,7 +122,7 @@ class Breadcrumbs extends WixComponent {
         className={classnames(styles.itemContainer, {[styles.active]: isActive})}
         >
         { this.createItem({item, isActive, onClick: () => item.disabled !== true && this.handleBreadcrumbClick(item)}) }
-        { isDividerVisible && <BreadcrumbsChevronRight className={styles.divider}/> }
+        { isDividerVisible && <div className={styles.divider}/> }
       </div>
     );
   }
