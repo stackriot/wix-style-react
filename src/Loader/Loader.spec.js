@@ -4,7 +4,7 @@ import loaderDriverFactory from './Loader.driver';
 import {createDriverFactory} from '../test-common';
 import {loaderTestkitFactory} from '../../testkit';
 import {loaderTestkitFactory as enzymeLoaderTestkitFactory} from '../../testkit/enzyme';
-import {isEnzymeTestkitExists, isTestkitExists} from '../../testkit/test-common';
+import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
 
 describe('Loader', () => {
   const createDriver = createDriverFactory(loaderDriverFactory);
@@ -33,6 +33,7 @@ describe('Loader', () => {
   });
 
   describe('text property', () => {
+
     it('should create a component with no text by default', () => {
       const driver = createDriver(<Loader/>);
       expect(driver.hasText()).toEqual(false);

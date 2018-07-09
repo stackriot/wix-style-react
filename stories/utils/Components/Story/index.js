@@ -93,10 +93,7 @@ function Story(props) {
           if (isLoading) {
             return (
               <div className={styles.loaderWrapper}>
-                <Loader
-                  size="medium"
-                  text="Loading component meta-data, please, wait..."
-                  />
+                <Loader text="Loading component meta-data, please, wait..."/>
               </div>
             );
           }
