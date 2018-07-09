@@ -1,13 +1,13 @@
 import s from './PageHeader.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
-import WixComponent from '../BaseComponents/WixComponent';
+import WixComponent from '../../BaseComponents/WixComponent';
 import classNames from 'classnames';
-import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
-import Text from '../Text/Text';
+import Breadcrumbs from '../../Breadcrumbs/Breadcrumbs';
+import Text from '../../Text/Text';
 import {Animator} from 'wix-animations';
-import {ArrowLeft} from '../Icons';
-import Button from '../Button';
+import {ArrowLeft} from '../../Icons';
+import Button from '../../Button';
 
 const animateComponent = (show, useEnterDelay, content) => {
   return useEnterDelay ?
@@ -19,7 +19,7 @@ const animateComponent = (show, useEnterDelay, content) => {
     </Animator>;
 };
 
-const generateDefaultBreadcrumbs = title =>
+export const generateDefaultBreadcrumbs = title =>
   <Breadcrumbs
     items={[{id: '1', value: title}]}
     activeId="1"
@@ -31,7 +31,7 @@ const generateDefaultBreadcrumbs = title =>
 /**
   * A header that sticks at the top of the container which minimizes on scroll
   */
-class PageHeader extends WixComponent {
+export class PageHeader extends WixComponent {
   render() {
     const {breadcrumbs, onBackClicked, title, subtitle, minimized, actionsBar, showBackButton} = this.props;
 
@@ -86,7 +86,7 @@ PageHeader.propTypes = {
   /** The state from the header container */
   minimized: PropTypes.bool,
   /** Breadcrumbs object to display */
-  breadcrumbs: PropTypes.node,
+  breadcrumbs: PropTypes.element,
   /** Title to display */
   title: PropTypes.string.isRequired,
   /** Subtitle to display */
@@ -96,7 +96,7 @@ PageHeader.propTypes = {
   /** Should display back button */
   showBackButton: PropTypes.bool,
   /** Components that includes actions */
-  actionsBar: PropTypes.node
+  actionBar: PropTypes.element
 };
 
 PageHeader.defaultProps = {

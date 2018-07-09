@@ -1,7 +1,21 @@
-[data-hook="story-page"]{
-  margin: -30px;
+@import '../../src/common';
+@import '../../src/Typography/Typography';
 
-  >div {
-    height: 300px;
-  }
+[data-hook="story-page"],
+.container {
+  height: 300px;
+  width: 1000px;
+  padding: 0 30px 30px;
+  background: rgba($D70,.95);
+}
+
+.title {
+  @include FontThin();
+  color: $D10;
+  line-height: 48px;
+  font-size: 36px;
+  opacity: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  
 }
