@@ -166,20 +166,6 @@ describe('MessageBox', () => {
       </MessageBoxFunctionalLayout>);
       expect(driver.getChildBySelector('[data-hook="inner-div"]')).not.toBeNull();
     });
-
-    it('should render with zero padding when explicitly asked for', () => {
-      const normalRendering = {};
-      const zeroPaddingRendering = {noBodyPadding: true};
-      const regularDriver = createDriver(<MessageBoxFunctionalLayout {...normalRendering}>
-        <div>Content</div>
-      </MessageBoxFunctionalLayout>);
-      expect(regularDriver.toHaveBodyPadding()).toBeTruthy();
-
-      const zeroPaddingDriver = createDriver(<MessageBoxFunctionalLayout {...zeroPaddingRendering}>
-        <div>Content</div>
-      </MessageBoxFunctionalLayout>);
-      expect(zeroPaddingDriver.toHaveBodyPadding()).toBeFalsy();
-    });
   });
 
   describe('testkit', () => {
