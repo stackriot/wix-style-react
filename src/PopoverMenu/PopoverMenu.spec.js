@@ -70,7 +70,7 @@ describe('PopoverMenu', () => {
 });
 
 describe('Testkits', () => {
-  const genPopoverMenuElement = () => (
+  const genComponent = () => (
     <PopoverMenu>
       <PopoverMenuItem
         text="Menu Item #1"
@@ -81,13 +81,11 @@ describe('Testkits', () => {
     </PopoverMenu>
   );
 
-  it('Using ReactTestUtils testkit', () => {
-    expect(isTestkitExists(<span/>, popoverMenuTestkitFactory)).toBe(false);
-    expect(isTestkitExists(genPopoverMenuElement(), popoverMenuTestkitFactory)).toBe(true);
+  describe('Using ReactTestUtils testkit', () => {
+    expect(isTestkitExists(genComponent(), popoverMenuTestkitFactory)).toBe(true);
   });
 
-  it('Using Enzyme testkit', () => {
-    expect(isEnzymeTestkitExists(<span/>, enzymePopoverMenuTestkitFactory)).toBe(false);
-    expect(isEnzymeTestkitExists(genPopoverMenuElement(), enzymePopoverMenuTestkitFactory)).toBe(true);
+  describe('Using Enzyme testkit', () => {
+    expect(isEnzymeTestkitExists(genComponent(), enzymePopoverMenuTestkitFactory)).toBe(true);
   });
 });
