@@ -289,13 +289,13 @@ class RichTextArea extends WixComponent {
     const {error, placeholder, disabled, resizable, onImageRequest, dataHook} = this.props;
     const className = classNames(styles.container, {
       [styles.withError]: error,
-      [styles.isEditorFocused]: editorState.isFocused,
+      [styles.isFocused]: editorState.isFocused,
     });
     const isScrollable = resizable || this.props.maxHeight;
 
     return (
       <div className={className} data-hook={dataHook}>
-        <div className={classNames(styles.toolbar, {[styles.disabled]: disabled})} data-hook='toolbar'>
+        <div className={classNames(styles.toolbar, {[styles.disabled]: disabled})}>
           <RichTextEditorToolbar
             disabled={disabled}
             onClick={this.handleButtonClick}
