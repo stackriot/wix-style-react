@@ -21,21 +21,13 @@ class InputWithTags extends React.Component {
     this.props.autoFocus && this.props.onFocus();
   }
 
-  handleClick(e) {
+  handleInputFocus() {
     this.input.focus();
-    this.props.onInputClicked && this.props.onInputClicked(e);
+    this.setState({inputHasFocus: true});
   }
 
-  handleInputFocus(e) {
-    !this.state.inputHasFocus && this.setState({inputHasFocus: true}, () => {
-      this.props.onFocus && this.props.onFocus(e);
-    });
-  }
-
-  handleInputBlur(e) {
-    this.state.inputHasFocus && this.setState({inputHasFocus: false}, () => {
-      this.props.onBlur && this.props.onBlur(e);
-    });
+  handleInputBlur() {
+    this.setState({inputHasFocus: false});
   }
 
   render() {
@@ -50,19 +42,7 @@ class InputWithTags extends React.Component {
       [styles.hasMaxHeight]: !isUndefined(this.props.maxHeight) || !isUndefined(this.props.maxNumRows)
     });
 
-    const desiredProps = omit([
-      'onManuallyInput',
-      'inputElement',
-      'closeOnSelect',
-      'predicate',
-      'menuArrow',
-      'onClickOutside',
-      'fixedHeader',
-      'fixedFooter',
-      'dataHook',
-      'onFocus',
-      'onBlur',
-      'onInputClicked'], inputProps);
+    const desiredProps = omit(['onManuallyInput', 'inputElement', 'closeOnSelect', 'predicate', 'menuArrow', 'onClickOutside', 'fixedHeader', 'fixedFooter', 'dataHook'], inputProps);
     const fontSize = (desiredProps.size && desiredProps.size === 'small') ? '14px' : '16px';
 
     let rowMultiplier;
@@ -77,7 +57,7 @@ class InputWithTags extends React.Component {
       <div
         className={className}
         style={{maxHeight}}
-        onClick={() => this.handleClick()}
+        onClick={() => this.handleInputFocus()}
         data-hook={this.props.dataHook}
         >
         {tags.map(({label, ...rest}) => <Tag key={rest.id} disabled={disabled} onRemove={onRemoveTag} {...rest}>{label}</Tag>)}
@@ -89,11 +69,9 @@ class InputWithTags extends React.Component {
           <Input
             width={this.props.width}
             ref={input => this.input = input}
-            onFocus={() => this.handleInputFocus()}
             onBlur={() => this.handleInputBlur()}
             placeholder={tags.length === 0 ? placeholder : ''}
             {...desiredProps}
-            dataHook="inputWithTags-input"
             disabled={disabled}
             onChange={e => {
               if (!delimiters.includes(e.target.value)) {
@@ -135,8 +113,6 @@ InputWithTags.propTypes = {
   dataHook: PropTypes.string,
   placeholder: PropTypes.string,
   onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-  onInputClicked: PropTypes.func,
   autoFocus: PropTypes.bool,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
