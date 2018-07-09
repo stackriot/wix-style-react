@@ -98,7 +98,7 @@ export default class PageHeader extends WixComponent {
             }
             <div>
               {
-                title && animateComponent(!minimized, !breadcrumbsExists,
+                animateComponent(!minimized, !breadcrumbsExists,
                   <div className={classNames(s.title, {[s.minimized]: minimized})} data-hook="page-header-title">
                     <Text appearance={isDarkTheme(hasBackgroundImage, minimized) ? 'H1.1' : 'H1'}>{title}</Text>
                   </div>)
@@ -126,21 +126,21 @@ export default class PageHeader extends WixComponent {
 PageHeader.displayName = 'Page.Header';
 
 PageHeader.propTypes = {
-  /** This property is being supplied by the Page component, it's value changes by the state of the scrolled content */
+  /** The minimize state from the header container */
   minimized: PropTypes.bool,
-  /** This property is being supplied by the Page component, it's value reflects if the Page has a background image or not */
+  /** If the page has background image */
   hasBackgroundImage: PropTypes.bool,
-  /** Wix-Style-React Breadcrumbs component */
+  /** Breadcrumbs object to display */
   breadcrumbs: PropTypes.node,
-  /** The main title text */
-  title: PropTypes.node,
-  /** The subtitle text */
+  /** Title to display */
+  title: PropTypes.node.isRequired,
+  /** Subtitle to display */
   subtitle: PropTypes.node,
-  /** Should show a back button */
+  /** Should display back button */
   showBackButton: PropTypes.bool,
-  /** The callback when back button is clicked */
+  /** Callback when back button clicked */
   onBackClicked: PropTypes.func,
-  /** A placeholder for a component that can contain actions / anything else */
+  /** Components that includes actions */
   actionsBar: PropTypes.node
 };
 
