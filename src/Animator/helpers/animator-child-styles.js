@@ -37,13 +37,13 @@ class AnimationChildStyles {
 
   getFirstLayer() {
 
-    const startStyles = () => new StyleBuilder().withTransitionDelay(this.delay).withAnimationDelay(this.duration).build();
+    const getOutState = () => new StyleBuilder().withTransitionDelay(this.delay).withAnimationDelay(this.duration).build();
 
     return {
       base: this.props.childStyle,
-      enter: startStyles,
+      enter: getOutState,
       entering: () => ({}),
-      exit: startStyles,
+      exit: getOutState,
       exiting: {}
     };
   }
@@ -51,20 +51,31 @@ class AnimationChildStyles {
 
   getSecondLayer() {
 
-    const {scale} = this.animatorProps;
+    const {height, width} = this.dimensions;
+    const {height: isHeight, width: isWidth, scale} = this.animatorProps;
 
-    const startStyles = () => new StyleBuilder().withTransitionDelay(this.delay).build();
+    const startStyles = () => new StyleBuilder()
+      .withTransitionDelay(this.delay)
+      .build();
 
-    const hideScale = () => new StyleBuilder().withScale(scale).build();
+    const dimensionsStyles = (_height, _width) => new StyleBuilder()
+      .withWidth(isWidth, _width)
+      .withHeight(isHeight, _height);
 
-    const showScale = () => new StyleBuilder().withScale(scale && 1).build();
+    const hideStyles = () => {
+      return dimensionsStyles(0, 0).withScale(scale).build();
+    };
+
+    const showStyles = () => {
+      return dimensionsStyles(height, width).withScale(scale && 1).build();
+    };
 
     return {
       base: {},
-      enter: () => ({...startStyles(), ...hideScale()}),
-      entering: () => showScale(),
-      exit: () => ({...startStyles(), ...showScale()}),
-      exiting: () => hideScale()
+      enter: () => ({...startStyles(), ...hideStyles()}),
+      entering: () => showStyles(),
+      exit: () => ({...startStyles(), ...showStyles()}),
+      exiting: () => hideStyles()
     };
   }
 
@@ -72,27 +83,14 @@ class AnimationChildStyles {
 
     const {translate} = this.animatorProps;
 
-    const {height, width} = this.dimensions;
-    const {height: isHeight, width: isWidth} = this.animatorProps;
-
-    const startStyles = () => new StyleBuilder().withTransitionDelay(this.delay).build();
-
-    const dimensionsStyles = (_height, _width) => new StyleBuilder().withWidth(isWidth, _width).withHeight(isHeight, _height);
-
-    const hideDimensions = () => dimensionsStyles(0, 0).build();
-
-    const showDimensions = () => dimensionsStyles(height, width).build();
-
-    const translateOut = () => new StyleBuilder().withTranslate(translate, 'out').build();
-
-    const translateIn = () => new StyleBuilder().withTranslate(translate, 'in').build();
+    const getOutState = () => new StyleBuilder().withTransitionDelay(this.delay);
 
     return {
       base: {},
-      enter: () => ({...startStyles(), ...translateIn(), ...hideDimensions()}),
-      entering: () => showDimensions(),
-      exit: () => ({...startStyles(), ...showDimensions()}),
-      exiting: () => ({...translateOut(), ...hideDimensions()})
+      enter: () => getOutState().withTranslate(translate, 'in').build(),
+      entering: {},
+      exit: () => getOutState().build(),
+      exiting: () => new StyleBuilder().withTranslate(translate, 'out').build()
     };
   }
 

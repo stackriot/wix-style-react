@@ -7,15 +7,17 @@ class AnimatorContent extends React.Component {
     const newProps = Object.assign({}, props);
     delete newProps.childClassName;
     delete newProps.childStyle;
+    delete newProps.debug;
     return newProps;
   }
 
   render() {
     const {children} = this.props;
+    const {type, props} = children;
     return React.createElement(
-      children.type || 'div',
-      this.cleanProps(children.props),
-      children.props ? children.props.children : children
+      type || 'div',
+      this.cleanProps(props),
+      children ? children.props.children : children
     );
   }
 }
