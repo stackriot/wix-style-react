@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FormFieldError from 'wix-ui-icons-common/system/FormFieldError';
-import classNames from 'classnames';
+
 import Tooltip from '../Tooltip';
 import styles from './Input.scss';
 
 class InputErrorSuffix extends React.Component {
   render() {
-    const classes = classNames(styles.exclamation, {[styles.narrow]: this.props.narrow});
     return (
       <Tooltip
         dataHook="input-tooltip"
@@ -22,7 +21,7 @@ class InputErrorSuffix extends React.Component {
         hideDelay={150}
         zIndex={10000}
         >
-        <div className={classes}><FormFieldError/></div>
+        <div className={styles.exclamation}><FormFieldError/></div>
       </Tooltip>
     );
   }
@@ -32,7 +31,6 @@ InputErrorSuffix.propTypes = {
   theme: PropTypes.oneOf(['normal', 'paneltitle', 'material', 'amaterial']),
   errorMessage: PropTypes.string.isRequired,
   focused: PropTypes.bool,
-  narrow: PropTypes.bool,
   tooltipPlacement: PropTypes.string
 };
 

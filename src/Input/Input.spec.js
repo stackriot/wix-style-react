@@ -211,15 +211,9 @@ describe('Input', () => {
       expect(driver.hasMenuArrow()).toBeFalsy();
     });
 
-    it('should display a menu arrow icon if error is true', () => {
+    it('should not display a menu arrow icon if error is true', () => {
       const driver = createDriver(<Input menuArrow error/>);
-      expect(driver.hasMenuArrow()).toBeTruthy();
-    });
-
-    it('should have a narrow error style of arrow is shown', () => {
-      const driver = createDriver(<Input menuArrow error/>);
-      expect(driver.isNarrowError()).toBeTruthy();
-      expect(driver.hasExclamation()).toBeTruthy();
+      expect(driver.hasMenuArrow()).toBeFalsy();
     });
 
     it('should not display a menu arrow icon if magnifyingGlass is true', () => {
