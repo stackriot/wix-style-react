@@ -11,27 +11,27 @@ $easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
 // Duration
 ///////////
 
-.timing-micro {
+.micro {
   transition-duration: .12s
 }
 
 ;
-.timing-small {
+.small {
   transition-duration: .15s
 }
 
 ;
-.timing-medium {
+.medium {
   transition-duration: .2s
 }
 
 ;
-.timing-large {
+.large {
   transition-duration: .3s
 }
 
 ;
-.timing-debug {
+.debug {
   transition-duration: 10s
 }
 
@@ -41,11 +41,11 @@ $easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
 /////////////////
 
 @mixin timingFunction() {
-  .timing-micro, .timing-small {
+  .micro, .small {
     transition-timing-function: $easeOutCubic;
   }
 ;
-  .timing-medium, .timing-large {
+  .medium, .large {
     transition-timing-function: $easeOutQuint;
   }
 ;
@@ -56,6 +56,21 @@ $easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
 
 $sequence-delay-duration: .08s;
 $sequence-delay-max-child: 100;
+//
+//.sequenceDelay {
+//  @for $i from 1 through $sequence-delay-max-child {
+//    $delay: $i * $sequence-delay-duration;
+//    span:nth-child(#{$i}) {
+//      .child {
+//        transition-delay: $delay;
+//      }
+//
+//      .translate {
+//        transition-delay: $delay;
+//      }
+//    }
+//  }
+//}
 
 @mixin delayEnter() {
   @for $i from 1 through $sequence-delay-max-child {
@@ -85,39 +100,21 @@ $sequence-delay-max-child: 100;
   }
 }
 
-@mixin delayLeave() {
-  @for $i from 1 through $sequence-delay-max-child {
-    $delay: $i * $sequence-delay-duration;
-    &.childSequenceDelay-#{$i} {
-
-      .child {
-        transition-delay: $delay;
-      }
-
-      .translate {
-        transition-delay: $delay;
-      }
-
-    }
-
-  }
-}
-
 // Opacity
 //////////
 
 @mixin opacityEnter() {
   .opacity {
-    &.timing-micro {
+    &.micro {
       opacity: .9;
     }
-    &.timing-small, &.timing-medium {
+    &.small, &.medium {
       opacity: .5;
     }
-    &.timing-large {
+    &.large {
       opacity: .66;
     }
-    &.timing-debug {
+    &.debug {
       opacity: 0;
     }
   }
@@ -125,7 +122,7 @@ $sequence-delay-max-child: 100;
 
 @mixin opacityEnterActive() {
   .opacity {
-    &.timing-micro, &.timing-small, &.timing-medium, &.timing-large, &.timing-debug {
+    &.micro, &.small, &.medium, &.large, &.debug {
       opacity: 1;
     }
   }
@@ -148,15 +145,15 @@ $sequence-delay-max-child: 100;
 
 @mixin scaleMinimum() {
   .scale {
-    &.timing-micro, &.timing-large {
+    &.micro, &.large {
       transform: scale(0.9);
     }
   ;
-    &.timing-small, &.timing-medium {
+    &.small, &.medium {
       transform: scale(0.75);
     }
   ;
-    &.timing-debug {
+    &.debug {
       transform: scale(0);
     }
   ;
@@ -165,44 +162,10 @@ $sequence-delay-max-child: 100;
 
 @mixin scaleMaximum() {
   .scale {
-    &.timing-micro, &.timing-small, &.timing-medium, &.timing-large, &.timing-debug {
+    &.micro, &.small, &.medium, &.large, &.debug {
       transform: scale(1);
     }
   ;
-  }
-}
-
-// Height
-/////////
-
-@mixin heightMinimum() {
-  .height {
-    overflow: hidden;
-    max-height: 0;
-  }
-}
-
-@mixin heightMaximum() {
-  .height {
-    overflow: hidden;
-    max-height: 100%;
-  }
-}
-
-// Width
-/////////
-
-@mixin widthMinimum() {
-  .width {
-    overflow: hidden;
-    max-width: 0;
-  }
-}
-
-@mixin widthMaximum() {
-  .width {
-    overflow: hidden;
-    max-width: 100%;
   }
 }
 
@@ -245,10 +208,6 @@ $sequence-delay-max-child: 100;
     transition-timing-function: $easeOutCubic;
     @include translateHide();
   }
-
-  .timing-debug .translate {
-    transition-duration: 10s;
-  }
 }
 
 @mixin translateEnterActive() {
@@ -264,10 +223,6 @@ $sequence-delay-max-child: 100;
     transition-timing-function: $easeInOutQuint;
     @include translateShow();
   }
-
-  .timing-debug .translate {
-    transition-duration: 10s;
-  }
 }
 
 @mixin translateLeaveActive() {
@@ -276,23 +231,6 @@ $sequence-delay-max-child: 100;
   }
 }
 
-
-// Minimum Maximum Summary
-//////////////////////////
-
-@mixin minimum() {
-  @include scaleMinimum();
-  @include heightMinimum();
-  @include widthMinimum();
-}
-
-@mixin maximum() {
-  @include scaleMaximum();
-  @include heightMaximum();
-  @include widthMaximum();
-}
-
-
 // Animation classes
 ////////////////////
 
@@ -300,30 +238,28 @@ $sequence-delay-max-child: 100;
   transition-property: all;
   @include timingFunction();
   @include opacityEnter();
+  @include scaleMinimum();
   @include translateEnter();
   @include delayEnter();
-  @include minimum();
 }
 
 .enter-active {
   @include opacityEnterActive();
+  @include scaleMaximum();
   @include translateEnterActive();
   @include delayEnterActive();
-  @include maximum();
 }
 
 .leave {
   transition-property: all;
   @include timingFunction();
   @include opacityLeave();
+  @include scaleMaximum();
   @include translateLeave();
-  @include delayLeave();
-  @include maximum();
 }
 
 .leave-active {
   @include opacityLeaveActive();
+  @include scaleMinimum();
   @include translateLeaveActive();
-  @include minimum();
-
 }

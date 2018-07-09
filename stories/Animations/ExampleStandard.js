@@ -7,11 +7,7 @@ import Animator from '../../src/Animations/Animator';
 
 
 const createSizeArray = (size) => {
-  return new Array(size + 1).fill(0).map((element, id) => ({id: id * 10, value: id * 10})).splice(1, size + 1);
-}
-
-const MockDiv = ({children, height = '40px', width = '100px', background = 'beige'}) => {
-  return (<div style={{height, width, background, overflow: 'hidden'}}>{children}</div>);
+  return new Array(size + 1).fill(0).map((element, id) => ({id: id * 10, value: id* 10})).splice(1, size + 1);
 }
 
 class AnimatedExample extends React.Component {
@@ -21,17 +17,15 @@ class AnimatedExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      showComponents: true,
       opacity: true,
       scale: false,
-      height: false,
-      width: false,
-      translate: false,
       sequenceDelay: true,
-      reverse: false,
+      translate: false,
       translateSize: 100,
       direction: 'left',
       timing: 'large',
-      show: true
+      show: false
     };
 
     this.options = [
@@ -39,7 +33,6 @@ class AnimatedExample extends React.Component {
       {id: 'small', value: 'Small'},
       {id: 'medium', value: 'Medium'},
       {id: 'large', value: 'Large'},
-      {id: 'debug', value: 'Debug'},
       {id: 'none', value: 'None'}
     ];
 
@@ -62,13 +55,6 @@ class AnimatedExample extends React.Component {
     )
   }
 
-  getSequenceDelayValue() {
-    if (!this.state.sequenceDelay) {
-      return false;
-    }
-    return this.state.reverse ? 'reverse' : true;
-  }
-
   render() {
     return (
       <div style={{height: '250px'}}>
@@ -85,12 +71,6 @@ class AnimatedExample extends React.Component {
               </Row>
               <Row>
                 {this.myToggle('scale')}
-              </Row>
-              <Row>
-                {this.myToggle('height')}
-              </Row>
-              <Row>
-                {this.myToggle('width')}
               </Row>
               <Row>
                 {this.myToggle('translate')}
@@ -118,8 +98,6 @@ class AnimatedExample extends React.Component {
               </Row>}
               <Row>
                 {this.myToggle('sequenceDelay')}
-                {this.state.sequenceDelay && <span><ToggleSwitch checked={this.state.reverse}
-                                                                 onChange={() => this.setState({reverse: !this.state.reverse})}/>Reverse Sequence</span> }
               </Row>
               <Row>
                 Timing
@@ -131,35 +109,21 @@ class AnimatedExample extends React.Component {
               </Row>
             </Col>
             <Col span="8">
-              <pre>&lt;Animator
-                {this.state.timing ? ` timing="${this.state.timing}"` : ''}
-                {this.state.opacity ? ' opacity' : ''}
-                {this.state.scale ? ' scale' : ''}
-                {this.state.height ? ' height' : ''}
-                {this.state.width ? ' width' : ''}
-                {this.state.translate ? ` translate={{size: ${this.state.translateSize}, to: "${this.state.direction}"}}` : ''}
-                {this.state.sequenceDelay ? ' sequenceDelay' : ''}{this.state.sequenceDelay && this.state.reverse ? '="reverse"' : ''}
-                &gt;&lt;/Animator&gt;</pre>
+              <pre>&lt;Animator{this.state.timing ? ` timing="${this.state.timing}"` : ''}{this.state.opacity ? ' opacity' : ''}{this.state.scale ? ' scale' : ''}{this.state.translate ? ` translate={{size: ${this.state.translateSize}, to: "${this.state.direction}"}}` : ''}{this.state.sequenceDelay ? ' sequenceDelay' : ''}&gt;&lt;
+                /Animator&gt;</pre>
               <br />
-              <div style={{width: '200px'}}>
+              <div style={{width: '70px'}}>
                 <Animator opacity={this.state.opacity}
                           scale={this.state.scale}
-                          height={this.state.height}
-                          width={this.state.width}
-                          translate={this.state.translate ? {
-                              to: this.state.direction,
-                              size: this.state.translateSize
-                            } : false}
-                          sequenceDelay={this.getSequenceDelayValue()}
+                          translate={this.state.translate ? {to: this.state.direction, size: this.state.translateSize} : false}
+                          sequenceDelay={this.state.sequenceDelay}
                           timing={this.state.timing === 'none' ? false : this.state.timing}>
-                  {this.state.show && <MockDiv>Some Content in Here</MockDiv>}
-                  {this.state.show && <MockDiv>Some Content in Here</MockDiv>}
-                  {this.state.show && <MockDiv>Some Content in Here</MockDiv>}
-                  {this.state.show && <MockDiv>Some Content in Here</MockDiv>}
-                  {this.state.show && <MockDiv>Some Content in Here</MockDiv>}
+                  {this.state.show && <div>The content!!</div>}
+                  {this.state.show && <div>The content!!</div>}
+                  {this.state.show && <div>The content!!</div>}
+                  {this.state.show && <div>The content!!</div>}
                 </Animator>
               </div>
-
             </Col>
           </Row>
         </Container>
