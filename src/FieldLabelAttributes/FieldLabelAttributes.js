@@ -15,7 +15,7 @@ class FieldLabelAttributes extends WixComponent {
         content={this.props.info}
         theme="light"
         alignment="center"
-        moveBy={{x: 0, y: -1}}
+        moveBy={{x: 2, y: 2}}
         hideDelay={0}
         >
         <span data-hook="info" className={styles.icon}>
