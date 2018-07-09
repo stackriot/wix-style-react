@@ -39,7 +39,7 @@ describe('EditableSelector', () => {
   it('should render "add row" button', () => {
     props.newRowLabel = 'add new!';
     const driver = createDriver(<EditableSelector {...props}/>);
-    expect(driver.newRowButton().textContent).toEqual(props.newRowLabel);
+    expect(driver.newRowButton().text()).toEqual(props.newRowLabel);
   });
 
   it('should call onOptionAdded', () => {
@@ -70,15 +70,15 @@ describe('EditableSelector', () => {
   it('should have edit and delete actions for each option', () => {
     props.options = [{isSelected: false, title: 'Shir'}];
     const driver = createDriver(<EditableSelector {...props}/>);
-    expect(driver.deleteButtonAt(0)).not.toBeUndefined();
-    expect(driver.editButtonAt(0)).not.toBeUndefined();
+    expect(driver.deleteButtonAt(0).length).toEqual(1);
+    expect(driver.editButtonAt(0).length).toEqual(1);
   });
 
   it('should get "edit" button text from props', () => {
     props.options = [{isSelected: false, title: 'Shir'}];
     props.editButtonText = 'Edit Label';
     const driver = createDriver(<EditableSelector {...props}/>);
-    expect(driver.editButtonAt(0).textContent).toEqual(props.editButtonText);
+    expect(driver.editButtonAt(0).text()).toEqual(props.editButtonText);
   });
 
   it('should call onOptionEdit', () => {

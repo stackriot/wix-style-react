@@ -1,6 +1,7 @@
 import React from 'react';
 import FieldWithSelectionComposite from './FieldWithSelectionComposite';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 import ReactTestUtils from 'react-dom/test-utils';
 
 const fieldWithSelectionCompositeDriverFactory = ({element, wrapper}) => {
@@ -22,7 +23,7 @@ const fieldWithSelectionCompositeDriverFactory = ({element, wrapper}) => {
     getAttr: attrName => element.getAttribute(attrName),
     /** @deprecated it is for internal testing and should not be exposed to users */
     getNumberOfChildren: () => element.childElementCount,
-    hasFieldLabelAttributes: () => !!element.querySelectorAll('[data-hook="field-label-attributes"]').length,
+    hasFieldLabelAttributes: () => !!$(element).find('[data-hook="field-label-attributes"]').length,
     setProps: props => {
       ReactDOM.render(<div ref={r => element = r}><FieldWithSelectionComposite {...props}/></div>, wrapper);
     }

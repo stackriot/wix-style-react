@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 import fieldLabelAttributesDriverFactory from '../../FieldLabelAttributes/FieldLabelAttributes.driver';
 
 const inputAreaWithLabelCompositeDriverFactory = ({element, wrapper, component}) => {
@@ -10,8 +11,8 @@ const inputAreaWithLabelCompositeDriverFactory = ({element, wrapper, component})
     hasLabel: () => label.tagName.toLowerCase() === 'label',
     getAttr: attrName => element.getAttribute(attrName),
     getNumberOfChildren: () => element.childElementCount,
-    getInfoTooltipTestKit: () => fieldLabelAttributesDriverFactory({wrapper, element: element.querySelector('[data-hook="field-label-attributes"]')}).getTooltipTestKit(),
-    hasFieldLabelAttributes: () => !!element.querySelectorAll('[data-hook="field-label-attributes"]').length,
+    getInfoTooltipTestKit: () => fieldLabelAttributesDriverFactory({wrapper, element: $(element).find('[data-hook="field-label-attributes"]')}).getTooltipTestKit(),
+    hasFieldLabelAttributes: () => !!$(element).find('[data-hook="field-label-attributes"]').length,
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
       ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);

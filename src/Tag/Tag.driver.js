@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 import {isClassExists} from '../../test/utils';
 
 const tagDriverFactory = ({element, wrapper, component}) => {
 
-  const removeButton = element.querySelector('a');
-  const thumb = element.querySelector('span');
-  const contentWithoutThumb = element.querySelector('span');
+  const removeButton = $(element).find('a')[0];
+  const thumb = $(element).find('span')[0];
+  const contentWithoutThumb = $(element).find('span')[0];
 
   return {
     exists: () => !!element,

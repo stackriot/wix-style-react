@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import $ from 'jquery';
 
 import TabTypes from './core/constants/tab-types';
 import styles from './Tabs.scss';
@@ -8,7 +9,7 @@ import styles from './Tabs.scss';
 
 const tabsDriverFactory = ({element, wrapper, component}) => {
 
-  const findFirst = query => element.querySelector(query);
+  const findFirst = query => $(element).find(query)[0];
   const getItemsContainer = () => findFirst('ul');
   const getItems = () => [...getItemsContainer().childNodes];
 

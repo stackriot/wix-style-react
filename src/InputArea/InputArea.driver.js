@@ -2,10 +2,12 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
 import styles from './InputArea.scss';
+import $ from 'jquery';
 
 const inputAreaDriverFactory = ({element, wrapper, component}) => {
+  const $component = $(element);
   const textAreaElement = element && element.childNodes[0];
-  const textArea = element.querySelector('textarea');
+  const textArea = $component.find('textarea')[0];
   const counterSelector = '[data-hook="counter"]';
   return {
     trigger: (trigger, event) => ReactTestUtils.Simulate[trigger](textArea, event),
@@ -19,9 +21,9 @@ const inputAreaDriverFactory = ({element, wrapper, component}) => {
     getTabIndex: () => textArea.tabIndex,
     getReadOnly: () => textArea.readOnly,
     getResizable: () => textAreaElement.classList.contains(styles.resizable),
-    getHasCounter: () => !!element.querySelectorAll(counterSelector).length,
-    getCounterValue: () => element.querySelector(counterSelector).textContent,
-    hasExclamation: () => element.querySelectorAll(`.${styles.exclamation}`).length === 1,
+    getHasCounter: () => !!$component.find(counterSelector).length,
+    getCounterValue: () => $component.find(counterSelector).text(),
+    hasExclamation: () => $component.find(`.${styles.exclamation}`).length === 1,
     hasError: () => textAreaElement.classList.contains(styles.hasError),
     isFocusedStyle: () => textAreaElement.classList.contains(styles.hasFocus),
     isHoveredStyle: () => textAreaElement.classList.contains(styles.hasHover),
