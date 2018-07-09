@@ -18,8 +18,11 @@ export default class DatePickerInput extends Component {
   };
 
   static defaultProps = {
-    prefix: <div className={styles.icon}/>,
     onEnterPressed: () => {}
+  };
+
+  static defaultProps = {
+    prefix: <div className={styles.icon}/>
   }
 
   render() {
