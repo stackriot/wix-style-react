@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../Input.scss';
+import styles from './Unit.scss';
 
 const Unit = ({children, value}) =>
   <div
-    className={styles.unit}
+    className={styles.root}
     data-hook="unit"
     >
     {value || children}
