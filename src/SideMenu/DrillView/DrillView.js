@@ -55,11 +55,6 @@ class SideMenuDrill extends WixComponent {
 
   getSlideDirectionTo(selectedItemMenuId) {
     const {currentMenuId, menus} = this.state;
-
-    if (!menus[currentMenuId] || !menus[selectedItemMenuId]) {
-      return SlideDirection.in;
-    }
-
     return menus[currentMenuId].level < menus[selectedItemMenuId].level ? SlideDirection.in : SlideDirection.out;
   }
 
