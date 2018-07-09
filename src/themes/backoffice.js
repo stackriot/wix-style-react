@@ -1,14 +1,5 @@
 import {pxDivide} from './utils';
 
-const pallete = {
-  disabled: '#cbd3dc', //D55
-  mainColor: '#3899ec', //B10
-  mainHoverColor: '#4eb7f5', //B20
-  dangerColor: '#ee5951', //R10
-  dangerHoverColor: '#ff6666', //R20
-  white: '#ffffff' //D80
-};
-
 const heightMap = {
   small: '30px',
   medium: '36px',
@@ -33,43 +24,15 @@ const lineHeightMap = {
   large: '24px'
 };
 
-const skinToColorMap = {
-  fullblue: pallete.white,
-  fullred: pallete.white,
-  emptyblue: pallete.mainColor
-};
-
-const skinToBackgroundMap = {
-  fullblue: pallete.mainColor,
-  fullred: pallete.dangerColor,
-  emptyblue: pallete.white
-};
-
-const skinToBorderColorMap = {
-  fullblue: pallete.mainColor,
-  fullred: pallete.dangerColor,
-  emptyblue: pallete.mainColor
-};
-
-const skinToHoverColorMap = {
-  fullblue: pallete.white,
-  fullred: pallete.white,
-  emptyblue: pallete.white
-};
-
-const skinToHoverBackgroundMap = {
-  fullblue: pallete.mainHoverColor,
-  fullred: pallete.dangerHoverColor,
-  emptyblue: pallete.mainHoverColor
-};
-
-const skinToHoverBorderColorMap = {
-  fullblue: pallete.mainHoverColor,
-  fullred: pallete.dangerHoverColor,
-  emptyblue: pallete.mainHoverColor
+const pallete = {
+  disabled: '#cbd3dc', //D55
+  mainColor: '#3899ec', //B10
+  mainHoverColor: '#4eb7f5' //B20
 };
 
 export default {
+  name: 'backoffice',
+  pallete,
   button: {
     fontSize: ({height}) => fontSizeMap[height],
     lineHeight: ({height}) => lineHeightMap[height],
@@ -78,14 +41,14 @@ export default {
     padding: ({height}) => paddingMap[height],
     borderRadius: ({height}) => pxDivide(heightMap[height], 2),
 
-    color: ({skin}) => skinToColorMap[skin],
-    backgroundColor: ({skin}) => skinToBackgroundMap[skin],
-    borderColor: ({skin}) => skinToBorderColorMap[skin],
+    color: ({skin}) => skin === 'fullblue' ? '#ffffff' : 'black',
+    backgroundColor: ({skin}) => skin === 'fullblue' ? pallete.mainColor : 'red',
+    borderColor: ({skin}) => skin === 'fullblue' ? pallete.mainColor : 'red',
 
     hover: {
-      color: ({skin}) => skinToHoverColorMap[skin],
-      backgroundColor: ({skin}) => skinToHoverBackgroundMap[skin],
-      borderColor: ({skin}) => skinToHoverBorderColorMap[skin]
+      color: ({skin}) => skin === 'fullblue' ? '#ffffff' : 'black',
+      backgroundColor: ({skin}) => skin === 'fullblue' ? pallete.mainHoverColor : 'red',
+      borderColor: ({skin}) => skin === 'fullblue' ? pallete.mainHoverColor : 'red'
     },
 
     disabled: {
