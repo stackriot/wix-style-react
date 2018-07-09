@@ -14,21 +14,20 @@ All you need is:
 * `import YourComponentSource from '!raw-loader!/Components/YourComponent'`
 * `<AutoDocs source={YourComponentSource}/>`
 
-`AutoDocs` needs raw component source as string so it can parse it.
-Hence the usage of `raw-loader`
+Notice the usage of `raw-loader`
 
 
 ### Usage
 
+imaginary `/stories/MyComponent/index.js`:
+
 ```js
-import AutoDocs from './stories/utils/Components/AutoDocs';
-import MyComponentSource from '!raw-loader!./src/MyComponent';
+import AutoDocs from '../utils/Components/AutoDocs';
+import MyComponentSource from '!raw-loader!../utils/Components/MyComponent';
 
 storiesOf('Components', module)
   .add('MyComponent' () => <AutoDocs source={MyComponentSource}/>);
 ```
-
-> **NOTE**: ensure `MyComponentSource` is the actual source and not something like `export {default} from './DatePicker.js';`
 
 ### Documentation in components
 
