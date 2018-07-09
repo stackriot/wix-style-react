@@ -62,13 +62,13 @@ describe('InputArea', () => {
   });
 
 
-  describe('counter', () => {
-    it('should show correct value when hasCounter and maxLength present', () => {
-      const driver = createDriver(<InputAreaForTesting hasCounter maxLength={30} value={'abc'}/>);
-      expect(driver.getCounterValue()).toEqual('3/30');
+  describe('hasCounter attribute', () => {
+    it('should pass down to the wrapped input', () => {
+      const driver = createDriver(<InputAreaForTesting hasCounter/>);
+      expect(driver.getHasCounter()).toBeTruthy();
     });
 
-    it('should not show counter when hasCounter is not present', () => {
+    it('should pass down to the wrapped input with default false value', () => {
       const driver = createDriver(<InputAreaForTesting/>);
       expect(driver.getHasCounter()).toBeFalsy();
     });
