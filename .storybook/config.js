@@ -50,7 +50,6 @@ function loadStories() {
   require('../stories/TPA/FloatingTabs');
   require('../stories/TPA/TextLink');
   require('../stories/TPA/Input');
-  require('../stories/TPA/Badge');
   require('../stories/TPA/Label');
 
   // Common

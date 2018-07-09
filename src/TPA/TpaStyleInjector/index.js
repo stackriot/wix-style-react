@@ -1,1 +1,1 @@
-export {default, tpaAttachCssInjectToComponent} from './TpaStyleInjector.js';
+export {default} from './TpaStyleInjector.js';
