@@ -111,6 +111,11 @@ import '../stories/TPA/Input';
 import '../stories/TPA/Badge';
 import '../stories/TPA/Label';
 
+// Themes
+import '../stories/ThemedButton';
+import '../stories/ThemedInput';
+import '../stories/ThemedToggleSwitch';
+
 // DEPRECATED
 import '../stories/LanguagePicker/index.story.js';
 import '../stories/SideBar';
