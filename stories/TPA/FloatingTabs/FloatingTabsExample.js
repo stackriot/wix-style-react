@@ -29,10 +29,6 @@ class FloatingTabsExample extends Component {
                 <h1>This is a <b>second</b> tab</h1>
                 <p>Some text could go here...</p>
               </FloatingTabItem>
-              <FloatingTabItem id="third" title="Tab Three">
-                <h1>This is a third tab</h1>
-                <p>Some text could go here...</p>
-              </FloatingTabItem>
             </FloatingTabs>
           </div>
         </div>

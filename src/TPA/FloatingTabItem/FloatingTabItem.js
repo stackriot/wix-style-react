@@ -20,7 +20,7 @@ class FloatingTabItem extends WixComponent {
 
   render() {
     return (
-      <div>
+      <div className={styles.locals['wix-style-react-floating-tab-item']}>
         {this.props.children}
       </div>
     );
