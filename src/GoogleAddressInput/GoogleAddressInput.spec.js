@@ -37,8 +37,8 @@ export class GmapsTestClient {
     }
 
     return Promise.resolve([
-      {description: JSON.stringify(request) + ' - 1', id: 0},
-      {description: JSON.stringify(request) + ' - 2', id: 1}
+      {description: JSON.stringify(request) + ' - 1'},
+      {description: JSON.stringify(request) + ' - 2'}
     ]);
   }
 
@@ -113,7 +113,7 @@ describe('GoogleAddressInput', () => {
     describe('is `true`', () => {
       it('should show google footer', () => {
         const component = createMount({Client: GmapsTestClient, poweredByGoogle: true});
-        component.setState({suggestions: ['a', 'b', 'c'].map(s => ({description: s, id: s}))});
+        component.setState({suggestions: ['a', 'b', 'c'].map(s => ({description: s}))});
         expect(component.find('[data-hook="google-footer"]').exists()).toEqual(true);
       });
 
@@ -133,7 +133,6 @@ describe('GoogleAddressInput', () => {
   });
 
   describe('User Interactions', () => {
-    const defaultSuggestions = [JSON.parse('{"description": "my address", "id": "my-id", "place_id": 123}')];
 
     it('should specify autoSelect as default option', () => {
       const component = createMount({Client: GmapsTestClient, countryCode: 'XX'});
@@ -187,7 +186,7 @@ describe('GoogleAddressInput', () => {
       const onSet = sinon.spy();
 
       const component = createShallow({Client: GmapsTestClient, countryCode: 'XX', onSet});
-      component.setState({suggestions: defaultSuggestions});
+      component.setState({suggestions: [JSON.parse('{"description": "my address", "place_id": 123}')]});
       component.find('InputWithOptions').props().onSelect({id: 0, value: 'my address'});
 
       // Defer to make sure all promises run
@@ -211,7 +210,7 @@ describe('GoogleAddressInput', () => {
         onSet,
         handler: GoogleAddressInputHandler.places
       });
-      component.setState({suggestions: defaultSuggestions});
+      component.setState({suggestions: [JSON.parse('{"description": "my address", "place_id": 123}')]});
       component.find('InputWithOptions').props().onSelect({id: 0, value: 'my address'});
 
       // Defer to make sure all promises run
@@ -229,7 +228,7 @@ describe('GoogleAddressInput', () => {
       const onSet = sinon.spy();
 
       const component = createShallow({Client: GmapsTestClient, countryCode: 'XX', onSet});
-      component.setState({suggestions: defaultSuggestions});
+      component.setState({suggestions: [JSON.parse('{"description": "my address", "place_id": 123}')]});
       component.find('InputWithOptions').props().onManuallyInput('my addr');
 
       // Defer to make sure all promises run
@@ -246,7 +245,7 @@ describe('GoogleAddressInput', () => {
     it('If user pressed <enter> with a value that is not on the suggestions list, try to suggest it and return null if unsuccessful', done => {
       const onSet = sinon.spy();
       const component = createShallow({Client: GmapsTestClient, countryCode: 'YY', onSet});
-      component.setState({suggestions: defaultSuggestions});
+      component.setState({suggestions: [JSON.parse('{"description": "my address", "place_id": 123}')]});
       component.find('InputWithOptions').props().onManuallyInput('dontfind');
 
       // Defer to make sure all promises run
@@ -280,7 +279,7 @@ describe('GoogleAddressInput', () => {
     it('clear suggestions on blur', () => {
       jest.useFakeTimers();
       const component = createMount({Client: GmapsTestClient, countryCode: 'XX', clearSuggestionsOnBlur: true});
-      component.setState({suggestions: defaultSuggestions});
+      component.setState({suggestions: [JSON.parse('{"description": "my address", "place_id": 123}')]});
       component.find('input').simulate('blur');
       jest.runAllTimers();
       component.update();
@@ -290,7 +289,7 @@ describe('GoogleAddressInput', () => {
 
     it('don\'t clear suggestions if clearSuggestionsOnBlur === false', done => {
       const component = createShallow({Client: GmapsTestClient, countryCode: 'XX', clearSuggestionsOnBlur: false});
-      component.setState({suggestions: defaultSuggestions});
+      component.setState({suggestions: [JSON.parse('{"description": "my address", "place_id": 123}')]});
       component.find('InputWithOptions').props().onBlur();
       setTimeout(() => {
         expect(component.find('InputWithOptions').props().options.length).toEqual(1);
