@@ -8,12 +8,12 @@ import WixComponent from '../../BaseComponents/WixComponent';
 class ButtonHeader extends WixComponent {
 
   static propTypes = {
-    title: node.isRequired,
+    title: string.isRequired,
     buttonTitle: string.isRequired,
     buttonOnClick: func.isRequired,
     buttonPrefix: node,
     buttonSuffix: node,
-    subtitle: node,
+    subtitle: string,
     tooltip: node,
     theme: oneOf([
       'standard',
