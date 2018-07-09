@@ -6,13 +6,6 @@ const flattenArray = arr => [].concat.apply([], arr);
 
 const convertToArray = value => Array.isArray(value) ? value : [value];
 
-const debugMap = {
-  enter: 'enter',
-  entering: ['enter', 'enter-active'],
-  leave: 'leave',
-  leaving: ['leave', 'leave-active']
-};
-
 const classMap = {
   child: () => 'child',
   opacity: opacity => opacity && 'opacity',
@@ -23,8 +16,7 @@ const classMap = {
   sequence: (sequence, ...args) => sequence && getSequence(sequence, ...args),
   sequenceWrapper: sequence => sequence && `sequence-${sequence}`,
   translate: translate => translate && getTranslate(translate),
-  className: className => className && className,
-  debug: mode => mode && debugMap[mode]
+  className: className => className && className
 
 };
 
@@ -65,10 +57,6 @@ class ClassBuilder {
   withAppearanceState(appears) {
     this.names.push(appears ? 'animate-in' : 'animate-out');
     return this;
-  }
-
-  withDebug() {
-    return this.getFromMap('debug');
   }
 
   withChild() {

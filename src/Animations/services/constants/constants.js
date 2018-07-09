@@ -9,18 +9,19 @@ const micro = 'micro';
 const small = 'small';
 const medium = 'medium';
 const large = 'large';
+const debug = 'debug';
 
 const percentages = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-const timings = [micro, small, medium, large];
+const timings = [micro, small, medium, large, debug];
 const directions = [top, bottom, left, right];
 const sequences = ['default', 'flip', 'reverse', 'reverse-flip'];
-const debugModes = ['enter', 'entering', 'leave', 'leaving'];
 
 const timingMap = {
   micro: 120,
   small: 150,
   medium: 200,
-  large: 300
+  large: 300,
+  debug: 10000
 };
 
 const translateMap = {
@@ -45,7 +46,7 @@ const propsDefault = {
 };
 
 const animationProps = ['opacity', 'scale', 'height', 'translate', 'width'];
-const validChildProps = ['debug', 'sequence', 'timing', ...animationProps];
+const validChildProps = ['sequence', 'timing', ...animationProps];
 const transitionClassNames = {
   enter: css.enter,
   enterActive: css.enterActive,
@@ -63,6 +64,5 @@ export {
   directions,
   percentages,
   transitionClassNames,
-  timingMap,
-  debugModes
+  timingMap
 };

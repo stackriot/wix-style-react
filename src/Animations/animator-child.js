@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import {node, object, any} from 'prop-types';
+import {oneOfType, string, node, object} from 'prop-types';
 
 const Content = ({type, newProps, sonOfChild}) => {
   return React.createElement(type, newProps, sonOfChild);
 };
 
 Content.propTypes = {
-  type: any,
+  type: oneOfType([string, object]),
   newProps: object,
-  sonOfChild: node,
+  sonOfChild: node
 };
 
 class AnimatorChild extends Component {
