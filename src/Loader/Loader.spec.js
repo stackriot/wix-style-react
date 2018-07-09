@@ -16,11 +16,6 @@ describe('Loader', () => {
       expect(driver.isMedium()).toEqual(true);
     });
 
-    it('should allow creating a tiny loader', () => {
-      const driver = createDriver(<Loader size="tiny"/>);
-      expect(driver.isTiny()).toEqual(true);
-    });
-
     it('should allow creating a small loader', () => {
       const driver = createDriver(<Loader size="small"/>);
       expect(driver.isSmall()).toEqual(true);
@@ -57,13 +52,6 @@ describe('Loader', () => {
       const driver = createDriver(<Loader text={textElement}/>);
       expect(driver.hasText()).toEqual(true);
       expect(driver.getText()).toEqual(text);
-    });
-
-    it('should not show text next to tiny loader', () => {
-      const size = 'tiny';
-      const text = 'All computers wait at the same speed';
-      const driver = createDriver(<Loader size={size} text={text}/>);
-      expect(driver.hasText()).toEqual(false);
     });
   });
 
