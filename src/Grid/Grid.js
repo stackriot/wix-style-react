@@ -34,7 +34,7 @@ class Container extends Component {
   }
 }
 
-class Columns extends Component {
+class Row extends Component {
 
   static propTypes = {
     children: PropTypes.node,
@@ -65,7 +65,7 @@ class Columns extends Component {
   }
 }
 
-class AutoAdjustedColumns extends Component {
+class AutoAdjustedRow extends Component {
 
   DEFAULT_MAX_SPAN = 12;
   static propTypes = {
@@ -98,10 +98,6 @@ class Col extends Component {
     lg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     xl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     dataHook: PropTypes.string
-  };
-
-  static defaultProps = {
-    span: 12
   };
 
   isVisibleHidden(str) {
@@ -140,9 +136,4 @@ class Col extends Component {
   }
 }
 
-export {
-  Container, RawContainer,
-  Columns, Columns as Row,
-  AutoAdjustedColumns, AutoAdjustedColumns as AutoAdjustedRow,
-  Col, Card
-};
+export {Container, RawContainer, Row, AutoAdjustedRow, Col, Card};

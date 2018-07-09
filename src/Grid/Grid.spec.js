@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {mount} from 'enzyme';
-import {Col, Columns} from './Grid';
+import {Col, Row} from './Grid';
 import classNames from 'classnames';
 
 describe('Grid', () => {
@@ -12,11 +12,6 @@ describe('Grid', () => {
     it('should add col xs class when using span attribute ', () => {
       const element = mount(<Col span="6"/>);
       expect(element.hasClass('colXs6')).toEqual(true);
-    });
-
-    it('should add col xs class when no span attribute is given and 12 is default', () => {
-      const element = mount(<Col/>);
-      expect(element.hasClass('colXs12')).toEqual(true);
     });
 
     it('should add col sm class when using sm attribute ', () => {
@@ -106,8 +101,8 @@ describe('Grid', () => {
       expect(element.hasClass('test')).toEqual(true);
     });
 
-    it('should pass className to columns element', () => {
-      const element = mount(<Columns className="test"/>);
+    it('should pass className to row element', () => {
+      const element = mount(<Row className="test"/>);
       expect(element.hasClass('test')).toEqual(true);
     });
 
@@ -117,21 +112,21 @@ describe('Grid', () => {
       expect(element.hasClass('test2')).toEqual(true);
     });
 
-    it('should pass className to columns element', () => {
-      const element = mount(<Columns className={classNames('test1', 'test2')}/>);
+    it('should pass className to row element', () => {
+      const element = mount(<Row className={classNames('test1', 'test2')}/>);
       expect(element.hasClass('test1')).toEqual(true);
       expect(element.hasClass('test2')).toEqual(true);
     });
   });
 
   describe('support dataHook', () => {
-    it('for Col', () => {
+    it('for Row', () => {
       const element = mount(<Col dataHook="test"/>);
       expect(element.find('[data-hook="test"]').length).toEqual(1);
     });
 
-    it('for Columns', () => {
-      const element = mount(<Columns dataHook="test"/>);
+    it('for Col', () => {
+      const element = mount(<Row dataHook="test"/>);
       expect(element.find('[data-hook="test"]').length).toEqual(1);
     });
   });
