@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styles from './ButtonLayout.scss';
 
 const ButtonLayout = props => {
-  const {theme, hover, active, disabled, height, children, matchParent} = props;
+  const {theme, hover, active, disabled, height, children} = props;
 
   const className = classNames({
     [styles.button]: true,
@@ -22,10 +22,6 @@ const ButtonLayout = props => {
       display: 'inline-block'
     }
   );
-
-  if (matchParent) {
-    _style.width = '100%';
-  }
 
   if (React.Children.count(children) === 1) {
     return React.cloneElement(
@@ -49,7 +45,6 @@ ButtonLayout.propTypes = {
   disabled: bool,
   height: oneOf(['small', 'medium', 'large', 'x-large']),
   hover: bool,
-  matchParent: bool,
   theme: oneOf([
     'transparent',
     'fullred',
