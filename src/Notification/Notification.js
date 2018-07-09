@@ -10,6 +10,7 @@ import TextLabel from './TextLabel';
 import ActionButton from './ActionButton';
 import css from './Notification.scss';
 
+
 export const LOCAL_NOTIFICATION = 'local';
 export const GLOBAL_NOTIFICATION = 'global';
 export const STICKY_NOTIFICATION = 'sticky';
@@ -20,9 +21,6 @@ export const notificationTypeToPosition = {
   [GLOBAL_NOTIFICATION]: 'relative',
   [STICKY_NOTIFICATION]: 'fixed'
 };
-
-const SIZE_BIG = 'big';
-const SIZE_SMALL = 'small';
 
 const animationsTimeouts = {
   enter: 500,
@@ -122,9 +120,9 @@ class Notification extends WixComponent {
   }
 
   renderNotification() {
-    const {zIndex, children, type, theme} = this.props;
+    const {zIndex, children, type, theme, size} = this.props;
+
     const childrenComponents = mapChildren(children);
-    const size = childrenComponents.ctaButton && childrenComponents.ctaButton.props.type === 'button' ? SIZE_BIG : SIZE_SMALL;
 
     return (
       <CSSTransition
@@ -183,6 +181,7 @@ class Notification extends WixComponent {
 Notification.propTypes = {
   show: PropTypes.bool,
   theme: PropTypes.oneOf(['standard', 'error', 'success', 'warning', 'premium']),
+  size: PropTypes.oneOf(['small', 'big']),
   type: PropTypes.oneOf([GLOBAL_NOTIFICATION, LOCAL_NOTIFICATION, STICKY_NOTIFICATION]),
   timeout: PropTypes.number,
   zIndex: PropTypes.number,
@@ -192,6 +191,7 @@ Notification.propTypes = {
 
 Notification.defaultProps = {
   theme: 'standard',
+  size: 'small',
   type: GLOBAL_NOTIFICATION,
   onClose: null
 };

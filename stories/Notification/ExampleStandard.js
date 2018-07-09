@@ -20,6 +20,7 @@ class ExampleStandard extends Component {
     notification: {
       show: true,
       type: GLOBAL_NOTIFICATION,
+      size: 'big',
       timeout: DEFAULT_TIMEOUT,
       zIndex: 10000
     },
@@ -37,6 +38,12 @@ class ExampleStandard extends Component {
         .forEach(k => !prevState[componentName][k] && delete prevState[componentName][k]);
       return prevState;
     });
+  }
+
+  setNotificationSize(actionButtonType) {
+    const actionButtonIsShown = actionButtonType !== 'none';
+    const size = actionButtonIsShown && actionButtonType === 'button' ? 'big' : 'small';
+    this.setComponentState('notification', {size});
   }
 
   render() {
@@ -98,7 +105,10 @@ class ExampleStandard extends Component {
               <RadioGroup
                 display="horizontal"
                 value={this.state.actionButton.type}
-                onChange={type => this.setComponentState('actionButton', {type})}
+                onChange={type => {
+                  this.setComponentState('actionButton', {type});
+                  this.setNotificationSize(type);
+                }}
                 >
                 <RadioGroup.Radio value="button">Button</RadioGroup.Radio>
                 <RadioGroup.Radio value="textLink">TextLink</RadioGroup.Radio>
