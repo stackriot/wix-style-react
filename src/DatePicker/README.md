@@ -26,7 +26,6 @@ __Note__: This component has multiple issues and will most likely change in the 
 | prefix | node | default DatePicker icon | - | Icon for the DatePicker's Input |
 | inputDataHook | string | '' | - | dataHook for the DatePicker's Input |
 | customInput | node | Input | - | Can provide Input with your custom props |
-| shouldCloseOnSelect | bool | true | - | should the calendar close on day selection |
 
 ## Keyboard support
 
