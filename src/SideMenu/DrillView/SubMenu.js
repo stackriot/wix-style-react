@@ -52,12 +52,15 @@ SubMenu.defaultProps = {
 
 SubMenu.propTypes = {
   menuKey: PropTypes.string.isRequired,
-  title: PropTypes.node.isRequired,
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ]).isRequired,
   isActive: PropTypes.bool,
   isOpen: PropTypes.bool,
   onSelectHandler: PropTypes.func,
   onBackHandler: PropTypes.func,
-  backLabel: PropTypes.node,
+  backLabel: PropTypes.string,
   showCategory: PropTypes.bool,
   badge: PropTypes.node,
   linkDataHook: PropTypes.string,
