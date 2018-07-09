@@ -58,11 +58,3 @@ export function flattenInternalDriver(driver) {
     return driver;
   }
 }
-
-export const resolveIn = timeout =>
-  new Promise(resolve => {
-    setTimeout(() => {
-      resolve({});
-    }, timeout);
-  });
-

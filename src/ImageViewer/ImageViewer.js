@@ -6,21 +6,17 @@ import Trash3 from '../Icons/dist/components/Trash3';
 import Replace from '../Icons/dist/components/Replace';
 import Plus2 from '../Icons/dist/components/Plus2';
 import WixComponent from '../BaseComponents/WixComponent';
-import FormFieldError from 'wix-ui-icons-common/system/FormFieldError';
-import classNames from 'classnames';
 
 class ImageViewer extends WixComponent {
 
   render() {
-
     const {
       imageUrl,
       onAddImage,
       onUpdateImage,
       onRemoveImage,
       width,
-      height,
-      error
+      height
     } = this.props;
 
     const tooltipCommonProps = {
@@ -30,9 +26,9 @@ class ImageViewer extends WixComponent {
       placement: 'top',
       moveBy: {x: 2, y: 0}
     };
-    const classes = classNames(style.container, {[style.hasLogo]: imageUrl, [style.hasError]: error, [style.addPadding]: !imageUrl});
+
     return (
-      <div className={classes} style={{width, height}} data-hook="image-container">
+      <div className={`${style.container} ${imageUrl && style.hasLogo}`} style={{width, height}} data-hook="image-container">
         <div data-hook="add-image" className={style.addLogo} onClick={onAddImage}>
           <div className={style.dashedBorder}/>
           <div className={style.plusIcon}><Plus2 size="47px"/></div>
@@ -58,21 +54,6 @@ class ImageViewer extends WixComponent {
           </div>
         </div>
         }
-        {!!error &&
-        <Tooltip
-          dataHook="error-tooltip"
-          disabled={!this.props.errorMessage}
-          placement={this.props.tooltipPlacement}
-          content={this.props.errorMessage}
-          theme="dark"
-          maxWidth="230px"
-          hideDelay={5}
-          showDelay={5}
-          zIndex={10000}
-          >
-          <div className={style.exclamation}><FormFieldError/></div>
-        </Tooltip>}
-
       </div>
     );
   }
@@ -80,9 +61,6 @@ class ImageViewer extends WixComponent {
 
 ImageViewer.propTypes = {
   imageUrl: PropTypes.string,
-  error: PropTypes.bool,
-  errorMessage: PropTypes.string,
-  tooltipPlacement: PropTypes.string,
   onAddImage: PropTypes.func,
   onUpdateImage: PropTypes.func,
   onRemoveImage: PropTypes.func,
