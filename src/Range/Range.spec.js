@@ -4,8 +4,6 @@ import Range from './Range';
 import Input from '../Input';
 import Label from '../Label';
 import DatePicker from '../DatePicker';
-import '../utils/RangePolyfill.js';
-
 
 import {rangeTestkitFactory} from '../../testkit';
 import {rangeTestkitFactory as enzymeRangeTestkitFactory} from '../../testkit/enzyme';

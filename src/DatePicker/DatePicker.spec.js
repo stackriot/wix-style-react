@@ -2,14 +2,13 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import {mount} from 'enzyme';
 import {createDriverFactory} from '../test-common';
+import moment from 'moment';
 import applyPolyfills from './Polyfills';
 import {datePickerTestkitFactory} from '../../testkit/index';
 import {datePickerTestkitFactory as enzymeDatePickerTestkitFactory} from '../../testkit/enzyme';
 import datePickerDriverFactory from './DatePicker.driver';
 import Input from '../Input';
 import DatePicker from './DatePicker';
-import isSameDay from 'date-fns/is_same_day';
-import '../utils/RangePolyfill.js';
 
 describe('DatePicker', () => {
   const createDriver = createDriverFactory(datePickerDriverFactory);
@@ -49,7 +48,7 @@ describe('DatePicker', () => {
 
     it('should show correct value from props', () => {
       const date = new Date(2017, 9, 2);
-      const {inputDriver} = createDriver(<DatePicker onChange={onChange} value={date}/>);
+      const {inputDriver} = createDriver(<DatePicker onChange={onChange} value={moment(date)}/>);
 
       expect(inputDriver.getValue()).toBe('10/02/2017');
     });
@@ -57,7 +56,7 @@ describe('DatePicker', () => {
     it('should show correct value from props depends on date format', () => {
       const date = new Date(2017, 9, 2);
       const {inputDriver} = createDriver(<DatePicker
-        onChange={onChange} value={date}
+        onChange={onChange} value={moment(date)}
         dateFormat={'DD/MM/YYYY'}
         />);
 
@@ -134,22 +133,22 @@ describe('DatePicker', () => {
       expect(calendarDriver.isVisible()).toBe(false);
     });
 
-    it('should not call onChange when trying to select an already selected date with enter', () => {
-      const value = new Date(2017, 5, 2);
+    it('should not call onChange when select selected date with enter', () => {
+      const value = moment(new Date(2017, 5, 2));
       const {inputDriver} = createDriver(<DatePicker value={value} onChange={onChange}/>);
 
       inputDriver.trigger('click');
-      inputDriver.trigger('keyDown', {keyCode: 13});
+      inputDriver.trigger('keyDown', {key: 'Enter'});
 
       expect(onChange).not.toHaveBeenCalled();
     });
 
-    it('should not call onChange when trying to select an already selected date with click', () => {
-      const value = new Date();
+    it('should not call onChange when select selected date with click', () => {
+      const value = moment(new Date(2017, 5, 1));
       const {calendarDriver, inputDriver} = createDriver(<DatePicker value={value} onChange={onChange}/>);
 
       inputDriver.trigger('click');
-      calendarDriver.clickOnSelectedDay();
+      calendarDriver.clickOnNthDay();
 
       expect(onChange).not.toHaveBeenCalled();
     });
@@ -162,22 +161,23 @@ describe('DatePicker', () => {
         expect(calendarDriver.isVisible()).toBe(true);
       });
 
-      it('on focus', () => {
-        const value = new Date(2017, 5, 2);
+      it('on select with ArrowUp key', () => {
+        const value = moment(new Date(2017, 5, 2));
         const {inputDriver, calendarDriver} = createDriver(<DatePicker value={value} onChange={onChange}/>);
-        inputDriver.focus();
+
+        inputDriver.trigger('keyDown', {key: 'ArrowUp'});
         expect(calendarDriver.isVisible()).toBe(true);
       });
     });
 
     describe('should be closed', () => {
       it('on select date with Enter key', () => {
-        const value = new Date(2017, 5, 2);
+        const value = moment(new Date(2017, 5, 2));
         const {inputDriver, calendarDriver} = createDriver(<DatePicker value={value} onChange={onChange}/>);
 
         inputDriver.trigger('click');
-        inputDriver.trigger('keyDown', {key: 'ArrowRight', keyCode: 39});
-        inputDriver.trigger('keyDown', {key: 'Enter', keyCode: 13});
+        inputDriver.trigger('keyDown', {key: 'ArrowRight'});
+        inputDriver.trigger('keyDown', {key: 'Enter'});
 
         expect(calendarDriver.isVisible()).toBe(false);
       });
@@ -188,14 +188,14 @@ describe('DatePicker', () => {
         inputDriver.trigger('click');
         calendarDriver.clickOnNthDay();
 
-        setTimeout(() => expect(calendarDriver.isVisible()).toBe(false), 0);
+        expect(calendarDriver.isVisible()).toBe(false);
       });
 
       it('on press "Escape" key', () => {
         const {inputDriver, calendarDriver} = createDriver(<DatePicker onChange={onChange}/>);
 
         inputDriver.trigger('click');
-        inputDriver.trigger('keyDown', {key: 'Escape', keyCode: 27});
+        inputDriver.trigger('keyDown', {key: 'Escape'});
 
         expect(calendarDriver.isVisible()).toBe(false);
       });
@@ -204,16 +204,7 @@ describe('DatePicker', () => {
         const {inputDriver, calendarDriver} = createDriver(<DatePicker onChange={onChange}/>);
 
         inputDriver.trigger('click');
-        inputDriver.trigger('keyDown', {key: 'Tab', keyCode: 9});
-
-        expect(calendarDriver.isVisible()).toBe(false);
-      });
-
-      it('on outside click', () => {
-        const {inputDriver, calendarDriver} = createDriver(<DatePicker onChange={onChange}/>);
-
-        inputDriver.trigger('click');
-        calendarDriver.mouseClickOutside();
+        inputDriver.trigger('keyDown', {key: 'Tab'});
 
         expect(calendarDriver.isVisible()).toBe(false);
       });
@@ -234,8 +225,8 @@ describe('DatePicker', () => {
     });
 
     it('should call onChange when click on available day', () => {
-      const value = new Date(2017, 7, 1);
-      const expectedValue = new Date(2017, 7, 2);
+      const value = moment(new Date(2017, 7, 1));
+      const expectedValue = moment(new Date(2017, 7, 2));
       const {calendarDriver, inputDriver} = createDriver(
         <DatePicker
           value={value}
@@ -248,11 +239,11 @@ describe('DatePicker', () => {
       const newValue = onChange.mock.calls[0][0];
 
       expect(onChange).toHaveBeenCalled();
-      expect(isSameDay(newValue, expectedValue)).toBe(true);
+      expect(newValue.diff(expectedValue)).toBe(0);
     });
 
     it('should not give an ability to select past dates if it is specified in props', () => {
-      const date = new Date(2015, 9, 2);
+      const date = moment(new Date(2015, 9, 2));
       const {calendarDriver, inputDriver} = createDriver(
         <DatePicker
           onChange={onChange}
@@ -268,127 +259,40 @@ describe('DatePicker', () => {
       expect(calendarDriver.isVisible()).toBe(true);
     });
 
-    describe('navbar arrow navigation', () => {
-      it('should select previous month on previous month button click - LTR mode', () => {
-        const date = new Date(2015, 9, 2);
-        const {calendarDriver, inputDriver} = createDriver(
-          <DatePicker
-            onChange={onChange}
-            value={date}
-            />
-        );
+    it('should select previous month on previous month button click', () => {
+      const date = moment(new Date(2015, 9, 2));
+      const {calendarDriver, inputDriver} = createDriver(
+        <DatePicker
+          onChange={onChange}
+          value={date}
+          />
+      );
 
-        inputDriver.trigger('click');
-        calendarDriver.clickOnPrevMonthButton();
-        calendarDriver.clickOnNthDay();
+      inputDriver.trigger('click');
+      calendarDriver.clickOnPrevMonthButton();
+      calendarDriver.clickOnNthDay();
 
-        const newDate = onChange.mock.calls[0][0];
-        expect(newDate.getMonth()).toEqual(8);
-        expect(newDate.getDate()).toEqual(1);
-      });
-
-      it('should select next month on next month button click - LTR mode', () => {
-        const date = new Date(2015, 9, 2);
-        const {calendarDriver, inputDriver} = createDriver(
-          <DatePicker
-            onChange={onChange}
-            value={date}
-            />
-        );
-
-        inputDriver.trigger('click');
-        calendarDriver.clickOnNextMonthButton();
-        calendarDriver.clickOnNthDay();
-
-        const newDate = onChange.mock.calls[0][0];
-
-        expect(newDate.getMonth()).toEqual(10);
-        expect(newDate.getDate()).toEqual(1);
-      });
-
-      it('should select previous month on previous month button click - RTL mode', () => {
-        const date = new Date(2015, 9, 2);
-        const {calendarDriver, inputDriver} = createDriver(
-          <DatePicker
-            onChange={onChange}
-            value={date}
-            rtl
-            />
-        );
-
-        inputDriver.trigger('click');
-        calendarDriver.clickOnPrevMonthButton();
-        calendarDriver.clickOnNthDay();
-
-        const newDate = onChange.mock.calls[0][0];
-        expect(newDate.getMonth()).toEqual(8);
-        expect(newDate.getDate()).toEqual(1);
-      });
-
-      it('should select next month on next month button click - RTL mode', () => {
-        const date = new Date(2015, 9, 2);
-        const {calendarDriver, inputDriver} = createDriver(
-          <DatePicker
-            onChange={onChange}
-            value={date}
-            rtl
-            />
-        );
-
-        inputDriver.trigger('click');
-        calendarDriver.clickOnNextMonthButton();
-        calendarDriver.clickOnNthDay();
-
-        const newDate = onChange.mock.calls[0][0];
-        expect(newDate.getMonth()).toEqual(10);
-        expect(newDate.getDate()).toEqual(1);
-      });
+      const newDate = onChange.mock.calls[0][0];
+      expect(newDate.month()).toEqual(8);
     });
 
-    describe('locale', () => {
-      const setup = ({showMonthDropdown = false} = {}) => {
-        const date = new Date(2015, 9, 2);
-        const {calendarDriver, inputDriver, driver} = createDriver(
-          <DatePicker
-            onChange={onChange}
-            locale="fr"
-            value={date}
-            showMonthDropdown={showMonthDropdown}
-            />
-        );
+    it('should show calendar in provided locale', () => {
+      const date = moment(new Date(2015, 9, 2));
+      const {calendarDriver, inputDriver} = createDriver(
+        <DatePicker
+          onChange={onChange}
+          locale="fr"
+          value={date}
+          />
+      );
 
-        inputDriver.trigger('click');
+      inputDriver.trigger('click');
+      calendarDriver.clickOnPrevMonthButton();
 
-        return {
-          calendarDriver,
-          driver,
-          inputDriver
-        };
-      };
-
-      it('should display translated month in caption', () => {
-        const {calendarDriver} = setup();
-        expect(calendarDriver.getMonthCaption()).toEqual('octobre');
-      });
-
-      it('should display translated month in dropdown label', () => {
-        const {calendarDriver} = setup({
-          showMonthDropdown: true
-        });
-        expect(calendarDriver.getMonthDropdownLabel()).toEqual('octobre');
-      });
-
-      it('should display translated months in dropdown options', () => {
-        const {calendarDriver} = setup({
-          showMonthDropdown: true
-        });
-        expect(calendarDriver.getMonthDropdownDriver().optionContentAt(0)).toEqual('janvier');
-      });
-
-      it('should display translated weekdays', () => {
-        const {calendarDriver} = setup();
-        expect(calendarDriver.getNthWeekDayName(0)).toEqual('lu');
-      });
+      expect(calendarDriver.getNthWeekDayName(0)).toEqual('Lu');
+      expect(calendarDriver.getNthWeekDayName(6)).toEqual('Di');
+      expect(calendarDriver.getCurrentMonthWithYear()).toEqual('septembre 2015');
+      expect(inputDriver.getValue()).toBe('02/10/2015');
     });
 
     it('should show date in provided format instead of locale format', () => {
@@ -398,27 +302,42 @@ describe('DatePicker', () => {
           onChange={onChange}
           locale="fr"
           dateFormat="YYYY/MM/DD"
-          value={date}
+          value={moment(date)}
           />
       );
 
       expect(inputDriver.getValue()).toBe('2017/10/02');
     });
 
-    it('should show header', () => {
-      const date = new Date(2015, 9, 2);
+    it('should select previous month on next month button click', () => {
+      const date = moment(new Date(2015, 9, 2));
+      const {calendarDriver, inputDriver} = createDriver(
+        <DatePicker
+          onChange={onChange}
+          value={date}
+          />
+      );
+
+      inputDriver.trigger('click');
+      calendarDriver.clickOnNextMonthButton();
+      calendarDriver.clickOnNthDay();
+
+      const newDate = onChange.mock.calls[0][0];
+      expect(newDate.month()).toEqual(10);
+    });
+
+    it('should show header by default', () => {
+      const date = moment(new Date(2015, 9, 2));
       const {calendarDriver, inputDriver} = createDriver(
         <DatePicker onChange={onChange} value={date}/>
       );
 
       inputDriver.trigger('click');
       expect(calendarDriver.isHeaderVisible()).toEqual(true);
-      expect(calendarDriver.isYearCaptionExists()).toEqual(true);
-      expect(calendarDriver.isMonthCaptionExists()).toEqual(true);
     });
 
-    it('should show year dropdown', () => {
-      const date = new Date(2015, 9, 2);
+    it('should hide header if year dropdown is visible', () => {
+      const date = moment(new Date(2015, 9, 2));
       const {calendarDriver, inputDriver} = createDriver(
         <DatePicker
           onChange={onChange}
@@ -427,14 +346,12 @@ describe('DatePicker', () => {
           />
       );
 
-
       inputDriver.trigger('click');
-      expect(calendarDriver.isYearDropdownExists()).toEqual(true);
-      expect(calendarDriver.isYearCaptionExists()).toEqual(false);
+      expect(calendarDriver.isHeaderVisible()).toEqual(false);
     });
 
-    it('should show month dropdown', () => {
-      const date = new Date(2015, 9, 2);
+    it('should hide header if month dropdown is visible', () => {
+      const date = moment(new Date(2015, 9, 2));
       const {calendarDriver, inputDriver} = createDriver(
         <DatePicker
           onChange={onChange}
@@ -443,15 +360,13 @@ describe('DatePicker', () => {
           />
       );
 
-
       inputDriver.trigger('click');
-      expect(calendarDriver.isMonthDropdownExists()).toEqual(true);
-      expect(calendarDriver.isMonthCaptionExists()).toEqual(false);
+      expect(calendarDriver.isHeaderVisible()).toEqual(false);
     });
 
     describe('with year dropdown', () => {
       it('should give a possibility to choose date from another year', () => {
-        const date = new Date(2015, 9, 2);
+        const date = moment(new Date(2015, 9, 2));
         const {calendarDriver, inputDriver} = createDriver(
           <DatePicker
             onChange={onChange}
@@ -463,7 +378,10 @@ describe('DatePicker', () => {
         inputDriver.trigger('click');
         calendarDriver.clickOnYearDropdown();
         calendarDriver.clickOnNthYear();
-        expect(calendarDriver.getSelectedYear()).not.toEqual(date.getFullYear());
+        calendarDriver.clickOnNthDay();
+
+        const newDate = onChange.mock.calls[0][0];
+        expect(newDate.year()).not.toEqual(date.year());
       });
     });
 
@@ -481,75 +399,9 @@ describe('DatePicker', () => {
 
         calendarDriver.open();
         expect(calendarDriver.isVisible()).toBe(true);
-
         calendarDriver.close();
+
         expect(calendarDriver.isVisible()).toBe(false);
-      });
-    });
-
-    describe('keyboard navigation', () => {
-      it('should navigate days correctly with keyboard - LTR mode', () => {
-        const date = new Date(2018, 1, 5);
-        const {calendarDriver} = createDriver(<DatePicker onChange={onChange} value={date}/>);
-
-        calendarDriver.open();
-
-        expect(calendarDriver.getFocusedDay()).toEqual('5');
-
-        calendarDriver.pressLeftArrow();
-
-        expect(calendarDriver.getFocusedDay()).toEqual('4');
-
-        calendarDriver.pressRightArrow();
-        calendarDriver.pressRightArrow();
-
-        expect(calendarDriver.getFocusedDay()).toEqual('6');
-      });
-
-      it('should navigate days correctly with keyboard - RTL mode', () => {
-        const date = new Date(2018, 1, 5);
-        const {calendarDriver} = createDriver(<DatePicker onChange={onChange} rtl value={date}/>);
-
-        calendarDriver.open();
-
-        expect(calendarDriver.getFocusedDay()).toEqual('5');
-
-        calendarDriver.pressLeftArrow();
-
-        expect(calendarDriver.getFocusedDay()).toEqual('6');
-
-        calendarDriver.pressRightArrow();
-        calendarDriver.pressRightArrow();
-
-        expect(calendarDriver.getFocusedDay()).toEqual('4');
-      });
-
-      it('should not update input value while navigating the calendar', () => {
-        const date = new Date(2018, 1, 5);
-        const {calendarDriver, inputDriver} = createDriver(<DatePicker onChange={onChange} value={date}/>);
-
-        calendarDriver.open();
-
-        expect(inputDriver.getValue()).toEqual('02/05/2018');
-
-        calendarDriver.pressLeftArrow();
-
-        expect(inputDriver.getValue()).toEqual('02/05/2018');
-      });
-
-      it('should keep selected day unchanged when navigating with keyboard', () => {
-        const date = new Date(2018, 1, 5);
-        const {calendarDriver} = createDriver(<DatePicker onChange={onChange} value={date}/>);
-
-        calendarDriver.open();
-
-        expect(calendarDriver.getSelectedDay()).toEqual('5');
-        expect(calendarDriver.getFocusedDay()).toEqual('5');
-
-        calendarDriver.pressLeftArrow();
-
-        expect(calendarDriver.getSelectedDay()).toEqual('5');
-        expect(calendarDriver.getFocusedDay()).toEqual('4');
       });
     });
   });
