@@ -1,8 +1,6 @@
 import eyes from 'eyes.it';
 import eventually from 'wix-eventually';
-
-import {pageTestkitFactory, waitForVisibilityOf, scrollToElement} from '../../testkit/protractor';
-import {createStoryUrl} from '../../test/utils/protractor';
+import {pageTestkitFactory, getStoryUrl, waitForVisibilityOf, scrollToElement} from '../../testkit/protractor';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import {PRIVATE} from './Page.protractor.driver';
 import {TESTS_PREFIX} from '../../stories/storyCategories';
@@ -15,14 +13,10 @@ const SCROLL_TOP_MIN_STEP = SCROLL_TOP_THRESHOLD + 1;
 
 describe('Page', async () => {
 
-  const createTestStoryUrl = testName => {
-    return createStoryUrl({kind: `${TESTS_PREFIX}/${category}/${storyName}`, story: testName});
-  };
-
   const initTest = async ({storyUrl, dataHook, props}) => {
     await browser.get(storyUrl);
     const driver = pageTestkitFactory({dataHook});
-    await waitForVisibilityOf(driver.element(), 'Cannot find Page');
+    await waitForVisibilityOf(driver.element(), 'Cannot find Button');
     await scrollToElement(driver.element());
     props && await autoExampleDriver.setProps(props);
     return driver;
@@ -41,7 +35,7 @@ describe('Page', async () => {
       await eventually(() => !driver.titleExists());
     });
 
-    eyes.it('should display minimized with header background still visible', async () => {
+    eyes.it('should display minimized with background-image/gradient still visible', async () => {
       const driver = await initTest(initTestConfig);
       expect(await driver.titleExists()).toBeTruthy();
       await driver[PRIVATE].setContentScrollOffset(SCROLL_TOP_MIN_STEP);
@@ -50,7 +44,7 @@ describe('Page', async () => {
   };
 
   describe('Header + Tail + Content', async () => {
-    const storyUrl = createStoryUrl({kind: category, story: storyName, withExamples: false});
+    const storyUrl = getStoryUrl(category, storyName);
     const dataHook = 'story-page';
 
     eyes.it('should display maximized when scrolled up given minimized', async () => {
@@ -71,34 +65,16 @@ describe('Page', async () => {
   });
 
   describe('Header + Content', async () => {
-
     describe('With Background-Image', () => {
-      const storyUrl = createTestStoryUrl('1. Image');
-      const dataHook = 'story-page';
+      const storyUrl = getStoryUrl(`${TESTS_PREFIX}/${category}/${storyName}`, '1. Image');
+      const dataHook = 'story-page-background-image-header-content';
       runTestCases({storyUrl, dataHook});
     });
 
     describe('With Gradient', () => {
-
-      const storyUrl = createTestStoryUrl('2. Gradient');
-      const dataHook = 'story-page';
+      const storyUrl = getStoryUrl(`${TESTS_PREFIX}/${category}/${storyName}`, '2. Gradient');
+      const dataHook = 'story-page-gradient-header-content';
       runTestCases({storyUrl, dataHook});
     });
   });
-
-  describe('Header + FixedContent + Content', async () => {
-
-    describe('With Background-Image', () => {
-      const storyUrl = createTestStoryUrl('3. FC-Image');
-      const dataHook = 'story-page';
-      runTestCases({storyUrl, dataHook});
-    });
-
-    describe('With Gradient', () => {
-      const storyUrl = createTestStoryUrl('4. FC-Gradient');
-      const dataHook = 'story-page';
-      runTestCases({storyUrl, dataHook});
-    });
-  });
-
 });

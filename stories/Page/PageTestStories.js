@@ -6,7 +6,8 @@ import {storybookConfig} from './storybookConfig';
 import Page from 'wix-style-react/Page';
 import Breadcrumbs from './Breadcrumbs';
 import * as s from './PageExample.scss';
-import {header, fixedContent, content} from './PageChildren';
+
+import {header, content} from './PageChildren';
 import {TESTS_PREFIX} from '../storyCategories';
 
 const PageContainer = props => {
@@ -20,51 +21,23 @@ PageContainer.propTypes = {
   children: PropTypes.any
 };
 
-const kind = `${TESTS_PREFIX}/${storybookConfig.category}/${storybookConfig.storyName}`;
-const dataHook = 'story-page';
-
-storiesOf(kind, module)
+storiesOf(`${TESTS_PREFIX}/${storybookConfig.category}/${storybookConfig.storyName}`, module)
 .add('1. Image', () => (
   <PageContainer>
     <Page
-      dataHook={dataHook}
+      dataHook="story-page-background-image-header-content"
       children={[header(Breadcrumbs), content(false)]}
       backgroundImageUrl="https://static.wixstatic.com/media/f0548921c53940ec803dfb1c203e96fe.jpg/v1/fill/w_400,h_100/f0548921c53940ec803dfb1c203e96fe.jpg"
       />
   </PageContainer>
     ));
-
-storiesOf(kind, module)
+storiesOf(`${TESTS_PREFIX}/${storybookConfig.category}/${storybookConfig.storyName}`, module)
 .add('2. Gradient', () => (
   <PageContainer>
     <Page
-      dataHook={dataHook}
+      dataHook="story-page-gradient-header-content"
       children={[header(Breadcrumbs), content(false)]}
       gradientClassName="background-gradient"
       />
   </PageContainer>
 ));
-
-storiesOf(kind, module)
-.add('3. FC-Image', () => (
-  <PageContainer>
-    <Page
-      dataHook={dataHook}
-      children={[header(Breadcrumbs), fixedContent, content(false)]}
-      backgroundImageUrl="https://static.wixstatic.com/media/f0548921c53940ec803dfb1c203e96fe.jpg/v1/fill/w_400,h_100/f0548921c53940ec803dfb1c203e96fe.jpg"
-      />
-  </PageContainer>
-));
-
-storiesOf(kind, module)
-.add('4. FC-Gradient', () => (
-  <PageContainer>
-    <Page
-      dataHook={dataHook}
-      children={[header(Breadcrumbs), fixedContent, content(false)]}
-      gradientClassName="background-gradient"
-      />
-  </PageContainer>
-));
-
-

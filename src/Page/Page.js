@@ -10,38 +10,9 @@ import {ResizeSensor} from 'css-element-queries';
 
 const SCROLL_TOP_THRESHOLD = 20;
 const SHORT_SCROLL_TOP_THRESHOLD = 3;
-const TAIL_TOP_PADDING_PX = 24;
+
 /**
  * A page container which contains a header and scrollable content
- *
- * Page structure is as follows:
- * @example
- * +-- FixedContainer --------
- * | +-- HeaderContainer --------
- * | |  header-content:padding-top
- * | | +-- Page.Header --------
- * | | |
- * | | |
- * | | +-----------------------
- * | |  tail:padding-top
- * | | +-- Page.Tail ----------
- * | | |
- * | | |
- * | | +-----------------------
- * | |  header-content:padding-bottom
- * | +-------------------------
- * | +-- Page.FixedContent ----   ==+
- * | |                              |
- * | +-------------------------     |
- * +---------------------------     | Content (Virtual)
- * +--  ScrollableContainer ---     |
- * | +-- Page.Content ----------    |                            |
- * | |                              |
- * | +--------------------------    |
- * +---------------------------   ==+
- *
- * -  ScrollableContainer is called in the code scrollable-content, and should NOT be renamed, since
- * Tooltip is hard-coded-ly using a selector like this: [data-class="page-scrollable-content"]
  */
 class Page extends WixComponent {
 
@@ -57,9 +28,8 @@ class Page extends WixComponent {
     this._handleResize = this._handleResize.bind(this);
 
     this.state = {
-      fixedContainerHeight: 0,
+      headerHeight: 0,
       tailHeight: 0,
-      fixedContentHeight: 0,
       scrollBarWidth: 0,
       minimized: false
     };
@@ -85,22 +55,19 @@ class Page extends WixComponent {
   }
 
   _calculateComponentsHeights() {
-    const {fixedContainerHeight, tailHeight, fixedContentHeight} = this.state;
-    const newFixedContainerHeight = this.fixedContainerRef ? this.fixedContainerRef.offsetHeight : 0;
-    const newTailHeight = this.pageHeaderTailRef ? this.pageHeaderTailRef.offsetHeight : 0;
-    const newFixedContentHeight = this.pageHeaderFixedContentRef ? this.pageHeaderFixedContentRef.offsetHeight : 0;
-    if (fixedContainerHeight !== newFixedContainerHeight ||
-        tailHeight !== newTailHeight ||
-        fixedContentHeight !== newFixedContentHeight) {
+    const {headerHeight, tailHeight} = this.state;
+    const newHeaderHeight = this.pageHeaderRef ? this.pageHeaderRef.offsetHeight : headerHeight;
+    const newTailHeight = this.pageHeaderTailRef ? this.pageHeaderTailRef.offsetHeight : tailHeight;
+
+    if (headerHeight !== newHeaderHeight || tailHeight !== newTailHeight) {
       this.setState({
-        fixedContainerHeight: newFixedContainerHeight,
-        tailHeight: newTailHeight,
-        fixedContentHeight: newFixedContentHeight
+        headerHeight: newHeaderHeight,
+        tailHeight: newTailHeight
       });
     }
   }
 
-  _setContainerScrollTopThreshold({shortThreshold}) {
+  _setContainerScrollTopThreshold(shortThreshold) {
     this.containerScrollTopThreshold = shortThreshold ? SHORT_SCROLL_TOP_THRESHOLD : SCROLL_TOP_THRESHOLD;
   }
 
@@ -162,7 +129,7 @@ class Page extends WixComponent {
     return styles;
   }
 
-  _fixedContainerStyle() {
+  _pageHeaderContainerStyle() {
     const {scrollBarWidth} = this.state;
     if (scrollBarWidth) {
       return {width: `calc(100% - ${scrollBarWidth}px`};
@@ -170,69 +137,37 @@ class Page extends WixComponent {
     return null;
   }
 
-  /**
-   * See diagram in class documentation to better understand this method.
-   */
-  _calculateHeaderMeasurements({PageTail}) {
-    const {gradientCoverTail} = this.props;
-    // fixedContainerHeight (and other heights) are calculated only when the Page is NOT minimized
-    const {fixedContainerHeight, tailHeight, fixedContentHeight} = this.state;
-
-
-    const minimizedFixedContainerHeight = PageTail ? fixedContainerHeight - 78 : fixedContainerHeight - (78 - TAIL_TOP_PADDING_PX);
-
-    const headerContainerHeight = fixedContainerHeight - fixedContentHeight;
-    const imageHeight = `${headerContainerHeight + (PageTail ? -tailHeight : 39)}px`;
-    const gradientHeight = gradientCoverTail ? `${headerContainerHeight + (PageTail ? -SCROLL_TOP_THRESHOLD : 39)}px` : imageHeight;
-
-    return {
-      imageHeight,
-      gradientHeight,
-      fixedContainerHeight,
-      minimizedFixedContainerHeight
-    };
-  }
-
   render() {
-    const {backgroundImageUrl, gradientClassName, children} = this.props;
-    const {minimized} = this.state;
+    const {backgroundImageUrl, gradientClassName, children, gradientCoverTail} = this.props;
+    const {headerHeight, tailHeight, minimized} = this.state;
     const hasBackgroundImage = !!backgroundImageUrl;
     const hasGradientClassName = !!gradientClassName && !backgroundImageUrl;
     const {
       PageHeader,
       PageContent,
-      PageFixedContent,
       PageTail
     } = getChildrenObject(children);
-    this._setContainerScrollTopThreshold({shortThreshold: PageTail && hasGradientClassName});
+
+    this._setContainerScrollTopThreshold(PageTail && hasGradientClassName);
     const contentFullScreen = PageContent && PageContent.props.fullScreen;
     const pageDimensionsStyle = this._calculatePageDimensionsStyle();
-    const {
-      imageHeight,
-      gradientHeight,
-      fixedContainerHeight,
-      minimizedFixedContainerHeight
-    } = this._calculateHeaderMeasurements({PageTail});
 
-    const contentLayoutProps = {
-      className: classNames(s.content, {[s.contentFullScreen]: contentFullScreen}),
-      style: contentFullScreen ? null : pageDimensionsStyle
-    };
+    const imageHeight = `${headerHeight + (PageTail ? -tailHeight : 39)}px`;
+    const gradientHeight = gradientCoverTail ? `${headerHeight + (PageTail ? -SCROLL_TOP_THRESHOLD : 39)}px` : imageHeight;
+    const calculatedHeaderHeight = !minimized ? headerHeight : PageTail ? headerHeight - 78 : headerHeight - 54;
+    const headerHeightDelta = headerHeight - calculatedHeaderHeight;
 
     return (
       <div className={s.page}>
         <div
-          style={this._fixedContainerStyle()}
-          className={classNames(s.fixedContainer)}
-          ref={r => this.fixedContainerRef = r}
+          style={this._pageHeaderContainerStyle()}
+          className={classNames(s.pageHeaderContainer, {
+            [s.minimized]: minimized,
+            [s.withoutBottomPadding]: PageTail && minimized
+          })}
+          ref={r => this.pageHeaderRef = r}
           >
-          <div
-            className={classNames(s.pageHeaderContainer, {
-              [s.minimized]: minimized,
-              [s.withoutBottomPadding]: PageTail && minimized
-            })}
-            >
-            {
+          {
             PageHeader &&
               <div className={s.pageHeader} style={pageDimensionsStyle}>
                 {React.cloneElement(
@@ -241,8 +176,8 @@ class Page extends WixComponent {
                     hasBackgroundImage
                   })}
               </div>
-            }
-            {
+          }
+          {
             PageTail &&
               <div
                 data-hook="page-tail"
@@ -252,17 +187,6 @@ class Page extends WixComponent {
                 >
                 {React.cloneElement(PageTail, {minimized})}
               </div>
-            }
-          </div>
-          {
-              PageFixedContent &&
-                <div
-                  data-hook="page-fixed-content"
-                  {...contentLayoutProps}
-                  ref={r => this.pageHeaderFixedContentRef = r}
-                  >
-                  {React.cloneElement(PageFixedContent)}
-                </div>
           }
         </div>
         <div
@@ -270,7 +194,7 @@ class Page extends WixComponent {
           onScroll={this._handleScroll}
           data-hook="page-scrollable-content"
           data-class="page-scrollable-content"
-          style={{paddingTop: `${minimized ? minimizedFixedContainerHeight : fixedContainerHeight}px`}}
+          style={{paddingTop: `${calculatedHeaderHeight}px`}}
           ref={r => this.scrollableContentRef = r}
           >
           {
@@ -295,10 +219,10 @@ class Page extends WixComponent {
                 />
           }
           <div className={s.contentContainer}>
-            <div {...contentLayoutProps}>
+            <div className={classNames(s.content, {[s.contentFullScreen]: contentFullScreen})} style={contentFullScreen ? null : pageDimensionsStyle}>
               {this._safeGetChildren(PageContent)}
             </div>
-            {minimized ? <div style={{height: `${fixedContainerHeight - minimizedFixedContainerHeight}px`}}/> : null}
+            {headerHeightDelta ? <div style={{height: `${headerHeightDelta}px`}}/> : null}
           </div>
         </div>
       </div>
@@ -306,17 +230,9 @@ class Page extends WixComponent {
   }
 }
 
-const FixedContent = props => props.children;
-FixedContent.displayName = 'Page.FixedContent';
-FixedContent.propTypes = {
-  children: PropTypes.element.isRequired
-};
-
-
 Page.displayName = 'Page';
 Page.Header = PageHeader;
 Page.Content = Content;
-Page.FixedContent = FixedContent;
 Page.Tail = Tail;
 
 Page.propTypes = {
@@ -344,7 +260,6 @@ Page.propTypes = {
     if (
       children[key].type !== Page.Header &&
       children[key].type !== Page.Content &&
-      children[key].type !== Page.FixedContent &&
       children[key].type !== Page.Tail
     ) {
       return new Error(`Page: Invalid Prop children, unknown child ${children[key].type}`);
@@ -361,10 +276,6 @@ function getChildrenObject(children) {
       }
       case Page.Content : {
         acc.PageContent = child;
-        break;
-      }
-      case Page.FixedContent : {
-        acc.PageFixedContent = child;
         break;
       }
       case Page.Tail : {
