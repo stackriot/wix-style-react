@@ -1,18 +1,55 @@
 import React from 'react';
-import {func, node, string, bool} from 'prop-types';
+import {func, object, node, string, bool, oneOf} from 'prop-types';
 import WixComponent from '../../BaseComponents/WixComponent';
+import classNames from 'classnames';
 import {withStyles} from './withStyles';
 
 class Button extends WixComponent {
   static propTypes = {
     children: node,
+    id: string,
     prefixIcon: node,
     suffixIcon: node,
     type: string,
     onClick: func,
     onMouseEnter: func,
     onMouseLeave: func,
-    disabled: bool
+    active: bool,
+    disabled: bool,
+    height: oneOf(['small', 'medium', 'large']),
+    hover: bool,
+    wixStyles: object,
+    skin: oneOf([
+      'transparent',
+      'fullred',
+      'fullgreen',
+      'fullpurple',
+      'emptyred',
+      'emptygreen',
+      'emptybluesecondary',
+      'emptyblue',
+      'emptypurple',
+      'fullblue',
+      'login',
+      'emptylogin',
+      'transparentblue',
+      'whiteblue',
+      'whiteblueprimary',
+      'whitebluesecondary',
+      'close-standard',
+      'close-dark',
+      'close-transparent',
+      'icon-greybackground',
+      'icon-standard',
+      'icon-standardsecondary',
+      'icon-white',
+      'icon-whitesecondary'
+    ])
+  }
+
+  static defaultProps = {
+    height: 'medium',
+    skin: 'fullblue'
   }
 
   constructor(props) {
@@ -46,11 +83,21 @@ class Button extends WixComponent {
   }
 
   render() {
-    const {disabled, onClick, children, type, onMouseEnter, onMouseLeave, wixStyles} = this.props;
+    const {disabled, onClick, children, type, onMouseEnter, onMouseLeave, skin, hover, active, height, wixStyles} = this.props;
+
+    const classes = classNames({
+      [wixStyles.button]: true,
+      [wixStyles[skin]]: true,
+      [wixStyles.hover]: hover,
+      [wixStyles.active]: active,
+      [wixStyles.disabled]: disabled,
+      [wixStyles[`height${height}`]]: height !== 'medium',
+      [wixStyles.tpa]: !!wixStyles.tpa
+    });
 
     return (
       <button
-        className={wixStyles.button}
+        className={classes}
         onClick={onClick}
         disabled={disabled}
         type={type}
