@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import WixComponent from '../BaseComponents/WixComponent';
-import omit from 'omit';
+import omit from 'lodash/omit';
 import DropdownLayout from '../DropdownLayout/DropdownLayout';
 import Button from '../Button';
 
@@ -51,7 +51,7 @@ class ButtonWithOptions extends WixComponent {
   }
 
   _renderDropdownLayout() {
-    const dropdownProps = Object.assign(omit(['dataHook'], this.props), this.dropdownAdditionalProps());
+    const dropdownProps = Object.assign(omit(this.props, 'dataHook'), this.dropdownAdditionalProps());
     const customStyle = {marginLeft: this.props.dropdownOffsetLeft};
     if (this.props.dropdownWidth) {
       customStyle.width = this.props.dropdownWidth;
