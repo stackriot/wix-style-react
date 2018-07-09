@@ -19,7 +19,6 @@ const modalDriverFactory = ({element, wrapper, component}) => {
       const overlay = getOverlay();
       ReactTestUtils.Simulate.click(overlay);
     },
-    getContentStyle: () => getContent().style,
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
       ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);

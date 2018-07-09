@@ -48,6 +48,7 @@ class Modal extends WixComponent {
       horizontalPosition,
       verticalPosition,
       height,
+      maxHeight,
       scrollableContent,
       borderRadius,
       zIndex,
@@ -64,11 +65,10 @@ class Modal extends WixComponent {
       overlayPosition,
       parentSelector
     } = this.props;
-    let {maxHeight} = this.props;
+
     const justifyContent = flexPositions[horizontalPosition];
     const alignItems = flexPositions[verticalPosition];
-
-    maxHeight = scrollableContent && maxHeight === 'auto' ? '100vh' : maxHeight;
+    const customMaxHeight = scrollableContent && maxHeight === 'auto' ? '100vh' : maxHeight;
 
     const modalStyles = {
       overlay: {
@@ -92,7 +92,7 @@ class Modal extends WixComponent {
         overflowY: scrollableContent ? 'auto' : 'initial',
         overflowX: scrollableContent ? 'hidden' : 'initial',
         height,
-        maxHeight,
+        customMaxHeight,
         WebkitOverflowScrolling: 'touch',
         outline: 'none',
         borderRadius,
