@@ -13,7 +13,7 @@ class RawContainer extends Component {
 
   render() {
     return (
-      <div className={styles['raw-container']}>
+      <div className={styles.container}>
         {this.props.children}
       </div>
     );
