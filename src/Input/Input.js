@@ -25,7 +25,6 @@ class Input extends Component {
   render(props = {}) {
     const {
       id,
-      name,
       value,
       placeholder,
       help,
@@ -82,7 +81,6 @@ class Input extends Component {
         ref={input => this.input = input}
         className={inputClassNames}
         id={id}
-        name={name}
         disabled={disabled}
         defaultValue={defaultValue}
         value={value}
@@ -200,7 +198,6 @@ Input.defaultProps = {
 
 Input.propTypes = {
   id: PropTypes.string,
-  name: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   theme: PropTypes.oneOf(['normal', 'paneltitle', 'material', 'amaterial', 'flat', 'flatdark']),
   forceHover: PropTypes.bool,
