@@ -30,8 +30,7 @@
       "app": "index.js"
     },
     "externals": {
-      "react": "React",
-      "react-dom": "ReactDOM"
+      "react": "React"
     },
     "externalUnprocessedModules": [
       "get-own-enumerable-property-symbols",
