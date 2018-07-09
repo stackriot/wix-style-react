@@ -80,7 +80,7 @@ class InputArea extends WixComponent {
 
     return (
       <div className={styles.wrapper}>
-        <div data-hook={this.props.dataHook} className={classes}>
+        <div data-hook="textarea-div" className={classes}>
           <textarea
             rows={rows}
             maxLength={maxLength}
@@ -198,8 +198,7 @@ InputArea.propTypes = {
   ariaDescribedby: PropTypes.string,
   ariaControls: PropTypes.string,
   tooltipPlacement: PropTypes.string,
-  onTooltipShow: PropTypes.func,
-  dataHook: PropTypes.string
+  onTooltipShow: PropTypes.func
 };
 
 export default InputArea;
