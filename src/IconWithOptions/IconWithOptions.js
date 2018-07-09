@@ -88,6 +88,7 @@ class IconWithOptions extends WixComponent {
 IconWithOptions.defaultProps = {
   ...DropdownLayout.defaultProps,
   onSelect: () => {},
+  dropdownWidth: '130px',
   withArrow: true
 };
 
