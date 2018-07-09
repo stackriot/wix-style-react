@@ -33,7 +33,7 @@ const withMaxWidth = WrappedComponent => {
 
     render() {
       return (
-        <div ref={el => this.initMaxWidth(el)} style={{width: '100%'}}>
+        <div ref={el => this.initMaxWidth(el)}>
           <WrappedComponent {...this.props} itemMaxWidth={this.state.itemMaxWidth}/>
         </div>
       );

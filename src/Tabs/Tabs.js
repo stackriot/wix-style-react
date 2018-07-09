@@ -34,15 +34,14 @@ class Tabs extends WixComponent {
 }
 
 Tabs.propTypes = {
-  activeId: TabPropTypes.activeId,
-  dataHook: PropTypes.string,
-  hasDivider: PropTypes.bool,
   items: TabPropTypes.items.isRequired,
-  minWidth: TabPropTypes.width,
+  onClick: TabPropTypes.onClick,
+  activeId: TabPropTypes.activeId,
   type: TabPropTypes.type,
-  sideContent: TabPropTypes.sideContent,
   width: TabPropTypes.width,
-  onClick: TabPropTypes.onClick
+  sideContent: TabPropTypes.sideContent,
+  dataHook: PropTypes.string,
+  hasDivider: PropTypes.bool
 };
 
 export default Tabs;

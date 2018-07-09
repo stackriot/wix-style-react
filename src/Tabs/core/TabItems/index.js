@@ -31,11 +31,7 @@ class TabItems extends React.Component {
     const className = classNames(styles.itemsContainer, styles[type]);
 
     return (
-      <ul
-        className={className}
-        data-hook={dataHook}
-        style={{minWidth: this.props.minWidth}}
-        >
+      <ul className={className} data-hook={dataHook}>
         {items.map(item => this.renderItem(item))}
       </ul>
     );
@@ -44,14 +40,13 @@ class TabItems extends React.Component {
 }
 
 TabItems.propTypes = {
-  activeId: TabPropTypes.activeId,
-  dataHook: PropTypes.string,
-  itemMaxWidth: PropTypes.number,
-  items: TabPropTypes.items.isRequired,
-  minWidth: TabPropTypes.width,
   type: TabPropTypes.type,
+  items: TabPropTypes.items.isRequired,
+  activeId: TabPropTypes.activeId,
+  onClick: TabPropTypes.onClick,
   width: TabPropTypes.width,
-  onClick: TabPropTypes.onClick
+  dataHook: PropTypes.string,
+  itemMaxWidth: PropTypes.number
 };
 
 export default withItemMaxWidth(TabItems);
