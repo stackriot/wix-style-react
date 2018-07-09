@@ -9,8 +9,6 @@ import ExampleControlledRtl from './ExampleControlledRtl';
 import ExampleControlledRawRtl from '!raw-loader!./ExampleControlledRtl';
 import ExampleControlledExcludePast from './ExampleControlledExcludePast';
 import ExampleControlledRawExcludePast from '!raw-loader!./ExampleControlledExcludePast';
-import ExampleDisabled from './ExampleDisabled';
-import ExampleDisabledRaw from '!raw-loader!./ExampleDisabled';
 
 storiesOf('Core', module)
   .add('DatePicker', () => (
@@ -29,10 +27,6 @@ storiesOf('Core', module)
 
       <CodeExample title="Controlled input - exclude past dates" code={ExampleControlledRawExcludePast}>
         <ExampleControlledExcludePast/>
-      </CodeExample>
-
-      <CodeExample title="Disabled input" code={ExampleDisabledRaw}>
-        <ExampleDisabled/>
       </CodeExample>
     </div>
   ));
