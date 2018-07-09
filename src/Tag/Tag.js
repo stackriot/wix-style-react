@@ -4,7 +4,6 @@ import styles from './Tag.scss';
 import classNames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
 import Typography from '../Typography';
-import {SmallX} from '../Icons/dist';
 
 class Tag extends WixComponent {
   render() {
@@ -28,7 +27,7 @@ class Tag extends WixComponent {
       <span className={className} disabled={disabled} id={id} title={title}>
         {thumb && <span className={styles.thumb}>{thumb}</span>}
         <span className={innerClassName}>{children}</span>
-        {removable && !disabled && <a className={styles.tagRemoveButton} onClick={() => onRemove(id)}><SmallX/></a>}
+        {removable && !disabled && <a className={styles.tagRemoveButton} onClick={() => onRemove(id)}/>}
       </span>
     );
   }

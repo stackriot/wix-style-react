@@ -1,28 +1,20 @@
-@import '../../common.scss';
-
 .label {
   margin-bottom: 6px;
+}
+
+.wrapper {
 }
 
 .inputs{
   display: flex;
 }
 
-.hasFocus {
-  .firstinput {
-    border-right: 1px solid $B20;
-  }
-}
-
 .firstinput {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-radius: 6px 0 0 6px;
   width: 50%;
 }
 
 .lastinput {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-left: 0;
+  border-radius: 0 6px 6px 0;
   width: 50%;
 }

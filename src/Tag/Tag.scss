@@ -2,7 +2,6 @@
 
 .tag {
   @include FontLight();
-  position: relative;
   background-color: $B40;
   border-radius: 100px;
   display: flex;
@@ -14,22 +13,19 @@
   height: 24px;
 
   .thumb {
-    position: relative;
-    border-radius: 50%;
-    overflow: hidden;
-    width: 18px;
-    height: 18px;
-    left: -6px;
+    margin-right: 5px;
   }
 
   .tagRemoveButton {
     cursor: pointer;
-    padding: 6px 0 6px 6px;
-    margin-left: 6px;
+    padding-left: 10px;
+    padding-bottom: 2px;
     color: $B10;
     font-size: 14px;
-    width: 6px;
-    display: inherit;
+
+    &:before {
+      content: 'x';
+    }
   }
 
   &.disabled {
@@ -40,17 +36,6 @@
 
 .large {
   height: 36px;
-
-  .thumb {
-    height: 24px;
-    width: 24px;
-  }
-
-  .tagRemoveButton {
-    padding: 8px 0 8px 8px;
-    margin-left: 8px;
-    width: 8px;
-  }
 }
 
 .tagWrap {

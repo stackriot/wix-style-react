@@ -4,18 +4,19 @@
 };
 
 .thumb {
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   background-color: green;
-  // border-radius: 50%;
+  float: left;
+  border-radius: 50%;
 }
 
 .thumb2 {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   background-color: green;
-  // float: left;
-  // border-radius: 50%;
+  float: left;
+  border-radius: 50%;
 }
 
 .row {
