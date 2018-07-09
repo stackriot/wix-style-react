@@ -24,7 +24,6 @@ const sideMenuDriverFactory = ({element}) => {
     navigationLinks: () => getNavigationLinks(),
     navigationInnerLinks: () => getNavigationLinkWrappers(),
     isLinkActiveByIndex: index => getNavigationLinkWrappers()[index].classList.contains(navigationStyles.linkActive),
-    isLinkDisabledByIndex: index => getNavigationLinkWrappers()[index].classList.contains(navigationStyles.linkDisabled),
     isLinkBadgeVisibleByIndex: index => !!getBadge(getNavigationLinkWrappers()[index]),
     navigationSeparators: () => getNavigationSeparators(),
     navigationCategories: () => getNavigationCategories(),

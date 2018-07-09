@@ -7,11 +7,11 @@ import NavigationLink from '../core/navigation/Link';
 import NavigationBackLink from '../core/navigation/BackLink';
 import NavigationCategory from '../core/navigation/Category';
 
-const SubMenu = ({children, title, isOpen, isActive, onSelectHandler, onBackHandler, backLabel, showCategory, badge, linkDataHook, disabled}) => {
+const SubMenu = ({children, title, isOpen, isActive, onSelectHandler, onBackHandler, backLabel, showCategory, badge, linkDataHook}) => {
   if (!isOpen) {
 
     return (
-      <NavigationLink isActive={isActive} onClick={onSelectHandler} badge={badge} withArrow={!badge} data-hook={linkDataHook} disabled={disabled}>
+      <NavigationLink isActive={isActive} onClick={onSelectHandler} badge={badge} withArrow={!badge} data-hook={linkDataHook}>
         {title}
       </NavigationLink>
     );
@@ -47,8 +47,7 @@ SubMenu.defaultProps = {
   onBackHandler: () => {},
   backLabel: 'Back',
   showCategory: true,
-  linkDataHook: 'menu-drill-sub-menu-link',
-  disabled: false
+  linkDataHook: 'menu-drill-sub-menu-link'
 };
 
 SubMenu.propTypes = {
@@ -62,8 +61,7 @@ SubMenu.propTypes = {
   showCategory: PropTypes.bool,
   badge: PropTypes.node,
   linkDataHook: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  disabled: PropTypes.bool
+  children: PropTypes.node.isRequired
 };
 
 export default SubMenu;
