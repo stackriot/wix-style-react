@@ -17,22 +17,9 @@ describe('input area page', () => {
   });
 
   eyes.it('should show focus styles', async () => {
-    expect(inputAreaTestkit.isFocused()).toBeFalsy();
+    expect(inputAreaTestkit.isFocused()).toBe(false);
     await browser.actions().sendKeys(protractor.Key.TAB).perform();
-    expect(inputAreaTestkit.isFocused()).toBeTruthy();
+    expect(inputAreaTestkit.isFocused()).toBe(true);
   });
 
-  eyes.it('should show hover styles', async () => {
-    expect(await inputAreaTestkit.isHovered()).toBeFalsy();
-    await inputAreaTestkit.hover();
-    expect(await inputAreaTestkit.isHovered()).toBeTruthy();
-  });
-
-  eyes.it('should show hover and focus styles', async () => {
-    expect(await inputAreaTestkit.isHovered()).toBeFalsy();
-    expect(inputAreaTestkit.isFocused()).toBeFalsy();
-    await inputAreaTestkit.click();
-    expect(inputAreaTestkit.isFocused()).toBeTruthy();
-    expect(await inputAreaTestkit.isHovered()).toBeTruthy();
-  });
 });

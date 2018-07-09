@@ -18,7 +18,6 @@
 @mixin ThemeFocus {
     &.hasFocus {
         @include FocusBox;
-        background-color: transparent;
 
         &.hasError {
             @include FocusBoxError
