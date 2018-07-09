@@ -12,14 +12,12 @@ class PopoverMenu extends WixComponent {
     size: Tooltip.propTypes.size,
     placement: Tooltip.propTypes.placement,
     buttonTheme: Button.propTypes.theme,
-    maxWidth: Tooltip.propTypes.maxWidth
   };
 
   static defaultProps = {
     size: 'normal',
     placement: 'top',
     buttonTheme: 'icon-greybackground',
-    maxWidth: '378px'
   };
 
   render() {
@@ -52,7 +50,6 @@ class PopoverMenu extends WixComponent {
         hideTrigger="click"
         theme="light"
         size={this.props.size}
-        maxWidth={this.props.maxWidth}
         shouldCloseOnClickOutside
         >
         <Button

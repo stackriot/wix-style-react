@@ -11,8 +11,7 @@ class ExamplePopover extends Component {
 
   state = {
     placement: 'top',
-    text: 'Popover appears on click',
-    maxWidth: ''
+    text: 'Popover appears on click'
   };
 
   render() {
@@ -46,17 +45,6 @@ class ExamplePopover extends Component {
               />
             </div>
           </div>
-
-          <div className={styles.option}>
-            <Label>Max Width</Label>
-            <div className={styles.flex}>
-              <Input
-                size="small"
-                value={this.state.maxWidth}
-                onChange={e => this.setState({maxWidth: e.target.value})}
-              />
-            </div>
-          </div>
         </div>
 
         <div className={styles.output}>
@@ -68,7 +56,6 @@ class ExamplePopover extends Component {
               showTrigger="click"
               hideTrigger="click"
               type="popover"
-              maxWidth={this.state.maxWidth}
               onChange={this.props.onChange}/>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import {Tooltip, Button} from 'wix-style-react';
+import {Tooltip, Button} from 'wix-style-react/Backoffice';
 import {Dots} from 'wix-style-react/Icons';
 
 export class Template extends Component {
@@ -15,7 +15,6 @@ export class Template extends Component {
     hideTrigger: Tooltip.propTypes.hideTrigger,
     type: PropTypes.oneOf(['tooltip', 'popover']),
     size: Tooltip.propTypes.size,
-    maxWidth: Tooltip.propTypes.maxWidth,
     onShow: Tooltip.propTypes.onShow
   };
 
@@ -43,7 +42,6 @@ export class Template extends Component {
         hideTrigger={this.props.hideTrigger}
         theme={this.props.theme}
         size={this.props.size}
-        maxWidth={this.props.maxWidth}
         onShow={this.props.onShow}
         shouldCloseOnClickOutside
         >

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import RadioGroup from '../../../src/RadioGroup';
 import Label from '../../../src/Label';
 import PopoverMenuBuilder from './PopoverMenuBuilder';
-import Input from '../../../src/Input';
 
 import styles from './Example.scss';
 import PopoverMenuTemplate from './PopoverMenuTemplate';
@@ -24,7 +23,6 @@ class ExamplePopoverMenu extends Component {
       {iconName: 'Trash3', text: 'Delete'}
     ],
     buttonTheme: 'icon-greybackground',
-    maxWidth: '378px'
   };
 
   addRow = () => {
@@ -102,17 +100,6 @@ class ExamplePopoverMenu extends Component {
           </div>
 
           <div className={styles.option}>
-            <Label>Max Width</Label>
-            <div className={styles.flex}>
-              <Input
-                size="small"
-                value={this.state.maxWidth}
-                onChange={e => this.setState({maxWidth: e.target.value})}
-              />
-            </div>
-          </div>
-
-          <div className={styles.option}>
             <Label>Text</Label>
             <div className={styles.flex}>
               <PopoverMenuBuilder
@@ -123,7 +110,6 @@ class ExamplePopoverMenu extends Component {
               />
             </div>
           </div>
-
         </div>
 
         <div className={styles.output}>
@@ -134,7 +120,6 @@ class ExamplePopoverMenu extends Component {
               placement={this.state.placement}
               onChange={this.props.onChange}
               buttonTheme={this.state.buttonTheme}
-              maxWidth={this.state.maxWidth}
             />
           </div>
         </div>

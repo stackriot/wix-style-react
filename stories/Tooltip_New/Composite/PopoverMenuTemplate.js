@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import PopoverMenu from '../../../src/PopoverMenu';
-import PopoverMenuItem from '../../../src/PopoverMenuItem';
+import PopoverMenu from '../../../src/Backoffice/PopoverMenu';
+import PopoverMenuItem from '../../../src/Backoffice/PopoverMenuItem';
 import * as Icons from 'wix-style-react/Icons';
 
 class PopoverMenuTemplate extends Component {
@@ -12,8 +12,7 @@ class PopoverMenuTemplate extends Component {
     menuItems: PropTypes.array.isRequired,
     size: PopoverMenu.propTypes.size,
     placement: PopoverMenu.propTypes.placement,
-    onChange: PropTypes.func,
-    maxWidth: PopoverMenu.propTypes.maxWidth
+    onChange: PropTypes.func
   };
 
   componentDidUpdate(props) {
@@ -32,11 +31,7 @@ class PopoverMenuTemplate extends Component {
 
   getComponent() {
     return (
-      <PopoverMenu size={this.props.size}
-                   placement={this.props.placement}
-                   buttonTheme={this.props.buttonTheme}
-                   maxWidth={this.props.maxWidth}
-      >
+      <PopoverMenu size={this.props.size} placement={this.props.placement} buttonTheme={this.props.buttonTheme}>
         {
           this.props.menuItems.filter(menuItem => menuItem.iconName).map((menuItem, i) => (
             <PopoverMenuItem

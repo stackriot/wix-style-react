@@ -9,7 +9,7 @@ import ReadmeTestKit from '../../src/MessageBox/README.TESTKIT.md';
 import ExampleStandard from './ExampleStandard';
 import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
 
-storiesOf('9. Modals', module)
+storiesOf('Core', module)
   .add('MessageBox', () => (
     <TabbedView tabs={['API', 'TestKits']}>
       <div>
