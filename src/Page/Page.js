@@ -193,7 +193,6 @@ class Page extends WixComponent {
           className={s.scrollableContent}
           onScroll={this._handleScroll}
           data-hook="page-scrollable-content"
-          data-class="page-scrollable-content"
           style={{paddingTop: `${calculatedHeaderHeight}px`}}
           ref={r => this.scrollableContentRef = r}
           >
