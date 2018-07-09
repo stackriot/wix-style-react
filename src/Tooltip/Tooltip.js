@@ -29,10 +29,10 @@ class Tooltip extends WixComponent {
     disabled: PropTypes.bool,
 
     /** The tooltip max width  */
-    maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    maxWidth: PropTypes.string,
 
     /** The tooltip min width  */
-    minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    minWidth: PropTypes.string,
 
     /** Callback when cliking outside  */
     onClickOutside: PropTypes.func,
