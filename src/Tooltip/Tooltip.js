@@ -219,9 +219,6 @@ class Tooltip extends WixComponent {
     }
     if (!this.state.visible) {
       this._showTimeout = setTimeout(() => {
-        if (typeof document === 'undefined') {
-          return;
-        }
         if (this.props.onShow) {
           this.props.onShow();
         }
