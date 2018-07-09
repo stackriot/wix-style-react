@@ -1,11 +1,11 @@
-@mixin FocusBox($borderColor: $B10, $boxShadow: 0 0 0 3px $F00) {
+@mixin FocusBox {
 	outline: none;
-	border-color: $borderColor;
-	box-shadow: $boxShadow;
+	border-color: $B10;
+	box-shadow: 0 0 0 3px $F00;
 }
 
-@mixin FocusBoxError($borderColor: $R10, $boxShadow: 0 0 0 3px $R30) {
+@mixin FocusBoxError {
 	outline: none;
-	border-color: $borderColor;
-	box-shadow: $boxShadow;
+	border-color: $R10;
+	box-shadow: 0 0 0 3px $R30;
 }

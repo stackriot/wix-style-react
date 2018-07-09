@@ -73,9 +73,9 @@
     .menu-arrow path { fill: $color; }
 }
 
-@mixin ThemeFocus($borderColor, $boxShadow) {
+@mixin ThemeFocus {
     &.hasFocus {
-        @include FocusBox($borderColor, $boxShadow);
+        @include FocusBox;
 
         &.hasError {
             @include FocusBoxError
