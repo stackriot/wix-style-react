@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import isEqual from 'deep-eql';
 
 import Markdown from '../../Markdown';
 import CodeBlock from '../../CodeBlock';
@@ -96,7 +95,7 @@ const List = ({value, values = [], onChange, ...props}) =>
   values.length > 3 ?
     <Dropdown
       options={values.map(v => ({id: v, value: v}))}
-      selectedId={value}
+      selectedId={values.find((v => v.value === value))}
       onSelect={({value}) => onChange(value)}
       /> :
     <WixRadioGroup
@@ -124,17 +123,16 @@ class NodesList extends React.Component {
   view = e => typeof e === 'function' ? React.createElement(e) : e;
 
   render() {
-    const {value = {}, values = [], onChange} = this.props;
+    const {values = [], onChange} = this.props;
 
     return values.length > 3 ?
       <Dropdown
-        options={values.map((value, id) => ({id, value: this.view(value)}))}
-        selectedId={values.findIndex(({type}) => isEqual(type, value.type)) || 0}
+        options={values.map((v, k) => ({id: k, value: this.view(values[k])}))}
         onSelect={({value}) => onChange(value)}
-        valueParser={({value}) => typeof value.type === 'string' ? value.type : value.type.name}
+        valueParser={ev => typeof ev.value.type === 'string' ? ev.value.type : ev.value.type.name}
         /> :
         <WixRadioGroup
-          value={value}
+          value={this.state && this.state.selected}
           onChange={ev => {
             this.setState({selected: ev});
             onChange(this.view(values[ev]));
