@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import styles from './styles.scss';
+
 import componentParser from '../AutoDocs/parser';
 
 import {
@@ -12,8 +12,7 @@ import {
   Code,
   Toggle,
   Input,
-  List,
-  NodesList
+  List
 } from './FormComponents';
 
 const stripQuotes = string => {
@@ -105,15 +104,13 @@ export default class extends Component {
       *   })}
       * ```
       */
-    componentProps: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-    exampleProps: PropTypes.object
+    componentProps: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
   }
 
   static defaultProps = {
     source: '',
     component: () => null,
-    componentProps: {},
-    exampleProps: {}
+    componentProps: {}
   }
 
   constructor(props) {
@@ -125,9 +122,7 @@ export default class extends Component {
       propsState: {
         ...(this.props.component.defaultProps || {}),
         ...(this.prepareComponentProps(this.props.componentProps))
-      },
-      funcValues: {},
-      funcAnimate: {}
+      }
     };
   }
 
@@ -169,23 +164,7 @@ export default class extends Component {
       <List
         dataHook={dataHook}
         values={type.value.map(({value}) => stripQuotes(value))}
-        />,
-    node: ({propKey, dataHook}) => {
-      if (this.props.exampleProps[propKey]) {
-        return <NodesList dataHook={dataHook} values={this.props.exampleProps[propKey]}/>;
-      }
-    },
-    func: ({propKey, dataHook}) => {
-      let classNames = styles.example;
-      if (this.state.funcAnimate[propKey]) {
-        classNames += ` ${styles.active}`;
-        setTimeout(() => this.setState({funcAnimate: {...this.state.funcAnimate, [propKey]: false}}), 2000);
-      }
-
-      if (this.props.exampleProps[propKey]) {
-        return <span data-hook={dataHook} className={classNames}>{this.state.funcValues[propKey] || 'Interaction preview'}</span>;
-      }
-    }
+        />
   }
 
   getPropControlComponent = (propKey, type) => {
@@ -199,46 +178,12 @@ export default class extends Component {
     return (this.controllableComponentGetters[type.name] || (() => null))({propKey, type, dataHook});
   }
 
-  componentToString = (component, filterProps) =>
-    reactElementToJSXString(component, {showDefaultProps: false, showFunctions: true, filterProps})
+  componentToString = component =>
+    reactElementToJSXString(component, {showDefaultProps: false, showFunctions: true})
 
   render() {
     const component = this.props.component;
-    const componentPropsState = {
-      ...this.state.propsState,
-      ...(
-        Object
-          .keys(this.props.exampleProps)
-          .filter(prop => this.parsedComponent.props[prop].type.name === 'func')
-          .reduce((acc, prop) => {
-            acc[prop] = (...rest) => {
-              if (this.state.propsState[prop]) {
-                this.state.propsState[prop](...rest);
-              }
-              this.setState({
-                funcValues: {...this.state.funcValues, [prop]: this.props.exampleProps[prop](...rest)},
-                funcAnimate: {...this.state.funcAnimate, [prop]: true}
-              });
-            };
-            return acc;
-          }, {})
-      )
-    };
-
-    const codeProps = {
-      ...this.state.propsState,
-      ...(
-        Object
-          .keys(this.props.exampleProps)
-          .filter(prop => this.parsedComponent.props[prop].type.name === 'func')
-          .reduce((acc, key) => {
-            acc[key] = this.props.exampleProps[key];
-            return acc;
-          }, {})
-      )
-    };
-    const filterCodeProps = Object.keys(this.props.exampleProps)
-      .filter(key => this.parsedComponent.props[key].type.name === 'func' && !this.state.funcValues[key]);
+    const componentPropsState = this.state.propsState;
 
     return (
       <Wrapper dataHook="auto-example">
@@ -260,7 +205,7 @@ export default class extends Component {
           {React.createElement(component, componentPropsState)}
         </Preview>
 
-        <Code source={this.componentToString(React.createElement(component, codeProps), filterCodeProps)}/>
+        <Code source={this.componentToString(React.createElement(component, componentPropsState))}/>
       </Wrapper>
     );
   }

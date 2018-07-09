@@ -40,18 +40,16 @@ Options.propTypes = {
 };
 
 
-const Option = ({label, value, children, onChange}) => {
-  return children ?
-    (<Row className={styles.option}>
-      <Col span={6}>
-        <Markdown source={`\`${label}\``}/>
-      </Col>
+const Option = ({label, value, children, onChange}) =>
+  <Row className={styles.option}>
+    <Col span={6}>
+      <Markdown source={`\`${label}\``}/>
+    </Col>
 
-      <Col span={6}>
-        {React.cloneElement(children, {value, onChange})}
-      </Col>
-    </Row>) : null;
-};
+    <Col span={6}>
+      { React.cloneElement(children, {value, onChange}) }
+    </Col>
+  </Row>;
 
 Option.propTypes = {
   label: PropTypes.string,
@@ -119,40 +117,6 @@ List.propTypes = {
   onChange: PropTypes.func
 };
 
-class NodesList extends React.Component {
-  view = e => typeof e === 'function' ? React.createElement(e) : e;
-
-  render() {
-    const {values = [], onChange} = this.props;
-
-    return values.length > 3 ?
-      <Dropdown
-        options={values.map((v, k) => ({id: k, value: this.view(values[k])}))}
-        onSelect={({value}) => onChange(value)}
-        valueParser={ev => typeof ev.value.type === 'string' ? ev.value.type : ev.value.type.name}
-        /> :
-        <WixRadioGroup
-          value={this.state && this.state.selected}
-          onChange={ev => {
-            this.setState({selected: ev});
-            onChange(this.view(values[ev]));
-          }}
-          >
-          {values.map((value, i) =>
-            <WixRadioGroup.Radio key={i} value={i}>
-              {this.view(values[i])}
-            </WixRadioGroup.Radio>
-          )}
-        </WixRadioGroup>;
-  }
-}
-
-NodesList.propTypes = {
-  value: PropTypes.node,
-  values: PropTypes.arrayOf(PropTypes.any),
-  onChange: PropTypes.func
-};
-
 
 const Input = ({value, onChange, ...props}) =>
   <WixInput
@@ -187,6 +151,5 @@ export {
   Toggle,
   Input,
   List,
-  Code,
-  NodesList
+  Code
 };

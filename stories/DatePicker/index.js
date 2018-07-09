@@ -18,8 +18,5 @@ story({
     dateFormat: 'YYYY/MM/DD',
     dataHook: 'storybook-datepicker',
     value: moment('2017/01/01')
-  }),
-  exampleProps: {
-    onChange: ev => moment(ev).format('YYYY/MM/DD')
-  }
+  })
 });
