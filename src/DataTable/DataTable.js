@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import oldStyle from './DataTable.old.scss';
-import newStyle from './DataTable.scss';
-import typography from '../Typography/Typography.scss';
+import s from './DataTable.scss';
 import classNames from 'classnames';
 import InfiniteScroll from './InfiniteScroll';
 import WixComponent from '../BaseComponents/WixComponent';
 import ArrowVertical from '../Icons/dist/components/ArrowVertical';
-import SortByArrowDown from 'wix-ui-icons-common/system/SortByArrowDown';
-import SortByArrowUp from 'wix-ui-icons-common/system/SortByArrowUp';
 import {Animator} from 'wix-animations';
 import InfoCircle from 'wix-ui-icons-common/InfoCircle';
 import Tooltip from '../Tooltip/Tooltip';
@@ -16,7 +12,7 @@ import omit from 'lodash/omit';
 
 export const DataTableHeader = props => (
   <div>
-    <table style={{width: props.width}} className={newStyle.table}>
+    <table style={{width: props.width}} className={s.table}>
       <TableHeader {...props}/>
     </table>
   </div>
@@ -27,7 +23,6 @@ DataTableHeader.propTypes = {
 };
 
 class DataTable extends WixComponent {
-
   constructor(props) {
     super(props);
     let state = {selectedRows: {}};
@@ -35,10 +30,6 @@ class DataTable extends WixComponent {
       state = {...state, ...this.createInitialScrollingState(props)};
     }
     this.state = state;
-  }
-
-  get style() {
-    return this.props.newDesign ? newStyle : oldStyle;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -104,7 +95,7 @@ class DataTable extends WixComponent {
     const style = {width: this.props.width};
     return (
       <div>
-        <table id={this.props.id} style={style} className={this.style.table}>
+        <table id={this.props.id} style={style} className={s.table}>
           {!this.props.hideHeader &&
           <TableHeader {...this.props}/>}
           {this.renderBody(rowsToRender)}
@@ -147,11 +138,11 @@ class DataTable extends WixComponent {
     });
 
     if (onRowClick) {
-      rowClasses.push(this.style.clickableDataRow);
+      rowClasses.push(s.clickableDataRow);
     }
 
     if (rowDetails) {
-      rowClasses.push(this.style.animatedDataRow);
+      rowClasses.push(s.animatedDataRow);
     }
 
     if (rowDataHook) {
@@ -178,13 +169,13 @@ class DataTable extends WixComponent {
       const showDetails = !!this.state.selectedRows[rowNum];
 
       rowsToRender.push(
-        <tr key={`${rowNum}_details`} className={classNames(this.style.rowDetails)}>
+        <tr key={`${rowNum}_details`} className={classNames(s.rowDetails)}>
           <td
             data-hook={`${rowNum}_details`}
-            className={classNames(this.style.details, showDetails ? this.style.active : '')}
+            className={classNames(s.details, showDetails ? s.active : '')}
             colSpan={this.props.columns.length}
             >
-            <div className={classNames(this.style.rowDetailsInner)}>
+            <div className={classNames(s.rowDetailsInner)}>
               <Animator show={showDetails} height>
                 {rowDetails(rowData, rowNum)}
               </Animator>
@@ -198,11 +189,7 @@ class DataTable extends WixComponent {
   };
 
   renderCell = (rowData, column, rowNum, colNum) => {
-    const classes = classNames(
-      {[typography.t1]: this.props.newDesign},
-      {[this.style.important]: column.important},
-      {[this.style.largeVerticalPadding]: this.props.rowVerticalPadding === 'large'},
-      {[this.style.mediumVerticalPadding]: this.props.rowVerticalPadding !== 'large'});
+    const classes = classNames({[s.important]: column.important});
     const width = rowNum === 0 && this.props.hideHeader ? column.width : undefined;
 
     return (<td
@@ -235,7 +222,6 @@ class DataTable extends WixComponent {
 }
 
 class TableHeader extends Component {
-
   static propTypes = {
     onSortClick: PropTypes.func,
     thPadding: PropTypes.string,
@@ -245,30 +231,14 @@ class TableHeader extends Component {
     thColor: PropTypes.string,
     thOpacity: PropTypes.string,
     thLetterSpacing: PropTypes.string,
-    thBoxShadow: PropTypes.string,
-    columns: PropTypes.array,
-    newDesign: PropTypes.bool
+    columns: PropTypes.array
   };
-
-  get style() {
-    return this.props.newDesign ? newStyle : oldStyle;
-  }
 
   renderSortingArrow = (sortDescending, colNum) => {
     if (sortDescending === undefined) {
       return null;
     }
-    if (this.props.newDesign) {
-      const Arrow = sortDescending ? SortByArrowUp : SortByArrowDown;
-      return (
-        <span
-          data-hook={`${colNum}_title`}
-          className={this.style.sortArrow}
-          >
-          <Arrow height={12} data-hook={sortDescending ? 'sort_arrow_dec' : 'sort_arrow_asc'}/>
-        </span>);
-    }
-    const sortDirectionClassName = sortDescending ? this.style.sortArrowAsc : this.style.sortArrowDesc;
+    const sortDirectionClassName = sortDescending ? s.sortArrowAsc : s.sortArrowDesc;
     return <span data-hook={`${colNum}_title`} className={sortDirectionClassName}><ArrowVertical/></span>;
   };
 
@@ -281,12 +251,11 @@ class TableHeader extends Component {
       moveBy: {x: 2.5, y: -7}
     });
     return (
-      <Tooltip {..._tooltipProps}>
-        <span className={this.style.infoTooltipWrapper}>
-          <InfoCircle className={this.style.infoIcon} size={24}/>
-        </span>
-      </Tooltip>
-    );
+      <div onClick={e => e.stopPropagation()}>
+        <Tooltip {..._tooltipProps}>
+          <span><InfoCircle className={s.infoIcon} size={24}/></span>
+        </Tooltip>
+      </div>);
   };
 
   renderHeaderCell = (column, colNum) => {
@@ -296,7 +265,6 @@ class TableHeader extends Component {
       height: this.props.thHeight,
       fontSize: this.props.thFontSize,
       border: this.props.thBorder,
-      boxShadow: this.props.thBoxShadow,
       color: this.props.thColor,
       opacity: this.props.thOpacity,
       letterSpacing: this.props.thLetterSpacing,
@@ -311,10 +279,9 @@ class TableHeader extends Component {
       <th
         style={style}
         key={colNum}
-        className={classNames({[typography.t4]: this.props.newDesign})}
         {...optionalHeaderCellProps}
         >
-        <div className={this.style.thContainer}>
+        <div className={s.thContainer}>
           {column.title}{this.renderSortingArrow(column.sortDescending, colNum)}{this.renderInfoTooltip(column.infoTooltip, colNum)}
         </div>
       </th>);
@@ -353,8 +320,9 @@ DataTable.defaultProps = {
   loader: <div className="loader">Loading ...</div>,
   scrollElement: null,
   useWindow: true,
-  rowVerticalPadding: 'medium',
-  newDesign: false
+  thPadding: '5px',
+  thHeight: '36px',
+  thFontSize: '12px'
 };
 
 DataTable.propTypes = {
@@ -388,43 +356,16 @@ DataTable.propTypes = {
   loader: PropTypes.node,
   useWindow: PropTypes.bool,
   scrollElement: PropTypes.object,
-  rowVerticalPadding: PropTypes.oneOf([
-    'medium',
-    'large'
-  ]),
-  /** this prop is deprecated and should not be used
-   * @deprecated
-   */
   thPadding: PropTypes.string,
-  /** this prop is deprecated and should not be used
-   * @deprecated
-   */
   thHeight: PropTypes.string,
-  /** this prop is deprecated and should not be used
-   * @deprecated
-   */
   thFontSize: PropTypes.string,
-  /** this prop is deprecated and should not be used
-   * @deprecated
-   */
   thBorder: PropTypes.string,
-  /** this prop is deprecated and should not be used
-   * @deprecated
-   */
   thColor: PropTypes.string,
-  /** this prop is deprecated and should not be used
-   * @deprecated
-   */
   thOpacity: PropTypes.string,
-  /** this prop is deprecated and should not be used
-   * @deprecated
-   */
-  thBoxShadow: PropTypes.string,
   thLetterSpacing: PropTypes.string,
   rowDetails: PropTypes.func,
   allowMultiDetailsExpansion: PropTypes.bool,
-  hideHeader: PropTypes.bool,
-  newDesign: PropTypes.bool
+  hideHeader: PropTypes.bool
 };
 
 DataTable.displayName = 'DataTable';

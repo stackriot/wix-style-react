@@ -2,7 +2,7 @@ import React from 'react';
 import DataTable from 'wix-style-react/DataTable';
 
 const style = {
-  width: '966px'
+  width: '50%'
 };
 
 const baseData = [
@@ -51,7 +51,6 @@ class DataTableExample extends React.Component {
             /*eslint-enable no-alert*/
           }}
           infiniteScroll
-          newDesign
           itemsPerPage={20}
           columns={[
             {title: 'Row Number', render: (row, rowNum) => '#' + (rowNum + 1), width: '20%', minWidth: '75px', important: true},

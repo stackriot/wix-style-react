@@ -203,14 +203,14 @@ describe('Table', () => {
       title: 'c',
       render: () => 'c',
       style: {
-        paddingLeft: '1px',
+        padding: '1px',
         height: '2px',
         width: '100px'
       }
     });
     const driver = createDriver(<DataTable {...clonedProps}/>);
     expect(driver.getCellStyle(0, 3)).toEqual(jasmine.objectContaining({
-      'padding-left': '1px',
+      padding: '1px',
       height: '2px',
       width: '100px'
     }));
@@ -349,13 +349,6 @@ describe('Table', () => {
       const driver = createDriver(<DataTable {..._props}/>);
       expect(driver.hasSortDescending(1)).toBe(false);
       expect(driver.hasSortDescending(3)).toBe(true);
-    });
-
-    it('should display new sort asc/desc style', () => {
-      const _props = Object.assign({}, props, {onSortClick: jest.fn()});
-      const driver = createDriver(<DataTable {..._props} newDesign/>);
-      expect(driver.hasNewSortDescending(1)).toBe(false);
-      expect(driver.hasNewSortDescending(3)).toBe(true);
     });
 
     it('should call on sort callback', () => {
