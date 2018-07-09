@@ -45,10 +45,10 @@ const dropdownLayoutDriverFactory = ({element, wrapper, component}) => {
     pressEscKey: () => ReactTestUtils.Simulate.keyDown(element, {key: 'Escape'}),
     optionContentAt: position => doIfOptionExists(position, () => optionAt(position).textContent),
     optionAt,
-    clickAtOption: position => doIfOptionExists(position, () => ReactTestUtils.Simulate.mouseDown(optionAt(position))),
+    clickAtOption: position => doIfOptionExists(position, () => ReactTestUtils.Simulate.click(optionAt(position))),
     clickAtOptionWithValue: value => {
       const option = values(options.childNodes).find(option => option.innerHTML === value);
-      option && ReactTestUtils.Simulate.mouseDown(option);
+      option && ReactTestUtils.Simulate.click(option);
     },
     isOptionADivider: position => doIfOptionExists(position, () => isClassExists(optionAt(position), 'divider')),
     mouseEnter: () => ReactTestUtils.Simulate.mouseEnter(element),
@@ -75,7 +75,7 @@ const dropdownLayoutDriverFactory = ({element, wrapper, component}) => {
         isHoveredWithGlobalClassName: () => isClassExists(option, 'wixstylereactHovered'),
         isSelectedWithGlobalClassName: () => isClassExists(option, 'wixstylereactSelected'),
         content: () => option.textContent,
-        click: () => ReactTestUtils.Simulate.mouseDown(option),
+        click: () => ReactTestUtils.Simulate.click(option),
         isDivider: () => isClassExists(option, 'divider')
       };
     }
