@@ -89,12 +89,11 @@ class ButtonWithOptions extends WixComponent {
         options={dropdownLayoutOptions}
         theme={this.props.theme}
         visible={this.state.showOptions}
-        onSelect={(option, sameOptionSelected) => {
+        onSelect={(option, isSelectedOption) => {
           this.setState({selectedId: option.id});
-          this.onSelect(option, sameOptionSelected);
+          this.onSelect(option, isSelectedOption);
         }}
         onClickOutside={this.hideOptions}
-        selectedId={this.state.selectedId}
         />
     );
   }
@@ -116,10 +115,10 @@ class ButtonWithOptions extends WixComponent {
 
   showOptions = () => this.setState({showOptions: true});
 
-  onSelect = (option, sameOptionSelected) => {
+  onSelect = (option, isSelectedOption) => {
     this.hideOptions();
 
-    if (!sameOptionSelected) {
+    if (!isSelectedOption) {
       this.props.onSelect(option);
     }
   }
