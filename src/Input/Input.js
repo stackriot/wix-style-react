@@ -131,14 +131,11 @@ class Input extends Component {
         {...props}
         />);
 
-    //needs additional wrapper with class .prefixSuffixWrapper to fix inputs with prefix in ie11
-    //https://github.com/wix/wix-style-react/issues/1693
-    //https://github.com/wix/wix-style-react/issues/1691
     return (<div className={styles.inputWrapper}>
-      {prefix && <div className={styles.prefixSuffixWrapper}><div className={styles.prefix}>{prefix}</div></div>}
+      {prefix && <div className={styles.prefix}>{prefix}</div>}
 
       { inputElement }
-      { visibleSuffixCount > 0 && <div className={styles.prefixSuffixWrapper}><InputSuffix
+      { visibleSuffixCount > 0 && <InputSuffix
         error={error}
         errorMessage={errorMessage}
         theme={theme}
@@ -155,7 +152,7 @@ class Input extends Component {
         suffix={suffix}
         tooltipPlacement={tooltipPlacement}
         onTooltipShow={onTooltipShow}
-        /></div> }
+        /> }
     </div>);
   }
 
