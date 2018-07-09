@@ -13,8 +13,8 @@
 
 ```javascript
   import React from 'react';
-  import {toggleSwitchTestkitFactory} from 'wix-style-react/testkit';
-  import {toggleSwitchTestkitFactory as enzymeToggleSwitchTestkitFactory} from 'wix-style-react/testkit/enzyme';
+  import {toggleSwitchTestkitFactory} from 'wix-style-react/dist/testkit';
+  import {toggleSwitchTestkitFactory as enzymeToggleSwitchTestkitFactory} from 'wix-style-react/dist/testkit/enzyme';
 
   /***************
    enzyme example
@@ -61,7 +61,7 @@
    protractor example
   *******************/
 
-  import {toggleSwitchTestkitFactory, waitForVisibilityOf} from 'wix-style-react/testkit/protractor';
+  import {toggleSwitchTestkitFactory, waitForVisibilityOf} from 'wix-style-react/dist/testkit/protractor';
 
   //Create an element testkit via the data-hook attribute
   const testkit = toggleSwitchTestkitFactory({dataHook: 'myDataHook'});
