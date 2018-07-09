@@ -197,6 +197,3 @@ export const searchTestkitFactory = testkitFactoryCreator(searchDriverFactory);
 
 import highlighterDriverFactory from '../src/Highlighter/Highlighter.driver';
 export const highlighterTestkitFactory = testkitFactoryCreator(highlighterDriverFactory);
-
-import statsWidgetDriverFactory from '../src/StatsWidget/StatsWidget.driver';
-export const statsWidgetTestkitFactory = testkitFactoryCreator(statsWidgetDriverFactory);
