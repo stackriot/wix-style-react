@@ -38,6 +38,7 @@ class ControlledAutoComplete extends React.Component {
       <AutoComplete
         ref="title"
         value={this.state.title}
+        error
         placeholder={'Place holder'}
         autoSelect
         options={this.state.suggestions}
