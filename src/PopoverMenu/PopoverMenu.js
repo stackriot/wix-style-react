@@ -3,7 +3,7 @@ import WixComponent from '../BaseComponents/WixComponent';
 import styles from './PopoverMenu.scss';
 import Tooltip from '../Tooltip';
 import Button from '../Backoffice/Button';
-import More from '../new-icons/More';
+import Dots from '../Icons/dist/components/Dots';
 import PopoverMenuItem from '../PopoverMenuItem';
 import classnames from 'classnames';
 
@@ -103,7 +103,7 @@ class PopoverMenu extends WixComponent {
           height={buttonHeight}
           theme={buttonTheme}
           >
-          <More/>
+          <Dots size="12px"/>
         </Button>
       </Tooltip>
     );
