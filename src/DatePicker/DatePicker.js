@@ -105,13 +105,7 @@ export default class DatePicker extends WixComponent {
     shouldCloseOnSelect: PropTypes.bool,
 
     /** controls the whether the calendar will be visible or not */
-    isOpen: PropTypes.bool,
-
-    /** will show exclamation icon when true **/
-    error: PropTypes.bool,
-
-    /** will display message when hovering error icon **/
-    errorMessage: PropTypes.node
+    isOpen: PropTypes.bool
   };
 
   static defaultProps = {
@@ -304,40 +298,35 @@ export default class DatePicker extends WixComponent {
 
   render() {
     const {
+      dataHook,
       inputDataHook,
       calendarDataHook,
       dateFormat,
       locale,
       disabled,
       placeholderText,
+      customInput, // TODO: if we allow input to be custom, then we should pass it all props, how else can it be useful?
       readOnly,
-      value: initialValue,
-      error,
-      errorMessage,
-      customInput
+      value: initialValue
     } = this.props;
 
     const {isOpen} = this.state;
 
-    const inputProps = {
-      dataHook: inputDataHook,
-      value: formatDate(initialValue, dateFormat, locale),
-      onInputClicked: this.openCalendar,
-      disabled,
-      readOnly,
-      placeholder: placeholderText,
-      prefix: <span className={styles.icon}><CalendarIcon/></span>,
-      onFocus: this.openCalendar,
-      onKeyDown: this._handleKeyDown,
-      error,
-      errorMessage,
-      ...(customInput ? customInput.props : {})
-    };
-
     return (
-      <div>
+      <div data-hook={dataHook}>
         <div ref="inputRef">
-          {React.cloneElement(customInput || <Input/>, inputProps)}
+          {customInput || <Input
+            dataHook={inputDataHook}
+            value={formatDate(initialValue, dateFormat, locale)}
+            onInputClicked={this.openCalendar}
+            disabled={disabled}
+            readOnly={readOnly}
+            placeholder={placeholderText}
+            prefix={<span className={styles.icon}><CalendarIcon/></span>}
+            onFocus={this.openCalendar}
+            onKeyDown={this._handleKeyDown}
+            />
+          }
         </div>
 
         <div
