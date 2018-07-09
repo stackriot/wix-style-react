@@ -147,15 +147,6 @@ describe('Table', () => {
       expect(driver.getRowDetailsText(0)).toBe('');
     });
 
-    it('should assign the class to rows when rowDetails prop is provided', () => {
-      const props = {
-        ...defaultProps,
-        rowDetails: jest.fn()
-      };
-
-      const driver = createDriver(<DataTable {...props}/>);
-      expect(driver.isRowClickable(0)).toBe(true);
-    });
   });
 
   describe('Sortable column titles', () => {

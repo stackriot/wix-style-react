@@ -131,7 +131,7 @@ class DataTable extends WixComponent {
       }
     });
 
-    if (onRowClick || rowDetails) {
+    if (onRowClick) {
       rowClasses.push(s.clickableDataRow);
     }
 
