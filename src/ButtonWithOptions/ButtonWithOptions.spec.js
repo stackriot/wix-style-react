@@ -67,25 +67,25 @@ const runButtonWithOptionsTest = driverFactory => {
       const {buttonDriver, dropdownLayoutDriver} = createDriver(buttonWithOptions({onSelect}));
       buttonDriver.click();
       dropdownLayoutDriver.clickAtOption(0);
-      expect(onSelect).toBeCalledWith(options[0], false);
+      expect(onSelect).toBeCalledWith(options[0]);
     });
 
-    it('should call onSelect when a selected option is pressed with an indication that this is the selected option', () => {
+    it('should not call onSelect when a selected option is pressed', () => {
       const onSelect = jest.fn();
       const {buttonDriver, dropdownLayoutDriver} = createDriver(buttonWithOptions({onSelect, selectedId: options[0].id}));
       buttonDriver.click();
       dropdownLayoutDriver.clickAtOption(0);
-      expect(onSelect).toBeCalledWith(options[0], true);
+      expect(onSelect).not.toBeCalled();
     });
 
-    it('should call onSelect when a selected option is pressed without initial selectedId and send an indication that this is the selected option', () => {
+    it('should not call onSelect when a selected option is pressed without initial selectedId', () => {
       const onSelect = jest.fn();
       const {buttonDriver, dropdownLayoutDriver} = createDriver(buttonWithOptions({onSelect}));
       buttonDriver.click();
       dropdownLayoutDriver.clickAtOption(0);
-      expect(onSelect).toBeCalledWith(options[0], false);
+      expect(onSelect).toBeCalledWith(options[0]);
       dropdownLayoutDriver.clickAtOption(0);
-      expect(onSelect).toBeCalledWith(options[0], true);
+      expect(onSelect).toHaveBeenCalledTimes(1);
     });
 
     describe('Option children validation', () => {
