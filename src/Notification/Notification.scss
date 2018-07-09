@@ -21,10 +21,7 @@
   right: 12px;
   display: flex;
   align-items: center;
-
-  // because IE11 doesn't vertically align. this doesn't break other
-  // browsers because nested <button> has explicit width/height
-  height: 0;
+  height: 100%;
 }
 
 /*Position*/
