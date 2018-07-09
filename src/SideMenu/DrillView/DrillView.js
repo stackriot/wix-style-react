@@ -76,7 +76,7 @@ class SideMenuDrill extends WixComponent {
 
   clickFirstClickableChild(item, event) {
     let found = false;
-    if (item.props.onClick && !item.props.disabled) {
+    if (item.props.onClick) {
       item.props.onClick(event);
       return true;
     }
