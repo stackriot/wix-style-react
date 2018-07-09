@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import {node, bool, oneOf} from 'prop-types';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
-import CSSTransition from 'react-transition-group/CSSTransition';
-import slideLeft from './SlideLeftAnimation.scss';
-import slideRight from './SlideRightAnimation.scss';
+import Animator from './Animator';
 
 export const SlideDirection = {
   left: 'left',
@@ -12,27 +9,11 @@ export const SlideDirection = {
 
 class SlideAnimation extends Component {
   render() {
-    const {animateEnter, animateLeave, children, direction} = this.props;
-    const animationDuration = 3000; // Synced with SlideAnimation.scss file
-    const transitionName = direction === SlideDirection.left ? slideLeft : slideRight;
-    let items = children ? children : [];
-    items = Array.isArray(items) ? items : [items];
-
+    const {children, direction} = this.props;
     return (
-      <TransitionGroup>
-        {items.map((item, index) =>
-          <CSSTransition
-            key={index}
-            timeout={{
-              enter: animateEnter ? animationDuration : 0,
-              exit: animateLeave ? animationDuration : 0,
-              appear: 0
-            }}
-            classNames={transitionName}
-            >
-            {item}
-          </CSSTransition>)}
-      </TransitionGroup>
+      <Animator translate={{to: direction}}>
+        {children}
+      </Animator>
     );
   }
 }

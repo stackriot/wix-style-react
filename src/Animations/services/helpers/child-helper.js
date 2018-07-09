@@ -25,7 +25,6 @@ class ChildHelper {
 
   getClassLayer1() {
     return new ClassBuilder(this.propsHelper.getAll())
-      .withChildLayer(1)
       .withTranslateWrapper()
       .withDebug()
       .withClassName(this.props.childClassName)
@@ -35,7 +34,7 @@ class ChildHelper {
 
   getClassLayer2() {
     return new ClassBuilder(this.propsHelper.getAll())
-      .withChildLayer(2)
+      .withChild()
       .withOpacity()
       .withScale()
       .withHeight()
@@ -45,7 +44,6 @@ class ChildHelper {
 
   getClassLayer3() {
     return new ClassBuilder(this.propsHelper.getAll())
-      .withChildLayer(3)
       .withTranslate()
       .build();
   }
