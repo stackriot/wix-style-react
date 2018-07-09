@@ -1,32 +1,43 @@
 import PropsHelper from './props-helper';
 import Items from './items-helper';
 import ClassBuilder from '../builders/class-builder';
+import DurationBuilder from '../builders/duration-builder';
 import {transitionClassNames} from '../constants/constants';
-import Time from '../class/time-class';
-import ChildHelper from './child-helper';
 
 class ParentHelper {
 
+  data;
+  isSequence;
   items;
-  time;
-  propsHelper;
 
   constructor(props) {
-    this.propsHelper = new PropsHelper(props);
-    this.items = new Items(this.propsHelper.getChildren());
-    this.time = new Time(this.propsHelper, this.items);
+    const propsHelper = new PropsHelper(props);
+    this.data = propsHelper.getProps(['children', 'sequence', 'timing', 'translate', 'className']);
+    this.items = new Items(this.data.children);
+    this.isAnimate = propsHelper.hasAnimationProps();
+    this.isSequence = this.data.sequence && this.isAnimate && this.items.isMoreThanOne();
   }
 
-  getItemsList() {
-    return this.items.getList();
+  getItems() {
+    return this.items;
   }
 
   getDuration() {
-    return this.time.getTotalDuration();
+    const {timing, translate} = this.data;
+    const {isAnimate, isSequence} = this;
+    const numberOfChildren = this.items.getLength();
+
+    return new DurationBuilder({
+      isAnimate,
+      isSequence,
+      numberOfChildren,
+      timing,
+      translate
+    }).get();
   }
 
   getClass() {
-    const {sequence, className} = this.propsHelper.getProps(['sequence', 'className']);
+    const {sequence, className} = this.data;
     return new ClassBuilder({sequence})
       .withAppearanceState(this.items.isExist())
       .withSequenceWrapper()
@@ -44,11 +55,6 @@ class ParentHelper {
       timeout: duration,
       classNames: transitionClassNames
     };
-  }
-
-  getChildHelper(index, item) {
-    const {propsHelper, time} = this;
-    return new ChildHelper({propsHelper, item, time, index, itemsLength: this.items.getLength()});
   }
 
 }

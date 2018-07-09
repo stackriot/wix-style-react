@@ -45,47 +45,26 @@ const propsMap = {
   debug: (value, name) => getDataOrDefault(debugModes, value, name)
 };
 
-const getPropData = (name, value) => {
-  const getPropMethod = propsMap[name];
-  return getPropMethod && getPropMethod(value, name);
-};
-
-const getData = props => Object.keys(propsMap).reduce((data, propName) => {
-  return ({[propName]: getPropData(propName, props[propName]), ...data});
-}, {});
-
 class PropsHelper {
 
   props;
-  data;
 
   constructor(props) {
     this.props = props;
-    this.data = getData(props);
+  }
+
+  getProp(name) {
+    const value = this.props[name];
+    const getData = propsMap[name];
+    return getData && getData(value, name);
   }
 
   getProps(names) {
-    return names.reduce((data, name) => ({[name]: this.data[name], ...data}), {});
+    return names.reduce((props, name) => ({[name]: this.getProp(name), ...props}), {});
   }
 
-  getAll() {
-    return this.data;
-  }
-
-  getChildren() {
-    return this.data.children;
-  }
-
-  isAnimation() {
+  hasAnimationProps() {
     return !!animationProps.find(p => !!this.props[p]);
-  }
-
-  hasSequence() {
-    return !!this.data.sequence;
-  }
-
-  getSequenceName() {
-    return this.data.sequence;
   }
 }
 
