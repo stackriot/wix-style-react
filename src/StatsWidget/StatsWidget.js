@@ -21,7 +21,7 @@ class StatsWidget extends WixComponent {
       title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       percent: PropTypes.number
-    })),
+    })).isRequired,
     /** Filters for statistics (will be shown in right top corner) Accepts array of  <StatsWidget.Filter> which accepts all dropdown properties*/
     children: PropTypes.arrayOf((propValue, key) => {
       if (!propValue || propValue.length > 3) {
@@ -31,8 +31,7 @@ class StatsWidget extends WixComponent {
       if (propValue[key].type !== StatsWidget.Filter) {
         return new Error(`StatsWidget: Invalid Prop children, only StatsWidget.Filter is allowed`);
       }
-    }),
-    emptyState: PropTypes.node
+    })
   };
 
   _renderPercentage(percent) {
@@ -62,7 +61,7 @@ class StatsWidget extends WixComponent {
   }
 
   render() {
-    const {title, statistics, children, emptyState} = this.props;
+    const {title, statistics, children} = this.props;
 
     return (
       <Card>
@@ -72,14 +71,9 @@ class StatsWidget extends WixComponent {
           suffix={this._renderFilters(children)}
           />
         <Card.Content>
-          {statistics ?
-            <div className={styles.statsColumnWrapper} data-hook="stats-widget-content-wrapper">
-              {statistics.map((stat, index) => this._renderColumn(stat, index))}
-            </div> :
-            <div data-hook="stats-widget-empty-state">
-              { emptyState }
-            </div>
-          }
+          <div className={styles.statsColumnWrapper} data-hook="stats-widget-content-wrapper">
+            {statistics.map((stat, index) => this._renderColumn(stat, index))}
+          </div>
         </Card.Content>
       </Card>
     );

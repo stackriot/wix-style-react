@@ -14,8 +14,6 @@
 | selectFilter| dataHook, index| - | clicks on filter |
 | getFilterDriver| dataHook | - | return relevant driver for filter |
 | exists| - | bool | fulfilled if element in the DOM |
-| isStatisticsContentExists| - | bool | fulfilled if element in the DOM |
-| isEmptyStateExists| - | bool | fulfilled if element in the DOM |
 
 ## StatsWidget Protractor TestKit API
 
