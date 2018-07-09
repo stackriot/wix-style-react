@@ -10,28 +10,16 @@ import ReadmeTestKit from '../../src/MessageBox/README.TESTKIT.md';
 import ExampleStandard from './ExampleStandard';
 import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
 
-const introduction = `# Message Box
-Components to be used within \`wix-style-react/Modal\`:
-
-* \`<MessageBoxMarketerialLayout/>\`
-* \`<MessageBoxFunctionalLayout/>\`
-`;
-
 storiesOf('9. Modals', module)
   .add('MessageBox', () => (
-    <TabbedView tabs={['Usage', 'API', 'TestKits']}>
+    <TabbedView tabs={['API', 'TestKits']}>
       <div>
-        <Markdown source={introduction}/>
-
-        <CodeExample
-          autoExpand
-          title="Code Example"
-          code={ExampleStandardRaw}
-          children={<ExampleStandard/>}
-          />
+        <Markdown source={Readme}/>
+        <h1>Usage examples</h1>
+        <CodeExample title="Standard" code={ExampleStandardRaw}>
+          <ExampleStandard/>
+        </CodeExample>
       </div>
-
-      <Markdown source={Readme}/>
 
       <Markdown source={ReadmeTestKit}/>
     </TabbedView>
