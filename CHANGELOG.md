@@ -14,8 +14,7 @@ Types of changes:
 
 ## 3.1.4 - TBD
 ### Fixed
-- `<RichTextArea/>` fix incorrect Tooltip input width [#1657](https://github.com/wix/wix-style-react/pull/1657)
-- `<DatePicker/>` fix position in safari [#1656](https://github.com/wix/wix-style-react/pull/1656)
+- `<RichTextArea>/` fix incorrect Tooltip input width [#1657](https://github.com/wix/wix-style-react/pull/1657)
  
 ## 3.1.3 - 2018-04-11
 ### Added
