@@ -211,6 +211,5 @@ export {
   textTestkitFactory,
   labelTestkitFactory,
   floatingHelperTestkitFactory,
-  linearProgressBarTestkitFactory,
-  circularProgressBarTestkitFactory
+  linearProgressBarTestkitFactory
 } from 'wix-ui-backoffice/dist/src/testkit/enzyme';
