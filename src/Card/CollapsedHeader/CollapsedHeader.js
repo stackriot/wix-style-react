@@ -1,5 +1,5 @@
 import React from 'react';
-import {bool, node, oneOf, func, string} from 'prop-types';
+import {bool, node, any, oneOf} from 'prop-types';
 import classNames from 'classnames';
 import styles from './CollapsedHeader.scss';
 import Switch from '../../../src/ToggleSwitch';
@@ -15,12 +15,9 @@ class CollapsedHeader extends WixComponent {
     title: node.isRequired,
     subtitle: node,
     withoutDivider: bool,
-    children: node,
+    children: any,
     toggleStyle: oneOf(['switch', 'button']),
-    collapsed: bool,
-    onCollapsedChange: func,
-    buttonCollapseText: string,
-    buttonExpandText: string
+    collapsed: bool
   };
 
   static defaultProps = {
@@ -28,8 +25,6 @@ class CollapsedHeader extends WixComponent {
     collapsed: false,
     toggleStyle: 'switch',
     withoutDivider: false,
-    buttonCollapseText: 'Less',
-    buttonExpandText: 'More',
   };
 
   constructor(props) {
@@ -46,14 +41,8 @@ class CollapsedHeader extends WixComponent {
     }
   }
 
-  toggleCollapsed = event => {
-    const {onCollapsedChange} = this.props;
-    this.setState({isCollapsed: !this.state.isCollapsed});
-    onCollapsedChange && onCollapsedChange(event);
-  };
-
   render() {
-    const {title, subtitle, withoutDivider, buttonCollapseText, buttonExpandText} = this.props;
+    const {title, subtitle, withoutDivider} = this.props;
 
     const headerClasses = classNames({
       [styles.headerOnlyTitle]: !subtitle,
@@ -61,9 +50,13 @@ class CollapsedHeader extends WixComponent {
       [styles.withDivider]: !withoutDivider,
     });
 
+    const onChange = () => {
+      this.setState({isCollapsed: !this.state.isCollapsed});
+    };
+
     const switchElement = (
       <div className={styles.collapsedSwitch}>
-        <Switch dataHook="switch" onChange={this.toggleCollapsed} checked={!this.state.isCollapsed}/>
+        <Switch dataHook="switch" onChange={onChange} checked={!this.state.isCollapsed}/>
       </div>
     );
 
@@ -73,10 +66,10 @@ class CollapsedHeader extends WixComponent {
           dataHook="button"
           height="medium"
           prefixIcon={this.state.isCollapsed ? <ArrowDownThin/> : <ArrowUpThin/>}
-          onClick={this.toggleCollapsed}
+          onClick={onChange}
           theme="whiteblueprimary"
           >
-          {this.state.isCollapsed ? buttonExpandText : buttonCollapseText}
+          {this.state.isCollapsed ? 'More' : 'Less'}
         </Button>
       </div>
     );
