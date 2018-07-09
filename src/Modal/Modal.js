@@ -26,8 +26,7 @@ class Modal extends WixComponent {
   }
 
   static defaultProps = {
-    onOk: () => {
-    },
+    onOk: () => { },
     borderRadius: 0,
     theme: colors.blue,
     shouldCloseOnOverlayClick: false,
@@ -57,8 +56,7 @@ class Modal extends WixComponent {
       onAfterOpen,
       contentLabel,
       closeTimeoutMS,
-      children,
-      appElement
+      children
     } = this.props;
 
     const justifyContent = positions[horizontalPosition];
@@ -103,10 +101,6 @@ class Modal extends WixComponent {
     const portalClassName = classnames(styles.portal, {
       [styles.portalNonScrollable]: !scrollable
     });
-
-    if (appElement) {
-      ReactModal.setAppElement(appElement);
-    }
 
     return (
       <ReactModal

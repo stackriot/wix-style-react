@@ -116,22 +116,6 @@ describe('Modal', () => {
     });
   });
 
-  describe('appName', () => {
-    it('should add aria-hidden body if appElement is not specified', () => {
-      createDriver(<Modal {...props}/>);
-      expect(document.getElementsByTagName('body')[0].getAttribute('aria-hidden')).toBe('true');
-    });
-
-    it('should add aria-hidden to selected element', () => {
-      const appElemnt = document.createElement('div');
-      appElemnt.setAttribute('id', 'app');
-      document.body.appendChild(appElemnt);
-      props.appElement = '#app';
-      createDriver(<Modal {...props}/>);
-      expect(appElemnt.getAttribute('aria-hidden')).toBe('true');
-    });
-  });
-
   describe('testkit', () => {
     it('should exist', () => {
       expect(isTestkitExists(<Modal {...props}/>, modalTestkitFactory)).toBe(true);
@@ -143,5 +127,6 @@ describe('Modal', () => {
       expect(isEnzymeTestkitExists(<Modal {...props}/>, enzymeMessageBoxTestkitFactory)).toBe(true);
     });
   });
+
 
 });
