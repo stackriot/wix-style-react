@@ -158,6 +158,3 @@ export const fieldLabelAttributesTestkitFactory = enzymeTestkitFactoryCreator(fi
 
 import popoverMenuDriverFactory from '../src/PopoverMenu/PopoverMenu.driver';
 export const popoverMenuTestkitFactory = enzymeTestkitFactoryCreator(popoverMenuDriverFactory);
-
-import badgeDriverFactory from '../src/Badge/Badge.driver';
-export const badgeTestkitFactory = enzymeTestkitFactoryCreator(badgeDriverFactory);
