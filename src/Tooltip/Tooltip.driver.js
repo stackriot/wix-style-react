@@ -12,29 +12,22 @@ const arrowDirectionToPlacement = {
 };
 
 const tooltipDriverFactory = ({element, wrapper}) => {
-  const bodyOrWrapper = {
-    querySelector: query => (document.body.querySelector(query) || (wrapper.querySelector && wrapper.querySelector(query))),
-    querySelectorAll: query => {
-      const documentResult = document.body.querySelectorAll(query);
-      return documentResult.length > 0 ? documentResult : (wrapper.querySelectorAll && wrapper.querySelectorAll(query));
-    }
-  };
-  const getTooltipContent = () => bodyOrWrapper.querySelector('.tooltip');
+  const getTooltipContent = () => document.body.querySelector('.tooltip');
 
   return {
-    isShown: () => !!bodyOrWrapper.querySelector('.tooltip'),
+    isShown: () => !!document.body.querySelector('.tooltip'),
     focus: () => ReactTestUtils.Simulate.focus(element),
     blur: () => ReactTestUtils.Simulate.blur(element),
     click: () => ReactTestUtils.Simulate.click(element),
     mouseEnter: () => ReactTestUtils.Simulate.mouseEnter(element),
     mouseLeave: () => ReactTestUtils.Simulate.mouseLeave(element),
-    hasErrorTheme: () => !!bodyOrWrapper.querySelector('.error'),
-    hasDarkTheme: () => !!bodyOrWrapper.querySelector('.dark'),
-    hasLightTheme: () => !!bodyOrWrapper.querySelector('.light'),
-    getTooltipWrapper: getTooltipContent,
+    hasErrorTheme: () => !!document.body.querySelector('.error'),
+    hasDarkTheme: () => !!document.body.querySelector('.dark'),
+    hasLightTheme: () => !!document.body.querySelector('.light'),
+    getTooltipWrapper: () => document.body.querySelector('.tooltip'),
     getChildren: () => element.innerHTML,
     getPlacement: () => {
-      const arrowDirection = last(bodyOrWrapper.querySelectorAll('.arrow')).className.split(' ')[1];
+      const arrowDirection = last(document.querySelectorAll('.arrow')).className.split(' ')[1];
       return arrowDirectionToPlacement[arrowDirection];
     },
     getContent: () => {
