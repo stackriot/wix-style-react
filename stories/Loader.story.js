@@ -8,7 +8,6 @@ export default {
   componentPath: '../src/Loader',
 
   componentProps: {
-    dataHook: 'storybook-loader',
-    status: 'loading'
+    dataHook: 'storybook-loader'
   }
 };
