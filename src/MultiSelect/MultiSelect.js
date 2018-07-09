@@ -36,7 +36,7 @@ class MultiSelect extends InputWithOptions {
 
   inputAdditionalProps() {
     return {
-      inputElement: <InputWithTags maxHeight={this.props.maxHeight}/>,
+      inputElement: <InputWithTags/>,
       onKeyDown: this.onKeyDown,
       delimiters: this.props.delimiters,
       onPaste: this.onPaste
@@ -166,7 +166,6 @@ MultiSelect.propTypes = {
   ...InputWithOptions.propTypes,
   predicate: PropTypes.func,
   tags: PropTypes.array,
-  maxHeight: PropTypes.string,
   delimiters: PropTypes.array
 };
 
