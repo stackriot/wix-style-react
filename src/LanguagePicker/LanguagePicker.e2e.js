@@ -5,16 +5,15 @@ describe('LanguagePicker', () => {
   const storyUrl = getStoryUrl('Core', 'LanguagePicker');
   const dataHook = 'story-languagePicker';
 
-  eyes.it('should change the language', () => {
+  eyes.it('should choose different languages', () => {
     const driver = languagePickerTestkitFactory({dataHook});
 
     browser.get(storyUrl);
 
     waitForVisibilityOf(driver.element(), 'Cannot find LanguagePicker')
       .then(() => {
-        driver.mouseEnter();
-        driver.getDropdownItem(2).click();
-        expect($('#languagePicker-output').getText()).toBe('Hej');
+        driver.click();
+        driver.getDropdownItem(1).click();
       });
   });
 });
