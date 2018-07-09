@@ -12,6 +12,9 @@ export const richTextAreaTestkitFactory = protractorTestkitFactoryCreator(richTe
 import inputAreaDriverFactory from '../src/InputArea/InputArea.protractor.driver';
 export const inputAreaTestkitFactory = protractorTestkitFactoryCreator(inputAreaDriverFactory);
 
+import labelDriverFactory from '../src/Label/Label.protractor.driver';
+export const labelTestkitFactory = protractorTestkitFactoryCreator(labelDriverFactory);
+
 import buttonDriverFactory from '../src/Backoffice/Button/Button.protractor.driver';
 export const buttonTestkitFactory = protractorTestkitFactoryCreator(buttonDriverFactory);
 
@@ -75,8 +78,14 @@ export const fieldWithSelectionCompositeTestkitFactory = protractorTestkitFactor
 import googleAddressWithInputDriverFactory from '../src/GoogleAddressInputWithLabel/GoogleAddressInputWithLabel.protractor.driver';
 export const googleAddressWithInputTestkitFactory = protractorTestkitFactoryCreator(googleAddressWithInputDriverFactory);
 
+import toggleSwitchDriverFactory from '../src/ToggleSwitch/ToggleSwitch.protractor.driver';
+export const toggleSwitchTestkitFactory = protractorTestkitFactoryCreator(toggleSwitchDriverFactory);
+
 import imageViewerDriverFactory from '../src/ImageViewer/ImageViewer.protractor.driver';
 export const imageViewerTestkitFactory = protractorTestkitFactoryCreator(imageViewerDriverFactory);
+
+import textDriverFactory from '../src/Text/Text.protractor.driver';
+export const textTestkitFactory = protractorTestkitFactoryCreator(textDriverFactory);
 
 import tpaTextLinkDriverFactory from '../src/TPA/TextLink/TextLink.protractor.driver';
 export const tpaTextLinkTestkitFactory = protractorTestkitFactoryCreator(tpaTextLinkDriverFactory);
@@ -131,8 +140,5 @@ export const tooltipTestkitFactory = protractorTestkitFactoryCreator(tooltipDriv
 export {
   badgeTestkitFactory,
   stylableCounterBadgeTestkitFactory as counterBadgeTestkitFactory,
-  headingTestkitFactory,
-  toggleSwitchTestkitFactory,
-  textTestkitFactory,
-  labelTestkitFactory
+  headingTestkitFactory
 } from 'wix-ui-backoffice/dist/src/testkit/protractor';

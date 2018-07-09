@@ -5,7 +5,7 @@ import WixComponent from '../BaseComponents/WixComponent';
 import classNames from 'classnames';
 import ChevronLeft from 'wix-ui-icons-common/ChevronLeft';
 import Breadcrumbs from '../Breadcrumbs';
-import Text from '../Deprecated/Text';
+import Text from '../Text';
 import {Animator} from 'wix-animations';
 import Button from '../Button';
 

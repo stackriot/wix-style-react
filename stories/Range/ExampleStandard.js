@@ -100,7 +100,7 @@ class ExampleStandard extends Component {
                 onChange={e => this.setComponentState('label', {children: e.target.value})}
                 />&nbsp;
               <ToggleSwitch
-                size="medium"
+                size="small"
                 checked={this.state.withLabel}
                 onChange={() => this.setState({withLabel: !this.state.withLabel})}
                 />
@@ -142,7 +142,7 @@ class ExampleStandard extends Component {
               <Label>Disabled</Label>
             </div>
             <ToggleSwitch
-              size="medium"
+              size="small"
               checked={this.state.firstInput.disabled}
               onChange={() => this.toggleInputState('disabled')}
               />
@@ -152,7 +152,7 @@ class ExampleStandard extends Component {
               <Label>Error</Label>
             </div>
             <ToggleSwitch
-              size="medium"
+              size="small"
               checked={this.state.firstInput.error}
               onChange={() => this.toggleInputState('error')}
               />
@@ -162,7 +162,7 @@ class ExampleStandard extends Component {
             <div className={styles.flex}>
               <div className={styles.paddRight}><Label>Required Field:</Label></div>
               <ToggleSwitch
-                size="medium"
+                size="small"
                 checked={this.state.required}
                 onChange={() => this.setState({required: !this.state.required})}
                 />

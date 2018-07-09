@@ -4,9 +4,10 @@ import uniqueId from 'lodash/uniqueId';
 import classNames from 'classnames';
 import CheckboxChecked from 'wix-ui-icons-common/system/CheckboxChecked';
 import CheckboxIndeterminate from 'wix-ui-icons-common/system/CheckboxIndeterminate';
-import Label from '../Label';
+
 import styles from './Checkbox.scss';
 import WixComponent from '../BaseComponents/WixComponent';
+import Label from '../Label/Label';
 import {withFocusable, focusableStates} from '../common/Focusable';
 
 /** a simple WixStyle checkbox */
@@ -95,6 +96,7 @@ class Checkbox extends WixComponent {
 
         <Label
           for={id}
+          appearance={disabled ? 'T1.4' : 'T1.1'}
           dataHook="checkbox-label"
           >
           <div

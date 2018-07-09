@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import Text from '../../Deprecated/Text';
+import Text from '../../Text';
 
 import TextLabel from './';
 
