@@ -1,3 +1,5 @@
+
+
 const rowSelector = 'tbody tr';
 const rowByIdx = (component, index) => component.$$(rowSelector).get(index);
 const scrollIntoView = el => {

@@ -69,9 +69,6 @@ export const textLinkLayoutTestkitFactory = testkitFactoryCreator(textLinkLayout
 import dataTableDriverFactory from '../src/DataTable/DataTable.driver';
 export const dataTableTestkitFactory = testkitFactoryCreator(dataTableDriverFactory);
 
-import tableDriverFactory from '../src/Table/Table.driver';
-export const tableTestkitFactory = testkitFactoryCreator(tableDriverFactory);
-
 import textAreaDriverFactory from '../src/TextArea/TextArea.driver';
 export const textAreaTestkitFactory = testkitFactoryCreator(textAreaDriverFactory);
 
