@@ -6,8 +6,9 @@ import typography from '../Typography/Typography.scss';
 import classNames from 'classnames';
 import InfiniteScroll from './InfiniteScroll';
 import WixComponent from '../BaseComponents/WixComponent';
-import SortByArrowUp from '../../new-icons/system/SortByArrowUp';
-import SortByArrowDown from '../../new-icons/system/SortByArrowDown';
+import ArrowVertical from '../Icons/dist/components/ArrowVertical';
+import SortByArrowDown from 'wix-ui-icons-common/system/SortByArrowDown';
+import SortByArrowUp from 'wix-ui-icons-common/system/SortByArrowUp';
 import {Animator} from 'wix-animations';
 import InfoCircle from 'wix-ui-icons-common/InfoCircle';
 import Tooltip from '../Tooltip/Tooltip';
@@ -274,7 +275,7 @@ class TableHeader extends Component {
         </span>);
     }
     const sortDirectionClassName = sortDescending ? this.style.sortArrowAsc : this.style.sortArrowDesc;
-    return <span data-hook={`${colNum}_title`} className={sortDirectionClassName}><SortByArrowUp/></span>;
+    return <span data-hook={`${colNum}_title`} className={sortDirectionClassName}><ArrowVertical/></span>;
   };
 
   renderInfoTooltip = (tooltipProps, colNum) => {
