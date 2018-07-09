@@ -24,13 +24,12 @@ import ExampleGridActionHeadersRaw from '!raw-loader!./ExampleGridActionHeaders'
 import ExampleGridAnimation from './ExampleGridAnimation';
 import ExampleGridAnimationRaw from '!raw-loader!./ExampleGridAnimation';
 
-import GridReadme from '../../src/Grid/README.md';
-import CardReadme from '../../src/Card/README.md';
+import Readme from '../../src/Grid/README.md';
 
 storiesOf('Common', module)
-  .add('Grid', () => (
+  .add('Grid with card layout', () => (
     <div>
-      <Markdown source={GridReadme}/>
+      <Markdown source={Readme}/>
 
       <CodeExample title="Grid with animations" code={ExampleGridAnimationRaw}>
         <ExampleGridAnimation/>
@@ -52,38 +51,12 @@ storiesOf('Common', module)
         <ExampleAutoAdjustedRow/>
       </CodeExample>
 
-      <CodeExample title="Cards with collapsed header" code={ExampleCollapseableHeadersRaw}>
-        <ExampleCollapseableHeaders/>
-      </CodeExample>
-    </div>
-  ))
-  .add('Card', () => (
-    <div>
-      <Markdown source={CardReadme}/>
-
-      <CodeExample title="Grid with card layout" code={ExampleGridStandardRaw}>
-        <ExampleGridStandard/>
-      </CodeExample>
-
-      <CodeExample title="Cards with action headers" code={ExampleGridActionHeadersRaw}>
-        <ExampleGridActionHeaders/>
-      </CodeExample>
-
-      <CodeExample title="Grid with equal height row" code={ExampleRowWithEqualHeightRaw}>
-        <ExampleRowWithEqualHeight/>
-      </CodeExample>
-
-      <CodeExample title="Grid with auto adjusted row" code={ExampleAutoAdjustedRowRaw}>
-        <ExampleAutoAdjustedRow/>
-      </CodeExample>
-
       <CodeExample title="Grid with card RTL" code={ExampleGridRTLRaw}>
         <ExampleGridRTL/>
       </CodeExample>
 
-      <CodeExample title="Cards with collapsed header" code={ExampleCollapseableHeadersRaw}>
+      <CodeExample title="Cards with collpased header" code={ExampleCollapseableHeadersRaw}>
         <ExampleCollapseableHeaders/>
       </CodeExample>
     </div>
-  ))
-;
+  ));
