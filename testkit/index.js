@@ -12,9 +12,6 @@ export const inputAreaTestkitFactory = testkitFactoryCreator(inputAreaDriverFact
 import tooltipDriverFactory from '../src/Tooltip/Tooltip.driver';
 export const tooltipTestkitFactory = testkitFactoryCreator(tooltipDriverFactory);
 
-import backofficeTooltipDriverFactory from '../src/Backoffice/Tooltip/Tooltip.driver';
-export const backofficeTooltipTestkitFactory = testkitFactoryCreator(backofficeTooltipDriverFactory);
-
 import labelDriverFactory from '../src/Label/Label.driver';
 export const labelTestkitFactory = testkitFactoryCreator(labelDriverFactory);
 

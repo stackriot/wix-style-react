@@ -25,6 +25,7 @@ function loadStories() {
   require('../stories/Input');
   require('../stories/InputArea');
   require('../stories/InputWithOptions');
+  require('../stories/ButtonWithOptions');
   require('../stories/LanguagePicker');
   require('../stories/Label');
   require('../stories/Loader');
@@ -38,8 +39,7 @@ function loadStories() {
   require('../stories/Tag');
   require('../stories/TimeInput');
   require('../stories/ToggleSwitch');
-  // require('../stories/Tooltip/Core');
-  require('../stories/Tooltip_New/Core');
+  require('../stories/Tooltip/Core');
 
   //BackOffice
   require('../stories/Backoffice/Button');
@@ -65,13 +65,11 @@ function loadStories() {
   require('../stories/FieldWithSelectionComposite');
   require('../stories/Range');
   require('../stories/AutoCompleteComposite');
-  require('../stories/ButtonWithOptions');
   require('../stories/GoogleAddressInputWithLabel');
   require('../stories/Backoffice/Button/CompositeStory');
   require('../stories/Breadcrubms/CompositeStory');
   require('../stories/Tabs');
-  // require('../stories/Tooltip/Composite/CompositeStory');
-  require('../stories/Tooltip_New/Composite/CompositeStory');
+  require('../stories/Tooltip/Composite/CompositeStory');
   require('../stories/Notification');
 
   // Animations
