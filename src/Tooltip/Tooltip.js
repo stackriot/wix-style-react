@@ -201,12 +201,12 @@ class Tooltip extends WixComponent {
         nextProps.disabled !== this.props.disabled) {
       if (this.state.visible && this.props.hideTrigger === 'custom') {
         if (!nextProps.active || nextProps.disabled) {
-          this.hide(nextProps);
+          this.hide();
         }
       }
       if (!this.state.visible && this.props.showTrigger === 'custom') {
         if (nextProps.active && !nextProps.disabled) {
-          this.show(nextProps);
+          this.show();
         }
       }
     }
@@ -249,8 +249,8 @@ class Tooltip extends WixComponent {
     return this.props.appendToParent ? this._childNode.parentElement : document ? document.body : null;
   }
 
-  show = (props = this.props) => {
-    if (props.disabled) {
+  show() {
+    if (this.props.disabled) {
       return;
     }
     if (this._unmounted) {
@@ -269,8 +269,8 @@ class Tooltip extends WixComponent {
         if (typeof document === 'undefined') {
           return;
         }
-        if (props.onShow) {
-          props.onShow();
+        if (this.props.onShow) {
+          this.props.onShow();
         }
 
         this.setState({visible: true}, () => {
@@ -288,13 +288,13 @@ class Tooltip extends WixComponent {
             fw = this._getRect(tooltipNode).width;
             this._updatePosition(this.tooltipContent);
             sw = this._getRect(tooltipNode).width;
-          } while (!props.appendToParent && fw !== sw);
+          } while (!this.props.appendToParent && fw !== sw);
         });
-      }, props.showDelay);
+      }, this.props.showDelay);
     }
-  };
+  }
 
-  hide = (props = this.props) => {
+  hide() {
     this.setState({hidden: true});
 
     if (this._showTimeout) {
@@ -310,7 +310,7 @@ class Tooltip extends WixComponent {
       const hideLazy = () => {
         if (this._mountNode) {
           ReactDOM.unmountComponentAtNode(this._mountNode);
-          props.onHide && props.onHide();
+          this.props.onHide && this.props.onHide();
           this._getContainer() && this._getContainer().removeChild(this._mountNode);
           this._mountNode = null;
         }
@@ -324,9 +324,9 @@ class Tooltip extends WixComponent {
         return hideLazy();
       }
 
-      this._hideTimeout = setTimeout(hideLazy, props.hideDelay);
+      this._hideTimeout = setTimeout(hideLazy, this.props.hideDelay);
     }
-  };
+  }
 
   _hideOrShow(event) {
     if (this.props.hideTrigger === event && !this.state.hidden) {
