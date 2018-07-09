@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
-import values from 'lodash/values';
 
 const dataTableDriverFactory = ({element, wrapper, component}) => {
 
@@ -15,10 +14,10 @@ const dataTableDriverFactory = ({element, wrapper, component}) => {
 
   return {
     getRowsCount,
-    getRowsWithClassCount: className => values(getRows()).filter(elem => elem.classList.contains(className)).length,
-    getRowText: index => values(getRows()[index].querySelectorAll('td')).map(td => td.textContent),
+    getRowsWithClassCount: className => Object.values(getRows()).filter(elem => elem.classList.contains(className)).length,
+    getRowText: index => Object.values(getRows()[index].querySelectorAll('td')).map(td => td.textContent),
     isRowClickable: index => getRows()[index].classList.contains('clickableDataRow'),
-    getTitles: () => values(getHeader().querySelectorAll('th')).map(th => th.textContent),
+    getTitles: () => Object.values(getHeader().querySelectorAll('th')).map(th => th.textContent),
     isDisplayingNothing: () => !!element,
     isDisplayingHeaderOnly: () => hasHeader() && getRowsCount() === 0,
     hasChildWithId: id => !!element.querySelector(`#${id}`),
