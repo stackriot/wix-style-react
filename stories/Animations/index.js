@@ -68,11 +68,11 @@ storiesOf('Common', module)
         <ExampleString/>
       </CodeExample>
 
-      <CodeExample title="Height Animations" code={ExampleHeightRaw}>
+      <CodeExample title="Height Animation (and also opacity)" code={ExampleHeightRaw}>
         <ExampleHeight/>
       </CodeExample>
 
-      <CodeExample title="Width Animations" code={ExampleWidthRaw}>
+      <CodeExample title="Width Animation" code={ExampleWidthRaw}>
         <ExampleWidth/>
       </CodeExample>
 
