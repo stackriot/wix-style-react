@@ -48,15 +48,10 @@ export default class extends Component {
 
   prepareComponentProps = props =>
     typeof props === 'function' ?
-      props(
-        // setProps
-        componentProps =>
-          this.setState({
-            propsState: {...this.state.propsState, ...componentProps}
-          }),
-
-        // getProps
-        () => this.state.propsState || {}
+      props(componentProps =>
+        this.setState({
+          propsState: {...this.state.propsState, ...componentProps}
+        })
       ) :
       props;
 
