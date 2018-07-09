@@ -13,6 +13,7 @@ export default class BaseTextLink extends WixComponent {
     rel: PropTypes.string,
     target: PropTypes.string,
     ariaLabel: PropTypes.string,
+    color: PropTypes.string,
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
     onClick: PropTypes.func
@@ -49,6 +50,7 @@ export default class BaseTextLink extends WixComponent {
       role: 'link',
       style: {
         textDecoration: 'inherit',
+        color: this.props.color ? this.props.color : 'inherit',
         tabIndex: 0,
         display: 'inline-block'
       },
