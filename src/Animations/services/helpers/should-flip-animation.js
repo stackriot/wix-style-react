@@ -1,5 +1,5 @@
 const shouldFlipAnimation = (sequence, phase) => {
-  let isFlip = !!sequence;
+  let isFlip = true;
   if (phase === 'enter') {
     if ((sequence === 'default') || (sequence === 'flip')) {
       isFlip = false;
