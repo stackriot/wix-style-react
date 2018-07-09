@@ -1,26 +1,45 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactTestUtils from 'react-dom/test-utils';
-import $ from 'jquery';
+import {shallow} from 'enzyme';
+import ToggleSwitch from './ToggleSwitch';
 
-const toggleSwitchDriverFactory = ({element, wrapper, component}) => {
+export default class ToggleSwitchDriver {
+  constructor() {
+    this.props = {};
+  }
 
-  const toggleSwitch = $(element).find('input')[0];
-  const isClassExists = (element, className) => !!(element.className.match(new RegExp('\\b' + className + '\\b')));
-
-  return {
-    exists: () => !!element,
-    click: () => ReactTestUtils.Simulate.change(toggleSwitch),
-    isChecked: () => $(toggleSwitch).is(':checked'),
-    isDisabled: () => isClassExists(element, 'disabled'),
-    isXSmall: () => isClassExists(element, 'toggleSwitchXSmall'),
-    isSmall: () => isClassExists(element, 'toggleSwitchSmall'),
-    isLarge: () => !isClassExists(element, 'toggleSwitchXSmall') && !isClassExists(element, 'toggleSwitchSmall'),
-    setProps: props => {
-      const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
-      ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);
+  given = {
+    size: size => {
+      this.props.size = size;
+      return this;
+    },
+    checked: value => {
+      this.props.checked = value;
+      return this;
+    },
+    onChange: value => {
+      this.props.onChange = value;
+      return this;
     }
   };
-};
 
-export default toggleSwitchDriverFactory;
+  when = {
+    created: () => {
+      this.wrapper = shallow(
+        <ToggleSwitch {...this.props}/>
+      );
+      return this;
+    },
+    changed: () => {
+      this.wrapper.find('input').simulate('change');
+      return this;
+    }
+  };
+
+  get = {
+    element: () => this.wrapper,
+    checked: () => this.wrapper.find('input').props().checked,
+    isXSmall: () => this.wrapper.hasClass('toggleSwitchXSmall'),
+    isSmall: () => this.wrapper.hasClass('toggleSwitchSmall'),
+    isLarge: () => !this.get.isSmall() && !this.get.isXSmall()
+  }
+}
