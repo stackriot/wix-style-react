@@ -3,7 +3,7 @@ import {bool, node} from 'prop-types';
 import styles from './FieldLabelAttributes.scss';
 import WixComponent from '../BaseComponents/WixComponent';
 import Tooltip from '../Tooltip';
-import InfoCircle from '../new-icons/InfoCircle';
+import Info2 from '../Icons/dist/components/Info2';
 
 class FieldLabelAttributes extends WixComponent {
   static tooltipDefaultProps = {
@@ -16,7 +16,7 @@ class FieldLabelAttributes extends WixComponent {
       data-hook="info"
       className={styles.icon}
       >
-      <InfoCircle/>
+      <Info2 size="18px"/>
     </span>;
 
 
@@ -50,7 +50,7 @@ class FieldLabelAttributes extends WixComponent {
         className={styles.root}
         data-hook="field-label-attributes"
         >
-        { this.props.required && <span data-hook="required" className={styles.required}>*</span> }
+        { this.props.required && <span data-hook="required" className={styles.required}/> }
 
         { this.getTooltip() }
       </div>

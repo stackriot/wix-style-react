@@ -1,9 +1,8 @@
 @import '../../common.scss';
 
 .label {
-  display: flex;
+	margin-bottom: 6px;
   width:100%;
-  height: 30px;
 }
 
 $borderColor: $B30;
@@ -17,7 +16,7 @@ $borderColor: $B30;
 
   @mixin apply-to-selection-field-border-element {
     &.checkbox {
-      #{$selectionField} {
+      #{$selectionField} { 
         @content;
       }
     }
@@ -26,9 +25,9 @@ $borderColor: $B30;
       #{$selectionField}>div>div { // Dropdown's <Input> when options not opened
         @content;
       }
-    }
+    } 
   }
-
+  
   display:flex;
   align-items: center;
 
@@ -66,7 +65,7 @@ $borderColor: $B30;
     }
   }
   // TODO: extract mixin - END
-
+     
   &.disabled {
     #{$inputField} {
       border-right:solid 1px $GR20;
@@ -88,7 +87,7 @@ $borderColor: $B30;
   }
 }
 
-// This is separately on root scope on purpose, since this could be extracted in the future
+// This is separately on root scope on purpose, since this could be extracted in the future 
 // as a generic border theme.
 .borderWrapper {
   border-radius: 6px;
