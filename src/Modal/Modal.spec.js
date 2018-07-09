@@ -60,34 +60,25 @@ describe('Modal', () => {
       expect(props.onRequestClose.calledOnce).toBeTruthy();
     });
 
-    describe('timeout', () => {
-      let originalTimeout;
+    it(`should wait closeTimeoutMS before removing the modal`, done => {
 
-      beforeEach(() => {
-        originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+      props.closeTimeoutMS = 400;
+      jasmine.DEFAULT_TIMEOUT_INTERVAL = props.closeTimeoutMS + 500;
+
+      const driver = createDriver(<Modal {...props}/>);
+      driver.setProps({
+        isOpen: false
       });
-      afterEach(() => {
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
-      });
 
-      it(`should wait closeTimeoutMS before removing the modal`, done => {
-        props.closeTimeoutMS = 400;
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = props.closeTimeoutMS + 500;
+      setTimeout(() => {
+        expect(driver.isOpen()).toBeTruthy();
+      }, props.closeTimeoutMS - 50);
 
-        const driver = createDriver(<Modal {...props}/>);
-        driver.setProps({
-          isOpen: false
-        });
+      setTimeout(() => {
+        expect(driver.isOpen()).toBeFalsy();
+        done();
+      }, props.closeTimeoutMS + 50);
 
-        setTimeout(() => {
-          expect(driver.isOpen()).toBeTruthy();
-        }, props.closeTimeoutMS - 50);
-
-        setTimeout(() => {
-          expect(driver.isOpen()).toBeFalsy();
-          done();
-        }, props.closeTimeoutMS + 50);
-      });
     });
   });
 
