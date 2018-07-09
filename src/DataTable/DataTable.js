@@ -203,8 +203,6 @@ class TableHeader extends Component {
     thFontSize: PropTypes.string,
     thBorder: PropTypes.string,
     thColor: PropTypes.string,
-    thOpacity: PropTypes.string,
-    thLetterSpacing: PropTypes.string,
     columns: PropTypes.array
   };
 
@@ -224,8 +222,6 @@ class TableHeader extends Component {
       fontSize: this.props.thFontSize,
       border: this.props.thBorder,
       color: this.props.thColor,
-      opacity: this.props.thOpacity,
-      letterSpacing: this.props.thLetterSpacing,
       cursor: column.sortable === undefined ? 'arrow' : 'pointer'
     };
 
@@ -313,8 +309,6 @@ DataTable.propTypes = {
   thFontSize: PropTypes.string,
   thBorder: PropTypes.string,
   thColor: PropTypes.string,
-  thOpacity: PropTypes.string,
-  thLetterSpacing: PropTypes.string,
   rowDetails: PropTypes.func,
   allowMultiDetailsExpansion: PropTypes.bool,
   hideHeader: PropTypes.bool,
