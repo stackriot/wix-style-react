@@ -2,7 +2,6 @@ import React from 'react';
 import fieldLabelAttributesDriverFactory from './FieldLabelAttributes.driver';
 import {createDriverFactory} from '../test-common';
 import FieldLabelAttributes from './FieldLabelAttributes';
-import Tooltip from '../Tooltip';
 
 describe('FieldLabelAttributes', () => {
 
@@ -28,11 +27,6 @@ describe('FieldLabelAttributes', () => {
 
     it('should exist', () => {
       const driver = createDriver(<FieldLabelAttributes info="help me bla bla"/>);
-      expect(driver.hasInfo()).toBe(true);
-    });
-
-    it('should render tooltip', () => {
-      const driver = createDriver(<FieldLabelAttributes tooltip={<Tooltip content="content"/>}/>);
       expect(driver.hasInfo()).toBe(true);
     });
   });
