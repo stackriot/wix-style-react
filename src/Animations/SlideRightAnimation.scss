@@ -8,11 +8,11 @@
   @extend .enterActive-base;
 }
 
-.exit {
-  @extend .exit-base;
+.leave {
+  @extend .leave-base;
 }
 
-.exit.exitActive {
-  @extend .exitActive-base;
+.leave.leaveActive {
+  @extend .leaveActive-base;
   transform: translate(100%);
 }

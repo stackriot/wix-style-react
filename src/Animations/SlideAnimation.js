@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {node, bool, oneOf} from 'prop-types';
-import {CSSTransition} from 'react-transition-group';
+import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import slideLeft from './SlideLeftAnimation.scss';
 import slideRight from './SlideRightAnimation.scss';
 
@@ -9,34 +9,27 @@ export const SlideDirection = {
   right: 'right'
 };
 
-const animationDuration = 300; // Synced with SlideAnimation.scss file
-
 class SlideAnimation extends Component {
   render() {
-    const {isVisible, animateAppear, animateEnter, animateLeave, children, direction} = this.props;
-    const transitionNames = direction === SlideDirection.left ? slideLeft : slideRight;
-    const childTimeout = {
-      enter: animateEnter ? animationDuration : 0,
-      exit: animateLeave ? animationDuration : 0
-    };
-
+    const {animateAppear, animateEnter, animateLeave, children, direction} = this.props;
+    const animationDuration = 300; // Synced with SlideAnimation.scss file
+    const transitionName = direction === SlideDirection.left ? slideLeft : slideRight;
     return (
-      <CSSTransition
-        in={isVisible}
-        appear={animateAppear}
-        exit={animateLeave}
-        classNames={transitionNames}
-        timeout={childTimeout}
-        unmountOnExit
+      <ReactCSSTransitionGroup
+        transitionAppear={animateAppear}
+        transitionLeave={animateLeave}
+        transitionAppearTimeout={animateAppear ? animationDuration : 0}
+        transitionEnterTimeout={animateEnter ? animationDuration : 0}
+        transitionLeaveTimeout={animateLeave ? animationDuration : 0}
+        transitionName={transitionName}
         >
-        {children || <span/>}
-      </CSSTransition>
+        {children}
+      </ReactCSSTransitionGroup>
     );
   }
 }
 
 SlideAnimation.propTypes = {
-  isVisible: bool.isRequired,
   direction: oneOf([
     SlideDirection.left,
     SlideDirection.right

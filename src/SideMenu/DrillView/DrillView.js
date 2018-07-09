@@ -165,10 +165,6 @@ class SideMenuDrill extends WixComponent {
   }
 
   renderNavigation(menu) {
-    if (!menu) {
-      return null;
-    }
-
     if (menu.props.menuKey === this.props.menuKey) {
       // Render root items
       return menu.props.children;
@@ -179,17 +175,15 @@ class SideMenuDrill extends WixComponent {
   }
 
   renderMenu(menu) {
-    const navigationMenu = this.renderNavigation(menu);
-
-    return navigationMenu && (
+    return (
       <div className={styles.drillViewPanel}>
-        {navigationMenu}
+        {this.renderNavigation(menu)}
       </div>
     );
   }
 
   render() {
-    const {menus, currentMenuId, previousMenuId, showMenuA, slideDirection} = this.state;
+    const {menus, currentMenuId, previousMenuId, showMenuA} = this.state;
     const menuAId = showMenuA ? currentMenuId : previousMenuId;
     const menuBId = showMenuA ? previousMenuId : currentMenuId;
 
@@ -199,11 +193,11 @@ class SideMenuDrill extends WixComponent {
     return (
       <SideMenu dataHook="drill-view" inFlex={this.props.inFlex}>
         <div className={styles.drillViewContainer}>
-          <SlideAnimation direction={slideDirection} animateAppear={false} isVisible={showMenuA}>
-            {this.renderMenu(menuA)}
+          <SlideAnimation direction={this.state.slideDirection} animateAppear={false}>
+            { showMenuA ? this.renderMenu(menuA) : null }
           </SlideAnimation>
-          <SlideAnimation direction={slideDirection} animateAppear={false} isVisible={!showMenuA}>
-            {this.renderMenu(menuB)}
+          <SlideAnimation direction={this.state.slideDirection} animateAppear={false}>
+            { !showMenuA ? this.renderMenu(menuB) : null }
           </SlideAnimation>
         </div>
         {this.props.stickyFooter}
