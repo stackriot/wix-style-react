@@ -3,17 +3,7 @@ const checkboxDriverFactory = component => ({
     component.click();
     component.$('[data-hook^="dropdown-item"]:first-of-type').click();
   },
-  element: () => component,
-  getHeight: () => {
-    return component.getSize().then(size => {
-      return size.height;
-    });
-  },
-  getWidth: () => {
-    return component.getSize().then(size => {
-      return size.width;
-    });
-  }
+  element: () => component
 });
 
 export default checkboxDriverFactory;

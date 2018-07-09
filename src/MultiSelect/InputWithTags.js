@@ -67,7 +67,6 @@ class InputWithTags extends React.Component {
           </div>
 
           <Input
-            width={this.props.width}
             ref={input => this.input = input}
             onBlur={() => this.handleInputBlur()}
             placeholder={tags.length === 0 ? placeholder : ''}
@@ -96,12 +95,6 @@ class InputWithTags extends React.Component {
   select() {
     this.input.select();
   }
-
-  clear() {
-    this.setState({
-      inputValue: ''
-    });
-  }
 }
 
 InputWithTags.propTypes = {
@@ -116,8 +109,7 @@ InputWithTags.propTypes = {
   autoFocus: PropTypes.bool,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
-  delimiters: PropTypes.array,
-  width: PropTypes.string
+  delimiters: PropTypes.array
 };
 
 InputWithTags.defaultProps = {
