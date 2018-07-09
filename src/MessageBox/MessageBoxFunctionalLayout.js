@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as styles from './MessageBoxFunctionalLayout.scss';
-import HeaderLayout from './HeaderLayout';
-import FooterLayout from './FooterLayout';
+import {HeaderLayout, FooterLayout} from './';
 import WixComponent from '../BaseComponents/WixComponent';
 
 class MessageBoxFunctionalLayout extends WixComponent {
