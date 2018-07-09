@@ -38,7 +38,6 @@ class RangeInputWithLabelComposite extends WixComponent {
 
   render() {
     const children = Children.toArray(this.props.children);
-    const rangeType = this.props.children[1].type.displayName;
     const label = children.length === 3 ? (
       <div className={styles.label}>
         {children[0]}
@@ -48,15 +47,15 @@ class RangeInputWithLabelComposite extends WixComponent {
     const firstInput = children.length === 3 ? children[1] : children[0];
     const lastInput = children.length === 3 ? children[2] : children[1];
 
-    const additionalFirstInputProps = {
-      noRightBorderRadius: (rangeType === 'DatePicker') ? styles.firstDate : styles.firstinput,
+    const moreFirstInputProps = {
+      noRightBorderRadius: styles.firstinput,
       onKeyDown: e => this._doKeyDown(e),
       onFocus: e => this._handleFocus(e),
       onBlur: e => this._handleBlur(e)
     };
 
-    const additionalLastInputProps = {
-      noLeftBorderRadius: (rangeType === 'DatePicker') ? styles.lastDate : styles.lastinput,
+    const moreLastInputProps = {
+      noLeftBorderRadius: styles.lastinput,
       onKeyDown: e => this._doKeyDown(e),
       onFocus: e => this._handleFocus(e),
       onBlur: e => this._handleBlur(e)
@@ -70,8 +69,8 @@ class RangeInputWithLabelComposite extends WixComponent {
     return (<div className={styles.wrapper}>
       {label}
       <div className={inputWrapperClassNames}>
-        { React.cloneElement(firstInput, additionalFirstInputProps)}
-        { React.cloneElement(lastInput, additionalLastInputProps)}
+        { React.cloneElement(firstInput, moreFirstInputProps)}
+        { React.cloneElement(lastInput, moreLastInputProps)}
       </div>
     </div>);
   }
