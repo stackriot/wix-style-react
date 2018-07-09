@@ -65,7 +65,6 @@ class Input extends Component {
 
     const onIconClicked = () => {
       if (!disabled) {
-        this.input.focus();
         this._onFocus();
       }
     };
@@ -148,6 +147,7 @@ class Input extends Component {
   };
 
   blur = () => {
+    this._onBlur();
     this.input && this.input.blur();
   };
 
@@ -169,9 +169,7 @@ class Input extends Component {
 
   _onBlur = e => {
     this.setState({focus: false});
-    if (this.props.onBlur) {
-      this.props.onBlur(e);
-    }
+    this.props.onBlur && this.props.onBlur(e);
   };
 
   _onClick = e => {
