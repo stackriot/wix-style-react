@@ -168,7 +168,6 @@ class RichTextArea extends WixComponent {
   hasLink = () => this.state.editorState.inlines.some(inline => inline.type === 'link');
 
   handleButtonClick = (action, type) => {
-    this.setState({activeToolbarButton: type})
     switch (action) {
       case 'mark':
         return this.handleMarkButtonClick(type);
@@ -321,10 +320,6 @@ class RichTextArea extends WixComponent {
       <div className={className} data-hook={dataHook}>
         <div className={classNames(styles.toolbar, {[styles.disabled]: disabled})} data-hook='toolbar'>
           <RichTextEditorToolbar
-            /*
-              activeToolbarButton prop required to trigger RichTextEditorToolbar re-render after toolbar button click
-            */
-            activeToolbarButton={this.state.activeToolbarButton}
             selection={editorState.fragment.text}
             disabled={disabled}
             onClick={this.handleButtonClick}
