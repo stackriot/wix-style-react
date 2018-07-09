@@ -4,7 +4,6 @@ import s from './DataTable.scss';
 import classNames from 'classnames';
 import InfiniteScroll from './InfiniteScroll';
 import WixComponent from '../BaseComponents/WixComponent';
-import ArrowVertical from '../Icons/dist/components/ArrowVertical';
 
 class DataTable extends WixComponent {
   constructor(props) {
@@ -144,28 +143,14 @@ class DataTable extends WixComponent {
     return <td className={classes} key={colNum}>{column.render && column.render(rowData, rowNum)}</td>;
   };
 
-  renderSortingArrow = (sortDescending, colNum) => {
-    if (sortDescending === undefined) {
-      return null;
-    }
-    const sortDirectionClassName = sortDescending ? s.sortArrowAsc : s.sortArrowDesc;
-    return <span data-hook={`${colNum}_title`} className={sortDirectionClassName}><ArrowVertical/></span>;
-  };
-
   renderHeaderCell = (column, colNum) => {
     const style = {
       width: column.width,
       padding: this.props.thPadding,
       height: this.props.thHeight,
-      fontSize: this.props.thFontSize,
-      cursor: column.sortable === undefined ? 'arrow' : 'pointer'
+      fontSize: this.props.thFontSize
     };
-
-    const optionalHeaderCellProps = {};
-    if (column.sortable) {
-      optionalHeaderCellProps.onClick = () => this.props.onSortClick && this.props.onSortClick(column, colNum);
-    }
-    return <th style={style} key={colNum} {...optionalHeaderCellProps}>{column.title}{this.renderSortingArrow(column.sortDescending, colNum)}</th>;
+    return <th style={style} key={colNum}>{column.title}</th>;
   };
 
   calcLastPage = ({data, itemsPerPage}) => Math.ceil(data.length / itemsPerPage) - 1;
@@ -215,9 +200,7 @@ DataTable.propTypes = {
       PropTypes.node,
       PropTypes.string
     ]).isRequired,
-    render: PropTypes.func.isRequired,
-    sortable: PropTypes.bool,
-    sortDescending: PropTypes.bool
+    render: PropTypes.func.isRequired
   })),
   showHeaderWhenEmpty: PropTypes.bool,
   rowDataHook: PropTypes.string,
@@ -236,8 +219,7 @@ DataTable.propTypes = {
   scrollElement: PropTypes.object,
   thPadding: PropTypes.string,
   thHeight: PropTypes.string,
-  thFontSize: PropTypes.string,
-  onSortClick: PropTypes.func
+  thFontSize: PropTypes.string
 };
 
 DataTable.displayName = 'DataTable';
