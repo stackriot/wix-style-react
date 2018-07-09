@@ -14,7 +14,7 @@ import ComponentMetaInfoGetter from '../ComponentMetaInfoGetter';
 
 import styles from './styles.scss';
 
-const isE2E = global.self === global.top;
+const isE2E = process.env.STORYBOOK_E2E;
 
 /**
  * # `story()`

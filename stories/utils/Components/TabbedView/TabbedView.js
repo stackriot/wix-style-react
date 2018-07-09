@@ -34,7 +34,7 @@ class TabbedView extends Component {
   };
 
   render() {
-    const shouldHideForE2E = global.self === global.top;
+    const shouldHideForE2E = process.env.STORYBOOK_E2E;
 
     return (
       <div>
