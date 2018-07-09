@@ -1,49 +1,55 @@
+import $ from 'jquery';
 import moment from 'moment';
 
-function datePickerDriverFactory(component, wrapper = document.body) {
+function datePickerDriverFactory(ele) {
   return {
-    getDatePickerPopup: () => wrapper.querySelector('.react-datepicker'),
-    navigateToNextMonth() {
-      this.getDatePickerPopup().querySelector('.react-datepicker__navigation--next').click();
+    getDatepickerPopup() {
+      return $('.react-datepicker');
     },
-    navigateToPreviousMonth() {
-      this.getDatePickerPopup().querySelector('.react-datepicker__navigation--previous').click();
+
+    nextMonth() {
+      this.getDatepickerPopup().find('.react-datepicker__navigation--next')[0].click();
     },
+
+    previousMonth() {
+      this.getDatepickerPopup().find('.react-datepicker__navigation--previous')[0].click();
+    },
+
     getCurrentMonth() {
-      const monthFieldContent = this.getDatePickerPopup()
-        .querySelector('.react-datepicker__current-month')
-        .textContent;
-      return moment(monthFieldContent, ['MMMM YYYY']);
+      const monthText = this.getDatepickerPopup().find('.react-datepicker__current-month').text();
+      return moment(monthText, ['MMMM YYYY']);
     },
+
     getSelectedDate() {
-      return this.getDatePickerInput().value;
+      return this.getDatepickerInput().val();
     },
-    getDatePickerInput: () => component.querySelector('input'),
-    showDatePickerModal() {
-      this.getDatePickerInput().click();
-      if (!this.getDatePickerPopup()) {
-        throw new Error(
-          `In order to show modal, DatePicker requires an app to be mounted inside document.body`
-        );
-      }
+
+    getDatepickerInput() {
+      return ele.find('input');
     },
-    pickDay(day) {
-      this.getDatePickerPopup().querySelector(`[aria-label='day-${day}']`).click();
+
+    clickInput() {
+      this.getDatepickerInput().click();
     },
-    selectDate(newDate) {
-      this.showDatePickerModal();
-      const currentMonth = this.getCurrentMonth();
-      const monthDiff = newDate.clone().startOf('month').diff(currentMonth, 'month');
+
+    clickDay(day) {
+      this.getDatepickerPopup().find(`[aria-label='day-${day}']`).click();
+    },
+
+    selectDate(date) {
+      this.clickInput();
+      const curMonth = this.getCurrentMonth();
+      const monthDiff = date.clone().startOf('month').diff(curMonth, 'month');
 
       for (let i = 0; i < Math.abs(monthDiff); i++) {
         if (monthDiff > 0) {
-          this.navigateToNextMonth();
+          this.nextMonth();
         } else {
-          this.navigateToPreviousMonth();
+          this.previousMonth();
         }
       }
 
-      this.pickDay(newDate.date());
+      this.clickDay(date.date());
     }
   };
 }

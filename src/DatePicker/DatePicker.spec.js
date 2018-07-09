@@ -2,58 +2,67 @@ import React from 'react';
 import DatePicker from './DatePicker';
 import {datePickerDriverFactory} from './DatePicker.driver';
 import {mount} from 'enzyme';
-import * as Sinon from 'sinon';
+import sinon from 'sinon';
 import moment from 'moment';
 import $ from 'jquery';
 
 describe('DatePicker', () => {
-  let driver, onChangeMock, sinon;
+  let driver, onChange, value;
 
   beforeAll(() => {
-    $(`<div class="date-picker-root"/>`).appendTo(document.body);
+    $('<div class=\'container\'/>').appendTo(document.body);
   });
 
   beforeEach(() => {
-    const datePickerRoot = $('.date-picker-root')[0];
-
-    sinon = Sinon.sandbox.create();
-    onChangeMock = sinon.spy();
-
-    mount(
-      <DatePicker onChange={onChangeMock}/>,
-      {attachTo: datePickerRoot}
-    );
-
-    driver = datePickerDriverFactory(datePickerRoot);
-  });
-
-  afterEach(() => {
-    sinon.restore();
+    onChange = sinon.spy();
   });
 
   describe('calendar', () => {
-    it('calendar is shown', () => {
-      driver.showDatePickerModal();
-      expect(driver.getDatePickerPopup()).not.toBeNull();
+    beforeEach(() => {
+      render();
+
+      driver.clickInput();
     });
 
-    it('calendar is not shown', () => {
-      expect(driver.getDatePickerPopup()).toBeNull();
+    it('calendar is shown', () => {
+      expect(driver.getDatepickerPopup().length).toBe(1);
     });
 
     describe('select a date', () => {
+      beforeEach(() => {
+        value = moment('2016-04-03');
+        render();
+        driver.clickInput();
+        driver.selectDate(moment('2016-03-15'));
+      });
+
       it('calendar is closed', () => {
-        driver.selectDate(moment('2016-03-16'));
-        expect(driver.getDatePickerPopup()).toBeNull();
+        expect(driver.getDatepickerPopup().length).toBe(0);
       });
 
       it('onChange reports the selected date', () => {
-        driver.selectDate(moment('2016-03-16'));
-        const changeDateCallbackValue = onChangeMock.getCall(0).args[0];
-        expect(changeDateCallbackValue.toISOString()).toEqual(moment('2016-03-16').toISOString());
+        const onChangeDate = onChange.getCall(0).args[0];
+        expect(onChangeDate.toISOString()).toEqual(moment('2016-03-15').toISOString());
       });
     });
-
   });
 
+  it('calendar is not shown', () => {
+    render();
+    expect(driver.getDatepickerPopup().length).toBe(0);
+  });
+
+  function render() {
+    mount(
+      <DatePicker
+        onChange={onChange}
+        value={value}
+        />,
+      {
+        attachTo: $('.container')[0]
+      }
+    );
+
+    driver = datePickerDriverFactory($('.container'));
+  }
 });
