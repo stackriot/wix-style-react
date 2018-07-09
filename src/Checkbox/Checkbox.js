@@ -8,7 +8,6 @@ import Label from '../Label';
 import styles from './Checkbox.scss';
 import WixComponent from '../BaseComponents/WixComponent';
 import {withFocusable, focusableStates} from '../common/Focusable';
-import deprecationLog from '../utils/deprecationLog';
 
 /** a simple WixStyle checkbox */
 class Checkbox extends WixComponent {
@@ -22,6 +21,7 @@ class Checkbox extends WixComponent {
 
   static propTypes = {
     /** used for automatic testing */
+    active: bool,
     checked: bool,
     children: node,
     disabled: bool,
@@ -31,7 +31,7 @@ class Checkbox extends WixComponent {
 
     /** used for automatic testing */
     hover: bool,
-    size: oneOf(['medium']),
+    size: oneOf(['medium', 'large']),
     onChange: func
   };
 
@@ -43,20 +43,9 @@ class Checkbox extends WixComponent {
     }
   };
 
-  warnAboutDeprecations = () => {
-    if (this.props.size === 'large') {
-      deprecationLog('Checkbox prop "size" with value "large" is deprecated and will be removed in next major release, please use "medium" size instead');
-    }
-    if (this.props.active !== undefined) {
-      deprecationLog('Checkbox prop "active" is deprecated, use "checked" prop instead');
-    }
-  }
-
   _id = `${Checkbox.displayName}-${uniqueId()}`;
 
   render() {
-    this.warnAboutDeprecations();
-
     const {
       id = this._id,
       checked,
