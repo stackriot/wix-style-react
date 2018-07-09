@@ -21,8 +21,7 @@ class ExampleTooltip extends Component {
     onShowText: 'onShow triggered',
     onHideText: 'onHide triggered',
     moveBy: {x: 0, y: 0},
-    shouldUpdatePosition: false,
-    showImmediately: false
+    shouldUpdatePosition: false
   };
 
   render() {
@@ -113,16 +112,6 @@ class ExampleTooltip extends Component {
           </div>
 
           <div className={styles.option}>
-            <Label>Show Tooltip Immediately</Label>
-            <div className={styles.flex}>
-              <ToggleSwitch
-                checked={this.state.showImmediately}
-                onChange={() => this.setState({showImmediately: !this.state.showImmediately})}
-                />
-            </div>
-          </div>
-
-          <div className={styles.option}>
             <Label>Move By</Label>
             <div className={styles.flex}>
               <Label>x
@@ -157,7 +146,6 @@ class ExampleTooltip extends Component {
               onShow={() => console.log(this.state.onShowText)}
               onHide={() => console.log(this.state.onHideText)}
               shouldUpdatePosition={this.state.shouldUpdatePosition}
-              showImmediately={this.state.showImmediately}
               moveBy={this.state.moveBy}
               />
           </div>

@@ -31,7 +31,6 @@ const tooltipDriverFactory = ({element, wrapper}) => {
     hasErrorTheme: () => !!bodyOrWrapper.querySelector('.error'),
     hasDarkTheme: () => !!bodyOrWrapper.querySelector('.dark'),
     hasLightTheme: () => !!bodyOrWrapper.querySelector('.light'),
-    hasAnimationClass: () => !!bodyOrWrapper.querySelector('.fadeIn'),
     getTooltipWrapper: getTooltipContent,
     getChildren: () => element.innerHTML,
     getPlacement: () => {

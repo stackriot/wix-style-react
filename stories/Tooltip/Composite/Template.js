@@ -18,7 +18,6 @@ export class Template extends Component {
     onShow: Tooltip.propTypes.onShow,
     onHide: Tooltip.propTypes.onHide,
     shouldUpdatePosition: Tooltip.propTypes.shouldUpdatePosition,
-    showImmediately: Tooltip.propTypes.showImmediately,
     moveBy: Tooltip.propTypes.moveBy
   };
 
@@ -51,7 +50,6 @@ export class Template extends Component {
         onHide={this.props.onHide}
         shouldCloseOnClickOutside
         shouldUpdatePosition={this.props.shouldUpdatePosition}
-        showImmediately={this.props.showImmediately}
         moveBy={this.props.moveBy}
         >
         {this.getTooltipTarget()}

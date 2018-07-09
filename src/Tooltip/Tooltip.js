@@ -90,10 +90,7 @@ class Tooltip extends WixComponent {
     padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
     /** Allows updating the tooltip position **/
-    shouldUpdatePosition: PropTypes.bool,
-
-    /** Show Tooltip Immediately - with no delay and no animation */
-    showImmediately: PropTypes.bool
+    shouldUpdatePosition: PropTypes.bool
   };
 
   static defaultProps = {
@@ -116,8 +113,7 @@ class Tooltip extends WixComponent {
     shouldCloseOnClickOutside: false,
     textAlign: 'left',
     relative: false,
-    shouldUpdatePosition: false,
-    showImmediately: false
+    shouldUpdatePosition: false
   };
 
   _childNode = null;
@@ -167,7 +163,6 @@ class Tooltip extends WixComponent {
               this.tooltipContent = ref;
             }
           }}
-          showImmediately={this.props.showImmediately}
           theme={this.props.theme}
           bounce={this.props.bounce}
           arrowPlacement={arrowPlacement[this.props.placement]}
@@ -271,7 +266,6 @@ class Tooltip extends WixComponent {
       return;
     }
     if (!this.state.visible) {
-      const delay = this.props.showImmediately ? 0 : props.showDelay;
       this._showTimeout = setTimeout(() => {
         if (typeof document === 'undefined') {
           return;
@@ -302,7 +296,7 @@ class Tooltip extends WixComponent {
             sw = this._getRect(tooltipNode).width;
           } while (!props.appendToParent && fw !== sw);
         });
-      }, delay);
+      }, props.showDelay);
     }
   };
 
