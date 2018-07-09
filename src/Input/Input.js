@@ -62,8 +62,7 @@ class Input extends Component {
       width,
       tooltipPlacement,
       onTooltipShow,
-      autocomplete,
-      required
+      autocomplete
     } = this.props;
 
     const onIconClicked = () => {
@@ -112,7 +111,6 @@ class Input extends Component {
         onKeyUp={onKeyUp}
         readOnly={readOnly}
         type={type}
-        required={required}
         autoComplete={autocomplete}
         onCompositionStart={() => this.onCompositionChange(true)}
         onCompositionEnd={() => this.onCompositionChange(false)}
@@ -365,8 +363,7 @@ Input.propTypes = {
   /** Inputs value */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   width: PropTypes.string,
-  withSelection: PropTypes.bool,
-  required: PropTypes.bool
+  withSelection: PropTypes.bool
 };
 
 export default Input;

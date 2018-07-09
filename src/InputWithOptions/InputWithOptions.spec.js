@@ -215,29 +215,46 @@ const runInputWithOptionsTest = driverFactory => {
       expect(onManuallyInput).toBeCalledWith('my text', undefined);
     });
 
-    it('should close dropdown on press tab key', () => {
+    it('should blur on tab key press', () => {
       const onManuallyInput = jest.fn();
       const {driver, inputDriver, dropdownLayoutDriver} = createDriver(<InputWithOptions options={options} onManuallyInput={onManuallyInput}/>);
-      inputDriver.focus();
-      driver.pressDownKey();
-      expect(inputDriver.isFocus()).toBe(true);
-      expect(dropdownLayoutDriver.isShown()).toBe(true);
-      driver.pressTabKey();
-      // todo: jest limitation of mimicking native Tab browser behaviour
-      // expect(inputDriver.isFocus()).toBe(false);
-      expect(dropdownLayoutDriver.isShown()).toBe(false);
-    });
-
-    it('should stay focused on tab key press with closeOnSelect=false', () => {
-      const onManuallyInput = jest.fn();
-      const {driver, inputDriver, dropdownLayoutDriver} = createDriver(<InputWithOptions options={options} onManuallyInput={onManuallyInput} closeOnSelect={false}/>);
       inputDriver.focus();
       inputDriver.enterText('Option 1');
       driver.pressDownKey();
       expect(inputDriver.isFocus()).toBe(true);
       driver.pressTabKey();
-      expect(inputDriver.isFocus()).toBe(true);
-      expect(dropdownLayoutDriver.isShown()).toBe(true);
+      expect(inputDriver.isFocus()).toBe(false);
+      expect(dropdownLayoutDriver.isShown()).toBe(false);
+    });
+
+    describe('closeOnSelect property', () => {
+      it('should stay focused on tab key press (when closeOnSelect=false)', () => {
+        const onManuallyInput = jest.fn();
+        const {driver, inputDriver, dropdownLayoutDriver} = createDriver(<InputWithOptions options={options} onManuallyInput={onManuallyInput} closeOnSelect={false}/>);
+        inputDriver.focus();
+        inputDriver.enterText('Option 1');
+        driver.pressDownKey();
+        expect(inputDriver.isFocus()).toBe(true);
+        driver.pressTabKey();
+        expect(inputDriver.isFocus()).toBe(true);
+        expect(dropdownLayoutDriver.isShown()).toBe(true);
+      });
+
+      it('should hide options on option select (when closeOnSelect=true)', () => {
+        const driver = createDriver(
+          <ControlledInputWithOptions
+            options={options}
+            closeOnSelect
+            onSelect={function (option) {
+              this.setState({value: option.value});
+            }}
+            />
+        );
+
+        driver.inputDriver.focus();
+        driver.dropdownLayoutDriver.clickAtOption(0);
+        expect(driver.dropdownLayoutDriver.isShown()).toBe(false);
+      });
     });
 
     it('should suggest an option when calling onManuallyInput', () => {
@@ -351,21 +368,6 @@ const runInputWithOptionsTest = driverFactory => {
       driver.dropdownLayoutDriver.clickAtOption(OPTION_INDEX);
       expect(onChange).toBeCalled();
       expect(onChange.mock.calls[0][0].target.value).toBe(options[OPTION_INDEX].value);
-    });
-
-    it('should support autocomplete prop', () => {
-      const {inputDriver} = createDriver(<InputWithOptions autocomplete="off"/>);
-      expect(inputDriver.getAutocomplete()).toBe('off');
-    });
-
-    it('should support tabIndex prop', () => {
-      const {dropdownLayoutDriver} = createDriver(<InputWithOptions tabIndex={-1}/>);
-      expect(dropdownLayoutDriver.tabIndex()).toBe(-1);
-    });
-
-    it('should support required prop', () => {
-      const {inputDriver} = createDriver(<InputWithOptions required/>);
-      expect(inputDriver.getRequired()).toBeTruthy();
     });
 
     describe('testkit', () => {

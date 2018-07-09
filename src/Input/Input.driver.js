@@ -33,7 +33,6 @@ const inputDriverFactory = ({element, wrapper, component}) => {
     getAriaControls: () => input.getAttribute('aria-controls'),
     getAriaDescribedby: () => input.getAttribute('aria-describedby'),
     getAutocomplete: () => input.getAttribute('autocomplete'),
-    getRequired: () => input.required,
     getType: () => input.type,
     hasPrefix: () => element.querySelectorAll(`.${styles.prefix}`).length === 1,
     hasPrefixClass: () => element.querySelectorAll(`.${styles.input}.${styles.withPrefix}`).length === 1,
