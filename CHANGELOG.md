@@ -20,10 +20,6 @@ Types of changes:
 ### Added
 - 
 
-## 2.0.22 - 2018-02-11
-### Fixed
-- fix `puppeteer` testkit driver for the `<Label/>` component.
-
 ## 2.0.21 - 2018-02-11
 ### Fixed
 - `<Page/>` - Fixed width issues with windows browser.
