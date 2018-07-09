@@ -103,19 +103,13 @@ class DataTable extends WixComponent {
     </tbody>
   );
 
-  onRowClick = (rowData, rowNum) => {
-    const {onRowClick, rowDetails} = this.props;
-    onRowClick && onRowClick(rowData, rowNum);
-    rowDetails && this.toggleRowDetails(rowNum);
-  }
-
   renderRow = (rowData, rowNum) => {
     const {onRowClick, onMouseEnterRow, onMouseLeaveRow, rowDataHook, dynamicRowClass, rowDetails} = this.props;
     const rowClasses = [this.props.rowClass];
     const optionalRowProps = {};
 
     const handlers = [
-      {rowEventHandler: this.onRowClick, eventHandler: 'onClick'},
+      {rowEventHandler: onRowClick, eventHandler: 'onClick'},
       {rowEventHandler: onMouseEnterRow, eventHandler: 'onMouseEnter'},
       {rowEventHandler: onMouseLeaveRow, eventHandler: 'onMouseLeave'}
     ];
@@ -127,6 +121,7 @@ class DataTable extends WixComponent {
             return;
           }
           rowEventHandler(rowData, rowNum);
+          this.tryToggleRowDetails(eventHandler, rowNum);
         };
       }
     });
@@ -178,7 +173,10 @@ class DataTable extends WixComponent {
     }
   }
 
-  toggleRowDetails = selectedRow => {
+  tryToggleRowDetails = (eventHandler, selectedRow) => {
+    if (eventHandler !== 'onClick') {
+      return;
+    }
     let selectedRows = {[selectedRow]: !this.state.selectedRows[selectedRow]};
     if (this.props.allowMultiDetailsExpansion) {
       selectedRows = Object.assign({}, this.state.selectedRows, {[selectedRow]: !this.state.selectedRows[selectedRow]});
