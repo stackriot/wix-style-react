@@ -39,10 +39,6 @@
 
 .onDarkBackground {
   @include breadcrumbsHover($D60, transparentize($D80, .9));
-
-  .item {
-    color: $D60;
-  }
 }
 
 .item:not(.disabled):not(.active) {
