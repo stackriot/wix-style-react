@@ -22,23 +22,18 @@
 .back-button {
     position: relative;
     top: 6px;
-    left: -12px;
+    left: -14px;
     float: left;
-    z-index: 1;
 
     button {
         background-color: transparent;
         border-color: transparent;
 
         &:hover {
-            background-color: $D80;
-            border-color: $D80;
+            background-color: white;
+            border-color: white;
         }
     }
-}
-
-.title-container {
-    float: left;
 }
 
 .title {

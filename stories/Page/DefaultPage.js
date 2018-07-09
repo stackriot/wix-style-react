@@ -16,7 +16,7 @@ export default class PageWrapper extends React.Component {
         <Page>
           <Page.Header>
             <PageHeader
-              breadcrumbs={showBreadcrumbs ? <Breadcrumbs/> : null}
+              breadcrumbs={showBreadcrumbs && <Breadcrumbs/>}
               title={title}
               subtitle={subtitle}
               showBackButton={showBackButton}
