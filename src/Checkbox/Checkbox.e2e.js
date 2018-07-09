@@ -1,24 +1,54 @@
 import eyes from 'eyes.it';
 import {checkboxTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
-import autoExampleTestkitFactory from '../../stories/utils/Components/AutoExample/protractor.driver';
 
 describe('Checkbox', () => {
-  const storyUrl = getStoryUrl('4. Selection', '4.2 Checkbox');
-  const autoExampleDriver = autoExampleTestkitFactory({dataHook: 'auto-example'});
-  const checkboxDriver = checkboxTestkitFactory({dataHook: 'storybook-checkbox'});
+  const storyUrl = getStoryUrl('Core', 'Checkbox');
 
-  beforeEach(() => {
+  eyes.it('should select first checkbox', () => {
+    const driver = checkboxTestkitFactory({dataHook: 'story-checkbox-1'});
+
     browser.get(storyUrl);
+
+    waitForVisibilityOf(driver.element(), 'Cannot find Checkbox')
+      .then(() => {
+        driver.getLabel().click();
+        expect(driver.isChecked()).toBe(true);
+
+        driver.getLabel().click();
+        expect(driver.isChecked()).toBe(false);
+      });
   });
 
-  eyes.it('should toggle state when clicked', () => {
-    waitForVisibilityOf(checkboxDriver.element(), 'Cannot find Checkbox')
-      .then(() => {
-        autoExampleDriver.get.toggle('storybook-Checkbox-checked-toggle').click();
-        expect(checkboxDriver.isChecked()).toBe(true);
+  eyes.it('should select second checkbox', () => {
+    const driver = checkboxTestkitFactory({dataHook: 'story-checkbox-2'});
 
-        autoExampleDriver.get.toggle('storybook-Checkbox-checked-toggle').click();
-        expect(checkboxDriver.isChecked()).toBe(false);
+    browser.get(storyUrl);
+
+    waitForVisibilityOf(driver.element(), 'Cannot find Checkbox')
+      .then(() => {
+        driver.getLabel().click();
+        expect(driver.isChecked()).toBe(true);
+
+        driver.getLabel().click();
+        expect(driver.isChecked()).toBe(false);
+      });
+  });
+
+  eyes.it('should select third checkbox (two times selected)', () => {
+    const driver = checkboxTestkitFactory({dataHook: 'story-checkbox-3'});
+
+    browser.get(storyUrl);
+
+    waitForVisibilityOf(driver.element(), 'Cannot find Checkbox')
+      .then(() => {
+        driver.getLabel().click();
+        expect(driver.isChecked()).toBe(true);
+
+        driver.getLabel().click();
+        expect(driver.isChecked()).toBe(true);
+
+        driver.getLabel().click();
+        expect(driver.isChecked()).toBe(false);
       });
   });
 });

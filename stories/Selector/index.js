@@ -9,7 +9,7 @@ import Readme from '../../src/Selector/README.md';
 import ExampleControlled from './ExampleControlled';
 import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
 
-storiesOf('Core', module)
+storiesOf('4. Selection', module)
   .add('Selector', () => (
     <TabbedView tabs={['API', 'TestKits']}>
       <div>
