@@ -1,12 +1,12 @@
+import story from 'story';
 import React from 'react';
 
 import Text from 'wix-style-react/Text';
 import Badge from 'wix-style-react/Badge';
 
-export default {
+story({
   category: 'Core',
-  componentPath: '../src/Badge',
-  component: Badge,
+  componentSrcFolder: 'Badge',
   componentProps: {
     children: 'I\'m a Badge!',
     dataHook: 'storybook-badge'
@@ -18,4 +18,4 @@ export default {
       <Text appearance="H0">I go down with alignment <Badge alignment="bottom">bottom</Badge></Text>
     </div>
   )
-};
+});

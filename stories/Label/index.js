@@ -1,9 +1,8 @@
 import React from 'react';
-
+import story from 'story';
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import {Image} from 'wix-style-react/Icons';
-import Label from 'wix-style-react/Label';
 
 import ExampleStandard from './ExampleStandard';
 import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
@@ -14,22 +13,18 @@ const children = [
   <span key={1}>Hello <Image/></span>
 ];
 
-export default {
+story({
   category: 'Core',
-  component: Label,
-  componentPath: '../../src/Label',
-
+  componentSrcFolder: 'Label',
   componentProps: {
     children: children[0]
   },
-
   exampleProps: {
     children
   },
-
   examples: (
     <CodeExample title="Standard" code={ExampleStandardRaw}>
       <ExampleStandard/>
     </CodeExample>
   )
-};
+});

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Checkbox from 'wix-style-react/Checkbox';
 import {Languages} from 'wix-style-react/Icons';
+import story from 'story';
 
 const labelExamples = [
   'Hello World!',
@@ -9,11 +9,10 @@ const labelExamples = [
   <span key={1}>Hello <Languages/></span>
 ];
 
-export default {
+story({
   category: '4. Selection',
   storyName: '4.2 Checkbox',
-  component: Checkbox,
-  componentPath: '../src/Checkbox',
+  componentSrcFolder: 'Checkbox',
 
   componentProps: setState => ({
     children: labelExamples[0],
@@ -25,4 +24,4 @@ export default {
     children: labelExamples,
     onChange: ({target: {checked}}) => checked ? 'Checked' : 'Unchecked'
   }
-};
+});

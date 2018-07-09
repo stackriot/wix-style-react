@@ -1,4 +1,5 @@
 import React from 'react';
+import story from 'story';
 import RadioGroup from 'wix-style-react/RadioGroup';
 
 const exampleChildren = [
@@ -20,21 +21,18 @@ const exampleChildren = [
   ]
 ];
 
-export default {
+story({
   category: '4. Selection',
   storyName: '4.3 Radio Button Group',
-  component: RadioGroup,
-  componentPath: '../src/RadioGroup',
-
+  componentSrcFolder: 'RadioGroup',
   componentProps: setState => ({
     value: 1,
     children: exampleChildren[0],
     onChange: value => setState({value}),
     dataHook: 'storybook-radiogroup'
   }),
-
   exampleProps: {
     children: exampleChildren,
     onChange: value => value
   }
-};
+});
