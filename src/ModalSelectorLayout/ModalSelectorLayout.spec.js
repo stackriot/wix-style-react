@@ -6,7 +6,6 @@ import ModalSelectorLayout from './ModalSelectorLayout';
 import {createDriverFactory} from '../test-common';
 import modalSelectorLayoutDriverFactory from './ModalSelectorLayout.driver';
 import times from 'lodash/times';
-import {mount} from 'enzyme';
 
 describe('ModalSelectorLayout', () => {
   // taken from here: https://github.com/facebook/jest/issues/2157#issuecomment-279171856
@@ -475,7 +474,7 @@ describe('ModalSelectorLayout', () => {
     describe('enzyme', () => {
       it('should exist', () => {
         expect(isEnzymeTestkitExists(
-          <ModalSelectorLayout {...requiredProps}/>, enzymeModalSelectorLayoutTestkitFactory, mount)).toBe(true);
+          <ModalSelectorLayout {...requiredProps}/>, enzymeModalSelectorLayoutTestkitFactory)).toBe(true);
       });
     });
   });

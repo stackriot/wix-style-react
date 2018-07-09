@@ -6,7 +6,6 @@ import sinon from 'sinon';
 import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
 import {modalTestkitFactory} from '../../testkit';
 import {modalTestkitFactory as enzymeMessageBoxTestkitFactory} from '../../testkit/enzyme';
-import {mount} from 'enzyme';
 
 describe('Modal', () => {
   const createDriver = createDriverFactory(ModalFactory);
@@ -141,7 +140,7 @@ describe('Modal', () => {
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<Modal {...props}/>, enzymeMessageBoxTestkitFactory, mount)).toBe(true);
+      expect(isEnzymeTestkitExists(<Modal {...props}/>, enzymeMessageBoxTestkitFactory)).toBe(true);
     });
   });
 

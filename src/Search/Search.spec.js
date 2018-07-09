@@ -11,7 +11,6 @@ import {searchTestkitFactory} from '../../testkit';
 import {searchTestkitFactory as enzymeSearchTestkitFactory} from '../../testkit/enzyme';
 import {runInputWithOptionsTest} from '../InputWithOptions/InputWithOptions.spec';
 import {makeControlled} from '../../test/utils';
-import {mount} from 'enzyme';
 
 runInputWithOptionsTest(searchDriverFactory);
 
@@ -202,6 +201,6 @@ describe('Testkits', () => {
   });
 
   it('Using Enzyme testkit', () => {
-    expect(isEnzymeTestkitExists(<Search options={options}/>, enzymeSearchTestkitFactory, mount)).toBe(true);
+    expect(isEnzymeTestkitExists(<Search options={options}/>, enzymeSearchTestkitFactory)).toBe(true);
   });
 });

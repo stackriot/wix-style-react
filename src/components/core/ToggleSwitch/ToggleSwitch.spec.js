@@ -5,7 +5,6 @@ import {toggleSwitchTestkitFactory} from '../../../../testkit';
 import ToggleSwitch from './index';
 import {toggleSwitchTestkitFactory as enzymeToggleSwitchTestkitFactory} from '../../../../testkit/enzyme';
 import {isTestkitExists, isEnzymeTestkitExists} from '../../../../testkit/test-common';
-import {mount} from 'enzyme';
 
 describe('ToggleSwitch', () => {
 
@@ -68,7 +67,7 @@ describe('ToggleSwitch', () => {
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<ToggleSwitch onChange={() => {}}/>, enzymeToggleSwitchTestkitFactory, mount)).toBe(true);
+      expect(isEnzymeTestkitExists(<ToggleSwitch onChange={() => {}}/>, enzymeToggleSwitchTestkitFactory)).toBe(true);
     });
   });
 });

@@ -5,7 +5,6 @@ import {createDriverFactory} from '../test-common';
 import {loaderTestkitFactory} from '../../testkit';
 import {loaderTestkitFactory as enzymeLoaderTestkitFactory} from '../../testkit/enzyme';
 import {isEnzymeTestkitExists, isTestkitExists} from '../../testkit/test-common';
-import {mount} from 'enzyme';
 
 describe('Loader', () => {
   const createDriver = createDriverFactory(loaderDriverFactory);
@@ -68,7 +67,7 @@ describe('Loader', () => {
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<Loader/>, enzymeLoaderTestkitFactory, mount)).toBe(true);
+      expect(isEnzymeTestkitExists(<Loader/>, enzymeLoaderTestkitFactory)).toBe(true);
     });
   });
 
