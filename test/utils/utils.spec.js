@@ -7,7 +7,7 @@ import {
 import {
   isClassExists,
   makeControlled
-} from './index';
+} from './utils';
 
 describe('test-utils', () => {
   describe('isClassExists function', () => {

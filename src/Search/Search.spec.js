@@ -10,7 +10,7 @@ import {
 import {searchTestkitFactory} from '../../testkit';
 import {searchTestkitFactory as enzymeSearchTestkitFactory} from '../../testkit/enzyme';
 import {runInputWithOptionsTest} from '../InputWithOptions/InputWithOptions.spec';
-import {makeControlled} from '../../test/utils';
+import {makeControlled} from '../../test/utils/utils';
 
 runInputWithOptionsTest(searchDriverFactory);
 
