@@ -6,9 +6,8 @@ import styles from './Input.scss';
 const inputDriverFactory = ({element, wrapper, component}) => {
   const input = element && element.querySelector('input');
   const clearButton = element && element.querySelector(`.${styles.clearButton}`);
-  const suffixNode = element.querySelector(`.${styles.suffix}`);
 
-  const driver = {
+  return {
     trigger: (trigger, event) => ReactTestUtils.Simulate[trigger](input, event),
     focus: () => {
       input.focus();
@@ -19,9 +18,7 @@ const inputDriverFactory = ({element, wrapper, component}) => {
       ReactTestUtils.Simulate.blur(input);
     },
     keyDown: key => ReactTestUtils.Simulate.keyDown(input, {key}),
-    clickSuffix: () => ReactTestUtils.Simulate.click(suffixNode),
     clickClear: () => ReactTestUtils.Simulate.click(clearButton),
-    clearText: () => driver.enterText(''),
     enterText: text => ReactTestUtils.Simulate.change(input, {target: {value: text}}),
     getValue: () => input.value,
     getPlaceholder: () => input.placeholder,
@@ -36,7 +33,7 @@ const inputDriverFactory = ({element, wrapper, component}) => {
     getType: () => input.type,
     hasPrefix: () => element.querySelectorAll(`.${styles.prefix}`).length === 1,
     hasPrefixClass: () => element.querySelectorAll(`.${styles.input}.${styles.withPrefix}`).length === 1,
-    hasSuffix: () => !!suffixNode,
+    hasSuffix: () => element.querySelectorAll(`.${styles.suffix}`).length === 1,
     hasSuffixClass: () => element.querySelectorAll(`.${styles.input}.${styles.withSuffix}`).length === 1,
     hasSuffixesClass: () => element.querySelectorAll(`.${styles.input}.${styles.withSuffixes}`).length === 1,
     prefixComponentExists: style => !!element.querySelector(`.${styles.prefix} ${style}`),
@@ -60,6 +57,7 @@ const inputDriverFactory = ({element, wrapper, component}) => {
     isOfSize: size => element.classList.contains(styles[`size-${size}`]),
     isFocus: () => document.activeElement === input,
     exists: () => !!(element && element.querySelector('input')),
+    hasIconLeft: () => !!element.querySelectorAll(`.${styles.prefix}`),
     startComposing: () => ReactTestUtils.Simulate.compositionStart(input),
     endComposing: () => ReactTestUtils.Simulate.compositionEnd(input),
     setProps: props => {
@@ -67,8 +65,6 @@ const inputDriverFactory = ({element, wrapper, component}) => {
       ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);
     }
   };
-
-  return driver;
 };
 
 export default inputDriverFactory;
