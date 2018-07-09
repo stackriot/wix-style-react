@@ -4,8 +4,7 @@ import WixComponent from '../../BaseComponents/WixComponent';
 import Input from '../../Input';
 import Tooltip from '../../Tooltip';
 import Button from '../../Button';
-import X from '../../Icons/dist/components/X';
-import V from '../../Icons/dist/components/V';
+import {X, V} from '../../Icons';
 import styles from '../EditableSelector.scss';
 
 class EditableRow extends WixComponent {

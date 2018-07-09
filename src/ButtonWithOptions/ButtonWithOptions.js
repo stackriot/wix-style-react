@@ -5,7 +5,7 @@ import omit from 'lodash/omit';
 import WixComponent from '../BaseComponents/WixComponent';
 import DropdownLayout from '../DropdownLayout/DropdownLayout';
 import Button from '../Button';
-import ArrowDownThin from '../Icons/dist/components/ArrowDownThin';
+import {ArrowDownThin} from '../Icons';
 
 /**
  * A simple dropdown with button trigger

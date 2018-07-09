@@ -2,8 +2,7 @@ import React from 'react';
 import {func} from 'prop-types';
 
 import Button from '../Button';
-import Close from '../Icons/dist/components/Close';
-import V from '../Icons/dist/components/V';
+import {Close, V} from '../Icons';
 
 import css from './color-picker-actions.scss';
 
