@@ -1,14 +1,11 @@
 @import '../../src/common';
 
-$page-margin: 48px;
-$page-background-color: rgba($D70,.95);
-
 .page {
   flex: 1 1 auto;
   display: flex;
   min-height: 0;
   position: relative;
-  background-color: $page-background-color;
+  background-color: rgba($D70,.95);
 }
 
 .page-header-container {
@@ -28,18 +25,18 @@ $page-background-color: rgba($D70,.95);
   }
 
   &.with-background-color {
-    background-color: $page-background-color;
+    background-color: rgba($D70,.95); 
   }
 }
 
 .page-header {
-  padding: 0 $page-margin;
+  padding: 0 48px;
   margin: 0 auto;
 }
 
 .tail {
   background-color: transparent;
-  padding: 18px $page-margin 0;
+  padding: 18px 48px 0;
   transition: padding .2s cubic-bezier(0.4, 0.0, 0.2, 1);  
   margin: 0 auto;
 
@@ -63,12 +60,6 @@ $page-background-color: rgba($D70,.95);
   width: 100%;
 }
 
-.gradient-background {
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-
 .image-background-overlay {
   width: 100%;
   height: 100%;
@@ -79,5 +70,5 @@ $page-background-color: rgba($D70,.95);
   z-index: 1;
   position: relative;
   margin: 0 auto;
-  padding: 0 $page-margin;
+  padding: 0 48px;
 }

@@ -77,10 +77,9 @@ class Page extends WixComponent {
   }
 
   render() {
-    const {backgroundImageUrl, maxWidth, gradientClassName, children} = this.props;
+    const {backgroundImageUrl, maxWidth, children} = this.props;
     const {headerHeight, tailHeight, minimized} = this.state;
     const hasBackgroundImage = !!backgroundImageUrl;
-    const hasGradientClassName = !!gradientClassName;
     const {
       PageHeader,
       PageContent,
@@ -95,7 +94,7 @@ class Page extends WixComponent {
         <div
           className={classNames(s.pageHeaderContainer, {
             [s.minimized]: minimized,
-            [s.withBackgroundColor]: minimized || (!hasBackgroundImage && !hasGradientClassName)
+            [s.withBackgroundColor]: minimized || !hasBackgroundImage
           })}
           ref={r => this.pageHeaderRef = r}
           style={pageHeaderStyle}
@@ -124,7 +123,7 @@ class Page extends WixComponent {
           >
           <div className={s.contentPlaceholder} style={{height: `${headerHeight}px`}}/>
           {
-            hasBackgroundImage &&
+            backgroundImageUrl &&
               <div
                 className={s.imageBackground}
                 style={{
@@ -135,14 +134,6 @@ class Page extends WixComponent {
                 >
                 <div className={s.imageBackgroundOverlay}/>
               </div>
-          }
-          {
-            hasGradientClassName && !hasBackgroundImage &&
-              <div
-                data-hook="page-gradient-class-name"
-                className={`${s.gradientBackground} ${gradientClassName}`}
-                style={{height: `${headerHeight + (PageTail ? -SCROLL_TOP_THRESHOLD : 39)}px`}}
-                />
           }
           <div className={s.content} style={maxWidthStyle}>
             {this._safeGetChildren(PageContent)}
@@ -163,8 +154,6 @@ Page.propTypes = {
   backgroundImageUrl: PropTypes.string,
   /** Max width of the content */
   maxWidth: PropTypes.number,
-  /** Header background color class name, allows to add a gradient to the header */
-  gradientClassName: PropTypes.string,
   children: PropTypes.arrayOf((children, key) => {
     const childrenObj = getChildrenObject(children);
 
