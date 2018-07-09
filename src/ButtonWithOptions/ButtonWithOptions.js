@@ -28,16 +28,8 @@ class ButtonWithOptions extends WixComponent {
     this.closeOnSelect = this.closeOnSelect.bind(this);
 
     if (props.children) {
-      this.sortChildren(props);
+      [this.buttonElement, ...this.optionsElement] = React.Children.toArray(props.children);
     }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.sortChildren(nextProps);
-  }
-
-  sortChildren(props) {
-    [this.buttonElement, ...this.optionsElement] = React.Children.toArray(props.children);
   }
 
   onClickOutside() {
@@ -78,11 +70,9 @@ class ButtonWithOptions extends WixComponent {
   }
 
   render() {
-    const {dropDirectionUp, style} = this.props;
-    const sizeRestrictionStyles = this.props.restrainDropdownSize ? {display: 'inline-block'} : {};
-    const customStyle = Object.assign({}, sizeRestrictionStyles, style);
+    const {dropDirectionUp} = this.props;
     return (
-      <div style={customStyle}>
+      <div>
         {dropDirectionUp ? this._renderDropdownLayout() : null}
         <div onKeyDown={this._onKeyDown} onFocus={this._onFocus}>
           {this.renderButton()}
@@ -147,8 +137,7 @@ ButtonWithOptions.defaultProps = {
   options: [],
   closeOnSelect: true,
   valueParser: option => option.value,
-  dropdownOffsetLeft: '0',
-  restrainDropdownSize: true
+  dropdownOffsetLeft: '0'
 };
 
 ButtonWithOptions.propTypes = {
@@ -157,30 +146,20 @@ ButtonWithOptions.propTypes = {
   valueParser: PropTypes.func,
   dropdownWidth: PropTypes.string,
   dropdownOffsetLeft: PropTypes.string,
-  restrainDropdownSize: PropTypes.bool,
   children: PropTypes.arrayOf((propValue, key) => {
     if (key === 0 && propValue[key].type !== ButtonWithOptions.Button) {
       return new Error(`ButtonWithOptions: Invalid Prop children, first child must be ButtonWithOptions.Button`);
     }
 
-    if (key !== 0) {
-      React.Children.forEach(propValue[key], item => {
-        if (item.type !== ButtonWithOptions.Option) {
-          return new Error(`ButtonWithOptions: Invalid Prop children was given. Validation failed on child number ${key}`);
-        }
-      });
-    }
+    React.Children.forEach(propValue[key], item => {
+      if (item.type !== ButtonWithOptions.Option) {
+        return new Error(`ButtonWithOptions: Invalid Prop children was given. Validation failed on child number ${key}`);
+      }
+    });
   })
 };
 
-ButtonWithOptions.Option = function () {
-  return null;
-};
-ButtonWithOptions.Option.displayName = 'ButtonWithOptions.Option';
-
-ButtonWithOptions.Button = function (props) {
-  return <Button {...props}/>;
-};
-ButtonWithOptions.Button.displayName = 'ButtonWithOptions.Button';
+ButtonWithOptions.Option = () => null;
+ButtonWithOptions.Button = Button;
 
 export default ButtonWithOptions;
