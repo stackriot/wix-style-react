@@ -1,17 +1,10 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import Markdown from '../utils/Components/Markdown';
-import AutoDocs from '../utils/Components/AutoDocs';
-import DatePickerSource from '!raw-loader!wix-style-react/DatePicker/DatePicker';
 import TabbedView from '../utils/Components/TabbedView';
 import CodeExample from '../utils/Components/CodeExample';
 import Readme from '../../src/DatePicker/README.md';
 import ReadmeTestkit from '../../src/DatePicker/README.TESTKIT.md';
-import moment from 'moment';
-
-import DatePicker from 'wix-style-react/DatePicker';
-import AutoExample from '../utils/Components/AutoExample';
-
 import ExampleControlled from './ExampleControlled';
 import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
 import ExampleControlledRtl from './ExampleControlledRtl';
@@ -27,20 +20,11 @@ import ExampleControlledYearMonthDropdownsRaw from '!raw-loader!./ExampleControl
 
 storiesOf('Core', module)
   .add('DatePicker', () => (
-    <TabbedView tabs={['Usage', 'API', 'TestKit']}>
+    <TabbedView tabs={['API', 'TestKit']}>
       <div>
         <Markdown source={Readme}/>
 
-        <AutoExample
-          component={DatePicker}
-          source={DatePickerSource}
-          defaultProps={{
-            onChange: value => console.log('DatePicker value is now ', value.toString()),
-            dateFormat: 'YYYY/MM/DD',
-            dataHook: 'storybook-datepicker',
-            value: moment(moment.now())
-          }}
-          />
+        <h1>Usage examples</h1>
 
         <CodeExample title="Controlled input" code={ExampleControlledRaw}>
           <ExampleControlled/>
@@ -69,9 +53,6 @@ storiesOf('Core', module)
           <ExampleControlledYearMonthDropdowns/>
         </CodeExample>
       </div>
-
-      <AutoDocs source={DatePickerSource}/>
-
       <Markdown source={ReadmeTestkit}/>
     </TabbedView>
   ));
