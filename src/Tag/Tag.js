@@ -4,7 +4,7 @@ import styles from './Tag.scss';
 import classNames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
 import Typography from '../Typography';
-import SmallX from '../Icons/dist/components/SmallX';
+import {SmallX} from '../Icons/dist';
 
 class Tag extends WixComponent {
   render() {

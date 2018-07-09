@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Tooltip from '../Tooltip';
 import InputHelpSuffix from './InputHelpSuffix';
 
-import InfoMaterial from '../Icons/dist/components/InfoMaterial';
+import {InfoMaterial} from '../Icons/dist';
 import styles from './Input.scss';
 
 const placementToMoveBy = {
