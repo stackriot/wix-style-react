@@ -3,6 +3,7 @@ import styles from './Grid.scss';
 import Card from '../Card';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import Animator from '../Animator';
 
 class RawContainer extends Component {
 
@@ -28,7 +29,14 @@ class Container extends Component {
   render() {
     return (
       <div className={styles.wixContainer}>
-        {this.props.children}
+        <Animator
+          opacity
+          sequence
+          translate={{enter: {direction: 'top', size: '10%'}, exit: {direction: 'bottom', size: '10%'}}}
+          timing="large"
+          >
+          {this.props.children}
+        </Animator>
       </div>
     );
   }
