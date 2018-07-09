@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import InputWithOptions from '../InputWithOptions';
 import Search2 from '../Icons/dist/components/Search2';
@@ -14,8 +13,7 @@ export default class Search extends WixComponent {
   static displayName = 'Search';
 
   static propTypes = {
-    ...InputWithOptions.propTypes,
-    placeholder: PropTypes.string
+    ...InputWithOptions.propTypes
   };
 
   static defaultProps = {

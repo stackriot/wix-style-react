@@ -35,6 +35,7 @@ import '../stories/Tag';
 import '../stories/TimeInput';
 import '../stories/ToggleSwitch';
 import '../stories/Tooltip/Core';
+import '../stories/Selector';
 import '../stories/ThemedButton';
 import '../stories/ThemedInput';
 import '../stories/ThemedToggleSwitch';
@@ -81,7 +82,7 @@ import '../stories/RadioGroup'; // 4.3 RadioGroup
 import '../stories/IconWithOptions'; // 4.5 IconWithOptions
 import '../stories/GoogleAddressInputWithLabel'; // 4.8 Google address input
 import '../stories/EditableSelector'; // 4.9 EditableSelector
-import '../stories/ModalSelectorLayout'; // 4.10 ModalSelectorLayout
+import '../stories/ModalSelector'; // 4.10 ModalSelector
 
 
 // 5. Buttons

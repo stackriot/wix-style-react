@@ -48,7 +48,7 @@ MessageBoxFixedHeaderFooter.propTypes = {
   header: PropTypes.node,
   children: PropTypes.any,
   prefixContent: PropTypes.node,
-  suffixContent: PropTypes.node
+  sufixContent: PropTypes.node
 };
 
 MessageBoxFixedHeaderFooter.defaultProps = {

@@ -113,6 +113,3 @@ export const statsWidgetTestkitFactory = protractorTestkitFactoryCreator(statsWi
 
 import loaderDriverFactory from '../src/Loader/Loader.protractor.driver';
 export const loaderTestkitFactory = protractorTestkitFactoryCreator(loaderDriverFactory);
-
-import modalSelectorLayoutDriverFactory from '../src/ModalSelectorLayout/ModalSelectorLayout.protractor.driver';
-export const modalSelectorLayoutTestkitFactory = protractorTestkitFactoryCreator(modalSelectorLayoutDriverFactory);

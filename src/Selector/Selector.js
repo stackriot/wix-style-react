@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioGroup/RadioButton/RadioButton';
+import Image from './Image';
 import Text from '../Text';
 import styles from './Selector.scss';
 import ExtraText from './ExtraText';
@@ -14,83 +14,70 @@ const toggleStyle = {
   display: 'inline-block'
 };
 
+const imageStyle = {
+  marginLeft: '2px',
+  marginRight: '10px',
+  display: 'flex'
+};
+
 class Selector extends WixComponent {
   static propTypes = {
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    image: PropTypes.node,
-    imageSize: PropTypes.oneOf([
-      'tiny',
-      'small',
-      'portrait',
-      'large',
-      'cinema'
-    ]),
-    imageShape: PropTypes.oneOf(['rectangular', 'circle']),
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     isSelected: PropTypes.bool,
-    subtitle: PropTypes.string,
-    extraNode: PropTypes.node,
+    image: PropTypes.string,
+    subTitle: PropTypes.string,
     onToggle: PropTypes.func,
     toggleType: PropTypes.oneOf(['checkbox', 'radio'])
   };
 
   static defaultProps = {
     isSelected: false,
-    toggleType: 'radio',
-    imageSize: 'large',
-    imageShape: 'rectangular'
+    toggleType: 'checkbox'
   };
 
-  toggle(id) {
+  state = {
+    checked: false
+  };
+
+  toggle = id => {
     this.props.onToggle && this.props.onToggle(id);
-  }
+  };
 
   render() {
     const {
       imageSize,
-      imageShape,
-      image,
+      imageSrc,
       title,
-      subtitle,
-      extraNode,
+      subTitle,
       isSelected,
       id,
+      children,
       toggleType
     } = this.props;
     let toggle;
     if (toggleType === 'checkbox') {
-      toggle = <Checkbox dataHook="toggle" style={toggleStyle} checked={isSelected}/>;
+      toggle = <Checkbox dataHook="toggle" style={toggleStyle} checked={isSelected} onChange={() => this.toggle(id)}/>;
     } else {
-      toggle = <RadioButton dataHook="toggle" style={toggleStyle} checked={isSelected}/>;
+      toggle = <RadioButton dataHook="toggle" style={toggleStyle} checked={isSelected} onChange={() => this.toggle(id)}/>;
     }
     return (
-      <li
+      <div
         className={styles.selector}
         onClick={() => this.toggle(id)}
         >
         <div className={styles.main}>
           {toggle}
-          {image &&
-            <div
-              data-hook="selector-image"
-              className={classNames(styles.image, styles[imageSize], styles[imageShape])}
-              >
-              {image}
-            </div>
-          }
-          <div>
-            <div>
-              <Text appearance="T1" dataHook="selector-title">{title}</Text>
-            </div>
-            {subtitle && <div><Text appearance="T3" dataHook="selector-subtitle">{subtitle}</Text></div>}
-          </div>
+          {imageSrc ? <div style={imageStyle}><Image imageSrc={imageSrc} imageSize={imageSize}/></div> : ''}
+          <span>
+            <div data-hook="title"><Text appearance="T1">{title}</Text></div>
+            {subTitle ? <div data-hook="subtitle"><Text appearance="T3">{subTitle}</Text></div> : ''}
+          </span>
         </div>
-        {extraNode &&
-          <div className={styles.extra} data-hook="selector-extra-node">
-            {extraNode}
-          </div>
-        }
-      </li>
+        <div className={styles.extra}>
+          {children}
+        </div>
+      </div>
     );
   }
 }
