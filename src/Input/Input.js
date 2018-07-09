@@ -80,7 +80,6 @@ class Input extends Component {
       if (!disabled) {
         this.input.focus();
         this._onFocus();
-        this.props.onInputClicked();
       }
     };
 
