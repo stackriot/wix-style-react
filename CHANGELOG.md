@@ -14,9 +14,6 @@ Types of changes:
 
 ## next
 
-### Fixed
-- `<Colorpicker/>` - Fix previous color (history) behavior [1823](https://github.com/wix/wix-style-react/pull/1823)
-
 ## 4.3.0 - 2018-06-18
 
 ### Added
