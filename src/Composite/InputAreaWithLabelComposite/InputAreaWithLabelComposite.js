@@ -1,5 +1,5 @@
 import React, {Children} from 'react';
-import {any, bool, node} from 'prop-types';
+import {any, bool} from 'prop-types';
 import last from 'lodash/last';
 import WixComponent from '../../BaseComponents/WixComponent';
 import styles from './InputAreaWithLabelComposite.scss';
@@ -25,8 +25,7 @@ class InputAreaWithLabelComposite extends WixComponent {
 InputAreaWithLabelComposite.propTypes = {
   children: any,
   required: bool,
-  appendToParent: bool,
-  info: node
+  appendToParent: bool
 };
 
 InputAreaWithLabelComposite.defaultProps = {
