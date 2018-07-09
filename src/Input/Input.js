@@ -335,7 +335,7 @@ Input.propTypes = {
 
   /** Placement of the error and help tooltips (supported only for amaterial them for now) */
   tooltipPlacement: PropTypes.string,
-  type: PropTypes.string,
+  type: PropTypes.node,
   unit: PropTypes.string,
 
   /** Inputs value */
