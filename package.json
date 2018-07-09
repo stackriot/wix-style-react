@@ -37,8 +37,7 @@
     },
     "externals": {
       "react": "React",
-      "react-dom": "ReactDOM",
-      "Wix": "Wix"
+      "react-dom": "ReactDOM"
     },
     "externalUnprocessedModules": [
       "get-own-enumerable-property-symbols",
