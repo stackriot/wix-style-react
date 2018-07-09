@@ -20,7 +20,7 @@ const options = [
 
 const valueParser = option => option.tag ? option.tag.label : option.value;
 
-class ExampleWithLimitedNumRows extends React.Component {
+class ExampleWithLimitedHeight extends React.Component {
   constructor(props) {
     super(props);
 
@@ -50,7 +50,7 @@ class ExampleWithLimitedNumRows extends React.Component {
           <MultiSelect
             dataHook="multi-select"
             tags={this.state.tags}
-            maxNumRows={2}
+            maxHeight="60px"
             onSelect={this.handleOnSelect}
             onRemoveTag={this.handleOnRemoveTag}
             onChange={this.handleOnChange}
@@ -66,4 +66,4 @@ class ExampleWithLimitedNumRows extends React.Component {
   }
 }
 
-export default ExampleWithLimitedNumRows;
+export default ExampleWithLimitedHeight;

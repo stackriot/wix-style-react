@@ -8,8 +8,8 @@ import ReadmeTestKit from '../../src/MultiSelect/README.TESTKIT.md';
 
 import ExampleStandard from './ExampleStandard';
 import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
-import ExampleWithLimitedNumRows from './ExampleWithLimitedNumRows';
-import ExampleWithLimitedNumRowsRaw from '!raw-loader!./ExampleWithLimitedNumRows';
+import ExampleWithLimitedHeight from './ExampleWithLimitedHeight';
+import ExampleWithLimitedHeightRaw from '!raw-loader!./ExampleWithLimitedHeight';
 
 storiesOf('3. Inputs', module)
   .add('3.8 Tags', () => (
@@ -21,8 +21,8 @@ storiesOf('3. Inputs', module)
           <ExampleStandard/>
         </CodeExample>
 
-        <CodeExample title="Limited num rows" code={ExampleWithLimitedNumRowsRaw}>
-          <ExampleWithLimitedNumRows/>
+        <CodeExample title="Limited height" code={ExampleWithLimitedHeightRaw}>
+          <ExampleWithLimitedHeight/>
         </CodeExample>
       </div>
       <Markdown source={ReadmeTestKit}/>
