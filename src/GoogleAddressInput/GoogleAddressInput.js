@@ -45,19 +45,18 @@ class GoogleAddressInput extends React.Component {
       value
     } = this.state;
 
-    const options = [
-      ...suggestions.map(({description}, id) => ({id, value: description})),
+    let options = suggestions.reduce((result, value) => {
+      result.push({id: result.length, value: value.description});
+      return result;
+    }, []);
 
-      ...(
-        this.props.footer ?
-        [{
-          id: suggestions.length,
-          value: this.props.footer,
-          ...this.props.footerOptions
-        }] :
-        []
-      )
-    ];
+    if (this.props.footer) {
+      options = options.concat({
+        id: options.length,
+        value: this.props.footer,
+        ...this.props.footerOptions
+      });
+    }
 
     return (
       <div>
@@ -71,7 +70,7 @@ class GoogleAddressInput extends React.Component {
           onManuallyInput={this.onManuallyInput}
           value={value}
           options={options}
-          fixedFooter={(suggestions.length && this.props.poweredByGoogle) ? GoogleAddressInput.getGoogleFooter() : null}
+          fixedFooter={this.props.poweredByGoogle ? GoogleAddressInput.getGoogleFooter() : null}
           />
       </div>
     );
