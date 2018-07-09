@@ -85,8 +85,5 @@ function loadStories() {
 configure(loadStories, module);
 
 setOptions({
-  showDownPanel: false,
-  name: 'wix-style-react',
-  url: 'https://github.com/wix/wix-style-react',
-  sidebarAnimations: true,
+  showDownPanel: false
 });
