@@ -2,25 +2,14 @@ import React from 'react';
 import story from '../utils/Components/Story';
 import CodeExample from '../utils/Components/CodeExample';
 
-import {Image} from 'wix-style-react/Icons';
-
 import ExampleStandard from './ExampleStandard';
 import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
-
-const children = [
-  'Hello World!',
-  <span key={0}>Hello <strong>World!</strong></span>,
-  <span key={1}>Hello <Image/></span>
-];
 
 story({
   category: 'Core',
   componentSrcFolder: 'Label',
   componentProps: {
-    children: children[0]
-  },
-  exampleProps: {
-    children
+    children: 'Label text'
   },
   examples: (
     <CodeExample title="Standard" code={ExampleStandardRaw}>
