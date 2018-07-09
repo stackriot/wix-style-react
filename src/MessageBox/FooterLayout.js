@@ -23,8 +23,8 @@ const FooterLayout = ({children, theme, cancelText, onCancel, onOk, confirmText,
 };
 
 FooterLayout.propTypes = {
-  confirmText: PropTypes.node,
-  cancelText: PropTypes.node,
+  confirmText: PropTypes.string,
+  cancelText: PropTypes.string,
   onCancel: PropTypes.func,
   onOk: PropTypes.func,
   enableOk: PropTypes.bool,
