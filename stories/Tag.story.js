@@ -10,7 +10,6 @@ export default {
     children: 'Hello World'
   },
   exampleProps: {
-    onRemove: id => `ID: ${id} Removed!`,
-    onClick: id => `ID: ${id} Clicked!`
+    onRemove: () => 'Removed!'
   }
 };

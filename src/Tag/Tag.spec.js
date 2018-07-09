@@ -10,10 +10,7 @@ import {mount} from 'enzyme';
 describe('Tag', () => {
 
   const createDriver = createDriverFactory(tagDriverFactory);
-  const id = 'myId';
-  const label = 'Hey';
-  const onRemove = jest.fn();
-  const onClick = jest.fn();
+  const id = 'myId', label = 'Hey', onRemove = jest.fn();
 
   it('should have a default small size', () => {
     const driver = createDriver(<Tag id={id}>{label}</Tag>);
@@ -51,18 +48,10 @@ describe('Tag', () => {
   });
 
   it('should call onRemove function on remove', () => {
-    const driver = createDriver(<Tag id={id} onRemove={onRemove} onClick={onClick}>{label}</Tag>);
+    const driver = createDriver(<Tag id={id} onRemove={onRemove}>{label}</Tag>);
 
     driver.removeTag();
     expect(onRemove).toBeCalledWith(id);
-    expect(onClick).not.toBeCalled();
-  });
-
-  it('should call onClick function on click', () => {
-    const driver = createDriver(<Tag id={id} onClick={onClick}>{label}</Tag>);
-
-    driver.click();
-    expect(onClick).toBeCalledWith(id);
   });
 
   it('should not display thumb by default', () => {
