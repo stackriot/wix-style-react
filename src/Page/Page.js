@@ -37,7 +37,9 @@ class Page extends WixComponent {
 
   componentDidMount() {
     super.componentDidMount();
-    this.contentResizeListener = new ResizeSensor(this._getScrollContainer().childNodes[0], this._handleResize);
+    const scrollContainer = this._getScrollContainer();
+    scrollContainer.addEventListener('scroll', this._handleScroll);
+    this.contentResizeListener = new ResizeSensor(scrollContainer.childNodes[0], this._handleResize);
     this._calculateComponentsHeights();
     this._handleResize();
   }
@@ -51,6 +53,7 @@ class Page extends WixComponent {
 
   componentWillUnmount() {
     super.componentWillUnmount();
+    this._getScrollContainer().removeEventListener('scroll', this._handleScroll);
     this.contentResizeListener.detach(this._handleResize);
   }
 
@@ -191,7 +194,6 @@ class Page extends WixComponent {
         </div>
         <div
           className={s.scrollableContent}
-          onScroll={this._handleScroll}
           data-hook="page-scrollable-content"
           style={{paddingTop: `${calculatedHeaderHeight}px`}}
           ref={r => this.scrollableContentRef = r}
@@ -217,11 +219,10 @@ class Page extends WixComponent {
                 style={{height: gradientHeight}}
                 />
           }
-          <div className={s.contentContainer}>
+          <div className={s.contentContainer} style={{paddingBottom: `${headerHeightDelta}px`}}>
             <div className={classNames(s.content, {[s.contentFullScreen]: contentFullScreen})} style={contentFullScreen ? null : pageDimensionsStyle}>
               {this._safeGetChildren(PageContent)}
             </div>
-            {headerHeightDelta && <div style={{height: `${headerHeightDelta}px`}}/>}
           </div>
         </div>
       </div>
