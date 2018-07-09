@@ -87,10 +87,15 @@ $padding-vertical: 14px;
 .linkArrow {
   position: absolute;
   right: 25px;
-  top: 9px;
+  top: 16px;
   opacity: 0;
   font-size: 10px;
   transition: 0.5s;
+
+  > svg {
+    display: block;
+    transform: scale(2.6);
+  }
 }
 
 .separator {
