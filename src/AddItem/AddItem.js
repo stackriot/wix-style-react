@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import style from './AddItem.scss';
 import Tooltip from '../Tooltip';
 import AddMedia from 'wix-ui-icons-common/system/AddMedia';
+
 import WixComponent from '../BaseComponents/WixComponent';
-import classNames from 'classnames';
 
 const tooltipCommonProps = {
   showDelay: 0,
@@ -14,16 +14,9 @@ const tooltipCommonProps = {
   placement: 'top'
 };
 
-const ratioClasses = {
-  '16/9': style.ratio16x9,
-  '3/4': style.ratio3x4,
-  '4/3': style.ratio4x3,
-  '1/1': style.ratio1x1
-};
-
 const renderInnerAddItem = () => (
   <div className={style.dashedBorder} >
-    <AddMedia className={style.plusIcon} size="31px"/>
+    <div className={style.plusIcon}><AddMedia size="31px"/></div>
   </div>
 );
 
@@ -31,14 +24,14 @@ class AddItem extends WixComponent {
   render() {
     const {
       onClick,
+      width,
       height,
-      tooltipContent,
-      aspectRatio
+      tooltipContent
     } = this.props;
-    const ratio = !height && ratioClasses[aspectRatio];
+
     return (
-      <div className={classNames(ratio, style.box)} style={{height}} >
-        <div className={style.container} onClick={onClick} data-hook="add-container">
+      <div className={style.container} style={{width, height}} data-hook="add-container">
+        <div data-hook="add-area" className={style.addLogo} onClick={onClick}>
           {
             tooltipContent ?
               <Tooltip content={tooltipContent} dataHook="add-tooltip" {...tooltipCommonProps}>
@@ -53,18 +46,14 @@ class AddItem extends WixComponent {
 }
 
 AddItem.propTypes = {
-  /** Funciton called upon click */
+  /** Callback function for adding an item */
   onClick: PropTypes.func,
-  /** The elemnt's asspect ratio   */
-  aspectRatio: PropTypes.oneOf(Object.keys(ratioClasses)),
-  /** Element's height - overrides the asspect ratio */
+  /** Width in pixels */
+  width: PropTypes.number,
+  /** Height in pixels */
   height: PropTypes.number,
   /** Content of the tooltip */
   tooltipContent: PropTypes.string
-};
-
-AddItem.defaultProps = {
-  aspectRatio: '1/1'
 };
 
 export default AddItem;
