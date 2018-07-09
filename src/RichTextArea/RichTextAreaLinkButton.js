@@ -53,7 +53,6 @@ class RichTextAreaLinkButton extends Component {
         moveBy={{x: 2, y: 0}}
         active={isFormVisible}
         onClickOutside={this.hideForm}
-        maxWidth="240px"
         >
         <RichTextAreaButton
           disabled={this.props.disabled}

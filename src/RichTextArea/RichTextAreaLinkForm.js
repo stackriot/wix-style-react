@@ -31,7 +31,6 @@ class RichTextAreaLinkForm extends Component {
               onChange={this.getChangeHandler('href')}
               placeholder="URL this link should go to"
               size="small"
-              width="190px"
               />
           </TextField>
         </div>
@@ -63,7 +62,6 @@ class RichTextAreaLinkForm extends Component {
             onChange={this.getChangeHandler('text')}
             placeholder="Text to display"
             size="small"
-            width="190px"
             />
         </TextField>
       </div>
