@@ -17,5 +17,5 @@
 | propName | propType | defaultValue | isRequired | description |
 |----------|----------|--------------|------------|-------------|
 | id | string or number| - | + | Specifies the item id |
-| title | node | - | + | Title to be shown on tab |
+| title | string | - | + | Text to be shown on tab |
 | dataHook | string | - | - | Datahook |
