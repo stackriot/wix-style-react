@@ -282,7 +282,7 @@ DropdownLayout.propTypes = {
 
 DropdownLayout.defaultProps = {
   options: [],
-  tabIndex: 0,
+  tabIndex: 1,
   selectedId: NOT_HOVERED_INDEX,
   maxHeightPixels: 260,
   closeOnSelect: true
