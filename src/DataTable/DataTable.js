@@ -1,22 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import s from './DataTable.scss';
 import classNames from 'classnames';
 import InfiniteScroll from './InfiniteScroll';
 import WixComponent from '../BaseComponents/WixComponent';
 import ArrowVertical from '../Icons/dist/components/ArrowVertical';
-
-export const DataTableHeader = props => (
-  <div>
-    <table style={{width: props.width}} className={s.table}>
-      <TableHeader {...props}/>
-    </table>
-  </div>
-);
-
-DataTableHeader.propTypes = {
-  width: PropTypes.number,
-};
 
 class DataTable extends WixComponent {
   constructor(props) {
@@ -90,8 +78,11 @@ class DataTable extends WixComponent {
     return (
       <div>
         <table id={this.props.id} style={style} className={s.table}>
-          {!this.props.hideHeader &&
-          <TableHeader {...this.props}/>}
+          <thead>
+            <tr>
+              {this.props.columns.map(this.renderHeaderCell)}
+            </tr>
+          </thead>
           {this.renderBody(rowsToRender)}
         </table>
       </div>);
@@ -163,37 +154,6 @@ class DataTable extends WixComponent {
     return <td className={classes} key={colNum}>{column.render && column.render(rowData, rowNum)}</td>;
   };
 
-  calcLastPage = ({data, itemsPerPage}) => Math.ceil(data.length / itemsPerPage) - 1;
-
-  loadMore = () => {
-    if (this.state.currentPage < this.state.lastPage) {
-      this.setState({currentPage: this.state.currentPage + 1});
-    } else {
-      this.props.loadMore && this.props.loadMore();
-    }
-  }
-
-  tryToggleRowDetails = (eventHandler, selectedRow) => {
-    if (eventHandler !== 'onClick') {
-      return;
-    }
-    let selectedRows = {[selectedRow]: !this.state.selectedRows[selectedRow]};
-    if (this.props.allowMultiDetailsExpansion) {
-      selectedRows = Object.assign({}, this.state.selectedRows, {[selectedRow]: !this.state.selectedRows[selectedRow]});
-    }
-    this.setState({selectedRows});
-  }
-}
-
-class TableHeader extends Component {
-  static propTypes = {
-    onSortClick: PropTypes.func,
-    thPadding: PropTypes.string,
-    thHeight: PropTypes.string,
-    thFontSize: PropTypes.string,
-    columns: PropTypes.array
-  };
-
   renderSortingArrow = (sortDescending, colNum) => {
     if (sortDescending === undefined) {
       return null;
@@ -215,23 +175,28 @@ class TableHeader extends Component {
     if (column.sortable) {
       optionalHeaderCellProps.onClick = () => this.props.onSortClick && this.props.onSortClick(column, colNum);
     }
-    return (
-      <th
-        style={style}
-        key={colNum}
-        {...optionalHeaderCellProps}
-        >
-        {column.title}{this.renderSortingArrow(column.sortDescending, colNum)}
-      </th>);
+    return <th style={style} key={colNum} {...optionalHeaderCellProps}>{column.title}{this.renderSortingArrow(column.sortDescending, colNum)}</th>;
   };
 
-  render() {
-    return (
-      <thead>
-        <tr>
-          {this.props.columns.map(this.renderHeaderCell)}
-        </tr>
-      </thead>);
+  calcLastPage = ({data, itemsPerPage}) => Math.ceil(data.length / itemsPerPage) - 1;
+
+  loadMore = () => {
+    if (this.state.currentPage < this.state.lastPage) {
+      this.setState({currentPage: this.state.currentPage + 1});
+    } else {
+      this.props.loadMore && this.props.loadMore();
+    }
+  }
+
+  tryToggleRowDetails = (eventHandler, selectedRow) => {
+    if (eventHandler !== 'onClick') {
+      return;
+    }
+    let selectedRows = {[selectedRow]: !this.state.selectedRows[selectedRow]};
+    if (this.props.allowMultiDetailsExpansion) {
+      selectedRows = Object.assign({}, this.state.selectedRows, {[selectedRow]: !this.state.selectedRows[selectedRow]});
+    }
+    this.setState({selectedRows});
   }
 }
 
@@ -295,7 +260,7 @@ DataTable.propTypes = {
   thFontSize: PropTypes.string,
   rowDetails: PropTypes.func,
   allowMultiDetailsExpansion: PropTypes.bool,
-  hideHeader: PropTypes.bool,
+  onSortClick: PropTypes.func
 };
 
 DataTable.displayName = 'DataTable';
