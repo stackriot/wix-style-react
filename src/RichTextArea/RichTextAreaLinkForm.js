@@ -8,9 +8,7 @@ import Input from '../Input';
 import styles from './RichTextAreaLinkForm.scss';
 
 class RichTextAreaLinkForm extends Component {
-  state = {
-    text: this.props.selection
-  };
+  state = {};
 
   getChangeHandler = field => ({target: {value}}) => {
     this.setState({[field]: value});
@@ -55,12 +53,15 @@ class RichTextAreaLinkForm extends Component {
   }
 
   renderTextInput() {
+    if (!this.props.isTextInputVisible) {
+      return null;
+    }
+
     return (
       <div className={styles.input}>
         <TextField>
           <Input
             dataHook="rich-text-area-link-text"
-            defaultValue={this.props.selection}
             onChange={this.getChangeHandler('text')}
             placeholder="Text to display"
             size="small"
@@ -73,7 +74,6 @@ class RichTextAreaLinkForm extends Component {
 }
 
 RichTextAreaLinkForm.propTypes = {
-  selection: PropTypes.string,
   onCancel: PropTypes.func,
   onSubmit: PropTypes.func,
   isTextInputVisible: PropTypes.bool
