@@ -120,12 +120,12 @@ class AnimatedExample extends React.Component {
               <Row>
                 {this.myToggle('scale')}
               </Row>
-              <Row>
+              {false &&<Row>
                 {this.myToggle('height')}
-              </Row>
-              <Row>
+              </Row>}
+              {false && <Row>
                 {this.myToggle('width')}
-              </Row>
+              </Row>}
               <Row>
                 {this.myToggle('translate')}
               </Row>

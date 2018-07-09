@@ -16,32 +16,35 @@ class CSSTransitionWrapper extends React.Component {
     this.transitionDefault = {
       enter: false,
       entering: false,
+      entered: false,
       exit: false,
       exiting: false
     };
 
     this.state = {
       sequenceIndex: 0,
-      transition: this.transitionDefault
+      transition: this.transitionDefault,
+      dimensions: {
+        height: 0,
+        width: 0
+      }
     };
   }
 
   componentWillReceiveProps(props) {
     const {debug} = props.animatorProps;
     if (debug) {
-      this.setDebug(debug);
-    }
-  }
-
-  setDebug(debug) {
-    if (debug === 'enter') {
-      this.onEnter();
-    } else if (debug === 'entering') {
-      this.onEntering();
-    } else if (debug === 'leave') {
-      this.onExit();
-    } else if (debug === 'leaving') {
-      this.onExiting();
+      if (debug === 'enter') {
+        this.updateTransitionState({enter: true});
+      } else if (debug === 'entering') {
+        this.updateTransitionState({enter: true, entering: true});
+      } else if (debug === 'leave') {
+        this.updateTransitionState({exit: true});
+      } else if (debug === 'leaving') {
+        this.updateTransitionState({exit: true, exiting: true});
+      } else {
+        this.updateTransitionState();
+      }
     }
   }
 
@@ -56,15 +59,17 @@ class CSSTransitionWrapper extends React.Component {
     this.updateTransitionState({enter: true});
   }
 
-  onEntering() {
+  onEntering(node) {
+    this.setDimension(node);
     this.updateTransitionState({enter: true, entering: true});
   }
 
   onEntered() {
-    this.updateTransitionState();
+    this.updateTransitionState({entered: true});
   }
 
-  onExit() {
+  onExit(node) {
+    this.setDimension(node);
     this.setSequenceIndex('exit');
     this.updateTransitionState({exit: true});
   }
@@ -80,7 +85,6 @@ class CSSTransitionWrapper extends React.Component {
     return {
       enter: !!duration,
       exit: !!duration,
-      appear: !!duration,
       timeout: duration,
       classNames: transitionClassNames
     };
@@ -95,6 +99,12 @@ class CSSTransitionWrapper extends React.Component {
     });
   }
 
+  setDimension(node) {
+    const {offsetHeight: height, scrollWidth: width} = node.children[0].children[0];
+    const dimensions = {height, width};
+    this.setState({dimensions});
+  }
+
   render() {
     const {children, animatorProps} = this.props;
     const {sequenceIndex} = this.state;
@@ -103,12 +113,13 @@ class CSSTransitionWrapper extends React.Component {
         {...this.props}
         {...this.getTransitionProps()}
         onEnter={() => this.onEnter()}
-        onEntering={() => this.onEntering()}
+        onEntering={node => this.onEntering(node)}
         onEntered={() => this.onEntered()}
-        onExit={() => this.onExit()}
+        onExit={node => this.onExit(node)}
         onExiting={() => this.onExiting()}
         >
         <Child
+          dimensions={this.state.dimensions}
           transition={this.state.transition}
           sequenceIndex={sequenceIndex}
           animatorProps={animatorProps}

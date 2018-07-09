@@ -43,12 +43,6 @@ class StyleBuilder {
     });
   }
 
-  withScale(scale) {
-    return this.with(scale && {
-      transform: `scale(${scale})`
-    });
-  }
-
   withHeight(height, size) {
     return this.with(height && {
       maxHeight: css.convertSize(size)
@@ -58,6 +52,12 @@ class StyleBuilder {
   withWidth(width, size) {
     return this.with(width && {
       maxWidth: css.convertSize(size)
+    });
+  }
+
+  withNoWidth(width) {
+    return this.with(width && {
+      maxWidth: css.convertSize(0)
     });
   }
 

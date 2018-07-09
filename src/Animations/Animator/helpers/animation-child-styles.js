@@ -12,12 +12,12 @@ class AnimationChildStyles {
   props;
   animatorProps;
 
-  constructor(props, dimensions) {
+  constructor(props) {
 
     this.props = props;
     this.animatorProps = this.props.animatorProps;
 
-    const {animatorProps, sequenceIndex} = props;
+    const {animatorProps, sequenceIndex, dimensions} = props;
 
     this.dimensions = {
       height: dimensions.height,
@@ -51,31 +51,20 @@ class AnimationChildStyles {
 
   getSecondLayer() {
 
-    const {height, width} = this.dimensions;
-    const {height: isHeight, width: isWidth, scale} = this.animatorProps;
+    const {height} = this.dimensions;
+    const {height: isHeight} = this.animatorProps;
 
-    const startStyles = () => new StyleBuilder()
-      .withTransitionDelay(this.delay)
-      .build();
+    const start = () => new StyleBuilder().withTransitionDelay(this.delay);
 
-    const dimensionsStyles = (_height, _width) => new StyleBuilder()
-      .withWidth(isWidth, _width)
-      .withHeight(isHeight, _height);
-
-    const hideStyles = () => {
-      return dimensionsStyles(0, 0).withScale(scale).build();
-    };
-
-    const showStyles = () => {
-      return dimensionsStyles(height, width).withScale(scale && 1).build();
-    };
 
     return {
       base: {},
-      enter: () => ({...startStyles(), ...hideStyles()}),
-      entering: () => showStyles(),
-      exit: () => ({...startStyles(), ...showStyles()}),
-      exiting: () => hideStyles()
+      enter: () => start().withHeight(isHeight, 0).build(),
+      entering: () => {
+        return new StyleBuilder().withHeight(isHeight, height).build();
+      },
+      exit: () => start().withHeight(isHeight, height).build(),
+      exiting: () => new StyleBuilder().withHeight(isHeight, 0).build()
     };
   }
 
