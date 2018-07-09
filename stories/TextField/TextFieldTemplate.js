@@ -17,10 +17,6 @@ export default class Form extends Component {
     info: PropTypes.string
   };
 
-  state = {
-    value: ''
-  };
-
   componentDidUpdate(props) {
     props.onChange(reactElementToJSXString(this.getComponent()));
   }
@@ -33,12 +29,7 @@ export default class Form extends Component {
     return (
       <TextField required={this.props.required} info={this.props.info}>
         {this.props.withLabel ? <Label for="firstName" {...this.props.label}/> : null}
-        <Input
-          id="firstName"
-          {...this.props.input}
-          value={this.state.value}
-          onChange={e => this.setState({value: e.target.value})}
-          />
+        <Input id="firstName" {...this.props.input}/>
       </TextField>
     );
   }

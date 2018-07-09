@@ -11,12 +11,13 @@ const style = {
 
 class ControlledInput extends Component {
   static propTypes = {
-    value: PropTypes.string
+    value: PropTypes.bool
   };
 
-  state = {
-    value: ''
-  };
+  constructor({value = ''}) {
+    super();
+    this.state = {value};
+  }
 
   render() {
     const onChange = event => this.setState({value: event.target.value});
@@ -27,6 +28,7 @@ class ControlledInput extends Component {
         error={this.state.value === 'Starwars'}
         value={this.state.value}
         onChange={onChange}
+        clearButton
         />
     );
   }
