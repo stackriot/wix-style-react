@@ -25,7 +25,6 @@ const dataTableDriverFactory = ({element, wrapper, component}) => {
     getHeaderCellStyle: index => getHeaderTitleByIndex(index).style,
     getCellStyle: (rowIndex, colIndex) => getCell(rowIndex, colIndex).style,
     isRowClickable: index => getRows()[index].classList.contains('clickableDataRow'),
-    isRowAnimated: index => getRows()[index].classList.contains('animatedDataRow'),
     getTitles: () => values(getHeader().querySelectorAll('th')).map(th => th.textContent),
     isDisplayingNothing: () => !!element,
     isDisplayingHeaderOnly: () => hasHeader() && getRowsCount() === 0,

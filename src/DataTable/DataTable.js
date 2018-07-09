@@ -131,12 +131,8 @@ class DataTable extends WixComponent {
       }
     });
 
-    if (onRowClick) {
+    if (onRowClick || rowDetails) {
       rowClasses.push(s.clickableDataRow);
-    }
-
-    if (rowDetails) {
-      rowClasses.push(s.animatedDataRow);
     }
 
     if (rowDataHook) {
