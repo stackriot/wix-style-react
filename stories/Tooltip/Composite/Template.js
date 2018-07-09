@@ -15,8 +15,7 @@ export class Template extends Component {
     hideTrigger: Tooltip.propTypes.hideTrigger,
     type: PropTypes.oneOf(['tooltip', 'popover']),
     size: Tooltip.propTypes.size,
-    onShow: Tooltip.propTypes.onShow,
-    onHide: Tooltip.propTypes.onHide
+    onShow: Tooltip.propTypes.onShow
   };
 
   componentDidUpdate(props) {
@@ -44,7 +43,6 @@ export class Template extends Component {
         theme={this.props.theme}
         size={this.props.size}
         onShow={this.props.onShow}
-        onHide={this.props.onHide}
         shouldCloseOnClickOutside
         >
         {this.getTooltipTarget()}
