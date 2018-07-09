@@ -26,7 +26,7 @@ export default class GoogleMapsLoader extends React.Component {
       googleScript.onerror = () => this.setState({dependencyStatus: STATUS.error});
       document.head.appendChild(googleScript);
     } else {
-      this.setState({dependencyStatus: STATUS.success});
+      this.setState({dependencyStatus: STATUS.error});
     }
   }
 
