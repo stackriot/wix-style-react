@@ -37,7 +37,10 @@ class ThemedInput extends Input {
       [noLeftBorderRadius]: noLeftBorderRadius
     };
 
-    const placeholder = this.props.placeholder;
+    let placeholder = this.props.placeholder;
+    if (theme === 'amaterial' && !classes[styles.hasFocus] && !classes[styles.hasValue]) {
+      placeholder = '';
+    }
     return (
       <div
         className={classNames(classes, styles.root, styles[`theme-${theme}`], styles[`size-${size}${withSelection ? '-with-selection' : ''}`])}
