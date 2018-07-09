@@ -184,7 +184,6 @@ export default class extends Component {
         return <Input/>;
       }
     },
-    number: () => <Input/>,
     bool: () => <Toggle/>,
 
     enum: ({type}) =>

@@ -9,8 +9,6 @@ import classNames from 'classnames';
 
 const SCROLL_TOP_THRESHOLD = 24;
 
-const createStyleObject = (prop, value, predicate) => predicate() ? {[prop]: `${value}px`} : {};
-
 /**
  * A page container which contains a header and scrollable content
  */
@@ -77,7 +75,7 @@ class Page extends WixComponent {
   }
 
   render() {
-    const {backgroundImageUrl, maxWidth, children} = this.props;
+    const {backgroundImageUrl, children} = this.props;
     const {headerHeight, tailHeight, minimized} = this.state;
     const hasBackgroundImage = !!backgroundImageUrl;
     const {
@@ -86,31 +84,27 @@ class Page extends WixComponent {
       PageTail
     } = getChildrenObject(children);
 
-    const pageHeaderStyle = createStyleObject('paddingBottom', SCROLL_TOP_THRESHOLD, () => !minimized);
-    const maxWidthStyle = createStyleObject('maxWidth', maxWidth, () => !!maxWidth);
+    const pageHeaderStyle = {};
+    if (!minimized) {
+      pageHeaderStyle.paddingBottom = `${SCROLL_TOP_THRESHOLD}px`;
+    }
 
     return (
       <div className={s.page}>
         <div
-          className={classNames(s.pageHeaderContainer, {
+          className={classNames(s.pageHeader, {
             [s.minimized]: minimized,
             [s.withBackgroundColor]: minimized || !hasBackgroundImage
           })}
           ref={r => this.pageHeaderRef = r}
           style={pageHeaderStyle}
           >
-          {
-            PageHeader &&
-              <div className={s.pageHeader} style={maxWidthStyle}>
-                {React.cloneElement(PageHeader, {minimized, hasBackgroundImage})}
-              </div>
-          }
+          {PageHeader && React.cloneElement(PageHeader, {minimized, hasBackgroundImage})}
           {
             PageTail &&
               <div
                 data-hook="page-tail"
                 className={classNames(s.tail, {[s.minimized]: minimized})}
-                style={maxWidthStyle}
                 ref={r => this.pageHeaderTailRef = r}
                 >
                 {PageTail}
@@ -135,7 +129,7 @@ class Page extends WixComponent {
                 <div className={s.imageBackgroundOverlay}/>
               </div>
           }
-          <div className={s.content} style={maxWidthStyle}>
+          <div className={s.content}>
             {this._safeGetChildren(PageContent)}
           </div>
         </div>
@@ -152,8 +146,6 @@ Page.Tail = Tail;
 Page.propTypes = {
   /** Background Url */
   backgroundImageUrl: PropTypes.string,
-  /** Max width of the content */
-  maxWidth: PropTypes.number,
   children: PropTypes.arrayOf((children, key) => {
     const childrenObj = getChildrenObject(children);
 
