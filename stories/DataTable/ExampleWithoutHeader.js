@@ -17,7 +17,7 @@ class DataTableExampleWithoutHeader extends React.Component {
     return (
       <div style={style}>
         <DataTable
-          dataHook="story-data-table-without-header"
+          dataHook="story-data-table"
           hideHeader
           data={baseData}
           columns={[

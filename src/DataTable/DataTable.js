@@ -6,9 +6,6 @@ import InfiniteScroll from './InfiniteScroll';
 import WixComponent from '../BaseComponents/WixComponent';
 import ArrowVertical from '../Icons/dist/components/ArrowVertical';
 import {Animator} from 'wix-animations';
-import InfoCircle from 'wix-ui-icons-common/InfoCircle';
-import Tooltip from '../Tooltip/Tooltip';
-import omit from 'lodash/omit';
 
 export const DataTableHeader = props => (
   <div>
@@ -113,7 +110,7 @@ class DataTable extends WixComponent {
     const {onRowClick, rowDetails} = this.props;
     onRowClick && onRowClick(rowData, rowNum);
     rowDetails && this.toggleRowDetails(rowNum);
-  };
+  }
 
   renderRow = (rowData, rowNum) => {
     const {onRowClick, onMouseEnterRow, onMouseLeaveRow, rowDataHook, dynamicRowClass, rowDetails} = this.props;
@@ -171,8 +168,7 @@ class DataTable extends WixComponent {
       rowsToRender.push(
         <tr key={`${rowNum}_details`} className={classNames(s.rowDetails)}>
           <td
-            data-hook={`${rowNum}_details`}
-            className={classNames(s.details, showDetails ? s.active : '')}
+            data-hook={`${rowNum}_details`} className={classNames(s.details, showDetails ? s.active : '')}
             colSpan={this.props.columns.length}
             >
             <div className={classNames(s.rowDetailsInner)}>
@@ -210,7 +206,7 @@ class DataTable extends WixComponent {
     } else {
       this.props.loadMore && this.props.loadMore();
     }
-  };
+  }
 
   toggleRowDetails = selectedRow => {
     let selectedRows = {[selectedRow]: !this.state.selectedRows[selectedRow]};
@@ -242,22 +238,6 @@ class TableHeader extends Component {
     return <span data-hook={`${colNum}_title`} className={sortDirectionClassName}><ArrowVertical/></span>;
   };
 
-  renderInfoTooltip = (tooltipProps, colNum) => {
-    if (tooltipProps === undefined) {
-      return null;
-    }
-    const _tooltipProps = Object.assign({theme: 'dark'}, tooltipProps, {
-      dataHook: `${colNum}_info_tooltip`,
-      moveBy: {x: 2.5, y: -7}
-    });
-    return (
-      <div onClick={e => e.stopPropagation()}>
-        <Tooltip {..._tooltipProps}>
-          <span><InfoCircle className={s.infoIcon} size={24}/></span>
-        </Tooltip>
-      </div>);
-  };
-
   renderHeaderCell = (column, colNum) => {
     const style = {
       width: column.width,
@@ -281,9 +261,7 @@ class TableHeader extends Component {
         key={colNum}
         {...optionalHeaderCellProps}
         >
-        <div className={s.thContainer}>
-          {column.title}{this.renderSortingArrow(column.sortDescending, colNum)}{this.renderInfoTooltip(column.infoTooltip, colNum)}
-        </div>
+        {column.title}{this.renderSortingArrow(column.sortDescending, colNum)}
       </th>);
   };
 
@@ -335,7 +313,6 @@ DataTable.propTypes = {
     ]).isRequired,
     render: PropTypes.func.isRequired,
     sortable: PropTypes.bool,
-    infoTooltipProps: PropTypes.shape(omit(Tooltip.propTypes, ['moveBy', 'dataHook'])),
     sortDescending: PropTypes.bool
   })),
   showHeaderWhenEmpty: PropTypes.bool,
