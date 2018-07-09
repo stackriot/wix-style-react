@@ -1,1 +1,1 @@
-export {VBox} from 'wix-ui-backoffice/VBox';
+export {default} from 'wix-ui-backoffice/VBox';

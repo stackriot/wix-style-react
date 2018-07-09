@@ -1,1 +1,1 @@
-export {HBox} from 'wix-ui-backoffice/HBox';
+export {default} from 'wix-ui-backoffice/HBox';
