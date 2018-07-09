@@ -15,8 +15,7 @@ class ControlledModal extends Component {
     super();
     this.state = {
       isOpenBlueModal: isOpen,
-      isOpenModalWithDatePicker: false,
-      isOpenModalWithCloseButton: false
+      isOpenModalWithDatePicker: false
     };
   }
 
@@ -29,13 +28,10 @@ class ControlledModal extends Component {
     const closeModalWithDatePicker = setState({isOpenModalWithDatePicker: false});
     const openModalWithDatePicker = setState({isOpenModalWithDatePicker: true});
 
-    const closeModalWithCloseButton = setState({isOpenModalWithCloseButton: false});
-    const openModalWithCloseButton = setState({isOpenModalWithCloseButton: true});
-
     return (
       <Container>
         <Row>
-          <Col span={3}>
+          <Col span={2}>
             <Button onClick={openBlueModal} >Open Blue Modal</Button>
             <Modal
               isOpen={this.state.isOpenBlueModal}
@@ -72,27 +68,6 @@ class ControlledModal extends Component {
                 onCancel={closeModalWithDatePicker}
                 >
                 <DatePicker/>
-              </MessageBoxFunctionalLayout>
-            </Modal>
-          </Col>
-          <Col span={4}>
-            <Button onClick={openModalWithCloseButton} >Open Modal With Close Button</Button>
-            <Modal
-              isOpen={this.state.isOpenModalWithCloseButton}
-              onRequestClose={closeModalWithCloseButton}
-              shouldDisplayCloseButton
-              contentLabel="Modal With Close Button Example"
-              scrollableContent={false}
-              >
-              <MessageBoxFunctionalLayout
-                theme="blue"
-                title="Modal With Close Button Example"
-                confirmText="OK"
-                cancelText="Cancel"
-                onOk={closeModalWithCloseButton}
-                onCancel={closeModalWithCloseButton}
-                >
-                I Have a close button on the upper right corner but its impossible to press without deleting the github creature first using the console
               </MessageBoxFunctionalLayout>
             </Modal>
           </Col>
