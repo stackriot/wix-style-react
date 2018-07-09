@@ -158,6 +158,3 @@ export const tpaBadgeTestkitFactory = testkitFactoryCreator(tpaBadgeDriverFactor
 
 import tpaLabelDriverFactory from '../src/TPA/Label/Label.driver';
 export const tpaLabelTestkitFactory = testkitFactoryCreator(tpaLabelDriverFactory);
-
-import fieldLabelAttributesDriverFactory from '../src/FieldLabelAttributes/FieldLabelAttributes.driver';
-export const fieldLabelAttributesTestkitFactory = testkitFactoryCreator(fieldLabelAttributesDriverFactory);

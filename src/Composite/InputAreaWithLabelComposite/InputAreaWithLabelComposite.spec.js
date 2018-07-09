@@ -39,23 +39,15 @@ describe('InputAreaWithLabelComposite', () => {
     expect(driver.hasAutoComplete()).toBe(true);
   });
 
-  describe('label attributes', () => {
-    it('should FieldLabelAttributes not exists if all attributes empty or false', () => {
-      const driver = createAutoCompleteDriver(<InputAreaWithLabelComposite><Label>label</Label><InputArea/></InputAreaWithLabelComposite>);
-
-      expect(driver.hasFieldLabelAttributes()).toBe(false);
+  describe('required attribute', () => {
+    it('should not exist by default', () => {
+      const driver = createAutoCompleteDriver(<InputAreaWithLabelComposite><Label/><InputArea/></InputAreaWithLabelComposite>);
+      expect(driver.hasRequiredSign()).toBe(false);
     });
 
-    it('should FieldLabelAttributes exists if required', () => {
-      const driver = createAutoCompleteDriver(<InputAreaWithLabelComposite required><Label>label</Label><InputArea/></InputAreaWithLabelComposite>);
-
-      expect(driver.hasFieldLabelAttributes()).toBe(true);
-    });
-
-    it('should FieldLabelAttributes exists if info', () => {
-      const driver = createAutoCompleteDriver(<InputAreaWithLabelComposite info="info"><Label>label</Label><InputArea/></InputAreaWithLabelComposite>);
-
-      expect(driver.hasFieldLabelAttributes()).toBe(true);
+    it('should exist', () => {
+      const driver = createAutoCompleteDriver(<InputAreaWithLabelComposite required><Label/><InputArea/></InputAreaWithLabelComposite>);
+      expect(driver.hasRequiredSign()).toBe(true);
     });
   });
 });
