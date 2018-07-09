@@ -76,49 +76,47 @@ describe('Table', () => {
     expect(driver.getRowsWithClassCount(defaultProps.rowClass)).toBe(defaultProps.data.length);
   });
 
-  describe('clickableDataRow class', () => {
-    it('should not assign the class to rows by default', () => {
-      const props = {...defaultProps};
+  it('should call on row click with row data and index', () => {
+    const props = {
+      ...defaultProps,
+      onRowClick: jest.fn()
+    };
 
-      const driver = createDriver(<DataTable {...props}/>);
+    const driver = createDriver(<DataTable {...props}/>);
 
-      expect(driver.isRowClickable(0)).toBe(false);
-    });
+    driver.clickRow(0);
 
-    it('should assign the class to rows when onRowClick prop is provided', () => {
-      const props = {
-        ...defaultProps,
-        onRowClick: jest.fn()
-      };
+    expect(driver.isRowClickable(0)).toBe(true);
+    expect(props.onRowClick).toBeCalledWith(props.data[0], 0);
 
-      const driver = createDriver(<DataTable {...props}/>);
-      expect(driver.isRowClickable(0)).toBe(true);
-    });
+    driver.clickRow(1);
+
+    expect(driver.isRowClickable(1)).toBe(true);
+    expect(props.onRowClick).toHaveBeenLastCalledWith(props.data[1], 1);
   });
 
-  describe('Row event handlers', () => {
-    const tests = [
-      {handler: 'onRowClick', driverMethod: 'clickRow'},
-      {handler: 'onMouseEnterRow', driverMethod: 'mouseEnterRow'},
-      {handler: 'onMouseLeaveRow', driverMethod: 'mouseLeaveRow'}
-    ];
+  it('should not have a row on click handler by default', () => {
+    const props = {
+      ...defaultProps
+    };
 
-    tests.forEach(({handler, driverMethod}) => {
-      it(`should call ${handler} with row data and index`, () => {
-        const props = {
-          ...defaultProps,
-          [handler]: jest.fn()
-        };
+    const driver = createDriver(<DataTable {...props}/>);
 
-        const driver = createDriver(<DataTable {...props}/>);
+    driver.clickRow(0); // should do nothing
+    expect(driver.isRowClickable(0)).toBe(false);
+  });
 
-        driver[driverMethod](0);
-        expect(props[handler]).toBeCalledWith(props.data[0], 0);
+  it('should not trigger click handler if default was prevented', () => {
+    const props = {
+      ...defaultProps,
+      onRowClick: jest.fn()
+    };
 
-        driver[driverMethod](1);
-        expect(props[handler]).toHaveBeenLastCalledWith(props.data[1], 1);
-      });
-    });
+    const driver = createDriver(<DataTable {...props}/>);
+    driver.clickRow(0, {isDefaultPrevented: () => true});
+
+    expect(driver.isRowClickable(0)).toBe(true);
+    expect(props.onRowClick).not.toBeCalled();
   });
 
   describe('testkit', () => {

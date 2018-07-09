@@ -15,9 +15,7 @@
 | isDisplayingHeaderOnly | - | bool | true if displaying only headers |
 | hasChildWithId | string | bool | true if the element has a child with <arg> id |
 | clickRow | (number, eventData) | - | click with <eventData> the row index <number> |
-| mouseEnterRow | (number, eventData) | - | mouse enter with <eventData> the row index <number> |
-| mouseLeaveRow | (number, eventData) | - | mouse leave with <eventData> the row index <number> |
-| setProps | json | element | returns a clone of this element with the new props from the json |
+| setProps | json | element | returns a clone of this element with the new props from the json | 
 
 ## Protractor TestKit API
 
