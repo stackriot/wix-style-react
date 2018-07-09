@@ -12,12 +12,9 @@ Types of changes:
 1. **Security** in case of vulnerabilities.
 1. **Breaking** for breaking changes
 
-## 2.0.6 - 2018-01-09
-### Added
-- `<PopoverMenu/>` - support `buttonHeight` [1335](https://github.com/wix/wix-style-react/pull/1335)
-
+## Upcoming release
 ### Changed
-- upgrade enzyme to 3.3.0 [1330](https://github.com/wix/wix-style-react/pull/1330)
+- use enzyme@3 [1330](https://github.com/wix/wix-style-react/pull/1330)
 
 ## 2.0.4 - 2018-01-04
 ### Fixed
