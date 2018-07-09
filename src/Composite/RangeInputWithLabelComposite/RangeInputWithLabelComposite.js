@@ -1,15 +1,15 @@
 import React, {Children} from 'react';
-import * as PropTypes from 'prop-types';
+import {any} from 'prop-types';
 import WixComponent from '../../BaseComponents/WixComponent';
 import styles from './RangeInputWithLabelComposite.scss';
 import classNames from 'classnames';
 import FieldLabelAttributes from '../../FieldLabelAttributes/FieldLabelAttributes';
+
 class RangeInputWithLabelComposite extends WixComponent {
   constructor(props) {
     super(props);
     this.state = {
-      hasFocusFirst: false,
-      hasFocusLast: false
+      hasFocus: false
     };
   }
 
@@ -28,20 +28,12 @@ class RangeInputWithLabelComposite extends WixComponent {
     }
   }
 
-  _handleFocusFirst() {
-    this.setState({hasFocusFirst: true});
+  _handleFocus() {
+    this.setState({hasFocus: true});
   }
 
-  _handleBlurFirst() {
-    this.setState({hasFocusFirst: false});
-  }
-
-  _handleFocusLast() {
-    this.setState({hasFocusLast: true});
-  }
-
-  _handleBlurLast() {
-    this.setState({hasFocusLast: false});
+  _handleBlur() {
+    this.setState({hasFocus: false});
   }
 
   render() {
@@ -57,27 +49,22 @@ class RangeInputWithLabelComposite extends WixComponent {
     const lastInput = children.length === 3 ? children[2] : children[1];
 
     const additionalFirstInputProps = {
-      // This is a hack for passing a class to be added to the <Input>/<DatePicker> element
       noRightBorderRadius: (rangeType === 'DatePicker') ? styles.firstDate : styles.firstinput,
       onKeyDown: e => this._doKeyDown(e),
-      onFocus: e => this._handleFocusFirst(e),
-      onBlur: e => this._handleBlurFirst(e),
-      dataHook: 'first-item'
+      onFocus: e => this._handleFocus(e),
+      onBlur: e => this._handleBlur(e)
     };
 
     const additionalLastInputProps = {
-      // This is a hack for passing a class to be added to the <Input>/<DatePicker> element
       noLeftBorderRadius: (rangeType === 'DatePicker') ? styles.lastDate : styles.lastinput,
       onKeyDown: e => this._doKeyDown(e),
-      onFocus: e => this._handleFocusLast(e),
-      onBlur: e => this._handleBlurLast(e),
-      dataHook: 'last-item'
+      onFocus: e => this._handleFocus(e),
+      onBlur: e => this._handleBlur(e)
     };
 
     const inputWrapperClassNames = classNames({
       [styles.inputs]: true,
-      [styles.hasFocusFirst]: this.state.hasFocusFirst,
-      [styles.hasFocusLast]: this.state.hasFocusLast
+      [styles.hasFocus]: this.state.hasFocus
     });
 
     return (<div className={styles.wrapper}>
@@ -91,10 +78,7 @@ class RangeInputWithLabelComposite extends WixComponent {
 }
 
 RangeInputWithLabelComposite.propTypes = {
-  ...WixComponent.propTypes,
-  children: PropTypes.any,
-  required: PropTypes.bool,
-  info: PropTypes.string
+  children: any
 };
 
 RangeInputWithLabelComposite.displayName = 'RangeInputWithLabelComposite';
