@@ -20,7 +20,7 @@ const componentsToSkip = [
   'Autocomplete' // special case, a typo in component name, should be AutoComplete
 ];
 
-xdescribe('export components', () => {
+describe('export components', () => {
   it('should contain all components found in index.js', () => {
     const componentsToCheck = Object.keys(exportedComponents).filter(name => componentsToSkip.indexOf(name) === -1);
 
