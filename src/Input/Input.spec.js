@@ -103,8 +103,8 @@ describe('Input', () => {
 
   describe('autocomplete attribute', () => {
     it('should pass down to the wrapped input', () => {
-      const driver = createDriver(<Input autocomplete="email"/>);
-      expect(driver.getAutocomplete()).toBe('email');
+      const driver = createDriver(<Input autocomplete="off"/>);
+      expect(driver.getAutocomplete()).toBe('off');
     });
   });
 
@@ -123,6 +123,15 @@ describe('Input', () => {
 
       const driver = createDriver(<Input tabIndex={tabIndex}/>);
       expect(driver.getTabIndex()).toEqual(tabIndex);
+    });
+  });
+
+  describe('autocomplete attribute', () => {
+    it('should pass down to the wrapped input', () => {
+      const autocomplete = 'off';
+
+      const driver = createDriver(<Input autocomplete={autocomplete}/>);
+      expect(driver.getAutocomplete()).toEqual(autocomplete);
     });
   });
 
