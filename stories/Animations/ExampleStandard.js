@@ -20,12 +20,12 @@ class AnimatedExample extends React.Component {
       showComponents: true,
       opacity: true,
       scale: false,
-      sequenceDelay: true,
-      translate: false,
+      sequenceDelay: false,
+      translate: true,
       translateSize: 100,
       direction: 'left',
       timing: 'large',
-      show: false
+      show: true
     };
 
     this.options = [
@@ -52,7 +52,7 @@ class AnimatedExample extends React.Component {
         <ToggleSwitch checked={this.state[option]} onChange={() => this.setState({[option]: !this.state[option]})}/>
         {option}
       </div>
-    )
+  )
   }
 
   render() {

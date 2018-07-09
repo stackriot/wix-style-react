@@ -29,7 +29,6 @@ class Animator extends Component {
     const {children = []} = this.props;
     this.children = Array.isArray(children) ? children : [children];
     const duration = this.duration.get(this.props);
-    const childrenLength = this.children.length;
     return (
       <div className={this.cssClass.getParent(this.props)}>
         {this.children.map((child, index) =>
@@ -41,7 +40,7 @@ class Animator extends Component {
             transitionLeaveTimeout={duration}
             transitionName={this.transitionName}
             >
-            {!!child && <Child index={index} childrenLength={childrenLength} {...this.props}>{child}</Child>}
+            {!!child && <Child {...this.props}>{child}</Child>}
           </ReactCSSTransitionGroup>
         )}
       </div>
