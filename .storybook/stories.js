@@ -38,7 +38,6 @@ import '../stories/ToggleSwitch';
 import '../stories/Tooltip_New/Core';
 import '../stories/Selector';
 import '../stories/ThemedButton';
-import '../stories/ThemedInput';
 
 //TPA
 import '../stories/TPA/Button';
