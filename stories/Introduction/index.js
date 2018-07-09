@@ -8,12 +8,12 @@ import TestsReadme from '../../docs/TESTS.md';
 import Contribution from '../../docs/CONTRIBUTING.md';
 import AddingStory from '../../docs/adding-story.md';
 import TPA from '../../src/TPA/README.md';
-import UsageWithoutYoshiReadme from '../../docs/usage-without-yoshi.md';
+import UsageWithoutHasteReadme from '../../docs/usage-without-haste.md';
 
 storiesOf('Introduction', module)
   .add('Getting started', () => <Markdown source={Readme}/>)
   .add('Testing', () => <Markdown source={TestsReadme}/>)
   .add('Contribution', () => <Markdown source={Contribution}/>)
   .add('TPA', () => <Markdown source={TPA}/>)
-  .add('Usage Without Yoshi', () => <Markdown source={UsageWithoutYoshiReadme}/>)
+  .add('Usage Without Haste', () => <Markdown source={UsageWithoutHasteReadme}/>)
   .add('Documenting components', () => <Markdown source={AddingStory}/>);
