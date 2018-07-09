@@ -7,24 +7,24 @@ const enterText = (component, text) => component.$('[data-hook="edit-row-wrapper
 
 const editableSelectorDriverFactory = component => ({
   title: () => component.$('[data-hook="editable-selector-title"]').getText(),
-  createNewRow: async text => {
-    await component.$('[data-hook="new-row-button"]').click();
-    await enterText(component, text);
+  createNewRow: text => {
+    component.$('[data-hook="new-row-button"]').click();
+    enterText(component, text);
   },
   clickApprove: () => component.$('[data-hook="edit-row-approve-button"]').click(),
   item: index => getOption(component, index),
-  editRow: async (index, text) => {
+  editRow: (index, text) => {
     const row = getRow(component, index);
-    await hover(row);
-    await row.$('[data-hook="edit-item"]').click();
-    await enterText(component, text);
+    hover(row);
+    row.$('[data-hook="edit-item"]').click();
+    enterText(component, text);
 
   },
   clickCancel: () => component.$('[data-hook="edit-row-cancel-button"]').click(),
-  deleteRow: async index => {
+  deleteRow: index => {
     const row = getRow(component, index);
-    await hover(row);
-    await row.$('[data-hook="delete-item"]').click();
+    hover(row);
+    row.$('[data-hook="delete-item"]').click();
   },
   items: () => getOptions(component),
   toggleItem: index => getOption(component, index).click(),
