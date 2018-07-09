@@ -46,15 +46,10 @@ class CollapsedHeader extends WixComponent {
     }
   }
 
-  stopPropagation(event) {
-    event.stopPropagation();
-  }
-
-  toggleCollapsed = () => {
+  toggleCollapsed = event => {
     const {onCollapsedChange} = this.props;
-    const isCollapsed = !this.state.isCollapsed;
-    this.setState({isCollapsed});
-    onCollapsedChange && onCollapsedChange(isCollapsed);
+    this.setState({isCollapsed: !this.state.isCollapsed});
+    onCollapsedChange && onCollapsedChange(event);
   };
 
   render() {
@@ -67,13 +62,13 @@ class CollapsedHeader extends WixComponent {
     });
 
     const switchElement = (
-      <div className={styles.collapsedSwitch} onClick={this.stopPropagation}>
+      <div className={styles.collapsedSwitch}>
         <Switch dataHook="switch" onChange={this.toggleCollapsed} checked={!this.state.isCollapsed}/>
       </div>
     );
 
     const buttonElement = (
-      <div className={styles.button} onClick={this.stopPropagation}>
+      <div className={styles.button}>
         <Button
           dataHook="button"
           height="medium"
@@ -102,7 +97,7 @@ class CollapsedHeader extends WixComponent {
 
     return (
       <div>
-        <div className={headerClasses} onClick={this.toggleCollapsed}>
+        <div className={headerClasses}>
           <div>
             {titleElement}
             {subtitleElement}
