@@ -7,13 +7,8 @@ export default class InteractiveCodeExample extends Component {
 
   static propTypes = {
     children: PropTypes.node,
-    title: PropTypes.string,
-    autoExpand: PropTypes.bool
-  }
-
-  static defaultProps = {
-    autoExpand: true
-  }
+    title: PropTypes.string
+  };
 
   constructor(props) {
     super(props);
@@ -41,7 +36,7 @@ export default class InteractiveCodeExample extends Component {
         title={this.props.title}
         code={this.state.code}
         codeType="django"
-        autoExpand={this.props.autoExpand}
+        autoExpand
         >
         {childrenWithOnChange}
       </CodeExample>
