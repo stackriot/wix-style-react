@@ -9,9 +9,9 @@ const actionBarElement = element => element.querySelector('[data-hook="page-head
 const backButtonElement = element => element.querySelector('[data-hook="page-header-backbutton"]');
 
 export default ({element}) => ({
-  titleText: () => titleElement(element).textContent,
+  titleText: () => titleElement(element).innerHTML,
   isTitleExists: () => !!titleElement(element),
-  subtitleText: () => subtitleElement(element).textContent,
+  subtitleText: () => subtitleElement(element).innerHTML,
   isSubtitleExists: () => !!subtitleElement(element),
   isBreadcrumbsExists: () => !!breadcrumbsElement(element),
   isActionBarExists: () => !!actionBarElement(element),
