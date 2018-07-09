@@ -14,7 +14,7 @@ Types of changes:
 
 ## next
 
-## 4.1.2 - 2018-06-12
+## 4.1.2
 ### Added
 - `<RichTextArea/>` - add a flag to generate absolute paths url links [#1746](https://github.com/wix/wix-style-react/pull/1746)
 
