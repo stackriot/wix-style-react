@@ -176,6 +176,7 @@ class Page extends WixComponent {
                   className={s.imageBackground}
                   style={{backgroundImage: `url(${backgroundImageUrl})`}}
                   />
+                <div className={s.imageBackgroundOverlay}/>
               </div>
           }
           {
