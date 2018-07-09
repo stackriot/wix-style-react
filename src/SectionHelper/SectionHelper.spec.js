@@ -5,7 +5,7 @@ import {createDriverFactory} from '../test-common';
 import SectionHelper from './SectionHelper';
 
 const renderSectionHelperWithProps = (properties = {}) => (
-  <SectionHelper {...properties}>
+  <SectionHelper appearance={properties.appearance} title={properties.title}>
     {properties.children || <div>Hello, World!</div>}
   </SectionHelper>
 );
@@ -26,13 +26,6 @@ describe('SectionHelper', () => {
   it('renders with provided title', () => {
     const driver = createDriver(renderSectionHelperWithProps({title: 'Muffins are the best!'}));
     expect(driver.titleText()).toEqual('Muffins are the best!');
-  });
-
-  it('invokes the onClose when close button is clicked', () => {
-    const onClose = jest.fn();
-    const driver = createDriver(renderSectionHelperWithProps({onClose}));
-    driver.clickClose();
-    expect(onClose).toBeCalled();
   });
 
   describe('Themes', () => {
