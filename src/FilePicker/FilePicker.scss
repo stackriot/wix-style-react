@@ -1,6 +1,16 @@
 @import '../common.scss';
 
-$content-width: 250px;
+$width: 300px;
+$content-width: $width - 50px;
+
+.container {
+  &:hover {
+    svg {
+      border-radius: 50%;
+      background: $B40;
+    }
+  }
+}
 
 .content > span {
     display: block;
@@ -23,13 +33,6 @@ $content-width: 250px;
   display: inline-flex;
   flex-direction: row;
   cursor: pointer;
-
-  &:hover {
-    svg {
-      border-radius: 50%;
-      background: $B40;
-    }
-  }
 }
 
 .cta {
