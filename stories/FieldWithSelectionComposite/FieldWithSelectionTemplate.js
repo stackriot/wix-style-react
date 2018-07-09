@@ -10,7 +10,6 @@ import Dropdown from '../../src/Dropdown';
 import RadioGroup from '../../src/RadioGroup';
 
 import typography, {convertFromUxLangToCss} from '../../src/Typography';
-import StorySettings from './StorySettings';
 
 const options = [
   {id: 1, value: '1'},
@@ -37,8 +36,7 @@ export default class Form extends Component {
     required: PropTypes.bool,
     info: PropTypes.string,
     error: PropTypes.Error,
-    disabled: PropTypes.bool,
-    dataHook: PropTypes.string
+    disabled: PropTypes.bool
   };
 
   componentDidUpdate(props) {
@@ -55,7 +53,6 @@ export default class Form extends Component {
       case 'checkbox':
         selectionInput = (
           <Checkbox
-            dataHook={StorySettings.dataHookCheckbox}
             size="medium"
             checked={this.state.checkboxValue}
             onChange={e => this.setState({checkboxValue: e.target.checked})}
@@ -67,13 +64,7 @@ export default class Form extends Component {
         );
         break;
       case 'dropdown':
-        selectionInput = (<Dropdown
-          dataHook={StorySettings.dataHookDropdown}
-          options={options}
-          dropDirectionUp
-          size="normal"
-          selectedId={1}
-          />);
+        selectionInput = <Dropdown options={options} dropDirectionUp size="normal" selectedId={1}/>;
         break;
       case 'buttons':
         selectionInput = (
@@ -93,7 +84,7 @@ export default class Form extends Component {
     }
 
     return (
-      <FieldWithSelection dataHook={this.props.dataHook} error={this.props.error} disabled={this.props.disabled} required={this.props.required} info={this.props.info}>
+      <FieldWithSelection error={this.props.error} disabled={this.props.disabled} required={this.props.required} info={this.props.info}>
         {this.props.withLabel ? <Label {...this.props.label}/> : null}
         <Input {...this.props.fieldInput}/>
         {selectionInput}
