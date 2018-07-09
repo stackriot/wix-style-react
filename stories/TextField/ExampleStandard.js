@@ -28,8 +28,7 @@ class ExampleStandard extends Component {
     },
     input: {
       size: 'normal',
-      placeholder: 'Please type in your first name...',
-      disabled: false
+      placeholder: 'Please type in your first name...'
     },
     required: false,
     info: ''
@@ -185,18 +184,6 @@ class ExampleStandard extends Component {
                 />&nbsp;with ticker
             </div>
           </div>
-
-          <div className={styles.option}>
-            <div className={styles.flex}>
-              <div className={styles.paddRight}><Label>Enabled state: </Label></div>
-              <ToggleSwitch
-                size="small"
-                checked={!this.state.input.disabled}
-                onChange={() => this.setComponentState('input', {disabled: !this.state.input.disabled})}
-              />&nbsp;{this.state.input.disabled? 'Disabled' : 'Enabled'}
-            </div>
-          </div>
-
         </div>
         <div className={styles.output}>
           <TextFieldExample {...this.state} onChange={this.props.onChange}/>
