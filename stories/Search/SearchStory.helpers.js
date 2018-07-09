@@ -8,11 +8,5 @@ export const options = [
   'fox',
   'jumps over',
   'the lazy',
-  'dog',
-  'Option1',
-  'Option2',
-  'Option3',
-  'Option4',
-  'Option5',
-  'last Option'
+  'dog'
 ].map((value, index) => ({id: index, value}));

@@ -86,7 +86,6 @@ export default class Search extends WixComponent {
         options={this._filteredOptions}
         onClear={this._onClear}
         onChange={this._onChange}
-        highlight
         />
     );
   }
