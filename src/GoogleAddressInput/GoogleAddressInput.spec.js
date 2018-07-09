@@ -4,6 +4,7 @@ import _ from 'lodash/fp';
 import sinon from 'sinon';
 import {GoogleAddressInputHandler} from './GoogleAddressInput';
 import InputWithOptions from '../InputWithOptions';
+import {sleep} from 'wix-ui-test-utils';
 
 const GEOCODE_RESULT = JSON.parse('{"formatted_address":"_formatted_address_","address_components":[{"types":["street_number"],"long_name":123}]}');
 GEOCODE_RESULT.geometry = {
@@ -276,14 +277,12 @@ describe('GoogleAddressInput', () => {
       });
     });
 
-    it('clear suggestions on blur', () => {
-      jest.useFakeTimers();
+    it('clear suggestions on blur', async () => {
       const component = createMount({Client: GmapsTestClient, countryCode: 'XX', clearSuggestionsOnBlur: true});
       component.setState({suggestions: [JSON.parse('{"description": "my address", "place_id": 123}')]});
       component.find('input').simulate('blur');
-      jest.runAllTimers();
+      await sleep(300);
       component.update();
-      jest.useRealTimers();
       expect(component.find(InputWithOptions).props().options.length).toEqual(0);
     });
 
