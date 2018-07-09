@@ -1,6 +1,3 @@
-import s from './PageHeader.scss';
-import {isClassExists} from '../../test/utils';
-
 const titleElement = element => element.querySelector('[data-hook="page-header-title"] h2');
 const subtitleElement = element => element.querySelector('[data-hook="page-header-subtitle"] span');
 const breadcrumbsElement = element => element.querySelector('[data-hook="page-header-breadcrumbs"]');
@@ -14,9 +11,5 @@ export default ({element}) => ({
   isSubtitleExists: () => !!subtitleElement(element),
   isBreadcrumbsExists: () => !!breadcrumbsElement(element),
   isActionBarExists: () => !!actionBarElement(element),
-  isBackButtonExists: () => !!backButtonElement(element),
-  isTitleDarkTheme: () => isClassExists(titleElement(element), 'h1_1'),
-  isSubtitleDarkTheme: () => isClassExists(subtitleElement(element), 't1_1'),
-  isBackButtonDarkTheme: () => isClassExists(backButtonElement(element), s.darkTheme),
-  isBreadcrumbsDarkTheme: () => breadcrumbsElement(element).childNodes[0].classList.contains('Dark')
+  isBackButtonExists: () => !!backButtonElement(element)
 });
