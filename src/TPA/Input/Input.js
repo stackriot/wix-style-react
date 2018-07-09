@@ -1,9 +1,8 @@
 import React from 'react';
-import {string, bool} from 'prop-types';
+import {string} from 'prop-types';
 import classNames from 'classnames';
 import WixComponent from '../../BaseComponents/WixComponent';
 import tpaStyleInjector from '../TpaStyleInjector';
-import omit from 'omit';
 
 let styles = {locals: {}};
 try {
@@ -14,14 +13,12 @@ try {
 class Input extends WixComponent {
   static propTypes = {
     errorClassName: string,
-    inputClassName: string,
-    error: bool
+    inputClassName: string
   };
 
   static defaultProps = {
     errorClassName: '',
-    inputClassName: '',
-    error: false
+    inputClassName: ''
   };
 
   constructor(props) {
@@ -37,7 +34,7 @@ class Input extends WixComponent {
 
   render() {
     const errorClassName = this.props.error === true ? this.errorClassName : '';
-    return (<input className={classNames(styles.locals.input, this.props.inputClassName, errorClassName)} {...omit(['injectedStyles', 'styles', 'errorClassName', 'inputClassName', 'error', 'dataHook'], this.props)}/>);
+    return (<input className={classNames(styles.locals.input, this.props.inputClassName, errorClassName)} {...this.props}/>);
   }
 }
 
