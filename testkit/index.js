@@ -78,9 +78,6 @@ export const dropdownCompositeTestkitFactory = testkitFactoryCreator(dropdownCom
 import autoCompleteCompositeDriverFactory from '../src/AutoCompleteComposite/AutoCompleteComposite.driver';
 export const autoCompleteCompositeTestkitFactory = testkitFactoryCreator(autoCompleteCompositeDriverFactory);
 
-import multiSelectCompositeDriverFactory from '../src/MultiSelectComposite/MultiSelectComposite.driver';
-export const multiSelectCompositeTestkitFactory = testkitFactoryCreator(multiSelectCompositeDriverFactory);
-
 import loaderDriverFactory from '../src/Loader/Loader.driver';
 export const loaderTestkitFactory = testkitFactoryCreator(loaderDriverFactory);
 
