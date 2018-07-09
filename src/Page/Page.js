@@ -164,16 +164,13 @@ class Page extends WixComponent {
           {
             hasBackgroundImage &&
               <div
-                className={s.imageBackgroundContainer}
+                className={s.imageBackground}
                 style={{
-                  height: `${headerHeight + (PageTail ? -tailHeight : 39)}px`
+                  height: `${headerHeight + (PageTail ? -tailHeight : 39)}px`,
+                  backgroundImage: `url(${backgroundImageUrl})`
                 }}
                 data-hook="page-background-image"
                 >
-                <div
-                  className={s.imageBackground}
-                  style={{backgroundImage: `url(${backgroundImageUrl})`}}
-                  />
                 <div className={s.imageBackgroundOverlay}/>
               </div>
           }
