@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
-import toArray from 'lodash.toarray';
+import toArray from 'lodash/toArray';
+import {isClassExists} from '../../test/utils';
 
 const radioGroupDriverFactory = ({element, wrapper, component}) => {
-  const isClassExists = (element, className) => !!element && element.className.indexOf(className) !== -1;
   const radios = toArray(element.children) || [];
   const radioButtons = radios.map(radio => radio.childNodes[0]);
   const labels = radios.map(radio => radio.childNodes[1]);
-  const selectedRadio = radios.find(radio => radio.childNodes[0].checked);
+  const selectedRadio = () => radios.find(radio => radio.childNodes[0].checked);
   const getRadioByValue = value => radioButtons.find(radioButton => radioButton.value === value.toString());
 
   return {
@@ -16,11 +16,14 @@ const radioGroupDriverFactory = ({element, wrapper, component}) => {
     selectByValue: value => ReactTestUtils.Simulate.change(getRadioByValue(value)),
     selectByIndex: index => ReactTestUtils.Simulate.change(radioButtons[index]),
     getRadioValueAt: index => radioButtons[index].value,
-    getSelectedValue: () => selectedRadio ? selectedRadio.childNodes[0].value : null,
+    getRadioAtIndex: index => radios[index],
+    getSelectedValue: () => selectedRadio() ? selectedRadio().childNodes[0].value : null,
     getClassOfLabelAt: index => labels[index].className,
     isVerticalDisplay: () => isClassExists(element, 'vertical'),
     isHorizontalDisplay: () => isClassExists(element, 'horizontal'),
-    spacing: () => radios[0].style._values['margin-bottom'],
+    isButtonType: () => isClassExists(element, 'buttonType'),
+    spacing: () => radios[1].style._values['margin-top'],
+    lineHeight: () => labels[0].style._values['line-height'],
     getNumberOfRadios: () => radios.length,
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));

@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: row;
   line-height: 15px;
+  width: 115px;
 
   &.rtl {
       flex-direction: row-reverse;
@@ -15,7 +16,7 @@
 .time {
     cursor: pointer;
     display: block;
-    width: 115px;
+    width: inherit;
     white-space: nowrap;
     flex-direction: row;
     box-sizing: border-box;
@@ -34,12 +35,21 @@
 }
 
 .ampm {
-    font-size: 14px;
-    line-height: 14px;
+    margin-top: 1px;
+    margin-right: 3px;
+    margin-left: 3px;
+    font-size: 16px;
+    line-height: 16px;
     text-transform: uppercase;
     color: $D10;
     @include FontRoman();
     &:hover { color: $B10; }
+}
+
+.disabled .ampm {
+    cursor: default;
+    color: $D50;
+    &:hover { color: $D50; }
 }
 
 .input {

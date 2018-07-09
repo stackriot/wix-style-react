@@ -1,10 +1,11 @@
 import React from 'react';
 import textLinkLayoutDriverFactory from './TextLinkLayout.driver';
 import TextLinkLayout from './TextLinkLayout';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory} from '../../test-common';
 import {textLinkLayoutTestkitFactory} from '../../../testkit';
 import {textLinkLayoutTestkitFactory as enzymeTextLinkLayoutTestkitFactory} from '../../../testkit/enzyme';
 import {isTestkitExists, isEnzymeTestkitExists} from '../../../testkit/test-common';
+import {mount} from 'enzyme';
 
 describe('TextLinkLayout', () => {
 
@@ -34,8 +35,13 @@ describe('TextLinkLayout', () => {
   });
 
   it('should be with dark background', () => {
-    const driver = createDriver(<TextLinkLayout darkBackground size="small"/>);
+    const driver = createDriver(<TextLinkLayout theme="darkBackground" size="small"/>);
     expect(driver.isDarkBackground()).toBeTruthy();
+  });
+
+  it('should be with greyscale theme', () => {
+    const driver = createDriver(<TextLinkLayout theme="greyScale" size="small"/>);
+    expect(driver.isGreyScale()).toBeTruthy();
   });
 
   it('should be with light background', () => {
@@ -64,6 +70,16 @@ describe('TextLinkLayout', () => {
     driver.hover();
     expect(driver.isUnderline()).toBeTruthy();
   });
+
+  it('should be with display block by defualt', () => {
+    const driver = createDriver(<TextLinkLayout/>);
+    expect(driver.getDisplay()).toBe('block');
+  });
+
+  it('should be with a custom display', () => {
+    const driver = createDriver(<TextLinkLayout display="inline-block"/>);
+    expect(driver.getDisplay()).toBe('inline-block');
+  });
 });
 
 describe('testkit', () => {
@@ -74,6 +90,6 @@ describe('testkit', () => {
 
 describe('enzyme testkit', () => {
   it('should exist', () => {
-    expect(isEnzymeTestkitExists(<TextLinkLayout/>, enzymeTextLinkLayoutTestkitFactory)).toBe(true);
+    expect(isEnzymeTestkitExists(<TextLinkLayout/>, enzymeTextLinkLayoutTestkitFactory, mount)).toBe(true);
   });
 });

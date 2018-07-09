@@ -3,7 +3,6 @@ import * as Icons from 'wix-style-react/Icons';
 import s from './style.scss';
 
 const renderIcon = name => {
-  console.log(name);
   return (
     <div className={s.singleIconView} key={name}>
       <span>{React.createElement(Icons[name])}</span>
@@ -13,7 +12,7 @@ const renderIcon = name => {
 };
 
 export default () => {
-  return <div className={s.iconList}>
+  return (<div className={s.iconList}>
     {Object.keys(Icons).map(renderIcon)}
-  </div>;
+  </div>);
 };

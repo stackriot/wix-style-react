@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button, TextLink} from '../../Backoffice';
+import Button from '../../Backoffice/Button';
+import TextLink from '../../Backoffice/TextLink';
 
 const ActionButton = ({children, onClick, type, link}) => {
   const commonProps = {
@@ -10,7 +11,7 @@ const ActionButton = ({children, onClick, type, link}) => {
 
   if (type === 'textLink') {
     return (
-      <TextLink underlineStyle="always" darkBackground link={link} {...commonProps} >
+      <TextLink underlineStyle="always" theme="darkBackground" link={link} {...commonProps} >
         {children}
       </TextLink>
     );

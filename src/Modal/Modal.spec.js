@@ -6,6 +6,7 @@ import sinon from 'sinon';
 import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
 import {modalTestkitFactory} from '../../testkit';
 import {modalTestkitFactory as enzymeMessageBoxTestkitFactory} from '../../testkit/enzyme';
+import {mount} from 'enzyme';
 
 describe('Modal', () => {
   const createDriver = createDriverFactory(ModalFactory);
@@ -38,6 +39,25 @@ describe('Modal', () => {
       expect(driver.getChildBySelector('[data-hook="inner-div"]')).not.toBeNull();
     });
 
+    describe('maxHeight', () => {
+      it('should render maxHeight passed in props', () => {
+        const driver = createDriver(<Modal {...props} scrollableContent maxHeight="calc(100vh - 48px)"/>);
+        const driver2 = createDriver(<Modal {...props} scrollableContent={false} maxHeight="calc(100vh - 48px)"/>);
+        expect(driver.getContentStyle().maxHeight).toBe('calc(100vh - 48px)');
+        expect(driver2.getContentStyle().maxHeight).toBe('calc(100vh - 48px)');
+      });
+
+      it('should render 100vh maxHeight when maxHeight is set to auto and content is scrollable', () => {
+        const driver = createDriver(<Modal {...props} scrollableContent maxHeight="auto"/>);
+        expect(driver.getContentStyle().maxHeight).toBe('100vh');
+      });
+
+      it('content position should be relative', () => {
+        const driver = createDriver(<Modal {...props}/>);
+        expect(driver.getContentStyle().position).toBe('relative');
+      });
+    });
+
   });
 
   describe('callbacks', () => {
@@ -60,25 +80,46 @@ describe('Modal', () => {
       expect(props.onRequestClose.calledOnce).toBeTruthy();
     });
 
-    it(`should wait closeTimeoutMS before removing the modal`, done => {
+    it(`should trigger the onRequestClose function when clicking the close button`, () => {
 
-      props.closeTimeoutMS = 400;
-      jasmine.DEFAULT_TIMEOUT_INTERVAL = props.closeTimeoutMS + 500;
+      props.onRequestClose = sinon.spy();
+      props.shouldDisplayCloseButton = true;
+      props.closeTimeoutMS = 0;
 
       const driver = createDriver(<Modal {...props}/>);
-      driver.setProps({
-        isOpen: false
+      driver.clickOnCloseButton();
+
+      expect(props.onRequestClose.calledOnce).toBeTruthy();
+    });
+
+    describe('timeout', () => {
+      let originalTimeout;
+
+      beforeEach(() => {
+        originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+      });
+      afterEach(() => {
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
       });
 
-      setTimeout(() => {
-        expect(driver.isOpen()).toBeTruthy();
-      }, props.closeTimeoutMS - 50);
+      it(`should wait closeTimeoutMS before removing the modal`, done => {
+        props.closeTimeoutMS = 400;
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = props.closeTimeoutMS + 500;
 
-      setTimeout(() => {
-        expect(driver.isOpen()).toBeFalsy();
-        done();
-      }, props.closeTimeoutMS + 50);
+        const driver = createDriver(<Modal {...props}/>);
+        driver.setProps({
+          isOpen: false
+        });
 
+        setTimeout(() => {
+          expect(driver.isOpen()).toBeTruthy();
+        }, props.closeTimeoutMS - 50);
+
+        setTimeout(() => {
+          expect(driver.isOpen()).toBeFalsy();
+          done();
+        }, props.closeTimeoutMS + 50);
+      });
     });
   });
 
@@ -107,6 +148,35 @@ describe('Modal', () => {
     });
   });
 
+  describe('close button', () => {
+    it('should not have a close button', () => {
+      props.shouldDisplayCloseButton = false;
+      const driver = createDriver(<Modal {...props}/>);
+      expect(driver.closeButtonExists()).toBe(false);
+    });
+    it('should have a close button', () => {
+      props.shouldDisplayCloseButton = true;
+      const driver = createDriver(<Modal {...props}/>);
+      expect(driver.closeButtonExists()).toBe(true);
+    });
+  });
+
+  describe('appName', () => {
+    it('should add aria-hidden body if appElement is not specified', () => {
+      createDriver(<Modal {...props}/>);
+      expect(document.getElementsByTagName('body')[0].getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('should add aria-hidden to selected element', () => {
+      const appElemnt = document.createElement('div');
+      appElemnt.setAttribute('id', 'app');
+      document.body.appendChild(appElemnt);
+      props.appElement = '#app';
+      createDriver(<Modal {...props}/>);
+      expect(appElemnt.getAttribute('aria-hidden')).toBe('true');
+    });
+  });
+
   describe('testkit', () => {
     it('should exist', () => {
       expect(isTestkitExists(<Modal {...props}/>, modalTestkitFactory)).toBe(true);
@@ -115,9 +185,8 @@ describe('Modal', () => {
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<Modal {...props}/>, enzymeMessageBoxTestkitFactory)).toBe(true);
+      expect(isEnzymeTestkitExists(<Modal {...props}/>, enzymeMessageBoxTestkitFactory, mount)).toBe(true);
     });
   });
-
 
 });

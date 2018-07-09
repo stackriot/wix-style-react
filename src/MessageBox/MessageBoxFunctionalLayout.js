@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as styles from './MessageBoxFunctionalLayout.scss';
-import {HeaderLayout, FooterLayout} from './';
+import HeaderLayout from './HeaderLayout';
+import FooterLayout from './FooterLayout';
 import WixComponent from '../BaseComponents/WixComponent';
+import classNames from 'classnames';
+
+import styles from './MessageBoxFunctionalLayout.scss';
 
 class MessageBoxFunctionalLayout extends WixComponent {
 
@@ -17,22 +20,24 @@ class MessageBoxFunctionalLayout extends WixComponent {
       children,
       buttonsHeight,
       hideFooter,
+      footerBottomChildren,
       theme,
       closeButton,
       disableConfirmation,
       disableCancel,
-      width
+      width,
+      noBodyPadding
     } = this.props;
 
     return (
       <div className={styles.content} style={{width}}>
         <HeaderLayout title={title} onCancel={onClose ? onClose : onCancel} theme={theme} closeButton={closeButton}/>
-        <div className={styles.body} >
+        <div className={classNames(styles.body, noBodyPadding ? styles.noPadding : styles.withPadding)} data-hook="message-box-body">
           {children}
         </div>
         {
           !hideFooter ?
-            <FooterLayout enableCancel={!disableCancel} enableOk={!disableConfirmation} buttonsHeight={buttonsHeight} confirmText={confirmText} cancelText={cancelText} onCancel={onCancel} onOk={onOk} theme={theme}/> : null
+            <FooterLayout bottomChildren={footerBottomChildren} enableCancel={!disableCancel} enableOk={!disableConfirmation} buttonsHeight={buttonsHeight} confirmText={confirmText} cancelText={cancelText} onCancel={onCancel} onOk={onOk} theme={theme}/> : null
         }
       </div>
     );
@@ -41,8 +46,8 @@ class MessageBoxFunctionalLayout extends WixComponent {
 
 MessageBoxFunctionalLayout.propTypes = {
   hideFooter: PropTypes.bool,
-  confirmText: PropTypes.string,
-  cancelText: PropTypes.string,
+  confirmText: PropTypes.node,
+  cancelText: PropTypes.node,
   theme: PropTypes.string,
   onOk: PropTypes.func,
   onCancel: PropTypes.func,
@@ -53,14 +58,17 @@ MessageBoxFunctionalLayout.propTypes = {
   buttonsHeight: PropTypes.string,
   closeButton: PropTypes.bool,
   disableCancel: PropTypes.bool,
-  disableConfirmation: PropTypes.bool
+  disableConfirmation: PropTypes.bool,
+  noBodyPadding: PropTypes.bool,
+  footerBottomChildren: PropTypes.node
 };
 
 MessageBoxFunctionalLayout.defaultProps = {
   buttonsHeight: 'small',
   disableCancel: false,
   disableConfirmation: false,
-  width: '600px'
+  width: '600px',
+  noBodyPadding: false
 };
 
 export default MessageBoxFunctionalLayout;

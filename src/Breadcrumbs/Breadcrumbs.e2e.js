@@ -1,8 +1,13 @@
+
 import eyes from 'eyes.it';
 import {breadcrumbsTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
 
 describe('Breadcrumbs', () => {
-  const storyUrl = getStoryUrl('Core', 'Breadcrumbs');
+  const storyUrl = getStoryUrl('6. Navigation', '6.2 Breadcrumbs');
+
+  beforeAll(() => {
+    browser.get(storyUrl);
+  });
 
   eyes.it('should display breadcrumbs', () => {
     const driverNoLinks = breadcrumbsTestkitFactory({dataHook: 'story-breadcrumbs-no-links'});
@@ -10,8 +15,6 @@ describe('Breadcrumbs', () => {
 
     const breadcrumbsItems = ['first item', 'second item', 'third item'];
     const breadcrumbsLinkItems = ['Wix', 'Google', 'Yahoo'];
-
-    browser.get(storyUrl);
 
     waitForVisibilityOf([driverNoLinks.element(), driverWithLinks.element()], 'Cannot find Breadcrumbs')
     .then(() => {
@@ -23,14 +26,12 @@ describe('Breadcrumbs', () => {
         expect(driverWithLinks.breadcrumbContentAt(idx)).toBe(item)
       );
     });
-  });
+  }, {version: '<Breadcrumbs/> - documentation fixes'});
 
   eyes.it('should show active item once clicked upon', () => {
     const driver = breadcrumbsTestkitFactory({dataHook: 'story-breadcrumbs-active'});
     const breadcrumbsItems = ['first item', 'second item', 'third item'];
     const itemToSelect = 2;
-
-    browser.get(storyUrl);
 
     waitForVisibilityOf(driver.element(), 'Cannot find Breadcrumbs')
     .then(() => {
@@ -42,14 +43,12 @@ describe('Breadcrumbs', () => {
       driver.clickBreadcrumbAt(itemToSelect);
       expect(driver.getActiveItemId()).toBe(itemToSelect);
     });
-  });
+  }, {version: '<Breadcrumbs/> - documentation fixes'});
 
   it('should call func on item click', () => {
     const driver = breadcrumbsTestkitFactory({dataHook: 'story-breadcrumbs-onclick'});
     const breadcrumbsItems = ['first item', 'second item', 'third item'];
     const idxToClick = 1;
-
-    browser.get(storyUrl);
 
     waitForVisibilityOf(driver.element(), 'Cannot find Breadcrumbs')
     .then(() => {

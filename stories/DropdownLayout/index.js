@@ -1,31 +1,32 @@
 import React from 'react';
-import {storiesOf} from '@kadira/storybook';
-import Markdown from '../utils/Components/Markdown';
-import CodeExample from '../utils/Components/CodeExample';
+import {storiesOf} from '@storybook/react';
+import Markdown from 'wix-storybook-utils/Markdown';
+import TabbedView from 'wix-storybook-utils/TabbedView';
+import CodeExample from 'wix-storybook-utils/CodeExample';
+
 import Readme from '../../src/DropdownLayout/README.md';
 import ReadmeTestkit from '../../src/DropdownLayout/README.TESTKIT.md';
-import TabbedView from '../utils/Components/TabbedView';
 
 import ExampleStandard from './ExampleStandard';
-import ExampleStandardRaw from '!raw!./ExampleStandard';
+import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
 
 import ExampleManyOptions from './ExampleManyOptions';
-import ExampleManyOptionsRaw from '!raw!./ExampleManyOptions';
+import ExampleManyOptionsRaw from '!raw-loader!./ExampleManyOptions';
 
 import ExampleReactElement from './ExampleReactElements';
-import ExampleReactElementRaw from '!raw!./ExampleReactElements';
+import ExampleReactElementRaw from '!raw-loader!./ExampleReactElements';
 
 import ExampleControlled from './ExampleControlled';
-import ExampleControlledRaw from '!raw!./ExampleControlled';
+import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
 
 import ExampleControlledWithButtons from './ExampleControlledWithButtons';
-import ExampleControlledRawWithButtons from '!raw!./ExampleControlledWithButtons';
+import ExampleControlledRawWithButtons from '!raw-loader!./ExampleControlledWithButtons';
 
 import ExampleTheme from './ExampleTheme';
-import ExampleThemeRaw from '!raw!./ExampleTheme';
+import ExampleThemeRaw from '!raw-loader!./ExampleTheme';
 
-storiesOf('Core', module)
-  .add('DropdownLayout', () => (
+storiesOf('11. Pickers and Selectors', module)
+  .add('11.1 DropdownLayout', () => (
     <TabbedView tabs={['API', 'Testkit']}>
       <div>
         <Markdown source={Readme}/>
@@ -66,8 +67,7 @@ storiesOf('Core', module)
 
         <div style={{paddingTop: '230px'}}/>
       </div>
-      <div>
-        <Markdown source={ReadmeTestkit}/>
-      </div>
+
+      <Markdown source={ReadmeTestkit}/>
     </TabbedView>
   ));

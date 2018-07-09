@@ -1,58 +1,134 @@
-import styles from './Checkbox.scss';
-import {any, bool, func, oneOf, string} from 'prop-types';
-import uniqueId from 'lodash.uniqueid';
 import React from 'react';
+import {node, bool, func, oneOf, string} from 'prop-types';
+import uniqueId from 'lodash/uniqueId';
 import classNames from 'classnames';
-import SvgV from '../svg/V';
+import CheckboxChecked from 'wix-ui-icons-common/system/CheckboxChecked';
+import CheckboxIndeterminate from 'wix-ui-icons-common/system/CheckboxIndeterminate';
+import Label from '../Label';
+import styles from './Checkbox.scss';
 import WixComponent from '../BaseComponents/WixComponent';
-import Label from '../Label/Label';
+import {withFocusable, focusableStates} from '../common/Focusable';
+import deprecationLog from '../utils/deprecationLog';
 
+/** a simple WixStyle checkbox */
 class Checkbox extends WixComponent {
+  static displayName = 'Checkbox';
+
+  constructor(props) {
+    super(props);
+
+    this.state = {isFocused: false};
+  }
+
   static propTypes = {
-    active: bool,       // FOR AUTOMATIC TESTING
+    /** used for automatic testing */
     checked: bool,
-    children: any,
+    children: node,
     disabled: bool,
+    hasError: bool,
     id: string,
     indeterminate: bool,
-    hover: bool,        // FOR AUTOMATIC TESTING
-    size: oneOf(['medium', 'large']),
-    onChange: func,
-  }
+
+    /** used for automatic testing */
+    hover: bool,
+    size: oneOf(['medium']),
+    onChange: func
+  };
 
   static defaultProps = {
+    checked: false,
     size: 'medium',
-    onChange: () => { },
+    onChange: e => {
+      e.stopPropagation();
+    }
+  };
+
+  warnAboutDeprecations = () => {
+    if (this.props.size === 'large') {
+      deprecationLog('Checkbox prop "size" with value "large" is deprecated and will be removed in next major release, please use "medium" size instead');
+    }
+    if (this.props.active !== undefined) {
+      deprecationLog('Checkbox prop "active" is deprecated, use "checked" prop instead');
+    }
   }
 
+  _id = `${Checkbox.displayName}-${uniqueId()}`;
+
   render() {
-    const {id = uniqueId(), checked, indeterminate, disabled, hover, active, size, onChange} = this.props;
+    this.warnAboutDeprecations();
 
-    const classname = classNames({
-      [styles.wrapper]: true,
-      [styles.checked]: checked,
-      [styles.unchecked]: !checked,
-      [styles.hover]: hover,
-      [styles.active]: active,
-      [styles.disabled]: disabled,
-    });
+    const {
+      id = this._id,
+      checked,
+      indeterminate,
+      disabled,
+      hasError,
+      hover,
+      active,
+      size,
+      onChange,
+      children
+    } = this.props;
 
-    const checkedSymbol = indeterminate ? <div className={styles.indeterminate}/> : <SvgV/>;
+    const classname = classNames(
+      styles.root,
+      indeterminate ? styles.indeterminate :
+        checked ? styles.checked :
+          styles.unchecked,
+      {
+        [styles.hover]: hover,
+        [styles.active]: active,
+        [styles.disabled]: disabled,
+        [styles.hasError]: hasError
+      }
+    );
 
+    /*
+    NOTE: attaching Focusable handlers to root div (when the tabindex was on the main div under the label) is not working. The onFocus does not get
+    called when clicking on the text (the children). So I moved the tabindex to the root.
+    */
     return (
-      <div className={classname} >
-        <input type="checkbox" id={id} checked={checked} disabled={disabled} onChange={disabled ? null : onChange}/>
-        <Label for={id} appearance="T1.1">
-          <div className={classNames(styles.checkbox, styles[size])}>
-            <div className={styles.inner}>
-              {checkedSymbol}
+      <div
+        className={classname}
+        onFocus={this.props.focusableOnFocus}
+        onBlur={this.props.focusableOnBlur}
+        {...focusableStates(this.props)}
+        tabIndex={disabled ? null : 0}
+        >
+        <input
+          type="checkbox"
+          id={id}
+          checked={checked}
+          disabled={disabled}
+          onChange={disabled ? null : onChange}
+          style={{display: 'none'}}
+          />
+
+        <Label
+          for={id}
+          dataHook="checkbox-label"
+          >
+          <div
+            data-hook="checkbox-box"
+            className={classNames(styles.checkbox, styles[size])}
+            >
+            <div
+              className={styles.inner}
+              onClick={e => e.stopPropagation()}
+              >
+              {indeterminate ? <CheckboxIndeterminate/> : <CheckboxChecked/>}
             </div>
           </div>
-          <div className={styles.children}>{this.props.children}</div>
+
+          { children &&
+            <div className={styles.children} data-hook="checkbox-children">
+              {children}
+            </div>
+          }
         </Label>
       </div>
     );
   }
 }
 
-export default Checkbox;
+export default withFocusable(Checkbox);

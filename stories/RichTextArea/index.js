@@ -1,24 +1,23 @@
 import React from 'react';
-import {storiesOf} from '@kadira/storybook';
-import InteractiveCodeExample from '../utils/Components/InteractiveCodeExample';
-import Markdown from '../utils/Components/Markdown';
-import ReadmeTestkit from '../../src/RichTextArea/README.TESTKIT.md';
+import {storiesOf} from '@storybook/react';
+import InteractiveCodeExample from 'wix-storybook-utils/InteractiveCodeExample';
+import Markdown from 'wix-storybook-utils/Markdown';
+import TabbedView from 'wix-storybook-utils/TabbedView';
 
-import TabbedView from '../utils/Components/TabbedView';
+import ReadmeTestkit from '../../src/RichTextArea/README.TESTKIT.md';
 import ReadMe from '../../src/RichTextArea/README.md';
 import RichTextAreaExample from './RichTextAreaExample';
 
-storiesOf('Core', module)
-  .add('RichTextArea', () => (
+storiesOf('3. Inputs', module)
+  .add('3.2b + RichTextArea', () => (
     <TabbedView tabs={['API', 'Testkit']}>
       <div>
         <Markdown source={ReadMe}/>
         <InteractiveCodeExample title="Customize a <RichTextArea/>">
-          <RichTextAreaExample />
+          <RichTextAreaExample/>
         </InteractiveCodeExample>
       </div>
-      <div>
-        <Markdown source={ReadmeTestkit}/>
-      </div>
+
+      <Markdown source={ReadmeTestkit}/>
     </TabbedView>
   ));

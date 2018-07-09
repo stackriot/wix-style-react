@@ -31,16 +31,17 @@ class RichTextAreaCompositeExample extends Component {
         }
         callback(src);
       },
-      disabled: false,
+      disabled: false
     },
-    required: false
+    required: false,
+    info: ''
   };
 
   setComponentState(componentName, obj) {
     this.setState(prevState => {
       prevState[componentName] = {...this.state[componentName], ...obj};
       Object.keys(prevState[componentName])
-          .forEach(k => !prevState[componentName][k] && delete prevState[componentName][k]);
+        .forEach(k => !prevState[componentName][k] && delete prevState[componentName][k]);
       return prevState;
     });
   }
@@ -96,6 +97,18 @@ class RichTextAreaCompositeExample extends Component {
               onChange={() => this.setState({required: !this.state.required})}
               />
           </div>
+
+          <div className={styles.option}>
+            <Label>Info Tooltip</Label>
+            <div className={styles.flex}>
+              <Input
+                size="small"
+                value={this.state.info}
+                onChange={e => this.setState({info: e.target.value})}
+                />
+            </div>
+          </div>
+
           <div className={styles.option}>
             <Label>Error: </Label>
             <ToggleSwitch

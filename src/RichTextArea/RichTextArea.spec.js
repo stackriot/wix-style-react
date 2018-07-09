@@ -1,7 +1,7 @@
 import React from 'react';
 import {createDriverFactory} from '../test-common';
 import richTextAreaDriverFactory from './RichTextArea.driver';
-import RichTextArea from './RichTextArea';
+import RichTextArea, {makeHrefAbsolute} from './RichTextArea';
 
 const mockGetSelection = () => {
   const original = window.getSelection;
@@ -21,10 +21,27 @@ describe('RichTextArea', () => {
     window.getSelection.restore();
   });
 
+  describe('makeHrefAbsolute method', () => {
+    it('should do nothing', () => {
+      expect(makeHrefAbsolute('http://www.wix.com')).toBe('http://www.wix.com');
+      expect(makeHrefAbsolute('https://www.wix.com')).toBe('https://www.wix.com');
+      expect(makeHrefAbsolute('https://www.wix.com')).toBe('https://www.wix.com');
+      expect(makeHrefAbsolute('//www.wix.com')).toBe('//www.wix.com');
+      expect(makeHrefAbsolute('//wix.com')).toBe('//wix.com');
+    });
+
+    it('should make href absolute', () => {
+      expect(makeHrefAbsolute('www.wix.com')).toBe('//www.wix.com');
+      expect(makeHrefAbsolute('wix.com')).toBe('//wix.com');
+      expect(makeHrefAbsolute('x')).toBe('//x');
+      expect(makeHrefAbsolute('')).toBe('//');
+    });
+  });
+
   it('should render value as text', () => {
     const text = 'text content';
     const driver = createComponent({
-      value: `<p>${text}</p>`,
+      value: `<p>${text}</p>`
     });
     expect(driver.getContent()).toBe(text);
   });
@@ -43,7 +60,7 @@ describe('RichTextArea', () => {
       'underline',
       'link',
       'unordered-list',
-      'ordered-list',
+      'ordered-list'
     ];
     const driver = createComponent({buttons});
     expect(driver.getButtonTypes()).toEqual(buttons);
@@ -148,7 +165,7 @@ describe('RichTextArea', () => {
   const createDriver = createDriverFactory(richTextAreaDriverFactory);
   function createComponent(props) {
     const mergedProps = Object.assign({
-      onChange: newValue => currentValue = newValue,
+      onChange: newValue => currentValue = newValue
     }, props);
     return createDriver(<RichTextArea {...mergedProps}/>);
   }

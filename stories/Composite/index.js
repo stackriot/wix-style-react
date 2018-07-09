@@ -1,15 +1,15 @@
 import React from 'react';
-import {storiesOf} from '@kadira/storybook';
+import {storiesOf} from '@storybook/react';
 
-import CodeExample from '../utils/Components/CodeExample';
-import Markdown from '../utils/Components/Markdown';
+import Markdown from 'wix-storybook-utils/Markdown';
+import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import Readme from '../../src/Composite/README.md';
 
 import ExampleComposite from './ExampleComposite';
-import ExampleCompositeRaw from '!raw!./ExampleComposite';
+import ExampleCompositeRaw from '!raw-loader!./ExampleComposite';
 
-storiesOf('Common', module)
+storiesOf('Introduction', module)
   .add('Composites', () => (
     <div>
       <h1>Composites</h1>

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import CloseButton from '../CloseButton';
 import styles from './HeaderLayout.scss';
-import SvgX from '../svg/X.js';
 
 const HeaderLayout = ({title, onCancel, theme, closeButton}) => {
 
@@ -11,10 +11,16 @@ const HeaderLayout = ({title, onCancel, theme, closeButton}) => {
       <span className={styles.titleLabel} data-hook="header-layout-title">
         {title}
       </span>
-      {closeButton &&
-        <button className={styles.close} data-hook="header-close-button" onClick={onCancel}>
-          <SvgX width={9} height={9} thickness={1} color={'white'}/>
-        </button>
+      {
+        closeButton ?
+          (
+            <CloseButton
+              dataHook="header-close-button"
+              size="large"
+              onClick={onCancel}
+              />
+          ) :
+          null
       }
     </div>
   );

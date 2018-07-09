@@ -14,6 +14,7 @@ const rangeInputWithLabelCompositeDriverFactory = ({element, wrapper}) => {
     hasInputs: () => !!firstInput && !!lastInput,
     getAttr: attrName => element.getAttribute(attrName),
     getNumberOfChildren: () => hasLabel ? element.childNodes[1].childElementCount : element.childNodes[0].childElementCount,
+    hasFieldLabelAttributes: () => !!element.querySelectorAll('[data-hook="field-label-attributes"]').length,
     setProps: props => {
       ReactDOM.render(<div ref={r => element = r}><RangeInputWithLabelComposite {...props}/></div>, wrapper);
     }

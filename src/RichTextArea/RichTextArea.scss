@@ -4,7 +4,6 @@
 $minWidth: 380px;
 $minHeight: 132px;
 $borderColorNormal: $B30;
-$borderColorFocused: $B20;
 $borderColorError: $R10;
 $border: 1px solid $B30;
 $borderRadius: 6px;
@@ -12,6 +11,7 @@ $paddingTop: 6px;
 $marginTop: $paddingTop;
 $paddingLeft: 12px;
 $marginLeft: $paddingLeft;
+$richTextAreaFocus: 0 0 0 2px $F00;
 
 .container {
   display: flex;
@@ -77,11 +77,15 @@ $marginLeft: $paddingLeft;
     border-top-color: $borderColorNormal;
   }
 
-  .isFocused:not(.withError) & {
-    border-color: $borderColorFocused;
+  .isEditorFocused & {
+    @include FocusBox;
   }
 
-  &:not(.disabled) :hover {
+  .isEditorFocused.withError & {
+    @include FocusBoxError;
+  }
+
+  &:not(.disabled):hover {
     background: $B50;
   }
 
@@ -111,12 +115,18 @@ $marginLeft: $paddingLeft;
   align-items: center;
   justify-content: center;
   background-color: $R10;
+  color: #fff;
+
+  > svg {
+    width: 10px;
+    height: 10px;
+  }
 
   .withError  & {
     display: flex;
     position: absolute;
     top: 6px;
-    right: 6px;
+    right: 12px;
 
     &:hover {
       background-color: $R10;
@@ -126,6 +136,7 @@ $marginLeft: $paddingLeft;
 
 .placeholder {
   @extend .t2_1;
+  color: $D40;
 }
 
 .link {
@@ -154,5 +165,5 @@ $marginLeft: $paddingLeft;
 }
 
 .activeEditorImage {
-  box-shadow: 0 0 0 2px blue;
+  box-shadow: $richTextAreaFocus;
 }

@@ -1,43 +1,24 @@
 import React from 'react';
-import {storiesOf} from '@kadira/storybook';
-import Markdown from '../utils/Components/Markdown';
-import CodeExample from '../utils/Components/CodeExample';
+import {storiesOf} from '@storybook/react';
+import Markdown from 'wix-storybook-utils/Markdown';
+import TabbedView from 'wix-storybook-utils/TabbedView';
+import InteractiveCodeExample from 'wix-storybook-utils/InteractiveCodeExample';
+
 import Readme from '../../src/ButtonWithOptions/README.md';
+import ExampleStandardComp from './ButtonWithOptionsStandard';
 import ReadmeTestkit from '../../src/ButtonWithOptions/README.TESTKIT.md';
 
-import TabbedView from '../utils/Components/TabbedView';
-
-import ExampleStandard from './ExampleStandard';
-import ExampleStandardRaw from '!raw!./ExampleStandard';
-
-import ExampleDropdownSize from './ExampleDropdownSize';
-import ExampleDropdownSizeRaw from '!raw!./ExampleDropdownSize';
-
-import ExampleControlled from './ExampleControlled';
-import ExampleControlledRaw from '!raw!./ExampleControlled';
-
-storiesOf('Core', module)
-  .add('ButtonWithOptions', () => (
+storiesOf('4. Selection', module)
+  .add('4.1 + ButtonWithOptions', () =>
     <TabbedView tabs={['API', 'Testkit']}>
       <div>
         <Markdown source={Readme}/>
 
-        <h1>Usage examples</h1>
-
-        <CodeExample title="Standard" code={ExampleStandardRaw}>
-          <ExampleStandard/>
-        </CodeExample>
-
-        <CodeExample title="Dropdown size" code={ExampleDropdownSizeRaw}>
-          <ExampleDropdownSize/>
-        </CodeExample>
-
-        <CodeExample title="Controlled input" code={ExampleControlledRaw}>
-          <ExampleControlled/>
-        </CodeExample>
+        <InteractiveCodeExample title="Customize a <ButtonWithOptions/>">
+          <ExampleStandardComp/>
+        </InteractiveCodeExample>
       </div>
-      <div>
-        <Markdown source={ReadmeTestkit}/>
-      </div>
+
+      <Markdown source={ReadmeTestkit}/>
     </TabbedView>
-  ));
+  );

@@ -7,9 +7,15 @@ import styles from './TooltipContent.scss';
 class TooltipContent extends Component {
 
   static propTypes = {
+    /** alignment of the tooltip's text  */
     textAlign: PropTypes.string,
 
-    maxWidth: PropTypes.string,
+    /** The tooltip max width  */
+    maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+    /** The tooltip min width  */
+    minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
     /**
      * Tooltip content to be rendered
      */
@@ -36,6 +42,11 @@ class TooltipContent extends Component {
     style: PropTypes.object,
 
     /**
+     * Custom padding (not part of style since it is to the internal component)
+     */
+    padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+    /**
      * Callback triggered when mouse enters the component
      * Used for showing tooltip when mouse leaves the target element, but hovers the tooltip itself
      */
@@ -51,15 +62,24 @@ class TooltipContent extends Component {
      * Specifies if tooltip content should use bouncing animation.
      */
     bounce: PropTypes.bool,
-    size: PropTypes.oneOf(['normal', 'large'])
+    size: PropTypes.oneOf(['normal', 'large']),
+
+    /**
+     * Specifies the font color of the content of the tooltip
+     */
+    color: PropTypes.string,
+    lineHeight: PropTypes.string,
+
+    /** Show Tooltip Immediately - with no delay and no animation */
+    showImmediately: PropTypes.bool
   };
 
   static defaultProps = {
     theme: 'light',
     arrowPlacement: 'bottom',
-    maxWidth: '1200px',
+    maxWidth: '204px',
     size: 'normal',
-    textAlign: 'center',
+    textAlign: 'center'
   };
 
   render() {
@@ -75,14 +95,20 @@ class TooltipContent extends Component {
       bounce,
       size,
       textAlign,
+      maxWidth,
+      minWidth,
+      padding,
+      color,
+      lineHeight,
+      showImmediately
     } = this.props;
 
     return (
       <div className={styles.root} style={style} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        <div className={styles.fadeIn}>
-          <div className={classnames({[styles[`bounce-on-${arrowPlacement}`]]: bounce})}>
-            <div ref={ref => this.tooltip = ref} className={classnames(styles.tooltip, styles[theme], styles[size])} style={{maxWidth: this.props.maxWidth, textAlign}}>
-              <div>{children}</div>
+        <div className={classnames({[styles.fadeIn]: !showImmediately})}>
+          <div className={classnames({[styles[`bounce-${arrowPlacement}`]]: bounce})}>
+            <div ref={ref => this.tooltip = ref} className={classnames(styles.tooltip, styles[theme], styles[size])} style={{maxWidth, minWidth, textAlign, padding, lineHeight, color}}>
+              <div data-hook="tooltip-content">{children}</div>
               <div className={classnames(styles.arrow, styles[arrowPlacement])} style={arrowStyle}/>
             </div>
           </div>

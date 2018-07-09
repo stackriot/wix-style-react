@@ -3,8 +3,11 @@ import {any, bool, oneOf} from 'prop-types';
 import classNames from 'classnames';
 import styles from './ButtonLayout.scss';
 
+/**
+  * General Buttons
+  */
 const ButtonLayout = props => {
-  const {theme, hover, active, disabled, height, children} = props;
+  const {theme, hover, active, disabled, height, children, matchParent} = props;
 
   const className = classNames({
     [styles.button]: true,
@@ -23,6 +26,10 @@ const ButtonLayout = props => {
     }
   );
 
+  if (matchParent) {
+    _style.width = '100%';
+  }
+
   if (React.Children.count(children) === 1) {
     return React.cloneElement(
       children,
@@ -36,15 +43,23 @@ const ButtonLayout = props => {
 
 ButtonLayout.defaultProps = {
   height: 'medium',
-  theme: 'fullblue'
+  theme: 'fullblue',
+  type: 'button'
 };
 
 ButtonLayout.propTypes = {
   active: bool,
   children: any,
   disabled: bool,
-  height: oneOf(['small', 'medium', 'large', 'x-large']),
+
+  /** The size of the button */
+  height: oneOf(['x-small', 'small', 'medium', 'large', 'x-large']),
   hover: bool,
+
+  /** When true the button will match its parent width */
+  matchParent: bool,
+
+  /** The theme of the button */
   theme: oneOf([
     'transparent',
     'fullred',
@@ -69,8 +84,13 @@ ButtonLayout.propTypes = {
     'icon-standard',
     'icon-standardsecondary',
     'icon-white',
-    'icon-whitesecondary'
-  ])
+    'icon-whitesecondary',
+    'no-border',
+    'dark-no-border',
+    'outlined'
+  ]),
+
+  type: oneOf(['button', 'submit', 'reset'])
 };
 
 ButtonLayout.displayName = 'ButtonLayout';

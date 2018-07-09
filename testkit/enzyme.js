@@ -1,7 +1,4 @@
-import {enzymeTestkitFactoryCreator, nativeEnzymeTestkitFactoryCreator} from '../src/test-common';
-
-import buttonSelectionDriverFactory from '../src/ButtonSelection/ButtonSelection.driver';
-export const buttonSelectionTestkitFactory = enzymeTestkitFactoryCreator(buttonSelectionDriverFactory);
+import {enzymeTestkitFactoryCreator} from '../src/test-common';
 
 import inputDriverFactory from '../src/Input/Input.driver';
 export const inputTestkitFactory = enzymeTestkitFactoryCreator(inputDriverFactory);
@@ -12,14 +9,20 @@ export const inputAreaTestkitFactory = enzymeTestkitFactoryCreator(inputAreaDriv
 import tooltipDriverFactory from '../src/Tooltip/Tooltip.driver';
 export const tooltipTestkitFactory = enzymeTestkitFactoryCreator(tooltipDriverFactory);
 
-import labelDriverFactory from '../src/Label/Label.driver';
-export const labelTestkitFactory = enzymeTestkitFactoryCreator(labelDriverFactory);
+import backofficeTooltipDriverFactory from '../src/Backoffice/Tooltip/Tooltip.driver';
+export const backofficeTooltipTestkitFactory = enzymeTestkitFactoryCreator(backofficeTooltipDriverFactory);
 
 import breadcrumbsDriverFactory from '../src/Breadcrumbs/Breadcrumbs.driver';
 export const breadcrumbsTestkitFactory = enzymeTestkitFactoryCreator(breadcrumbsDriverFactory);
 
 import tabsDriverFactory from '../src/Tabs/Tabs.driver';
 export const tabsTestkitFactory = enzymeTestkitFactoryCreator(tabsDriverFactory);
+
+import pageDriverFactory from '../src/Page/Page.driver';
+export const pageTestkitFactory = enzymeTestkitFactoryCreator(pageDriverFactory);
+
+import pageHeaderDriverFactory from '../src/PageHeader/PageHeader.driver';
+export const pageHeaderTestkitFactory = enzymeTestkitFactoryCreator(pageHeaderDriverFactory);
 
 import dropdownLayoutDriverFactory from '../src/DropdownLayout/DropdownLayout.driver';
 export const dropdownLayoutTestkitFactory = enzymeTestkitFactoryCreator(dropdownLayoutDriverFactory);
@@ -30,6 +33,9 @@ export const inputWithOptionsTestkitFactory = enzymeTestkitFactoryCreator(inputW
 import buttonWithOptionsDriverFactory from '../src/ButtonWithOptions/ButtonWithOptions.driver';
 export const buttonWithOptionsTestkitFactory = enzymeTestkitFactoryCreator(buttonWithOptionsDriverFactory);
 
+import languagePickerDriverFactory from '../src/LanguagePicker/LanguagePicker.driver';
+export const languagePickerTestkitFactory = enzymeTestkitFactoryCreator(languagePickerDriverFactory);
+
 import autoCompleteDriverFactory from '../src/AutoComplete/AutoComplete.driver';
 export const autoCompleteTestkitFactory = enzymeTestkitFactoryCreator(autoCompleteDriverFactory);
 
@@ -38,6 +44,9 @@ export const dropdownTestkitFactory = enzymeTestkitFactoryCreator(dropdownDriver
 
 import multiSelectDriverFactory from '../src/MultiSelect/MultiSelect.driver';
 export const multiSelectTestkitFactory = enzymeTestkitFactoryCreator(multiSelectDriverFactory);
+
+import multiSelectCheckboxDriverFactory from '../src/MultiSelectCheckbox/MultiSelectCheckbox.driver';
+export const multiSelectCheckboxTestkitFactory = enzymeTestkitFactoryCreator(multiSelectCheckboxDriverFactory);
 
 import tagDriverFactory from '../src/Tag/Tag.driver';
 export const tagTestkitFactory = enzymeTestkitFactoryCreator(tagDriverFactory);
@@ -48,9 +57,6 @@ export const checkboxTestkitFactory = enzymeTestkitFactoryCreator(checkboxDriver
 import buttonDriverFactory from '../src/Backoffice/Button/Button.driver';
 export const buttonTestkitFactory = enzymeTestkitFactoryCreator(buttonDriverFactory);
 
-import viewerButtonDriverFactory from '../src/Viewer/Button/Button.driver';
-export const viewerButtonTestkitFactory = enzymeTestkitFactoryCreator(viewerButtonDriverFactory);
-
 import textLinkDriverFactory from '../src/BaseComponents/TextLink/TextLink.driver';
 export const textLinkTestkitFactory = enzymeTestkitFactoryCreator(textLinkDriverFactory);
 
@@ -60,14 +66,23 @@ export const textLinkLayoutTestkitFactory = enzymeTestkitFactoryCreator(textLink
 import dataTableDriverFactory from '../src/DataTable/DataTable.driver';
 export const dataTableTestkitFactory = enzymeTestkitFactoryCreator(dataTableDriverFactory);
 
+import tableDriverFactory from '../src/Table/Table.driver';
+export const tableTestkitFactory = enzymeTestkitFactoryCreator(tableDriverFactory);
+
 import textAreaDriverFactory from '../src/TextArea/TextArea.driver';
 export const textAreaTestkitFactory = enzymeTestkitFactoryCreator(textAreaDriverFactory);
 
 import textFieldDriverFactory from '../src/TextField/TextField.driver';
 export const textFieldTestkitFactory = enzymeTestkitFactoryCreator(textFieldDriverFactory);
 
+import dropdownCompositeDriverFactory from '../src/DropdownComposite/DropdownComposite.driver';
+export const dropdownCompositeTestkitFactory = enzymeTestkitFactoryCreator(dropdownCompositeDriverFactory);
+
 import autoCompleteCompositeDriverFactory from '../src/AutoCompleteComposite/AutoCompleteComposite.driver';
 export const autoCompleteCompositeTestkitFactory = enzymeTestkitFactoryCreator(autoCompleteCompositeDriverFactory);
+
+import multiSelectCompositeDriverFactory from '../src/MultiSelectComposite/MultiSelectComposite.driver';
+export const multiSelectCompositeTestkitFactory = enzymeTestkitFactoryCreator(multiSelectCompositeDriverFactory);
 
 import loaderDriverFactory from '../src/Loader/Loader.driver';
 export const loaderTestkitFactory = enzymeTestkitFactoryCreator(loaderDriverFactory);
@@ -102,6 +117,9 @@ export const buttonHeaderTestkitFactory = enzymeTestkitFactoryCreator(buttonHead
 import linkHeaderDriverFactory from '../src/Card/LinkHeader/LinkHeader.driver';
 export const linkHeaderTestkitFactory = enzymeTestkitFactoryCreator(linkHeaderDriverFactory);
 
+import collapsedHeaderDriverFactory from '../src/Card/CollapsedHeader/CollapsedHeader.driver';
+export const collapsedHeaderTestkitFactory = enzymeTestkitFactoryCreator(collapsedHeaderDriverFactory);
+
 import headerDriverFactory from '../src/Card/Header/Header.driver';
 export const headerTestkitFactory = enzymeTestkitFactoryCreator(headerDriverFactory);
 
@@ -120,22 +138,14 @@ export const filePickerTestkitFactory = enzymeTestkitFactoryCreator(filePickerDr
 import timeInputDriverFactory from '../src/TimeInput/TimeInput.driver';
 export const timeInputTestkitFactory = enzymeTestkitFactoryCreator(timeInputDriverFactory);
 
-export {toastTestkitFactory} from '../src/Toast/testkit/Toast.enzyme';
-
-import {sliderDriverFactory} from '../src/Slider/testkit/Slider';
+import sliderDriverFactory from '../src/Slider/Slider.driver';
 export const sliderTestkitFactory = enzymeTestkitFactoryCreator(sliderDriverFactory);
 
-import toggleSwitchDriverFactory from '../src/ToggleSwitch/ToggleSwitch.driver';
-export const toggleSwitchTestkitFactory = enzymeTestkitFactoryCreator(toggleSwitchDriverFactory);
+import addItemDriverFactory from '../src/AddItem/AddItem.driver';
+export const addItemTestkitFactory = enzymeTestkitFactoryCreator(addItemDriverFactory);
 
 import imageViewerDriverFactory from '../src/ImageViewer/ImageViewer.driver';
 export const imageViewerTestkitFactory = enzymeTestkitFactoryCreator(imageViewerDriverFactory);
-
-import textDriverFactory from '../src/Text/Text.driver';
-export const textTestkitFactory = enzymeTestkitFactoryCreator(textDriverFactory);
-
-import dividerDriverFactory from '../src/Viewer/Divider/Divider.driver';
-export const dividerTestkitFactory = enzymeTestkitFactoryCreator(dividerDriverFactory);
 
 import sideMenuDriverFactory from '../src/SideMenu/core/SideMenu.driver';
 export const sideMenuTestkitFactory = enzymeTestkitFactoryCreator(sideMenuDriverFactory);
@@ -144,4 +154,66 @@ import sideMenuDrillDriverFactory from '../src/SideMenu/DrillView/DrillView.driv
 export const sideMenuDrillTestkitFactory = enzymeTestkitFactoryCreator(sideMenuDrillDriverFactory);
 
 import tpaButtonDriverFactory from '../src/TPA/Button/Button.driver';
-export const tpaButtonTestkitFactory = nativeEnzymeTestkitFactoryCreator(tpaButtonDriverFactory, true);
+export const tpaButtonTestkitFactory = enzymeTestkitFactoryCreator(tpaButtonDriverFactory);
+
+import tpaInputDriverFactory from '../src/TPA/Input/Input.driver';
+export const tpaInputTestkitFactory = enzymeTestkitFactoryCreator(tpaInputDriverFactory);
+
+import tpaTextLinkDriverFactory from '../src/TPA/TextLink/TextLink.driver';
+export const tpaTextLinkTestkitFactory = enzymeTestkitFactoryCreator(tpaTextLinkDriverFactory);
+
+import tpaFloatingTabsDriverFactory from '../src/TPA/FloatingTabs/FloatingTabs.driver';
+export const tpaFloatingTabsTestkitFactory = enzymeTestkitFactoryCreator(tpaFloatingTabsDriverFactory);
+
+import fieldLabelAttributesDriverFactory from '../src/FieldLabelAttributes/FieldLabelAttributes.driver';
+export const fieldLabelAttributesTestkitFactory = enzymeTestkitFactoryCreator(fieldLabelAttributesDriverFactory);
+
+import popoverMenuDriverFactory from '../src/PopoverMenu/PopoverMenu.driver';
+export const popoverMenuTestkitFactory = enzymeTestkitFactoryCreator(popoverMenuDriverFactory);
+
+import datePickerFactory from '../src/DatePicker/DatePicker.driver';
+export const datePickerTestkitFactory = enzymeTestkitFactoryCreator(datePickerFactory);
+
+import selectorDriverFactory from '../src/Selector/Selector.driver';
+export const selectorTestkitFactory = enzymeTestkitFactoryCreator(selectorDriverFactory);
+
+import editableSelectorDriverFactory from '../src/EditableSelector/EditableSelector.driver';
+export const editableSelectorTestkitFactory = enzymeTestkitFactoryCreator(editableSelectorDriverFactory);
+
+import editableRowDriverFactory from '../src/EditableSelector/EditableRow/EditableRow.driver';
+export const editableRowTestkitFactory = enzymeTestkitFactoryCreator(editableRowDriverFactory);
+
+import iconWithOptionsDriverFactory from '../src/IconWithOptions/IconWithOptions.driver';
+export const iconWithOptionsTestkitFactory = enzymeTestkitFactoryCreator(iconWithOptionsDriverFactory);
+
+import searchDriverFactory from '../src/Search/Search.driver';
+export const searchTestkitFactory = enzymeTestkitFactoryCreator(searchDriverFactory);
+
+import highlighterDriverFactory from '../src/Highlighter/Highlighter.driver';
+export const highlighterTestkitFactory = enzymeTestkitFactoryCreator(highlighterDriverFactory);
+
+import statsWidgetDriverFactory from '../src/StatsWidget/StatsWidget.driver';
+export const statsWidgetTestkitFactory = enzymeTestkitFactoryCreator(statsWidgetDriverFactory);
+
+import modalSelectorLayoutDriverFactory from '../src/ModalSelectorLayout/ModalSelectorLayout.driver';
+export const modalSelectorLayoutTestkitFactory = enzymeTestkitFactoryCreator(modalSelectorLayoutDriverFactory);
+
+import sectionHelperDriverFactory from '../src/SectionHelper/SectionHelper.driver';
+export const sectionHelperTestkitFactory = enzymeTestkitFactoryCreator(sectionHelperDriverFactory);
+
+import formFieldDriverFactory from '../src/FormField/FormField.driver';
+export const formFieldTestkitFactory = enzymeTestkitFactoryCreator(formFieldDriverFactory);
+
+// wix-ui-backoffice proxy
+
+export {
+  badgeTestkitFactory,
+  stylableCounterBadgeTestkitFactory as counterBadgeTestkitFactory,
+  headingTestkitFactory,
+  toggleSwitchTestkitFactory,
+  textTestkitFactory,
+  labelTestkitFactory,
+  floatingHelperTestkitFactory,
+  linearProgressBarTestkitFactory,
+  circularProgressBarTestkitFactory
+} from 'wix-ui-backoffice/dist/src/testkit/enzyme';

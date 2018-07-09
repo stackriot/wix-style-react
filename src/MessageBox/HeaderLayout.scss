@@ -21,29 +21,6 @@
     word-break: break-word;
 }
 
-.close
-{
-    width            : 25px;
-    height           : 25px;
-    border-radius    : 50%;
-    border           : none;
-    display          : flex;
-    justify-content  : center;
-    align-items      : center;
-    background-color : rgba(red($D10), green($D10), blue($D10), 0.2);
-    cursor           : pointer;
-}
-
-.close:hover, .close:focus {
-    background-color : rgba(red($D10), green($D10), blue($D10), 0.4);
-}
-
-.close > svg {
-    margin           : 1px auto 0 auto;
-    path { stroke: #fff; }
-}
-
-
 .red          { background-color: $paletteR1 }
 .blue         { background-color: $paletteB1 }
 .green        { background-color: $paletteG1 }

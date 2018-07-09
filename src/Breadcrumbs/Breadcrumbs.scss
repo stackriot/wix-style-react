@@ -1,7 +1,7 @@
 @import '../common.scss';
 
 @mixin breadcrumbsHover($hoverTextColor, $hoverBackgroundColor) {
-  .item:not(.active):hover {
+  .item:not(.active):not(.disabled):hover {
     border-radius: 100px;
     color: $hoverTextColor;
     background-color: $hoverBackgroundColor;
@@ -14,6 +14,10 @@
     height: $height;
     line-height: $height;
     padding: 0 $sidePadding;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 204px;
+    text-overflow: ellipsis;
   }
 }
 
@@ -35,10 +39,18 @@
 
 .onDarkBackground {
   @include breadcrumbsHover($D60, transparentize($D80, .9));
+
+  .item {
+    color: $D60;
+  }
 }
 
-.item:not(.active) {
+.item:not(.disabled):not(.active) {
   cursor: pointer;
+}
+
+.disabled {
+  cursor: default;
 }
 
 .itemContainer {
@@ -47,18 +59,24 @@
 }
 
 .divider {
-  display: inline-block;
   width: 6px;
   min-height: 30px;
   margin: 0 8px;
-  background: url('../assets/arrow-right-icon.svg') no-repeat 50% 50%;
+  color: #B6C1CD;
 }
 
 .button {
   background: transparent;
   border: 0;
   padding: 0;
-  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:not(.disabled):not(.active) {
+    cursor: pointer;
+  }
 }
 
 .link {
@@ -72,6 +90,6 @@
   }
 
   .divider {
-    transform: rotate(180deg);
+    transform: scaleX(-1);
   }
 }

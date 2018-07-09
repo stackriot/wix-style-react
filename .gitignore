@@ -13,3 +13,19 @@ storybook-e2e
 *.iml
 .vscode
 test/e2e
+.happypack
+yarn.lock
+package-lock.json
+.DS_Store
+
+# we ignore all *.js in root folder to avoid comitting component export
+# files that appear in root after build
+/*.js
+!wallaby.js
+!protractor.conf.js
+.DS_Store
+# we also ignore icons folder to avoid comitting icons export
+# icons that appear in root after build
+/new-icons/
+/src/new-icons/system
+/src/new-icons/*.js

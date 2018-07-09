@@ -1,20 +1,25 @@
 @import '../common';
 @import '../Typography/Typography';
+@import '../common/Focusable/Focusable';
 
 .button {
   padding: 0;
   border: 0;
   background: transparent;
   color: $D30;
-
+  border-radius: 6px;
+  outline: none;
+ 
   &:not(.disabled) {
     &:hover,
     &.isActive {
       color: $B10;
     }
-
-    &:focus {
-      outline: 0;
+    
+    &#{$focusable-focus-visible} {
+      @include FocusBox;
+      z-index: 1;
+      position: relative;
     }
   }
 

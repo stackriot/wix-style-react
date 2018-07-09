@@ -1,7 +1,11 @@
 @import '../common';
 
 .input {
-  min-width: 100px;
+  min-width: 30px;
+}
+
+.emptyInput {
+  width: 100%;
 }
 
 .hiddenDiv {
@@ -20,17 +24,22 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  overflow: none;
   color: $D30;
   font-size: 16px;
+  overflow-y: hidden;
 }
 
+.hasMaxHeight {
+  overflow-y: auto;
+}
+
+// Override <Input>'s default focus style
 .tagsContainer div {
-  border: none !important;
+  border-color: transparent !important;
 }
 
 .tagsContainer div:hover {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .error {
@@ -39,4 +48,19 @@
 
 .disabled {
   border-color: $D55;
+}
+
+.hasFocus {
+  border-color: $B20;
+
+  @include FocusBox;
+
+  &.error {
+    @include FocusBoxError;
+  }
+  
+}
+
+.hasHover {
+  background: $B50;
 }

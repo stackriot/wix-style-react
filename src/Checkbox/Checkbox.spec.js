@@ -7,6 +7,8 @@ import Checkbox from './Checkbox';
 import {checkboxTestkitFactory as enzymeCheckboxTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
 
+const cachedConsoleWarn = global.console.warn;
+
 describe('Checkbox', () => {
   const createDriver = createDriverFactory(checkboxDriverFactory);
 
@@ -17,18 +19,18 @@ describe('Checkbox', () => {
   });
 
   it('should be checked', () => {
-    const driver = createDriver(<Checkbox checked={true}/>);
+    const driver = createDriver(<Checkbox checked/>);
     expect(driver.isChecked()).toBeTruthy();
   });
 
   it('should be disabled', () => {
-    const driver = createDriver(<Checkbox disabled={true}/>);
+    const driver = createDriver(<Checkbox disabled/>);
     expect(driver.isDisabled()).toBeTruthy();
   });
 
-  it('should have a label', () => {
-    const driver = createDriver(<Checkbox disabled={true}>Hey</Checkbox>);
-    expect(driver.getLabel()).toBe('Hey');
+  it('should have an error state', () => {
+    const driver = createDriver(<Checkbox hasError/>);
+    expect(driver.hasError()).toBeTruthy();
   });
 
   it('should call onChange when clicking the Checkbox', () => {
@@ -37,13 +39,14 @@ describe('Checkbox', () => {
     const driver = createDriver(<Checkbox onChange={onChange}/>);
 
     driver.click();
-    expect(onChange).toBeCalled();
+
+    expect(onChange).toBeCalledWith(expect.objectContaining({target: {checked: true}}));
   });
 
   it('should not call onChange when clicking disabled Checkbox', () => {
     const onChange = jest.fn();
 
-    const driver = createDriver(<Checkbox onChange={onChange} disabled={true}/>);
+    const driver = createDriver(<Checkbox onChange={onChange} disabled/>);
 
     driver.click();
     expect(onChange).not.toBeCalled();
@@ -56,9 +59,33 @@ describe('Checkbox', () => {
   });
 
   it('should run in indeterminate mode when specified', () => {
-    const driver = createDriver(<Checkbox indeterminate={true}/>);
+    const driver = createDriver(<Checkbox indeterminate/>);
 
     expect(driver.isIndeterminate()).toBeTruthy();
+  });
+
+  it('should warn with deprecation warning, if size === "large" passed', () => {
+    const cachedConsoleError = global.console.error;
+    global.console.warn = jest.fn();
+    global.console.error = jest.fn();
+    createDriver(<Checkbox size="large"/>);
+    expect(global.console.warn).toBeCalledWith('Warning: Checkbox prop "size" with value "large" is deprecated and will be removed in next major release, please use "medium" size instead');
+    global.console.warn = cachedConsoleWarn;
+    global.console.error = cachedConsoleError;
+  });
+
+  it('should warn with deprecation warning, if active prop passed', () => {
+    global.console.warn = jest.fn();
+    createDriver(<Checkbox active/>);
+    expect(global.console.warn).toBeCalledWith('Warning: Checkbox prop "active" is deprecated, use "checked" prop instead');
+    global.console.warn = cachedConsoleWarn;
+  });
+
+  it('should not warn with deprecation warning, if no size', () => {
+    global.console.warn = jest.fn();
+    createDriver(<Checkbox/>);
+    expect(global.console.warn).not.toBeCalled();
+    global.console.warn = cachedConsoleWarn;
   });
 
   describe('testkit', () => {

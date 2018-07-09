@@ -4,14 +4,24 @@ import RadioGroup from '../../src/RadioGroup';
 import Label from '../../src/Label';
 import Input from '../../src/Input';
 import TabsTemplate from './TabsTemplate';
+import Button from '../../src/Button';
 import styles from './TabsExample.scss';
 import TextField from '../../src/TextField';
+
+
+const SideContentExample = () => (
+  <div className={styles.sideContentExample}>
+    <Button theme="whiteblue">Cancel</Button>
+    <Button>Save</Button>
+  </div>
+);
 
 class TabsExample extends Component {
   state = {
     type: '',
     hasDivider: true,
-    width: 30
+    width: 30,
+    showSideContent: false
   };
 
   render() {
@@ -27,6 +37,7 @@ class TabsExample extends Component {
               >
               <RadioGroup.Radio value="">Default</RadioGroup.Radio>
               <RadioGroup.Radio value="compact">Compact</RadioGroup.Radio>
+              <RadioGroup.Radio value="compactSide">Compact (Side)</RadioGroup.Radio>
               <RadioGroup.Radio value="uniformSide">Uniform (Side)</RadioGroup.Radio>
               <RadioGroup.Radio value="uniformFull">Uniform (Full)</RadioGroup.Radio>
             </RadioGroup>
@@ -41,7 +52,7 @@ class TabsExample extends Component {
                   <Label
                     appearance="T1.1"
                     for="firstName"
-                  >
+                    >
                     Tab Width
                   </Label>
                   <Input
@@ -53,19 +64,19 @@ class TabsExample extends Component {
                     value={this.state.width}
                     suffix={
                       <Input.Group>
-                        <Input.Unit value="px" />
+                        <Input.Unit value="px"/>
                         <Input.Ticker
                           onDown={() => {
-                            this.setState({width: (this.state.width - 1)})
+                            this.setState({width: (this.state.width - 1)});
                           }}
                           onUp={() => {
-                            this.setState({width: (this.state.width + 1)})
+                            this.setState({width: (this.state.width + 1)});
                           }}
                           />
                       </Input.Group>}
                     theme="normal"
                     type="number"
-                  />
+                    />
                 </TextField>
                 <br/>
               </div>
@@ -80,8 +91,21 @@ class TabsExample extends Component {
               value={this.state.hasDivider}
               onChange={hasDivider => this.setState({hasDivider})}
               >
-              <RadioGroup.Radio value={true}>Visible</RadioGroup.Radio>
+              <RadioGroup.Radio value>Visible</RadioGroup.Radio>
               <RadioGroup.Radio value={false}>Hidden</RadioGroup.Radio>
+            </RadioGroup>
+          </div>
+        </div>
+        <div className={styles.controlGroup}>
+          <Label>Side Content</Label>
+          <div className={styles.radioGroup}>
+            <RadioGroup
+              display="horizontal"
+              value={this.state.showSideContent}
+              onChange={showSideContent => this.setState({showSideContent})}
+              >
+              <RadioGroup.Radio value={false}>None</RadioGroup.Radio>
+              <RadioGroup.Radio value>Buttons</RadioGroup.Radio>
             </RadioGroup>
           </div>
         </div>
@@ -91,6 +115,7 @@ class TabsExample extends Component {
             type={this.state.type}
             hasDivider={this.state.hasDivider}
             width={this.state.width}
+            sideContent={this.state.showSideContent ? <SideContentExample/> : undefined}
             />
         </div>
       </div>
@@ -98,8 +123,9 @@ class TabsExample extends Component {
   }
 }
 
+
 TabsExample.propTypes = {
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 export default TabsExample;

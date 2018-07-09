@@ -1,26 +1,19 @@
 import React from 'react';
-import {storiesOf} from '@kadira/storybook';
-import Markdown from '../utils/Components/Markdown';
-import Readme from '../../README.md';
-import TestsReadme from '../../TESTS.md';
-import Contribution from '../../CONTRIBUTION.md';
-import TPA from '../../src/TPA/README.md';
+import {storiesOf} from '@storybook/react';
 
-storiesOf('Introduction', {})
-  .add('Getting started', () => (
-    <div>
-      <Markdown source={Readme}/>
-    </div>
-  )).add('Testing', () => (
-    <div>
-      <Markdown source={TestsReadme}/>
-    </div>
-  )).add('Contribution', () => (
-    <div>
-      <Markdown source={Contribution}/>
-    </div>
-  )).add('TPA', () => (
-    <div>
-      <Markdown source={TPA}/>
-    </div>
-  ));
+import Markdown from 'wix-storybook-utils/Markdown';
+
+import Readme from '../../README.md';
+import TestsReadme from '../../docs/TESTS.md';
+import Contribution from '../../docs/CONTRIBUTING.md';
+import AddingStory from '../../docs/adding-story.md';
+import TPA from '../../src/TPA/README.md';
+import UsageWithoutYoshiReadme from '../../docs/usage-without-yoshi.md';
+
+storiesOf('Introduction', module)
+  .add('Getting started', () => <Markdown source={Readme}/>)
+  .add('Testing', () => <Markdown source={TestsReadme}/>)
+  .add('Contribution', () => <Markdown source={Contribution}/>)
+  .add('TPA', () => <Markdown source={TPA}/>)
+  .add('Usage Without Yoshi', () => <Markdown source={UsageWithoutYoshiReadme}/>)
+  .add('Documenting components (AutoDocs)', () => <Markdown source={AddingStory}/>);

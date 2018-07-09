@@ -1,16 +1,32 @@
-const _ = require('lodash/fp');
+const merge = require('lodash/merge');
 const path = require('path');
-const genDefaultConfig = require('@kadira/storybook/dist/server/config/defaults/webpack.config.js');
-const wixNodeBuildConfig = require('yoshi/config/webpack.config.storybook');
+const wixStorybookConfig = require('yoshi/config/webpack.config.storybook');
 
-module.exports = (config, env) => {
-  const newConfig = wixNodeBuildConfig(genDefaultConfig(config, env));
+module.exports = (config, env, defaultConfig) => {
+  const newConfig = wixStorybookConfig(defaultConfig);
 
-  return _.merge(newConfig, {
+  return merge(newConfig, {
+    context: path.resolve(__dirname, '../src'),
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM'
+    },
     resolve: {
       alias: {
         'wix-style-react': path.resolve(__dirname, '../src')
-      }
+      },
+    },
+    module: {
+      rules: newConfig.module.rules.concat({
+        test: /\.story\.js$/,
+        loader: 'wix-storybook-utils/loader',
+        options: {
+          storyConfig: {
+            moduleName: 'wix-style-react',
+            repoBaseURL: 'https://github.com/wix/wix-style-react/tree/master/src/'
+          }
+        }
+      })
     }
   });
 };

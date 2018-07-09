@@ -1,24 +1,38 @@
 import React from 'react';
-import {storiesOf} from '@kadira/storybook';
-import TabbedView from '../utils/Components/TabbedView';
-import Markdown from '../utils/Components/Markdown';
-import CodeExample from '../utils/Components/CodeExample';
+import {storiesOf} from '@storybook/react';
+import TabbedView from 'wix-storybook-utils/TabbedView';
+import Markdown from 'wix-storybook-utils/Markdown';
+import CodeExample from 'wix-storybook-utils/CodeExample';
+
 import Readme from '../../src/MessageBox/README.md';
 import ReadmeTestKit from '../../src/MessageBox/README.TESTKIT.md';
 
 import ExampleStandard from './ExampleStandard';
-import ExampleStandardRaw from '!raw!./ExampleStandard';
+import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
 
-storiesOf('Core', module)
+const introduction = `# Message Box
+Components to be used within \`wix-style-react/Modal\`:
+
+* \`<MessageBoxMarketerialLayout/>\`
+* \`<MessageBoxFunctionalLayout/>\`
+`;
+
+storiesOf('9. Modals', module)
   .add('MessageBox', () => (
-    <TabbedView tabs={['API', 'TestKits']}>
+    <TabbedView tabs={['Usage', 'API', 'TestKits']}>
       <div>
-        <Markdown source={Readme}/>
-        <h1>Usage examples</h1>
-        <CodeExample title="Standard" code={ExampleStandardRaw}>
-          <ExampleStandard/>
-        </CodeExample>
+        <Markdown source={introduction}/>
+
+        <CodeExample
+          autoExpand
+          title="Code Example"
+          code={ExampleStandardRaw}
+          children={<ExampleStandard/>}
+          />
       </div>
+
+      <Markdown source={Readme}/>
+
       <Markdown source={ReadmeTestKit}/>
     </TabbedView>
   ));

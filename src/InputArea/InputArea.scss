@@ -7,6 +7,7 @@ $input-area-padding-horizontal: 12px;
 $input-area-padding-top: 6px;
 $exclamation-horizontal: 8px;
 $exclamation-top: 4px;
+$gap: 6px;
 
 .error {
     position: absolute;
@@ -29,9 +30,22 @@ $exclamation-top: 4px;
 }
 
 .errorIcon {
-    padding: 0 7px 16px;
     color: #f2564d;
-    margin-top: 6px;
+    margin: $gap;
+
+    background-color: $paletteR1;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+    > svg {
+      width: 10px;
+      height: 10px;
+    }
 }
 
 .inputArea {
@@ -48,9 +62,7 @@ $exclamation-top: 4px;
     @include Placeholder($paletteE6);
     @include Selection($paletteB4);
 }
-.hasCounter{
-  margin-bottom: 30px;
-}
+
 .counter{
     position: absolute;
     top: -30px;
@@ -60,6 +72,7 @@ $exclamation-top: 4px;
     @include Placeholder($GR60);
     color: #7a92a5;
 }
+
 .hasError > .inputArea {
     padding-right: $input-area-padding-exclamation;
 }
@@ -103,14 +116,14 @@ $exclamation-top: 4px;
     &-normal {
         @include ThemeDefault($color: $D10, $borderColor: $B30, $backgroundColor: $D80);
         @include ThemeHover($backgroundColor: $B50);
-        @include ThemeFocus($borderColor: $B20, $boxShadow: inset 0px 0px 5px 0px fade($B10, 60%));
-        @include ThemeError($borderColor: $paletteR1, $boxShadow: inset 0px 0px 5px 0px fade($R10, 60%));
+        @include ThemeFocus;
+        @include ThemeError($borderColor: $paletteR1);
     }
     &-paneltitle {
         @include ThemeDefault($color: white, $borderColor: #c1e4fe, $backgroundColor: rgba(22,45,61,0.6));
         @include ThemeHover($backgroundColor: rgba(22,45,61,0.4));
-        @include ThemeFocus($borderColor: #4eb7f5, $boxShadow: inset 0 0 5px 0 rgba(56,153,236,0.6));
-        @include ThemeError($borderColor: $paletteR1, $boxShadow: inset 0px 0px 5px 0px fade($R10, 60%));
+        @include ThemeFocusPanelTile($borderColor: #4eb7f5, $boxShadow: inset 0 0 5px 0 rgba(56,153,236,0.6));
+        @include ThemeError($borderColor: $paletteR1);
     }
     &-amaterial {
         .inputArea {
@@ -120,7 +133,7 @@ $exclamation-top: 4px;
         }
         border-radius: 0;
         @include ThemeDefault($color: $D10, $borderColor: #e0e3e5, $backgroundColor: $D80);
-        @include ThemeError($borderColor: $paletteR1, $boxShadow: inset 0px 0px 5px 0px fade($R10, 60%));
+        @include ThemeError($borderColor: $paletteR1);
     }
     &-material {
         border-radius: 0;
@@ -162,6 +175,7 @@ $exclamation-top: 4px;
         position: absolute;
         left: 6px;
         top: 0;
+        right: auto;
     }
 
     .inputArea {

@@ -8,14 +8,17 @@
 |--------|-----------|----------------|-------------|
 | getContent | - | string | returns the TextLink content |
 | getSize | - | string | can be 'small' or 'medium' |
-| isDarkBackground | - | boolean | returns true if the background is dark |
-| isLightBackground | - | boolean | returns true if the background is light |
+| isDarkBackground | - | boolean | returns true if the theme is dark |
+| isGreyScale | - | boolean | returns true if the theme is greyscale |
+| isLightBackground | - | boolean | returns true if the theme is light |
+| getTheme | - | string | returns theme type, could be one of 'normal', 'darkBackground', 'greyScale |
 | isUnderline | - | boolean | returns true if the TextLink have underline |
 | hover | - | - | hover the TextLink |
 | getLink | - | - | get the TextLink a tag href attribute |
 | getTarget | - | - | get the TextLink a tag target attribute |
 | getRel | - | - | get the TextLink a tag rel attribute |
 | exists | - | bool | fulfilled if element in the DOM |
+| click | - | - | clicks on the text link |
 
 ## Usage Example
 
