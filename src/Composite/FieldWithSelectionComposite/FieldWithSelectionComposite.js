@@ -78,15 +78,6 @@ class FieldWithSelectionComposite extends WixComponent {
         this.withBorderWrapper(clonedSelectionInput) : clonedSelectionInput;
   }
 
-  getSelectionInputType(selectionInputChild) {
-    let type = this.getDisplayName(selectionInputChild);
-    // HACK to handle withFocusable(Checkbox)
-    if (type.includes('Checkbox')) {
-      type = 'Checkbox';
-    }
-    return type;
-  }
-
   render() {
     const children = Children.toArray(this.props.children);
     const label = children.length === 3 ? (
@@ -97,7 +88,7 @@ class FieldWithSelectionComposite extends WixComponent {
     const textInput = this._getTextInput();
     const originalSelectionInput = label ? children[2] : children[1];
     const inputsWrapperClassNames = {[styles.inputs]: true};
-    const selectionInputType = this.getSelectionInputType(originalSelectionInput);
+    const selectionInputType = this.getDisplayName(originalSelectionInput);
 
     if (selectionInputType) {
       inputsWrapperClassNames[styles[selectionInputType.toLowerCase()]] = true;
