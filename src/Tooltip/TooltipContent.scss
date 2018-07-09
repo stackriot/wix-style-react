@@ -15,7 +15,9 @@
   box-sizing: border-box;
   font-size: 14px;
   line-height: 1.29;
-  box-shadow: $Shadow30;
+  box-shadow:
+    0 6px 6px 0 rgba(22, 45, 60, 0.06),
+    0 0 18px 0 rgba(22, 45, 60, 0.12);
 
   word-wrap: break-word;
   -webkit-font-smoothing: antialiased;
@@ -51,10 +53,6 @@
 .arrow {
   $arrow-size: 10px;
   $shadow-color-arrow: rgba(0, 0, 0, .1);
-  $arrowBottomShadow: 3px 3px 6px $shadow-color-arrow;
-  $arrowTopShadow: -3px -3px 6px $shadow-color-arrow;
-  $arrowRightShadow: 3px -3px 6px $shadow-color-arrow;
-  $arrowLeftShadow: -3px 3px 6px $shadow-color-arrow;
 
   position: absolute;
   height: $arrow-size;
@@ -70,12 +68,12 @@
 
   &.bottom {
     bottom: -4px;
-    box-shadow: $arrowBottomShadow;
+    box-shadow: 3px 3px 6px $shadow-color-arrow;
   }
 
   &.top {
     top: -4px;
-    box-shadow: $arrowTopShadow;
+    box-shadow: -3px -3px 6px $shadow-color-arrow;
   }
 
   &.left,
@@ -86,12 +84,12 @@
 
   &.right {
     right: -5px;
-    box-shadow: $arrowRightShadow;
+    box-shadow: 3px -3px 6px $shadow-color-arrow;
   }
 
   &.left {
     left: -5px;
-    box-shadow: $arrowLeftShadow;
+    box-shadow: -3px 3px 6px $shadow-color-arrow;
   }
 }
 

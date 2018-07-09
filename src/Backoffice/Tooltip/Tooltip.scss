@@ -8,10 +8,6 @@ $border-radius: 8px;
 $shadow-color: rgba(0, 0, 0, 0.2);
 $shadow-color-arrow: rgba(0, 0, 0, .1);
 $shadow: 0 0 11px 0 $shadow-color;
-$arrow-bottom-shadow: 3px 3px 6px $shadow-color-arrow;
-$arrow-up-shadow: -3px -3px 6px $shadow-color-arrow;
-$arrow-left-shadow: -3px 3px 6px $shadow-color-arrow;
-$arrow-right-shadow: 3px -3px 6px $shadow-color-arrow;
 
 .root {
   display: inline-block;
@@ -95,11 +91,11 @@ $arrow-right-shadow: 3px -3px 6px $shadow-color-arrow;
   }
   &.bottom {
     bottom: -4px;
-    box-shadow: $arrow-bottom-shadow;
+    box-shadow: 3px 3px 6px $shadow-color-arrow;
   }
   &.top {
     top: -4px;
-    box-shadow: $arrow-up-shadow;
+    box-shadow: -3px -3px 6px $shadow-color-arrow;
   }
   &.left, &.right {
     top: 50%;
@@ -107,11 +103,11 @@ $arrow-right-shadow: 3px -3px 6px $shadow-color-arrow;
   }
   &.right {
     right: -5px;
-    box-shadow: $arrow-right-shadow;
+    box-shadow: 3px -3px 6px $shadow-color-arrow;
   }
   &.left {
     left: -5px;
-    box-shadow: $arrow-left-shadow;
+    box-shadow: -3px 3px 6px $shadow-color-arrow;
   }
 }
 

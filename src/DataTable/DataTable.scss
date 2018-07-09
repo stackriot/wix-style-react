@@ -1,10 +1,5 @@
 @import '../common';
 
-$headerShadow: inset 0 1px 0 0 $B30, inset 0 -1px 0 0 $B30;
-$columnShadow: inset 0 -1px 0 0 $D60;
-$activeColumnShadow: inset 0 -1px 0 0 $D70;
-$rowShadow: inset 0 1px 0 0 $D70;
-
 .table {
   border-collapse: collapse;
   border-spacing: 0px;
@@ -37,7 +32,7 @@ $rowShadow: inset 0 1px 0 0 $D70;
   text-align: start; // not supported in IE11 & Edge; 'left' as fallback
   color: $D10;
   font-weight: normal;
-  box-shadow: $headerShadow;
+  box-shadow: inset 0 1px 0 0 $B30, inset 0 -1px 0 0 $B30;
 
   .th-container {
     display: flex;
@@ -57,7 +52,7 @@ $rowShadow: inset 0 1px 0 0 $D70;
   font-weight: normal;
   font-size: 14px;
   color: $paletteD2;
-  box-shadow: $columnShadow;
+  box-shadow: inset 0 -1px 0 0 $D60;
 
   &.largeVerticalPadding {
     padding-top: 24px;
@@ -79,7 +74,7 @@ $rowShadow: inset 0 1px 0 0 $D70;
 .table td.active {
   padding: 0px;
   height: auto;
-  box-shadow: $activeColumnShadow;
+  box-shadow: inset 0 -1px 0 0 $D70;
 }
 
 .table td.important {
@@ -100,10 +95,10 @@ $rowShadow: inset 0 1px 0 0 $D70;
 }
 
 .row-details:not(:last-child) {
-  box-shadow: $activeColumnShadow;
+  box-shadow: inset 0 -1px 0 0 $D70;
 
   .row-details-inner {
-    box-shadow: $rowShadow;
+    box-shadow: inset 0 1px 0 0 $D70;
   }
 }
 
@@ -116,7 +111,7 @@ $rowShadow: inset 0 1px 0 0 $D70;
 
   &:nth-last-child(2) {
     td {
-      box-shadow: $rowShadow;
+      box-shadow: inset 0 1px 0 0 $D70;
     }
   }
 }

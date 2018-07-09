@@ -11,7 +11,6 @@ $paddingTop: 6px;
 $marginTop: $paddingTop;
 $paddingLeft: 12px;
 $marginLeft: $paddingLeft;
-$richTextAreaFocus: 0 0 0 2px $F00;
 
 .container {
   display: flex;
@@ -165,5 +164,5 @@ $richTextAreaFocus: 0 0 0 2px $F00;
 }
 
 .activeEditorImage {
-  box-shadow: $richTextAreaFocus;
+  box-shadow: 0 0 0 2px blue;
 }
