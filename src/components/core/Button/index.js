@@ -1,5 +1,14 @@
-import Button from './Button';
+import React from 'react';
+import {object} from 'prop-types';
 import {styles} from './styles';
-import {withClasses} from '../theme';
+import Button from './Button';
+import {generateClasses} from '../JSS';
 
-export default withClasses(Button, styles);
+const ThemedButton = ({theme, ...coreProps}) =>
+  <Button {...coreProps} classes={generateClasses(styles(theme))}/>;
+
+ThemedButton.propTypes = {
+  theme: object
+};
+
+export default ThemedButton;

@@ -1,11 +1,11 @@
-import {pallete} from '../pallete';
-
-export const core = {
+export const input = {
   paaing: '0 0',
   display: 'block',
-  backgroundColor: pallete.transparent,
+  backgroundColor: 'transparent',
 
   hover: {
-    backgroundColor: pallete.transparent
+    backgroundColor: 'transparent'
   }
 };
+
+export const core = {};
