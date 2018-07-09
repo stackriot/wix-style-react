@@ -12,17 +12,13 @@ Types of changes:
 1. **Security** in case of vulnerabilities.
 1. **Breaking** for breaking changes
 
-## 2.0.17 - 2018-01-30
-### Changed
-- Changed order of storybook components [1390](https://github.com/wix/wix-style-react/pull/1390)
-
+## Upcoming release
 ### Added
-- `<CounterBadge/>` new component from `wix-ui-backoffice` [1392](https://github.com/wix/wix-style-react/pull/1392)
+- `<CounterBadge/>` new component from `wix-ui-backoffice`
 
 ### Fixed
-- `<Breadcrumbs/>` add 204px `max-width` on breadcrumb items [1394](https://github.com/wix/wix-style-react/pull/1394)
-- `<RadioGroup.Radio/>` use correct `displayName` for `RadioGroup.Radio` [00f303b](https://github.com/wix/wix-style-react/commit/00f303b210bb0dda808f9ab85405c17ea3cf8d03)
-- `RadioGroup` add missing `getRadioAtIndex` to enzyme testkit [1398](https://github.com/wix/wix-style-react/pull/1398)
+- `<Breadcrumbs/>` add 204px `max-width` on breadcrumb items
+- `<RadoGroup.Radio/>` use correct `displayName` for `RadioGroup.Radio`
 
 ## 2.0.15 - 2018-01-24
 ### Changed
