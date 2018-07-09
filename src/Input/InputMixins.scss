@@ -1,5 +1,3 @@
-@import '../common.scss';
-
 @mixin BoxSizing($boxSizing: border-box) {
     box-sizing: $boxSizing;
     * { box-sizing: $boxSizing; }
@@ -73,17 +71,7 @@
     .menu-arrow path { fill: $color; }
 }
 
-@mixin ThemeFocus {
-    &.hasFocus {
-        @include FocusBox;
-
-        &.hasError {
-            @include FocusBoxError
-        }
-    }
-}
-
-@mixin ThemeFocusPanelTile($borderColor, $boxShadow: none) {
+@mixin ThemeFocus($borderColor, $boxShadow: none) {
     &.hasFocus {
         border-color: $borderColor;
         box-shadow: $boxShadow;
