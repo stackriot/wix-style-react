@@ -35,7 +35,7 @@ class Dropdown extends InputWithOptions {
   }
 
   inputClasses() {
-    const classes = {[styles.readonly]: true};
+    const classes = {[styles.readOnly]: true};
     classes[styles.noRightBorderRadius] = this.props.noRightBorderRadius;
     classes[styles.noBorder] = this.props.noBorder;
     return classNames(classes);

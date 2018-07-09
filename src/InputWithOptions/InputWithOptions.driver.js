@@ -12,7 +12,6 @@ const inputWithOptionsDriverFactory = ({element, wrapper, component}) => {
 
   const driver = {
     exists: () => !!element,
-    isReadOnly: () => inputDriver.getReadOnly() && inputWrapper.className.includes('readonly'),
     inputWrapper: () => inputWrapper,
     focus: () => inputDriver.focus(),
     blur: () => dropdownLayoutDriver.mouseClickOutside(),

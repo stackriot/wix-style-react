@@ -56,8 +56,8 @@ describe('Dropdown', () => {
   });
 
   it('should be read only', () => {
-    const {driver} = createDriver(<Dropdown options={getOptions()}/>);
-    expect(driver.isReadOnly()).toBeTruthy();
+    const {inputDriver} = createDriver(<Dropdown options={getOptions()}/>);
+    expect(inputDriver.getReadOnly()).toBeTruthy();
   });
 
   describe('testkit', () => {
