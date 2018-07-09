@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Tooltip from '../Tooltip';
 import styles from './InputArea.scss';
-import SvgExclamation from '../svg/Exclamation.js';
+import Error from '../Icons/dist/components/Error';
 
 const Exclamation = ({errorMessage, tooltipPlacement, onTooltipShow}) =>
   <div className={styles.suffix}>
@@ -12,8 +12,7 @@ const Exclamation = ({errorMessage, tooltipPlacement, onTooltipShow}) =>
       hideDelay={100} content={errorMessage} moveBy={{x: 0, y: -10}} overlay="" maxWidth="250px"
       textAlign="left"
       >
-
-      <div className={styles.errorIcon}><SvgExclamation width={2} height={11}/></div>
+      <div className={styles.errorIcon}><Error size="1.5em"/></div>
     </Tooltip>
   </div>;
 
