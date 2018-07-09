@@ -93,8 +93,7 @@ class ExampleStandard extends Component {
               <RadioGroup
                 display="horizontal"
                 value={this.state.selectionInput}
-                onChange={selectionInput => this.setState({selectionInput})}
-                >
+                onChange={selectionInput => this.setState({selectionInput})}>
                 <RadioGroup.Radio value={'checkbox'}>Checkbox</RadioGroup.Radio>
                 <RadioGroup.Radio value={'dropdown'}>Dropdown</RadioGroup.Radio>
                 <RadioGroup.Radio value={'buttons'}>Buttons</RadioGroup.Radio>
@@ -109,7 +108,7 @@ class ExampleStandard extends Component {
                 display="horizontal"
                 value={this.state.error}
                 onChange={error => this.setState({error})}
-                >
+              >
                 <RadioGroup.Radio value={false}>False</RadioGroup.Radio>
                 <RadioGroup.Radio value={true}>True</RadioGroup.Radio>
               </RadioGroup>
@@ -122,7 +121,7 @@ class ExampleStandard extends Component {
                 display="horizontal"
                 value={this.state.disabled}
                 onChange={disabled => this.setState({disabled})}
-                >
+              >
                 <RadioGroup.Radio value={false}>False</RadioGroup.Radio>
                 <RadioGroup.Radio value={true}>True</RadioGroup.Radio>
               </RadioGroup>
@@ -136,7 +135,7 @@ class ExampleStandard extends Component {
                 size="small"
                 checked={this.state.required}
                 onChange={() => this.setState({required: !this.state.required})}
-                />
+              />
             </div>
           </div>
 
@@ -147,7 +146,7 @@ class ExampleStandard extends Component {
                 size="small"
                 value={this.state.info}
                 onChange={e => this.setState({info: e.target.value})}
-                />
+              />
             </div>
           </div>
         </div>

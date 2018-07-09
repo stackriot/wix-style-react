@@ -1,6 +1,6 @@
 import React from 'react';
 import DataTable from 'wix-style-react/DataTable';
-import './Example.scss';
+import s from './Example.scss';
 
 const style = {
   width: '50%',
@@ -13,6 +13,14 @@ const baseData = [
   {firstName: 'Walter', lastName: 'Jenning'},
   {firstName: 'Amanda', lastName: 'Woods'},
 ];
+
+const generateData = () => {
+  let data = [];
+  for (let i = 0; i < 10; i++) {
+    data = data.concat(baseData);
+  }
+  return data;
+};
 
 class DataTableSortableExample extends React.Component {
   constructor(props) {
@@ -32,7 +40,7 @@ class DataTableSortableExample extends React.Component {
   }
 
   sortDataByField(field, desc) {
-    return this.state.data.sort((a, b) => desc ? ~~(field ? a[field] < b[field] : a < b) : ~~(field ? a[field] > b[field] : a > b)); // eslint-disable-line
+    return this.state.data.sort((a, b) => desc ? ~~(field ? a[field] < b[field] : a < b) : ~~(field ? a[field] > b[field] : a > b));
   }
 
   render() {

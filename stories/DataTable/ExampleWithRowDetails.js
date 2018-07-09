@@ -1,7 +1,6 @@
 import React from 'react';
 import DataTable from 'wix-style-react/DataTable';
-import PropTypes from 'prop-types';
-import './Example.scss';
+import s from './Example.scss';
 
 const style = {
   width: '50%',
@@ -32,11 +31,6 @@ const MyRowDetailsComponent = props => {
   );
 };
 
-MyRowDetailsComponent.propTypes = {
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired
-};
-
 class ExampleWithRowDetails extends React.Component {
   render() {
     return (
@@ -44,7 +38,7 @@ class ExampleWithRowDetails extends React.Component {
         <DataTable
           dataHook="story-data-table"
           data={generateData()}
-          rowDetails={row => <MyRowDetailsComponent {...row}/>}
+          rowDetails={(row, rowNum) => <MyRowDetailsComponent {...row}/>}
           allowMultiDetailsExpansion
           columns={[
             {title: 'Row Number', render: (row, rowNum) => '#' + (rowNum + 1), width: '20%', minWidth: '75px', important: true},

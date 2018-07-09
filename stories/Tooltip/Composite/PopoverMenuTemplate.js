@@ -12,8 +12,7 @@ class PopoverMenuTemplate extends Component {
     menuItems: PropTypes.array.isRequired,
     size: PopoverMenu.propTypes.size,
     placement: PopoverMenu.propTypes.placement,
-    onChange: PropTypes.func,
-    buttonTheme: PropTypes.any
+    onChange: PropTypes.func
   };
 
   componentDidUpdate(props) {
@@ -40,7 +39,7 @@ class PopoverMenuTemplate extends Component {
               icon={React.createElement(Icons[menuItem.iconName])}
               text={menuItem.text}
               onClick={() => console.log(`menu item ${i} clicked`)}
-              />
+            />
           ))
         }
       </PopoverMenu>

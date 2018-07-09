@@ -19,8 +19,7 @@ export class Form extends Component {
         size={this.props.size}
         darkBackground={this.props.darkBackground}
         link={this.props.link}
-        forceUnderline={this.props.forceUnderline}
-        >
+        forceUnderline={this.props.forceUnderline}>
         {this.props.children}
       </TextLink>
     );
@@ -36,8 +35,7 @@ Form.propTypes = {
   darkBackground: PropTypes.bool.isRequired,
   link: PropTypes.string.isRequired,
   forceUnderline: PropTypes.bool.isRequired,
-  children: PropTypes.node,
-  onChange: PropTypes.func.isRequired
+  children: PropTypes.node
 };
 
 export default Form;

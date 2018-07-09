@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 
 import Template from './Template';
 import RadioGroup from '../../../src/RadioGroup';
@@ -15,7 +14,7 @@ class ExampleTooltip extends Component {
     text: 'Tooltip appears on hover',
     size: 'normal',
     maxWidth: '',
-    onShow: () => console.log('text printed'),
+    onShow:() => console.log('text printed'),
     onShowText: 'onShow console print'
   };
 
@@ -31,7 +30,7 @@ class ExampleTooltip extends Component {
                 display="horizontal"
                 value={this.state.size}
                 onChange={size => this.setState({size})}
-                >
+              >
                 <RadioGroup.Radio value="normal">Default</RadioGroup.Radio>
                 <RadioGroup.Radio value="large">Bigger info tooltip</RadioGroup.Radio>
               </RadioGroup>
@@ -41,16 +40,16 @@ class ExampleTooltip extends Component {
           <div className={styles.option}>
             <Label>Theme</Label>
             <div className={styles.flex}>
-              <RadioGroup
-                display="horizontal"
-                value={this.state.type}
-                onChange={type => this.setState({type})}
-                >
-                <RadioGroup.Radio value="default">Dark</RadioGroup.Radio>
-                <RadioGroup.Radio value="white">White</RadioGroup.Radio>
-              </RadioGroup>
-            </div>
+            <RadioGroup
+              display="horizontal"
+              value={this.state.type}
+              onChange={type => this.setState({type})}
+            >
+              <RadioGroup.Radio value="default">Dark</RadioGroup.Radio>
+              <RadioGroup.Radio value="white">White</RadioGroup.Radio>
+            </RadioGroup>
           </div>
+        </div>
 
           <div className={styles.option}>
             <Label>Text</Label>
@@ -59,7 +58,7 @@ class ExampleTooltip extends Component {
                 size="small"
                 value={this.state.text}
                 onChange={e => this.setState({text: e.target.value})}
-                />
+              />
             </div>
           </div>
 
@@ -70,7 +69,7 @@ class ExampleTooltip extends Component {
                 size="small"
                 value={this.state.onShowText}
                 onChange={e => this.setState({onShowText: e.target.value})}
-                />
+              />
             </div>
           </div>
 
@@ -81,7 +80,7 @@ class ExampleTooltip extends Component {
                 size="small"
                 value={this.state.maxWidth}
                 onChange={e => this.setState({maxWidth: e.target.value})}
-                />
+              />
             </div>
           </div>
         </div>
@@ -91,12 +90,12 @@ class ExampleTooltip extends Component {
             <Template
               theme={this.state.type === 'default' ? 'dark' : 'light'}
               tooltipContent={this.state.text}
-              type="tooltip"
+    					type="tooltip"
               onChange={this.props.onChange}
               size={this.state.size}
               maxWidth={this.state.maxWidth}
               onShow={() => console.log(this.state.onShowText)}
-              />
+                />
           </div>
         </div>
       </form>
@@ -105,7 +104,3 @@ class ExampleTooltip extends Component {
 }
 
 export default ExampleTooltip;
-
-ExampleTooltip.propTypes = {
-  onChange: PropTypes.func.isRequired
-};

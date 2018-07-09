@@ -8,6 +8,7 @@ import ExampleControlled from './ExampleControlled';
 import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
 
 import ExampleControlledWithFooter from './ExampleControlledWithFooter';
+import ExampleControlledWithFooterRaw from '!raw-loader!./ExampleControlledWithFooter';
 
 storiesOf('Core', module)
   .add('GoogleAddressInput', () => (
@@ -19,7 +20,7 @@ storiesOf('Core', module)
         <ExampleControlled/>
       </CodeExample>
       <CodeExample title="Controlled input - with a footer" code={ExampleControlledRaw}>
-        <ExampleControlledWithFooter/>
+          <ExampleControlledWithFooter/>
       </CodeExample>
     </div>
   ));

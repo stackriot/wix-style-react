@@ -32,9 +32,7 @@ export default class Form extends Component {
     firstButtonLabel: PropTypes.string,
     secondButtonLabel: PropTypes.string,
     required: PropTypes.bool,
-    info: PropTypes.string,
-    error: PropTypes.Error,
-    disabled: PropTypes.bool
+    info: PropTypes.string
   };
 
   componentDidUpdate(props) {
@@ -46,6 +44,7 @@ export default class Form extends Component {
   }
 
   getComponent() {
+
     let selectionInput = '';
     switch (this.props.selectionInput) {
       case 'checkbox':
@@ -75,8 +74,6 @@ export default class Form extends Component {
           </RadioGroup>
         );
         break;
-      default:
-        throw new Error('selectionInput type does not exist, please see FieldWithSelection component for more details');
     }
 
     return (

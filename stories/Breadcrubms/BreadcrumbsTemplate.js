@@ -26,18 +26,17 @@ export default class Form extends Component {
 
   getComponent() {
     return (
-      <Breadcrumbs
-        items={[{id: '1', value: 'First item'}, {
-          id: '2',
-          value: 'Linked item',
-          link: 'http://www.wix.com'
-        }, {id: '3', value: 'Third item'}]}
-        activeId={this.props.activeId}
-        size={this.props.size}
-        theme={this.props.theme}
-        onClick={() => {
-        }}
-        />
+      <Breadcrumbs items={[{id: '1', value: 'First item'}, {
+        id: '2',
+        value: 'Linked item',
+        link: 'http://www.wix.com'
+      }, {id: '3', value: 'Third item'}]}
+                   activeId={this.props.activeId}
+                   size={this.props.size}
+                   theme={this.props.theme}
+                   onClick={() => {
+                   }}>
+      </Breadcrumbs>
     );
   }
 

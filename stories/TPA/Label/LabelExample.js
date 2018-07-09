@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Label from '../../../src/TPA/Label';
 import Input from '../../../src/TPA/Input';
 import styles from './styles.scss';

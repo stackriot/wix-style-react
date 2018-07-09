@@ -7,6 +7,10 @@ export default class UncontrolledSlider extends Component {
     startTime: PropTypes.object
   };
 
+  constructor({value}) {
+    super();
+  }
+
   render() {
     const onChange = value => this.setState({value});
 
