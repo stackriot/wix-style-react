@@ -1,7 +1,9 @@
 import React from 'react';
 import {object} from 'prop-types';
+import styles from './styles';
+import {withStyles} from '../../providers/WixStyleProvider';
 
-export default class Input extends React.Component {
+class Input extends React.Component {
   static propTypes = {
     classes: object.isRequired
   }
@@ -13,3 +15,4 @@ export default class Input extends React.Component {
   }
 }
 
+export default withStyles(Input, styles);

@@ -1,10 +1,12 @@
 import React from 'react';
-import {func, string, bool, object, any} from 'prop-types';
-import WixComponent from '../../../BaseComponents/WixComponent';
+import {func, string, bool, object, any, oneOf} from 'prop-types';
+import WixComponent from '../../BaseComponents/WixComponent';
+import styles from './styles';
+import {withStyles} from '../../providers/WixStyleProvider';
 import Prefix from './components/Prefix';
 import Suffix from './components/Suffix';
 
-export default class Button extends WixComponent {
+class Button extends WixComponent {
   static propTypes = {
     children: any,
     type: string,
@@ -12,7 +14,14 @@ export default class Button extends WixComponent {
     onMouseEnter: func,
     onMouseLeave: func,
     disabled: bool,
-    classes: object
+    height: oneOf(['small', 'medium', 'large', 'x-large']),
+    classes: object,
+    skin: oneOf(['standard', 'emptyStandard', 'danger', 'attention'])
+  }
+
+  static defaultProps = {
+    height: 'medium',
+    skin: 'standard'
   }
 
   static Prefix = Prefix;
@@ -36,3 +45,5 @@ export default class Button extends WixComponent {
     );
   }
 }
+
+export default withStyles(Button, styles);
