@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WixComponent from '../BaseComponents/WixComponent';
 import classNames from 'classnames';
-import CloseButton from '../CloseButton';
+import CloseLarge from 'wix-ui-icons-common/system/CloseLarge';
 
 import Button from '../Backoffice/Button';
 
@@ -21,9 +21,9 @@ class MessageBoxMarketerialLayout extends WixComponent {
     return (
       <div className={styles.root}>
         <div className={headerClasses}>
-          <div className={styles.close}>
-            <CloseButton dataHook="close-button" onClick={onClose}/>
-          </div>
+          <button type="button" className={styles.close} onClick={onClose} data-hook="close-button">
+            <CloseLarge/>
+          </button>
           { imageComponent ?
             <div className={styles.headerImageComponent}>{imageComponent}</div> :
             <div className={styles.headerImage}>
