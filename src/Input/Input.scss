@@ -349,13 +349,6 @@ $material-gap: 8px;
     padding-top: 4px;
 }
 
-:global(.rtl) {
-    .help,
-    .amaterial-help {
-        transform: scaleX(-1);
-    }
-}
-
 .amaterial-help {
     margin: 0 $gap;
     color: $B20;
