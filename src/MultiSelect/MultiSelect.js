@@ -8,14 +8,13 @@ import uniqueId from 'lodash/uniqueId';
 import remove from 'lodash/remove';
 
 class MultiSelect extends InputWithOptions {
+
   constructor(props) {
     super(props);
     this.onKeyDown = this.onKeyDown.bind(this);
+    this.onSelect = this.onSelect.bind(this);
+    this.onManuallyInput = this.onManuallyInput.bind(this);
     this.onEnterPressed = this.onEnterPressed.bind(this);
-    this.onPaste = this.onPaste.bind(this);
-    this.state = {pasteDetected: false};
-
-    console.warn('MultiSelect: onSelect signature should get an array of tags instead of single tag as parameter. Old signature will not be supported starting from 16/09/2017');
   }
 
   getUnselectedOptions() {
@@ -27,8 +26,7 @@ class MultiSelect extends InputWithOptions {
 
   dropdownAdditionalProps() {
     return {
-      options: this.getUnselectedOptions().filter(this.props.predicate),
-      closeOnSelect: false
+      options: this.getUnselectedOptions().filter(this.props.predicate)
     };
   }
 
@@ -41,44 +39,16 @@ class MultiSelect extends InputWithOptions {
       inputElement: <InputWithTags/>,
       onKeyDown: this.onKeyDown,
       onEnterPressed: this.onEnterPressed,
-      delimiters: this.props.delimiters,
-      onPaste: this.onPaste
+      delimiters: this.props.delimiters
     };
   }
-
-  onPaste() {
-    this.setState({pasteDetected: true});
-  }
-
-  _onChange(event) {
-    if (!this.state.pasteDetected) {
-      this.props.onChange && this.props.onChange(event);
-    } else {
-      const delimitersRegexp = new RegExp(this.props.delimiters.join('|'), 'g');
-      const value = event.target.value.replace(delimitersRegexp, ',');
-      const tags = value.split(',').map(str => str.trim()).filter(str => str);
-
-      this.clearInput();
-      this.setState({pasteDetected: false});
-
-      const suggestedOptions = tags
-        .map(tag => {
-          const tagObj = this.getUnselectedOptions().find(element => this.props.valueParser(element).toLowerCase() === tag.toLowerCase());
-          return tagObj ? tagObj : {id: uniqueId('customOption_'), value: tag, theme: 'error'};
-        });
-
-      this.onSelect(suggestedOptions);
-    }
-  }
-
 
   _onSelect(option) {
     this.onSelect(option);
   }
 
   _onManuallyInput(inputValue) {
-    if (inputValue) {
-      inputValue = inputValue.trim();
+    if (inputValue.trim()) {
       if (this.closeOnSelect()) {
         this.hideOptions();
       }
@@ -111,12 +81,12 @@ class MultiSelect extends InputWithOptions {
       onRemoveTag(last(tags).id);
     }
 
-    if (event.key === 'Escape') {
+    if (event.key === 'Tab' || event.key === 'Escape') {
       this.clearInput();
       super.hideOptions();
     }
 
-    if (event.key === 'Tab' || delimiters.includes(event.key)) {
+    if (delimiters.includes(event.key)) {
       this.onEnterPressed();
     }
 
@@ -125,28 +95,19 @@ class MultiSelect extends InputWithOptions {
     }
   }
 
-  optionToTag({id, value, tag, theme}) {
-    return tag ? {id, ...tag} : {id, label: value, theme};
+  optionToTag({id, value, tag}) {
+    return tag ? {id, ...tag} : {id, label: value};
   }
 
-  onSelect(options) {
-    if (!Array.isArray(options)) {
-      options = [options];
-    }
-
+  onSelect(option) {
     this.clearInput();
 
     if (this.props.onSelect) {
-      options = options.map(this.optionToTag);
-      if (options.length === 1) {
-        this.props.onSelect(options[0]);
-      } else {
-        this.props.onSelect(options);
-      }
+      this.props.onSelect(this.optionToTag(option));
     }
 
-    const updatedOptions = this.getUnselectedOptions();
-    options.forEach(option => remove(updatedOptions, option));
+    const updeatedOptions = this.getUnselectedOptions();
+    remove(updeatedOptions, option);
 
     this.input.focus();
   }
@@ -182,7 +143,7 @@ MultiSelect.defaultProps = {
   ...InputWithOptions.defaultProps,
   predicate: () => true,
   tags: [],
-  delimiters: [',']
+  delimiters: []
 };
 
 export default MultiSelect;
