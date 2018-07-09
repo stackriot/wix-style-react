@@ -5,11 +5,22 @@
   @extend .header;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+
+  .button {
+    position: relative;
+    text-align: right;
+    right: -23px;
+    margin-bottom: -12px;
+    top: -4px;
+  }
 }
 
 .headerTitleSubtitle {
   @extend .headerOnlyTitle;
+
+  .button {
+    top: 7px;
+  }
 
   .collapsedSwitch {
     top: 7px;

@@ -15,7 +15,6 @@ class Checkbox extends WixComponent {
     checked: bool,
     children: any,
     disabled: bool,
-    hasError: bool,
     id: string,
     indeterminate: bool,
     /** used for automatic testing */
@@ -32,7 +31,7 @@ class Checkbox extends WixComponent {
   static displayName = 'Checkbox'
 
   render() {
-    const {id = uniqueId(), checked, indeterminate, disabled, hasError, hover, active, size, onChange} = this.props;
+    const {id = uniqueId(), checked, indeterminate, disabled, hover, active, size, onChange} = this.props;
 
     const classname = classNames({
       [styles.wrapper]: true,
@@ -41,7 +40,6 @@ class Checkbox extends WixComponent {
       [styles.hover]: hover,
       [styles.active]: active,
       [styles.disabled]: disabled,
-      [styles.hasError]: hasError
     });
 
     const checkedSymbol = indeterminate ? <div className={styles.indeterminate}/> : <SvgV/>;
