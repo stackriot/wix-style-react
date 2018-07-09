@@ -36,15 +36,6 @@ class Page extends WixComponent {
     this._calculateComponentsHeights();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // Do not trigger height calculation if the component re-rendered from minimize change
-    if (prevState.minimized || this.state.minimized) {
-      return;
-    }
-
-    this._calculateComponentsHeights();
-  }
-
   _calculateComponentsHeights() {
     const {headerHeight, tailHeight} = this.state;
     const newHeaderHeight = this.pageHeaderRef ? this.pageHeaderRef.offsetHeight : headerHeight;
@@ -129,7 +120,8 @@ class Page extends WixComponent {
                 {React.cloneElement(
                   PageHeader, {
                     minimized,
-                    hasBackgroundImage
+                    hasBackgroundImage,
+                    onPostRender: () => this._calculateComponentsHeights()
                   })}
               </div>
           }
