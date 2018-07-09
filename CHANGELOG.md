@@ -13,12 +13,9 @@ Types of changes:
 1. **Breaking** for breaking changes
 
 ## Upcoming release
-### Added
-- `<CounterBadge/>` new component from `wix-ui-backoffice`
-
 ### Fixed
 - `<Breadcrumbs/>` add 204px `max-width` on breadcrumb items
-- `<RadoGroup.Radio/>` use correct `displayName` for `RadioGroup.Radio`
+- `<CounterBadge/>` add new component from `wix-ui-backoffice`
 
 ## 2.0.15 - 2018-01-24
 ### Changed
