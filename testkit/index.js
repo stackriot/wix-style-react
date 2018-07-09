@@ -182,6 +182,3 @@ export const editableRowTestkitFactory = testkitFactoryCreator(editableRowDriver
 
 import modalSelectorDriverFactory from '../src/ModalSelector/ModalSelector.driver';
 export const modalSelectorTestkitFactory = testkitFactoryCreator(modalSelectorDriverFactory);
-
-import iconWithOptionsDriverFactory from '../src/IconWithOptions/IconWithOptions.driver';
-export const iconWithOptionsTestkitFactory = testkitFactoryCreator(iconWithOptionsDriverFactory);
