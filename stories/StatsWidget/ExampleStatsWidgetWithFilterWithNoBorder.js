@@ -2,7 +2,6 @@ import React from 'react';
 import StatsWidget from '../../src/StatsWidget';
 import styles from './ExampleStatsWidget.scss';
 import ButtonWithOptions from '../../src/ButtonWithOptions';
-import {Container} from '../../src/Grid';
 
 const statistics = [{
   title: `$420`,
@@ -35,13 +34,11 @@ const ButtonWithOptionsProps = {
 };
 
 export default () =>
-  <Container>
-    <div data-hook="card-example" className={styles.statsWidgetWrapper}>
-      <StatsWidget title="Let's see what's going on with your store" statistics={statistics}>
-        <StatsWidget.Filter {...ButtonWithOptionsProps}>
-          <ButtonWithOptions.Button/>
-          {optionsArray}
-        </StatsWidget.Filter>
-      </StatsWidget>
-    </div>
-  </Container>;
+  <div data-hook="card-example" className={styles.statsWidgetWrapper}>
+    <StatsWidget title="Let's see what's going on with your store" statistics={statistics}>
+      <StatsWidget.Filter {...ButtonWithOptionsProps}>
+        <ButtonWithOptions.Button/>
+        {optionsArray}
+      </StatsWidget.Filter>
+    </StatsWidget>
+  </div>;
