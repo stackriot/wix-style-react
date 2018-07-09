@@ -280,15 +280,9 @@ class RichTextArea extends WixComponent {
         .collapseToEnd()
     } else {
       const linkContent = text || href;
-      const startPos = editorState.anchorOffset;
       transform
         .insertText(linkContent)
-        .select({
-          anchorOffset: startPos,
-          focusOffset: startPos + linkContent.length,
-          isFocused: true,
-          isBackward: false,
-        })
+        .extendBackward(linkContent.length)
         .wrapInline({
           type: 'link',
           data: {href}
