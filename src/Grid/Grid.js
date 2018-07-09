@@ -5,21 +5,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Animator from '../Animator';
 
-class RawContainer extends Component {
-
-  static propTypes = {
-    children: PropTypes.node
-  };
-
-  render() {
-    return (
-      <div className={styles.container}>
-        {this.props.children}
-      </div>
-    );
-  }
-}
-
 class Container extends Component {
 
   static propTypes = {
@@ -144,4 +129,4 @@ class Col extends Component {
   }
 }
 
-export {Container, RawContainer, Row, AutoAdjustedRow, Col, Card};
+export {Container, Row, AutoAdjustedRow, Col, Card};
