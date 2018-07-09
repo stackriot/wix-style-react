@@ -1,4 +1,4 @@
-# Contributing
+# Contribution
 
 You are more than welcome to contribute by creating pull-requests.
 
