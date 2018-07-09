@@ -76,6 +76,3 @@ export const textTestkitFactory = protractorTestkitFactoryCreator(textDriverFact
 
 import tpaTextLinkDriverFactory from '../src/TPA/TextLink/TextLink.protractor.driver';
 export const tpaTextLinkTestkitFactory = protractorTestkitFactoryCreator(tpaTextLinkDriverFactory);
-
-import popoverMenuDriverFactory from '../src/PopoverMenu/PopoverMenu.protractor.driver';
-export const popoverMenuTestkitFactory = protractorTestkitFactoryCreator(popoverMenuDriverFactory);

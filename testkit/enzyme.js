@@ -155,6 +155,3 @@ export const tpaFloatingTabsTestkitFactory = enzymeTestkitFactoryCreator(tpaFloa
 
 import fieldLabelAttributesDriverFactory from '../src/FieldLabelAttributes/FieldLabelAttributes.driver';
 export const fieldLabelAttributesTestkitFactory = enzymeTestkitFactoryCreator(fieldLabelAttributesDriverFactory);
-
-import popoverMenuDriverFactory from '../src/PopoverMenu/PopoverMenu.driver';
-export const popoverMenuTestkitFactory = enzymeTestkitFactoryCreator(popoverMenuDriverFactory);

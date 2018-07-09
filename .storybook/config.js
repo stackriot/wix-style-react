@@ -29,7 +29,6 @@ function loadStories() {
   require('../stories/Label');
   require('../stories/Loader');
   require('../stories/MultiSelect');
-  require('../stories/PopoverMenu');
   require('../stories/SideBar');
   require('../stories/SideMenu');
   require('../stories/Slider');

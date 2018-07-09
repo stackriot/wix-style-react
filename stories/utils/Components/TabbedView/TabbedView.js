@@ -5,10 +5,7 @@ import Tabs from '../../../../src/Tabs/Tabs';
 class TabbedView extends Component {
   static propTypes = {
     tabs: PropTypes.arrayOf(PropTypes.string),
-    children: PropTypes.oneOfType([
-      PropTypes.node,
-      PropTypes.arrayOf(PropTypes.node),
-    ])
+    children: PropTypes.arrayOf(PropTypes.node)
   };
 
   constructor(props) {
@@ -39,10 +36,7 @@ class TabbedView extends Component {
     return (
       <div>
         {!shouldHideForE2E ? <Tabs activeId={this.state.activeTabId} {...this.tabsProps}/> : null}
-        {React.Children.map(
-            this.props.children,
-            (child, index) => this.state.activeTabId === this.props.tabs[index] ? child : null
-        )}
+        {this.props.children.map((child, index) => this.state.activeTabId === this.props.tabs[index] ? child : null)}
       </div>
     );
   }
