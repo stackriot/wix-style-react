@@ -1,55 +1,31 @@
 import React from 'react';
 import {Button} from 'wix-style-react/Backoffice';
 import Animator from '../../src/Animations/Animator';
-import {Container, Row, Col} from '../../src/Grid';
 import * as css from './Example.scss';
-import Dropdown from '../../src/Dropdown';
+import AnimationTemplate from './AnimationTemplate';
 
-class ExampleDebug extends React.Component {
 
-  options;
+const ExampleDebug = () => {
+  return (
+    <div className={css.basicWrapper} style={{height: '70px'}}>
+      <Animator translate="top" scale debug="enter">
+        <div className={css.basicDiv}>emulates enter class: 'enter'</div>
+      </Animator>
 
-  constructor(props) {
-    super(props);
+      <Animator translate="top" scale debug="entering">
+        <div className={css.basicDiv}>emulates entering classes: 'enter enter-active'</div>
+      </Animator>
 
-    this.state = {
-      debug: false
-    };
+      <Animator translate="top" scale debug="leave">
+        <div className={css.basicDiv}>emulates leave class: 'leave'</div>
+      </Animator>
 
-    this.options = [
-      {id: 'enter', value: 'enter'},
-      {id: 'entering', value: 'entering'},
-      {id: 'leave', value: 'leave'},
-      {id: 'leaving', value: 'leaving'}
-    ];
-  }
-
-  render() {
-
-    return (
-      <Container>
-        <Row>
-          <Col span="2">
-            <Dropdown
-              placeholder="Choose Debug Phase"
-              selectedId={this.state.translateSizeIn}
-              onSelect={option => this.setState({debug: option.id})}
-              options={this.options}
-            />
-          </Col>
-          <Col span="10">
-            <div className={css.basicWrapper}>
-              <Animator translate="left" scale debug={this.state.debug}>
-                <div className={css.basicDiv}>{this.state.debug ? ` emulates the ${this.state.debug} phase` : '<--- Waiting for you to choose a debug phase'}</div>
-              </Animator>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    )
-  }
-}
-;
+      <Animator translate="top" scale debug="leaving">
+        <div className={css.basicDiv}>emulates leaving classes: 'leave leave-active'</div>
+      </Animator>
+    </div>
+  )
+};
 
 export default () =>
   <ExampleDebug/>

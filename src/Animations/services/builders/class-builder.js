@@ -1,5 +1,6 @@
 import css from '../../Animator.scss';
 import getTranslate from '../props/prop-translate';
+import getSequence from '../props/prop-sequence';
 
 const flattenArray = arr => [].concat.apply([], arr);
 
@@ -19,7 +20,7 @@ const classMap = {
   height: height => height && 'height',
   timing: timing => timing && `timing-${timing}`,
   translateWrapper: translate => translate && `translate-wrapper`,
-  sequence: sequence => sequence && 'child-sequence',
+  sequence: (sequence, ...args) => sequence && getSequence(sequence, ...args),
   sequenceWrapper: sequence => sequence && `sequence-${sequence}`,
   translate: translate => translate && getTranslate(translate),
   className: className => className && className,
@@ -94,8 +95,8 @@ class ClassBuilder {
     return this.getFromMap('translateWrapper');
   }
 
-  withSequence() {
-    return this.getFromMap('sequence');
+  withSequence(index, reverseIndex) {
+    return this.getFromMap('sequence', index, reverseIndex);
   }
 
   withSequenceWrapper() {

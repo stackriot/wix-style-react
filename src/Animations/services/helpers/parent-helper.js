@@ -38,6 +38,7 @@ class ParentHelper {
 
   getClass() {
     const {sequence, className} = this.data;
+
     return new ClassBuilder({sequence})
       .withAppearanceState(this.items.isExist())
       .withSequenceWrapper()
