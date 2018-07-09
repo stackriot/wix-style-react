@@ -156,6 +156,8 @@ ButtonWithOptions.propTypes = {
   })
 };
 
+ButtonWithOptions.Option = () => null;
+ButtonWithOptions.Option.displayName = 'ButtonWithOptions.Option';
 
 ButtonWithOptions.Button = props =>
   <div data-hook="buttonWithOptions-button-wrapper">
@@ -164,24 +166,5 @@ ButtonWithOptions.Button = props =>
 
 ButtonWithOptions.Button.displayName = 'ButtonWithOptions.Button';
 
-ButtonWithOptions.Option =
-class Option extends React.Component {
-
-  static displayName = 'ButtonWithOptions.Option';
-
-  static propTypes = {
-    children: (props, propName, componentName) => {
-      const prop = props[propName];
-
-      if (React.Children.count(prop) !== 1) {
-        return new Error(`${componentName}: Should have a single child`);
-      }
-    }
-  }
-
-  render() {
-    return null;
-  }
-};
 export default ButtonWithOptions;
 
