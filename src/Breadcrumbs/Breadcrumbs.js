@@ -1,5 +1,5 @@
 import React from 'react';
-import {arrayOf, func, oneOf, oneOfType, node, number, shape, string, any, bool} from 'prop-types';
+import {arrayOf, func, oneOf, oneOfType, node, number, shape, string, any} from 'prop-types';
 import styles from './Breadcrumbs.scss';
 import classnames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
@@ -17,9 +17,7 @@ class Breadcrumbs extends WixComponent {
         node,
         string
       ]).isRequired,
-      link: string,
-      customElement: any,
-      disabled: bool,
+      link: string
     })).isRequired,
     onClick: func,
     activeId: oneOfType([
@@ -28,6 +26,7 @@ class Breadcrumbs extends WixComponent {
     ]),
     size: oneOf(['medium', 'large']),
     theme: oneOf(['onWhiteBackground', 'onGrayBackground', 'onDarkBackground']),
+    customElement: any
   };
 
   static defaultProps = {
@@ -67,7 +66,7 @@ class Breadcrumbs extends WixComponent {
       <button
         type="button"
         data-hook="breadcrumb-clickable"
-        className={classnames(styles.item, styles.button, {[styles.disabled]: item.disabled})}
+        className={classnames(styles.item, styles.button)}
         onClick={onClick}
         children={breadcrumbValue(item.value)}
         />;
@@ -76,7 +75,7 @@ class Breadcrumbs extends WixComponent {
       <a
         href={item.link}
         data-hook="breadcrumb-clickable"
-        className={classnames(styles.item, styles.link, {[styles.disabled]: item.disabled})}
+        className={classnames(styles.item, styles.link)}
         onClick={onClick}
         children={breadcrumbValue(item.value)}
         />;
@@ -108,7 +107,7 @@ class Breadcrumbs extends WixComponent {
         key={item.id}
         className={classnames(styles.itemContainer, {[styles.active]: isActive})}
         >
-        { this.createItem({item, isActive, onClick: () => item.disabled !== true && this.handleBreadcrumbClick(item)}) }
+        { this.createItem({item, isActive, onClick: () => this.handleBreadcrumbClick(item)}) }
         { isDividerVisible && <div className={styles.divider}/> }
       </div>
     );
