@@ -5,7 +5,6 @@ import Tooltip from '../Tooltip';
 import Button from '../Backoffice/Button';
 import Dots from '../Icons/dist/components/Dots';
 import PopoverMenuItem from '../PopoverMenuItem';
-import classNames from 'classnames';
 
 class PopoverMenu extends WixComponent {
 
@@ -33,17 +32,9 @@ class PopoverMenu extends WixComponent {
       return <PopoverMenuItem {...passThroughProps} onClick={onClickWithHide} key={i}/>;
     });
 
-    const assertPlacement = placement => this.props.placement === placement;
-    const className = classNames({
-      [styles.menu]: true,
-      [styles.topPlacement]: assertPlacement('top'),
-      [styles.rightPlacement]: assertPlacement('right'),
-      [styles.bottomPlacement]: assertPlacement('bottom'),
-      [styles.leftPlacement]: assertPlacement('left')
-    });
 
     const tooltipContent = (
-      <ul className={className}>
+      <ul className={styles.menu}>
         {menuItems}
       </ul>
     );
