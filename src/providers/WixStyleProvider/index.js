@@ -20,5 +20,4 @@ WixStyleProvider.defaultProps = {
   theme: {}
 };
 
-export const withStyles = (Component, styles) =>
-  injectSheet(styles, {inject: ['classes']})(Component);
+export const withStyles = (Component, styles) => injectSheet(styles)(Component);
