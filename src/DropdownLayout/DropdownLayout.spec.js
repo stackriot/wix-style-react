@@ -219,14 +219,6 @@ describe('DropdownLayout', () => {
         expect(onSelect).toBeCalled();
       });
 
-      it('should call onSelect when space key is pressed', () => {
-        const onSelect = jest.fn();
-        const driver = createDriver(<DropdownLayout visible options={options} onSelect={onSelect}/>);
-        driver.pressDownKey();
-        driver.pressSpaceKey();
-        expect(onSelect).toBeCalled();
-      });
-
       it('should call onSelect when tab key is pressed', () => {
         const onSelect = jest.fn();
         const driver = createDriver(<DropdownLayout visible options={options} onSelect={onSelect}/>);

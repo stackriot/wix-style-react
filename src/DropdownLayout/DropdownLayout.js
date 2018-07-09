@@ -129,8 +129,6 @@ class DropdownLayout extends WixComponent {
         break;
       }
 
-      case ' ':
-      case 'Spacebar':
       case 'Enter': {
         if (!this._onSelect(this.state.hovered)) {
           return false;
