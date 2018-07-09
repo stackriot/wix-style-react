@@ -12,8 +12,6 @@ $top-arrow-size: 8px;
   outline: none;
   border: none;
   width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 .options {
@@ -32,8 +30,7 @@ $top-arrow-size: 8px;
   padding: 0;
   transition: opacity 0.2s ease;
   visibility: hidden;
-  min-width: 100%;
-  max-width: calc(100% + 34px);
+  width: 100%;
   z-index: 6;
   position:absolute;
 
@@ -99,7 +96,10 @@ $top-arrow-size: 8px;
 }
 
 .option {
-  line-height: 1.5;
+  line-height: $option_height;
+  min-height: $option_height;
+
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
@@ -118,11 +118,11 @@ $top-arrow-size: 8px;
   align-items: center;
 
   &.small-height {
-    min-height: $option_height;
+    height: $option_height;
   }
 
   &.big-height {
-    min-height: $big_option_hight;
+    height: $big_option_hight;
   }
 }
 
