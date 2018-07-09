@@ -22,7 +22,9 @@ class AnimatorChild extends Component {
 
   componentDidMount() {
     if (this.isDimensionAnimation()) {
-      this.node = ReactDOM.findDOMNode(this.refs.content);
+      const layer3 = ReactDOM.findDOMNode(this.refs.layer3);
+      this.node = layer3.children[0] ? layer3.children[0] : layer3;
+      // this.setDimensions(); //required in case appear:false
     }
   }
 
@@ -44,14 +46,15 @@ class AnimatorChild extends Component {
 
   render() {
     const {children} = this.props;
+
     const [style1, style2, style3] = new AnimatorChildStyle(this.props, this.dimensions).get();
     const [class1, class2, class3] = new AnimatorChildClasses(this.props).get();
 
     return (
       <div className={class1} style={style1}>
         <div className={class2} style={style2}>
-          <div className={class3} style={style3}>
-            <AnimatorContent ref="content">{children}</AnimatorContent>
+          <div className={class3} style={style3} ref="layer3" data-hook="child-layer-3">
+            <AnimatorContent>{children}</AnimatorContent>
           </div>
         </div>
       </div>
