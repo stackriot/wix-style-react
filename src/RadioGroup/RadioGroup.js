@@ -15,12 +15,11 @@ class RadioGroup extends WixComponent {
   constructor(props) {
     super(props);
     this.name = uniqueId('RadioGroup_');
-    console.log('Warning: RadioGroup lineHeight props will change from 24px to 17px by default starting from the 16/11/17');
   }
 
   render() {
     const {onChange, disabled, disabledRadios, value, vAlign, display, type, spacing, lineHeight} = this.props;
-    const style = display === 'vertical' ? {marginBottom: spacing} : {};
+    const style = {lineHeight, marginBottom: display === 'vertical' && spacing};
 
     return (
       <div className={classNames(styles[display], {[styles.buttonType]: type === 'button'})}>
@@ -36,7 +35,6 @@ class RadioGroup extends WixComponent {
             checked={radio.props.value === value}
             style={style}
             icon={radio.props.icon}
-            lineHeight={lineHeight}
             >
             {radio.props.children}
           </RadioGroup.Radio>
