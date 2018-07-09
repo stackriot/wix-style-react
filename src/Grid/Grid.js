@@ -3,7 +3,6 @@ import styles from './Grid.scss';
 import Card from '../Card';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import Animator from '../Animations/Animator';
 
 class Container extends Component {
 
@@ -14,14 +13,7 @@ class Container extends Component {
   render() {
     return (
       <div className={styles.wixContainer}>
-        <Animator
-          opacity
-          sequenceDelay
-          translate={{size: 10, to: 'top'}}
-          timing="large"
-          >
-          {this.props.children}
-        </Animator>
+        {this.props.children}
       </div>
     );
   }

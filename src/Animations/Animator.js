@@ -1,10 +1,25 @@
 import React, {Component} from 'react';
 import css from './Animator.scss';
-import {bool, node, string, object, oneOfType} from 'prop-types';
+import {bool, node, string} from 'prop-types';
 import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import CssClass from './services/css-class';
 import Duration from './services/duration';
-import Child from './animator-child';
+
+class Child extends Component {
+
+  constructor(props) {
+    super(props);
+    this.cssClass = new CssClass();
+  }
+
+  render() {
+    return (<div className={this.cssClass.getChild(this.props)}>{this.props.children}</div>);
+  }
+}
+
+Child.propTypes = {
+  children: node
+};
 
 class Animator extends Component {
 
@@ -51,7 +66,7 @@ class Animator extends Component {
 Animator.propTypes = {
   timing: string,
   sequenceDelay: bool,
-  translate: oneOfType([object, bool]),
+  translate: bool,
   children: node
 };
 //

@@ -1,14 +1,12 @@
 import React from 'react';
 import {Button} from 'wix-style-react/Backoffice';
-import {Container, Row, Col} from '../../src/Grid';
+import Input from '../../src/Input';
+import {Container, Row, Col, Card} from '../../src/Grid';
+import {FadeAnimation, ScaleAnimation, SlideAnimation} from '../../src/Animations';
+import {SlideDirection} from '../../src/Animations/SlideAnimation';
 import ToggleSwitch from '../../src/ToggleSwitch';
 import Dropdown from '../../src/Dropdown';
 import Animator from '../../src/Animations/Animator';
-
-
-const createSizeArray = (size) => {
-  return new Array(size + 1).fill(0).map((element, id) => ({id: id * 10, value: id* 10})).splice(1, size + 1);
-}
 
 class AnimatedExample extends React.Component {
 
@@ -19,11 +17,9 @@ class AnimatedExample extends React.Component {
     this.state = {
       showComponents: true,
       opacity: true,
-      scale: false,
-      sequenceDelay: false,
-      translate: true,
-      translateSize: 100,
-      direction: 'left',
+      scale: true,
+      sequenceDelay: true,
+      translate: false,
       timing: 'large',
       show: true
     };
@@ -36,23 +32,6 @@ class AnimatedExample extends React.Component {
       {id: 'none', value: 'None'}
     ];
 
-    this.sizeOptions = createSizeArray(10);
-    this.directionOptions = [
-      {id: 'TOP', value: 'Top'},
-      {id: 'BOTTOM', value: 'Bottom'},
-      {id: 'LEFT', value: 'Left'},
-      {id: 'RIGHT', value: 'Right'},
-    ]
-
-  }
-
-  myToggle(option) {
-    return (
-      <div>
-        <ToggleSwitch checked={this.state[option]} onChange={() => this.setState({[option]: !this.state[option]})}/>
-        {option}
-      </div>
-  )
   }
 
   render() {
@@ -61,43 +40,26 @@ class AnimatedExample extends React.Component {
         <Container>
           <Row> <Col span="">Animation component </Col></Row>
           <Row>
-            <Col span="4">
+            <Col span="2">
               <Row>
                 <ToggleSwitch checked={this.state.show} onChange={() => this.setState({show: !this.state.show})}/> Show
                 Element
               </Row>
               <Row>
-                {this.myToggle('opacity')}
+                <ToggleSwitch checked={this.state.opacity}
+                              onChange={() => this.setState({opacity: !this.state.opacity})}/> Opacity
               </Row>
               <Row>
-                {this.myToggle('scale')}
+                <ToggleSwitch checked={this.state.scale}
+                              onChange={() => this.setState({scale: !this.state.scale})}/> Scale
               </Row>
               <Row>
-                {this.myToggle('translate')}
+                <ToggleSwitch checked={this.state.translate}
+                              onChange={() => this.setState({translate: !this.state.translate})}/> Translate
               </Row>
-              {this.state.translate && <Row>
-                <Col span="12">
-                  Translate Options
-                </Col>
-                <Col span="6">
-                  Size
-                  <Dropdown
-                    selectedId={100}
-                    onSelect={option => this.setState({translateSize: option.id})}
-                    options={this.sizeOptions}
-                  />
-                </Col>
-                <Col span="6">
-                  Direction
-                  <Dropdown
-                    selectedId="TOP"
-                    onSelect={option => this.setState({direction: option.id})}
-                    options={this.directionOptions}
-                  />
-                </Col>
-              </Row>}
               <Row>
-                {this.myToggle('sequenceDelay')}
+                <ToggleSwitch checked={this.state.sequenceDelay}
+                              onChange={() => this.setState({sequenceDelay: !this.state.sequenceDelay})}/> Sequence Delay
               </Row>
               <Row>
                 Timing
@@ -108,20 +70,16 @@ class AnimatedExample extends React.Component {
                 />
               </Row>
             </Col>
-            <Col span="8">
-              <pre>&lt;Animator{this.state.timing ? ` timing="${this.state.timing}"` : ''}{this.state.opacity ? ' opacity' : ''}{this.state.scale ? ' scale' : ''}{this.state.translate ? ` translate={{size: ${this.state.translateSize}, to: "${this.state.direction}"}}` : ''}{this.state.sequenceDelay ? ' sequenceDelay' : ''}&gt;&lt;
-                /Animator&gt;</pre>
+            <Col span="10">
+              <pre>&lt;Animator{this.state.timing ? ` timing="${this.state.timing}"` : ''}{this.state.opacity ? ' opacity' : ''}{this.state.scale ? ' scale' : ''}{this.state.translate ? ' translate' : ''}{this.state.sequenceDelay ? ' sequenceDelay' : ''}&gt;&lt;/Animator&gt;</pre>
               <br />
               <div style={{width: '70px'}}>
                 <Animator opacity={this.state.opacity}
                           scale={this.state.scale}
-                          translate={this.state.translate ? {to: this.state.direction, size: this.state.translateSize} : false}
+                          translate={this.state.translate}
                           sequenceDelay={this.state.sequenceDelay}
                           timing={this.state.timing === 'none' ? false : this.state.timing}>
-                  {this.state.show && <div>The content!!</div>}
-                  {this.state.show && <div>The content!!</div>}
-                  {this.state.show && <div>The content!!</div>}
-                  {this.state.show && <div>The content!!</div>}
+                {this.state.show && <div>The content!!</div>}
                 </Animator>
               </div>
             </Col>
