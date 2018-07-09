@@ -24,7 +24,6 @@ const dataTableDriverFactory = ({element, wrapper, component}) => {
   const getRowDetails = index => element.querySelector(`tbody tr td[data-hook="${index}_details"]`);
   const getHeaderTitleByIndex = index => getHeader().querySelectorAll('th')[index];
   const getSortableTitle = index => element.querySelector(`th [data-hook="${index}_title"]`);
-
   return {
     getRowsCount,
     getRowsWithClassCount: className => {
@@ -36,9 +35,7 @@ const dataTableDriverFactory = ({element, wrapper, component}) => {
     getRowText: index => values(getRows()[index].querySelectorAll('td')).map(td => td.textContent),
     getRowClasses: index => values(getRows()[index].classList),
     getHeaderCellStyle: index => getHeaderTitleByIndex(index).style,
-    getHeaderCellWidth: index => getHeaderTitleByIndex(index).style.width,
     getCellStyle: (rowIndex, colIndex) => getCell(rowIndex, colIndex).style,
-    getCellWidth: (rowIndex, colIndex) => getCell(rowIndex, colIndex).width,
     isRowClickable: index => getRows()[index].classList.contains('clickableDataRow'),
     isRowAnimated: index => getRows()[index].classList.contains('animatedDataRow'),
     getTitles: () => values(getHeader().querySelectorAll('th')).map(th => th.textContent),
@@ -62,7 +59,6 @@ const dataTableDriverFactory = ({element, wrapper, component}) => {
     },
     clickSort: (index, eventData) => ReactTestUtils.Simulate.click(getHeaderTitleByIndex(index), eventData),
     getRowDetails: index => getRowDetails(index)
-
   };
 };
 
