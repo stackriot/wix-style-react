@@ -23,7 +23,6 @@ class SectionHelper extends WixComponent {
     return (
       <div className={rootClasses}>
         <div className={css.content}>
-          {this.props.title ? <h3 data-hook="title" className={css.title}>{this.props.title}</h3> : null}
           {this.props.children}
         </div>
       </div>
@@ -33,14 +32,11 @@ class SectionHelper extends WixComponent {
 
 SectionHelper.propTypes = {
   /** Sets the look and feel of the component */
-  appearance: PropTypes.oneOf(Object.keys(HELPER_APPEARANCE)),
-  /** Adds text as the title */
-  title: PropTypes.node
+  appearance: PropTypes.oneOf(Object.keys(HELPER_APPEARANCE))
 };
 
 SectionHelper.defaultProps = {
-  appearance: 'warning',
-  title: null
+  appearance: 'warning'
 };
 
 export default SectionHelper;

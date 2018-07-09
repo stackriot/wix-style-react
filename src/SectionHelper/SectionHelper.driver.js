@@ -3,7 +3,6 @@ const sectionHelperDriverFactory = ({element}) => {
 
   return {
     exists: () => !!element,
-    titleText: () => element.querySelector('[data-hook="title"]').textContent,
     textContent: () => element.textContent,
     isWarning: () => classExists('warning'),
     isStandard: () => classExists('standard'),

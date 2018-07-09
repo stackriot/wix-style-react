@@ -7,10 +7,7 @@ story({
   name: 'SectionHelper',
   componentSrcFolder: 'SectionHelper',
   componentProps: {
-    children: <div>Hello, this is an example!</div>,
-    title: <div>Hi</div>
+    children: <div>Hello, this is an example!</div>
   },
-  exampleProps: {
-    title: ['Short title', 'Really really really really long title']
-  }
+  exampleProps: {}
 });
