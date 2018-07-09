@@ -136,6 +136,7 @@ class GoogleAddressInput extends React.Component {
 
     const requestId = ++this.geocodeRequestId;
     (new Client()).geocode({request}).then(results => {
+
       if (requestId !== this.geocodeRequestId) {
         return;
       }
@@ -162,20 +163,16 @@ class GoogleAddressInput extends React.Component {
     });
   }
 
-  onManuallyInput(inputValue) {
-    const {value, fallbackToManual, onSet} = this.props;
+  onManuallyInput(value) {
+    this._getSuggestions(value, typeof this.props.value !== 'undefined').then(suggestions => {
 
-    this._getSuggestions(inputValue, typeof value !== 'undefined').then(suggestions => {
       if (suggestions.length === 0) {
         // No suggestion to the text entered
-        if (inputValue && fallbackToManual) {
-          this.onSet(inputValue);
-        } else {
-          onSet && onSet(null);
-        }
-      } else {
-        this.onSet(suggestions[0].description);
+        this.props.onSet && this.props.onSet(null);
+        return;
       }
+
+      this.onSet(suggestions[0].description);
     });
   }
 
@@ -240,7 +237,6 @@ GoogleAddressInput.defaultProps = {
   autoSelect: true,
   footerOptions: {},
   clearSuggestionsOnBlur: true,
-  fallbackToManual: false,
   poweredByGoogle: false
 };
 
@@ -292,9 +288,6 @@ GoogleAddressInput.propTypes = {
 
   /** Clear the suggestions list upon input blur */
   clearSuggestionsOnBlur: PropTypes.bool,
-
-  /** If set to `true`, we will attempt to get a Google location from the input's text if there are no suggestions. This is useful when looking for locations for which google does not give suggestions - for example: Apartment/Apt  */
-  fallbackToManual: PropTypes.bool,
 
   /** Shows the Powered By Google credit in a fixed footer */
   poweredByGoogle: PropTypes.bool
