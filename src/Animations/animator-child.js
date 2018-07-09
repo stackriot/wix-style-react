@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {oneOf, node, string, object, any} from 'prop-types';
+import {node, string, object, any} from 'prop-types';
 
 const Content = ({type, newProps, sonOfChild}) => {
   return React.createElement(type, newProps, sonOfChild);
@@ -32,7 +32,7 @@ class AnimatorChild extends Component {
 AnimatorChild.propTypes = {
   children: node,
   helper: object,
-  animationPhase: oneOf([object, string])
+  animationPhase: string
 };
 
 export default AnimatorChild;
