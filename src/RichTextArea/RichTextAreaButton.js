@@ -83,7 +83,7 @@ class RichTextAreaButton extends Component {
           {...focusableStates(this.props)}
           onFocus={this.props.focusableOnFocus} // eslint-disable-line react/prop-types
           onBlur={this.props.focusableOnBlur} // eslint-disable-line react/prop-types
-          onMouseDown={this.handleMouseDown}
+          onMouseDown={this.handleMouseDown} // override focusable's onMouseDown
           >
           <span className={styles.wrapper}>
             {this.renderIcon()}
