@@ -46,7 +46,6 @@ class PopoverMenu extends WixComponent {
         alignment="center"
         content={tooltipContent}
         showTrigger="click"
-        hideDelay={0}
         hideTrigger="click"
         theme="light"
         size={this.props.size}
