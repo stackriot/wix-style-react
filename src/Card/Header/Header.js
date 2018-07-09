@@ -9,18 +9,16 @@ class Header extends WixComponent {
   static propTypes = {
     title: node.isRequired,
     subtitle: node,
-    withoutDivider: bool,
-    suffix: node
+    withoutDivider: bool
   };
 
   static defaultProps = {
     subtitle: null,
-    suffix: null,
     withoutDivider: false
   };
 
   render() {
-    const {title, subtitle, withoutDivider, suffix} = this.props;
+    const {title, subtitle, withoutDivider} = this.props;
 
     const headerClasses = classNames({
       [styles.header]: true,
@@ -35,23 +33,14 @@ class Header extends WixComponent {
 
     const subtitleElement = subtitle ? (
       <div data-hook="subtitle" className={styles.subtitle}>
-        {subtitle}
-      </div>
-    ) : null;
-
-    const suffixElement = suffix ? (
-      <div data-hook="suffix">
-        {suffix}
+        {this.props.subtitle}
       </div>
     ) : null;
 
     return (
       <div className={headerClasses}>
-        <div className={styles.container}>
-          {titleElement}
-          {subtitleElement}
-        </div>
-        {suffixElement}
+        {titleElement}
+        {subtitleElement}
       </div>
     );
   }
