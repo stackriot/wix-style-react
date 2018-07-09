@@ -4,7 +4,6 @@ import WixComponent from '../BaseComponents/WixComponent';
 import Input from '../Input';
 import omit from 'omit';
 import DropdownLayout from '../DropdownLayout/DropdownLayout';
-import Highlighter from '../Highlighter/Highlighter';
 
 class InputWithOptions extends WixComponent {
 
@@ -78,29 +77,12 @@ class InputWithOptions extends WixComponent {
     });
   }
 
-  _processOptions(options) {
-    return !this.props.highlight ? options : (
-      options.map(option => {
-        return {
-          ...option,
-          value: (
-            <Highlighter match={this.state.inputValue} dataHook={`highlighter-${option.id}`}>
-              {option.value}
-            </Highlighter>
-          )
-        };
-      })
-    );
-  }
-
   _renderDropdownLayout() {
     const dropdownProps = Object.assign(omit(Object.keys(Input.propTypes).concat(['dataHook']), this.props), this.dropdownAdditionalProps());
     const customStyle = {marginLeft: this.props.dropdownOffsetLeft};
-
     if (this.props.dropdownWidth) {
       customStyle.width = this.props.dropdownWidth;
     }
-
     const isDropdownLayoutVisible = this.state.showOptions &&
       (this.props.showOptionsIfEmptyInput || this.state.inputValue.length > 0);
 
@@ -109,7 +91,6 @@ class InputWithOptions extends WixComponent {
         <DropdownLayout
           ref={dropdownLayout => this.dropdownLayout = dropdownLayout}
           {...dropdownProps}
-          options={this._processOptions(dropdownProps.options)}
           theme={this.props.theme}
           visible={isDropdownLayoutVisible}
           onClose={this.hideOptions}
@@ -182,7 +163,7 @@ class InputWithOptions extends WixComponent {
     if (isSelectedOption) {
       this.setState({showOptions: false});
     } else if (onSelect) {
-      onSelect(this.props.highlight ? this.props.options.find(opt => opt.id === option.id) : option);
+      onSelect(option);
     }
   }
 
@@ -279,8 +260,7 @@ InputWithOptions.propTypes = {
   dropdownWidth: PropTypes.string,
   dropdownOffsetLeft: PropTypes.string,
   /** Controls whether to show options if input is empty */
-  showOptionsIfEmptyInput: PropTypes.bool,
-  highlight: PropTypes.bool
+  showOptionsIfEmptyInput: PropTypes.bool
 };
 
 InputWithOptions.displayName = 'InputWithOptions';

@@ -79,4 +79,3 @@ import '../stories/Modal';
 import '../stories/EditableSelector';
 import '../stories/ModalSelector';
 import '../stories/Selector';
-import '../stories/Highlighter';
