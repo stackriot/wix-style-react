@@ -28,8 +28,7 @@ class MultiSelect extends InputWithOptions {
   dropdownAdditionalProps() {
     return {
       options: this.getUnselectedOptions().filter(this.props.predicate),
-      closeOnSelect: false,
-      selectedHighlight: false
+      closeOnSelect: false
     };
   }
 
