@@ -111,8 +111,6 @@ class Modal extends WixComponent {
 
     if (appElement) {
       ReactModal.setAppElement(appElement);
-    } else {
-      ReactModal.setAppElement('body');
     }
 
     return (
