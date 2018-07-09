@@ -2,43 +2,50 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Tooltip from '../Tooltip';
-import TextAreaBold from './../../new-icons/system/TextAreaBold';
-import TextAreaItalic from './../../new-icons/system/TextAreaItalic';
-import TextAreaUnderline from './../../new-icons/system/TextAreaUnderline';
-import TextAreaBulletList from './../../new-icons/system/TextAreaBulletList';
-import TextAreaNumberedList from './../../new-icons/system/TextAreaNumberedList';
-import TextAreaLink from './../../new-icons/system/TextAreaLink';
-import TextAreaImage from './../../new-icons/system/TextAreaImage';
+import Bold from './../Icons/dist/components/Bold';
+import Italic from './../Icons/dist/components/Italic';
+import Underline from './../Icons/dist/components/Underline';
+import UnorderedList from './../Icons/dist/components/UnorderedList';
+import OrderedList from './../Icons/dist/components/OrderedList';
+import Link from './../Icons/dist/components/Link';
+import Image from './../Icons/dist/components/Image';
 import styles from './RichTextAreaButton.scss';
 import {withFocusable, focusableStates} from '../common/Focusable';
 const buttons = {
   bold: {
-    icon: TextAreaBold,
-    tooltipText: 'Bold'
+    icon: Bold,
+    tooltipText: 'Bold',
+    size: 30
   },
   italic: {
-    icon: TextAreaItalic,
-    tooltipText: 'Italic'
+    icon: Italic,
+    tooltipText: 'Italic',
+    size: 30
   },
   underline: {
-    icon: TextAreaUnderline,
-    tooltipText: 'Underline'
+    icon: Underline,
+    tooltipText: 'Underline',
+    size: 30
   },
   'unordered-list': {
-    icon: TextAreaBulletList,
-    tooltipText: 'Bulletted list'
+    icon: UnorderedList,
+    tooltipText: 'Bulletted list',
+    size: 30
   },
   'ordered-list': {
-    icon: TextAreaNumberedList,
-    tooltipText: 'Numbered list'
+    icon: OrderedList,
+    tooltipText: 'Numbered list',
+    size: 30
   },
   link: {
-    icon: TextAreaLink,
-    tooltipText: 'Link'
+    icon: Link,
+    tooltipText: 'Link',
+    size: 30
   },
   image: {
-    icon: TextAreaImage,
-    tooltipText: 'Image'
+    icon: Image,
+    tooltipText: 'Image',
+    size: 14
   }
 };
 
@@ -87,8 +94,8 @@ class RichTextAreaButton extends Component {
   }
 
   renderIcon() {
-    const {icon: Icon} = buttons[this.props.type];
-    return <Icon/>;
+    const {icon: Icon, size} = buttons[this.props.type];
+    return <Icon size={`${size}px`}/>;
   }
 
 }
