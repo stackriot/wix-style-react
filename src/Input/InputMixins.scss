@@ -36,19 +36,7 @@
         border-color: $borderColor;
         background-color: $backgroundColor;
         color: $color;
-        .input,
-        .unit {
-            color: $color;
-        }
-    }
-}
-
-@mixin ThemeDisableHover($borderColor) {
-    &.disabled {
-        &:hover,
-        &.hasHover {
-            border-color: $borderColor;
-        }
+        .input { color: $color; }
     }
 }
 
