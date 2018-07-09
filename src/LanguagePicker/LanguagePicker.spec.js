@@ -46,7 +46,6 @@ describe('LanguagePicker', () => {
     createDriver(badLanguagePicker());
 
     expect(stub.calledWithMatch(`Invalid Prop children was given. Validation failed on child number 0`)).toBeTruthy();
-    console.error.restore();
   });
 
   it('should have a divider between every language', () => {

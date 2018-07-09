@@ -30,7 +30,6 @@ import '../stories/PopoverMenu';
 import '../stories/SideBar';
 import '../stories/SideMenu';
 import '../stories/Slider';
-import '../stories/StickyPage';
 import '../stories/Tag';
 import '../stories/TimeInput';
 import '../stories/ToggleSwitch';
