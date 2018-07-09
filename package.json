@@ -151,8 +151,5 @@
       "react/no-string-refs": 0,
       "react/jsx-boolean-value": 2
     }
-  },
-  "resolutions": {
-    "moment": "2.18.1"
   }
 }
