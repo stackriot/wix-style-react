@@ -1,5 +1,4 @@
 @import '../common.scss';
-@import '../common/Focusable/Focusable';
 
 .vertical {
   display: flex;
@@ -34,7 +33,6 @@
 .radio-wrapper > * {
   cursor: initial;
   box-sizing: border-box;
-  outline: none;
 }
 
 .radio-wrapper > input {
@@ -60,11 +58,6 @@
   align-items: center;
 }
 
-#{$focusable-focus-visible}.radio-wrapper {
-  .radio {
-    @include FocusBox;
-  }
-}
 .horizontal .children {
   padding-left: 6px;
 }
@@ -86,6 +79,10 @@
   border: 1px solid $B10;
   background-color: $D80;
   border-radius: 50%;
+
+  &:focus {
+    @include FocusBox($keyboardOnly: true);
+  }
 }
 
 .disabled {

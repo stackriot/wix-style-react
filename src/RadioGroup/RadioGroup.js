@@ -70,7 +70,7 @@ RadioGroup.propTypes = {
   display: PropTypes.oneOf(['vertical', 'horizontal']),
 
   children: PropTypes.arrayOf((propValue, key) => {
-    if (propValue[key].type.displayName !== RadioButton.displayName) {
+    if (propValue[key].type.name !== 'RadioButton') {
       return new Error(`RadioGroup: Invalid Prop children was given. Validation failed on child number ${key}`);
     }
   }),

@@ -19,7 +19,6 @@ const exampleChildren = [
     </RadioGroup.Radio>
   ]
 ];
-export const NUM_OF_BUTTONS_IN_EXAMPLE = exampleChildren[0].length;
 
 export default {
   category: '4. Selection',

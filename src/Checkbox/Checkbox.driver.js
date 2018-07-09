@@ -19,11 +19,7 @@ const checkboxDriverFactory = ({element, wrapper, component, eventTrigger}) => {
     focus: () => eventTrigger.focus(checkbox()),
     /** trigger blur on the element */
     blur: () => eventTrigger.blur(checkbox()),
-    /**
-     * Focus related testing is done in e2e tests only.
-     * @deprecated
-     */
-    hasFocusState: () => element.getAttribute('data-focus'),
+    hasFocusState: () => isClassExists(element, 'hasFocus'),
     isChecked: () => isClassExists(element, 'checked'),
     isDisabled: () => isClassExists(element, 'disabled'),
     isIndeterminate: () => isClassExists(element, 'indeterminate'),

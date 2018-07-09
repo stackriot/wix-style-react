@@ -8,7 +8,6 @@ import CheckboxIndeterminate from 'wix-ui-icons-common/system/CheckboxIndetermin
 import styles from './Checkbox.scss';
 import WixComponent from '../BaseComponents/WixComponent';
 import Label from '../Label/Label';
-import {withFocusable, focusableStates} from '../common/Focusable';
 
 /** a simple WixStyle checkbox */
 class Checkbox extends WixComponent {
@@ -46,6 +45,14 @@ class Checkbox extends WixComponent {
 
   _id = `${Checkbox.displayName}-${uniqueId()}`;
 
+  handleInputBlur = () => {
+    this.state.isFocused && this.setState({isFocused: false});
+  }
+
+  handleInputFocus = () => {
+    !this.state.isFocused && this.setState({isFocused: true});
+  }
+
   render() {
     const {
       id = this._id,
@@ -69,22 +76,13 @@ class Checkbox extends WixComponent {
         [styles.hover]: hover,
         [styles.active]: active,
         [styles.disabled]: disabled,
-        [styles.hasError]: hasError
+        [styles.hasError]: hasError,
+        [styles.hasFocus]: this.state.isFocused
       }
     );
 
-    /*
-    NOTE: attaching Focusable handlers to root div (when the tabindex was on the main div under the label) is not working. The onFocus does not get
-    called when clicking on the text (the children). So I moved the tabindex to the root.
-    */
     return (
-      <div
-        className={classname}
-        onFocus={this.props.focusableOnFocus}
-        onBlur={this.props.focusableOnBlur}
-        {...focusableStates(this.props)}
-        tabIndex={disabled ? null : 0}
-        >
+      <div className={classname}>
         <input
           type="checkbox"
           id={id}
@@ -94,14 +92,12 @@ class Checkbox extends WixComponent {
           style={{display: 'none'}}
           />
 
-        <Label
-          for={id}
-          appearance={disabled ? 'T1.4' : 'T1.1'}
-          dataHook="checkbox-label"
-          >
+        <Label for={id} appearance={disabled ? 'T1.4' : 'T1.1'} dataHook="checkbox-label">
           <div
-            data-hook="checkbox-box"
             className={classNames(styles.checkbox, styles[size])}
+            tabIndex={disabled ? null : 0}
+            onFocus={this.handleInputFocus}
+            onBlur={this.handleInputBlur}
             >
             <div
               className={styles.inner}
@@ -112,7 +108,7 @@ class Checkbox extends WixComponent {
           </div>
 
           { children &&
-            <div className={styles.children} data-hook="checkbox-children">
+            <div className={styles.children}>
               {children}
             </div>
           }
@@ -122,4 +118,4 @@ class Checkbox extends WixComponent {
   }
 }
 
-export default withFocusable(Checkbox);
+export default Checkbox;
