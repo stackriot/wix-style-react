@@ -29,15 +29,11 @@ export default class BaseTextLink extends WixComponent {
   };
 
   _handleOnClick = event => {
-    const {link, disabled} = this.props;
-
-    if (!link || disabled) {
+    if (!this.props.link) {
       event.preventDefault();
     }
 
-    if (!disabled) {
-      this.props.onClick(event);
-    }
+    this.props.onClick(event);
   }
 
   render() {
@@ -46,15 +42,14 @@ export default class BaseTextLink extends WixComponent {
     const props = {
       download,
       href: link,
-      onClick: this._handleOnClick,
+      ...(disabled ? {} : {onClick: this._handleOnClick}),
       role: 'link',
       style: {
         textDecoration: 'inherit',
         color: this.props.color ? this.props.color : 'inherit',
         tabIndex: 0,
         display: 'inline-block'
-      },
-      disabled
+      }
     };
 
     if (ariaLabel) {

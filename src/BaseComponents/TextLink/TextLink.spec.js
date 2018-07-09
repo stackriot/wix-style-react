@@ -102,7 +102,7 @@ describe('TextLink', () => {
     expect(driver.getTarget()).toBe('_blank');
   });
 
-  it('should call `onClick` when clicked', () => {
+  it('should call the onClick func when clicked', () => {
     const onClickFunc = spy();
     const driver = createDriver(<TextLink link="" onClick={onClickFunc}/>);
 
@@ -111,11 +111,13 @@ describe('TextLink', () => {
     expect(onClickFunc.calledOnce).toEqual(true);
   });
 
-  it('should be disabled when `disabled` is true', () => {
-    const onClick = spy();
-    const driver = createDriver(<TextLink link="" onClick={onClick} disabled/>);
+  it('should not call the onClick func if clicked when disabled', () => {
+    const onClickFunc = spy();
+    const driver = createDriver(<TextLink disabled link="" onClick={onClickFunc}/>);
 
-    expect(driver.isDisabled()).toBe(true);
+    driver.click();
+
+    expect(onClickFunc.called).toEqual(false);
   });
 
   describe('given `onClick` without `link`', () => {
@@ -123,35 +125,10 @@ describe('TextLink', () => {
       const onClick = spy();
       const preventDefault = spy();
       const driver = createDriver(<TextLink onClick={onClick}/>);
-
       driver.click({preventDefault});
 
       expect(onClick.calledOnce).toBe(true);
       expect(preventDefault.calledOnce).toBe(true);
-    });
-  });
-
-  describe('given `onClick` with `disabled` property', () => {
-    it('should call `preventDefault` and not call `onClick` without `link`', () => {
-      const onClick = spy();
-      const preventDefault = spy();
-      const driver = createDriver(<TextLink onClick={onClick} disabled/>);
-
-      driver.click({preventDefault});
-
-      expect(preventDefault.calledOnce).toBe(true);
-      expect(onClick.calledOnce).toBe(false);
-    });
-
-    it('should call `preventDefault` and not call `onClick` with `link`', () => {
-      const onClick = spy();
-      const preventDefault = spy();
-      const driver = createDriver(<TextLink link="http://wix.com/" onClick={onClick} disabled/>);
-
-      driver.click({preventDefault});
-
-      expect(preventDefault.calledOnce).toBe(true);
-      expect(onClick.calledOnce).toBe(false);
     });
   });
 });

@@ -8,7 +8,6 @@ const textLinkDriverFactory = ({element, wrapper, component}) => {
 
   return {
     exists: () => !!element,
-    isDisabled: () => element.getAttribute('disabled') !== null,
     click: (event = {}) => ReactTestUtils.Simulate.click(element, event),
     getContent: () => textLinkLayout.textContent,
     doesComponentHasClass: className => textLinkLayout.className.includes(className),
