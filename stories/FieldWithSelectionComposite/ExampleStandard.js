@@ -37,9 +37,7 @@ class ExampleStandard extends Component {
     lastInput: {
       placeholder: '0',
       resizable: false
-    },
-    firstButtonLabel: 'Yes',
-    secondButtonLabel: 'No'
+    }
   };
 
   setComponentState(componentName, obj) {
@@ -52,19 +50,6 @@ class ExampleStandard extends Component {
   }
 
   render() {
-    const maybeButtonLabelInputs = this.state.selectionInput !== 'buttons' ? null : (
-      <div className={styles.controlGroup}>
-        <div className={styles.option}>
-          <Label>First Button</Label>
-          <Input size="small" value={this.state.firstButtonLabel} onChange={e => this.setState({firstButtonLabel: e.target.value})}/>
-        </div>
-        <div className={styles.option}>
-          <Label>Second Button</Label>
-          <Input size="small" value={this.state.secondButtonLabel} onChange={e => this.setState({secondButtonLabel: e.target.value})}/>
-        </div>
-      </div>
-    );
-
     return (
       <from className={styles.form}>
         <div>
@@ -98,7 +83,6 @@ class ExampleStandard extends Component {
               </RadioGroup>
             </div>
           </div>
-          { maybeButtonLabelInputs }
           <div className={styles.controlGroup}>
             <Label>Error</Label>
             <div className={styles.radioGroup}>

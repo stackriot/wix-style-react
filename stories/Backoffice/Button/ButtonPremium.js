@@ -20,8 +20,7 @@ class ButtonPremium extends Component {
   state = {
     disabled: false,
     theme: 'fullpurple',
-    text: 'Click On Me',
-    height: 'medium'
+    text: 'Click On Me'
   };
 
   render() {
@@ -80,22 +79,6 @@ class ButtonPremium extends Component {
                 value={this.state.text}
                 onChange={e => this.setState({text: e.target.value})}
               />
-            </div>
-          </div>
-
-          <div className={styles.option}>
-            <Label>Size</Label>
-            <div className={styles.flex}>
-              <RadioGroup
-                display="horizontal"
-                value={this.state.height}
-                onChange={height => this.setState({height})}
-              >
-                <RadioGroup.Radio value="small">Small</RadioGroup.Radio>
-                <RadioGroup.Radio value="medium">Regular</RadioGroup.Radio>
-                <RadioGroup.Radio value="large">Large</RadioGroup.Radio>
-                <RadioGroup.Radio value="x-large">x-large</RadioGroup.Radio>
-              </RadioGroup>
             </div>
           </div>
 
