@@ -27,22 +27,16 @@ export default class ColorPicker extends WixComponent {
   static propTypes = {
     /** Current color, can be given in `string` or `object` format [https://github.com/Qix-/color](https://github.com/Qix-/color) */
     value: oneOfType([string, object]).isRequired,
-
     /** Should current/previous color be displayed */
     showHistory: bool,
-
     /** Should `HEX`/`RGB`/`HSB` converter tabs be displayed */
     showConverter: bool,
-
-    /** Should color input (in `HEX` mode) be displayed. This is relevant only if `showConverter` is `true` */
+    /** Should color input (in `HEX` mode) be displayed */
     showInput: bool,
-
-    /** Handle color change event. */
+    /** Handle color change event. This is relevant only if `showConverter` is `true` */
     onChange: func.isRequired,
-
     /** Handle cancel button click */
     onCancel: func.isRequired,
-
     /** Handle confirm button click */
     onConfirm: func.isRequired
   }
