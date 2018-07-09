@@ -170,6 +170,3 @@ export const datePickerTestkitFactory = enzymeTestkitFactoryCreator(datePickerFa
 
 import selectorDriverFactory from '../src/Selector/Selector.driver';
 export const selectorTestkitFactory = enzymeTestkitFactoryCreator(selectorDriverFactory);
-
-import modalSelectorDriverFactory from '../src/ModalSelector/ModalSelector.driver';
-export const modalSelectorTestkitFactory = enzymeTestkitFactoryCreator(modalSelectorDriverFactory);

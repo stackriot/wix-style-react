@@ -173,6 +173,3 @@ export const datePickerTestkitFactory = testkitFactoryCreator(datePickerDriverFa
 
 import selectorDriverFactory from '../src/Selector/Selector.driver';
 export const selectorTestkitFactory = testkitFactoryCreator(selectorDriverFactory);
-
-import modalSelectorDriverFactory from '../src/ModalSelector/ModalSelector.driver';
-export const modalSelectorTestkitFactory = testkitFactoryCreator(modalSelectorDriverFactory);

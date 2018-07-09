@@ -20,9 +20,7 @@ class Modal extends WixComponent {
     verticalPosition: PropTypes.oneOf(Object.keys(positions)),
     closeTimeoutMS: PropTypes.number,
     scrollable: PropTypes.bool,
-    scrollableContent: PropTypes.bool,
-    maxHeight: PropTypes.string,
-    height: PropTypes.string,
+    scrollableContent: PropTypes.bool
   }
 
   static defaultProps = {
@@ -34,34 +32,15 @@ class Modal extends WixComponent {
     verticalPosition: 'center',
     closeTimeoutMS: 500,
     scrollable: true,
-    scrollableContent: false,
-    height: 'auto',
-    maxHeight: 'auto',
+    scrollableContent: false
   }
 
   render() {
-    const {
-      horizontalPosition,
-      verticalPosition,
-      height,
-      maxHeight,
-      scrollableContent,
-      borderRadius,
-      zIndex,
-      scrollable,
-      theme,
-      isOpen,
-      shouldCloseOnOverlayClick,
-      onRequestClose,
-      onAfterOpen,
-      contentLabel,
-      closeTimeoutMS,
-      children
-    } = this.props;
+    const props = this.props;
 
-    const justifyContent = positions[horizontalPosition];
-    const alignItems = positions[verticalPosition];
-    const customMaxHeight = scrollableContent && maxHeight === 'auto' ? '100vh' : maxHeight;
+    const justifyContent = positions[props.horizontalPosition];
+    const alignItems = positions[props.verticalPosition];
+    const maxHeight = props.scrollableContent ? (props.maxHeight || '100vh') : 'auto';
 
     const modalStyles = {
       overlay: {
@@ -71,24 +50,23 @@ class Modal extends WixComponent {
         left: 0,
         right: 0,
         bottom: 0,
-        zIndex: 11 + (zIndex || 0),
+        zIndex: 11 + (props.zIndex || 0),
         backgroundColor: null, // null disables the property, use css instead
         // Overriding defaults - END
         display: 'flex',
         justifyContent,
         alignItems,
-        overflowY: scrollable ? 'auto' : 'hidden'
+        overflowY: props.scrollable ? 'auto' : 'hidden'
       },
       content: {
         // Overriding defaults
         border: 'none',
-        overflowY: scrollableContent ? 'auto' : 'initial',
-        overflowX: scrollableContent ? 'hidden' : 'initial',
-        height,
-        customMaxHeight,
+        overflowY: props.scrollableContent ? 'auto' : 'initial',
+        overflowX: props.scrollableContent ? 'hidden' : 'initial',
+        maxHeight,
         WebkitOverflowScrolling: 'touch',
         outline: 'none',
-        borderRadius,
+        borderRadius: props.borderRadius,
         padding: '0px',
         boxShadow: '0 0 14px 0 rgba(22, 45, 60, 0.3)',
         // Overriding defaults - END
@@ -97,24 +75,24 @@ class Modal extends WixComponent {
       }
     };
 
-    const modalClasses = `${styles.modal} ${styles[theme]}`;
+    const modalClasses = `${styles.modal} ${styles[props.theme]}`;
     const portalClassName = classnames(styles.portal, {
-      [styles.portalNonScrollable]: !scrollable
+      [styles.portalNonScrollable]: !props.scrollable
     });
 
     return (
       <ReactModal
         portalClassName={portalClassName}
-        isOpen={isOpen}
-        shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
-        onRequestClose={onRequestClose}
-        onAfterOpen={onAfterOpen}
+        isOpen={props.isOpen}
+        shouldCloseOnOverlayClick={props.shouldCloseOnOverlayClick}
+        onRequestClose={props.onRequestClose}
+        onAfterOpen={props.onAfterOpen}
         style={modalStyles}
         className={modalClasses}
-        contentLabel={contentLabel}
-        closeTimeoutMS={closeTimeoutMS}
+        contentLabel={props.contentLabel}
+        closeTimeoutMS={props.closeTimeoutMS}
         >
-        {children}
+        {props.children}
       </ReactModal>
     );
   }
