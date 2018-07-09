@@ -1,4 +1,4 @@
-import noop from 'lodash/noop';
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import WixComponent from '../../BaseComponents/WixComponent';
@@ -49,8 +49,8 @@ export default class Tooltip extends WixComponent {
     maxWidth: '1200px',
     zIndex: 2000,
     textAlign: 'center',
-    onClickOutside: noop,
-    onShow: noop,
+    onClickOutside: _.noop,
+    onShow: _.noop,
     size: 'normal'
   };
 
@@ -166,7 +166,7 @@ export default class Tooltip extends WixComponent {
     this.setState({popperData: data});
   }
 
-  handleTrigger(originalCallback = noop, triggerType) {
+  handleTrigger(originalCallback = _.noop, triggerType) {
     const {showTrigger, hideTrigger} = this.props;
     const {active} = this.state;
 

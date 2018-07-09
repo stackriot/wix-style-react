@@ -1,6 +1,6 @@
 import styles from './Checkbox.scss';
 import {any, bool, func, oneOf, string} from 'prop-types';
-import uniqueId from 'lodash/uniqueId';
+import uniqueId from 'lodash.uniqueid';
 import React from 'react';
 import classNames from 'classnames';
 import SvgV from '../svg/V';
