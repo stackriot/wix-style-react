@@ -4,8 +4,6 @@ import WixComponent from '../BaseComponents/WixComponent';
 import omit from 'lodash/omit';
 import DropdownLayout from '../DropdownLayout/DropdownLayout';
 import styles from './IconWithOptions.scss';
-import classNames from 'classnames';
-
 class IconWithOptions extends WixComponent {
   constructor(props) {
     super(props);
@@ -30,15 +28,8 @@ class IconWithOptions extends WixComponent {
       return {value, ...rest};
     });
 
-    const classes = classNames({
-      [styles.dropdownLayout]: true,
-      [styles.dropDirectionUp]: dropdownProps.dropDirectionUp
-    });
-
-    const style = {width: dropdownProps.dropdownWidth};
-
     return (
-      <div className={classes} style={style} data-hook="iconWithOptions-dropdownLayout-wrapper">
+      <div className={styles.dropdownLayout} style={{width: dropdownProps.dropdownWidth}}>
         <DropdownLayout
           {...dropdownProps}
           dataHook="iconWithOptions-dropdownLayout"
@@ -52,12 +43,11 @@ class IconWithOptions extends WixComponent {
 
   render() {
     const {dropDirectionUp, dropdownWidth} = this.props;
-    const style = {width: dropdownWidth};
 
     return (
       <div
         className={styles.wrapper}
-        style={style}
+        style={{width: dropdownWidth}}
         onMouseEnter={() => this.setState({showOptions: true})}
         onMouseLeave={() => this.setState({showOptions: false})}
         >
