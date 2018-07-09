@@ -38,8 +38,8 @@ export default class Loader extends WixComponent {
     /** The color of the loader */
     color: PropTypes.oneOf(['blue', 'white']),
 
-    /** Node (usually text) to be shown below the loader */
-    text: PropTypes.node
+    /** Text to be shown below the loader */
+    text: PropTypes.string
   };
 
   static defaultProps = {
