@@ -200,6 +200,3 @@ export const statsWidgetTestkitFactory = enzymeTestkitFactoryCreator(statsWidget
 
 import modalSelectorLayoutDriverFactory from '../src/ModalSelectorLayout/ModalSelectorLayout.driver';
 export const modalSelectorLayoutTestkitFactory = enzymeTestkitFactoryCreator(modalSelectorLayoutDriverFactory);
-
-import sectionHelperDriverFactory from '../src/SectionHelper/SectionHelper.driver';
-export const sectionHelperTestkitFactory = enzymeTestkitFactoryCreator(sectionHelperDriverFactory);

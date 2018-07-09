@@ -1,11 +1,8 @@
 import React from 'react';
 import sectionHelperDriverFactory from './SectionHelper.driver';
 import {createDriverFactory} from '../test-common';
+
 import SectionHelper from './';
-import {sectionHelperTestkitFactory} from '../../testkit';
-import {sectionHelperTestkitFactory as enzymeSectionHelperTestkitFactory} from '../../testkit/enzyme';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
-import {mount} from 'enzyme';
 
 const renderWithProps = (properties = {}) =>
   <SectionHelper {...properties}>
@@ -82,18 +79,6 @@ describe('SectionHelper', () => {
     it('should support premium theme', () => {
       const driver = createDriver(renderWithProps({appearance: 'premium'}));
       expect(driver.isPremium()).toBeTruthy();
-    });
-  });
-
-  describe('testkit', () => {
-    it('should exist', () => {
-      expect(isTestkitExists(<SectionHelper/>, sectionHelperTestkitFactory)).toBe(true);
-    });
-  });
-
-  describe('enzyme testkit', () => {
-    it('should exist', () => {
-      expect(isEnzymeTestkitExists(<SectionHelper/>, enzymeSectionHelperTestkitFactory, mount)).toBe(true);
     });
   });
 });
