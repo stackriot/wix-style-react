@@ -1,11 +1,10 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import Markdown from 'wix-storybook-utils/Markdown';
-import TabbedView from 'wix-storybook-utils/TabbedView';
+import Markdown from '../utils/Components/Markdown';
 import CodeExample from '../utils/Components/CodeExample';
-
 import Readme from '../../src/Dropdown/README.md';
 import ReadmeTestkit from '../../src/Dropdown/README.TESTKIT.md';
+import TabbedView from '../utils/Components/TabbedView';
 
 import ExampleStandard from './ExampleStandard';
 import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
@@ -36,7 +35,8 @@ storiesOf('Core', module)
           <ExampleWithCustomValue/>
         </CodeExample>
       </div>
-
-      <Markdown source={ReadmeTestkit}/>
+      <div>
+        <Markdown source={ReadmeTestkit}/>
+      </div>
     </TabbedView>
   ));

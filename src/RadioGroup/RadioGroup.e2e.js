@@ -1,6 +1,6 @@
 import eyes from 'eyes.it';
 import {radioGroupTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
-import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
+import autoExampleDriver from '../../stories/utils/Components/AutoExample/protractor.driver';
 
 describe('RadioGroup', () => {
   const storyUrl = getStoryUrl('4. Selection', '4.3 Radio Button Group');

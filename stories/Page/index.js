@@ -1,13 +1,12 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import story from 'story';
+import story from '../utils/Components/Story';
 import Page from '../../src/Page';
 import Button from '../../src/Backoffice/Button';
 import Content from './Content';
 import Breadcrumbs from './Breadcrumbs';
 import SomeTailComponent from './SomeTailComponent';
-
 import s from './Page.scss';
+import {storiesOf} from '@storybook/react';
 
 const header = (
   <Page.Header
@@ -34,7 +33,6 @@ const tail = (
 );
 
 const category = '10. Page';
-
 story({
   category,
   storyName: '10.1 Page',
@@ -45,10 +43,7 @@ story({
     dataHook: 'story-page'
   },
   exampleProps: {
-    backgroundImageUrl: [
-      '',
-      'https://static.wixstatic.com/media/a9ff3b_9928686dcfa740bd802821d0b6f4ac03.jpg/v1/fill/w_1000,h_250,al_c,q_85,usm_0.66_1.00_0.01/a9ff3b_9928686dcfa740bd802821d0b6f4ac03.jpg'
-    ]
+    backgroundImageUrl: ['', 'https://static.wixstatic.com/media/a9ff3b_9928686dcfa740bd802821d0b6f4ac03.jpg/v1/fill/w_1000,h_250,al_c,q_85,usm_0.66_1.00_0.01/a9ff3b_9928686dcfa740bd802821d0b6f4ac03.jpg']
   }
 });
 

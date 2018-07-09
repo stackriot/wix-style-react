@@ -1,7 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import Markdown from 'wix-storybook-utils/Markdown';
-import TabbedView from 'wix-storybook-utils/TabbedView';
+import Markdown from '../utils/Components/Markdown';
+import TabbedView from '../utils/Components/TabbedView';
 import CodeExample from '../utils/Components/CodeExample';
 import Readme from '../../src/MultiSelect/README.md';
 import ReadmeTestKit from '../../src/MultiSelect/README.TESTKIT.md';
@@ -25,7 +25,6 @@ storiesOf('3. Inputs', module)
           <ExampleWithLimitedNumRows/>
         </CodeExample>
       </div>
-
       <Markdown source={ReadmeTestKit}/>
     </TabbedView>
   ));

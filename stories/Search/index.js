@@ -1,4 +1,4 @@
-import story from 'story';
+import story from '../utils/Components/Story';
 
 const settings = {
   category: '3. Inputs',

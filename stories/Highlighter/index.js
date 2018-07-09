@@ -1,4 +1,4 @@
-import story from 'story';
+import story from '../utils/Components/Story';
 
 import Highlighter from 'wix-style-react/Highlighter';
 import source from '!raw-loader!wix-style-react/Highlighter/Highlighter';

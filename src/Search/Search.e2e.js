@@ -5,7 +5,7 @@ import {
   getStoryUrl,
   waitForVisibilityOf
 } from '../../testkit/protractor';
-import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
+import autoExampleDriver from '../../stories/utils/Components/AutoExample/protractor.driver';
 
 describe('Search', () => {
   const storyUrl = getStoryUrl('3. Inputs', '3.9 Search');

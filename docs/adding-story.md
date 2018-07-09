@@ -14,7 +14,7 @@ story is a page with all details and examples of a component. Given small config
 
 ```js
 // 1. import `story` function. It will create a story page
-import story from 'story';
+import story from '../utils/Components/Story';
 
 // 2. call `story()` with object
 story({

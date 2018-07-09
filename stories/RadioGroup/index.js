@@ -1,5 +1,5 @@
 import React from 'react';
-import story from 'story';
+import story from '../utils/Components/Story';
 import RadioGroup from 'wix-style-react/RadioGroup';
 
 const exampleChildren = [

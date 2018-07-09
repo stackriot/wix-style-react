@@ -1,6 +1,6 @@
 import eyes from 'eyes.it';
 import {badgeTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
-import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
+import autoExampleDriver from '../../stories/utils/Components/AutoExample/protractor.driver';
 
 describe('Badge', () => {
   const storyUrl = getStoryUrl('Core', 'Badge');

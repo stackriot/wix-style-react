@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input from 'wix-style-react/Input';
-import TextButton from 'wix-storybook-utils/TextButton';
+import TextButton from '../utils/Components/TextButton';
 
 class CommandsExample extends React.Component {
   render() {

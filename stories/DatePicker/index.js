@@ -1,5 +1,5 @@
 import moment from 'moment';
-import story from 'story';
+import story from '../utils/Components/Story';
 
 import readme from '../../src/DatePicker/README.md';
 import source from '!raw-loader!wix-style-react/DatePicker/DatePicker';
