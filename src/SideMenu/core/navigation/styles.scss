@@ -21,19 +21,9 @@ $padding-vertical: 14px;
   line-height: 14px;
 }
 
-.linkLayout {
+.link-layout {
   position: relative;
   display: block;
-
-  &.linkDisabled {
-    background: transparent !important;
-    a {
-      pointer-events: none;
-      color: $D80 !important;
-      opacity: 0.45;
-      background: transparent !important;
-    }
-  }
 
   &:hover,
   &:focus {
@@ -69,12 +59,12 @@ $padding-vertical: 14px;
   }
 }
 
-.linkLayout, .linkLayout a {
+.link-layout, .link-layout a {
   font-family: $FontRoman;
   color: $D80;
 }
 
-.linkLayout a {
+.link-layout a {
   @extend .link-base;
 }
 
