@@ -86,28 +86,6 @@ $base-transition: all 100ms linear;
   }
 }
 
-.heightx-small {
-  $height: 24px;
-  height: $height;
-  border-radius: $height / 2;
-  padding: 0px 11px;
-
-  &.transparent {
-    padding: 0px 12px;
-  }
-
-  &.icon-greybackground,
-  &.icon-standard,
-  &.icon-standardsecondary,
-  &.icon-white,
-  &.icon-whitesecondary {
-    width: $height;
-    height: $height;
-    border-radius: $height / 2;
-    padding: 0;
-  }
-}
-
 .heightlarge {
   $height: 42px;
   height: $height;
@@ -173,10 +151,6 @@ $base-transition: all 100ms linear;
     @extend .t3_2;
   }
 
-  &.heightx-small {
-    @extend .t4_2;
-  }
-
   background-color: $B10;
   border-color: $B10;
 }
@@ -202,10 +176,6 @@ $base-transition: all 100ms linear;
     @extend .t3_2;
   }
 
-  &.heightx-small {
-    @extend .t4_2;
-  }
-
   background-color: $P10;
   border-color: $P10;
 }
@@ -219,10 +189,6 @@ $base-transition: all 100ms linear;
 
   &.heightsmall {
     @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
   }
 
   background-color: $G10;
@@ -240,10 +206,6 @@ $base-transition: all 100ms linear;
     @extend .t3_2;
   }
 
-  &.heightx-small {
-    @extend .t4_2;
-  }
-
   background-color: $R10;
   border-color: $R10;
 }
@@ -257,11 +219,6 @@ $base-transition: all 100ms linear;
 
   &.heightsmall {
     @extend .t3_3;
-    color: $G10;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
     color: $G10;
   }
 
@@ -283,11 +240,6 @@ $base-transition: all 100ms linear;
     color: $R00;
   }
 
-  &.heightx-small {
-    @extend .t4_3;
-    color: $R00;
-  }
-
   color: $R00;
 
   background-color: transparent;
@@ -303,10 +255,6 @@ $base-transition: all 100ms linear;
 
   &.heightsmall {
     @extend .t3_3;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
   }
 
   background-color: $D80;
@@ -335,11 +283,6 @@ $base-transition: all 100ms linear;
     color: $P00;
   }
 
-  &.heightx-small {
-    @extend .t4_3;
-    color: $P00;
-  }
-
   color: $P00;
 
   background-color: transparent;
@@ -358,10 +301,6 @@ $base-transition: all 100ms linear;
     @extend .t3_2;
   }
 
-  &.heightx-small {
-    @extend .t4_2;
-  }
-
   background-color: rgba($D10, 0.24);
   border: 0;
 }
@@ -376,10 +315,6 @@ $base-transition: all 100ms linear;
 
   &.heightsmall {
     @extend .t3_3;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
   }
 
   background-color: transparent;
@@ -401,10 +336,6 @@ $base-transition: all 100ms linear;
     @extend .t3_3;
   }
 
-  &.heightx-small {
-    @extend .t4_3;
-  }
-
   background-color: $D80;
   border-color: $D80;
 }
@@ -417,10 +348,6 @@ $base-transition: all 100ms linear;
   }
   &.heightsmall {
     @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
   }
 
   background-color: transparent;
@@ -453,10 +380,6 @@ $base-transition: all 100ms linear;
     @extend .t3_2;
   }
 
-  &.heightx-small {
-    @extend .t4_2;
-  }
-
   background-color: $G20;
   border-color: $G20;
 }
@@ -473,10 +396,6 @@ $base-transition: all 100ms linear;
 
   &.heightsmall {
     @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
   }
 
   background-color: $R20;
@@ -505,10 +424,6 @@ $base-transition: all 100ms linear;
 
   &.heightsmall {
     @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
   }
 
   background-color: $B20;
@@ -545,10 +460,6 @@ $base-transition: all 100ms linear;
     @extend .t3_3;
   }
 
-  &.heightx-small {
-    @extend .t4_3;
-  }
-
   background-color: $B50;
   border-color: $B50;
 }
@@ -567,10 +478,6 @@ $base-transition: all 100ms linear;
     @extend .t3_2;
   }
 
-  &.heightx-small {
-    @extend .t4_2;
-  }
-
   background-color: rgba($D10, 0.3);
 }
 
@@ -586,10 +493,6 @@ $base-transition: all 100ms linear;
 
   &.heightsmall {
     @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
   }
 
   background-color: $P20;
@@ -627,10 +530,6 @@ $base-transition: all 100ms linear;
     @extend .t3_2;
   }
 
-  &.heightx-small {
-    @extend .t4_2;
-  }
-
   background-color: $B10;
   border-color: $B10;
 }
@@ -665,10 +564,6 @@ $base-transition: all 100ms linear;
     @extend .t3_3;
   }
 
-  &.heightx-small {
-    @extend .t4_3;
-  }
-
   background-color: $B40;
   border-color: $B40;
 }
@@ -683,10 +578,6 @@ $base-transition: all 100ms linear;
 
   &.heightsmall {
     @extend .t3_3;
-  }
-
-  &.heightx-small {
-    @extend .t4_3;
   }
 
   background-color: $D80;
@@ -707,10 +598,6 @@ $base-transition: all 100ms linear;
     @extend .t3_2;
   }
 
-  &.heightx-small {
-    @extend .t4_2;
-  }
-
   background-color: $P10;
   border-color: $P10;
 }
@@ -725,10 +612,6 @@ $base-transition: all 100ms linear;
   }
   &.heightsmall {
     @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
   }
 
   background-color: $G00;
@@ -749,10 +632,6 @@ $base-transition: all 100ms linear;
     @extend .t3_2;
   }
 
-  &.heightx-small {
-    @extend .t4_2;
-  }
-
   background-color: $R10;
   border-color: $R10;
 }
@@ -769,10 +648,6 @@ $base-transition: all 100ms linear;
 
   &.heightsmall {
     @extend .t3_2;
-  }
-
-  &.heightx-small {
-    @extend .t4_2;
   }
 
   background-color: rgba($D10, 0.36);
@@ -811,10 +686,6 @@ $base-transition: all 100ms linear;
     @extend .t3_2;
   }
 
-  &.heightx-small {
-    @extend .t4_2;
-  }
-
   pointer-events: none;
   background-color: $D55;
   border-color: $D55;
@@ -837,10 +708,6 @@ $base-transition: all 100ms linear;
   }
 
   &.heightsmall {
-    @extend .t3_4;
-  }
-
-  &.heightx-small {
     @extend .t3_4;
   }
 
@@ -874,10 +741,6 @@ $base-transition: all 100ms linear;
   &.heightsmall {
     @extend .t3_1;
   }
-
-  &.heightx-small {
-    @extend .t4_1;
-  }
 }
 
 .dark-no-border {
@@ -895,9 +758,6 @@ $base-transition: all 100ms linear;
   }
   &.heightsmall {
     @extend .t3_2;
-  }
-  &.heightx-small {
-    @extend .t4_2;
   }
 }
 
@@ -927,9 +787,5 @@ $base-transition: all 100ms linear;
 
   &.heightsmall {
     @extend .t3_1;
-  }
-
-  &.heightx-small {
-    @extend .t4_1;
   }
 }
