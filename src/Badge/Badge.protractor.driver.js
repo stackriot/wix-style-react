@@ -11,6 +11,5 @@ export default component => ({
   isOfType: type => hasClass(component, styles, type),
   isOfAppearance: appearance => hasClass(component, typography, appearance),
   isOfAlignment: alignment => hasClass(component, styles, alignment),
-  isOfShape: shape => hasClass(component, styles, shape),
   text: () => component.getText()
 });

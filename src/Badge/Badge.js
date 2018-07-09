@@ -16,13 +16,12 @@ class Badge extends WixComponent {
   }
 
   render() {
-    const {children, type, appearance, alignment, shape, dataHook} = this.props;
+    const {children, type, appearance, alignment, dataHook} = this.props;
     const {styles, typography} = this;
     const className = classnames(
       styles.badge,
       styles[type],
       styles[alignment],
-      styles[shape],
       typography[convertFromUxLangToCss(appearance)
         ]);
 
@@ -39,10 +38,10 @@ Badge.propTypes = {
   children: node.isRequired,
 
   /** define purpose of a badge, different color for each type */
-  type: oneOf(['default', 'primary', 'success', 'info', 'warning', 'danger']),
+  type: oneOf(['default', 'primary', 'success', 'info', 'warning', 'danger']).isRequired,
 
   /** set `vertical-align` */
-  alignment: oneOf(['top', 'bottom', 'middle']),
+  alignment: oneOf(['top', 'bottom', 'middle']).isRequired,
 
   /** choose appearance of typography. For Typography examples see storybook **Common** -> **Typography** */
   appearance: oneOf([
@@ -52,10 +51,7 @@ Badge.propTypes = {
     'T3', 'T3.1', 'T3.2', 'T3.3', 'T3.4',
     'T4', 'T4.1', 'T4.2', 'T4.3',
     'T5', 'T5.1'
-  ]),
-
-  /** set the shape */
-  shape: oneOf(['ellipse', 'rectangle']),
+  ]).isRequired,
 
   /** set one to find component in testing environment */
   dataHook: string
@@ -64,8 +60,7 @@ Badge.propTypes = {
 Badge.defaultProps = {
   type: 'default',
   appearance: 'H4',
-  alignment: 'middle',
-  shape: 'ellipse'
+  alignment: 'middle'
 };
 
 Badge.displayName = 'Badge';

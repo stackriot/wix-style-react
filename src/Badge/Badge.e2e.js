@@ -15,7 +15,6 @@ describe('Badge', () => {
         expect(driver.isOfType('primary')).toBe(true);
         expect(driver.isOfAppearance('H2')).toBe(true);
         expect(driver.isOfAlignment('middle')).toBe(true);
-        expect(driver.isOfShape('ellipse')).toBe(true);
       });
   });
 
