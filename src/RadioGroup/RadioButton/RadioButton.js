@@ -119,11 +119,9 @@ class RadioButton extends WixComponent {
             <div className={styles.radio}/>
           </div>
 
-          { children &&
-            <div className={styles.children}>
-              {children}
-            </div>
-          }
+          <div className={styles.children}>
+            {children}
+          </div>
         </label>
 
         { content &&

@@ -1,11 +1,11 @@
 @import '../common.scss';
 
-.root {
-  display: flex;
+.selector {
   align-items: center;
-  justify-content: center;
-  padding: 12px 30px;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 30px;
 
   &:hover {
     background-color: $B50;
@@ -14,18 +14,22 @@
       background-color: $B30;
     }
   }
-}
 
-.titles {
-  flex: 1 1 auto;
-  overflow: hidden;
-  margin-left: 12px;
+  .main {
+    align-items: center;
+    display: flex;
+    flex: 1;
+  }
+
+  .extra {
+    max-width: 180px;
+  }
 }
 
 .image {
   overflow: hidden;
-  margin: 0 8px 0 20px;
-  flex: 0 0 auto;
+  margin-left: 8px;
+  margin-right: 20px;
 
   &.tiny {
     width: 24px;
@@ -65,11 +69,4 @@
   &.circle {
     border-radius: 50%;
   }
-}
-
-.extra {
-  flex: 0 0 auto;
-  max-width: 180px;
-  margin-left: 18px;
-  overflow: hidden;
 }
