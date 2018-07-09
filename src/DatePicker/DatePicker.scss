@@ -87,8 +87,7 @@ $dayHoverColor: $B50;
         border: 3px solid #aadbfc;
       }
 
-      &--outside,
-      &--disabled {
+      &--outside {
         pointer-events: none;
         color: $D60;
       }

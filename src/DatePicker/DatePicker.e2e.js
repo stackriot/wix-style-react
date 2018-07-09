@@ -65,7 +65,6 @@ describe('DatePicker', () => {
     });
 
     eyes.it('should not change date', () => {
-      autoExampleDriver.setProps({value: new Date('2017/05/01')});
       inputDriver.click();
       inputDriver.pressEnterKey();
 
@@ -73,7 +72,6 @@ describe('DatePicker', () => {
     });
 
     eyes.it('should select next day date', () => {
-      autoExampleDriver.setProps({value: new Date('2017/05/01')});
       inputDriver.click();
       inputDriver.pressArrowRightKey();
       inputDriver.pressEnterKey();
@@ -83,15 +81,8 @@ describe('DatePicker', () => {
   });
 
   describe('with year and month dropdown', () => {
-    beforeEach(() =>
-      autoExampleDriver.setProps({
-        showYearDropdown: true,
-        showMonthDropdown: true,
-        value: new Date('2017/05/01')
-      })
-    );
-
     eyes.it('should select 2027 year', () => {
+      autoExampleDriver.setProps({showYearDropdown: true, showMonthDropdown: true});
       inputDriver.click();
 
       calendarDriver.openYearDropdownOptions();
@@ -102,6 +93,7 @@ describe('DatePicker', () => {
     });
 
     eyes.it('should select February', () => {
+      autoExampleDriver.setProps({showYearDropdown: true, showMonthDropdown: true});
       inputDriver.click();
 
       calendarDriver.openMonthDropdownOptions();
@@ -112,6 +104,7 @@ describe('DatePicker', () => {
     });
 
     eyes.it('should select February and 2026 year', () => {
+      autoExampleDriver.setProps({showYearDropdown: true, showMonthDropdown: true});
       inputDriver.click();
 
       calendarDriver.openYearDropdownOptions();
