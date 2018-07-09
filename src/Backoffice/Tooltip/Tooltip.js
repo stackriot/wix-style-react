@@ -312,7 +312,7 @@ export default class Tooltip extends WixComponent {
             >
             <div
               className={classNames({
-                [styles[`bounce-${arrowPlacement}`]]: bounce
+                [styles[`bounce-on-${arrowPlacement}`]]: bounce
               })}
               >
               <div
