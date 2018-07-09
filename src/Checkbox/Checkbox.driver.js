@@ -11,11 +11,10 @@ const checkboxDriverFactory = ({element, wrapper, component, eventTrigger}) => {
   const input = () => element.querySelector('input');
   const checkbox = () => element.querySelector('.checkbox');
   const labelDriver = () => labelTestkitFactory({wrapper: element, dataHook: 'checkbox-label'});
-  const isChecked = element => isClassExists(element, 'checked');
 
   return {
     exists: () => !!element,
-    click: () => eventTrigger.change(input(), {target: {checked: !isChecked(element)}}),
+    click: () => eventTrigger.change(input()),
     /** trigger focus on the element */
     focus: () => eventTrigger.focus(checkbox()),
     /** trigger blur on the element */
@@ -25,7 +24,7 @@ const checkboxDriverFactory = ({element, wrapper, component, eventTrigger}) => {
      * @deprecated
      */
     hasFocusState: () => element.getAttribute('data-focus'),
-    isChecked: () => isChecked(element),
+    isChecked: () => isClassExists(element, 'checked'),
     isDisabled: () => isClassExists(element, 'disabled'),
     isIndeterminate: () => isClassExists(element, 'indeterminate'),
     hasError: () => isClassExists(element, 'hasError'),

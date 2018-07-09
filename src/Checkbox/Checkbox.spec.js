@@ -49,8 +49,7 @@ describe('Checkbox', () => {
     const driver = createDriver(<Checkbox onChange={onChange}/>);
 
     driver.click();
-
-    expect(onChange).toBeCalledWith(expect.objectContaining({target: {checked: true}}));
+    expect(onChange).toBeCalled();
   });
 
   it('should not call onChange when clicking disabled Checkbox', () => {
