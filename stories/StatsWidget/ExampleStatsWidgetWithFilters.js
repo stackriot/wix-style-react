@@ -1,10 +1,9 @@
 import React from 'react';
 import StatsWidget from '../../src/StatsWidget';
 import styles from './ExampleStatsWidget.scss';
-import ButtonWithOptions from '../../src/ButtonWithOptions';
 
 const statistics = [{
-  title: '$10',
+  title: '10$',
   subtitle: 'Revenue'
 },
 {
@@ -16,7 +15,7 @@ const statistics = [{
   subtitle: 'Transactions'
 },
 {
-  title: '$5',
+  title: '5',
   subtitle: 'Profit'
 }];
 
@@ -28,27 +27,10 @@ const onFilterChange = () => {
   alert('hi');
 };
 
-const optionsArray = dropdownOption.map(option => {
-  const {value, ...props} = option;
-  return <ButtonWithOptions.Option key={option.id} {...props}>{value}</ButtonWithOptions.Option>;
-});
-
-const ButtonWithOptionsProps = {
-  theme: 'no-border',
-  dataHook: 'StatsWidgetFilter',
-  selectedId: 1
-};
-
 export default () =>
   <div data-hook="card-example" className={styles.statsWidgetWrapper}>
-    <StatsWidget title="Let's see what's going on with your store" statistics={statistics}>
-      <StatsWidget.Filter selectedId={1} onSelect={onFilterChange} {...ButtonWithOptionsProps}>
-        <ButtonWithOptions.Button/>
-        {optionsArray}
-      </StatsWidget.Filter>
-      <StatsWidget.Filter selectedId={1} onSelect={onFilterChange} {...ButtonWithOptionsProps}>
-        <ButtonWithOptions.Button/>
-        {optionsArray}
-      </StatsWidget.Filter>
+    <StatsWidget title="Let's what going on with your store" statistics={statistics}>
+      <StatsWidget.Filter selectedId={1} options={dropdownOption} onSelect={onFilterChange}/>
+      <StatsWidget.Filter selectedId={1} options={dropdownOption}/>
     </StatsWidget>
   </div>;
