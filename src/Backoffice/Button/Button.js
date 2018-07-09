@@ -3,7 +3,7 @@ import {any, func, node, string} from 'prop-types';
 import styles from './Button.scss';
 import WixComponent from '../../BaseComponents/WixComponent';
 import ButtonLayout from '../../ButtonLayout/ButtonLayout';
-import omit from 'omit';
+import omit from 'lodash/omit';
 
 class Button extends WixComponent {
   static propTypes = {
@@ -49,7 +49,8 @@ class Button extends WixComponent {
 
   render() {
     const {disabled, onClick, children, type, onMouseEnter, onMouseLeave} = this.props;
-    const buttonLayoutProps = omit(['id', 'onClick', 'prefixIcon', 'suffixIcon', 'type'], this.props);
+    const buttonLayoutProps = omit(this.props, ['id', 'onClick', 'prefixIcon', 'suffixIcon', 'type']);
+
     return (
       <ButtonLayout {...buttonLayoutProps}>
         <button onClick={onClick} disabled={disabled} type={type} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
