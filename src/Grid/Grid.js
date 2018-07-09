@@ -16,7 +16,7 @@ class Container extends Component {
       <div className={styles.wixContainer}>
         <Animator
           opacity
-          sequence
+          sequenceDelay
           translate={{size: 10, to: 'top'}}
           timing="large"
           >

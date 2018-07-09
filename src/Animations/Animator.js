@@ -57,7 +57,7 @@ class Animator extends Component {
 
 Animator.propTypes = {
   timing: string,
-  sequence: oneOfType([bool, string]),
+  sequenceDelay: oneOfType([bool, string]),
   translate: oneOfType([object, bool]),
   children: node
 };

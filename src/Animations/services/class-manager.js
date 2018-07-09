@@ -33,7 +33,7 @@ class CssClass {
   constructor() {
 
     this.parent = [''];
-    this.layer1 = ['sequence'];
+    this.layer1 = ['sequenceDelay'];
     this.layer2 = ['opacity', 'scale', 'height', 'width', 'timing'];
     this.layer3 = ['translate'];
 
@@ -42,13 +42,8 @@ class CssClass {
 
     this.propByFunctionMap = {
       timing: value => `timing-${value}`,
-      sequence: (value, props) => {
-        const {index, reverseIndex} = this.getIndex(props);
-        return [
-          'sequence',
-          `child-sequence-${index}`,
-          `child-sequence-reverse-${reverseIndex}`
-        ];
+      sequenceDelay: (value, props) => {
+        return ['sequenceDelay', `childSequenceDelay-${this.getSequenceIndex(props)}`];
       },
       translate: ({to = 'TOP', size = 100}) => {
         size = typeof size === 'number' ? {in: size, out: size} : size;
@@ -76,12 +71,9 @@ class CssClass {
       .filter(([key, value]) => value && cssProps.indexOf(key) > -1);
   }
 
-  getIndex(props) {
-    const {index, childrenLength} = props;
-    return {
-      index: index + 1,
-      reverseIndex: childrenLength - index
-    };
+  getSequenceIndex(props) {
+    const {index, sequenceDelay, childrenLength} = props;
+    return sequenceDelay === 'reverse' ? childrenLength - index : index + 1;
   }
 
   getClassFromProp([propName, propValue], props) {
@@ -114,16 +106,7 @@ class CssClass {
   }
 
   getParent(props /* Parent props */) {
-
-    const {sequence} = props;
-
-    const classNames = [props.children[0] ? 'animate-in' : 'animate-out'];
-
-    if (sequence) {
-      classNames.push(typeof sequence === 'string' ? `sequence-${sequence}` : 'sequence-default');
-    }
-
-    return this.getClassString(classNames);
+    return this.getClassString([props.children[0] ? 'animate-in' : 'animate-out']);
   }
 
 }
