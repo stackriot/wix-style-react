@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import {storiesOf} from '@kadira/storybook';
 import Markdown from '../utils/Components/Markdown';
 import CodeExample from '../utils/Components/CodeExample';
 import Readme from '../../src/InputArea/README.md';
@@ -7,22 +7,22 @@ import ReadmeTestkit from '../../src/InputArea/README.TESTKIT.md';
 import TabbedView from '../utils/Components/TabbedView';
 
 import ExampleStandard from './ExampleStandard';
-import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
+import ExampleStandardRaw from '!raw!./ExampleStandard';
 
 import ExampleError from './ExampleError';
-import ExampleErrorRaw from '!raw-loader!./ExampleError';
+import ExampleErrorRaw from '!raw!./ExampleError';
 
 import ExamplePaneltitleStyle from './ExamplePaneltitleStyle';
-import ExamplePaneltitleStyleRaw from '!raw-loader!./ExamplePaneltitleStyle';
+import ExamplePaneltitleStyleRaw from '!raw!./ExamplePaneltitleStyle';
 
 import ExampleControlled from './ExampleControlled';
-import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
+import ExampleControlledRaw from '!raw!./ExampleControlled';
 
 import ExampleRefs from './ExampleRefs';
-import ExampleRefsRaw from '!raw-loader!./ExampleRefs';
+import ExampleRefsRaw from '!raw!./ExampleRefs';
 
 import ExampleSizes from './ExampleSizes';
-import ExampleSizesRaw from '!raw-loader!./ExampleSizes';
+import ExampleSizesRaw from '!raw!./ExampleSizes';
 
 storiesOf('Core', module)
   .add('InputArea', () => (

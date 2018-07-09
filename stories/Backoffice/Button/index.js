@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import {storiesOf} from '@kadira/storybook';
 import Markdown from '../../utils/Components/Markdown';
 import TabbedView from '../../utils/Components/TabbedView';
 import CodeExample from '../../utils/Components/CodeExample';
@@ -7,9 +7,9 @@ import Readme from '../../../src/Backoffice/Button/README.md';
 import ReadmeTestKit from '../../../src/Backoffice/Button/README.TESTKIT.md';
 
 import ExampleControlled from './ExampleControlled';
-import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
+import ExampleControlledRaw from '!raw!./ExampleControlled';
 import IconsExample from './ExampleWithIcons';
-import IconsExampleRaw from '!raw-loader!./ExampleWithIcons';
+import IconsExampleRaw from '!raw!./ExampleWithIcons';
 
 storiesOf('Backoffice', module)
   .add('Button', () => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import {storiesOf} from '@kadira/storybook';
 import Markdown from '../utils/Components/Markdown';
 import CodeExample from '../utils/Components/CodeExample';
 import Readme from '../../src/DataTable/README.md';
@@ -7,10 +7,10 @@ import TabbedView from '../utils/Components/TabbedView';
 import ReadmeTestKit from '../../src/DataTable/README.TESTKIT.md';
 
 import Example from './Example';
-import ExampleRaw from '!raw-loader!./Example';
+import ExampleRaw from '!raw!./Example';
 
 import ExampleCallingServer from './ExampleCallingServer';
-import ExampleCallingServerRaw from '!raw-loader!./ExampleCallingServer';
+import ExampleCallingServerRaw from '!raw!./ExampleCallingServer';
 
 storiesOf('Core', module)
   .add('DataTable', () => (

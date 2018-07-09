@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import {storiesOf} from '@kadira/storybook';
 import Markdown from '../utils/Components/Markdown';
 import CodeExample from '../utils/Components/CodeExample';
 import Readme from '../../src/Checkbox/README.md';
@@ -7,16 +7,16 @@ import TabbedView from '../utils/Components/TabbedView';
 import ReadmeTestKit from '../../src/Checkbox/README.TESTKIT.md';
 
 import ExampleStandard from './ExampleStandard';
-import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
+import ExampleStandardRaw from '!raw!./ExampleStandard';
 
 import ExampleIndeterminate from './ExampleIndeterminate';
-import ExampleIndeterminateRaw from '!raw-loader!./ExampleIndeterminate';
+import ExampleIndeterminateRaw from '!raw!./ExampleIndeterminate';
 
 import ExampleRtl from './ExampleRtl';
-import ExampleRtlRaw from '!raw-loader!./ExampleRtl';
+import ExampleRtlRaw from '!raw!./ExampleRtl';
 
 import ExampleControlled from './ExampleControlled';
-import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
+import ExampleControlledRaw from '!raw!./ExampleControlled';
 
 storiesOf('Core', module)
   .add('Checkbox', () => (

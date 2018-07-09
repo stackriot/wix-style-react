@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import {storiesOf} from '@kadira/storybook';
 import Markdown from '../utils/Components/Markdown';
 import CodeExample from '../utils/Components/CodeExample';
 import Readme from '../../src/Label/README.md';
@@ -7,7 +7,7 @@ import TabbedView from '../utils/Components/TabbedView';
 import ReadmeTestKit from '../../src/Label/README.TESTKIT.md';
 
 import ExampleStandard from './ExampleStandard';
-import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
+import ExampleStandardRaw from '!raw!./ExampleStandard';
 
 storiesOf('Core', module)
   .add('Label', () => (

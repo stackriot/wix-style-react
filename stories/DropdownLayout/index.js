@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import {storiesOf} from '@kadira/storybook';
 import Markdown from '../utils/Components/Markdown';
 import CodeExample from '../utils/Components/CodeExample';
 import Readme from '../../src/DropdownLayout/README.md';
@@ -7,22 +7,22 @@ import ReadmeTestkit from '../../src/DropdownLayout/README.TESTKIT.md';
 import TabbedView from '../utils/Components/TabbedView';
 
 import ExampleStandard from './ExampleStandard';
-import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
+import ExampleStandardRaw from '!raw!./ExampleStandard';
 
 import ExampleManyOptions from './ExampleManyOptions';
-import ExampleManyOptionsRaw from '!raw-loader!./ExampleManyOptions';
+import ExampleManyOptionsRaw from '!raw!./ExampleManyOptions';
 
 import ExampleReactElement from './ExampleReactElements';
-import ExampleReactElementRaw from '!raw-loader!./ExampleReactElements';
+import ExampleReactElementRaw from '!raw!./ExampleReactElements';
 
 import ExampleControlled from './ExampleControlled';
-import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
+import ExampleControlledRaw from '!raw!./ExampleControlled';
 
 import ExampleControlledWithButtons from './ExampleControlledWithButtons';
-import ExampleControlledRawWithButtons from '!raw-loader!./ExampleControlledWithButtons';
+import ExampleControlledRawWithButtons from '!raw!./ExampleControlledWithButtons';
 
 import ExampleTheme from './ExampleTheme';
-import ExampleThemeRaw from '!raw-loader!./ExampleTheme';
+import ExampleThemeRaw from '!raw!./ExampleTheme';
 
 storiesOf('Core', module)
   .add('DropdownLayout', () => (

@@ -1,20 +1,20 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import {storiesOf} from '@kadira/storybook';
 
 import Markdown from '../../utils/Components/Markdown';
 import CodeExample from '../../utils/Components/CodeExample';
 import Readme from '../../../src/Tooltip/README.md';
 
 import ExamplePlacement from './ExamplePlacement';
-import ExamplePlacementRaw from '!raw-loader!./ExamplePlacement';
+import ExamplePlacementRaw from '!raw!./ExamplePlacement';
 import ExampleBounce from './ExampleBounce';
-import ExampleBounceRaw from '!raw-loader!./ExampleBounce';
+import ExampleBounceRaw from '!raw!./ExampleBounce';
 import ExampleTheme from './ExampleTheme';
-import ExampleThemeRaw from '!raw-loader!./ExampleTheme';
+import ExampleThemeRaw from '!raw!./ExampleTheme';
 import ExampleCustomContent from './ExampleCustomContent';
-import ExampleCustomContentRaw from '!raw-loader!./ExampleCustomContent';
+import ExampleCustomContentRaw from '!raw!./ExampleCustomContent';
 import ExampleMove from './ExampleMove';
-import ExampleMoveRaw from '!raw-loader!./ExampleMove';
+import ExampleMoveRaw from '!raw!./ExampleMove';
 
 storiesOf('Core', module)
   .add('Tooltip', () => (
