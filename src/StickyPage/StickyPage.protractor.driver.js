@@ -2,10 +2,7 @@ import s from './StickyPage.scss';
 
 const stickyPageDriverFactory = component => ({
   element: () => component,
-  scrollDown: async () => {
-    const element = await component.$(`.${s.scrollableContent}`);
-    await browser.executeScript('arguments[0].scrollTop = 200;', await element.getWebElement());
-  },
+  scrollDown: () => browser.executeScript(`document.querySelectorAll('.${s.scrollableContent}').forEach(x => x.scrollTo(0,200));`),
   isHeaderMinimized: () => component.$$(`.minimized`).count().then(count => count > 0)
 });
 
