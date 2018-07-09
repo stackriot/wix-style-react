@@ -200,7 +200,6 @@ class SideMenuDrill extends WixComponent {
             { !showMenuA ? this.renderMenu(menuB) : null }
           </SlideAnimation>
         </div>
-        {this.props.stickyFooter}
       </SideMenu>
     );
   }
