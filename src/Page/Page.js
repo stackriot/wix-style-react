@@ -221,7 +221,7 @@ class Page extends WixComponent {
             <div className={classNames(s.content, {[s.contentFullScreen]: contentFullScreen})} style={contentFullScreen ? null : pageDimensionsStyle}>
               {this._safeGetChildren(PageContent)}
             </div>
-            {headerHeightDelta ? <div style={{height: `${headerHeightDelta}px`}}/> : null}
+            {headerHeightDelta && <div style={{height: `${headerHeightDelta}px`}}/>}
           </div>
         </div>
       </div>
