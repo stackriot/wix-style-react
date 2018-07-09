@@ -50,7 +50,7 @@ export class PageHeader extends WixComponent {
             showBackButton && onBackClicked && animateComponent(!minimized, !breadcrumbs,
               <div className={classNames(s.backButton, {[s.minimized]: minimized})} data-hook="page-header-backbutton">
                 <Button onClick={onBackClicked} theme="icon-white">
-                  <ArrowLeft size="16px"/>
+                  <ArrowLeft size="12px"/>
                 </Button>
               </div>)
           }

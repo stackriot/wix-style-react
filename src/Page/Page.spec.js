@@ -3,6 +3,10 @@ import Page from './Page';
 import pageDriverFactory from './Page.driver';
 import {createDriverFactory} from '../test-common';
 
+const Header = () => (
+  <div>header</div>
+);
+
 const Content = () => (
   <div>content</div>
 );
@@ -12,14 +16,16 @@ const PageRequiredChildrenArrayError = 'Warning: Failed prop type: Invalid prop 
 const PageFirstChildHeaderError = 'Warning: Failed prop type: Page: Invalid Prop children, first child must be Page.Header\n    in Page';
 const PageSecondChildContentError = 'Warning: Failed prop type: Page: Invalid Prop children, second child must be Page.Content\n    in Page';
 const PageFirstAndSecondChildError = 'Warning: Failed prop type: Page: Invalid Prop children, first child must be Page.Header, and second child must be Page.Content\n    in Page';
+const PageHeaderChildrenError = 'Warning: Failed prop type: The prop `children` is marked as required in `Page.Header`, but its value is `undefined`.\n    in Page.Header';
 const PageContentChildrenError = 'Warning: Failed prop type: The prop `children` is marked as required in `Page.Content`, but its value is `undefined`.\n    in Page.Content';
-const PageHeaderMustHaveTitle = 'Warning: Failed prop type: The prop `title` is marked as required in `PageHeader`, but its value is `undefined`.\n    in PageHeader';
 
 describe('Page', () => {
   const createDriver = createDriverFactory(pageDriverFactory);
   const page = (
     <Page>
-      <Page.Header title="title"/>
+      <Page.Header>
+        <Header/>
+      </Page.Header>
       <Page.Content>
         <Content/>
       </Page.Content>
@@ -32,6 +38,10 @@ describe('Page', () => {
   });
 
   describe('Bad Formats', () => {
+    const Header = () => (
+      <div>header</div>
+    );
+
     let React;
     const stub = console.error = jest.fn();
     const createDriver = createDriverFactory(pageDriverFactory);
@@ -98,20 +108,19 @@ describe('Page', () => {
 
       createDriver(page);
       expect(stub).toHaveBeenCalledWith(PageRequiredChildrenArrayError);
-      expect(stub).toHaveBeenCalledWith(PageHeaderMustHaveTitle);
+      expect(stub).toHaveBeenCalledWith(PageHeaderChildrenError);
     });
 
     it('should not initialize component with only Content', () => {
       const page = (
         <Page>
-          <Page.Content>
-            <div/>
-          </Page.Content>
+          <Page.Content/>
         </Page>
       );
 
       createDriver(page);
       expect(stub).toHaveBeenCalledWith(PageRequiredChildrenArrayError);
+      expect(stub).toHaveBeenCalledWith(PageContentChildrenError);
     });
 
     it('should not initialize component with empty Header and bad Content ', () => {
@@ -123,7 +132,7 @@ describe('Page', () => {
       );
 
       createDriver(page);
-      expect(stub).toHaveBeenCalledWith(PageHeaderMustHaveTitle);
+      expect(stub).toHaveBeenCalledWith(PageHeaderChildrenError);
       expect(stub).toHaveBeenCalledWith(PageSecondChildContentError);
     });
 
@@ -143,13 +152,29 @@ describe('Page', () => {
     it('should not initialize component with valid Header but Content has no children', () => {
       const page = (
         <Page>
-          <Page.Header title="title"/>
+          <Page.Header>
+            <Header/>
+          </Page.Header>
           <Page.Content/>
         </Page>
       );
 
       createDriver(page);
       expect(stub).toHaveBeenCalledWith(PageContentChildrenError);
+    });
+
+    it('should not initialize component with valid Content but Header has no children', () => {
+      const page = (
+        <Page>
+          <Page.Header/>
+          <Page.Content>
+            <Content/>
+          </Page.Content>
+        </Page>
+      );
+
+      createDriver(page);
+      expect(stub).toHaveBeenCalledWith(PageHeaderChildrenError);
     });
   });
 });
