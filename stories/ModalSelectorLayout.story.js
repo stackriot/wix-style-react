@@ -26,8 +26,6 @@ export default {
     onClose: () => setState({isOpen: false}),
     onCancel: () => setState({isOpen: false}),
     itemsPerPage: 4,
-    imageSize: 'large',
-    withSearch: true,
 
     dataSource: (searchQuery, offset, limit) =>
       new Promise(resolve =>
@@ -58,22 +56,14 @@ export default {
     onCancel: () => 'canceled',
 
     title: [
-      {
-        label: 'default title',
-        value: ModalSelectorLayout.defaultProps.title
-      },
-      {
-        label: 'BOLD title',
-        value: <Text key={0} appearance="T2">BOLD title</Text>
-      }
+      ModalSelectorLayout.defaultProps.title,
+      <Text key={0} appearance="T2">BOLD title</Text>
     ],
 
     subtitle: [
-      {label: 'simple text', value: 'A list of items go below'},
-      {
-        label: 'component with button',
-        value: <span key={0}>Some text and a <Button>button</Button></span>
-      }
+      '',
+      'A list of items go below',
+      <span key={0}>Some text and a <Button>button</Button></span>
     ]
   }
 };

@@ -6,6 +6,8 @@ import Button from 'wix-style-react/Button';
 import Breadcrumbs from '../Page/Breadcrumbs';
 import './PageHeader.scss';
 
+const action = <Button>Action</Button>;
+
 export default {
   category: '2. Layout',
   storyName: '2.5 + PageHeader',
@@ -19,18 +21,7 @@ export default {
   },
 
   exampleProps: {
-    breadcrumbs: [{label: 'Breadcrumbs', value: Breadcrumbs}],
-    actionsBar: [
-      {label: 'Button', value: <Button>Action</Button>},
-      {
-        label: 'Two buttons',
-        value: (
-          <div>
-            <Button>Button #1</Button>
-            <Button>Button #2</Button>
-          </div>
-        )
-      }
-    ]
+    breadcrumbs: ['', Breadcrumbs],
+    actionsBar: ['', action]
   }
 };
