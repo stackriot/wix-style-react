@@ -60,6 +60,16 @@ export default class extends WixComponent {
       .reduceRight((acc, {type}) => type, 'span');
 
 
+  getClassNames = appearance =>
+    [
+      {className: styles.headingDefaults, candidates: ['H0', 'H1', 'H1.1', 'H2', 'H2.1', 'H3', 'H4']}
+    ]
+      .filter(({candidates}) => candidates.indexOf(appearance) !== -1)
+      .reduce((acc, {className}) =>
+        acc.concat(className),
+        [typography[convertFromUxLangToCss(appearance)]])
+      .join(' ');
+
   render() {
     const {appearance, ellipsis, children} = this.props;
 
@@ -68,11 +78,8 @@ export default class extends WixComponent {
       {
         title: this.getTitle(),
         className: classNames(
-          typography[convertFromUxLangToCss(appearance)],
-          {
-            [styles.headingDefaults]: ['H0', 'H1', 'H1.1', 'H2', 'H2.1', 'H3', 'H4'].indexOf(appearance) > -1,
-            [styles.ellipsis]: ellipsis
-          }
+          this.getClassNames(appearance),
+          {[styles.ellipsis]: ellipsis}
         )
       },
       children
