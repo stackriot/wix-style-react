@@ -3,20 +3,11 @@
 $header-padding: 27px 30px 26px;
 
 .header {
-  display: flex;
-  justify-content: space-between;
+
   padding: $header-padding;
 
   &.with-divider {
-    border-bottom: 1px solid $D60;
-  }
-
-  .container {
-    flex-grow: 1;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-flow: column;
+    border-bottom: 1px solid $D70;
   }
 
   .title {

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import FormFieldError from 'wix-ui-icons-common/system/FormFieldError';
 import WixComponent from '../BaseComponents/WixComponent';
 import {Editor, Block} from 'slate';
 import Tooltip from '../Tooltip';
+import SvgExclamation from '../svg/Exclamation.js';
 import RichTextEditorToolbar from './RichTextAreaToolbar';
 import htmlSerializer from './htmlSerializer';
 import styles from './RichTextArea.scss';
@@ -20,16 +20,8 @@ const defaultBlock = {
   key: 'defaultBlock'
 };
 
-/*
-  here we are checking is link absolute(if it contain 'https' or http or '//')
-  and if it not absolute, then we add '//' at the beginning of it,
-  to make link absolute
-*/
-export const makeHrefAbsolute = href => /^(https?:)?\/\//.test(href) ? href : `//${href}`;
-
 class RichTextArea extends WixComponent {
   static propTypes = {
-    absoluteLinks: PropTypes.bool,
     buttons: PropTypes.arrayOf(PropTypes.string), // TODO: use PropTypes.oneOf(),
     dataHook: PropTypes.string,
     disabled: PropTypes.bool,
@@ -40,13 +32,12 @@ class RichTextArea extends WixComponent {
     resizable: PropTypes.bool,
     value: PropTypes.string,
     onChange: PropTypes.func,
-    onImageRequest: PropTypes.func
+    onImageRequest: PropTypes.func,
   }
 
   static defaultProps = {
-    absoluteLinks: false,
     errorMessage: '',
-    value: '<p></p>'
+    value: '<p></p>',
   }
 
   /* eslint-disable react/prop-types */
@@ -122,21 +113,9 @@ class RichTextArea extends WixComponent {
   }
 
   componentWillReceiveProps(props) {
-    const isPlaceholderChanged = props.placeholder !== this.props.placeholder;
-    const isValueChanged = props.value && props.value !== this.props.value && props.value !== this.lastValue;
-    if (isPlaceholderChanged || isValueChanged) {
-      if (props.isAppend) {
-        const newEditorState = this.state.editorState
-              .transform()
-              .insertText(props.value)
-              .apply();
-
-        this.setEditorState(newEditorState);
-      }
-      else {
-        const editorState = htmlSerializer.deserialize(props.value);
-        this.setEditorState(editorState);
-      }
+    if (props.value && props.value !== this.props.value && props.value !== this.lastValue) {
+      const editorState = htmlSerializer.deserialize(props.value);
+      this.setState({editorState});
     }
   }
 
@@ -168,7 +147,6 @@ class RichTextArea extends WixComponent {
   hasLink = () => this.state.editorState.inlines.some(inline => inline.type === 'link');
 
   handleButtonClick = (action, type) => {
-    this.setState({activeToolbarButton: type})
     switch (action) {
       case 'mark':
         return this.handleMarkButtonClick(type);
@@ -279,27 +257,25 @@ class RichTextArea extends WixComponent {
   handleLinkButtonClick = ({href, text} = {}) => {
     const {editorState} = this.state;
     const transform = editorState.transform();
-    const decoratedHref = this.props.absoluteLinks
-      ? makeHrefAbsolute(href)
-      : href;
-
     if (this.hasLink()) {
       transform
         .unwrapInline('link');
-    } else {
-      const linkContent = text || decoratedHref;
-      const startPos = editorState.anchorOffset;
+    } else if (editorState.isExpanded) {
       transform
-        .insertText(linkContent)
-        .select({
-          anchorOffset: startPos,
-          focusOffset: startPos + linkContent.length,
-          isFocused: true,
-          isBackward: false,
-        })
         .wrapInline({
           type: 'link',
-          data: {href: decoratedHref}
+          data: {href}
+        })
+        .focus()
+        .collapseToEnd()
+    } else {
+      const linkContent = text || href;
+      transform
+        .insertText(linkContent)
+        .extendBackward(linkContent.length)
+        .wrapInline({
+          type: 'link',
+          data: {href}
         })
         .focus()
         .collapseToEnd();
@@ -313,19 +289,14 @@ class RichTextArea extends WixComponent {
     const {error, placeholder, disabled, resizable, onImageRequest, dataHook} = this.props;
     const className = classNames(styles.container, {
       [styles.withError]: error,
-      [styles.isEditorFocused]: editorState.isFocused,
+      [styles.isFocused]: editorState.isFocused,
     });
     const isScrollable = resizable || this.props.maxHeight;
 
     return (
       <div className={className} data-hook={dataHook}>
-        <div className={classNames(styles.toolbar, {[styles.disabled]: disabled})} data-hook='toolbar'>
+        <div className={classNames(styles.toolbar, {[styles.disabled]: disabled})}>
           <RichTextEditorToolbar
-            /*
-              activeToolbarButton prop required to trigger RichTextEditorToolbar re-render after toolbar button click
-            */
-            activeToolbarButton={this.state.activeToolbarButton}
-            selection={editorState.fragment.text}
             disabled={disabled}
             onClick={this.handleButtonClick}
             onLinkButtonClick={this.handleLinkButtonClick}
@@ -381,7 +352,7 @@ class RichTextArea extends WixComponent {
         content={errorMessage}
         theme="dark"
         >
-        <div className={styles.exclamation}><FormFieldError/></div>
+        <div className={styles.exclamation}><SvgExclamation width={2} height={11}/></div>
       </Tooltip>
     );
   };

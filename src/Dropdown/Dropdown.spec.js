@@ -7,7 +7,6 @@ import {dropdownTestkitFactory} from '../../testkit';
 import {dropdownTestkitFactory as enzymeDropdownTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
 import {runInputWithOptionsTest} from '../InputWithOptions/InputWithOptions.spec';
-import {sleep} from 'wix-ui-test-utils/react-helpers';
 
 runInputWithOptionsTest(dropdownDriverFactory);
 
@@ -15,7 +14,7 @@ describe('Dropdown', () => {
 
   const createDriver = createDriverFactory(dropdownDriverFactory);
 
-  const getOptions = () => [
+  const options = [
     {id: 0, value: 'Option 1'},
     {id: 1, value: 'Option 2'},
     {id: 2, value: 'Option 3', disabled: true},
@@ -25,51 +24,29 @@ describe('Dropdown', () => {
   ];
 
   it('should select item with selectedId on init state', () => {
-    const {inputDriver, dropdownLayoutDriver} = createDriver(<Dropdown options={getOptions()} selectedId={0}/>);
+    const {inputDriver, dropdownLayoutDriver} = createDriver(<Dropdown options={options} selectedId={0}/>);
 
     expect(dropdownLayoutDriver.isOptionSelected(0)).toBeTruthy();
     expect(inputDriver.getValue()).toBe('Option 1');
   });
 
   it('should select an item when clicked', () => {
-    const {driver, dropdownLayoutDriver} = createDriver(<Dropdown options={getOptions()}/>);
+    const {driver, dropdownLayoutDriver} = createDriver(<Dropdown options={options}/>);
     driver.focus();
     dropdownLayoutDriver.clickAtOption(0);
     expect(dropdownLayoutDriver.isOptionSelected(0)).toBeTruthy();
   });
 
   it('should enter the selected option text when selected', () => {
-    const {driver, inputDriver, dropdownLayoutDriver} = createDriver(<Dropdown options={getOptions()}/>);
+    const {driver, inputDriver, dropdownLayoutDriver} = createDriver(<Dropdown options={options}/>);
     driver.focus();
     dropdownLayoutDriver.clickAtOption(0);
     expect(inputDriver.getValue()).toBe('Option 1');
-  });
-
-  it('should update text when selected option changes', () => {
-    const options = getOptions();
-    const {driver, inputDriver, dropdownLayoutDriver} = createDriver(<Dropdown options={options} selectedId={0}/>);
-    driver.focus();
-    dropdownLayoutDriver.clickAtOption(0);
-    expect(inputDriver.getValue()).toBe('Option 1');
-    options[0].value = 'Updated';
-    driver.setProps({options, selectedId: 0});
-    expect(inputDriver.getValue()).toBe('Updated');
-  });
-
-  it('should close when clicking on input (header)', () => {
-    const {dropdownLayoutDriver, inputDriver} = createDriver(<Dropdown options={getOptions()}/>);
-    inputDriver.click();
-    expect(dropdownLayoutDriver.isShown()).toBeTruthy();
-
-    return sleep(200).then(() => {
-      inputDriver.click();
-      expect(dropdownLayoutDriver.isShown()).toBeFalsy();
-    });
   });
 
   it('should be read only', () => {
-    const {driver} = createDriver(<Dropdown options={getOptions()}/>);
-    expect(driver.isReadOnly()).toBeTruthy();
+    const {inputDriver} = createDriver(<Dropdown options={options}/>);
+    expect(inputDriver.getReadOnly()).toBeTruthy();
   });
 
   describe('testkit', () => {

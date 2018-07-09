@@ -1,48 +1,29 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import isUndefined from 'lodash/isUndefined';
+import isUndefined from 'lodash.isundefined';
 import classNames from 'classnames';
 import moment from 'moment';
 
 import Input from '../Input';
 import styles from './TimeInput.scss';
 
-/**
-  * An uncontrolled time input component with a stepper and am/pm support
-  */
 export default class extends Component {
   static displayName = 'TimePicker'
 
   static propTypes = {
-    /** Should time be shown as "--:--" when disabled */
-    dashesWhenDisabled: PropTypes.bool,
-    dataHook: PropTypes.string,
-
-    /** The control's starting time */
     defaultValue: PropTypes.object,
-
-    /** 24h mode  */
-    disableAmPm: PropTypes.bool,
-
-    /** Is disabled  */
-    disabled: PropTypes.bool,
-
-    /** Called upon blur */
     onChange: PropTypes.func,
-
-    /** Display in RTL  */
     rtl: PropTypes.bool,
-
-    style: PropTypes.object
+    style: PropTypes.object,
+    disableAmPm: PropTypes.bool,
+    dataHook: PropTypes.string
   }
 
   static defaultProps = {
     defaultValue: moment(),
     onChange: () => {},
     style: {},
-    disableAmPm: false,
-    disabled: false,
-    dashesWhenDisabled: false
+    disableAmPm: false
   }
 
   constructor(props) {
@@ -157,7 +138,7 @@ export default class extends Component {
   }
 
   handleAmPmClick = () =>
-    !this.props.disabled && this.updateDate({am: !this.state.am})
+    this.updateDate({am: !this.state.am})
 
   handleFocus = input =>
     this.setState({focus: true, lastFocus: input})
@@ -167,19 +148,8 @@ export default class extends Component {
     this.updateDate({time: this.state.text});
   }
 
-  handleInputChange = e => {
-    // thats why cursor is jumping
-    // https://github.com/facebook/react/issues/955#issuecomment-327069204
-    const isDisabled = this.props.disabled && this.props.dashesWhenDisabled;
-    const isInvalid = /[^0-9 :]/.test(e.target.value);
-    if (isDisabled || isInvalid) {
-      e.preventDefault();
-      return;
-    }
-    return this.setState({
-      text: e.target.value
-    });
-  }
+  handleInputChange = ({target}) =>
+    this.setState({text: target.value})
 
   handleHover = hover =>
     this.setState({hover})
@@ -191,10 +161,6 @@ export default class extends Component {
     this.timeStep(1)
 
   handleInputBlur = ({target}) => {
-    if (this.props.disabled && this.props.dashesWhenDisabled) {
-      return;
-    }
-
     const caretIdx = target.selectionEnd || 0;
     let lastFocusedTimeUnit;
 
@@ -207,8 +173,6 @@ export default class extends Component {
   }
 
   renderTimeTextbox() {
-    const text = this.props.disabled && this.props.dashesWhenDisabled ? '-- : --' : this.state.text;
-
     const suffix = (
       <Input.Group>
         {this.state.ampmMode &&
@@ -220,12 +184,7 @@ export default class extends Component {
             {this.state.am ? 'am' : 'pm'}
           </span>
         }
-        <Input.Ticker
-          upDisabled={this.props.disabled}
-          downDisabled={this.props.disabled}
-          onUp={this.handlePlus}
-          onDown={this.handleMinus}
-          />
+        <Input.Ticker onUp={this.handlePlus} onDown={this.handleMinus}/>
       </Input.Group>
     );
 
@@ -233,27 +192,24 @@ export default class extends Component {
       <div className={styles.input}>
         <Input
           ref="input"
-          value={text}
+          value={this.state.text}
           onFocus={this.handleFocus}
           onChange={this.handleInputChange}
           onBlur={this.handleInputBlur}
           suffix={suffix}
           dataHook="time-input"
-          disabled={this.props.disabled}
           />
       </div>
     );
   }
 
   render() {
-    const {style, dataHook, rtl, disabled} = this.props;
+    const {style, dataHook, rtl} = this.props;
     const {focus, hover} = this.state;
 
     return (
       <div
-        className={classNames(styles.wrapper, {
-          [styles.disabled]: disabled
-        })}
+        className={styles.wrapper}
         style={style}
         data-hook={dataHook}
         >

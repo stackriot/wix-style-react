@@ -21,7 +21,7 @@ const rtlOptions = [
   {id: 0, value: 'אופציה 1'},
   {id: 1, value: 'אופציה 2'},
   {id: 2, value: 'אופציה 3'},
-  {id: 3, value: 'אופציה 4'}
+  {id: 3, value: 'אופציה 4'},
 ];
 
 export default () =>
@@ -58,34 +58,6 @@ export default () =>
       <div className="ltr" style={style}>
         <div>With prefix</div>
         <Dropdown options={options} dropDirectionUp prefix={<Input.Unit>$</Input.Unit>}/>
-      </div>
-      <div className="ltr" style={style}>
-        <div>With suffix</div>
-        <Dropdown options={options} dropDirectionUp suffix={<Input.Unit>%</Input.Unit>}/>
-      </div>
-      <div className="rtl" style={style}>
-        <div>With suffix RTL</div>
-        <Dropdown options={options} dropDirectionUp suffix={<Input.Unit>%</Input.Unit>}/>
-      </div>
-    </div>
-    <div>
-      <div className="ltr" style={style}>
-        <div>With error</div>
-        <Dropdown selectedId={1} options={options} error errorMessage="Somthing is wrong"/>
-      </div>
-      <div className="ltr" style={style}>
-        <div>Round</div>
-        <Dropdown roundInput selectedId={1} options={options}/>
-      </div>
-    </div>
-    <div>
-      <div className="ltr" style={style}>
-        <div>No left border radius</div>
-        <Dropdown selectedId={1} options={options} noLeftBorderRadius/>
-      </div>
-      <div className="ltr" style={style}>
-        <div>No right border radius</div>
-        <Dropdown selectedId={1} options={options} noRightBorderRadius/>
       </div>
     </div>
   </div>;

@@ -1,5 +1,3 @@
-@import './common/Focusable/FocusableMixins.scss';
-
 /* Fonts */
 $fonts-fallback: "Helvetica Neue", "Helvetica", "Arial", "メイリオ, meiryo", "ヒラギノ角ゴ pro w3", "hiragino kaku gothic pro", "sans-serif";
 
@@ -8,32 +6,26 @@ $FontThin: "HelveticaNeueW01-Thin", "HelveticaNeueW02-Thin", "HelveticaNeueW10-3
 $FontLight: "HelveticaNeueW01-45Ligh", "HelveticaNeueW02-45Ligh", "HelveticaNeueW10-45Ligh", $fonts-fallback;
 $FontRoman: "HelveticaNeueW01-55Roma", "HelveticaNeueW02-55Roma", "HelveticaNeueW10-55Roma", $fonts-fallback;
 $FontMedium: "HelveticaNeueW01-65Medi", "HelveticaNeueW02-65Medi", "HelveticaNeueW10-65Medi", $fonts-fallback;
-$FontBold: "HelveticaNeueW01-75Bold", "HelveticaNeueW02-75Bold", "HelveticaNeueW10-75Bold", $fonts-fallback;
 
 
 @mixin FontUltraThin() {
-  font-family: $FontUltraThin;
+	font-family: $FontUltraThin;
 }
 
 @mixin FontThin() {
-  font-family: $FontThin;
+	font-family: $FontThin;
 }
 @mixin FontLight() {
-  font-family: $FontLight;
+	font-family: $FontLight;
 }
 
 @mixin FontRoman() {
-  font-family: $FontRoman;
+	font-family: $FontRoman;
 }
 
 @mixin FontMedium() {
-  font-family: $FontMedium;
+	font-family: $FontMedium;
 }
-
-@mixin FontBold() {
-  font-family: $FontBold;
-}
-
 
 /* New swatches! */
 
@@ -54,11 +46,9 @@ $B20: #4eb7f5;   // Hover for elements with B10, buttons
 $B25: #A1D7FB;
 $B27: #b3e0fb;
 $B30: #c1e4fe;   // Notifications
-$B40: #daeffe;   // Dividers, table selected, table headers
+$B40: #daeffe;   // Dividers, table selected
 $B50: #eaf7ff;   // Dividers
 $B60: #f4fafe;   // Table hover
-
-$F00:  #aadbfc;  // Focus Outline
 
 $GR10: #c8c8c8;  // Disabled buttons
 $GR20: #dadada;  // Disabled fields
@@ -72,7 +62,6 @@ $P10: #aa4dc8;   // Wix premium
 $P20: #cd68ed;
 $P30: #e5c9ee;
 $P40: #eedbf4;
-$P50: #faeeff;   // Section Helper
 
 $O00: #ea5f0e;
 $O10: #fb7d33;
@@ -82,31 +71,21 @@ $R00: #d6453d;
 $R05: #d8504c;   // CTA
 $R10: #ee5951;   // Errors, CTA hover
 $R20: #ff6666;   // Notifications
-$R30: #ffd7d7;   // Notifications, Focus Errors
-$R40: #ffe1e1;
-$R50: #ffebeb;   // Section Helper
+$R30: #ffd7d7;   // Notifications
 
 $G00: #44823f;
 $G05: #61ad5a;   // CTA
 $G10: #60bc57;   // CTA hover
 $G20: #80c979;   // Notifications
 $G30: #c9eebc;   // Notifications
-$G50: #edf9e5;   // Section Helper
 
 $Y00: #c68801;
 $Y05: #eda200;   // CTA
 $Y10: #fdb10c;   // CTA hover
 $Y20: #fac249;   // Notifications
 $Y30: #fef0ba;   // Notifications
-$Y40: #fef4cd;
-$Y50: #fff9e1;   // Section Helper
 
 $WR00: #e05050;  // Wix Restaurant red
-
-
-
-
-// TODO: The lower part is to be deprecated. DEPRECATED!
 
 $paletteB1  : #3899EC;
 $paletteB2  : #4EB7F5;
@@ -154,15 +133,3 @@ $paletteR1  : #EE5951;
 $paletteR2  : #F1726B;
 $paletteR3  : #FACDCA;
 $paletteR4  : #FCE6E5;
-
-$BMCounter  : #F4553F;
-
-$S10 : rgba(22, 45, 61, 0.12);
-$S20 : rgba(22, 45, 61, 0.48);
-$S30 : rgba(22, 45, 61, 0.06);
-$S40 : rgba(22, 45, 61, 0.18);
-
-$Shadow10 : 0 2px 1px 0 $S20, 0 0 3px 0 $S10;
-$Shadow20 : 0 2px 4px 0 $S10, 0 0 6px 0 $S10;
-$Shadow30 : 0 6px 6px 0 $S30, 0 0 18px 0 $S10;
-$Shadow40 : 0 8px 8px 0 $S10, 0 3px 24px 0 $S40;

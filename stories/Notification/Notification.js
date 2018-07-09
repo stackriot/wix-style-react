@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import Notification from '../../src/Notification';
+import Notification, {GLOBAL_NOTIFICATION} from '../../src/Notification';
 
 export default class Form extends Component {
 
@@ -34,6 +34,9 @@ export default class Form extends Component {
 
   getComponent() {
     const notificationProps = Object.assign({}, this.props.notification);
+    if (notificationProps.type === GLOBAL_NOTIFICATION) {
+      delete notificationProps.timeout;
+    }
 
     return (
       <Notification {...notificationProps}>

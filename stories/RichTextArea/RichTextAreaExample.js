@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import RadioGroup from '../../src/RadioGroup';
 import Label from '../../src/Label';
 import TextField from '../../src/TextField';
 import TextArea from '../../src/TextArea';
@@ -121,7 +122,7 @@ class RichTextAreaExample extends Component {
 }
 
 RichTextAreaExample.propTypes = {
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 export default RichTextAreaExample;

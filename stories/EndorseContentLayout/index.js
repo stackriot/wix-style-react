@@ -1,17 +1,16 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Markdown from 'wix-storybook-utils/Markdown';
-import CodeExample from 'wix-storybook-utils/CodeExample';
-
+import {storiesOf} from '@kadira/storybook';
+import Markdown from '../utils/Components/Markdown';
+import CodeExample from '../utils/Components/CodeExample';
 import Readme from '../../src/EndorseContentLayout/README.md';
 
 import Error from './examples/error';
-import ErrorRaw from '!raw-loader!./examples/error';
+import ErrorRaw from '!raw!./examples/error';
 
 import Generic from './examples/generic';
-import GenericRaw from '!raw-loader!./examples/generic';
+import GenericRaw from '!raw!./examples/generic';
 
-storiesOf('9. Modals', module)
+storiesOf('Core', module)
   .add('EndorseContentLayout', () => (
     <div>
       <Markdown source={Readme}/>

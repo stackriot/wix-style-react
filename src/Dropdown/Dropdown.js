@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import isUndefined from 'lodash/isUndefined';
+import isundefined from 'lodash.isundefined';
 import InputWithOptions from '../InputWithOptions/InputWithOptions';
 import styles from './Dropdown.scss';
 
@@ -10,21 +10,9 @@ class Dropdown extends InputWithOptions {
     this.update(props, {isFirstTime: true});
   }
 
-  _onInputClicked(event) {
-    if (this.state.showOptions && (Date.now() - this.state.lastOptionsShow > 200)) {
-      this.hideOptions();
-    } else {
-      this.showOptions();
-    }
-
-    if (this.props.onInputClicked) {
-      this.props.onInputClicked(event);
-    }
-  }
-
   update(props, {isFirstTime}) {
     let value = '', selectedId = -1;
-    if (!isUndefined(props.selectedId)) {
+    if (!isundefined(props.selectedId)) {
       const option = props.options.find(option => {
         return option.id === props.selectedId;
       });
@@ -43,21 +31,20 @@ class Dropdown extends InputWithOptions {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.update(nextProps, {isFirstTime: false});
+    if (this.props.selectedId !== nextProps.selectedId) {
+      this.update(nextProps, {isFirstTime: false});
+    }
   }
 
   inputClasses() {
-    const classes = {[styles.readonly]: true};
+    const classes = {[styles.readOnly]: true};
+    classes[styles.noRightBorderRadius] = this.props.noRightBorderRadius;
     classes[styles.noBorder] = this.props.noBorder;
     return classNames(classes);
   }
 
   dropdownAdditionalProps() {
-    return {
-      selectedId: this.state.selectedId,
-      value: this.state.value,
-      tabIndex: -1
-    };
+    return {selectedId: this.state.selectedId, value: this.state.value};
   }
 
   inputAdditionalProps() {
@@ -68,21 +55,9 @@ class Dropdown extends InputWithOptions {
     this.setState({value: this.props.valueParser(option), selectedId: option.id});
     super._onSelect(option);
   }
-
-  _onFocus() {
-    if (this.props.disabled) {
-      return;
-    }
-    this._focused = true;
-    this.setState({isEditing: false});
-    if (this.props.onFocus) {
-      this.props.onFocus();
-    }
-  }
 }
 
 Dropdown.propTypes = InputWithOptions.propTypes;
 Dropdown.defaultProps = InputWithOptions.defaultProps;
-Dropdown.displayName = 'Dropdown';
 
 export default Dropdown;

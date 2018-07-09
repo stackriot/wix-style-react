@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Tooltip from '../Tooltip';
-import Help from '../Icons/dist/components/Help';
+import {Help} from '../Icons/dist';
 import styles from './Input.scss';
 
 class InputHelpSuffix extends React.Component {
@@ -11,10 +11,10 @@ class InputHelpSuffix extends React.Component {
       <Tooltip
         dataHook="input-tooltip"
         disabled={this.props.helpMessage.length === 0}
-        maxWidth="230px"
+        maxWidth="250px"
         placement="right"
+        moveBy={{x: 2, y: 0}}
         alignment="center"
-        textAlign="left"
         hideDelay={100}
         content={this.props.helpMessage}
         overlay=""

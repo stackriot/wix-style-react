@@ -1,30 +1,19 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import InteractiveCodeExample from 'wix-storybook-utils/InteractiveCodeExample';
-import Markdown from 'wix-storybook-utils/Markdown';
+import {storiesOf} from '@kadira/storybook';
+import InteractiveCodeExample from '../utils/Components/InteractiveCodeExample';
+import Markdown from '../utils/Components/Markdown';
+
 import Readme from '../../src/Range/README.md';
 import ExampleStandard from './ExampleStandard';
-import storySettings from './StorySettings';
-import RangeTemplate from './RangeTemplate';
 
-// Use fixed date for DatePicker in order for eyes comparisons not to fail.
-const ARBITRARY_FIXED_DATE = new Date('2018/01/01');
-
-storiesOf(storySettings.kind, module)
-  .add(storySettings.storyName, () =>
-    <div>
-      <Markdown source={Readme}/>
-      <InteractiveCodeExample title="Customize a <Range/>">
-        <ExampleStandard dataHook={storySettings.dataHookInput}/>
-      </InteractiveCodeExample>
-      <br/>
-      <h2>Range with DatePicker</h2>
-      <RangeTemplate
-        dataHook={storySettings.dataHookDatePicker}
-        rangeType="DateRange"
-        onChange={() => {}}
-        firstDate={{value: ARBITRARY_FIXED_DATE}}
-        lastDate={{value: ARBITRARY_FIXED_DATE}}
-        />
-    </div>
-  );
+storiesOf('3. Inputs', module)
+  .add('3.7 Range', () => {
+    return (
+      <div>
+        <Markdown source={Readme}/>
+        <InteractiveCodeExample title="Customize a <Range/>">
+          <ExampleStandard/>
+        </InteractiveCodeExample>
+      </div>
+    );
+  });

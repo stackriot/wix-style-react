@@ -5,9 +5,9 @@
 | method | arguments | returned value | description |
 |--------|-----------|----------------|-------------|
 | breadcrumbContentAt | position | string | return the breadcrumb item content at position |
-| breadcrumbsLength | - | number | return the number of the items in the breadcrumbs |
+| breadcrumbLength | - | number | return the number of the items in the breadcrumbs |
 | clickBreadcrumbAt | position | string | click on breadcrumb item at position |
-| getActiveItemId | position(or null if no active item exists) | string | return the active breadcrumb item position or return null if no active item exists |
+| getActiveItemId | position | string | return the active breadcrumb item position |
 | getLabelClassList | - | arrayOf(string) | returns breadcrumbs component classes |
 | isLarge | - | bool | fulfilled if breadcrumbs component is large |
 | isMedium | - | bool | fulfilled if breadcrumbs component is medium |

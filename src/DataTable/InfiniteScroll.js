@@ -35,9 +35,6 @@ export default class InfiniteScroll extends Component {
   componentDidMount() {
     this.pageLoaded = this.props.pageStart;
     this.attachScrollListener();
-    if (this.props.initialLoad) {
-      this.scrollListener();
-    }
   }
 
   componentDidUpdate() {
@@ -103,8 +100,6 @@ export default class InfiniteScroll extends Component {
   }
 
   attachScrollListener() {
-    this.detachScrollListener();
-
     if (!this.props.hasMore) {
       return;
     }
@@ -119,14 +114,22 @@ export default class InfiniteScroll extends Component {
     scrollEl.addEventListener('scroll', this.scrollListener);
     scrollEl.addEventListener('resize', this.scrollListener);
 
-    this.detachScrollListener = () => {
-      scrollEl.removeEventListener('scroll', this.scrollListener);
-      scrollEl.removeEventListener('resize', this.scrollListener);
-      this.detachScrollListener = () => {};
-    };
+    if (this.props.initialLoad) {
+      this.scrollListener();
+    }
   }
 
-  detachScrollListener = () => {};
+  detachScrollListener() {
+    let scrollEl = window;
+    if (this.props.scrollElement) {
+      scrollEl = this.scrollComponent;
+    } else if (this.props.useWindow === false) {
+      scrollEl = this.scrollComponent.parentNode;
+    }
+
+    scrollEl.removeEventListener('scroll', this.scrollListener);
+    scrollEl.removeEventListener('resize', this.scrollListener);
+  }
 
   componentWillUnmount() {
     this.detachScrollListener();

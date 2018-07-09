@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import classnames from 'classnames';
 import styles from './Modal.scss';
-import {colors, flexPositions, positions} from './ModalConstants';
+import {colors, positions} from './ModalConstants';
 import WixComponent from '../BaseComponents/WixComponent';
-import X from './../new-icons/X';
-
-const CHILDREN_WRAPPER_DIV_ID = 'modal-children-container';
 
 class Modal extends WixComponent {
   static propTypes = {
@@ -17,156 +14,87 @@ class Modal extends WixComponent {
     children: PropTypes.any,
     zIndex: PropTypes.number,
     shouldCloseOnOverlayClick: PropTypes.bool,
-    shouldDisplayCloseButton: PropTypes.bool,
     onRequestClose: PropTypes.func,
     onAfterOpen: PropTypes.func,
-    horizontalPosition: PropTypes.oneOf(Object.keys(flexPositions)),
-    verticalPosition: PropTypes.oneOf(Object.keys(flexPositions)),
+    horizontalPosition: PropTypes.oneOf(Object.keys(positions)),
+    verticalPosition: PropTypes.oneOf(Object.keys(positions)),
     closeTimeoutMS: PropTypes.number,
     scrollable: PropTypes.bool,
-    scrollableContent: PropTypes.bool,
-    maxHeight: PropTypes.string,
-    height: PropTypes.string,
-    overlayPosition: PropTypes.oneOf(Object.keys(positions)),
-    parentSelector: PropTypes.func
-  };
+    scrollableContent: PropTypes.bool
+  }
 
   static defaultProps = {
-    onOk: () => {},
+    onOk: () => { },
     borderRadius: 0,
     theme: colors.blue,
     shouldCloseOnOverlayClick: false,
-    shouldDisplayCloseButton: false,
     horizontalPosition: 'center',
     verticalPosition: 'center',
     closeTimeoutMS: 500,
     scrollable: true,
-    scrollableContent: false,
-    height: '100%',
-    maxHeight: 'auto',
-    overlayPosition: 'fixed'
-  };
+    scrollableContent: false
+  }
 
   render() {
-    const {
-      horizontalPosition,
-      verticalPosition,
-      height,
-      scrollableContent,
-      borderRadius,
-      zIndex,
-      scrollable,
-      theme,
-      isOpen,
-      shouldCloseOnOverlayClick,
-      shouldDisplayCloseButton,
-      onRequestClose,
-      onAfterOpen,
-      contentLabel,
-      closeTimeoutMS,
-      children,
-      appElement,
-      overlayPosition,
-      parentSelector
-    } = this.props;
+    const props = this.props;
 
-    let {maxHeight} = this.props;
-    const justifyContent = flexPositions[horizontalPosition];
-    const alignItems = flexPositions[verticalPosition];
-
-    maxHeight = scrollableContent && maxHeight === 'auto' ? '100vh' : maxHeight;
+    const justifyContent = positions[props.horizontalPosition];
+    const alignItems = positions[props.verticalPosition];
+    const maxHeight = props.scrollableContent ? (props.maxHeight || '100vh') : 'auto';
 
     const modalStyles = {
       overlay: {
         // Overriding defaults
-        position: overlayPosition,
+        position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
-        zIndex: 11 + (zIndex || 0),
+        zIndex: 11 + (props.zIndex || 0),
         backgroundColor: null, // null disables the property, use css instead
         // Overriding defaults - END
         display: 'flex',
         justifyContent,
         alignItems,
-        overflowY: scrollable ? 'auto' : 'hidden'
+        overflowY: props.scrollable ? 'auto' : 'hidden'
       },
       content: {
         // Overriding defaults
         border: 'none',
-        overflowY: scrollableContent ? 'auto' : 'initial',
-        overflowX: scrollableContent ? 'hidden' : 'initial',
-        height,
+        overflow: props.scrollableContent ? 'auto' : 'initial',
         maxHeight,
-        width: '100%',
         WebkitOverflowScrolling: 'touch',
         outline: 'none',
-        borderRadius,
+        borderRadius: props.borderRadius,
         padding: '0px',
+        boxShadow: '0 0 14px 0 rgba(22, 45, 60, 0.3)',
         // Overriding defaults - END
         backgroundColor: 'transparent',
-        marginBottom: '0px',
-        position: 'relative'
+        marginBottom: '0px'
       }
     };
 
-    const modalClasses = `${styles.modal} ${styles[theme]}`;
+    const modalClasses = `${styles.modal} ${styles[props.theme]}`;
     const portalClassName = classnames(styles.portal, {
-      [styles.portalNonScrollable]: !scrollable
+      [styles.portalNonScrollable]: !props.scrollable
     });
 
-    if (appElement) {
-      ReactModal.setAppElement(appElement);
-    } else {
-      ReactModal.setAppElement('body');
-    }
-
     return (
-      <div>
-        <ReactModal
-          portalClassName={portalClassName}
-          isOpen={isOpen}
-          shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
-          onRequestClose={onRequestClose}
-          onAfterOpen={onAfterOpen}
-          style={modalStyles}
-          className={modalClasses}
-          contentLabel={contentLabel}
-          closeTimeoutMS={closeTimeoutMS}
-          parentSelector={parentSelector}
-          >
-          {isOpen && shouldDisplayCloseButton && this.renderCloseButton()}
-          <div
-            id={CHILDREN_WRAPPER_DIV_ID}
-            className={styles.childrenContainer}
-            onClick={this.handleOverlayClick}
-            >
-            {children}
-          </div>
-        </ReactModal>
-      </div>
+      <ReactModal
+        portalClassName={portalClassName}
+        isOpen={props.isOpen}
+        shouldCloseOnOverlayClick={props.shouldCloseOnOverlayClick}
+        onRequestClose={props.onRequestClose}
+        onAfterOpen={props.onAfterOpen}
+        style={modalStyles}
+        className={modalClasses}
+        contentLabel={props.contentLabel}
+        closeTimeoutMS={props.closeTimeoutMS}
+        >
+        {props.children}
+      </ReactModal>
     );
   }
-
-  handleOverlayClick = event => {
-    const {shouldCloseOnOverlayClick, onRequestClose} = this.props;
-    if (shouldCloseOnOverlayClick && event.target.id === CHILDREN_WRAPPER_DIV_ID) {
-      onRequestClose();
-    }
-  };
-
-  renderCloseButton = () => {
-    return (
-      <div
-        onClick={this.props.onRequestClose}
-        className={styles.closeButton}
-        data-hook="modal-close-button"
-        >
-        <X size="18px"/>
-      </div>
-    );
-  };
 }
 
 export default Modal;

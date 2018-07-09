@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import {Tooltip, Button} from 'wix-style-react';
-import TooltipForEyesOnly from './TooltipForEyesOnly';
+import Tooltip from 'wix-style-react/Tooltip';
+import {Button} from 'wix-style-react/Backoffice';
+import {Dots} from 'wix-style-react/Icons';
 
 export class Template extends Component {
 
@@ -15,12 +16,7 @@ export class Template extends Component {
     hideTrigger: Tooltip.propTypes.hideTrigger,
     type: PropTypes.oneOf(['tooltip', 'popover']),
     size: Tooltip.propTypes.size,
-    maxWidth: Tooltip.propTypes.maxWidth,
-    onShow: Tooltip.propTypes.onShow,
-    onHide: Tooltip.propTypes.onHide,
-    shouldUpdatePosition: Tooltip.propTypes.shouldUpdatePosition,
-    showImmediately: Tooltip.propTypes.showImmediately,
-    moveBy: Tooltip.propTypes.moveBy
+    onShow: Tooltip.propTypes.onShow
   };
 
   componentDidUpdate(props) {
@@ -47,13 +43,8 @@ export class Template extends Component {
         hideTrigger={this.props.hideTrigger}
         theme={this.props.theme}
         size={this.props.size}
-        maxWidth={this.props.maxWidth}
         onShow={this.props.onShow}
-        onHide={this.props.onHide}
         shouldCloseOnClickOutside
-        shouldUpdatePosition={this.props.shouldUpdatePosition}
-        showImmediately={this.props.showImmediately}
-        moveBy={this.props.moveBy}
         >
         {this.getTooltipTarget()}
       </Tooltip>
@@ -75,12 +66,7 @@ export class Template extends Component {
   }
 
   render() {
-    return (
-      <div>
-        {this.getComponent()}
-        <TooltipForEyesOnly/>
-      </div>
-    );
+    return this.getComponent();
   }
 }
 

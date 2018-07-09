@@ -1,22 +1,17 @@
 import React from 'react';
 import {bool, node, string} from 'prop-types';
-import ChevronRight from 'wix-ui-icons-common/ChevronRight';
 import LinkLayout from './LinkLayout';
-import styles from './styles.scss';
 
-const Link = ({children, isDiminishedHover, isActive, withArrow, badge, dataHook, disabled, ...rest}) =>
-  <LinkLayout isDiminishedHover={isDiminishedHover} isActive={isActive} disabled={disabled}>
+const Link = ({children, isDiminishedHover, isActive, withArrow, badge, dataHook, ...rest}) =>
+  <LinkLayout isDiminishedHover={isDiminishedHover} isActive={isActive} withArrow={withArrow}>
     <a data-hook={dataHook} {...rest}>
       {children}
       {badge}
-      {withArrow && <span className={styles.linkArrow}><ChevronRight/></span>}
     </a>
   </LinkLayout>;
 
 Link.defaultProps = {
-  dataHook: 'menu-navigation-link',
-  withArrow: false,
-  disabled: false
+  dataHook: 'menu-navigation-link'
 };
 
 Link.propTypes = {
@@ -25,8 +20,7 @@ Link.propTypes = {
   withArrow: bool,
   badge: node,
   isDiminishedHover: bool,
-  dataHook: string,
-  disabled: bool
+  dataHook: string
 };
 
 export default Link;

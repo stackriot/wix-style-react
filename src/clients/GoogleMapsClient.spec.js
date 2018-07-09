@@ -28,30 +28,13 @@ describe('GoogleMapsClient', () => {
     });
   });
 
-  it('should handle null when placeDetails and getting ZERO_RESULTS', () => {
-    window.google = new GoogleMapsMock(null, null, {
-      getDetails: (request, callback) => {
-        callback(null, window.google.maps.places.PlacesServiceStatus.ZERO_RESULTS);
-      }
-    });
-    const client = new GoogleMapsClient();
-    return client.placeDetails({request: {}}).then(result => {
-      expect(result).toEqual(undefined);
-    });
-  });
 });
 
-function GoogleMapsMock(autocompleteInstance, geocoderInstance, placesServiceInstance) {
+function GoogleMapsMock(autocompleteInstance, geocoderInstance) {
   return {
     maps: {
-      Map: () => {},
       places: {
-        AutocompleteService: () => autocompleteInstance,
-        PlacesService: () => placesServiceInstance,
-        PlacesServiceStatus: {
-          OK: 'OK',
-          ZERO_RESULTS: 'ZERO_RESULTS'
-        }
+        AutocompleteService: () => autocompleteInstance
       },
       Geocoder: () => geocoderInstance,
       GeocoderStatus: {

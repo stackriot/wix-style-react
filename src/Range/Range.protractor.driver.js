@@ -1,9 +1,8 @@
-import rangeWithLabelCompositeDriverFactory from '../Composite/RangeInputWithLabelComposite/RangeInputWithLabelComposite.protractor.driver';
+import inputAreaWithLabelCompositeDriverFactory from '../Composite/InputAreaWithLabelComposite/InputAreaWithLabelComposite.protractor.driver';
 
-const rangeDriverFactory = component => {
-  return ({
-    ...rangeWithLabelCompositeDriverFactory(component)
-  });
-};
+const rangeDriverFactory = component => ({
+  ...inputAreaWithLabelCompositeDriverFactory(component),
+  getInputArea: () => component.find('textarea')
+});
 
 export default rangeDriverFactory;

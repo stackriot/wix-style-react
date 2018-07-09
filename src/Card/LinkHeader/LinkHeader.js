@@ -2,16 +2,16 @@ import React from 'react';
 import {bool, node, string} from 'prop-types';
 import classNames from 'classnames';
 import styles from './LinkHeader.scss';
-import TextLink from '../../../src/Backoffice/TextLink';
+import {TextLink} from '../../../src/Backoffice';
 import WixComponent from '../../../src/BaseComponents/WixComponent';
 
 class LinkHeader extends WixComponent {
 
   static propTypes = {
-    title: node.isRequired,
+    title: string.isRequired,
     linkTitle: string.isRequired,
     linkTo: string.isRequired,
-    subtitle: node,
+    subtitle: string,
     tooltip: node,
     withoutDivider: bool
   };
@@ -28,7 +28,7 @@ class LinkHeader extends WixComponent {
     const headerClasses = classNames({
       [styles.headerOnlyTitle]: !subtitle,
       [styles.headerTitleSubtitle]: subtitle,
-      [styles.withDivider]: !withoutDivider
+      [styles.withDivider]: !withoutDivider,
     });
 
     const linkElement = (
@@ -44,8 +44,8 @@ class LinkHeader extends WixComponent {
     );
 
     const tooltipElement = tooltip ? (
-      React.cloneElement(tooltip, {}, linkElement)
-    ) : null;
+        React.cloneElement(tooltip, {}, linkElement)
+      ) : null;
 
     const actionElement = tooltipElement ? tooltipElement : linkElement;
 

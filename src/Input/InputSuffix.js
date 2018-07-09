@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CloseButton from '../CloseButton';
-import ArrowDownThin from './../Icons/dist/components/ArrowDownThin';
-import Search4 from './../Icons/dist/components/Search4';
+import {CloseThin, ArrowDownThin, Search4} from '../Icons';
 import ThemedInputErrorSuffix from './ThemedInputErrorSuffix';
 import ThemedInputHelpSuffix from './ThemedInputHelpSuffix';
+import values from 'lodash.values';
 
 import styles from './Input.scss';
 
@@ -16,26 +15,26 @@ const suffixRules = {
   inputHelpSuffix: ({help, disabled}) => help && !disabled,
   magnifyingGlass: ({magnifyingGlass, isClearButtonVisible, error}) => magnifyingGlass && !isClearButtonVisible && !error,
   clearButton: ({isClearButtonVisible}) => isClearButtonVisible,
-  menuArrow: ({menuArrow, isClearButtonVisible, magnifyingGlass}) => menuArrow && !isClearButtonVisible && !magnifyingGlass,
+  menuArrow: ({menuArrow, isClearButtonVisible, error, magnifyingGlass}) => menuArrow && !isClearButtonVisible && !error && !magnifyingGlass,
   unitSeparator: ({unit}) => !!unit,
   unit: ({unit}) => !!unit,
   customSuffix: ({suffix}) => !!suffix
 };
 
 const getVisibleSuffixCount = args =>
-  Object.keys(suffixRules).map(key => suffixRules[key])
+   values(suffixRules)
     .map(fn => fn(args))
     .filter(x => x)
     .length;
 
 const InputSuffix = ({theme, errorMessage, error, disabled, help, helpMessage, onIconClicked,
-  magnifyingGlass, isClearButtonVisible, onClear, menuArrow, unit, suffix, focused,
-  tooltipPlacement, onTooltipShow
+      magnifyingGlass, isClearButtonVisible, onClear, menuArrow, unit, suffix, focused,
+      tooltipPlacement, onTooltipShow
 }) => {
 
   const suffixes = [
     {
-      component: () => <ThemedInputErrorSuffix theme={theme} focused={focused} narrow={menuArrow} errorMessage={errorMessage} tooltipPlacement={tooltipPlacement} onTooltipShow={onTooltipShow}/>,
+      component: () => <ThemedInputErrorSuffix theme={theme} focused={focused} errorMessage={errorMessage} tooltipPlacement={tooltipPlacement} onTooltipShow={onTooltipShow}/>,
       isVisible: suffixRules.inputErrorSuffix({error, disabled})
     },
     {
@@ -51,10 +50,17 @@ const InputSuffix = ({theme, errorMessage, error, disabled, help, helpMessage, o
     },
     {
       component: () =>
-        <div className={styles.clearButton} >
-          <CloseButton dataHook="input-clear-button" size="large" onClick={onClear} theme="close-standard"/>
+        <div onClick={onClear} className={styles.clearButton}>
+          <CloseThin size={'6px'}/>
         </div>,
       isVisible: suffixRules.clearButton({isClearButtonVisible})
+    },
+    {
+      component: () =>
+        <div className={styles.menuArrow} disabled={disabled} onClick={onIconClicked}>
+          <ArrowDownThin size={'0.6em'}/>
+        </div>,
+      isVisible: suffixRules.menuArrow({menuArrow, isClearButtonVisible, error, magnifyingGlass})
     },
     {
       component: () => <div className={styles.unitSeparator}/>,
@@ -67,13 +73,6 @@ const InputSuffix = ({theme, errorMessage, error, disabled, help, helpMessage, o
     {
       component: () => suffix,
       isVisible: suffixRules.customSuffix({suffix})
-    },
-    {
-      component: () =>
-        <div className={styles.menuArrow} disabled={disabled} onClick={onIconClicked}>
-          <ArrowDownThin size={'0.6em'}/>
-        </div>,
-      isVisible: suffixRules.menuArrow({menuArrow, isClearButtonVisible, magnifyingGlass})
     }
   ].filter(isFixVisible);
 
@@ -92,7 +91,7 @@ InputSuffix.propTypes = {
     component: PropTypes.func.isRequired,
     isVisible: PropTypes.bool.isRequired
   })),
-  theme: PropTypes.oneOf(['normal', 'tags', 'paneltitle', 'material', 'amaterial', 'flat', 'flatdark']),
+  theme: PropTypes.oneOf(['normal', 'paneltitle', 'material', 'amaterial', 'flat', 'flatdark']),
   errorMessage: PropTypes.node.isRequired,
   error: PropTypes.bool,
   disabled: PropTypes.bool,

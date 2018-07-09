@@ -1,23 +1,22 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Markdown from 'wix-storybook-utils/Markdown';
-import TabbedView from 'wix-storybook-utils/TabbedView';
-import CodeExample from 'wix-storybook-utils/CodeExample';
-
+import {storiesOf} from '@kadira/storybook';
+import Markdown from '../utils/Components/Markdown';
+import CodeExample from '../utils/Components/CodeExample';
 import Readme from '../../src/Dropdown/README.md';
 import ReadmeTestkit from '../../src/Dropdown/README.TESTKIT.md';
+import TabbedView from '../utils/Components/TabbedView';
 
 import ExampleStandard from './ExampleStandard';
-import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
+import ExampleStandardRaw from '!raw!./ExampleStandard';
 
 import ExampleControlled from './ExampleControlled';
-import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
+import ExampleControlledRaw from '!raw!./ExampleControlled';
 
 import ExampleWithCustomValue from './ExampleWithCustomValue';
-import ExampleWithCustomValueRaw from '!raw-loader!./ExampleWithCustomValue';
+import ExampleWithCustomValueRaw from '!raw!./ExampleWithCustomValue';
 
-storiesOf('4. Selection', module)
-  .add('4.1 Dropdown', () =>
+storiesOf('Core', module)
+  .add('Dropdown', () => (
     <TabbedView tabs={['API', 'Testkit']}>
       <div>
         <Markdown source={Readme}/>
@@ -36,7 +35,8 @@ storiesOf('4. Selection', module)
           <ExampleWithCustomValue/>
         </CodeExample>
       </div>
-
-      <Markdown source={ReadmeTestkit}/>
+      <div>
+        <Markdown source={ReadmeTestkit}/>
+      </div>
     </TabbedView>
-  );
+  ));

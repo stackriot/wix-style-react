@@ -9,6 +9,7 @@ import {mount} from 'enzyme';
 
 const runButtonWithOptionsTest = driverFactory => {
   describe('ButtonWithOptions', () => {
+
     const createDriver = createDriverFactory(driverFactory);
     const options = [
       {id: 0, value: 'Option 1'},
@@ -26,15 +27,15 @@ const runButtonWithOptionsTest = driverFactory => {
 
     const buttonWithOptions = props => (
       <ButtonWithOptions {...props}>
-        <ButtonWithOptions.Button {...props}>
-          Test
-        </ButtonWithOptions.Button>
-
+        <ButtonWithOptions.Button
+          height="medium"
+          theme="icon-standard"
+          />
         {optionsArray}
       </ButtonWithOptions>
     );
 
-    it('should have a Button and a hidden DropdownLayout by default', () => {
+    it('should have a Button and a hidden DropdownLayout', () => {
       const {buttonDriver, dropdownLayoutDriver} = createDriver(buttonWithOptions());
       expect(buttonDriver.exists()).toBeTruthy();
       expect(dropdownLayoutDriver.exists()).toBeTruthy();
@@ -47,77 +48,52 @@ const runButtonWithOptionsTest = driverFactory => {
       expect(dropdownLayoutDriver.isShown()).toBeTruthy();
     });
 
-    it('should hide options on selection', () => {
-      const {buttonDriver, dropdownLayoutDriver} = createDriver(buttonWithOptions());
-      buttonDriver.click();
+    it('should hide DropdownLayout on enter and esc key press', () => {
+      const {driver, dropdownLayoutDriver} = createDriver(buttonWithOptions());
+      driver.click();
+      expect(dropdownLayoutDriver.isShown()).toBeTruthy();
+      driver.pressEnterKey();
+      expect(dropdownLayoutDriver.isShown()).toBeFalsy();
+      driver.pressUpKey();
+      expect(dropdownLayoutDriver.isShown()).toBeTruthy();
+      driver.pressEscKey();
+      expect(dropdownLayoutDriver.isShown()).toBeFalsy();
+    });
+
+    it('should hide options on selection by default', () => {
+      const {driver, dropdownLayoutDriver} = createDriver(buttonWithOptions());
+      driver.click();
       dropdownLayoutDriver.clickAtOption(0);
       expect(dropdownLayoutDriver.isShown()).toBeFalsy();
     });
 
     it('should hide options on outside click', () => {
-      const {driver, buttonDriver, dropdownLayoutDriver} = createDriver(buttonWithOptions());
-      buttonDriver.click();
-      expect(dropdownLayoutDriver.isShown()).toBeTruthy();
+      const {driver, dropdownLayoutDriver} = createDriver(buttonWithOptions());
       driver.outsideClick();
       expect(dropdownLayoutDriver.isShown()).toBeFalsy();
     });
 
+    it('should not hide options on selection', () => {
+      const {driver, dropdownLayoutDriver} = createDriver(buttonWithOptions({closeOnSelect: false}));
+      driver.click();
+      dropdownLayoutDriver.clickAtOption(0);
+      expect(dropdownLayoutDriver.isShown()).toBeTruthy();
+    });
+
     it('should call onSelect when an option is pressed', () => {
       const onSelect = jest.fn();
-      const {buttonDriver, dropdownLayoutDriver} = createDriver(buttonWithOptions({onSelect}));
-      buttonDriver.click();
+      const {driver, dropdownLayoutDriver} = createDriver(buttonWithOptions({onSelect}));
+      driver.click();
       dropdownLayoutDriver.clickAtOption(0);
-      expect(onSelect).toBeCalledWith(options[0], false);
+      expect(onSelect).toBeCalledWith(options[0]);
     });
 
-    it('should call onSelect when a selected option is pressed with an indication that this is the selected option', () => {
+    it('should not call onSelect when a selected option is pressed', () => {
       const onSelect = jest.fn();
-      const {buttonDriver, dropdownLayoutDriver} = createDriver(buttonWithOptions({onSelect, selectedId: options[0].id}));
-      buttonDriver.click();
+      const {driver, dropdownLayoutDriver} = createDriver(buttonWithOptions({onSelect, selectedId: options[0].id}));
+      driver.click();
       dropdownLayoutDriver.clickAtOption(0);
-      expect(onSelect).toBeCalledWith(options[0], true);
-    });
-
-    it('should call onSelect when a selected option is pressed without initial selectedId and send an indication that this is the selected option', () => {
-      const onSelect = jest.fn();
-      const {buttonDriver, dropdownLayoutDriver} = createDriver(buttonWithOptions({onSelect}));
-      buttonDriver.click();
-      dropdownLayoutDriver.clickAtOption(0);
-      expect(onSelect).toBeCalledWith(options[0], false);
-      dropdownLayoutDriver.clickAtOption(0);
-      expect(onSelect).toBeCalledWith(options[0], true);
-    });
-
-    describe('Option children validation', () => {
-
-      let children;
-      const validator = (ButtonWithOptions.Option).propTypes.children;
-      const componentName = 'ButtonWithOptions.Option';
-      const props = {children};
-      const prop = 'children';
-
-      it('should fail on multipile children', () => {
-        children = ['child1', 'child2'];
-
-        expect(validator(props, prop, componentName) instanceof Error)
-          .toBeTruthy();
-      });
-
-      it('should fail on children required', () => {
-        children = undefined;
-
-        expect(validator(props, prop, componentName) instanceof Error)
-          .toBeTruthy();
-      });
-    });
-
-    describe('appearance', () => {
-      it('should be possible to specify the theme of underlying elements', () => {
-        const props = {theme: 'emptybluesecondary', dataHook: 'myDataHook'};
-        const wrapper = mount(buttonWithOptions(props));
-        const testkit = enzymeButtonWithOptionsTestkitFactory({wrapper, dataHook: props.dataHook});
-        expect(testkit.dropdownLayoutDriver.hasTheme(props.theme)).toBe(true);
-      });
+      expect(onSelect).not.toBeCalled();
     });
 
     describe('testkit', () => {
@@ -143,34 +119,15 @@ const runButtonWithOptionsTest = driverFactory => {
       });
     });
 
-    describe('Dynamic button theme', () => {
-      it('button should display the same value as the "selected" option', () => {
-        const option = options[0];
-        const props = {
-          theme: 'no-border',
-          dataHook: 'myDataHook',
-          selectedId: option.id
-        };
+    describe('appearance', () => {
+      it('should be possible to specify the theme of underlying elements', () => {
+        const props = {theme: 'material', dataHook: 'myDataHook'};
         const wrapper = mount(buttonWithOptions(props));
         const testkit = enzymeButtonWithOptionsTestkitFactory({wrapper, dataHook: props.dataHook});
-
-        expect(testkit.buttonDriver.getButtonTextContent()).toEqual(option.value);
-      });
-
-      it('button should display the same value as the "selected" option that has span', () => {
-        const expectedValue = 'Option 4';
-        const option = options[5];
-        const props = {
-          theme: 'no-border',
-          dataHook: 'myDataHook',
-          selectedId: option.id
-        };
-        const wrapper = mount(buttonWithOptions(props));
-        const testkit = enzymeButtonWithOptionsTestkitFactory({wrapper, dataHook: props.dataHook});
-
-        expect(testkit.buttonDriver.getButtonTextContent()).toEqual(expectedValue);
+        expect(testkit.dropdownLayoutDriver.hasTheme(props.theme)).toBe(true);
       });
     });
+
   });
 };
 

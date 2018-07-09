@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import omit from 'lodash/omit';
 
 import Ticker from './Ticker';
 import Unit from './Unit';
@@ -10,7 +9,6 @@ import InputSuffix, {getVisibleSuffixCount} from './InputSuffix';
 
 import styles from './Input.scss';
 
-/** General input container */
 class Input extends Component {
   static Ticker = Ticker;
   static Unit = Unit;
@@ -21,31 +19,12 @@ class Input extends Component {
   };
 
   componentDidMount() {
-    const {
-      autoFocus,
-      value
-    } = this.props;
-
-    if (autoFocus) {
-      this._onFocus();
-      // Multiply by 2 to ensure the cursor always ends up at the end;
-      // Opera sometimes sees a carriage return as 2 characters.
-      value && this.input.setSelectionRange(value.length * 2, value.length * 2);
-    }
+    this.props.autoFocus && this._onFocus();
   }
-
-  onCompositionChange = isComposing => {
-    if (this.props.onCompositionChange) {
-      this.props.onCompositionChange(isComposing);
-    }
-
-    this.isComposing = isComposing;
-  };
 
   render(props = {}) {
     const {
       id,
-      name,
       value,
       placeholder,
       help,
@@ -55,11 +34,9 @@ class Input extends Component {
       menuArrow,
       defaultValue,
       tabIndex,
-      clearButton,
       onClear,
       autoFocus,
       onKeyUp,
-      onPaste,
       readOnly,
       prefix,
       suffix,
@@ -70,21 +47,18 @@ class Input extends Component {
       theme,
       disabled,
       error,
+      width,
       tooltipPlacement,
-      onTooltipShow,
-      autocomplete,
-      required
+      onTooltipShow
     } = this.props;
 
-    const onIconClicked = e => {
+    const onIconClicked = () => {
       if (!disabled) {
-        this.input.focus();
         this._onFocus();
-        this._onClick(e);
       }
     };
 
-    const isClearButtonVisible = (!!clearButton || !!onClear) && !!value && !error && !disabled;
+    const isClearButtonVisible = onClear && !error && !disabled && !!value;
 
     const visibleSuffixCount = getVisibleSuffixCount({
       error, disabled, help, magnifyingGlass, isClearButtonVisible, menuArrow, unit, suffix
@@ -101,11 +75,10 @@ class Input extends Component {
 
     const inputElement = (
       <input
-        style={{textOverflow}}
+        style={{textOverflow, width}}
         ref={input => this.input = input}
         className={inputClassNames}
         id={id}
-        name={name}
         disabled={disabled}
         defaultValue={defaultValue}
         value={value}
@@ -115,7 +88,6 @@ class Input extends Component {
         onBlur={this._onBlur}
         onKeyDown={this._onKeyDown}
         onDoubleClick={this._onDoubleClick}
-        onPaste={onPaste}
         placeholder={placeholder}
         tabIndex={tabIndex}
         autoFocus={autoFocus}
@@ -123,22 +95,15 @@ class Input extends Component {
         onKeyUp={onKeyUp}
         readOnly={readOnly}
         type={type}
-        required={required}
-        autoComplete={autocomplete}
-        onCompositionStart={() => this.onCompositionChange(true)}
-        onCompositionEnd={() => this.onCompositionChange(false)}
         {...ariaAttribute}
-        {...omit(props, 'className')}
+        {...props}
         />);
 
-    //needs additional wrapper with class .prefixSuffixWrapper to fix inputs with prefix in ie11
-    //https://github.com/wix/wix-style-react/issues/1693
-    //https://github.com/wix/wix-style-react/issues/1691
     return (<div className={styles.inputWrapper}>
-      {prefix && <div className={styles.prefixSuffixWrapper}><div className={styles.prefix}>{prefix}</div></div>}
+      {prefix && <div className={styles.prefix}>{prefix}</div>}
 
       { inputElement }
-      { visibleSuffixCount > 0 && <div className={styles.prefixSuffixWrapper}><InputSuffix
+      { visibleSuffixCount > 0 && <InputSuffix
         error={error}
         errorMessage={errorMessage}
         theme={theme}
@@ -148,14 +113,14 @@ class Input extends Component {
         onIconClicked={onIconClicked}
         magnifyingGlass={magnifyingGlass}
         isClearButtonVisible={isClearButtonVisible}
-        onClear={this._onClear}
+        onClear={onClear}
         menuArrow={menuArrow}
         unit={unit}
         focused={this.state.focus}
         suffix={suffix}
         tooltipPlacement={tooltipPlacement}
         onTooltipShow={onTooltipShow}
-        /></div> }
+        /> }
     </div>);
   }
 
@@ -165,6 +130,7 @@ class Input extends Component {
   };
 
   blur = () => {
+    this._onBlur();
     this.input && this.input.blur();
   };
 
@@ -172,9 +138,9 @@ class Input extends Component {
     this.input && this.input.select();
   };
 
-  _onFocus = e => {
+  _onFocus = () => {
     this.setState({focus: true});
-    this.props.onFocus && this.props.onFocus(e);
+    this.props.onFocus && this.props.onFocus();
 
     if (this.props.autoSelect) {
       // Set timeout is needed here since onFocus is called before react
@@ -186,9 +152,7 @@ class Input extends Component {
 
   _onBlur = e => {
     this.setState({focus: false});
-    if (this.props.onBlur) {
-      this.props.onBlur(e);
-    }
+    this.props.onBlur && this.props.onBlur(e);
   };
 
   _onClick = e => {
@@ -196,10 +160,6 @@ class Input extends Component {
   };
 
   _onKeyDown = e => {
-    if (this.isComposing) {
-      return;
-    }
-
     this.props.onKeyDown && this.props.onKeyDown(e);
 
     if (e.keyCode === 13 /* enter */) {
@@ -216,29 +176,11 @@ class Input extends Component {
 
     this.props.onChange && this.props.onChange(e);
   }
-
-  _onClear = e => {
-    const {
-      onClear
-    } = this.props;
-
-    this.input.value = '';
-
-    e.target = {
-      ...e.target,
-      value: ''
-    };
-    this._onChange(e);
-    this.focus();
-
-    onClear && onClear();
-  }
 }
 
 Input.displayName = 'Input';
 
 Input.defaultProps = {
-  autoSelect: true,
   size: 'normal',
   theme: 'normal',
   errorMessage: '',
@@ -246,156 +188,56 @@ Input.defaultProps = {
   roundInput: false,
   textOverflow: 'clip',
   maxLength: 524288,
-  withSelection: false,
-  clearButton: false
-};
-
-const borderRadiusValidator = (props, propName) => {
-  const value = props[propName];
-  if (typeof value === 'string') {
-    throw new Error('Passing a string (for className) is deprecated. Use new className prop.');
-  } else if (typeof value === 'undefined' || typeof value === 'boolean') {
-    return null;
-  } else {
-    return new Error('Invalid type. boolean expected.');
-  }
+  width: 'initial'
 };
 
 Input.propTypes = {
-  ariaControls: PropTypes.string,
-  ariaDescribedby: PropTypes.string,
-  ariaLabel: PropTypes.string,
-
-  /** Standard React Input autoFocus (focus the element on mount) */
-  autoFocus: PropTypes.bool,
-
-  /** Standard React Input autoSelect (select the entire text of the element on focus) */
-  autoSelect: PropTypes.bool,
-
-  /** Sets value of autocomplete attribute (consult the [HTML spec](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-autocomplete) for possible values  */
-  autocomplete: PropTypes.string,
-
-  /** Specifies a data-hook for tests */
-  dataHook: PropTypes.string,
-
-  /** Default value for those who wants to use this component un-controlled */
-  defaultValue: PropTypes.string,
-
-  /** when set to true this component is disabled */
-  disabled: PropTypes.bool,
-
-  /** Is input value erroneous */
-  error: PropTypes.bool,
-
-  /** The error message to display when hovering the error icon, if not given or empty there will be no tooltip */
-  errorMessage: PropTypes.node,
-  forceFocus: PropTypes.bool,
-  forceHover: PropTypes.bool,
-
-  /** Adding a suffix help icon */
-  help: PropTypes.bool,
-
-  /** The help message to display when hovering the help icon, if not given or empty there will be no tooltip */
-  helpMessage: PropTypes.node,
   id: PropTypes.string,
-
-  /** Should the component include a magnifyingGlass */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  theme: PropTypes.oneOf(['normal', 'paneltitle', 'material', 'amaterial', 'flat', 'flatdark']),
+  forceHover: PropTypes.bool,
+  forceFocus: PropTypes.bool,
+  placeholder: PropTypes.string,
+  error: PropTypes.bool,
+  unit: PropTypes.string,
+  defaultValue: PropTypes.string,
+  tabIndex: PropTypes.number,
   magnifyingGlass: PropTypes.bool,
-
-  /** Input max length */
-  maxLength: PropTypes.number,
-
-  /** Should the component include a menu arrow */
   menuArrow: PropTypes.bool,
-
-  /** Displays clear button (X) on a non-empty input */
-  clearButton: PropTypes.bool,
-
-  /** A single CSS class name to be appended to ther Input's wrapper element. */
-  className: PropTypes.string,
-
-  name: PropTypes.string,
-
-  /** When set to true, this input will have no rounded corners on its left */
-  noLeftBorderRadius: borderRadiusValidator,
-
-  /** When set to true, this input will have no rounded corners on its right */
-  noRightBorderRadius: borderRadiusValidator,
-
-  /** Standard input onBlur callback */
-  onBlur: PropTypes.func,
-
-  /** Standard input onChange callback */
+  rtl: PropTypes.bool,
+  autoFocus: PropTypes.bool,
+  autoSelect: PropTypes.bool,
   onChange: PropTypes.func,
-
-  /** Displays clear button (X) on a non-empty input and calls callback with no arguments */
   onClear: PropTypes.func,
-  onCompositionChange: PropTypes.func,
-
-  /** Called when user presses -enter- */
-  onEnterPressed: PropTypes.func,
-
-  /** Called when user presses -escape- */
-  onEscapePressed: PropTypes.func,
-
-  /** Standard input onFocus callback */
+  onBlur: PropTypes.func,
   onFocus: PropTypes.func,
-
-  /** Standard input onClick callback */
   onInputClicked: PropTypes.func,
-
-  /** Standard input onKeyDown callback */
+  onEscapePressed: PropTypes.func,
+  onEnterPressed: PropTypes.func,
   onKeyDown: PropTypes.func,
   onKeyUp: PropTypes.func,
-
-  /** called when user pastes text from clipboard (using mouse or keyboard shortcut) */
-  onPaste: PropTypes.func,
-
-  /** onShow prop for the error and help tooltips (supported only for amaterial theme for now) */
-  onTooltipShow: PropTypes.func,
-
-  /** Placeholder to display */
-  placeholder: PropTypes.string,
-
-  /** Component you want to show as the prefix of the input */
-  prefix: PropTypes.node,
-
-  /** Sets the input to readOnly */
+  disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
-
-  /** When set to true, this input will be rounded */
-  roundInput: PropTypes.bool,
-
-  /** Flip the magnify glass image so it be more suitable to rtl */
-  rtl: PropTypes.bool,
-
-  /** Specifies the size of the input */
+  dataHook: PropTypes.string,
   size: PropTypes.oneOf(['small', 'normal', 'large']),
-
-  /** Component you want to show as the suffix of the input */
+  prefix: PropTypes.node,
   suffix: PropTypes.node,
-
-  /** Standard component tabIndex */
-  tabIndex: PropTypes.number,
-
-  /** Text overflow behaviour */
+  type: PropTypes.node,
+  maxLength: PropTypes.number,
+  errorMessage: PropTypes.node,
+  roundInput: PropTypes.bool,
+  noLeftBorderRadius: PropTypes.string,
+  noRightBorderRadius: PropTypes.string,
+  help: PropTypes.bool,
   textOverflow: PropTypes.string,
-
-  /** The theme of the input */
-  theme: PropTypes.oneOf(['normal', 'tags', 'paneltitle', 'material', 'amaterial', 'flat', 'flatdark']),
-
-  /** The material design style floating label for input (supported only for amaterial theme for now) */
+  helpMessage: PropTypes.node,
   title: PropTypes.string,
-
-  /** Placement of the error and help tooltips (supported only for amaterial theme for now) */
+  width: PropTypes.string,
+  ariaLabel: PropTypes.string,
+  ariaDescribedby: PropTypes.string,
+  ariaControls: PropTypes.string,
   tooltipPlacement: PropTypes.string,
-  type: PropTypes.string,
-  unit: PropTypes.string,
-
-  /** Inputs value */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  withSelection: PropTypes.bool,
-  required: PropTypes.bool
+  onTooltipShow: PropTypes.func
 };
 
 export default Input;

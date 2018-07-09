@@ -1,20 +1,22 @@
 import React from 'react';
-import sinon from 'sinon';
-
 import inputDriverFactory from './Input.driver';
 import Input from '.';
-import {createDriverFactory, resolveIn} from '../test-common';
+import sinon from 'sinon';
+import {createDriverFactory} from '../test-common';
 import {inputTestkitFactory, tooltipTestkitFactory} from '../../testkit';
 import {inputTestkitFactory as enzymeInputTestkitFactory} from '../../testkit/enzyme';
 import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
-import {makeControlled} from '../../test/utils';
-import {mount} from 'enzyme';
 
 describe('Input', () => {
   const createDriver = createDriverFactory(inputDriverFactory);
-  const ControlledInput = makeControlled(Input);
 
   describe('test tooltip', () => {
+    const resolveIn = timeout =>
+      new Promise(resolve => {
+        setTimeout(() => {
+          resolve({});
+        }, timeout);
+      });
 
     it('should dispaly the error tooltip on hover', () => {
       const driver = createDriver(<Input error errorMessage="I'm the error message"/>);
@@ -84,21 +86,6 @@ describe('Input', () => {
 
       const driver = createDriver(<Input {...props}/>);
       expect(driver.getValue()).toEqual(props.value);
-    });
-  });
-
-
-  describe('required attribute', () => {
-    it('should pass down to the wrapped input', () => {
-      const driver = createDriver(<Input required/>);
-      expect(driver.getRequired()).toBeTruthy();
-    });
-  });
-
-  describe('autocomplete attribute', () => {
-    it('should pass down to the wrapped input', () => {
-      const driver = createDriver(<Input autocomplete="email"/>);
-      expect(driver.getAutocomplete()).toBe('email');
     });
   });
 
@@ -175,20 +162,6 @@ describe('Input', () => {
       const driver = createDriver(<Input unit={unit}/>);
       expect(driver.getUnit()).toEqual(unit);
     });
-
-    it('should invoke onInputClicked while click on unit', () => {
-      const onInputClicked = jest.fn();
-      const driver = createDriver(<Input unit="$" onInputClicked={onInputClicked}/>);
-      driver.clickUnit();
-      expect(onInputClicked).toBeCalled();
-    });
-
-    it('should not fail while click on unit without passing onInputClicked', () => {
-      const driver = createDriver(<Input unit="$"/>);
-      expect(() => {
-        driver.clickUnit();
-      }).not.toThrowError(/onInputClicked is not a function/);
-    });
   });
 
   describe('magnifyingGlass attribute', () => {
@@ -206,20 +179,6 @@ describe('Input', () => {
       const driver = createDriver(<Input magnifyingGlass error/>);
       expect(driver.hasMagnifyingGlass()).toBeFalsy();
     });
-
-    it('should invoke onInputClicked while click on magnifying glass icon', () => {
-      const onInputClicked = jest.fn();
-      const driver = createDriver(<Input magnifyingGlass onInputClicked={onInputClicked}/>);
-      driver.clickMagnifyingGlass();
-      expect(onInputClicked).toBeCalled();
-    });
-
-    it('should not fail while click on magnifying glass icon without passing onInputClicked', () => {
-      const driver = createDriver(<Input magnifyingGlass/>);
-      expect(() => {
-        driver.clickMagnifyingGlass();
-      }).not.toThrowError(/onInputClicked is not a function/);
-    });
   });
 
   describe('menuArrow attribute', () => {
@@ -233,34 +192,14 @@ describe('Input', () => {
       expect(driver.hasMenuArrow()).toBeFalsy();
     });
 
-    it('should display a menu arrow icon if error is true', () => {
+    it('should not display a menu arrow icon if error is true', () => {
       const driver = createDriver(<Input menuArrow error/>);
-      expect(driver.hasMenuArrow()).toBeTruthy();
-    });
-
-    it('should have a narrow error style of arrow is shown', () => {
-      const driver = createDriver(<Input menuArrow error/>);
-      expect(driver.isNarrowError()).toBeTruthy();
-      expect(driver.hasExclamation()).toBeTruthy();
+      expect(driver.hasMenuArrow()).toBeFalsy();
     });
 
     it('should not display a menu arrow icon if magnifyingGlass is true', () => {
       const driver = createDriver(<Input menuArrow magnifyingGlass/>);
       expect(driver.hasMenuArrow()).toBeFalsy();
-    });
-
-    it('should invoke onInputClicked while click on menu arrow icon', () => {
-      const onInputClicked = jest.fn();
-      const driver = createDriver(<Input menuArrow onInputClicked={onInputClicked}/>);
-      driver.clickMenuArrow();
-      expect(onInputClicked).toBeCalled();
-    });
-
-    it('should not fail while click on menu arrow icon without passing onInputClicked', () => {
-      const driver = createDriver(<Input menuArrow/>);
-      expect(() => {
-        driver.clickMenuArrow();
-      }).not.toThrowError(/onInputClicked is not a function/);
     });
   });
 
@@ -278,6 +217,7 @@ describe('Input', () => {
 
   describe('onChange attribute', () => {
     it('should be called when text is entered to the input', () => {
+
       const onChange = jest.fn();
       const event = {target: {value: 'world'}};
 
@@ -337,18 +277,6 @@ describe('Input', () => {
     });
   });
 
-  describe('onPaste attribute', () => {
-    it('should be called when pasting text to the input', () => {
-      const onPaste = jest.fn();
-
-      const driver = createDriver(<Input onPaste={onPaste}/>);
-
-      driver.trigger('paste');
-
-      expect(onPaste).toBeCalled();
-    });
-  });
-
   describe('forceFocus attribute', () => {
     it('should have focus class on input if forceFocus is true', () => {
       const driver = createDriver(<Input forceFocus/>);
@@ -377,25 +305,17 @@ describe('Input', () => {
 
   describe('autoFocus attribute', () => {
     it('Mounting an input element with autoFocus=false, should give it the focus', () => {
+      let autoFocus = false;
       const driver = createDriver(<Input autoFocus={false}/>);
       expect(driver.isFocus()).toBeFalsy();
-
-      driver.setProps({autoFocus: true});
+      autoFocus = true;
+      driver.setProps({autoFocus});
       expect(driver.isFocus()).toBeFalsy();
     });
 
     it('Mounting an input element with autoFocus=true, gives it the focus', () => {
       const driver = createDriver(<Input autoFocus/>);
       expect(driver.isFocus()).toBeTruthy();
-    });
-
-    describe('with value attribute', () => {
-      const value = 'this is a string';
-
-      it('Should focus with cursor located at the end of the value', () => {
-        const driver = createDriver(<Input autoFocus value={value}/>);
-        expect(driver.getCursorLocation()).toEqual(value.length);
-      });
     });
   });
 
@@ -435,126 +355,45 @@ describe('Input', () => {
     });
   });
 
-  describe('clearButton attribute', () => {
-    it('should be displayed when input text is not empty', () => {
-      const driver = createDriver(
-        <Input
-          value="some value"
-          clearButton
-          />
-      );
-      expect(driver.hasClearButton()).toBe(true);
+  describe('onClear attribute', () => {
+    it('should not be displayed when text is empty', () => {
+      const onClear = () => {};
+      const onChange = () => {};
+      const driver = createDriver(<Input onClear={onClear} value="" onChange={onChange}/>);
+      expect(driver.hasClearButton()).toBeFalsy();
     });
 
-    // TODO
-    it.skip('should be displayed when using uncontrolled component with defaultValue', () => {
-      const driver = createDriver(
-        <Input
-          defaultValue="some value"
-          clearButton
-          />
-      );
-      expect(driver.hasClearButton()).toBe(true);
-    });
-
-    it('should not be displayed when input text is empty', () => {
-      const driver = createDriver(
-        <Input
-          value=""
-          clearButton
-          />
-      );
-      expect(driver.hasClearButton()).toBe(false);
-    });
-
-    // TODO
-    it.skip('should be displayed after entering text into empty uncontrolled input', () => {
-      const driver = createDriver(
-        <Input
-          clearButton
-          />
-      );
-      driver.enterText('some value');
-      expect(driver.hasClearButton()).toBe(true);
-    });
-
-    // TODO
-    it.skip('should clear input when using uncontrolled component', () => {
-      const driver = createDriver(
-        <Input
-          clearButton
-          />
-      );
-      driver.enterText('some value');
+    it('should display a X when text is not null, and be clickable', () => {
+      const onClear = sinon.spy();
+      const onChange = () => {};
+      const driver = createDriver(<Input onClear={onClear} value={'some value'} onChange={onChange}/>);
+      expect(driver.hasClearButton()).toBeTruthy();
       driver.clickClear();
-      expect(driver.getValue()).toBe('');
-      expect(driver.isFocus()).toBe(true);
+      expect(onClear.calledOnce).toBeTruthy();
     });
 
-    // TODO
-    it.skip('should be hidden after default value was overridden with some input', () => {
-      const driver = createDriver(
-        <Input
-          defaultValue="some default value"
-          clearButton
-          />
-      );
-      expect(driver.hasClearButton()).toBe(true);
-      driver.clearText();
-      driver.enterText('new value');
-      expect(driver.hasClearButton()).toBe(false);
-    });
-
-    it('should clear input and focus it', () => {
-      const driver = createDriver(
-        <ControlledInput
-          clearButton
-          value="some value"
-          />
-      );
-      driver.clickClear();
-      expect(driver.getValue()).toBe('');
-      expect(driver.isFocus()).toBe(true);
-    });
-
-    it('should trigger onChange on clearing as if input just emptied', () => {
-      const onChange = jest.fn();
-      const driver = createDriver(
-        <Input
-          onChange={onChange}
-          value="some value"
-          clearButton
-          />
-      );
-      driver.clickClear();
-      expect(onChange).toBeCalled();
-      expect(onChange.mock.calls[0][0].target.value).toBe('');
+    it('should display a left icon when one is passed', () => {
+      const driver = createDriver(<Input iconLeft={<div/>}/>);
+      expect(driver.hasIconLeft()).toBeTruthy();
     });
   });
 
-  describe('onClear attribute', () => {
-    it('should display clear-button when input text is not empty', () => {
-      const driver = createDriver(
-        <Input
-          value="some value"
-          onClear={() => null}
-          />
-      );
-      expect(driver.hasClearButton()).toBe(true);
+  describe('size attribute', () => {
+    it('should use "normal" size by default', () => {
+      const driver = createDriver(<Input/>);
+      expect(driver.isOfSize('normal')).toBeTruthy();
     });
 
-    it('should invoke callback', () => {
-      const onClear = sinon.spy();
-      const driver = createDriver(
-        <Input
-          onClear={onClear}
-          value="some value"
-          />
-      );
-      expect(driver.hasClearButton()).toBe(true);
-      driver.clickClear();
-      expect(onClear.calledOnce).toBe(true);
+    it('should use "small" size', () => {
+      const driver = createDriver(<Input size="small"/>);
+      expect(driver.isOfSize('small')).toBeTruthy();
     });
+
+    it('should use "large" size', () => {
+      const driver = createDriver(<Input size="large"/>);
+      expect(driver.isOfSize('large')).toBeTruthy();
+    });
+
   });
 
   describe('prefix attribute', () => {
@@ -585,11 +424,6 @@ describe('Input', () => {
     it('should add `withSuffixes` classname to input when more than 1 suffix applied', () => {
       const driver = createDriver(<Input suffix="hello" magnifyingGlass/>);
       expect(driver.hasSuffixesClass()).toBeTruthy();
-    });
-
-    it('should render menu arrow as the last suffix', () => {
-      const driver = createDriver(<Input suffix="hello" menuArrow/>);
-      expect(driver.isMenuArrowLast()).toBeTruthy();
     });
   });
 
@@ -623,22 +457,9 @@ describe('Input', () => {
       const driver = createDriver(<Input/>);
       expect(driver.getAriaDescribedby()).toBeNull;
     });
+
   });
 
-  describe('className prop', () => {
-    it('should set className on root element', () => {
-      const className = 'foo';
-      const driver = createDriver(<Input className={className}/>);
-      expect(driver.getRootElementClasses()).toContain(className);
-    });
-
-    it('should NOT affect the native input classes when className passed', () => {
-      const className = 'foo';
-      const driver = createDriver(<Input className={className} suffix={<div className="my-button"/>}/>);
-      expect(driver.getInputElementClasses()).not.toContain(className);
-      expect(driver.suffixComponentExists('.my-button')).toBeTruthy();
-    });
-  });
 });
 
 describe('testkit', () => {
@@ -653,6 +474,6 @@ describe('enzyme testkit', () => {
   it('should exist', () => {
     const value = 'hello';
     const onChange = () => {};
-    expect(isEnzymeTestkitExists(<Input value={value} onChange={onChange}/>, enzymeInputTestkitFactory, mount)).toBe(true);
+    expect(isEnzymeTestkitExists(<Input value={value} onChange={onChange}/>, enzymeInputTestkitFactory)).toBe(true);
   });
 });

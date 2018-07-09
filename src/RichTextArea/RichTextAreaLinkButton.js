@@ -6,7 +6,7 @@ import RichTextAreaButton from './RichTextAreaButton';
 
 class RichTextAreaLinkButton extends Component {
   state = {
-    isFormVisible: false
+    isFormVisible: false,
   };
 
   toggleForm = () => {
@@ -30,7 +30,6 @@ class RichTextAreaLinkButton extends Component {
 
   getTooltipContent = isSelectionExpanded => (
     <RichTextAreaLinkForm
-      selection={this.props.selection}
       onSubmit={this.handleFormSubmit}
       onCancel={this.hideForm}
       isTextInputVisible={isSelectionExpanded}
@@ -43,7 +42,6 @@ class RichTextAreaLinkButton extends Component {
 
     return (
       <Tooltip
-        appendToParent
         content={this.getTooltipContent(isSelectionExpanded)}
         overlay=""
         alignment="center"
@@ -54,7 +52,6 @@ class RichTextAreaLinkButton extends Component {
         moveBy={{x: 2, y: 0}}
         active={isFormVisible}
         onClickOutside={this.hideForm}
-        maxWidth="240px"
         >
         <RichTextAreaButton
           disabled={this.props.disabled}
@@ -69,11 +66,10 @@ class RichTextAreaLinkButton extends Component {
 }
 
 RichTextAreaLinkButton.propTypes = {
-  selection: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   isActive: PropTypes.bool,
   disabled: PropTypes.bool,
-  isSelectionExpanded: PropTypes.bool
+  isSelectionExpanded: PropTypes.bool,
 };
 
 export default RichTextAreaLinkButton;

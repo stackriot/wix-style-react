@@ -2,48 +2,55 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Tooltip from '../Tooltip';
-import TextAreaBold from './../new-icons/system/TextAreaBold';
-import TextAreaItalic from './../new-icons/system/TextAreaItalic';
-import TextAreaUnderline from './../new-icons/system/TextAreaUnderline';
-import TextAreaBulletList from './../new-icons/system/TextAreaBulletList';
-import TextAreaNumberedList from './../new-icons/system/TextAreaNumberedList';
-import TextAreaLink from './../new-icons/system/TextAreaLink';
-import TextAreaImage from './../new-icons/system/TextAreaImage';
+import {Bold, Italic, Underline, UnorderedList, OrderedList, Link, Image} from '../Icons/dist';
 import styles from './RichTextAreaButton.scss';
-import {withFocusable, focusableStates} from '../common/Focusable';
+
 const buttons = {
   bold: {
-    icon: TextAreaBold,
-    tooltipText: 'Bold'
+    icon: Bold,
+    tooltipText: 'Bold',
+    iconWidth: 11,
+    iconHeight: 14,
   },
   italic: {
-    icon: TextAreaItalic,
-    tooltipText: 'Italic'
+    icon: Italic,
+    tooltipText: 'Italic',
+    iconWidth: 8,
+    iconHeight: 14,
   },
   underline: {
-    icon: TextAreaUnderline,
-    tooltipText: 'Underline'
+    icon: Underline,
+    tooltipText: 'Underline',
+    iconWidth: 15,
+    iconHeight: 15,
   },
   'unordered-list': {
-    icon: TextAreaBulletList,
-    tooltipText: 'Bulletted list'
+    icon: UnorderedList,
+    tooltipText: 'Bulletted list',
+    iconWidth: 15,
+    iconHeight: 15,
   },
   'ordered-list': {
-    icon: TextAreaNumberedList,
-    tooltipText: 'Numbered list'
+    icon: OrderedList,
+    tooltipText: 'Numbered list',
+    iconWidth: 15,
+    iconHeight: 16,
   },
   link: {
-    icon: TextAreaLink,
-    tooltipText: 'Link'
+    icon: Link,
+    tooltipText: 'Link',
+    iconWidth: 15,
+    iconHeight: 16,
   },
   image: {
-    icon: TextAreaImage,
-    tooltipText: 'Image'
+    icon: Image,
+    tooltipText: 'Image',
+    iconWidth: 15,
+    iconHeight: 16
   }
 };
 
 class RichTextAreaButton extends Component {
-
   handleMouseDown = event => {
     event.preventDefault();
     if (!this.props.disabled) {
@@ -60,7 +67,6 @@ class RichTextAreaButton extends Component {
     });
     return (
       <Tooltip
-        appendToParent
         content={tooltipContent}
         overlay=""
         theme="dark"
@@ -70,13 +76,9 @@ class RichTextAreaButton extends Component {
         disabled={isTooltipDisabled}
         >
         <button
-          type="button"
           className={className}
-          data-hook={`rich-text-area-button-${type}`}
-          {...focusableStates(this.props)}
-          onFocus={this.props.focusableOnFocus} // eslint-disable-line react/prop-types
-          onBlur={this.props.focusableOnBlur} // eslint-disable-line react/prop-types
           onMouseDown={this.handleMouseDown}
+          data-hook={`rich-text-area-button-${type}`}
           >
           <span className={styles.wrapper}>
             {this.renderIcon()}
@@ -87,10 +89,9 @@ class RichTextAreaButton extends Component {
   }
 
   renderIcon() {
-    const {icon: Icon} = buttons[this.props.type];
-    return <Icon/>;
+    const {icon: Icon, iconWidth, iconHeight} = buttons[this.props.type];
+    return <Icon width={`${iconWidth}px`} height={`${iconHeight}px`}/>;
   }
-
 }
 
 RichTextAreaButton.propTypes = {
@@ -98,7 +99,7 @@ RichTextAreaButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   isActive: PropTypes.bool,
   isTooltipDisabled: PropTypes.bool,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };
 
-export default withFocusable(RichTextAreaButton);
+export default RichTextAreaButton;

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WixComponent from '../BaseComponents/WixComponent';
 import classNames from 'classnames';
-import CloseButton from '../CloseButton';
 
-import Button from '../Backoffice/Button';
+import {Button} from '../Backoffice';
+import SvgX from '../svg/X.js';
 
 import * as styles from './MessageBoxMarketerialLayout.scss';
 
@@ -15,15 +15,15 @@ class MessageBoxMarketerialLayout extends WixComponent {
 
     const headerClasses = classNames({
       [styles.header]: true,
-      [styles[`header-${theme}`]]: true
+      [styles[`header-${theme}`]]: true,
     });
 
     return (
       <div className={styles.root}>
         <div className={headerClasses}>
-          <div className={styles.close}>
-            <CloseButton dataHook="close-button" onClick={onClose}/>
-          </div>
+          <button className={styles.close} onClick={onClose} data-hook="close-button">
+            <SvgX width={9} height={9} thickness={1} color={'white'}/>
+          </button>
           { imageComponent ?
             <div className={styles.headerImageComponent}>{imageComponent}</div> :
             <div className={styles.headerImage}>
@@ -59,7 +59,7 @@ class MessageBoxMarketerialLayout extends WixComponent {
 MessageBoxMarketerialLayout.propTypes = {
   title: PropTypes.node.isRequired,
   content: PropTypes.node.isRequired,
-  primaryButtonLabel: PropTypes.string,
+  primaryButtonLabel: PropTypes.string.isRequired,
   secondaryButtonLabel: PropTypes.string,
   onPrimaryButtonClick: PropTypes.func,
   onSecondaryButtonClick: PropTypes.func,

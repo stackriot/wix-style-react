@@ -2,16 +2,16 @@ import SideMenuDrill from './index';
 import React, {Children} from 'react';
 import styles from './DrillView.scss';
 import Navigation from '../core/navigation';
-import PropTypes from 'prop-types';
+import {node, string, bool, func} from 'prop-types';
 import NavigationLink from '../core/navigation/Link';
 import NavigationBackLink from '../core/navigation/BackLink';
 import NavigationCategory from '../core/navigation/Category';
 
-const SubMenu = ({children, title, isOpen, isActive, onSelectHandler, onBackHandler, backLabel, showCategory, badge, linkDataHook, disabled}) => {
+const SubMenu = ({children, title, isOpen, isActive, onSelectHandler, onBackHandler, backLabel, showCategory, badge, linkDataHook}) => {
   if (!isOpen) {
 
     return (
-      <NavigationLink isActive={isActive} onClick={onSelectHandler} badge={badge} withArrow={!badge} data-hook={linkDataHook} disabled={disabled}>
+      <NavigationLink isActive={isActive} onClick={onSelectHandler} badge={badge} withArrow data-hook={linkDataHook}>
         {title}
       </NavigationLink>
     );
@@ -47,23 +47,21 @@ SubMenu.defaultProps = {
   onBackHandler: () => {},
   backLabel: 'Back',
   showCategory: true,
-  linkDataHook: 'menu-drill-sub-menu-link',
-  disabled: false
+  linkDataHook: 'menu-drill-sub-menu-link'
 };
 
 SubMenu.propTypes = {
-  menuKey: PropTypes.string.isRequired,
-  title: PropTypes.node.isRequired,
-  isActive: PropTypes.bool,
-  isOpen: PropTypes.bool,
-  onSelectHandler: PropTypes.func,
-  onBackHandler: PropTypes.func,
-  backLabel: PropTypes.node,
-  showCategory: PropTypes.bool,
-  badge: PropTypes.node,
-  linkDataHook: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  disabled: PropTypes.bool
+  menuKey: string.isRequired,
+  title: string.isRequired,
+  isActive: bool,
+  isOpen: bool,
+  onSelectHandler: func,
+  onBackHandler: func,
+  backLabel: string,
+  showCategory: bool,
+  badge: node,
+  linkDataHook: string,
+  children: node.isRequired
 };
 
 export default SubMenu;

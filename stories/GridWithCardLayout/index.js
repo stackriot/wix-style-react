@@ -1,61 +1,29 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Markdown from 'wix-storybook-utils/Markdown';
-import CodeExample from 'wix-storybook-utils/CodeExample';
+import {storiesOf} from '@kadira/storybook';
+import CodeExample from '../utils/Components/CodeExample';
+import Markdown from '../utils/Components/Markdown';
 
 import ExampleGridStandard from './ExampleGridStandard';
-import ExampleGridStandardRaw from '!raw-loader!./ExampleGridStandard';
+import ExampleGridStandardRaw from '!raw!./ExampleGridStandard';
 
 import ExampleRowWithEqualHeight from './ExampleRowWithEqualHeight';
-import ExampleRowWithEqualHeightRaw from '!raw-loader!./ExampleRowWithEqualHeight';
-
-import ExampleCollapseableHeaders from './ExampleGridCollapsableHeaders';
-import ExampleCollapseableHeadersRaw from '!raw-loader!./ExampleGridCollapsableHeaders';
+import ExampleRowWithEqualHeightRaw from '!raw!./ExampleRowWithEqualHeight';
 
 import ExampleGridRTL from './ExampleGridRTL';
-import ExampleGridRTLRaw from '!raw-loader!./ExampleGridRTL';
+import ExampleGridRTLRaw from '!raw!./ExampleGridRTL';
 
 import ExampleAutoAdjustedRow from './ExampleAutoAdjustedRow';
-import ExampleAutoAdjustedRowRaw from '!raw-loader!./ExampleAutoAdjustedRow';
+import ExampleAutoAdjustedRowRaw from '!raw!./ExampleAutoAdjustedRow';
 
 import ExampleGridActionHeaders from './ExampleGridActionHeaders';
-import ExampleGridActionHeadersRaw from '!raw-loader!./ExampleGridActionHeaders';
+import ExampleGridActionHeadersRaw from '!raw!./ExampleGridActionHeaders';
 
-import ExampleOutsideGrid from './ExampleOutsideGrid';
-import ExampleOutsideGridRaw from '!raw-loader!./ExampleOutsideGrid';
+import Readme from '../../src/Grid/README.md';
 
-import GridReadme from '../../src/Grid/README.md';
-import CardReadme from '../../src/Card/README.md';
-
-storiesOf('2. Layout', module)
-  .add('Grid', () => (
+storiesOf('Common', module)
+  .add('Grid with card layout', () => (
     <div>
-      <Markdown source={GridReadme}/>
-
-      <CodeExample title="Grid with card layout" code={ExampleGridStandardRaw}>
-        <ExampleGridStandard/>
-      </CodeExample>
-
-      <CodeExample title="Cards with action headers" code={ExampleGridActionHeadersRaw}>
-        <ExampleGridActionHeaders/>
-      </CodeExample>
-
-      <CodeExample title="Grid with equal height columns" code={ExampleRowWithEqualHeightRaw}>
-        <ExampleRowWithEqualHeight/>
-      </CodeExample>
-
-      <CodeExample title="Grid with auto adjusted columns" code={ExampleAutoAdjustedRowRaw}>
-        <ExampleAutoAdjustedRow/>
-      </CodeExample>
-
-      <CodeExample title="Cards with collapsed header" code={ExampleCollapseableHeadersRaw}>
-        <ExampleCollapseableHeaders/>
-      </CodeExample>
-    </div>
-  ))
-  .add('Card', () => (
-    <div>
-      <Markdown source={CardReadme}/>
+      <Markdown source={Readme}/>
 
       <CodeExample title="Grid with card layout" code={ExampleGridStandardRaw}>
         <ExampleGridStandard/>
@@ -77,13 +45,5 @@ storiesOf('2. Layout', module)
         <ExampleGridRTL/>
       </CodeExample>
 
-      <CodeExample title="Cards with collapsed header" code={ExampleCollapseableHeadersRaw}>
-        <ExampleCollapseableHeaders/>
-      </CodeExample>
-
-      <CodeExample title="Card without Grid" code={ExampleOutsideGridRaw}>
-        <ExampleOutsideGrid/>
-      </CodeExample>
     </div>
-  ))
-;
+  ));

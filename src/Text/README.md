@@ -1,22 +1,17 @@
-# `<Text/>`
+# `<Text/>` Component
 
 General all purpose text component with Wix styling.
 
-## Usage
+Adds correct styling so you don't have to.
 
-1. Load Wix fonts from CDN:
+Renders correct element (currently either `span` or `h1` - `h5`) depending on `appearance` (defaults to `span`)
 
-```html
-<link rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
-```
+for available `appearance`s see **Common** -> **Typography**
 
-2. Use `<Text>` component with appropriate appearance:
+# Props
 
-```js
-import Text from 'wix-style-react/Text';
+| propName   | propType | defaultValue | isRequired | description                                   |
+| ---        | ---      | ---          | ---        | ---                                           |
+| appearance | string   | 'T1.1'       | -          | a type of appearance to apply                 |
+| children   | node     | -            | -          | any nodes to be rendered (usually text nodes) |
 
-export default () =>
-  <div>
-    <Text>Text</Text>
-  </div>;
-```

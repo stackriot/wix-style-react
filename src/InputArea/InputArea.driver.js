@@ -2,11 +2,12 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
 import styles from './InputArea.scss';
+import $ from 'jquery';
 
 const inputAreaDriverFactory = ({element, wrapper, component}) => {
-  const textAreaElement = element && element.childNodes[0];
-  const textArea = element.querySelector('textarea');
-  const counterSelector = '[data-hook="counter"]';
+  const $component = $(element);//.find('[data-hook="textarea-div"]');
+  const textAreaElement = element && element.querySelector('div[data-hook=textarea-div]');
+  const textArea = $component.find('textarea')[0];
   return {
     trigger: (trigger, event) => ReactTestUtils.Simulate[trigger](textArea, event),
     focus: () => textArea.focus(),
@@ -19,15 +20,15 @@ const inputAreaDriverFactory = ({element, wrapper, component}) => {
     getTabIndex: () => textArea.tabIndex,
     getReadOnly: () => textArea.readOnly,
     getResizable: () => textAreaElement.classList.contains(styles.resizable),
-    getHasCounter: () => !!element.querySelectorAll(counterSelector).length,
-    getCounterValue: () => element.querySelector(counterSelector).textContent,
-    hasExclamation: () => element.querySelectorAll(`.${styles.exclamation}`).length === 1,
+    getHasCounter: () => textAreaElement.classList.contains(styles.hasCounter),
+    hasExclamation: () => $component.find(`.${styles.exclamation}`).length === 1,
     hasError: () => textAreaElement.classList.contains(styles.hasError),
     isFocusedStyle: () => textAreaElement.classList.contains(styles.hasFocus),
     isHoveredStyle: () => textAreaElement.classList.contains(styles.hasHover),
     isOfStyle: style => textAreaElement.classList.contains(styles[`theme-${style}`]),
     isFocus: () => document.activeElement === textArea,
     exists: () => !!textArea,
+    hasIconLeft: () => !$component.find(`.${styles.prefix}`).is(':empty'),
     getStyle: () => textArea.style,
     getAriaLabel: () => textArea.getAttribute('aria-label'),
     getAriaControls: () => textArea.getAttribute('aria-controls'),

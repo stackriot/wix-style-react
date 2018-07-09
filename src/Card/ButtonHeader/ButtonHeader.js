@@ -2,25 +2,24 @@ import React from 'react';
 import {bool, func, node, oneOf, string} from 'prop-types';
 import styles from './ButtonHeader.scss';
 import classNames from 'classnames';
-import Button from '../../../src/Backoffice/Button';
+import {Button} from '../../../src/Backoffice/';
 import WixComponent from '../../BaseComponents/WixComponent';
 
 class ButtonHeader extends WixComponent {
 
   static propTypes = {
-    title: node.isRequired,
+    title: string.isRequired,
     buttonTitle: string.isRequired,
     buttonOnClick: func.isRequired,
     buttonPrefix: node,
     buttonSuffix: node,
-    subtitle: node,
+    subtitle: string,
     tooltip: node,
     theme: oneOf([
       'standard',
       'fullblue',
-      'emptyblue'
     ]),
-    withoutDivider: bool
+    withoutDivider: bool,
   };
 
   static defaultProps = {
@@ -29,7 +28,7 @@ class ButtonHeader extends WixComponent {
     buttonPrefix: null,
     tooltip: null,
     theme: 'standard',
-    buttonSuffix: null
+    buttonSuffix: null,
   };
 
   render() {
@@ -38,31 +37,17 @@ class ButtonHeader extends WixComponent {
     const headerClasses = classNames({
       [styles.headerOnlyTitle]: !subtitle,
       [styles.headerTitleSubtitle]: subtitle,
-      [styles.withDivider]: !withoutDivider
+      [styles.withDivider]: !withoutDivider,
     });
 
     const buttonClass = classNames({
       [styles.button]: theme === 'standard',
-      [styles.buttonSmall]: theme !== 'standard'
+      [styles.buttonSmall]: theme === 'fullblue'
     });
 
     const height = theme === 'standard' ? 'medium' : 'small';
-    let buttonTheme;
-    switch (theme) {
-      case 'standard': {
-        buttonTheme = 'whiteblueprimary';
-        break;
-      }
-      case 'emptyblue': {
-        buttonTheme = 'emptyblue';
-        break;
-      }
-      case 'fullblue':
-      default: {
-        buttonTheme = 'fullblue';
-        break;
-      }
-    }
+    const buttonTheme = theme === 'standard' ? 'whiteblueprimary' : 'fullblue';
+
     const buttonElement = (
       <div className={buttonClass}>
         <Button
@@ -79,8 +64,8 @@ class ButtonHeader extends WixComponent {
     );
 
     const tooltipElement = tooltip ? (
-      React.cloneElement(tooltip, {}, buttonElement)
-    ) : null;
+        React.cloneElement(tooltip, {}, buttonElement)
+      ) : null;
 
     const actionElement = tooltipElement ? tooltipElement : buttonElement;
 

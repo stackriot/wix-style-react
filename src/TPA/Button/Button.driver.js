@@ -10,8 +10,6 @@ const buttonDriverFactory = ({element}) => {
         element.simulate('click');
       }
     },
-    hasTheme: theme => element.getAttribute('data-theme') === theme,
-    hasClass: className => element.getAttribute('class').indexOf(className) > -1,
     getButtonTextContent: () => element.textContent,
     isButtonDisabled: () => element.getAttribute('disabled') === ''
   };

@@ -1,69 +1,55 @@
-import omit from 'lodash/omit';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-// TODO: move to separate folders
-export {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
+const componentFactory = Component => {
+  let element;
+  let componentInstance;
 
-// TODO: Protractor helper should be imported from './test/utils/protractor'
-export {
-  getStoryUrl, // Deprecated
-  waitForVisibilityOf,
-  protractorTestkitFactoryCreator,
-  isFocused,
-  scrollToElement,
-  hasAttribute,
-  hasClass
-} from '../test/utils/protractor';
+  const wrapperDiv = document.createElement('div');
+  const ClonedComponent = React.cloneElement(Component, {ref: r => componentInstance = r});
+  ReactDOM.render(<div ref={r => element = r}>{ClonedComponent}</div>, wrapperDiv);
+  return {element: element.childNodes[0], wrapper: wrapperDiv, component: ClonedComponent, componentInstance};
+};
 
-export {enzymeTestkitFactoryCreator} from 'wix-ui-test-utils/enzyme';
-export {testkitFactoryCreator} from 'wix-ui-test-utils/vanilla';
-export {puppeteerTestkitFactoryCreator} from 'wix-ui-test-utils/puppeteer';
+export const createDriverFactory = driverFactory => element => driverFactory(componentFactory(element));
 
-/**
- * Symbol for accessing driver methods which are internal
- * (we don't want to expose them to WSR consumers)
- */
-export const INTERNAL_DRIVER_SYMBOL = Symbol('internal-driver');
+export const testkitFactoryCreator = driverFactory => ({wrapper, dataHook}) => {
+  const element = wrapper.querySelector(`[data-hook='${dataHook}']`);
+  return driverFactory({element, wrapper});
+};
 
-/**
- * Merge driver 2 into driver 1
- *
- * It should take care of merging Internal methods into the target'shidden internal driver
- * (which sits under the [INTERNAL_DRIVER] property). Currently not supported.
- */
-export function mergeDrivers(target, source) {
-  // TODO: merge driver2's internal methods into driver1's internal methods.
-  // TODO: make this a reduce that accepts a list of drivers.
-  if (target[INTERNAL_DRIVER_SYMBOL]) {
-    throw new Error('mergeDrivers(): Merging into a driver with INTERNAL_DRIVER methods, is currently not supported yet.');
-  }
+// enzyme
+export const enzymeTestkitFactoryCreator = driverFactory => ({wrapper, dataHook}) => {
+  const regexp = new RegExp(`^<[^>]+data-hook="${dataHook}"`);
+  const component = wrapper.findWhere(n => !n.props().dataHook && (regexp).test(n.html()));
+  return driverFactory({element: component.node, wrapper});
+};
 
-  return {
-    ...target,
-    ...source
-  };
-}
+// native enzyme
+export const nativeEnzymeTestkitFactoryCreator = driverFactory => ({wrapper, dataHook}) => {
+  const regexp = new RegExp(`^<[^>]+data-hook="${dataHook}"`);
+  const component = wrapper.findWhere(n => !n.props().dataHook && (regexp).test(n.html()));
+  return driverFactory({element: component.root, wrapper});
+};
 
-/**
- * Flatten driver by spreading all internal methods,
- * and removing the INTERNAL_DRIVER property.
- * Does not mutate the given driver.
- */
-export function flattenInternalDriver(driver) {
-  if (driver[INTERNAL_DRIVER_SYMBOL]) {
-    return {
-      ...omit(driver, INTERNAL_DRIVER_SYMBOL),
-      ...driver[INTERNAL_DRIVER_SYMBOL]
-    };
-  } else {
-    return driver;
-  }
-}
+// protractor
+export const protractorTestkitFactoryCreator = driverFactory => ({dataHook}) => driverFactory($(`[data-hook='${dataHook}']`));
 
-export const resolveIn = timeout =>
-  new Promise(resolve => {
-    setTimeout(() => {
-      resolve({});
-    }, timeout);
-  });
+export const getStoryUrl = (kind, story) => `iframe.html?selectedKind=${kind}&selectedStory=${story}`;
 
-export const findByHook = (element, hook) => element.querySelector(`[data-hook*="${hook}"]`);
+export const scrollToElement = el => {
+  browser.executeScript(el => {
+    const offset = el.offsetTop;
+    window.scroll(0, offset);
+  }, el.getWebElement());
+};
+
+export const waitForVisibilityOf = (elements, errorMsg, timeout = 10000) => {
+  const arrayOfElements = Array.isArray(elements) ? [...elements] : [elements];
+
+  arrayOfElements.map(elem =>
+    browser.wait(protractor.ExpectedConditions.visibilityOf(elem), timeout, errorMsg)
+  );
+
+  return protractor.promise.all(arrayOfElements);
+};

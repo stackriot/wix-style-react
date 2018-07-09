@@ -69,11 +69,6 @@ describe('Breadcrumbs', () => {
     expect(driver.getActiveItemId()).toBe(itemIndex);
   });
 
-  it('should return null if not exists active id', () => {
-    createComponent({onClick, items});
-    expect(driver.getActiveItemId()).toBe(null);
-  });
-
   describe('label appearance', () => {
     const itemIndex = 0;
     const activeItemIndex = 1;
@@ -82,50 +77,48 @@ describe('Breadcrumbs', () => {
     describe('medium size', () => {
       const size = 'medium';
 
-      it('should have t3.1 appearance when onWhiteBackground style and t4 for active', () => {
+      it('should have t3.1 appearance when onWhiteBackground style and t3 for active', () => {
         const theme = 'onWhiteBackground';
         createComponent({onClick, items, theme, size, activeId});
         expect(driver.getLabelClassList(itemIndex)).toContain('t3_1');
-        expect(driver.getLabelClassList(activeItemIndex)).toContain('t4');
+        expect(driver.getLabelClassList(activeItemIndex)).toContain('t3');
       });
 
-      it('should have t3.1 appearance when onGrayBackground style and t4 for active', () => {
+      it('should have t3.1 appearance when onGrayBackground style and t3 for active', () => {
         const theme = 'onGrayBackground';
         createComponent({onClick, items, theme, size, activeId});
         expect(driver.getLabelClassList(itemIndex)).toContain('t3_1');
-        expect(driver.getLabelClassList(activeItemIndex)).toContain('t4');
+        expect(driver.getLabelClassList(activeItemIndex)).toContain('t3');
       });
 
-      it('should have t3.2 appearance when onDarkBackground style and t4.2 for active', () => {
+      it('should have t3.2 appearance when onDarkBackground style', () => {
         const theme = 'onDarkBackground';
         createComponent({onClick, items, theme, size, activeId});
         expect(driver.getLabelClassList(itemIndex)).toContain('t3_2');
-        expect(driver.getLabelClassList(activeItemIndex)).toContain('t4_2');
       });
     });
 
     describe('large size', () => {
       const size = 'large';
 
-      it('should have t1.1 appearance when onWhiteBackground style and t2 for active', () => {
+      it('should have t1.1 appearance when onWhiteBackground style and t1 for active', () => {
         const theme = 'onWhiteBackground';
         createComponent({onClick, items, theme, size, activeId});
         expect(driver.getLabelClassList(itemIndex)).toContain('t1_1');
-        expect(driver.getLabelClassList(activeItemIndex)).toContain('t2');
+        expect(driver.getLabelClassList(activeItemIndex)).toContain('t1');
       });
 
-      it('should have t1.1 appearance when onWhiteBackground style and t2 for active', () => {
+      it('should have t1.1 appearance when onWhiteBackground style and t1 for active', () => {
         const theme = 'onGrayBackground';
         createComponent({onClick, items, theme, size, activeId});
         expect(driver.getLabelClassList(itemIndex)).toContain('t1_1');
-        expect(driver.getLabelClassList(activeItemIndex)).toContain('t2');
+        expect(driver.getLabelClassList(activeItemIndex)).toContain('t1');
       });
 
-      it('should have t1.2 appearance when onDarkBackground style and t2.2 for active', () => {
+      it('should have t1.2 appearance when onDarkBackground style', () => {
         const theme = 'onDarkBackground';
         createComponent({onClick, items, theme, size, activeId});
         expect(driver.getLabelClassList(itemIndex)).toContain('t1_2');
-        expect(driver.getLabelClassList(activeItemIndex)).toContain('t2_2');
       });
     });
   });
@@ -162,7 +155,7 @@ describe('Breadcrumbs', () => {
     ];
 
     const customItemsWithLinks = [
-      {id: 0, value: 'value', customElement: <a href="//www.wix.com">Custom value</a>, link: 'www.bla.com'}
+      {id: 0, value: 'value', customElement: <a href="//www.wix.com">Custom value</a>, link: 'www.bla.com'},
     ];
 
     it('should render the customElement when given', () => {

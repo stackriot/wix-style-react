@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
 import Unit from '../Unit';
 
@@ -19,7 +20,7 @@ const componentFactory = (props = {}) => {
 };
 
 const unitTestkitFactory = ({wrapper, dataHook}) => {
-  const element = wrapper.querySelector(`[data-hook='${dataHook}']`);
+  const element = $(wrapper).find(`[data-hook='${dataHook}']`);
   return unitDriverFactory({element, wrapper});
 };
 

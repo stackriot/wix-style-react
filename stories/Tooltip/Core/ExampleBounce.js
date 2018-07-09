@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Tooltip, Button} from 'wix-style-react';
+import {Tooltip} from 'wix-style-react';
+import {Button} from 'wix-style-react/Backoffice';
 import styles from './Example.scss';
 
 class ExampleBounce extends Component {
@@ -18,12 +19,12 @@ class ExampleBounce extends Component {
   bounce() {
     this.clearPendingTimeout();
     if (this.state.bounce) {
-      this.setState({bounce: false});
+      this.setState({ bounce: false });
     } else {
-      this.setState({bounce: true});
-      this._timeoutId = setTimeout(() => {
-        this._timeoutId = null;
-        this.setState({bounce: false});
+      this.setState({ bounce: true });
+        this._timeoutId = setTimeout(() => {
+          this._timeoutId = null;
+          this.setState({ bounce: false });
       }, 2000);
     }
   }

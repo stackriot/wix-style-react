@@ -1,11 +1,10 @@
 import React from 'react';
 import textLinkDriverFactory from './TextLink.driver';
 import TextLink from './TextLink';
-import {createDriverFactory} from '../../test-common';
+import {createDriverFactory} from '../../BaseComponents/test-common';
 import {textLinkTestkitFactory} from '../../../testkit';
 import {textLinkTestkitFactory as enzymeTextLinkTestkitFactory} from '../../../testkit/enzyme';
 import {isTestkitExists, isEnzymeTestkitExists} from '../../../testkit/test-common';
-import {mount} from 'enzyme';
 
 describe('TextLink', () => {
 
@@ -34,6 +33,6 @@ describe('testkit', () => {
 
 describe('enzyme testkit', () => {
   it('should exist', () => {
-    expect(isEnzymeTestkitExists(<TextLink link=""/>, enzymeTextLinkTestkitFactory, mount)).toBe(true);
+    expect(isEnzymeTestkitExists(<TextLink link=""/>, enzymeTextLinkTestkitFactory)).toBe(true);
   });
 });

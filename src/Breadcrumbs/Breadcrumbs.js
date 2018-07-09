@@ -1,35 +1,23 @@
 import React from 'react';
-import {arrayOf, func, oneOf, oneOfType, node, number, shape, string, any, bool} from 'prop-types';
+import {arrayOf, func, oneOf, oneOfType, node, number, shape, string, any} from 'prop-types';
 import styles from './Breadcrumbs.scss';
 import classnames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
-import Text from '../Deprecated/Text';
+import Text from '../Text';
 import BreadcrumbsPathFactory from './BreadcrumbsPathFactory';
-import BreadcrumbsChevronRight from 'wix-ui-icons-common/system/BreadcrumbsChevronRight';
 
-/**
-  * a way to visualise current navigation path
-  */
 class Breadcrumbs extends WixComponent {
-  static displayName = 'Breadcrumbs';
-
   static propTypes = {
-    /**
-      * * __id__ - Specifies the item id
-      * * __link__ - Optional link to be called on click
-      * * __value__ - Value to be shown on breadcrumb
-      * * __disabled__ - if this value is disabled
-      * * __customElement__ - A custom item which will be rendered
-      */
     items: arrayOf(shape({
       id: oneOfType([
         string,
         number
       ]).isRequired,
-      value: node.isRequired,
-      link: string,
-      customElement: any,
-      disabled: bool
+      value: oneOfType([
+        node,
+        string
+      ]).isRequired,
+      link: string
     })).isRequired,
     onClick: func,
     activeId: oneOfType([
@@ -37,12 +25,13 @@ class Breadcrumbs extends WixComponent {
       number
     ]),
     size: oneOf(['medium', 'large']),
-    theme: oneOf(['onWhiteBackground', 'onGrayBackground', 'onDarkBackground'])
+    theme: oneOf(['onWhiteBackground', 'onGrayBackground', 'onDarkBackground']),
+    customElement: any
   };
 
   static defaultProps = {
     size: 'medium',
-    theme: 'onGrayBackground'
+    theme: 'onGrayBackground',
   };
 
   handleBreadcrumbClick = item =>
@@ -54,12 +43,8 @@ class Breadcrumbs extends WixComponent {
     const isDarkBackground = theme === 'onDarkBackground';
     const isMediumSize = size === 'medium';
 
-    if (isActive) {
-      if (isMediumSize) {
-        return isDarkBackground ? 'T4.2' : 'T4';
-      } else {
-        return isDarkBackground ? 'T2.2' : 'T2';
-      }
+    if (isActive && !isDarkBackground) {
+      return isMediumSize ? 'T3' : 'T1';
     }
 
     if (isMediumSize) {
@@ -81,7 +66,7 @@ class Breadcrumbs extends WixComponent {
       <button
         type="button"
         data-hook="breadcrumb-clickable"
-        className={classnames(styles.item, styles.button, {[styles.disabled]: item.disabled, [styles.active]: isActive})}
+        className={classnames(styles.item, styles.button)}
         onClick={onClick}
         children={breadcrumbValue(item.value)}
         />;
@@ -90,7 +75,7 @@ class Breadcrumbs extends WixComponent {
       <a
         href={item.link}
         data-hook="breadcrumb-clickable"
-        className={classnames(styles.item, styles.link, {[styles.disabled]: item.disabled, [styles.active]: isActive})}
+        className={classnames(styles.item, styles.link)}
         onClick={onClick}
         children={breadcrumbValue(item.value)}
         />;
@@ -122,8 +107,8 @@ class Breadcrumbs extends WixComponent {
         key={item.id}
         className={classnames(styles.itemContainer, {[styles.active]: isActive})}
         >
-        { this.createItem({item, isActive, onClick: () => item.disabled !== true && this.handleBreadcrumbClick(item)}) }
-        { isDividerVisible && <BreadcrumbsChevronRight className={styles.divider}/> }
+        { this.createItem({item, isActive, onClick: () => this.handleBreadcrumbClick(item)}) }
+        { isDividerVisible && <div className={styles.divider}/> }
       </div>
     );
   }

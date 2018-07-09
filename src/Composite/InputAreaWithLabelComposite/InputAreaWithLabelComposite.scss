@@ -1,15 +1,19 @@
 @import '../../common.scss';
 
 .label {
-	display: flex;
 	margin-bottom: 6px;
 }
 
-.withLabelAttributes {
-	display: flex;
-	align-items: center;
-}
+.required {
+	position: relative;
 
-.inputWrapper {
-	flex: 1;
+	&:before {
+		position: absolute;
+		top: 2px;
+		left: -17px;
+		content: '*';
+		font-size: 32px;
+		line-height: 32px;
+		color: $R10;
+	}
 }

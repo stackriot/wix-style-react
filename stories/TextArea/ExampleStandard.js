@@ -31,8 +31,7 @@ class ExampleStandard extends Component {
       resizable: false,
       hasCounter: false
     },
-    required: false,
-    info: ''
+    required: false
   };
 
   setComponentState(componentName, obj) {
@@ -86,17 +85,6 @@ class ExampleStandard extends Component {
           </div>
 
           <div className={styles.option}>
-            <Label>Info Tooltip</Label>
-            <div className={styles.flex}>
-              <Input
-                size="small"
-                value={this.state.info}
-                onChange={e => this.setState({info: e.target.value})}
-                />
-            </div>
-          </div>
-
-          <div className={styles.option}>
             <Label>Input Area box size</Label>
             <div className={styles.column}>
               <Input
@@ -121,7 +109,7 @@ class ExampleStandard extends Component {
                 placeholder="Set max length" size="small" type="number"
                 value={this.state.inputArea.maxLength}
                 onChange={e => this.setComponentState('inputArea', {maxLength: e.target.value})}
-                />
+              />
               <div className={styles.option}>
                 <div className={styles.flex}>
                   <div className={styles.paddRight}><Label>Show Counter:</Label></div>
@@ -145,7 +133,7 @@ class ExampleStandard extends Component {
           </div>
         </div>
         <div className={styles.output}>
-          <TextAreaExample {...this.state} onChange={e => this._onChange(e)}/>
+          <TextAreaExample {...this.state} onChange={(e) => this._onChange(e)}/>
         </div>
       </from>
     );

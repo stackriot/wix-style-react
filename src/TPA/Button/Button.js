@@ -1,6 +1,6 @@
 import React from 'react';
 import {any, oneOf, string} from 'prop-types';
-import omit from 'omit';
+import omit from 'lodash/omit';
 import classNames from 'classnames';
 import WixComponent from '../../BaseComponents/WixComponent';
 import tpaStyleInjector from '../TpaStyleInjector';
@@ -18,7 +18,8 @@ class Button extends WixComponent {
   };
 
   static defaultProps = {
-    theme: 'fill'
+    theme: 'fill',
+    disabled: false
   };
 
   render() {
@@ -30,7 +31,7 @@ class Button extends WixComponent {
     ], className)).trim();
 
     return (
-      <button className={classes} data-theme={theme} {...omit(['injectedStyles', 'children', 'theme', 'className', 'dataHook'], this.props)}>
+      <button className={classes} {...omit(this.props, 'children', 'theme', 'className')}>
         {children}
       </button>
     );

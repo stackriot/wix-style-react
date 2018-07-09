@@ -1,29 +1,24 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Markdown from 'wix-storybook-utils/Markdown';
-import AutoDocs from 'wix-storybook-utils/AutoDocs';
-import TabbedView from 'wix-storybook-utils/TabbedView';
-import CodeExample from 'wix-storybook-utils/CodeExample';
-
-import FilePickerSource from '!raw-loader!wix-style-react/FilePicker/FilePicker';
+import {storiesOf} from '@kadira/storybook';
+import Markdown from '../utils/Components/Markdown';
+import TabbedView from '../utils/Components/TabbedView';
+import CodeExample from '../utils/Components/CodeExample';
+import Readme from '../../src/FilePicker/README.md';
 import ReadmeTestKit from '../../src/FilePicker/README.TESTKIT.md';
 
 import Example from './Example';
-import ExampleRaw from '!raw-loader!./Example';
+import ExampleRaw from '!raw!./Example';
 
-storiesOf('3. Inputs', module)
-  .add('3.10 + FilePicker', () => (
+storiesOf('Core', module)
+  .add('FilePicker', () => (
     <TabbedView tabs={['API', 'TestKits']}>
       <div>
-        <AutoDocs source={FilePickerSource}/>
-
+        <Markdown source={Readme}/>
         <h1>Usage examples</h1>
-
         <CodeExample title="Standard" code={ExampleRaw}>
           <Example/>
         </CodeExample>
       </div>
-
       <Markdown source={ReadmeTestKit}/>
     </TabbedView>
   ));

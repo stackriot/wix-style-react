@@ -1,26 +1,23 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Markdown from 'wix-storybook-utils/Markdown';
-import TabbedView from 'wix-storybook-utils/TabbedView';
-import CodeExample from 'wix-storybook-utils/CodeExample';
-
+import {storiesOf} from '@kadira/storybook';
+import Markdown from '../utils/Components/Markdown';
+import CodeExample from '../utils/Components/CodeExample';
 import Readme from '../../src/InputWithOptions/README.md';
 import ReadmeTestkit from '../../src/InputWithOptions/README.TESTKIT.md';
 
+import TabbedView from '../utils/Components/TabbedView';
+
 import ExampleStandard from './ExampleStandard';
-import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
+import ExampleStandardRaw from '!raw!./ExampleStandard';
 
 import ExampleDropdownSize from './ExampleDropdownSize';
-import ExampleDropdownSizeRaw from '!raw-loader!./ExampleDropdownSize';
+import ExampleDropdownSizeRaw from '!raw!./ExampleDropdownSize';
 
 import ExampleControlled from './ExampleControlled';
-import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
+import ExampleControlledRaw from '!raw!./ExampleControlled';
 
-import ExampleNoDropdownIfEmptyInput from './ExampleNoDropdownIfEmptyInput';
-import ExampleNoDropdownIfEmptyInputRaw from '!raw-loader!./ExampleNoDropdownIfEmptyInput';
-
-storiesOf('4. Selection', module)
-  .add('4.1 + InputWithOptions', () => (
+storiesOf('Core', module)
+  .add('InputWithOptions', () => (
     <TabbedView tabs={['API', 'Testkit']}>
       <div>
         <Markdown source={Readme}/>
@@ -35,15 +32,12 @@ storiesOf('4. Selection', module)
           <ExampleDropdownSize/>
         </CodeExample>
 
-        <CodeExample title="No dropdown if input is empty" code={ExampleNoDropdownIfEmptyInputRaw}>
-          <ExampleNoDropdownIfEmptyInput/>
-        </CodeExample>
-
         <CodeExample title="Controlled input" code={ExampleControlledRaw}>
           <ExampleControlled/>
         </CodeExample>
       </div>
-
-      <Markdown source={ReadmeTestkit}/>
+      <div>
+        <Markdown source={ReadmeTestkit}/>
+      </div>
     </TabbedView>
   ));

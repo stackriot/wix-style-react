@@ -1,16 +1,15 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Markdown from 'wix-storybook-utils/Markdown';
-import TabbedView from 'wix-storybook-utils/TabbedView';
-import CodeExample from 'wix-storybook-utils/CodeExample';
-
+import {storiesOf} from '@kadira/storybook';
+import Markdown from '../utils/Components/Markdown';
+import CodeExample from '../utils/Components/CodeExample';
+import TabbedView from '../utils/Components/TabbedView';
 import ReadmeTestKit from '../../src/Modal/README.TESTKIT.md';
 import Readme from '../../src/Modal/README.md';
 
 import ExampleControlled from './ExampleControlled';
-import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
+import ExampleControlledRaw from '!raw!./ExampleControlled';
 
-storiesOf('9. Modals', module)
+storiesOf('Core', module)
   .add('Modal', () => (
     <TabbedView tabs={['API', 'TestKits']}>
       <div>
@@ -22,7 +21,8 @@ storiesOf('9. Modals', module)
           <ExampleControlled/>
         </CodeExample>
       </div>
-
-      <Markdown source={ReadmeTestKit}/>
+      <div>
+        <Markdown source={ReadmeTestKit}/>
+      </div>
     </TabbedView>
   ));

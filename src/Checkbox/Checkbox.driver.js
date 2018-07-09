@@ -1,36 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {isClassExists} from '../../test/utils';
-import {labelDriverFactory} from 'wix-ui-backoffice/dist/src/components/Label/Label.driver';
-import {testkitFactoryCreator} from '../test-common';
+import ReactTestUtils from 'react-dom/test-utils';
+import $ from 'jquery';
 
-const labelTestkitFactory = testkitFactoryCreator(labelDriverFactory);
+const checkboxDriverFactory = ({element, wrapper, component}) => {
 
-const checkboxDriverFactory = ({element, wrapper, component, eventTrigger}) => {
-
-  const input = () => element.querySelector('input');
-  const checkbox = () => element.querySelector('.checkbox');
-  const labelDriver = () => labelTestkitFactory({wrapper: element, dataHook: 'checkbox-label'});
-  const isChecked = element => isClassExists(element, 'checked');
+  const checkbox = $(element).find('input')[0];
+  const isClassExists = (element, className) => !!(element.className.match(new RegExp('\\b' + className + '\\b')));
 
   return {
     exists: () => !!element,
-    click: () => eventTrigger.change(input(), {target: {checked: !isChecked(element)}}),
-    /** trigger focus on the element */
-    focus: () => eventTrigger.focus(checkbox()),
-    /** trigger blur on the element */
-    blur: () => eventTrigger.blur(checkbox()),
-    /**
-     * Focus related testing is done in e2e tests only.
-     * @deprecated
-     */
-    hasFocusState: () => element.getAttribute('data-focus'),
-    isChecked: () => isChecked(element),
+    click: () => ReactTestUtils.Simulate.change(checkbox),
+    isChecked: () => isClassExists(element, 'checked'),
     isDisabled: () => isClassExists(element, 'disabled'),
-    isIndeterminate: () => isClassExists(element, 'indeterminate'),
-    hasError: () => isClassExists(element, 'hasError'),
-    getLabel: () => labelDriver().getLabelText(),
-    getLabelDriver: () => labelDriver(),
+    isIndeterminate: () => $(element).find('.indeterminate').length === 1,
+    getLabel: () => element.textContent,
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
       ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);

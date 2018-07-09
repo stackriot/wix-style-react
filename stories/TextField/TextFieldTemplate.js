@@ -13,12 +13,7 @@ export default class Form extends Component {
     withLabel: PropTypes.bool,
     label: PropTypes.object,
     input: PropTypes.object,
-    required: PropTypes.bool,
-    info: PropTypes.string
-  };
-
-  state = {
-    value: ''
+    required: PropTypes.bool
   };
 
   componentDidUpdate(props) {
@@ -31,14 +26,9 @@ export default class Form extends Component {
 
   getComponent() {
     return (
-      <TextField required={this.props.required} info={this.props.info}>
+      <TextField required={this.props.required}>
         {this.props.withLabel ? <Label for="firstName" {...this.props.label}/> : null}
-        <Input
-          id="firstName"
-          {...this.props.input}
-          value={this.state.value}
-          onChange={e => this.setState({value: e.target.value})}
-          />
+        <Input id="firstName" {...this.props.input}/>
       </TextField>
     );
   }

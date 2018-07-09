@@ -1,32 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FormFieldError from 'wix-ui-icons-common/system/FormFieldError';
 import Tooltip from '../Tooltip';
 import styles from './InputArea.scss';
+import {Error} from '../Icons/dist';
 
 const Exclamation = ({errorMessage, tooltipPlacement, onTooltipShow}) =>
   <div className={styles.suffix}>
     <Tooltip
-      dataHook="inputArea-tooltip"
-      disabled={errorMessage.length === 0}
-      placement={tooltipPlacement}
-      onShow={onTooltipShow}
-      alignment="center"
-      hideDelay={100}
-      content={errorMessage}
-      moveBy={{x: 0, y: -10}}
-      overlay=""
-      maxWidth="250px"
+      dataHook="inputArea-tooltip" disabled={errorMessage.length === 0}
+      placement={tooltipPlacement} onShow={onTooltipShow} alignment="center"
+      hideDelay={100} content={errorMessage} moveBy={{x: 0, y: -10}} overlay="" maxWidth="250px"
       textAlign="left"
-      theme="dark"
       >
-      <div className={styles.errorIcon}><FormFieldError/></div>
+      <div className={styles.errorIcon}><Error size="1.5em"/></div>
     </Tooltip>
   </div>;
 
 Exclamation.defaultProps = {
   errorMessage: '',
-  tooltipPlacement: 'top'
+  tooltipPlacement: 'right'
 };
 
 Exclamation.propTypes = {

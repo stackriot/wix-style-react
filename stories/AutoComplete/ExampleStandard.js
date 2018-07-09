@@ -35,7 +35,4 @@ export default () =>
     <div style={style} className="ltr">
       Disabled<AutoComplete disabled options={rtlOptions}/>
     </div>
-    <div style={style} className="ltr">
-      Error<AutoComplete error errorMessage="This is an error message" options={rtlOptions}/>
-    </div>
   </div>;

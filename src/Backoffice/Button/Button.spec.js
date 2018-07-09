@@ -6,8 +6,10 @@ import {createDriverFactory} from '../../test-common';
 import {buttonTestkitFactory} from '../../../testkit';
 import {buttonTestkitFactory as enzymeButtonTestkitFactory} from '../../../testkit/enzyme';
 import {mount} from 'enzyme';
+import {Close} from '../../Icons/dist';
 
 describe('Button', () => {
+
   const createDriver = createDriverFactory(buttonDriverFactory);
 
   it('should click a button', () => {
@@ -20,46 +22,14 @@ describe('Button', () => {
 
   it('should not call onClick when disabled', () => {
     const onClick = jest.fn();
-    const driver = createDriver(<Button onClick={onClick} disabled/>);
+    const driver = createDriver(<Button onClick={onClick} disabled={true}/>);
 
     driver.click();
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
-  it('should not call focusableOnFocus when disabled', () => {
-    const focus = jest.fn();
-    const driver = createDriver(<Button focusableOnFocus={focus} disabled/>);
-
-    driver.focus();
-    expect(focus).toHaveBeenCalledTimes(0);
-  });
-
-  it('should not call focusableOnBlur when disabled', () => {
-    const blur = jest.fn();
-    const driver = createDriver(<Button focusableOnBlur={blur} disabled/>);
-
-    driver.blur();
-    expect(blur).toHaveBeenCalledTimes(0);
-  });
-
-  it('should call onMouseEnter when disabled', () => {
-    const mouseEnter = jest.fn();
-    const driver = createDriver(<Button onMouseEnter={mouseEnter} disabled/>);
-
-    driver.mouseEnter();
-    expect(mouseEnter).toHaveBeenCalledTimes(1);
-  });
-
-  it('should call onMouseLeave when disabled', () => {
-    const mouseLeave = jest.fn();
-    const driver = createDriver(<Button onMouseLeave={mouseLeave} disabled/>);
-
-    driver.mouseLeave();
-    expect(mouseLeave).toHaveBeenCalledTimes(1);
-  });
-
   it('should get disabled class', () => {
-    const driver = createDriver(<Button disabled/>);
+    const driver = createDriver(<Button disabled={true}/>);
 
     expect(driver.isButtonDisabled()).toBe(true);
   });
@@ -72,14 +42,14 @@ describe('Button', () => {
   });
 
   it('should have a prefixIcon', () => {
-    const driver = createDriver(<Button prefixIcon={<div/>}/>);
+    const driver = createDriver(<Button prefixIcon={<Close/>}/>);
 
     expect(driver.isSuffixIconExists()).toBeFalsy();
     expect(driver.isPrefixIconExists()).toBeTruthy();
   });
 
   it('should have a suffixIcon', () => {
-    const driver = createDriver(<Button suffixIcon={<div/>}/>);
+    const driver = createDriver(<Button suffixIcon={<Close/>}/>);
 
     expect(driver.isPrefixIconExists()).toBeFalsy();
     expect(driver.isSuffixIconExists()).toBeTruthy();

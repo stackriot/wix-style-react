@@ -1,5 +1,3 @@
-@import '../common.scss';
-
 @mixin BoxSizing($boxSizing: border-box) {
     box-sizing: $boxSizing;
     * { box-sizing: $boxSizing; }
@@ -7,22 +5,18 @@
 
 @mixin Size($height, $fontSize) {
     height: $height;
-    line-height: $height - 2px;
     font-size: $fontSize;
     .input {
         display: block;
+        line-height: 24px;
         font-size: $fontSize;
-        &:-webkit-autofill {
-          -webkit-box-shadow: 0 0 0 $height white inset;
-        }
     }
 
     .prefix,
     .suffix {
-        margin-top: -1px;
         height: $height;
-        line-height: $height;
     }
+
 }
 
 @mixin ThemeDefault($borderColor, $backgroundColor, $color) {
@@ -32,15 +26,8 @@
     .input { color: $color; }
 }
 
-@mixin BorderRadius($borderRadius) {
-  border-radius: $borderRadius;
-  &:-webkit-autofill {
-    border-radius: $borderRadius;
-  }
-}
-
 @mixin ThemeHover($backgroundColor) {
-    &:hover:not(.hasFocus)    { background-color: $backgroundColor; }
+    &:hover    { background-color: $backgroundColor; }
     &.hasHover { background-color: $backgroundColor; }
 }
 
@@ -49,19 +36,7 @@
         border-color: $borderColor;
         background-color: $backgroundColor;
         color: $color;
-        .input,
-        .unit {
-            color: $color;
-        }
-    }
-}
-
-@mixin ThemeDisableHover($borderColor) {
-    &.disabled {
-        &:hover,
-        &.hasHover {
-            border-color: $borderColor;
-        }
+        .input { color: $color; }
     }
 }
 
@@ -73,17 +48,7 @@
     .menu-arrow path { fill: $color; }
 }
 
-@mixin ThemeFocus($borderColor, $boxShadow) {
-    &.hasFocus {
-        @include FocusBox($borderColor, $boxShadow);
-
-        &.hasError {
-            @include FocusBoxError
-        }
-    }
-}
-
-@mixin ThemeFocusPanelTile($borderColor, $boxShadow: none) {
+@mixin ThemeFocus($borderColor, $boxShadow: none) {
     &.hasFocus {
         border-color: $borderColor;
         box-shadow: $boxShadow;

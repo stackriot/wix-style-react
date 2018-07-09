@@ -6,7 +6,6 @@ import sinon from 'sinon';
 import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
 import {messageBoxFunctionalLayoutTestkitFactory} from '../../testkit';
 import {messageBoxFunctionalLayoutTestkitFactory as enzymeMessageBoxTestkitFactory} from '../../testkit/enzyme';
-import {mount} from 'enzyme';
 
 
 describe('MessageBox', () => {
@@ -76,7 +75,7 @@ describe('MessageBox', () => {
   describe('closeButton attribute', () => {
     it('should appear by default', () => {
       const props = {
-        onCancel: sinon.spy()
+        onCancel: sinon.spy(),
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
       expect(driver.getHeaderCloseButton()).toBeTruthy();
@@ -93,7 +92,7 @@ describe('MessageBox', () => {
 
     it(`should trigger the 'onCancel' action upon clicking the header close button`, () => {
       const props = {
-        onCancel: sinon.spy()
+        onCancel: sinon.spy(),
       };
       const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
       driver.clickOnHeaderCloseButton();
@@ -134,24 +133,6 @@ describe('MessageBox', () => {
     });
   });
 
-  describe('footer children', () => {
-    it(`should render the passed footer content`, () => {
-      const props = {
-        footerBottomChildren: (<div data-hook="inner-div"/>)
-      };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
-      expect(driver.getChildBySelector('[data-hook="inner-div"]')).not.toBeNull();
-      expect(driver.getChildBySelector('[data-hook="footer-layout-bottom-children"]')).not.toBeNull();
-    });
-
-    it(`should not render footer's wrapper div when footer content isn't passed`, () => {
-      const props = {
-      };
-      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
-      expect(driver.getChildBySelector('[data-hook="footer-layout-bottom-children"]')).toBeNull();
-    });
-  });
-
   describe('general', () => {
 
     it(`should hide the footer`, () => {
@@ -185,20 +166,6 @@ describe('MessageBox', () => {
       </MessageBoxFunctionalLayout>);
       expect(driver.getChildBySelector('[data-hook="inner-div"]')).not.toBeNull();
     });
-
-    it('should render with zero padding when explicitly asked for', () => {
-      const normalRendering = {};
-      const zeroPaddingRendering = {noBodyPadding: true};
-      const regularDriver = createDriver(<MessageBoxFunctionalLayout {...normalRendering}>
-        <div>Content</div>
-      </MessageBoxFunctionalLayout>);
-      expect(regularDriver.toHaveBodyPadding()).toBeTruthy();
-
-      const zeroPaddingDriver = createDriver(<MessageBoxFunctionalLayout {...zeroPaddingRendering}>
-        <div>Content</div>
-      </MessageBoxFunctionalLayout>);
-      expect(zeroPaddingDriver.toHaveBodyPadding()).toBeFalsy();
-    });
   });
 
   describe('testkit', () => {
@@ -209,7 +176,7 @@ describe('MessageBox', () => {
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<MessageBoxFunctionalLayout/>, enzymeMessageBoxTestkitFactory, mount)).toBe(true);
+      expect(isEnzymeTestkitExists(<MessageBoxFunctionalLayout/>, enzymeMessageBoxTestkitFactory)).toBe(true);
     });
   });
 });

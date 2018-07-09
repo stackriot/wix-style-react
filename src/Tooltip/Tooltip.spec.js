@@ -7,7 +7,7 @@ import {createDriverFactory} from '../test-common';
 import {buttonTestkitFactory, tooltipTestkitFactory} from '../../testkit';
 import {tooltipTestkitFactory as enzymeTooltipTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
-import Button from '../../src/Button';
+import {Button} from '../../src/Backoffice';
 
 describe('Tooltip', () => {
 
@@ -44,6 +44,26 @@ describe('Tooltip', () => {
         expect(driver.isShown()).toBeFalsy();
       });
     });
+  });
+
+  it('should hide tooltip when using custom triggers', () => {
+    const props = {..._props, hideTrigger: 'custom', showTrigger: 'custom'};
+    const driver = createDriver(<Tooltip {...props}>{children}</Tooltip>);
+    driver.mouseEnter();
+    return resolveIn(30)
+      .then(() => {
+        expect(driver.isShown()).toBeFalsy();
+        driver.setProps({...props, active: true});
+        return resolveIn(30);
+      })
+      .then(() => {
+        expect(driver.isShown()).toBeTruthy();
+        driver.setProps({...props, active: false});
+        return resolveIn(30);
+      })
+      .then(() => {
+        expect(driver.isShown()).toBeFalsy();
+      });
   });
 
   it('should test inner component', () => {
@@ -163,95 +183,6 @@ describe('Tooltip', () => {
     expect(onShow).not.toHaveBeenCalled();
     return resolveIn(30).then(() => {
       expect(onShow).toHaveBeenCalled();
-      expect(driver.isShown()).toBeTruthy();
-    });
-  });
-
-  it('should call onHide when tooltip is hidden', () => {
-    const onHide = jest.fn();
-    const driver = createDriver(<Tooltip {...{..._props, onHide}}>{children}</Tooltip>);
-
-    driver.mouseEnter();
-    return resolveIn(30).then(() => {
-      expect(driver.isShown()).toBeTruthy();
-
-      driver.mouseLeave();
-
-      return resolveIn(30).then(() => {
-        expect(driver.isShown()).toBeFalsy();
-        expect(onHide).toHaveBeenCalled();
-      });
-    });
-
-  });
-
-  it('should append to element selected', () => {
-    const el = document.createElement('div');
-    const driver = createDriver(<Tooltip {..._props} appendTo={el}>{children}</Tooltip>);
-    driver.mouseEnter();
-    return resolveIn(30).then(() => {
-      expect(el.childElementCount).toEqual(1);
-    });
-  });
-
-  describe('custom triggers', () => {
-    it('should hide tooltip', () => {
-      const props = {..._props, hideTrigger: 'custom', showTrigger: 'custom'};
-      const driver = createDriver(<Tooltip {...props}>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(30)
-        .then(() => {
-          expect(driver.isShown()).toBeFalsy();
-          driver.setProps({...props, active: true});
-          return resolveIn(30);
-        })
-        .then(() => {
-          expect(driver.isShown()).toBeTruthy();
-          driver.setProps({...props, active: false});
-          return resolveIn(30);
-        })
-        .then(() => {
-          expect(driver.isShown()).toBeFalsy();
-        });
-    });
-
-    it('should not show tooltip when transitioned to both active and disabled', () => {
-      const props = {
-        ..._props,
-        hideTrigger: 'custom',
-        showTrigger: 'custom',
-        active: false,
-        disabled: false
-      };
-      const driver = createDriver(<Tooltip {...props}>{children}</Tooltip>);
-      return resolveIn(30)
-        .then(() => {
-          expect(driver.isShown()).toBeFalsy();
-          driver.setProps({...props, active: true, disabled: true});
-          return resolveIn(30);
-        })
-        .then(() => {
-          expect(driver.isShown()).toBeFalsy();
-        });
-    });
-    it('should close tooltip when disabled changed to true when was active true before', () => {
-      const props = {
-        ..._props,
-        hideTrigger: 'custom',
-        showTrigger: 'custom',
-        active: true,
-        disabled: false
-      };
-      const driver = createDriver(<Tooltip {...props}>{children}</Tooltip>);
-      return resolveIn(30)
-        .then(() => {
-          expect(driver.isShown()).toBeTruthy();
-          driver.setProps({...props, disabled: true});
-          return resolveIn(30);
-        })
-        .then(() => {
-          expect(driver.isShown()).toBeFalsy();
-        });
     });
   });
 
@@ -277,117 +208,16 @@ describe('Tooltip', () => {
     });
   });
 
-  describe('maxWidth attribute', () => {
-    it('should set default maxWidth 204', () => {
-      const driver = createDriver(<Tooltip {..._props}>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.getMaxWidth()).toBe('204px');
-      });
-    });
-
-    it('should set custom maxWidth', () => {
-      const props = {..._props, maxWidth: '400px'};
-      const driver = createDriver(<Tooltip {...props}>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.getMaxWidth()).toBe('400px');
-      });
-    });
-  });
-
-  describe('minWidth attribute', () => {
-    it('should not have any min-width as default', () => {
-      const driver = createDriver(<Tooltip {..._props}>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.getMinWidth()).toBe(undefined);
-      });
-    });
-
-    it('should set custom min-width', () => {
-      const props = {..._props, minWidth: '150px'};
-      const driver = createDriver(<Tooltip {...props}>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.getMinWidth()).toBe('150px');
-      });
-    });
-  });
-
-  describe('alignment attribute', () => {
-    it('should set default left', () => {
-      const driver = createDriver(<Tooltip {..._props}>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.getAlignment()).toBe('left');
-      });
-    });
-  });
-
-  describe('padding attribute', () => {
-    it('should set default to none', () => {
-      const driver = createDriver(<Tooltip {..._props}>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.getPadding()).toBe(undefined);
-      });
-    });
-    it('should set custom padding', () => {
-      const props = {..._props, padding: '5px'};
-      const driver = createDriver(<Tooltip {...props}>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.getPadding()).toBe('5px');
-      });
-    });
-  });
-
   describe('testkit', () => {
-
-    const createTooltipTestkitDriver = props => {
+    it('should exist', () => {
       const div = document.createElement('div');
       const dataHook = 'myDataHook';
-      const tooltipProps = {..._props, ...props};
-      const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(<div><Tooltip dataHook={dataHook} {...tooltipProps}>{children}</Tooltip></div>));
+      const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(<div><Tooltip dataHook={dataHook} {..._props}>{children}</Tooltip></div>));
       const driver = tooltipTestkitFactory({wrapper, dataHook});
-      return driver;
-    };
-
-    it('should exist', () => {
-      const driver = createTooltipTestkitDriver();
       driver.mouseEnter();
       expect(driver.isShown()).toBeFalsy();
       return resolveIn(30).then(() => {
         expect(driver.isShown()).toBeTruthy();
-      });
-    });
-
-    it('should exist with default props when appendToParent', () => {
-      const driver = createTooltipTestkitDriver({appendToParent: true});
-      driver.mouseEnter();
-      expect(driver.isShown()).toBeFalsy();
-      return resolveIn(30).then(() => {
-        expect(driver.isShown()).toBeTruthy();
-        expect(driver.getContent()).toBe('I\'m the content');
-        expect(driver.hasLightTheme()).toBeTruthy();
-        expect(driver.getPlacement()).toBe('top');
-      });
-    });
-
-    it('should have dark theme when appendToParent', () => {
-      const driver = createTooltipTestkitDriver({appendToParent: true, theme: 'dark'});
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.hasDarkTheme()).toBeTruthy();
-      });
-    });
-
-    it('should have error theme when appendToParent', () => {
-      const driver = createTooltipTestkitDriver({appendToParent: true, theme: 'error'});
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.hasErrorTheme()).toBeTruthy();
       });
     });
   });
@@ -415,30 +245,6 @@ describe('Tooltip', () => {
         return resolveIn(1);
       }).then(() => {
         expect(driver.isShown()).toBeFalsy();
-      });
-    });
-
-    it('should have fadeIn class and delay when showImmediately is unspecified', () => {
-      const driver = createDriver(<Tooltip {..._props} content={<div>HELLO WORLD</div>}>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.hasAnimationClass()).toBeTruthy();
-      });
-    });
-
-    it('should have fadeIn class and delay when showImmediately is false', () => {
-      const driver = createDriver(<Tooltip {..._props} content={<div>HELLO WORLD</div>} showImmediately={false}>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.hasAnimationClass()).toBeTruthy();
-      });
-    });
-
-    it('should not have fadeIn class and no delay when showImmediately is true', () => {
-      const driver = createDriver(<Tooltip {..._props} content={<div>HELLO WORLD</div>} showImmediately>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(0).then(() => {
-        expect(driver.hasAnimationClass()).toBeFalsy();
       });
     });
   });

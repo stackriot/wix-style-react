@@ -1,22 +1,21 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import AutoDocs from 'wix-storybook-utils/AutoDocs';
-import CodeExample from 'wix-storybook-utils/CodeExample';
-
-import SliderSource from '!raw-loader!wix-style-react/Slider/Slider';
+import {storiesOf} from '@kadira/storybook';
+import Markdown from '../utils/Components/Markdown';
+import CodeExample from '../utils/Components/CodeExample';
+import Readme from '../../src/Slider/README.md';
 
 import ExampleStandard from './ExampleStandard';
-import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
+import ExampleStandardRaw from '!raw!./ExampleStandard';
 
 import ExampleControlled from './ExampleControlled';
-import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
+import ExampleControlledRaw from '!raw!./ExampleControlled';
 import ExampleRtl from './ExampleRtl';
-import ExampleRtlRaw from '!raw-loader!./ExampleRtl';
+import ExampleRtlRaw from '!raw!./ExampleRtl';
 
-storiesOf('4. Selection', module)
-  .add('4.7 Slider', () => (
+storiesOf('Core', module)
+  .add('Slider', () => (
     <div>
-      <AutoDocs source={SliderSource}/>
+      <Markdown source={Readme}/>
 
       <h1>Usage examples</h1>
 

@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Range} from 'rc-slider';
-import uniqueId from 'lodash/uniqueId';
+import uniqueId from 'lodash.uniqueid';
 import SliderHandle from './SliderHandle';
 import classNames from 'classnames';
 import './Slider.scss';
 
-/**
-  * A slider component with multi-range support
-  */
 export default class Slider extends Component {
   getRange() {
     const {min, max, step} = this.props;
@@ -58,7 +55,6 @@ export default class Slider extends Component {
           value={this.props.value}
           marks={marks}
           step={this.props.step}
-          pushable={this.props.pushable}
           onChange={this.props.onChange}
           onAfterChange={this.props.onAfterChange}
           allowCross={this.props.allowCross}
@@ -68,43 +64,19 @@ export default class Slider extends Component {
   }
 }
 
-Slider.displayName = 'Slider';
-
 Slider.propTypes = {
-  /** Allows the slider's handles to cross. */
-  allowCross: PropTypes.bool,
-  dataHook: PropTypes.string,
-
-  /** Controls the visibility of the marks. */
-  displayMarks: PropTypes.bool,
-
-  /** Controls visibility of slide handle tooltip */
-  displayTooltip: PropTypes.bool,
   id: PropTypes.string,
-
-  /** The absolute maximum of the slider's range */
-  max: PropTypes.number,
-
-  /** The absolute minimum of the slider's range */
+  value: PropTypes.arrayOf(PropTypes.number),
   min: PropTypes.number,
-
-  /** Called after every value change */
-  onAfterChange: PropTypes.func,
-
-  /** Called upon every value change */
-  onChange: PropTypes.func.isRequired,
-
-  /** Adjust for RTL dir. */
-  rtl: PropTypes.bool,
-
-  /** The slider's step */
+  max: PropTypes.number,
   step: PropTypes.number,
-
-  /** Allow pushing of surrounding handles when moving a handle. Number means a minimum distance between handles */
-  pushable: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-
-  /** The slider's selected range */
-  value: PropTypes.arrayOf(PropTypes.number)
+  onChange: PropTypes.func.isRequired,
+  onAfterChange: PropTypes.func,
+  allowCross: PropTypes.bool,
+  displayTooltip: PropTypes.bool,
+  displayMarks: PropTypes.bool,
+  rtl: PropTypes.bool,
+  dataHook: PropTypes.string
 };
 
 Slider.defaultProps = {

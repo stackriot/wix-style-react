@@ -1,17 +1,16 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Markdown from 'wix-storybook-utils/Markdown';
-import TabbedView from 'wix-storybook-utils/TabbedView';
-import CodeExample from 'wix-storybook-utils/CodeExample';
-
+import {storiesOf} from '@kadira/storybook';
+import Markdown from '../utils/Components/Markdown';
+import CodeExample from '../utils/Components/CodeExample';
 import Readme from '../../src/ImageViewer/README.md';
 import ReadmeTestkit from '../../src/ImageViewer/README.TESTKIT.md';
 
+import TabbedView from '../utils/Components/TabbedView';
 import ExampleStandard from './ExampleStandard';
-import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
+import ExampleStandardRaw from '!raw!./ExampleStandard';
 
-storiesOf('3. Inputs', module)
-  .add('3.10 ImageViewer', () => (
+storiesOf('Core', module)
+  .add('ImageViewer', () => (
     <TabbedView tabs={['API', 'Testkit']}>
       <div>
         <Markdown source={Readme}/>
@@ -20,7 +19,8 @@ storiesOf('3. Inputs', module)
           <ExampleStandard/>
         </CodeExample>
       </div>
-
-      <Markdown source={ReadmeTestkit}/>
+      <div>
+        <Markdown source={ReadmeTestkit}/>
+      </div>
     </TabbedView>
   ));

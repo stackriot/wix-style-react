@@ -5,54 +5,42 @@ import TextLinkLayout from '../../BaseComponents/TextLinkLayout';
 
 export default class BaseTextLink extends WixComponent {
 
-  static propTypes = {
-    ...TextLinkLayout.propTypes,
-    link: PropTypes.string,
-    disabled: PropTypes.bool,
-    download: PropTypes.bool,
-    rel: PropTypes.string,
-    target: PropTypes.string,
-    ariaLabel: PropTypes.string,
-    onMouseEnter: PropTypes.func,
-    onMouseLeave: PropTypes.func,
-    onClick: PropTypes.func
-  };
-
-  static defaultProps = {
-    ...TextLinkLayout.defaultProps,
-    disabled: false,
-    download: false,
-    rel: null,
-    target: null,
-    onClick: () => {}
-  };
-
-  _handleOnClick = event => {
-    const {link, disabled} = this.props;
-
-    if (!link || disabled) {
-      event.preventDefault();
+  static propTypes = Object.assign({},
+    TextLinkLayout.propTypes,
+    {
+      link: PropTypes.string.isRequired,
+      disabled: PropTypes.bool,
+      download: PropTypes.bool,
+      rel: PropTypes.string,
+      target: PropTypes.oneOf(['_blank', '_parent', '_self', '_top', 'framename']),
+      ariaLabel: PropTypes.string,
+      color: PropTypes.string,
+      onMouseEnter: PropTypes.func,
+      onMouseLeave: PropTypes.func
     }
+  );
 
-    if (!disabled) {
-      this.props.onClick(event);
+  static defaultProps = Object.assign({},
+    TextLinkLayout.defaultProps, {
+      disabled: false,
+      download: false,
+      rel: null,
+      target: null
     }
-  }
+  );
 
   render() {
     const {ariaLabel, disabled, link, children, download, rel, target, onMouseEnter, onMouseLeave} = this.props;
-
     const props = {
       download,
-      href: link,
-      onClick: this._handleOnClick,
+      href: `${link}`,
+      onClick: event => disabled && event.preventDefault(),
       role: 'link',
       style: {
         textDecoration: 'inherit',
-        tabIndex: 0,
-        display: 'inline-block'
-      },
-      disabled
+        color: this.props.color ? this.props.color : 'inherit',
+        tabIndex: 0
+      }
     };
 
     if (ariaLabel) {
@@ -76,11 +64,11 @@ export default class BaseTextLink extends WixComponent {
     }
 
     return (
-      <a {...props}>
-        <TextLinkLayout {...this.props}>
+      <TextLinkLayout {...this.props}>
+        <a {...props}>
           {children}
-        </TextLinkLayout>
-      </a>
+        </a>
+      </TextLinkLayout>
     );
   }
 }

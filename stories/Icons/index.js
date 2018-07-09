@@ -1,21 +1,20 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Markdown from 'wix-storybook-utils/Markdown';
-import CodeExample from 'wix-storybook-utils/CodeExample';
-
+import {storiesOf} from '@kadira/storybook';
+import Markdown from '../utils/Components/Markdown';
+import CodeExample from '../utils/Components/CodeExample';
 import Readme from '../../src/Icons/README.md';
 
 import AllIcons from './AllIcons';
-import AllIconsRaw from '!raw-loader!./AllIcons';
+import AllIconsRaw from '!raw!./AllIcons';
 
 import CustomeIcon from './CustomIcon';
-import CustomeIconRaw from '!raw-loader!./CustomIcon';
+import CustomeIconRaw from '!raw!./CustomIcon';
 
 import RTLIcon from './RTLIcon';
-import RTLIconRaw from '!raw-loader!./RTLIcon';
+import RTLIconRaw from '!raw!./RTLIcon';
 
-storiesOf('1. Foundation', module)
-  .add('1.4 Icons', () => (
+storiesOf('Common', module)
+  .add('Icons', () => (
     <div>
       <Markdown source={Readme}/>
 

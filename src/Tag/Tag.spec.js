@@ -1,19 +1,16 @@
 import React from 'react';
+import ReactTestUtils from 'react-dom/test-utils';
 import Tag from './Tag';
 import tagDriverFactory from './Tag.driver';
 import {createDriverFactory} from '../test-common';
 import {tagTestkitFactory} from '../../testkit';
 import {tagTestkitFactory as enzymeTagTestkitFactory} from '../../testkit/enzyme';
-import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
 import {mount} from 'enzyme';
 
 describe('Tag', () => {
 
   const createDriver = createDriverFactory(tagDriverFactory);
-  const id = 'myId';
-  const label = 'Hey';
-  const onRemove = jest.fn();
-  const onClick = jest.fn();
+  const id = 'myId', label = 'Hey', onRemove = jest.fn();
 
   it('should have a default small size', () => {
     const driver = createDriver(<Tag id={id}>{label}</Tag>);
@@ -51,18 +48,10 @@ describe('Tag', () => {
   });
 
   it('should call onRemove function on remove', () => {
-    const driver = createDriver(<Tag id={id} onRemove={onRemove} onClick={onClick}>{label}</Tag>);
+    const driver = createDriver(<Tag id={id} onRemove={onRemove}>{label}</Tag>);
 
     driver.removeTag();
     expect(onRemove).toBeCalledWith(id);
-    expect(onClick).not.toBeCalled();
-  });
-
-  it('should call onClick function on click', () => {
-    const driver = createDriver(<Tag id={id} onClick={onClick}>{label}</Tag>);
-
-    driver.click();
-    expect(onClick).toBeCalledWith(id);
   });
 
   it('should not display thumb by default', () => {
@@ -84,34 +73,22 @@ describe('Tag', () => {
     expect(driver.isWrapped()).toBe(true);
   });
 
-  describe('theme attribute', () => {
-    it('should have standard theme by default', () => {
-      const driver = createDriver(<Tag id={id}>a</Tag>);
-      expect(driver.isStandardTheme()).toBe(true);
-    });
-
-    it('should have warning theme', () => {
-      const driver = createDriver(<Tag id={id} theme="warning">a</Tag>);
-      expect(driver.isWarningTheme()).toBe(true);
-    });
-
-    it('should have error theme', () => {
-      const driver = createDriver(<Tag id={id} theme="error">a</Tag>);
-      expect(driver.isErrorTheme()).toBe(true);
-    });
-  });
-
   describe('testkit', () => {
     it('should exist', () => {
-      const id = 'hello';
-      expect(isTestkitExists(<Tag id={id}>a</Tag>, tagTestkitFactory)).toBe(true);
+      const div = document.createElement('div');
+      const dataHook = 'myDataHook';
+      const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(<div><Tag id={id} dataHook={dataHook}>{label}</Tag></div>));
+      const tagTestkit = tagTestkitFactory({wrapper, dataHook});
+      expect(tagTestkit.exists()).toBeTruthy();
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      const id = 'hello';
-      expect(isEnzymeTestkitExists(<Tag id={id}>a</Tag>, enzymeTagTestkitFactory, mount)).toBe(true);
+      const dataHook = 'myDataHook';
+      const wrapper = mount(<Tag id={id} dataHook={dataHook}>{label}</Tag>);
+      const tagTestkit = enzymeTagTestkitFactory({wrapper, dataHook});
+      expect(tagTestkit.exists()).toBeTruthy();
     });
   });
 });
