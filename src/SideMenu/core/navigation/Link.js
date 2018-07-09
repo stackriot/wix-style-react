@@ -1,21 +1,17 @@
 import React from 'react';
 import {bool, node, string} from 'prop-types';
 import LinkLayout from './LinkLayout';
-import styles from './styles.scss';
-import DataPickerArrow from '../../../Icons/dist/components/DataPickerArrow';
 
 const Link = ({children, isDiminishedHover, isActive, withArrow, badge, dataHook, ...rest}) =>
-  <LinkLayout isDiminishedHover={isDiminishedHover} isActive={isActive}>
+  <LinkLayout isDiminishedHover={isDiminishedHover} isActive={isActive} withArrow={withArrow}>
     <a data-hook={dataHook} {...rest}>
       {children}
       {badge}
-      {withArrow && <span className={styles.linkArrow}><DataPickerArrow/></span>}
     </a>
   </LinkLayout>;
 
 Link.defaultProps = {
-  dataHook: 'menu-navigation-link',
-  withArrow: false
+  dataHook: 'menu-navigation-link'
 };
 
 Link.propTypes = {
