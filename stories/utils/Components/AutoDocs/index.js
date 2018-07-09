@@ -51,7 +51,6 @@ const renderPropType = (type = {}) => {
             <li key={i}>
               {v.key}:&nbsp;
               {renderPropType(v)}
-              {v.required && <small><strong>&nbsp;required</strong></small>}
             </li>)
         }
       </ul>

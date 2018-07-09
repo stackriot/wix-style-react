@@ -5,9 +5,6 @@ import WixComponent from '../BaseComponents/WixComponent';
 import Add from '../Icons/dist/components/Add';
 import uniqueId from 'lodash/uniqueId';
 
-/**
-  * File picker component
-  */
 class FilePicker extends WixComponent {
   constructor(props) {
     super(props);
@@ -48,8 +45,6 @@ class FilePicker extends WixComponent {
   }
 }
 
-FilePicker.displayName = 'FilePicker';
-
 FilePicker.defaultProps = {
   mainLabel: 'Choose File',
   subLabel: 'No file chosen (Max size 5 MB)',
@@ -60,31 +55,14 @@ FilePicker.defaultProps = {
 };
 
 FilePicker.propTypes = {
-  /** Some text that will appear above the Icon */
   header: PropTypes.string,
-
-  /** Callback function for when a file is uploaded */
   onChange: PropTypes.func,
-
-  /** Some text that will appear as a main label besides the Icon */
   mainLabel: PropTypes.string,
-
-  /** Some text that will appear as a sub label besides the Icon   */
   subLabel: PropTypes.string,
-
-  /** supported formats seperated by comma (.png, .pdf) */
   supportedFormats: PropTypes.string,
-
-  /** Max size of file allowed */
   maxSize: PropTypes.number,
-
-  /** should present error */
   error: PropTypes.bool,
-
-  /** error message to present */
   errorMessage: PropTypes.string,
-
-  /** id for the filePicker */
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
