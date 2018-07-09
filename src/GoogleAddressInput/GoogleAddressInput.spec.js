@@ -88,12 +88,7 @@ describe('GoogleAddressInput', () => {
     });
 
     it('should show a footer', () => {
-      const component = createShallow({
-        Client: GmapsTestClient,
-        readOnly: true,
-        footer: 'foo bar',
-        footerOptions: {overrideStyle: true, disabled: true}
-      });
+      const component = createShallow({Client: GmapsTestClient, readOnly: true, footer: 'foo bar', footerOptions: {overrideStyle: true, disabled: true}});
 
       expect(component.find('InputWithOptions').props().options).toEqual([{
         id: 0,
@@ -204,12 +199,7 @@ describe('GoogleAddressInput', () => {
 
       const onSet = sinon.spy();
 
-      const component = createShallow({
-        Client: GmapsTestClient,
-        countryCode: 'XX',
-        onSet,
-        handler: GoogleAddressInputHandler.places
-      });
+      const component = createShallow({Client: GmapsTestClient, countryCode: 'XX', onSet, handler: GoogleAddressInputHandler.places});
       component.setState({suggestions: [JSON.parse('{"description": "my address", "place_id": 123}')]});
       component.find('InputWithOptions').props().onSelect({id: 0, value: 'my address'});
 
@@ -234,7 +224,7 @@ describe('GoogleAddressInput', () => {
       // Defer to make sure all promises run
       _.defer(() => {
         try {
-          expect(onSet.called).toBeFalsy();
+          expect(onSet.args[0][0]).toEqual(buildResult('{"components":"country:XX","input":"my addr"} - 1'));
           done();
         } catch (e) {
           done.fail(e);
@@ -251,7 +241,7 @@ describe('GoogleAddressInput', () => {
       // Defer to make sure all promises run
       _.defer(() => {
         try {
-          expect(onSet.called).toBeFalsy();
+          expect(onSet.args[0][0]).toEqual(null);
           done();
         } catch (e) {
           done.fail(e);
@@ -263,12 +253,12 @@ describe('GoogleAddressInput', () => {
       const onSet = sinon.spy();
       const component = createShallow({Client: GmapsTestClient, countryCode: 'YY', onSet, fallbackToManual: true});
       component.setState({suggestions: []});
-      component.find('InputWithOptions').props().onManuallyInput('dontfind');
+      component.find('InputWithOptions').props().onManuallyInput('some address with apartment');
 
       // Defer to make sure all promises run
       _.defer(() => {
         try {
-          expect(onSet.args[0][0]).toEqual(buildResult('dontfind'));
+          expect(onSet.args[0][0]).toEqual(buildResult('{"components":"country:YY","input":"some address with apartment"} - 1'));
           done();
         } catch (e) {
           done.fail(e);
