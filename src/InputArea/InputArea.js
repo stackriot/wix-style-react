@@ -190,6 +190,7 @@ InputArea.propTypes = {
 
   /** When true a letters counter will appear */
   hasCounter: PropTypes.bool,
+  iconLeft: PropTypes.object,
   id: PropTypes.string,
 
   /** i.e. '12px' */

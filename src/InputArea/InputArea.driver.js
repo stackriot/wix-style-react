@@ -28,6 +28,7 @@ const inputAreaDriverFactory = ({element, wrapper, component}) => {
     isOfStyle: style => textAreaElement.classList.contains(styles[`theme-${style}`]),
     isFocus: () => document.activeElement === textArea,
     exists: () => !!textArea,
+    hasIconLeft: () => !$component.find(`.${styles.prefix}`).is(':empty'),
     getStyle: () => textArea.style,
     getAriaLabel: () => textArea.getAttribute('aria-label'),
     getAriaControls: () => textArea.getAttribute('aria-controls'),
