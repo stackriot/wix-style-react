@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import ReactDatepicker from 'react-datepicker';
 import DatePickerInput from './DatePickerInput';
 import moment from 'moment';
-import classnames from 'classnames';
 import css from './DatePicker.scss';
 
 export default class DatePicker extends WixComponent {
@@ -66,12 +65,8 @@ export default class DatePicker extends WixComponent {
   }
 
   render() {
-    const cssClasses = [css.wrapper];
-    if (this.props.showYearDropdown || this.props.showMonthDropdown) {
-      cssClasses.push({'react-datepicker--hide-header': true});
-    }
     return (
-      <div className={classnames(cssClasses)}>
+      <div className={css.wrapper}>
         <ReactDatepicker
           {...this.props}
           selected={this.props.value}

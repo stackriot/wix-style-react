@@ -22,8 +22,7 @@ const datePickerDriverFactory = ({element, wrapper}) => {
     clickOnYearDropdown: () => ReactTestUtils.Simulate.click(getYearDropdown()),
     clickOnNthYear: (n = 1) => ReactTestUtils.Simulate.click(getNthYear(n)),
     clickOnPrevMonthButton: () => ReactTestUtils.Simulate.click(getPrevMonthButton()),
-    clickOnNextMonthButton: () => ReactTestUtils.Simulate.click(getNextMonthButton()),
-    isHeaderVisible: () => !(wrapper.querySelector('.react-datepicker--hide-header'))
+    clickOnNextMonthButton: () => ReactTestUtils.Simulate.click(getNextMonthButton())
   };
 
   return {
