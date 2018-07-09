@@ -15,11 +15,10 @@ const children = [
 ];
 
 export default {
-  category: '1. Foundation',
-  storyName: '1.2 + Label',
-
+  category: 'Core',
   component: Label,
   componentPath: '../../src/Label',
+
   componentProps: {
     children: children[0]
   },

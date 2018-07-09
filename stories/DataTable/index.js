@@ -18,8 +18,8 @@ import ExampleWithAnimatedRowDetailsRaw from '!raw-loader!./ExampleWithAnimatedR
 import ExampleSortable from './ExampleSortable';
 import ExampleSortableRaw from '!raw-loader!./ExampleSortable';
 
-storiesOf('10. Tables', module)
-  .add('10.1 DataTable', () => (
+storiesOf('Core', module)
+  .add('DataTable', () => (
     <TabbedView tabs={['API', 'TestKits']}>
       <div>
         <Markdown source={Readme}/>

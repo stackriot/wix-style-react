@@ -3,8 +3,7 @@ import React from 'react';
 import ButtonLayout from 'wix-style-react/ButtonLayout';
 
 export default {
-  category: '5. Buttons',
-  storyName: '5.0 ButtonLayout',
+  category: 'Core',
   component: ButtonLayout,
   componentPath: '../src/ButtonLayout',
   componentProps: {

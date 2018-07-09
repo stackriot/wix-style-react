@@ -14,8 +14,8 @@ import Examples from './Examples';
 import ExamplePaneltitleStyle from './ExamplePaneltitleStyle';
 import ExamplePaneltitleStyleRaw from '!raw-loader!./ExamplePaneltitleStyle';
 
-storiesOf('3. Inputs', module)
-  .add('3.1 + Input', () => (
+storiesOf('Core', module)
+  .add('Input', () => (
     <TabbedView tabs={['API', 'Themes', 'Testkit']}>
       <div>
         <AutoDocs source={InputSource}/>

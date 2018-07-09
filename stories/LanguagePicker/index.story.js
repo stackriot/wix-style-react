@@ -29,7 +29,7 @@ const LOCALES = {
 };
 
 export default {
-  category: 'Deprecated',
+  category: 'Core',
   component: LanguagePicker,
   componentPath: '../../src/LanguagePicker',
 

@@ -7,7 +7,7 @@ import ReadMe from '../../src/RichTextAreaComposite/README.md';
 import RichTextAreaCompositeExample from './RichTextAreaCompositeExample';
 
 storiesOf('3. Inputs', module)
-  .add('3.2b RichTextAreaComposite', () =>
+  .add('3.4 RichTextAreaComposite', () =>
     <div>
       <Markdown source={ReadMe}/>
       <InteractiveCodeExample title="Customize a <RichTextAreaComposite/>">

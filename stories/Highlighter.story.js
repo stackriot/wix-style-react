@@ -1,9 +1,8 @@
 import Highlighter from 'wix-style-react/Highlighter';
 
 export default {
-  category: '12. Other',
-  storyName: '12.4 Highlighter',
-
+  category: 'Core',
+  name: 'Highlighter',
   component: Highlighter,
   componentPath: '../src/Highlighter',
 

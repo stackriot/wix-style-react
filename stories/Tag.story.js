@@ -1,10 +1,8 @@
 import Tag from 'wix-style-react/Tag';
 
 export default {
-  category: '12. Other',
-  storyName: '12.5 Tag',
-
   component: Tag,
+  category: 'Core',
   componentPath: '../src/Tag',
   componentProps: {
     children: 'Hello World'

@@ -12,8 +12,8 @@ import ExampleControlledWithFooterRaw from '!raw-loader!./ExampleControlledWithF
 import ExampleControlledWithGoogleFooter from './ExampleControlledWithGoogleFooter';
 import ExampleControlledWithGoogleFooterRaw from '!raw-loader!./ExampleControlledWithGoogleFooter';
 
-storiesOf('3. Inputs', module)
-  .add('3.11 GoogleAddressInput', () => (
+storiesOf('Core', module)
+  .add('GoogleAddressInput', () => (
     <GoogleAPILoader>
       <AutoDocs source={GoogleAddressInputSource}/>
 

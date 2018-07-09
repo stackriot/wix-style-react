@@ -1,9 +1,7 @@
 import ToggleSwitch from 'wix-style-react/ToggleSwitch';
 
 export default {
-  category: '4. Selection',
-  storyName: '4.4 ToggleSwitch',
-
+  category: 'Core',
   component: ToggleSwitch,
   componentPath: '../src/ToggleSwitch',
 

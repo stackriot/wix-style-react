@@ -16,20 +16,16 @@ const children = [
 ];
 
 export default {
-  category: '1. Foundation',
-  storyName: '1.2 Text',
-
+  category: 'Common',
+  storyName: 'Typography',
   component: Text,
   componentPath: '../../src/Text',
   componentProps: {
-    children: 'Hello, World!',
-    dataHook: 'storybook-text'
+    children: 'Hello, World!'
   },
-
   exampleProps: {
     children
   },
-
   examples: (
     <div>
       <CodeExample title="Headers" code={ExampleHeaderTypographyRaw}>

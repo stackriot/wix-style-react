@@ -2,7 +2,7 @@ import {sliderTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../test
 import eyes from 'eyes.it';
 
 describe('Slider', () => {
-  const storyUrl = getStoryUrl('4. Selection', '4.7 Slider');
+  const storyUrl = getStoryUrl('Core', 'Slider');
 
   eyes.it('single handle flow', async () => {
     const dataHook = 'story-slider';

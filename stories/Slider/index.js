@@ -13,8 +13,8 @@ import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
 import ExampleRtl from './ExampleRtl';
 import ExampleRtlRaw from '!raw-loader!./ExampleRtl';
 
-storiesOf('4. Selection', module)
-  .add('4.7 Slider', () => (
+storiesOf('Core', module)
+  .add('Slider', () => (
     <div>
       <AutoDocs source={SliderSource}/>
 
