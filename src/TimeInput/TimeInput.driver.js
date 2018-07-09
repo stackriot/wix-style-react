@@ -15,7 +15,6 @@ const timeInputDriverFactory = ({element, wrapper, component}) => {
   return {
     exists: () => !!(element),
     getValue: () => input().getValue(),
-    isDisabled: () => input().isDisabled(),
     clickTickerUp: () => inputTicker().clickUp(),
     clickTickerDown: () => inputTicker().clickDown(),
     isAmPmIndicatorExist: () => !!amPmIndicator(),

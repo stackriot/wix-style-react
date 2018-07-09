@@ -76,13 +76,12 @@ describe('TimeInput', () => {
     });
   });
 
-  describe('onChange & disabled', () => {
+  describe('Input change', () => {
     it(`should trigger 'onChange' callBack upon clicking input's up/down ticker`, () => {
       const props = {
         onChange: sinon.spy()
       };
       const driver = createDriver(<TimePicker {...props}/>);
-      expect(driver.isDisabled()).toBeFalsy();
       driver.clickTickerUp();
       driver.clickTickerDown();
       expect(props.onChange.calledTwice).toBeTruthy();
@@ -97,8 +96,6 @@ describe('TimeInput', () => {
 
       driver.clickTickerUp();
       driver.clickTickerDown();
-
-      expect(driver.isDisabled()).toBeTruthy();
       expect(props.onChange.called).toBeFalsy();
     });
 
