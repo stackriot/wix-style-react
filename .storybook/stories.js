@@ -11,6 +11,7 @@ import '../stories/AutoComplete';
 import '../stories/Breadcrubms';
 import '../stories/Badge.story.js';
 import '../stories/ButtonLayout.story.js';
+import '../stories/ButtonSelection';
 import '../stories/DataTable';
 import '../stories/DatePicker.story.js';
 import '../stories/Dropdown';
