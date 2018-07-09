@@ -25,7 +25,7 @@ export default {
   category: storySettings.kind,
   storyName: storySettings.story,
   component: FloatingHelper,
-  componentPath: '../../src/FloatingHelper',
+  componentPath: '../../src/FloatingHelper/FloatingHelper.js',
 
   componentProps: {
     'data-hook': storySettings.dataHook,
@@ -41,22 +41,7 @@ export default {
   },
 
   exampleProps: {
-    placement: [
-      'auto-start',
-      'auto',
-      'auto-end',
-      'top-start',
-      'top',
-      'top-end',
-      'right-start',
-      'right',
-      'right-end',
-      'bottom-end',
-      'bottom',
-      'bottom-start',
-      'left-end',
-      'left',
-      'left-start'],
+    placement: ['right', 'bottom'],
 
     target: [
       {label: 'Simple text', value: 'I am simple text target'},
