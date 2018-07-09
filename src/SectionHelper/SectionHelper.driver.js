@@ -1,26 +1,12 @@
-import {testkitFactoryCreator} from '../test-common';
-import buttonDriverFactory from '../Backoffice/Button/Button.driver';
-
-const buttonTestkitFactory = testkitFactoryCreator(buttonDriverFactory);
+import ReactTestUtils from 'react-dom/test-utils';
 
 const sectionHelperDriverFactory = ({element}) => {
   const classExists = className => element.classList.contains(className);
-  const actionButtonDriver = () => buttonTestkitFactory({
-    wrapper: element,
-    dataHook: 'action-btn'
-  });
-
-  const closeButtonDriver = () => buttonTestkitFactory({
-    wrapper: element,
-    dataHook: 'close-btn'
-  });
 
   return {
     exists: () => !!element,
     titleText: () => element.querySelector('[data-hook="title"]').textContent,
-    actionText: () => actionButtonDriver().getButtonTextContent(),
-    clickAction: () => actionButtonDriver().click(),
-    clickClose: () => closeButtonDriver().click(),
+    clickClose: () => ReactTestUtils.Simulate.click(element.querySelector('[data-hook="close-btn"]')),
     textContent: () => element.textContent,
     isWarning: () => classExists('warning'),
     isStandard: () => classExists('standard'),

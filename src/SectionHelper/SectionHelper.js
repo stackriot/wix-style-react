@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import WixComponent from '../BaseComponents/WixComponent';
-import Text from '../Text';
-import ActionButton from './ActionButton';
 import CloseButton from './CloseButton';
 import css from './SectionHelper.scss';
 
@@ -25,21 +23,10 @@ class SectionHelper extends WixComponent {
 
     return (
       <div className={rootClasses}>
-        {this.props.onClose &&
-          <div className={css.close}>
-            <CloseButton onClick={this.props.onClose}/>
-          </div>
-        }
+        {this.props.onClose ? <div className={css.close}><CloseButton onClick={this.props.onClose}/></div> : null}
         <div className={css.content}>
-          {this.props.title && <Text dataHook="title" appearance="T4">{this.props.title}</Text>}
+          {this.props.title ? <h3 data-hook="title" className={css.title}>{this.props.title}</h3> : null}
           {this.props.children}
-          {this.props.onAction &&
-            <div className={css.action}>
-              <ActionButton onClick={this.props.onAction}>
-                {this.props.actionText}
-              </ActionButton>
-            </div>
-          }
         </div>
       </div>
     );
@@ -52,13 +39,7 @@ SectionHelper.propTypes = {
   /** Adds text as the title */
   title: PropTypes.node,
   /** When provided, will make a close button appear and invoke it upon click */
-  onClose: PropTypes.func,
-  /** When provided, will make an action button appear and invoke it upon click */
-  onAction: PropTypes.func,
-  /** Text label for the action button */
-  actionText: PropTypes.string,
-  /** Children to render */
-  children: PropTypes.node
+  onClose: PropTypes.func
 };
 
 SectionHelper.defaultProps = {
