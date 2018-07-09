@@ -21,6 +21,7 @@
 
 | method | arguments | returned value | description |
 |--------|-----------|----------------|-------------|
+| getFirstHighlightedRow | - | element | get the first highlighted row |
 | clickRowByIndex | number | - | click row index <number> |
 | getRowTextByIndex | number | string | get row index <number> text |
 | element | - | element | get the actual element |
