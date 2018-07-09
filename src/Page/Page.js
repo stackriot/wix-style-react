@@ -14,11 +14,6 @@ const SHORT_SCROLL_TOP_THRESHOLD = 3;
  * A page container which contains a header and scrollable content
  */
 class Page extends WixComponent {
-
-  static defaultProps = {
-    gradientCoverTail: true
-  }
-
   constructor() {
     super();
 
@@ -126,7 +121,7 @@ class Page extends WixComponent {
   }
 
   render() {
-    const {backgroundImageUrl, gradientClassName, children, gradientCoverTail} = this.props;
+    const {backgroundImageUrl, gradientClassName, children} = this.props;
     const {headerHeight, tailHeight, minimized} = this.state;
     const hasBackgroundImage = !!backgroundImageUrl;
     const hasGradientClassName = !!gradientClassName;
@@ -139,8 +134,6 @@ class Page extends WixComponent {
     const contentFullScreen = PageContent && PageContent.props.fullScreen;
     const pageDimensionsStyle = this._calculatePageDimensionsStyle();
     this._setContainerScrollTopThreshold(PageTail && hasGradientClassName);
-    const imageHeight = `${headerHeight + (PageTail ? -tailHeight : 39)}px`;
-    const gradientHeight = gradientCoverTail ? `${headerHeight + (PageTail ? -SCROLL_TOP_THRESHOLD : 39)}px` : imageHeight;
 
     return (
       <div className={s.page}>
@@ -185,7 +178,9 @@ class Page extends WixComponent {
             hasBackgroundImage &&
               <div
                 className={s.imageBackgroundContainer}
-                style={{height: imageHeight}}
+                style={{
+                  height: `${headerHeight + (PageTail ? -tailHeight : 39)}px`
+                }}
                 data-hook="page-background-image"
                 >
                 <div
@@ -199,7 +194,7 @@ class Page extends WixComponent {
               <div
                 data-hook="page-gradient-class-name"
                 className={`${s.gradientBackground} ${gradientClassName}`}
-                style={{height: gradientHeight}}
+                style={{height: `${headerHeight + (PageTail ? -SCROLL_TOP_THRESHOLD : 39)}px`}}
                 />
           }
           <div className={s.contentContainer} ref={r => this.contentContainerRef = r}>
@@ -227,8 +222,6 @@ Page.propTypes = {
   sidePadding: PropTypes.number,
   /** Header background color class name, allows to add a gradient to the header */
   gradientClassName: PropTypes.string,
-  /** If false Gradient will not cover Page.Tail */
-  gradientCoverTail: PropTypes.bool,
   children: PropTypes.arrayOf((children, key) => {
     const childrenObj = getChildrenObject(children);
 
