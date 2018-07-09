@@ -170,6 +170,3 @@ export const badgeTestkitFactory = testkitFactoryCreator(badgeDriverFactory);
 
 import datePickerDriverFactory from '../src/DatePicker/DatePicker.driver';
 export const datePickerTestkitFactory = testkitFactoryCreator(datePickerDriverFactory);
-
-import selectorDriverFactory from '../src/Selector/Selector.driver';
-export const selectorTestkitFactory = testkitFactoryCreator(selectorDriverFactory);
