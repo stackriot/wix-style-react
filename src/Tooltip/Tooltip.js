@@ -110,7 +110,6 @@ class Tooltip extends WixComponent {
   _childNode = null;
   _mountNode = null;
   _showTimeout = null;
-  _showInterval = null;
   _hideTimeout = null;
   _unmounted = false;
 
@@ -180,10 +179,6 @@ class Tooltip extends WixComponent {
     super.componentWillUnmount && super.componentWillUnmount();
     this._unmounted = true;
     this._getContainer() && this.hide();
-
-    if (this._showInterval) {
-      clearInterval(this._showInterval);
-    }
   }
 
   componentWillMount() {
@@ -281,9 +276,9 @@ class Tooltip extends WixComponent {
           let fw = 0;
           let sw = 0;
 
-          this._showInterval = setInterval(() => {
+          const testInterval = setInterval(() => {
             if (this.tooltipContent !== undefined && this.tooltipContent !== null) {
-              clearInterval(this._showInterval);
+              clearInterval(testInterval);
               do {
                 const tooltipNode = ReactDOM.findDOMNode(this.tooltipContent);
                 fw = this._getRect(tooltipNode).width;
