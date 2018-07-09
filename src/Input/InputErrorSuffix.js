@@ -11,7 +11,7 @@ class InputErrorSuffix extends React.Component {
       <Tooltip
         dataHook="input-tooltip"
         disabled={this.props.errorMessage.length === 0}
-        placement={this.props.tooltipPlacement}
+        placement="top"
         alignment="center"
         textAlign="left"
         content={this.props.errorMessage}
@@ -30,8 +30,7 @@ class InputErrorSuffix extends React.Component {
 InputErrorSuffix.propTypes = {
   theme: PropTypes.oneOf(['normal', 'paneltitle', 'material', 'amaterial']),
   errorMessage: PropTypes.string.isRequired,
-  focused: PropTypes.bool,
-  tooltipPlacement: PropTypes.string
+  focused: PropTypes.bool
 };
 
 export default InputErrorSuffix;
