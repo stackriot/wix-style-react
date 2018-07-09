@@ -1,7 +1,6 @@
 @import '../../src/common';
 
 $page-side-padding: 48px;
-$scroll-top-threshold: 24px;
 $page-background-color: rgba($D70,.95);
 
 .page {
@@ -14,7 +13,6 @@ $page-background-color: rgba($D70,.95);
 
 .page-header-container {
   padding-top: 30px;
-  padding-bottom: $scroll-top-threshold;
   position: absolute;
   z-index: 2;
   min-height: 30px;
@@ -45,7 +43,7 @@ $page-background-color: rgba($D70,.95);
 
 .tail {
   background-color: transparent;
-  padding: $scroll-top-threshold $page-side-padding 0;
+  padding: 24px $page-side-padding 0;
   transition: padding .2s cubic-bezier(0.4, 0.0, 0.2, 1);  
   margin: 0 auto;
 
