@@ -1,59 +1,40 @@
 import eyes from 'eyes.it';
 import {buttonTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../../testkit/protractor';
-import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
-import React from 'react';
 
 describe('Backoffice Button', () => {
-  const storyUrl = getStoryUrl('5. Buttons', '5.1 Standard');
-  const driver = buttonTestkitFactory({dataHook: 'storybook-button'});
+  const storyUrl = getStoryUrl('Backoffice', 'Button');
+  const beforeClickState = 'Click Me!';
+  const clickedState = 'Clicked!';
 
-  const wait = () => waitForVisibilityOf(driver.element(), 'Cannot find Button');
+  beforeEach(() => {
+    browser.get(storyUrl);
+  });
 
-  beforeAll(() => browser.get(storyUrl));
-  afterEach(() => autoExampleDriver.reset());
+  eyes.it('should click a button', () => {
+    const dataHook = 'story-button-enabled';
+    const driver = buttonTestkitFactory({dataHook});
 
-  eyes.it('should alert on click', () =>
-    wait()
+    waitForVisibilityOf(driver.element(), 'Cannot find Button')
       .then(() => {
-        autoExampleDriver.setProps({
-          onClick: () => window.alert('clicked') // eslint-disable-line no-alert
-        });
-
+        expect(driver.getButtonTextContent()).toBe(beforeClickState);
         driver.click();
+        expect(driver.getButtonTextContent()).toBe(clickedState);
+      });
+  });
 
-        const alertDialog = browser.switchTo().alert();
+  eyes.it('should render disabled, suffixIcon, prefixIcon buttons correctly', () => {
+    const dataHookDisabled = 'story-button-disabled';
+    const dataHookPrefix = 'story-button-prefix';
+    const dataHookSuffix = 'story-button-suffix';
+    const driverDisabled = buttonTestkitFactory({dataHook: dataHookDisabled});
+    const driverPrefix = buttonTestkitFactory({dataHook: dataHookPrefix});
+    const driverSuffix = buttonTestkitFactory({dataHook: dataHookSuffix});
 
-        expect(alertDialog.getText()).toBe('clicked');
-        alertDialog.dismiss();
-      })
-  );
-
-  eyes.it('should render disabled', () =>
-    wait()
+    waitForVisibilityOf([driverDisabled.element(), driverPrefix.element(), driverSuffix.element()], 'Cannot find Button')
       .then(() => {
-        autoExampleDriver.setProps({disabled: true});
-        expect(driver.isButtonDisabled()).toBe(true);
-      })
-  );
-
-  eyes.it('should render disabled', () =>
-    wait()
-      .then(() => {
-        autoExampleDriver.setProps({disabled: true});
-        expect(driver.isButtonDisabled()).toBe(true);
-      })
-  );
-
-  eyes.it('should render prefix & sufix', () =>
-    wait()
-      .then(() => {
-        autoExampleDriver.setProps({
-          prefixIcon: <div>prefix</div>,
-          suffixIcon: <div>suffix</div>
-        });
-
-        expect(driver.isPrefixIconExists()).toBe(true);
-        expect(driver.isSuffixIconExists()).toBe(true);
-      })
-  );
+        expect(driverDisabled.isButtonDisabled()).toBe(true);
+        expect(driverPrefix.isPrefixIconExists()).toBe(true);
+        expect(driverSuffix.isSuffixIconExists()).toBe(true);
+      });
+  });
 });
