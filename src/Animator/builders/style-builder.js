@@ -10,21 +10,7 @@ const translateTemplates = {
   right: size => `translate(-${size}, 0)`
 };
 
-const switchDirection = {
-  top: 'bottom',
-  bottom: 'top',
-  right: 'left',
-  left: 'right'
-};
-
-const getTranslate = (translate, inOrOut) => {
-  const mode = inOrOut === 'in' ? 'enter' : 'exit';
-  let direction = translate[mode].direction;
-  if (mode === 'exit') {
-    direction = switchDirection[direction];
-  }
-  return translateTemplates[direction](translate[mode].size);
-};
+const getTranslate = (translate, inOrOut) => translateTemplates[translate.to[inOrOut]](translate.size[inOrOut]);
 
 class StyleBuilder {
 

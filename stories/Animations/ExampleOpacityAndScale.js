@@ -8,9 +8,8 @@ import AnimationTemplate from './AnimationTemplate';
 const OpacityExample = ({show}) => {
   return (
     <div className={css.basicWrapper}>
-      <Animator opacity scale className={`${css.flexParent} ${css.height-50}`}>
+      <Animator opacity scale>
         {show && <div className={css.basicDiv}>I am animating opacity AND SCALE </div>}
-        {!show && <div className={css.basicDiv} animatorChildStyle={{position: 'absolute'}} style={{color: 'red'}}>I am another DIV!</div>}
       </Animator>
     </div>
   )

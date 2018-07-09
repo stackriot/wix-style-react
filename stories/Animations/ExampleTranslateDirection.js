@@ -12,8 +12,8 @@ const ExampleTranslateDirection = ({show}) => {
   return (
     <div className={css.basicWrapper}>
       {directions.map((direction, index) =>
-        (<Animator show={show} key={index} opacity translate={direction}>
-          <div className={css.basicDiv}>direction: {direction}</div>
+        (<Animator key={index} opacity translate={direction}>
+          {show && <div className={css.basicDiv}>direction: {direction}</div>}
         </Animator>)
       )}
     </div>

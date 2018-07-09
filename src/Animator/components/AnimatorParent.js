@@ -1,35 +1,44 @@
-import React from 'react';
-import {node, string, oneOfType, any, bool} from 'prop-types';
+import React, {Component} from 'react';
+import {bool, node, string, oneOfType, any, boolean} from 'prop-types';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import formatProps from '../helpers/format-props';
 import CSSTransitionWrapper from './CSSTransitionWrapper';
 
-const AnimatorParent = props => {
+class AnimatorParent extends Component {
 
-  const {className, dataHook} = props;
-  const animatorProps = formatProps(props);
-  return (
-    <TransitionGroup data-hook={dataHook} className={className}>
-      {animatorProps.children.map((item, index) =>
-        <CSSTransitionWrapper
-          key={item.key || index}
-          index={index}
-          {...item.props}
-          animatorProps={animatorProps}
-          >
-          {item}
-        </CSSTransitionWrapper>
-      )}
-    </TransitionGroup>
-  );
-};
+  animatorProps;
+
+  isShowByProp() {
+    const {in: _in} = this.props;
+    return ((_in === undefined) || !!_in);
+  }
+
+  render() {
+    const {className, dataHook} = this.props;
+    this.animatorProps = formatProps(this.props);
+    return (
+      <TransitionGroup data-hook={dataHook} className={className}>
+        {this.isShowByProp() && this.animatorProps.children.map((item, index) =>
+          <CSSTransitionWrapper
+            key={item.key || index}
+            index={index}
+            {...item.props}
+            animatorProps={this.animatorProps}
+            >
+            {item}
+          </CSSTransitionWrapper>
+        )}
+      </TransitionGroup>
+    );
+  }
+}
 
 AnimatorParent.propTypes = {
   sequence: oneOfType([bool, string]),
   translate: any,
   children: node,
   className: any,
-  show: any,
+  in: boolean,
   dataHook: any
 };
 

@@ -46,9 +46,6 @@ import ExampleDebugRaw from '!raw-loader!./ExampleDebug';
 import ExampleByInProp from './ExampleByInProp';
 import ExampleByInPropRaw from '!raw-loader!./ExampleByInProp';
 
-import ExampleDelayAndNesting from './ExampleDelayAndNesting';
-import ExampleDelayAndNestingRaw from '!raw-loader!./ExampleDelayAndNesting';
-
 import ExampleStandard from './ExampleStandard';
 import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
 
@@ -59,11 +56,11 @@ storiesOf('Common', module)
 
       <h1>Usage examples</h1>
 
-      <CodeExample title="Opacity Animation using show prop (it is recommended to use this prop when you can)" code={ExampleOpacityRaw}>
+      <CodeExample title="Opacity Animation" code={ExampleOpacityRaw}>
         <ExampleOpacity/>
       </CodeExample>
 
-      <CodeExample title="Opacity and Scale Animation without 'show' prop (gives you the ability to mount/unmount 2 different children in the same Animator - less recommended approach but possible)" code={ExampleOpacityAndScaleRaw}>
+      <CodeExample title="Opacity and Scale Animation" code={ExampleOpacityAndScaleRaw}>
         <ExampleOpacityAndScale/>
       </CodeExample>
 
@@ -107,15 +104,11 @@ storiesOf('Common', module)
         <ExampleMockServer/>
       </CodeExample>
 
-      <CodeExample title="Animating with 'show' prop when components exists by default" code={ExampleByInPropRaw}>
+      <CodeExample title="Animating with 'in' prop when components exists by default" code={ExampleByInPropRaw}>
         <ExampleByInProp/>
       </CodeExample>
 
-      <CodeExample title="Delay and Nesting - works only with the 'show' prop" code={ExampleDelayAndNestingRaw}>
-        <ExampleDelayAndNesting/>
-      </CodeExample>
-
-      <CodeExample title="Debug - Emulates animation stages - Inspect element in devtools to see class & Style changes. make sure element exists with no condition and also remove the 'show' prop if exists" code={ExampleDebugRaw}>
+      <CodeExample title="Debug - Emulates animation stages - Inspect element in devtools to see class & Style changes" code={ExampleDebugRaw}>
         <ExampleDebug/>
       </CodeExample>
 
