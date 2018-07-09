@@ -406,7 +406,7 @@ describe('Input', () => {
     });
 
     it('should use "normal-with-selection" size if withSelection', () => {
-      const driver = createDriver(<Input size="normal" withSelection/>);
+      const driver = createDriver(<Input size="normal" withSelection={true}/>);
       expect(driver.isOfSize('normal-with-selection')).toBeTruthy();
     });
 

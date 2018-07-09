@@ -176,7 +176,7 @@ class ControlledModalSelector extends PureComponent {
           footerStatus={footerStatus}
           hasMore={this.state.hasMore}
           loadMore={this.loadMore}
-          initialLoad
+          initialLoad={true}
           >
           {
             this.state.options.length === 0 ?
