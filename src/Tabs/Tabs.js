@@ -1,38 +1,61 @@
 import React from 'react';
-import omit from 'omit';
 import PropTypes from 'prop-types';
-
+import classNames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
-import SideContent from './core/SideContent';
-import TabItems from './core/TabItems';
-import * as TabPropTypes from './core/constants/tab-prop-types';
 import styles from './Tabs.scss';
 
-
 class Tabs extends WixComponent {
-
   render() {
-    const {sideContent} = this.props;
-    const tabItemsProps = omit(['sideContent'], this.props);
+    const {items, onClick, activeId, type, hasDivider, width} = this.props;
+    const style = {};
+    const tabs = items.map(item => {
+      const className = classNames(styles.tab, {
+        [styles.active]: item.id === activeId
+      });
 
-    return (
-      <div className={styles.container}>
-        <TabItems {...tabItemsProps}/>
-        <SideContent content={sideContent}/>
-      </div>
-    );
+      if (type === 'uniformSide') {
+        style.width = width;
+      }
+
+      return (
+        <li key={item.id} onClick={() => onClick(item)} className={className} style={style}>
+          {item.title}
+        </li>
+      );
+    });
+    const className = classNames(styles[type], styles.container, {
+      [styles.hasDivider]: hasDivider
+    });
+
+    return <ul className={className}>{tabs}</ul>;
   }
-
 }
 
+Tabs.tabTypes = ['compact', 'uniformSide', 'uniformFull'];
+
 Tabs.propTypes = {
-  items: TabPropTypes.items.isRequired,
-  onClick: TabPropTypes.onClick,
-  activeId: TabPropTypes.activeId,
-  type: TabPropTypes.type,
-  width: TabPropTypes.width,
-  sideContent: TabPropTypes.sideContent,
-  dataHook: PropTypes.string
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
+    title: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element
+    ]).isRequired
+  })).isRequired,
+  onClick: PropTypes.func,
+  activeId: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  type: PropTypes.oneOf(Tabs.tabTypes),
+  hasDivider: PropTypes.bool,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+};
+
+Tabs.defaultProps = {
+  hasDivider: true
 };
 
 export default Tabs;
