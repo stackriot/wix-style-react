@@ -236,7 +236,7 @@ describe('Tooltip', () => {
     });
   });
 
-  describe('maxWidth attribute', () => {
+  describe('max-width attribute', () => {
     it('should set default max-width 378', () => {
       const driver = createDriver(<Tooltip {..._props}>{children}</Tooltip>);
       driver.mouseEnter();
@@ -251,26 +251,6 @@ describe('Tooltip', () => {
       driver.mouseEnter();
       return resolveIn(30).then(() => {
         expect(driver.getMaxWidth()).toBe('400px');
-      });
-    });
-  });
-
-
-  describe('minWidth attribute', () => {
-    it('should not have any min-width as default', () => {
-      const driver = createDriver(<Tooltip {..._props}>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.getMinWidth()).toBe(undefined);
-      });
-    });
-
-    it('should set custom min-width', () => {
-      const props = {..._props, minWidth: '150px'};
-      const driver = createDriver(<Tooltip {...props}>{children}</Tooltip>);
-      driver.mouseEnter();
-      return resolveIn(30).then(() => {
-        expect(driver.getMinWidth()).toBe('150px');
       });
     });
   });

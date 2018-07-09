@@ -12,8 +12,6 @@ const arrowDirectionToPlacement = {
 };
 
 const tooltipDriverFactory = ({element, wrapper}) => {
-  const getTooltipContent = () => document.body.querySelector('.tooltip');
-
   return {
     isShown: () => !!document.body.querySelector('.tooltip'),
     focus: () => ReactTestUtils.Simulate.focus(element),
@@ -31,24 +29,19 @@ const tooltipDriverFactory = ({element, wrapper}) => {
       return arrowDirectionToPlacement[arrowDirection];
     },
     getContent: () => {
-      let content = getTooltipContent();
+      let content = document.body.querySelector('.tooltip');
       while (content.children.length > 0) {
         content = content.children[0];
       }
       return content.innerHTML;
     },
     getMaxWidth: () => {
-      const content = getTooltipContent();
+      const content = document.body.querySelector('.tooltip');
       const values = content.style._values;
       return values['max-width'];
     },
-    getMinWidth: () => {
-      const content = getTooltipContent();
-      const values = content.style._values;
-      return values['min-width'];
-    },
     getPadding: () => {
-      const content = getTooltipContent();
+      const content = document.body.querySelector('.tooltip');
       const values = content.style._values;
       return values.padding;
     },
