@@ -7,18 +7,15 @@ import SvgV from '../svg/V';
 import WixComponent from '../BaseComponents/WixComponent';
 import Label from '../Label/Label';
 
-/** a simple WixStyle checkbox */
 class Checkbox extends WixComponent {
   static propTypes = {
-    /** used for automatic testing */
-    active: bool,
+    active: bool,       // FOR AUTOMATIC TESTING
     checked: bool,
     children: any,
     disabled: bool,
     id: string,
     indeterminate: bool,
-    /** used for automatic testing */
-    hover: bool,
+    hover: bool,        // FOR AUTOMATIC TESTING
     size: oneOf(['medium', 'large']),
     onChange: func,
   }
@@ -27,8 +24,6 @@ class Checkbox extends WixComponent {
     size: 'medium',
     onChange: () => { },
   }
-
-  static displayName = 'Checkbox'
 
   render() {
     const {id = uniqueId(), checked, indeterminate, disabled, hover, active, size, onChange} = this.props;
