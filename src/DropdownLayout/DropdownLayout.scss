@@ -32,10 +32,10 @@ $top-arrow-size: 8px;
   padding: 0;
   transition: opacity 0.2s ease;
   visibility: hidden;
-  width: 100%;
+  min-width: 100%;
+  max-width: calc(100% + 34px);
   z-index: 6;
-  position: absolute;
-  left: 0;
+  position:absolute;
 
   -webkit-touch-callout: none;
   -webkit-user-select: none;
