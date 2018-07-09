@@ -6,13 +6,11 @@ import selectorDriverFactory from '../Selector/Selector.driver';
 import searchDriverFactory from '../Search/Search.driver';
 import textDriverFactory from '../Text/Text.driver';
 import {dataHooks} from './ModalSelectorLayout.helpers';
-import checkboxDriverFactory from '../Checkbox/Checkbox.driver';
 
 const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 const loaderTestkitFactory = testkitFactoryCreator(loaderDriverFactory);
 const buttonTestkitFactory = testkitFactoryCreator(buttonDriverFactory);
 const searchTestkitFactory = testkitFactoryCreator(searchDriverFactory);
-const checkboxTestkitFactory = testkitFactoryCreator(checkboxDriverFactory);
 
 const modalSelectorLayoutDriverFactory = ({element}) => {
   const findInModalbyDataHook = dataHook => element.querySelector(`[data-hook="${dataHook}"]`);
@@ -46,7 +44,6 @@ const modalSelectorLayoutDriverFactory = ({element}) => {
   const selectorDriverAt = i => selectorDriverFactory({element: getSelectors()[i]});
   const emptyState = () => findInModalbyDataHook(dataHooks.emptyState);
   const noResultsFoundState = () => findInModalbyDataHook(dataHooks.noResultsFoundState);
-  const footerSelector = checkboxTestkitFactory({wrapper: element, dataHook: 'footer-selector'});
 
   return {
     exists: () => !!element,
@@ -65,8 +62,7 @@ const modalSelectorLayoutDriverFactory = ({element}) => {
     listExists: () => !!getList(),
     numberOfItemsInList: () => getSelectors().length,
     getSelectorDriverAt: i => selectorDriverAt(i),
-    scrollDown: () => getModalBody().dispatchEvent(new Event('scroll')),
-    footerSelector: () => footerSelector
+    scrollDown: () => getModalBody().dispatchEvent(new Event('scroll'))
   };
 };
 

@@ -56,8 +56,6 @@ export default class ModalSelectorLayout extends WixComponent {
      *    subtitle?: string,
      *    extraText?: string,
      *    extraNode?: string,
-     *    disabled?: boolean // show item as disabled, dont count it in "select all", exclude from `onOk`
-     *    selected?: boolean // force item as selected
      *    image?: node
      *  }>,
      *  totalCount: number
@@ -262,6 +260,7 @@ export default class ModalSelectorLayout extends WixComponent {
             isSelected(item) ?
               selectedItems.filter(({id}) => item.id !== id) :
               selectedItems.concat(item) :
+
            [item]
       });
 
@@ -281,9 +280,9 @@ export default class ModalSelectorLayout extends WixComponent {
               subtitle={item.subtitle}
               extraNode={item.extraNode ? item.extraNode : <Text appearance="T1.1">{item.extraText}</Text>}
               isSelected={isSelected(item)}
-              isDisabled={item.disabled}
-              onToggle={() => !item.disabled && onToggle(item)}
+              onToggle={() => onToggle(item)}
               />
+
           ))}
         </ul>
       );
@@ -306,16 +305,12 @@ export default class ModalSelectorLayout extends WixComponent {
       .then(({items: itemsFromNextPage, totalCount}) => {
         if (this.state.searchValue === searchValue) { // react only to the resolve of the relevant search
           const newItems = [...items, ...itemsFromNextPage];
-          const selectedItems = this.state.selectedItems.concat(
-            itemsFromNextPage.filter(({selected}) => selected)
-          );
 
           const shouldShowNoResultsFoundState = (newItems.length === 0) && searchValue;
           const isEmpty = (newItems.length === 0) && !searchValue;
 
           this.setState({
             items: newItems,
-            selectedItems,
             isLoaded: true,
             isEmpty,
             isSearching: false,
@@ -331,9 +326,6 @@ export default class ModalSelectorLayout extends WixComponent {
     return (items.length === 0 && !isLoaded) || (items.length < totalCount) || isSearching;
   }
 
-  _getEnabledItems = items =>
-    items.filter(({disabled}) => !disabled);
-
   _renderFooter = () => {
     const {
       isLoaded,
@@ -348,42 +340,37 @@ export default class ModalSelectorLayout extends WixComponent {
       multiple
     } = this.props;
 
-    const enabledItems = this._getEnabledItems(selectedItems);
-
     return (
       <FooterLayout
         withTopPadding={isLoaded}
         onCancel={onCancel}
-        onOk={() => onOk(multiple ? enabledItems : enabledItems[0])}
+        onOk={() => onOk(multiple ? selectedItems : selectedItems[0])}
         cancelText={cancelButtonText}
         confirmText={okButtonText}
         enableOk={!!selectedItems.length}
         children={multiple && this._renderFooterSelector()}
         />
     );
-  };
+  }
 
   _renderFooterSelector = () => {
     const {selectAllText, deselectAllText} = this.props;
     const {selectedItems, items} = this.state;
 
-    const enabledItems = this._getEnabledItems(items);
-    const selectedEnabled = selectedItems.filter(({disabled}) => !disabled);
-
     const cases = {
       select: {
         text: selectAllText,
-        number: enabledItems.length,
-        onChange: () => this.setState({selectedItems: selectedItems.concat(enabledItems)}),
+        number: items.length,
+        onChange: () => this.setState({selectedItems: items}),
         indeterminate: false,
         checked: false
       },
 
       deselect: {
         text: deselectAllText,
-        number: selectedEnabled.length,
-        onChange: () => this.setState({selectedItems: selectedItems.filter(({disabled}) => disabled)}),
-        indeterminate: selectedEnabled.length < enabledItems.length,
+        number: selectedItems.length,
+        onChange: () => this.setState({selectedItems: []}),
+        indeterminate: selectedItems.length < items.length,
         checked: true
       }
     };
@@ -394,11 +381,10 @@ export default class ModalSelectorLayout extends WixComponent {
       onChange,
       checked,
       indeterminate
-    } = selectedEnabled.length ? cases.deselect : cases.select;
+    } = selectedItems.length ? cases.deselect : cases.select;
 
     return (
       <Checkbox
-        dataHook="footer-selector"
         checked={checked}
         onChange={onChange}
         indeterminate={indeterminate}
