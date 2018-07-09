@@ -15,8 +15,7 @@ class PopoverMenu extends WixComponent {
     buttonHeight: Button.propTypes.height,
     maxWidth: Tooltip.propTypes.maxWidth,
     appendToParent: Tooltip.propTypes.appendToParent,
-    appendTo: Tooltip.propTypes.appendTo,
-    zIndex: Tooltip.propTypes.zIndex
+    appendTo: Tooltip.propTypes.appendTo
   };
 
   static defaultProps = {
@@ -96,7 +95,6 @@ class PopoverMenu extends WixComponent {
         shouldCloseOnClickOutside
         appendTo={this.props.appendTo}
         appendToParent={this.props.appendToParent}
-        zIndex={this.props.zIndex}
         >
         <Button
           type="button"
