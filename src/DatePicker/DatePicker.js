@@ -33,9 +33,6 @@ export default class DatePicker extends WixComponent {
     /** Custom date format */
     dateFormat: PropTypes.string,
 
-    /** DatePicker instance locale */
-    locale: PropTypes.string,
-
     /** Is the DatePicker disabled */
     disabled: PropTypes.bool,
     error: PropTypes.bool,
