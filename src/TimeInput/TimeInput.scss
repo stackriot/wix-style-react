@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: row;
   line-height: 15px;
-  width: 115px;
 
   &.rtl {
       flex-direction: row-reverse;
@@ -16,7 +15,7 @@
 .time {
     cursor: pointer;
     display: block;
-    width: inherit;
+    width: 115px;
     white-space: nowrap;
     flex-direction: row;
     box-sizing: border-box;
