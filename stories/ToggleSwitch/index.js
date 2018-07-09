@@ -1,10 +1,9 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import Markdown from '../utils/Components/Markdown';
-import AutoDocs from '../utils/Components/AutoDocs';
 import TabbedView from '../utils/Components/TabbedView';
 import CodeExample from '../utils/Components/CodeExample';
-import ToggleSwitchSource from '!raw-loader!wix-style-react/ToggleSwitch/ToggleSwitch';
+import Readme from '../../src/ToggleSwitch/README.md';
 import ReadmeTestKit from '../../src/ToggleSwitch/README.TESTKIT.md';
 
 import ExampleStandard from './ExampleStandard';
@@ -20,7 +19,7 @@ storiesOf('Core', module)
   .add('ToggleSwitch', () => (
     <TabbedView tabs={['API Documentation', 'TestKits Documentation']}>
       <div>
-        <AutoDocs source={ToggleSwitchSource}/>
+        <Markdown source={Readme}/>
 
         <h1>Usage examples</h1>
 
@@ -39,4 +38,6 @@ storiesOf('Core', module)
 
       <Markdown source={ReadmeTestKit}/>
     </TabbedView>
+
+
   ));

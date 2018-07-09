@@ -6,10 +6,8 @@ import WixComponent from '../BaseComponents/WixComponent';
 
 import styles from './ToggleSwitch.scss';
 
-/**
-  * Controlled switch
-  */
 class ToggleSwitch extends WixComponent {
+
   constructor(params) {
     super(params);
     this.id = uniqueId();
@@ -59,21 +57,16 @@ class ToggleSwitch extends WixComponent {
 }
 
 ToggleSwitch.displayName = 'ToggleSwitch';
-
 ToggleSwitch.propTypes = {
   checked: PropTypes.bool.isRequired,
-
-  /** Callback function when user changes the value of the component  */
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
-
-  /** Specifies toggle size  */
   size: PropTypes.oneOf(['x-small', 'small', 'large'])
 };
 
 ToggleSwitch.defaultProps = {
   checked: false,
-  onChange: () => {},
+  onChange: () => { },
   disabled: false,
   size: 'large'
 };
