@@ -107,8 +107,7 @@
     "react-onclickoutside": "^5.7.1",
     "react-remarkable": "^1.1.1",
     "react-transition-group": "^2.2.0",
-    "slate": "^0.20.3",
-    "wix-animations": "^1.0.2"
+    "slate": "^0.20.3"
   },
   "jest": {
     "setupFiles": [

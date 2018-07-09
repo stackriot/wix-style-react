@@ -8,7 +8,7 @@ import Label from '../../src/Label';
 import {Plus, ArrowDownThin} from 'wix-style-react/Icons';
 import Tooltip from '../../src/Tooltip';
 import ToggleSwitch from '../../src/ToggleSwitch';
-import {Animator} from 'wix-animations';
+import Animator from '../../src/Animator';
 
 function renderStandardInput() {
   return (
