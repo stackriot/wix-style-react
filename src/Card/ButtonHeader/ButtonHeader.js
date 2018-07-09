@@ -17,8 +17,7 @@ class ButtonHeader extends WixComponent {
     tooltip: node,
     theme: oneOf([
       'standard',
-      'fullblue',
-      'emptyblue'
+      'fullblue'
     ]),
     withoutDivider: bool
   };
@@ -43,26 +42,12 @@ class ButtonHeader extends WixComponent {
 
     const buttonClass = classNames({
       [styles.button]: theme === 'standard',
-      [styles.buttonSmall]: theme !== 'standard'
+      [styles.buttonSmall]: theme === 'fullblue'
     });
 
     const height = theme === 'standard' ? 'medium' : 'small';
-    let buttonTheme;
-    switch (theme) {
-      case 'standard': {
-        buttonTheme = 'whiteblueprimary';
-        break;
-      }
-      case 'emptyblue': {
-        buttonTheme = 'emptyblue';
-        break;
-      }
-      case 'fullblue':
-      default: {
-        buttonTheme = 'fullblue';
-        break;
-      }
-    }
+    const buttonTheme = theme === 'standard' ? 'whiteblueprimary' : 'fullblue';
+
     const buttonElement = (
       <div className={buttonClass}>
         <Button
