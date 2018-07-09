@@ -84,7 +84,6 @@ function loadStories() {
 
   require('../stories/MessageBox');
   require('../stories/Modal');
-  require('../stories/EditableSelector');
   require('../stories/ModalSelector');
   require('../stories/Selector');
 }
