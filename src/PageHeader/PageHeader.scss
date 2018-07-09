@@ -15,11 +15,6 @@
 .breadcrumbs-container {
   margin-left: -10px;
 
-  :global(.rtl) & {
-    margin-left: 0;
-    margin-right: -10px;
-  }
-
   &.absolute {
     position: absolute;
   }
@@ -32,10 +27,6 @@
   z-index: 1;
   width: 36px;
   height: 36px;
-
-  :global(.rtl) & {
-    left: 12px;
-  }
 
   button {
     border: none;
@@ -61,16 +52,6 @@
         background-color: rgba($D80, 0.3);
       }
     }
-  }
-}
-
-.back-button-icon {
-  display: block;
-  width: 36px;
-  height: 36px;
-
-  :global(.rtl) & {
-    transform: scaleX(-1);
   }
 }
 
