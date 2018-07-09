@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import InputWithOptions from '../InputWithOptions';
-import SearchIcon from 'wix-ui-icons-common/Search';
+import Search2 from '../Icons/dist/components/Search2';
 import WixComponent from '../BaseComponents/WixComponent';
 
 import styles from './Search.scss';
@@ -75,7 +75,7 @@ export default class Search extends WixComponent {
         {...this.props}
         ref="searchInput"
         roundInput
-        prefix={<div className={styles.leftIcon}><SearchIcon/></div>}
+        prefix={<div className={styles.leftIcon}><Search2/></div>}
         menuArrow={false}
         clearButton
         closeOnSelect

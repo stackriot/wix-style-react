@@ -1,12 +1,11 @@
 @import '../common';
 
 .leftIcon {
-    margin: 0 4px 0 3px;
-    color: $B10;
+    display: inline-flex;
+    width: 17px;
+    margin: 0 6px;
 
-    & > svg {
-        display: block;
-        width: 22px;
-        height: 22px;
-    }
+    align-items: center;
+
+    color: $B10;
 }
