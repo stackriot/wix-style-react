@@ -56,27 +56,22 @@ export default class DatePicker extends WixComponent {
     dateFormat: PropTypes.string,
 
     /** DatePicker instance locale */
-    locale: PropTypes.oneOfType([
-      PropTypes.oneOf([
-        'en',
-        'es',
-        'pt',
-        'fr',
-        'de',
-        'pl',
-        'it',
-        'ru',
-        'ja',
-        'ko',
-        'tr',
-        'sv',
-        'no',
-        'nl',
-        'da']),
-      PropTypes.shape({
-        distanceInWords: PropTypes.object,
-        format: PropTypes.object
-      })
+    locale: PropTypes.oneOf([
+      'en',
+      'es',
+      'pt',
+      'fr',
+      'de',
+      'pl',
+      'it',
+      'ru',
+      'ja',
+      'ko',
+      'tr',
+      'sv',
+      'no',
+      'nl',
+      'da'
     ]),
 
     /** Is the DatePicker disabled */
@@ -255,7 +250,7 @@ export default class DatePicker extends WixComponent {
       month: value,
       year: value,
       firstDayOfWeek: 1,
-      locale: typeof locale === 'string' ? locale : '',
+      locale,
       showOutsideDays: true,
       modifiers: value ? {'keyboard-selected': value} : {},
       onKeyDown: this._handleKeyDown,

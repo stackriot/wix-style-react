@@ -34,32 +34,30 @@ const locales = {
   da
 };
 
-const getLocale = locale =>
-  typeof locale === 'string' ? locales[locale] : locale;
-
-export const formatDate = (date, dateFormat, locale) =>
-  format(date, dateFormat, {locale: getLocale(locale)});
+export function formatDate(date, dateFormat, locale) {
+  return format(date, dateFormat, {locale: locales[locale]});
+}
 
 export default locale => ({
   formatMonthTitle: date => format(date, 'MMMM YYYY', {
-    locale: getLocale(locale)
+    locale: locales[locale]
   }),
 
   formatWeekdayShort: index => format(setDay(new Date(), index), 'dd', {
-    locale: getLocale(locale)
+    locale: locales[locale]
   }),
 
   formatWeekdayLong: index => format(setDay(new Date(), index), 'dddd', {
-    locale: getLocale(locale)
+    locale: locales[locale]
   }),
 
   formatDay: date =>
     format(date, 'ddd ll', {
-      locale: getLocale(locale)
+      locale: locales[locale]
     }),
 
   getMonths: () =>
     [...Array(12).keys()].map(i =>
-      format(new Date(2018, i), 'MMMM', {locale: getLocale(locale)})
+      format(new Date(2018, i), 'MMMM', {locale: locales[locale]})
     )
 });
