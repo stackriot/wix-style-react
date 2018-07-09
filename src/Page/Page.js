@@ -186,10 +186,8 @@ class Page extends WixComponent {
                 style={{height: `${headerHeight + (PageTail ? -SCROLL_TOP_THRESHOLD : 39)}px`}}
                 />
           }
-          <div className={s.contentContainer}>
-            <div className={classNames(s.content, {[s.contentFullScreen]: contentFullScreen})} style={contentFullScreen ? null : pageDimensionsStyle}>
-              {this._safeGetChildren(PageContent)}
-            </div>
+          <div className={classNames(s.content, {[s.contentFullScreen]: contentFullScreen})} style={contentFullScreen ? null : pageDimensionsStyle}>
+            {this._safeGetChildren(PageContent)}
           </div>
         </div>
       </div>
