@@ -1,5 +1,3 @@
-import styles from './Breadcrumbs.scss';
-
 const breadcrumbsDriverFactory = component => {
   const hasClass = className => component.getAttribute('class')
     .then(classes => classes.split('__').indexOf(className) !== -1);
@@ -9,7 +7,10 @@ const breadcrumbsDriverFactory = component => {
     clickBreadcrumbAt: position => component.$$('[data-hook="breadcrumb-clickable"]').get(position).click(),
     getActiveItemId: () => component.all(by.xpath('./div')).getAttribute('class')
       .then(classes => {
-        const activeItems = classes.map(cls => cls.split(' ').some(c => styles.active === c));
+        const activeItems = classes.map(i =>
+          i.split('__').indexOf('active') !== -1
+        );
+
         return activeItems.indexOf(true);
       }),
     isLarge: () => hasClass('large'),

@@ -1,7 +1,7 @@
 import eyes from 'eyes.it';
 import {languagePickerTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
 
-describe('LanguagePicker', () => {
+fdescribe('LanguagePicker', () => {
   const storyUrl = getStoryUrl('Core', 'LanguagePicker');
   const dataHook = 'story-languagePicker';
 
