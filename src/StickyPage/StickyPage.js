@@ -1,4 +1,4 @@
-import s from './Page.scss';
+import s from './StickyPage.scss';
 import React from 'react';
 import WixComponent from '../BaseComponents/WixComponent';
 import Header from './components/Header';
@@ -8,9 +8,9 @@ import PropTypes from 'prop-types';
 const SCROLL_TOP_THRESHOLD = 24;
 
 /**
-  * A page container which contains a header and scrollable content
+  * A page container which contains a sticky header and scrollable content
   */
-export default class Page extends WixComponent {
+export default class StickyPage extends WixComponent {
 
   constructor(props) {
     super(props);
@@ -28,7 +28,7 @@ export default class Page extends WixComponent {
 
     this._getScrollContainer().addEventListener('scroll', this._handleScroll);
     this.setState({
-      headerHeight: this.pageHeaderRef.offsetHeight
+      headerHeight: this.stickyHeaderRef.offsetHeight
     });
   }
 
@@ -72,9 +72,9 @@ export default class Page extends WixComponent {
     const [headerElement, contentElement] = React.Children.toArray(this.props.children);
 
     return (
-      <div className={s.page}>
+      <div className={s.stickyPage}>
         <div className={s.staticBackground}/>
-        <div className={s.pageHeader} ref={r => this.pageHeaderRef = r} style={{paddingBottom: `${SCROLL_TOP_THRESHOLD}px`}}>
+        <div className={s.stickyHeader} ref={r => this.stickyHeaderRef = r} style={{paddingBottom: `${SCROLL_TOP_THRESHOLD}px`}}>
           {React.Children.map(this._safeGetChildren(headerElement), child => React.cloneElement(child, {minimized}))}
         </div>
         <div className={s.scrollableContent} ref={r => this.scrollableContentRef = r}>
@@ -86,22 +86,22 @@ export default class Page extends WixComponent {
   }
 }
 
-Page.displayName = 'Page';
-Page.Header = Header;
-Page.Content = Content;
+StickyPage.displayName = 'StickyPage';
+StickyPage.Header = Header;
+StickyPage.Content = Content;
 
-Page.propTypes = {
+StickyPage.propTypes = {
   children: PropTypes.arrayOf((propValue, key) => {
     if (!propValue || propValue.length !== 2) {
-      return new Error(`Page: Invalid Prop children, first child must be Page.Header, and second child must be Page.Content`);
+      return new Error(`StickyPage: Invalid Prop children, first child must be StickyPage.Header, and second child must be StickyPage.Content`);
     }
 
-    if (key === 0 && propValue[key].type !== Page.Header) {
-      return new Error(`Page: Invalid Prop children, first child must be Page.Header`);
+    if (key === 0 && propValue[key].type !== StickyPage.Header) {
+      return new Error(`StickyPage: Invalid Prop children, first child must be StickyPage.Header`);
     }
 
-    if (key === 1 && propValue[key].type !== Page.Content) {
-      return new Error(`Page: Invalid Prop children, second child must be Page.Content`);
+    if (key === 1 && propValue[key].type !== StickyPage.Content) {
+      return new Error(`StickyPage: Invalid Prop children, second child must be StickyPage.Content`);
     }
   }).isRequired
 };

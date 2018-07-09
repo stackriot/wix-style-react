@@ -24,11 +24,8 @@ export const breadcrumbsTestkitFactory = enzymeTestkitFactoryCreator(breadcrumbs
 import tabsDriverFactory from '../src/Tabs/Tabs.driver';
 export const tabsTestkitFactory = enzymeTestkitFactoryCreator(tabsDriverFactory);
 
-import pageDriverFactory from '../src/Page/Page.driver';
-export const pageTestkitFactory = enzymeTestkitFactoryCreator(pageDriverFactory);
-
-import pageHeaderDriverFactory from '../src/Page/PageHeader/PageHeader.driver';
-export const pageHeaderTestkitFactory = enzymeTestkitFactoryCreator(pageHeaderDriverFactory);
+import stickyPageDriverFactory from '../src/StickyPage/StickyPage.driver';
+export const stickyPageTestkitFactory = enzymeTestkitFactoryCreator(stickyPageDriverFactory);
 
 import dropdownLayoutDriverFactory from '../src/DropdownLayout/DropdownLayout.driver';
 export const dropdownLayoutTestkitFactory = enzymeTestkitFactoryCreator(dropdownLayoutDriverFactory);
