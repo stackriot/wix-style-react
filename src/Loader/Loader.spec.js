@@ -70,8 +70,4 @@ describe('Loader', () => {
       expect(isEnzymeTestkitExists(<Loader/>, enzymeLoaderTestkitFactory)).toBe(true);
     });
   });
-
-  it(`shouldn't throw when the Loader doesn't exist`, () => {
-    expect(() => loaderDriverFactory({})).not.toThrow();
-  });
 });
