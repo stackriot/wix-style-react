@@ -10,7 +10,7 @@ export default {
   category: '5. Buttons',
   storyName: '5.4 Error',
   component: Button,
-  componentPath: '../../src/Backoffice/Button',
+  componentPath: '../../src/Button',
 
   componentProps: {
     theme: 'fullred',
