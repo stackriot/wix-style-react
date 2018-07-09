@@ -3,55 +3,31 @@
 
 .breadcrumbs-container {
     margin-left: -10px;
+    transition: margin .2s cubic-bezier(0.4, 0.0, 0.2, 1);
 
+    &.absolute,
+    &.minimized {
+        margin-top: -3px;
+    }
+   
     &.absolute {
+        transition: none;
         position: absolute;
     }
 }
 
-.header-container {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-}
-
-.header {
-    flex: 1;
-}
-
 .back-button {
-    position: relative;
-    top: 6px;
-    left: -14px;
     float: left;
+    position: relative;
+    top: 16px;
+}
 
-    button {
-        background-color: transparent;
-        border-color: transparent;
-
-        &:hover {
-            background-color: white;
-            border-color: white;
-        }
-    }
+.titles-container {
+    float: left;
 }
 
 .title {
     h2 {
         margin: 0;
-    }
-}
-
-.actions-bar {
-    margin-top: 5px;
-    margin-left: auto;
-    transition: margin .2s cubic-bezier(0.4, 0.0, 0.2, 1);
-
-    &.with-breadcrumbs {
-        margin-top: 35px;
-    }
-
-    &.minimized {
-        margin-top: -3px;
     }
 }
