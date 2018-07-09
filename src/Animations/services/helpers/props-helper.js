@@ -17,12 +17,7 @@ const getSize = (size = {in: 100, out: 100}, mode) => {
   return getDataOrDefault(percentages, size, 'size');
 };
 
-const getTranslate = translate => {
-  if (typeof translate === 'string') {
-    translate = {to: translate};
-  }
-
-  const {size, to} = translate;
+const getTranslate = ({size, to}) => {
   return ({
     size: {
       in: getSize(size, 'in'),
