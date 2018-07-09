@@ -67,7 +67,6 @@ class RichTextAreaButton extends Component {
     });
     return (
       <Tooltip
-        appendToParent
         content={tooltipContent}
         overlay=""
         theme="dark"
