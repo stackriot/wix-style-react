@@ -121,6 +121,7 @@ export default class DatePicker extends WixComponent {
   };
 
   static defaultProps = {
+    value: new Date(),
     locale: 'en',
     dateFormat: 'MM/DD/YYYY',
     filterDate: () => true,
@@ -162,7 +163,7 @@ export default class DatePicker extends WixComponent {
       this.setState(
         {
           isOpen: true,
-          value: this.props.value || new Date()
+          value: this.props.value
         },
         () => this._popper.scheduleUpdate()
       );
@@ -343,7 +344,7 @@ export default class DatePicker extends WixComponent {
 
     const inputProps = {
       dataHook: inputDataHook,
-      value: initialValue && formatDate(initialValue, dateFormat, locale),
+      value: formatDate(initialValue, dateFormat, locale),
       onInputClicked: this.openCalendar,
       disabled,
       readOnly,
