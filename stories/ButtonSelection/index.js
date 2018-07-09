@@ -2,7 +2,7 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import Markdown from 'wix-storybook-utils/Markdown';
 import TabbedView from 'wix-storybook-utils/TabbedView';
-import CodeExample from 'wix-storybook-utils/CodeExample';
+import CodeExample from '../utils/Components/CodeExample';
 
 import Readme from '../../src/ButtonSelection/README.md';
 import ReadmeTestKit from '../../src/ButtonSelection/README.TESTKIT.md';

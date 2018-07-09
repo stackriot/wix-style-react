@@ -1,6 +1,6 @@
 import React from 'react';
 import story from 'story';
-import CodeExample from 'wix-storybook-utils/CodeExample';
+import CodeExample from '../utils/Components/CodeExample';
 
 import {Image} from 'wix-style-react/Icons';
 

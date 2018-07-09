@@ -1,7 +1,6 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import InteractiveCodeExample from 'wix-storybook-utils/InteractiveCodeExample';
-
+import InteractiveCodeExample from '../../utils/Components/InteractiveCodeExample';
 import ExampleTooltip from './ExampleTooltip';
 import ExamplePopover from './ExamplePopover';
 import ExamplePopoverMenu from './ExamplePopoverMenu';
