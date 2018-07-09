@@ -43,8 +43,7 @@ const ButtonLayout = props => {
 
 ButtonLayout.defaultProps = {
   height: 'medium',
-  theme: 'fullblue',
-  type: 'button'
+  theme: 'fullblue'
 };
 
 ButtonLayout.propTypes = {
@@ -86,8 +85,7 @@ ButtonLayout.propTypes = {
     'icon-white',
     'icon-whitesecondary',
     'no-border',
-    'dark-no-border',
-    'outlined'
+    'dark-no-border'
   ])
 };
 

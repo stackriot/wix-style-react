@@ -103,7 +103,6 @@ import '../stories/Tooltip/Composite/CompositeStory';
 // 8. Notification Bars
 // 8.1 Standard, 8.2 Error, 8.3 Success, 8.4 Warning, 8.5 Premium
 import '../stories/Notification';
-import '../stories/SectionHelper.story.js'; // 8.7 SectionHelper
 
 
 // 9. Modals
@@ -117,3 +116,6 @@ import '../stories/PageHeader/index.story.js';
 
 // 11. Pickers and Selectors
 import '../stories/ColorPicker.story.js'; // 11.5 Color Picker
+
+// 12. SectionHelper
+import '../stories/SectionHelper.story.js';

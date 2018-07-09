@@ -7,17 +7,17 @@ const sectionHelperDriverFactory = ({element}) => {
   const classExists = className => element.classList.contains(className);
   const actionButtonDriver = () => buttonTestkitFactory({
     wrapper: element,
-    dataHook: 'sectionhelper-action-btn'
+    dataHook: 'action-btn'
   });
 
   const closeButtonDriver = () => buttonTestkitFactory({
     wrapper: element,
-    dataHook: 'sectionhelper-close-btn'
+    dataHook: 'close-btn'
   });
 
   return {
     exists: () => !!element,
-    titleText: () => element.querySelector('[data-hook="sectionhelper-title"]').textContent,
+    titleText: () => element.querySelector('[data-hook="title"]').textContent,
     actionText: () => actionButtonDriver().getButtonTextContent(),
     clickAction: () => actionButtonDriver().click(),
     clickClose: () => closeButtonDriver().click(),
