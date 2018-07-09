@@ -377,7 +377,7 @@ Input.propTypes = {
 
   /** Inputs value */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  width: PropTypes.string,
   withSelection: PropTypes.bool,
   required: PropTypes.bool
 };

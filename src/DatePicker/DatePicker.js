@@ -111,10 +111,7 @@ export default class DatePicker extends WixComponent {
     error: PropTypes.bool,
 
     /** will display message when hovering error icon **/
-    errorMessage: PropTypes.node,
-
-    /** set desired width of DatePicker input */
-    width: PropTypes.number
+    errorMessage: PropTypes.node
   };
 
   static defaultProps = {
@@ -123,8 +120,7 @@ export default class DatePicker extends WixComponent {
     dateFormat: 'MM/DD/YYYY',
     filterDate: () => true,
     shouldCloseOnSelect: true,
-    rtl: false,
-    width: 120
+    rtl: false
   };
 
   constructor(props) {
@@ -318,8 +314,7 @@ export default class DatePicker extends WixComponent {
       value: initialValue,
       error,
       errorMessage,
-      customInput,
-      width
+      customInput
     } = this.props;
 
     const {isOpen} = this.state;
@@ -336,7 +331,6 @@ export default class DatePicker extends WixComponent {
       onKeyDown: this._handleKeyDown,
       error,
       errorMessage,
-      width,
       ...(customInput ? customInput.props : {})
     };
 
