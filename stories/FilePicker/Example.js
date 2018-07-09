@@ -3,6 +3,5 @@ import FilePicker from 'wix-style-react/FilePicker';
 
 export default () =>
   <div style={{marginBottom: '100px'}}>
-    <div style={{marginBottom: '30px'}}><FilePicker dataHook="story-filepicker" supportedFormats=".png, .pdf" onChange={file => console.log(file.name)}/></div>
-    <FilePicker dataHook="story-filepicker2" supportedFormats=".png, .pdf" onChange={file => console.log(file.name)}/>
+    <FilePicker dataHook="story-filepicker" supportedFormats=".png, .pdf" onChange={file => console.log(file.name)}/>
   </div>;
