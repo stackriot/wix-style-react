@@ -1,12 +1,11 @@
-import React from 'react';
-import WixComponent from '../BaseComponents/WixComponent';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactDatepicker from 'react-datepicker';
 import DatePickerInput from './DatePickerInput';
 import moment from 'moment';
 import css from './DatePicker.scss';
 
-export default class DatePicker extends WixComponent {
+export default class DatePicker extends Component {
   static propTypes = {
     style: PropTypes.object,
     value: PropTypes.object,
@@ -20,7 +19,6 @@ export default class DatePicker extends WixComponent {
     theme: PropTypes.string,
     prefix: PropTypes.node,
     inputDataHook: PropTypes.string,
-    dataHook: PropTypes.string,
     onEnterPressed: PropTypes.func,
     error: PropTypes.bool,
     errorMessage: PropTypes.string,
@@ -51,10 +49,8 @@ export default class DatePicker extends WixComponent {
   }
 
   renderInput() {
-    const {
-      rtl, style, theme, prefix, inputDataHook, onEnterPressed,
-      error, errorMessage, customInput
-    } = this.props;
+    const {rtl, style, theme, prefix, inputDataHook, onEnterPressed,
+      error, errorMessage, customInput} = this.props;
     return (
       <DatePickerInput
         rtl={rtl} style={style} theme={theme} prefix={prefix} dataHook={inputDataHook}

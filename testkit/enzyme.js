@@ -164,6 +164,3 @@ export const popoverMenuTestkitFactory = enzymeTestkitFactoryCreator(popoverMenu
 
 import badgeDriverFactory from '../src/Badge/Badge.driver';
 export const badgeTestkitFactory = enzymeTestkitFactoryCreator(badgeDriverFactory);
-
-import datePickerFactory from '../src/DatePicker/DatePicker.driver';
-export const datePickerTestkitFactory = enzymeTestkitFactoryCreator(datePickerFactory);

@@ -14,7 +14,6 @@ class DisabledDatePicker extends React.Component {
   render() {
     return (
       <DatePicker
-        dataHook={'story-datepicker-disabled'}
         value={this.state.value}
         onChange={value => this.setState({value})}
         dateFormat="DD/MM/YYYY"

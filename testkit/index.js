@@ -167,6 +167,3 @@ export const popoverMenuTestkitFactory = testkitFactoryCreator(popoverMenuDriver
 
 import badgeDriverFactory from '../src/Badge/Badge.driver';
 export const badgeTestkitFactory = testkitFactoryCreator(badgeDriverFactory);
-
-import datePickerDriverFactory from '../src/DatePicker/DatePicker.driver';
-export const datePickerTestkitFactory = testkitFactoryCreator(datePickerDriverFactory);
