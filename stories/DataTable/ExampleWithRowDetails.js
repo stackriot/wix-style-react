@@ -37,7 +37,7 @@ MyRowDetailsComponent.propTypes = {
   lastName: PropTypes.string.isRequired
 };
 
-class ExampleWithAnimatedRowDetails extends React.Component {
+class ExampleWithRowDetails extends React.Component {
   render() {
     return (
       <div style={style}>
@@ -45,7 +45,6 @@ class ExampleWithAnimatedRowDetails extends React.Component {
           dataHook="story-data-table"
           data={generateData()}
           rowDetails={row => <MyRowDetailsComponent {...row}/>}
-          rowDetailsAnimation
           allowMultiDetailsExpansion
           columns={[
             {title: 'Row Number', render: (row, rowNum) => '#' + (rowNum + 1), width: '20%', minWidth: '75px', important: true},
@@ -58,4 +57,4 @@ class ExampleWithAnimatedRowDetails extends React.Component {
   }
 }
 
-export default ExampleWithAnimatedRowDetails;
+export default ExampleWithRowDetails;
