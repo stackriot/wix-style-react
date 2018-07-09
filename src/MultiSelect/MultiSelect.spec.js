@@ -177,18 +177,6 @@ describe('multiSelect', () => {
     ]);
   });
 
-  it('should call onManuallyInput after delimiter is pressed and input is not empty', () => {
-    const onManuallyInput = jest.fn();
-    const {driver, inputDriver} = createDriver(<MultiSelect options={options} onManuallyInput={onManuallyInput} value="custom value"/>);
-
-    driver.focus();
-    inputDriver.enterText('custom value');
-    driver.pressCommaKey();
-
-    expect(onManuallyInput).toHaveBeenCalled();
-    expect(onManuallyInput.mock.calls[0][0]).toBe('custom value');
-  });
-
   describe('testkit', () => {
     it('should exist', () => {
       const div = document.createElement('div');
