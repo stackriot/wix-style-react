@@ -40,6 +40,7 @@ export const dropdownLayoutDriverFactory = base => {
     base
       .$$(`[data-hook=${DATA_HOOKS.DROPDOWN_LAYOUT_OPTIONS}] > *`)
       .map(i => i);
+
   const optionsLength = async () => (await options()).length;
   const doIfOptionExists = (position, onSuccess) => {
     if (optionsLength() <= position) {
@@ -49,10 +50,12 @@ export const dropdownLayoutDriverFactory = base => {
     }
     return onSuccess();
   };
+
   const getOptionDriver = position =>
     doIfOptionExists(position, async () =>
       createOptionDriver(await optionElementAt(position)),
     );
+
   return {
     ...baseUniDriverFactory(base),
     /** @deprecated should be private */
@@ -62,7 +65,10 @@ export const dropdownLayoutDriverFactory = base => {
      * @param {number} option index
      * @return {Promise<void>}
      */
-    clickAtOption: async index => (await optionElementAt(index)).click(),
+    clickAtOption: async index => {
+      const optionDriver = await getOptionDriver(index);
+      return optionDriver.click();
+    },
 
     /** Clicks on an option with a specific dataHook
      * @param {string} dataHook
@@ -77,8 +83,9 @@ export const dropdownLayoutDriverFactory = base => {
      */
     clickAtOptionWithValue: async value => {
       for (const _option of await options()) {
-        if ((await _option._prop('innerHTML')) === value) {
-          return _option.click();
+        const optionDriver = await createOptionDriver(_option);
+        if ((await optionDriver.content()) === value) {
+          return optionDriver.click();
         }
       }
     },
@@ -104,9 +111,8 @@ export const dropdownLayoutDriverFactory = base => {
 
     isOptionADivider: position =>
       doIfOptionExists(position, async () => {
-        const option = await optionElementAt(position);
-        const divider = await findByHook(option, OPTION_DATA_HOOKS.DIVIDER);
-        return divider.exists();
+        const optionDriver = await getOptionDriver(position);
+        return optionDriver.isDivider();
       }),
 
     isOptionExists: async optionText => {
@@ -118,29 +124,13 @@ export const dropdownLayoutDriverFactory = base => {
       return false;
     },
     isOptionHovered: async index => {
-      const option = await optionElementAt(index);
-      return !!(await option.attr(DATA_OPTION.HOVERED));
+      const optionDriver = await getOptionDriver(index);
+      return optionDriver.isHovered();
     },
     isOptionSelected: async index => {
-      const option = await optionElementAt(index);
-      return !!(await option.attr(DATA_OPTION.SELECTED));
+      const optionDriver = await getOptionDriver(index);
+      return optionDriver.isSelected();
     },
-    isOptionSelectedWithGlobalClassName: position =>
-      doIfOptionExists(
-        position,
-        async () =>
-          !!(await (await optionElementAt(position)).attr(
-            DATA_OPTION.SELECTED_GLOBAL,
-          )),
-      ),
-    isOptionHoveredWithGlobalClassName: position =>
-      doIfOptionExists(
-        position,
-        async () =>
-          !!(await (await optionElementAt(position)).attr(
-            DATA_OPTION.HOVERED_GLOBAL,
-          )),
-      ),
     /** @deprecated */
     isOptionHeightSmall: position =>
       doIfOptionExists(
@@ -160,9 +150,10 @@ export const dropdownLayoutDriverFactory = base => {
     isShown: async () => !!(await (await contentContainer()).attr(DATA_SHOWN)),
     mouseEnter: () => base.hover(),
     mouseEnterAtOption: position =>
-      doIfOptionExists(position, async () =>
-        (await optionElementAt(position)).hover(),
-      ),
+      doIfOptionExists(position, async () => {
+        const optionDriver = await getOptionDriver(position);
+        return optionDriver.mouseEnter();
+      }),
     mouseLeave: () => reactBase.mouseLeave(),
     /** @deprecated deprecated prop */
     mouseClickOutside: () => ReactBase.clickBody(),
@@ -189,9 +180,10 @@ export const dropdownLayoutDriverFactory = base => {
       return this.optionByHook(`dropdown-item-${optionId}`);
     },
     optionContentAt: position =>
-      doIfOptionExists(position, async () =>
-        (await optionElementAt(position)).text(),
-      ),
+      doIfOptionExists(position, async () => {
+        const optionDriver = await getOptionDriver(position);
+        return optionDriver.content();
+      }),
     optionDriver: createOptionDriver,
     options: async () => {
       const drivers = [];
@@ -201,11 +193,12 @@ export const dropdownLayoutDriverFactory = base => {
       return drivers;
     },
     optionsContent: async () => {
-      const textArray = [];
+      const contentArray = [];
       for (const option of await options()) {
-        textArray.push(await option.text());
+        const optionDriver = createOptionDriver(option);
+        contentArray.push(await optionDriver.content());
       }
-      return textArray;
+      return contentArray;
     },
     markedOption: async () => {
       const allOptions = await options();
@@ -243,11 +236,7 @@ const createOptionDriver = option => ({
   mouseLeave: () => ReactBase(option).mouseLeave(),
   isHovered: async () => !!(await option.attr(DATA_OPTION.HOVERED)),
   isSelected: async () => !!(await option.attr(DATA_OPTION.SELECTED)),
-  isHoveredWithGlobalClassName: async () =>
-    !!(await option.attr(DATA_OPTION.HOVERED_GLOBAL)),
-  isSelectedWithGlobalClassName: async () =>
-    !!(await option.attr(DATA_OPTION.SELECTED_GLOBAL)),
-  content: () => option.text(),
+  content: () => findByHook(option, OPTION_DATA_HOOKS.SELECTABLE).text(),
   click: () => option.click(),
   isDivider: async () => {
     const divider = await findByHook(option, OPTION_DATA_HOOKS.DIVIDER);

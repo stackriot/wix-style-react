@@ -4,6 +4,11 @@
 }
 
 :import {
+  -st-from: "../Foundation/stylable/typography.st.css";
+  -st-named: text-medium-normal;
+}
+
+:import {
   -st-from: "../Foundation/stylable/mixins/calc.js";
   -st-default: calc;
 }
@@ -14,17 +19,12 @@
 }
 
 :import {
-  -st-from: "../Foundation/stylable/typography.st.css";
-  -st-named: heading-h6, text-medium-normal;
-}
-
-:import {
   -st-from: '../Foundation/stylable/default-scroll-bar.st.css';
   -st-named: defaultScrollBar;
 }
 
 :vars {
-  option_height: 35px;
+  option_height: 36px;
   big_option_height: 47px;
   top-arrow-size: 8px;
   arrowUpShadow: 3px 3px 8px rgba(0, 0, 0, .1);
@@ -107,30 +107,21 @@
 }
 
 .option {
-  -st-states: selected, hovered, disabled, itemHeight(enum(small, big)), overrideStyle;
+  -st-states: selected, hovered, disabled;
   -st-mixin: text-medium-normal;
   color: value(D10);
   line-height: 1.5;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
-  padding: 6px 20px 6px 24px;
   cursor: pointer;
   width: 100%;
   display: flex;
   align-items: center;
 }
 
-.option:overrideStyle {
-  padding: 0;
-}
-
-.option:itemHeight(small):not(:overrideStyle) {
-  min-height: value(option_height);
-}
-
-.option:itemHeight(big):not(:overrideStyle) {
-  min-height: value(big_option_height);
+.option:focus {
+  outline: none;
 }
 
 .option:disabled {
@@ -138,18 +129,9 @@
   cursor: default;
 }
 
-:global(.rtl) .option, :global([dir='rtl']) .option{
-  text-align: right;
-  direction: rtl;
-}
-
 .option:hovered {
   background: value(THEME-COLOR-50);
   color: value(D10);
-}
-
-.option:focus {
-  outline: none;
 }
 
 .option:selected {
@@ -160,6 +142,26 @@
 .option:selected:hovered {
   background-color: value(THEME-COLOR-20);
   color: value(D80);
+}
+
+
+:global(.rtl) .option, :global([dir='rtl']) .option{
+  text-align: right;
+  direction: rtl;
+}
+
+.selectableOption{
+  -st-states: itemHeight(enum(big, small));
+}
+
+.selectableOption:itemHeight(small){
+  min-height: value(option_height);
+}
+
+.selectableOption:itemHeight(big){
+  min-height: value(big_option_height);
+  display: flex;
+  align-items: center;
 }
 
 .arrow {
@@ -191,4 +193,3 @@
 .linkItem{
   text-decoration: none;
 }
-
