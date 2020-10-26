@@ -14,7 +14,11 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## Next
+### 9.29.1 - 2020-10-26
+### Changed
+- `<DropdownLayout/>` and `<ListItemSelect/>`- revert PR [#6088](https://github.com/wix/wix-style-react/pull/6088).
+
+
 ## 9.29.0 - 2020-10-25
 ### Changed
 - `<DropdownLayout/>` and `<ListItemSelect/>`- using builders for selectable option [#6088](https://github.com/wix/wix-style-react/pull/6088).
