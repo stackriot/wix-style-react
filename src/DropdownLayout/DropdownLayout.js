@@ -10,14 +10,12 @@ import {
   DATA_DIRECTION,
   DROPDOWN_LAYOUT_DIRECTIONS,
   OPTION_DATA_HOOKS,
-  DROPDOWN_LAYOUT_LOADER,
 } from './DataAttr';
 import { st, classes } from './DropdownLayout.st.css';
 import deprecationLog from '../utils/deprecationLog';
 import { filterObject } from '../utils/filterObject';
 import ReactDOM from 'react-dom';
 import { listItemSectionBuilder } from '../ListItemSection';
-import { listItemSelectBuilder } from '../ListItemSelect';
 import { isString } from '../utils/StringUtils';
 
 const MOUSE_EVENTS_SUPPORTED = ['mouseup', 'touchend'];
@@ -158,9 +156,7 @@ class DropdownLayout extends React.PureComponent {
   }
 
   _patchOptionToBuilder({ option, idx }) {
-    const { value, id, title: isTitle, disabled, overrideStyle } = option;
-    const { selectedId } = this.state;
-    const { itemHeight } = this.props;
+    const { value, id, title: isTitle } = option;
 
     if (value === DIVIDER_OPTION_VALUE) {
       return listItemSectionBuilder({
@@ -179,29 +175,6 @@ class DropdownLayout extends React.PureComponent {
       });
     }
 
-    // node or a string
-    if (typeof value !== 'function') {
-      if (!overrideStyle) {
-        return listItemSelectBuilder({
-          dataHook: OPTION_DATA_HOOKS.SELECTABLE,
-          id,
-          title: value,
-          disabled,
-          selected: id === selectedId,
-          className: st(classes.selectableOption, { itemHeight }),
-        });
-      } else {
-        return {
-          id,
-          disabled,
-          value: props => (
-            <div data-hook={OPTION_DATA_HOOKS.SELECTABLE}>{value}</div>
-          ),
-        };
-      }
-    }
-
-    // in case it's a render function
     return option;
   }
 
@@ -265,7 +238,9 @@ class DropdownLayout extends React.PureComponent {
     }
   };
 
-  _onMouseLeave = () => this._markOption(NOT_HOVERED_INDEX);
+  _onMouseLeave = () => {
+    this._markOption(NOT_HOVERED_INDEX);
+  };
 
   _getMarkedIndex() {
     const { options } = this.props;
@@ -389,7 +364,7 @@ class DropdownLayout extends React.PureComponent {
       hasMore={this.props.hasMore}
       loader={
         <div className={classes.loader}>
-          <Loader dataHook={DROPDOWN_LAYOUT_LOADER} size="small" />
+          <Loader dataHook={'dropdownLayout-loader'} size={'small'} />
         </div>
       }
     >
@@ -433,37 +408,44 @@ class DropdownLayout extends React.PureComponent {
   }
 
   // For testing purposes only
-  _getItemDataAttr = ({ hovered, selected, disabled }) => {
-    const { itemHeight } = this.props;
+  _getItemDataAttr = ({ hovered, selected, disabled, overrideStyle }) => {
+    const { itemHeight, selectedHighlight } = this.props;
 
     return filterObject(
       {
-        [DATA_OPTION.HOVERED]: hovered,
-        [DATA_OPTION.DISABLED]: disabled,
-        [DATA_OPTION.SELECTED]: selected,
+        [DATA_OPTION.HOVERED]: hovered && !overrideStyle,
         /* deprecated */
         [DATA_OPTION.SIZE]: itemHeight,
+        [DATA_OPTION.DISABLED]: disabled,
+        [DATA_OPTION.SELECTED]: selected && !overrideStyle && selectedHighlight,
+        [DATA_OPTION.HOVERED_GLOBAL]: hovered && overrideStyle,
+        [DATA_OPTION.SELECTED_GLOBAL]: selected && overrideStyle,
       },
       (key, value) => !!value,
     );
   };
 
   _renderOptionContent({ builderOption, idx }) {
+    const { itemHeight, selectedHighlight } = this.props;
     const { selectedId, hovered } = this.state;
-    const { selectedHighlight } = this.props;
 
-    const { id, disabled } = builderOption;
+    const { id, disabled, overrideStyle } = builderOption;
 
     const optionState = {
-      selected: id === selectedId && selectedHighlight,
+      selected: id === selectedId,
       hovered: idx === hovered,
       disabled,
     };
 
     return (
       <div
-        {...this._getItemDataAttr({ ...optionState })}
-        className={st(classes.option, { ...optionState })}
+        {...this._getItemDataAttr({ ...optionState, overrideStyle })}
+        className={st(classes.option, {
+          ...optionState,
+          selected: optionState.selected && selectedHighlight,
+          itemHeight,
+          overrideStyle,
+        })}
         ref={node => this._setSelectedOptionNode(node, builderOption)}
         onClick={!disabled ? e => this._onSelect(idx, e) : null}
         key={idx}
@@ -471,7 +453,9 @@ class DropdownLayout extends React.PureComponent {
         onMouseLeave={this._onMouseLeave}
         data-hook={`dropdown-item-${id}`}
       >
-        {builderOption.value(optionState)}
+        {typeof builderOption.value === 'function'
+          ? builderOption.value(optionState)
+          : builderOption.value}
       </div>
     );
   }

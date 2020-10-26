@@ -2,7 +2,6 @@ import { baseUniDriverFactory } from '../../test/utils/unidriver';
 import { dropdownLayoutDriverFactory } from '../DropdownLayout/DropdownLayout.uni.driver';
 import { testkit } from 'wix-ui-core/dist/src/components/popover/Popover.uni.driver';
 import popoverCommonDriverFactory from '../Popover/Popover.common.uni.driver';
-import { listItemSelectDriverFactory } from '../ListItemSelect/ListItemSelect.uni.driver';
 
 export const dropdownBaseDriverFactory = (base, body) => {
   const byDataHook = dataHook => base.$(`[data-hook="${dataHook}"]`);
@@ -46,12 +45,21 @@ export const dropdownBaseDriverFactory = (base, body) => {
 
     optionContentAt: async id => {
       const dropdownLayoutDriver = await createDropdownLayoutDriver();
-      const optionsDrivers = await dropdownLayoutDriver.options();
-      const listItemSelectDriver = listItemSelectDriverFactory(
-        optionsDrivers[id].element(),
-        body,
-      );
-      return await listItemSelectDriver.getTitleNode();
+      const options = await dropdownLayoutDriver.options();
+
+      /*
+      Option content can be
+      1. node - <div>some text</div>
+      2. text - some text
+       */
+      const nodeContent = options[id].element().$$(':first-child');
+      const contentIsNode = (await nodeContent.count()) > 0;
+      if (contentIsNode) {
+        // eslint-disable-next-line no-restricted-properties
+        return await nodeContent.get(0).getNative();
+      } else {
+        return options[id].element().text();
+      }
     },
 
     mouseEnter: () => testkit(base, body).mouseEnter(),

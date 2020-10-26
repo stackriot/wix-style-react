@@ -41,7 +41,6 @@ describe('DropdownLayout', () => {
       expect(await driver.isShown()).toBe(false);
       expect(await driver.isDown()).toBe(true);
     });
-
     it('should find an option by text', async () => {
       const driver = createDriver(<DropdownLayout options={options} />);
       expect(await driver.isOptionExists('Option 1')).toBe(true);
@@ -158,66 +157,6 @@ describe('DropdownLayout', () => {
       );
       await driver.clickAtOptionWithValue('Option 4');
       expect(onSelect).toBeCalledWith(options[3], false);
-    });
-
-    it('should click an option node by value', async () => {
-      const onSelect = jest.fn();
-      const options = [
-        { id: 0, value: <span style={{ color: 'brown' }}>Option 1</span> },
-      ];
-      const driver = createDriver(
-        <DropdownLayout visible options={options} onSelect={onSelect} />,
-      );
-      await driver.clickAtOptionWithValue('Option 1');
-      expect(onSelect).toBeCalledWith(options[0], false);
-    });
-
-    describe('option content', () => {
-      it('should get the correct content when option value is a node', async () => {
-        const options = [
-          { id: 0, value: <span style={{ color: 'brown' }}>Option 1</span> },
-        ];
-        const driver = createDriver(
-          <DropdownLayout visible options={options} />,
-        );
-
-        expect(await driver.optionContentAt(0)).toBe('Option 1');
-        expect(await driver.optionsContent()).toContain('Option 1');
-      });
-
-      it('should get the correct content when option value is a string', async () => {
-        const options = [{ id: 0, value: 'Option 1' }];
-        const driver = createDriver(
-          <DropdownLayout visible options={options} />,
-        );
-
-        expect(await driver.optionContentAt(0)).toBe('Option 1');
-        expect(await driver.optionsContent()).toContain('Option 1');
-      });
-
-      describe('overrideStyle', () => {
-        it('should get the correct content when option is a string', async () => {
-          const options = [{ id: 0, value: 'Option 1', overrideStyle: true }];
-          const driver = createDriver(
-            <DropdownLayout visible options={options} />,
-          );
-
-          expect(await driver.optionContentAt(0)).toBe('Option 1');
-          expect(await driver.optionsContent()).toContain('Option 1');
-        });
-
-        it('should get the correct content when option is a node', async () => {
-          const options = [
-            { id: 0, value: <div>Option 1</div>, overrideStyle: true },
-          ];
-          const driver = createDriver(
-            <DropdownLayout visible options={options} />,
-          );
-
-          expect(await driver.optionContentAt(0)).toBe('Option 1');
-          expect(await driver.optionsContent()).toContain('Option 1');
-        });
-      });
     });
 
     describe('onSelect', () => {
@@ -343,47 +282,38 @@ describe('DropdownLayout', () => {
     });
 
     it('should render a function option with the rendered item props', async () => {
-      const customRenderFunction = ({ id, disabled }) => ({
-        disabled,
-        value: jest.fn(),
-        id,
-      });
+      const selectedId = 0;
+      const unSelectedId = 1;
 
-      const options = [
-        customRenderFunction({ id: 0 }),
-        customRenderFunction({ id: 1 }),
-        customRenderFunction({ id: 2, disabled: true }),
+      const optionsWithFuncValues = [
+        {
+          id: 0,
+          value: ({ selected }) => (
+            <div>option {selected ? 'selected' : 'not selected'}</div>
+          ),
+        },
+        {
+          id: 1,
+          value: ({ selected }) => (
+            <div>option {selected ? 'selected' : 'not selected'}</div>
+          ),
+        },
       ];
 
-      const driver = createDriver(<DropdownLayout visible options={options} />);
+      const driver = createDriver(
+        <DropdownLayout
+          visible
+          options={optionsWithFuncValues}
+          selectedId={selectedId}
+        />,
+      );
 
-      await driver.clickAtOption(0);
-
-      expect(options[0].value).toHaveBeenCalledWith({
-        selected: true,
-        disabled: undefined,
-        hovered: false,
-      });
-
-      expect(options[1].value).toHaveBeenCalledWith({
-        selected: false,
-        disabled: undefined,
-        hovered: false,
-      });
-
-      await driver.mouseEnterAtOption(1);
-
-      expect(options[1].value).toHaveBeenCalledWith({
-        selected: false,
-        disabled: undefined,
-        hovered: true,
-      });
-
-      expect(options[2].value).toHaveBeenCalledWith({
-        selected: false,
-        disabled: true,
-        hovered: false,
-      });
+      expect(await driver.optionContentAt(selectedId)).toEqual(
+        'option selected',
+      );
+      expect(await driver.optionContentAt(unSelectedId)).toEqual(
+        'option not selected',
+      );
     });
 
     it('should select the chosen value', async () => {
@@ -414,7 +344,12 @@ describe('DropdownLayout', () => {
         <DropdownLayout visible options={_options} selectedId={selectedId} />,
       );
 
-      expect(await driver.isOptionSelected(0)).toBe(true);
+      expect(await driver.isOptionSelectedWithGlobalClassName(0)).toBe(true);
+      expect(
+        await (
+          await driver.optionByHook('dropdown-item-0')
+        ).isSelectedWithGlobalClassName(),
+      ).toBe(true);
     });
 
     it('should select the chosen value when label is provided', async () => {
@@ -736,7 +671,6 @@ describe('DropdownLayout', () => {
         await option.mouseLeave();
         expect(await option.isHovered()).toBe(false);
       });
-
       it('should hover when mouse enter and unhover when mouse leave when overrideStyle is true', async () => {
         const _options = [{ id: 0, value: 'Option 1', overrideStyle: true }];
 
@@ -745,12 +679,20 @@ describe('DropdownLayout', () => {
         );
 
         await driver.mouseEnterAtOption(0);
-        expect(await driver.isOptionHovered(0)).toBe(true);
-
+        expect(await driver.isOptionHoveredWithGlobalClassName(0)).toBe(true);
+        expect(
+          await (
+            await driver.optionByHook('dropdown-item-0')
+          ).isHoveredWithGlobalClassName(),
+        ).toBe(true);
         await driver.mouseLeaveAtOption(0);
-        expect(await driver.isOptionHovered(0)).toBe(false);
+        expect(await driver.isOptionHoveredWithGlobalClassName(0)).toBe(false);
+        expect(
+          await (
+            await driver.optionByHook('dropdown-item-0')
+          ).isHoveredWithGlobalClassName(),
+        ).toBe(false);
       });
-
       it('should not hover divider or a disabled item when mouse enter', async () => {
         const driver = createDriver(
           <DropdownLayout visible options={options} />,
@@ -760,7 +702,6 @@ describe('DropdownLayout', () => {
         await driver.mouseLeaveAtOption(4);
         expect(await driver.isOptionHovered(4)).toBe(false);
       });
-
       it('should have only one hovered option', async () => {
         const driver = createDriver(
           <DropdownLayout visible options={options} />,

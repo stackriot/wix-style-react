@@ -42,6 +42,7 @@ const setColor = ({ selected, hovered, disabled }) =>
 const customBuilderFunction = ({ id, disabled, value }) => ({
   id,
   disabled,
+  overrideStyle: true,
   value: props => <div style={{ color: setColor(props) }}>{value}</div>,
 });
 

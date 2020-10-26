@@ -11,6 +11,8 @@ export interface DropdownLayoutDriver extends BaseDriver {
   isOptionExists: (optionText: string) => boolean;
   isOptionHovered: (position: number) => boolean;
   isOptionSelected: (position: number) => boolean;
+  isOptionHoveredWithGlobalClassName: (position: number) => boolean;
+  isOptionSelectedWithGlobalClassName: (position: number) => boolean;
   isOptionHeightSmall: (position: number) => boolean;
   isOptionHeightBig: (position: number) => boolean;
   isShown: () => boolean;
@@ -48,6 +50,8 @@ export interface DropdownLayoutOptionDriver {
   mouseLeave: () => void;
   isHovered: () => boolean;
   isSelected: () => boolean;
+  isHoveredWithGlobalClassName: () => boolean;
+  isSelectedWithGlobalClassName: () => boolean;
   content: () => string;
   click: () => void;
   isDivider: () => boolean;

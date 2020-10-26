@@ -1,42 +1,30 @@
-import { baseUniDriverFactory, findByHook } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { dataHooks } from './constants';
 
 export const listItemSelectDriverFactory = base => {
+  const byDataHook = dataHook => base.$(`[data-hook="${dataHook}"]`);
+
   return {
     ...baseUniDriverFactory(base),
 
     /** Check whether the checkbox appears */
-    hasCheckbox: async () =>
-      await findByHook(base, dataHooks.CHECKBOX).exists(),
+    hasCheckbox: async () => await byDataHook(dataHooks.CHECKBOX).exists(),
 
     /** Get prefix */
-    getPrefix: () => findByHook(base, dataHooks.PREFIX),
+    getPrefix: () => byDataHook(dataHooks.PREFIX),
 
     /** Get title Text */
-    getTitle: async () => await findByHook(base, dataHooks.TITLE).text(),
-
-    /** Get title Node */
-    getTitleNode: async () => {
-      const title = await findByHook(base, dataHooks.TITLE);
-      const count = await title.$$(':first-child').count();
-
-      if (count > 0) {
-        // eslint-disable-next-line no-restricted-properties
-        return await title.$('div').getNative();
-      } else {
-        return await title.text();
-      }
-    },
+    getTitle: async () => await byDataHook(dataHooks.TITLE).text(),
 
     /** Get subtitle Text */
     getSubtitle: async () => {
-      const subtitleElement = await findByHook(base, dataHooks.SUBTITLE);
+      const subtitleElement = await byDataHook(dataHooks.SUBTITLE);
       if (await subtitleElement.exists()) {
         return subtitleElement.text();
       }
     },
 
     /** Get suffix */
-    getSuffix: () => findByHook(base, dataHooks.SUFFIX),
+    getSuffix: () => byDataHook(dataHooks.SUFFIX),
   };
 };

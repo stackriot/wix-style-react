@@ -137,13 +137,17 @@ const customBuilderFunction = ({
 }) => ({
   id,
   disabled,
-  value: props =>
-   <Text
+  overrideStyle: true,
+  value: props => (
+  <Box padding="3px 24px">
+    <Text
       weight="bold"
       children={title}
       skin={setTextSkin(props)}
       {...props}
     />
+ </Box>
+  ),
 });
 
   const options = [
