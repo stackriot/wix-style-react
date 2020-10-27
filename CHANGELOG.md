@@ -14,7 +14,14 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-### 9.29.1 - 2020-10-26
+## Next
+
+## 9.29.2 - 2020-10-27
+### Fixed
+- `<CounterBadge/>` - fix medium counter badge content [#6134](https://github.com/wix/wix-style-react/pull/6134)
+- `<Modal/>` - [Testkit] fix initialization when element is not found [#6137](https://github.com/wix/wix-style-react/pull/6137)
+
+## 9.29.1 - 2020-10-26
 ### Changed
 - `<DropdownLayout/>` and `<ListItemSelect/>`- revert PR [#6088](https://github.com/wix/wix-style-react/pull/6088).
 
