@@ -16,13 +16,19 @@ class CounterBadge extends React.PureComponent {
       <Caption
         caption="c1"
         light
-        dataHook={dataHooks.caption}
+        dataHook={dataHooks.content}
         className={classes.text}
       >
         {content}
       </Caption>
     ) : (
-      <Text size="tiny" weight="bold" light className={classes.text}>
+      <Text
+        dataHook={dataHooks.content}
+        size="tiny"
+        weight="bold"
+        light
+        className={classes.text}
+      >
         {content}
       </Text>
     );
@@ -44,7 +50,6 @@ class CounterBadge extends React.PureComponent {
           className,
         )}
         data-hook={dataHook}
-        data-size={size}
       >
         {this._renderCounterBadgeContent(size, content)}
       </div>

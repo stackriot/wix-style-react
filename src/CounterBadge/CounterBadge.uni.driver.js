@@ -1,4 +1,4 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { baseUniDriverFactory, findByHook } from '../../test/utils/unidriver';
 import { dataHooks } from './constants';
 
 export const counterBadgeDriverFactory = (base, body) => {
@@ -6,7 +6,6 @@ export const counterBadgeDriverFactory = (base, body) => {
     ...baseUniDriverFactory(base),
 
     /* Get the content of the CounterBadge */
-    getContent: () =>
-      base.$(`[data-hook="${dataHooks.caption}"]`)._prop('innerHTML'),
+    getContent: () => findByHook(base, dataHooks.content)._prop('innerHTML'),
   };
 };

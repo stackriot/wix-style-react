@@ -1,3 +1,8 @@
 export const dataHooks = {
-  caption: 'counter-badge-caption',
+  content: 'counter-badge-content',
+};
+
+export const SIZES = {
+  small: 'small',
+  medium: 'medium',
 };
