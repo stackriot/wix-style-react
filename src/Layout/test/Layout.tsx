@@ -11,7 +11,14 @@ function LayoutWithMandatoryProps() {
 
 function LayoutWithAllProps() {
   return (
-    <Layout dataHook="hook" gap={30} cols={12}>
+    <Layout
+      dataHook="hook"
+      gap={30}
+      cols={12}
+      rowHeight="1fr"
+      alignItems="center"
+      justifyItems="center"
+    >
       <Cell span={12} vertical>
         <Layout gap="30px">
           <Cell />
