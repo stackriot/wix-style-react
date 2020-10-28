@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Added
 - `<AddressInput/>` – [Internal] New component [#6049](https://github.com/wix/wix-style-react/pull/6049)
+- `<Layout/>` - Add rowHeight prop [#6135](https://github.com/wix/wix-style-react/pull/6135)
 
 ## 9.29.3 - 2020-10-28
 ### Fixed
