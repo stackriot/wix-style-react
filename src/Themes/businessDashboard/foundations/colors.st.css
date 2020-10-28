@@ -1,4 +1,19 @@
+:import {
+  -st-from: "./mixins/calc_rgba";
+  -st-default: calc_rgba;
+}
+
 :vars {
+  /* General */
+  D10: #000624;
+  D20: #333850;
+  D30: #595D70;
+  D40: #868AA5;
+  D55: #CFD1DC;
+  D70: #ECEFF4;
+
+
+  /* Primary */
   B05: #0F62E6;
   B10: #116dff;
   B20: #418AFF;
@@ -6,4 +21,20 @@
   B40: #C3DAFF;
   B50: #E8F1FF;
   B60: #F8FAFF;
+
+  /* With Opacity */
+  D10-40: calc_rgba(value(D10), 0.4);
+  D10-50: calc_rgba(value(D10), 0.5);
+
+  /* Success */
+  G20: #51B77B;
+
+  /* Destructive */
+  R20: #F1695F;
+
+  /* Categories */
+  A2: #5C42C1;
+  A3: #06BEE1;
+  A4: #CEC6EC;
+  A5: #FBAD4E;
 }
