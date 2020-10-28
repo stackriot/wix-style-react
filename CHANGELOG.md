@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+Themes - publish entry files [#6144](https://github.com/wix/wix-style-react/pull/6144)
 
 ## 9.29.2 - 2020-10-27
 ### Fixed
