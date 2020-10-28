@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<AddressInput/>` – [Internal] New component [#6049](https://github.com/wix/wix-style-react/pull/6049)
+
 ## 9.29.3 - 2020-10-28
 ### Fixed
 - Themes - publish entry files [#6144](https://github.com/wix/wix-style-react/pull/6144)
