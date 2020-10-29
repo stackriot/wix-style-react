@@ -23,6 +23,7 @@ Types of changes:
 - `Themes | Business Dashboard` - update theme color foundations [#6147](https://github.com/wix/wix-style-react/pull/6147)
 - `<Dropdown/>` - use pointer type of cursor when mouse hovering over dropdown [#6138](https://github.com/wix/wix-style-react/pull/6138)
 - `<VerticalTabs/>` - refactor story page [#6148](https://github.com/wix/wix-style-react/pull/6148)
+- `<CustomModalLayout/>` - remove 3px content padding [#6132](https://github.com/wix/wix-style-react/pull/6132)
 
 ## 9.29.3 - 2020-10-28
 ### Fixed
