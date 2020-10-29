@@ -17,7 +17,7 @@ Types of changes:
 ## Next
 
 ### Added
-<DatePicker/> - RTL support [#6129](https://github.com/wix/wix-style-react/pull/6129)
+`<DatePicker/>` - RTL support [#6129](https://github.com/wix/wix-style-react/pull/6129)
 
 ## 9.30.0 - 2020-10-29
 ### Added
