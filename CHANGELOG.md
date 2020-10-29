@@ -25,6 +25,7 @@ Types of changes:
 ## 9.29.3 - 2020-10-28
 ### Fixed
 - Themes - publish entry files [#6144](https://github.com/wix/wix-style-react/pull/6144)
+- `<VerticalTabs/>` - refactor story page [#6148](https://github.com/wix/wix-style-react/pull/6148)
 
 ## 9.29.2 - 2020-10-27
 ### Fixed
