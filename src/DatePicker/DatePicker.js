@@ -11,6 +11,7 @@ import { PopoverCommonProps } from '../common/PropTypes/PopoverCommon';
 import deprecationLog from '../utils/deprecationLog';
 
 import { classes } from './DatePicker.st.css';
+import { dataHooks } from './constants';
 
 /**
  * DatePicker component
@@ -40,7 +41,6 @@ export default class DatePicker extends React.PureComponent {
     disabled: false,
     inputDataHook: 'date-picker-input',
     popoverProps: {
-      placement: 'top-start',
       zIndex: 1,
     },
     firstDayOfWeek: 1,
@@ -204,8 +204,13 @@ export default class DatePicker extends React.PureComponent {
 
     const { isOpen, value } = this.state;
 
+    const popoverUpdatedProps = {
+      placement: rtl ? 'top-end' : 'top-start',
+      ...popoverProps,
+    };
+
     const calendarProps = {
-      dataHook: 'date-picker-calendar',
+      dataHook: dataHooks.datePickerCalendar,
       locale,
       showMonthDropdown,
       showYearDropdown,
@@ -221,29 +226,38 @@ export default class DatePicker extends React.PureComponent {
     };
 
     return (
-      <Popover
+      <div
         className={classes.root}
-        dataHook={dataHook}
-        onClickOutside={this.closeCalendar}
-        appendTo="parent"
-        shown={isOpen}
-        zIndex={zIndex}
-        {...popoverProps}
+        data-hook={dataHook}
+        style={{ width: width }}
       >
-        <Popover.Element>
-          <div style={{ width }} data-hook="date-picker-input-container">
-            <DayPickerInput
-              component={this._renderInputWithRefForward()}
-              keepFocus={false}
-            />
-          </div>
-        </Popover.Element>
-        <Popover.Content>
-          <div data-hook={calendarDataHook}>
-            <Calendar {...calendarProps} />
-          </div>
-        </Popover.Content>
-      </Popover>
+        <Popover
+          className={classes.popover}
+          dataHook={dataHooks.datePickerPopover}
+          onClickOutside={this.closeCalendar}
+          appendTo="parent"
+          shown={isOpen}
+          zIndex={zIndex}
+          {...popoverUpdatedProps}
+        >
+          <Popover.Element>
+            <div
+              className={classes.inputContainer}
+              data-hook={dataHooks.datePickerInputContainer}
+            >
+              <DayPickerInput
+                component={this._renderInputWithRefForward()}
+                keepFocus={false}
+              />
+            </div>
+          </Popover.Element>
+          <Popover.Content>
+            <div data-hook={calendarDataHook}>
+              <Calendar {...calendarProps} />
+            </div>
+          </Popover.Content>
+        </Popover>
+      </div>
     );
   }
 }
@@ -308,7 +322,7 @@ DatePicker.propTypes = {
   /** placeholder of the Input */
   placeholderText: PropTypes.string,
 
-  /** RTL mode */
+  /** RTL mode. When true, the keyboard navigation will be changed means pressing on the right arrow will navigate to the previous day, and pressing on the left arrow will navigate to the next day. */
   rtl: PropTypes.bool,
 
   /** The selected date */
@@ -329,6 +343,7 @@ DatePicker.propTypes = {
   /** set desired z-index of DatePicker popover */
   zIndex: PropTypes.number,
 
+  /** Sets the popover props. The default placement value depends on the rtl prop - would be 'top-start' when rtl=false and 'top-end' in case of rtl=ture. */
   popoverProps: PropTypes.shape(PopoverCommonProps),
 
   /** First day of the week, allowing only from 0 to 6 (Sunday to Saturday) */

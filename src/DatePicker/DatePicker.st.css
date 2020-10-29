@@ -4,6 +4,13 @@
 }
 
 .root {
+}
+
+.popover {
   -st-extends: Popover;
   display: block;
+}
+
+.inputContainer {
+  width: 100%;
 }

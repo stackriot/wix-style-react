@@ -22,6 +22,7 @@ export interface CalendarProps {
   shouldCloseOnSelect?: boolean;
   locale?: string | { distanceInWords?: {}; format?: {} };
   firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  rtl?: boolean;
 }
 
 export default class Calendar extends React.PureComponent<CalendarProps> {
