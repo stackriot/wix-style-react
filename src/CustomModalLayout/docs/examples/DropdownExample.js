@@ -11,6 +11,7 @@ class DropdownExample extends React.Component {
         subtitle="Make customers come back to your store with coupons"
         sideActions={<Checkbox>Checkbox</Checkbox>}
       >
+        <Box width="100%" height="3px" />
         <Dropdown
           popoverProps={{ appendTo: 'window' }}
           options={[
@@ -21,6 +22,7 @@ class DropdownExample extends React.Component {
           ]}
           placeholder="Select an option"
         />
+        <Box width="100%" height="3px" />
       </CustomModalLayout>
     );
   }

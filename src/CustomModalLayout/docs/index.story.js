@@ -25,6 +25,7 @@ import TableExample from '!raw-loader!./examples/TableExample';
 import MarketingExample from '!raw-loader!./examples/MarketingExample';
 import HelpButtonExample from '!raw-loader!./examples/HelpButtonExample';
 import DropdownExample from '!raw-loader!./examples/DropdownExample';
+import InputExample from '!raw-loader!./examples/InputExample';
 import CustomModalLayout from '..';
 import Checkbox from '../../Checkbox';
 import Text from '../../Text';
@@ -122,6 +123,12 @@ export default {
             title: 'Custom Page Example',
             text: 'Open a custom page in a modal',
             source: PageExample,
+          }),
+          example({
+            title: 'Input Example',
+            text:
+              'When Input element is inside modal, outline at the top and bottom is cut. In order to see full outline, Box component with 3px of height has to be used before and after Input element.',
+            source: InputExample,
           }),
           example({
             title: 'Opening popovers from a modal',
