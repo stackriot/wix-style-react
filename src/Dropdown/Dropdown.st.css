@@ -1,5 +1,13 @@
+:import {
+  -st-from: '../Input/Input.st.css';
+  -st-named: input;
+}
+
 .showPointer {
   -st-states: noBorder;
+}
+
+.showPointer .input {
   cursor: pointer;
 }
 
