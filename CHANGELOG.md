@@ -21,6 +21,7 @@ Types of changes:
 
 ### Changed
 - `Themes | Business Dashboard` - update theme color foundations [#6147](https://github.com/wix/wix-style-react/pull/6147)
+- `<Dropdown/>` - use pointer type of cursor when mouse hovering over dropdown [#6138](https://github.com/wix/wix-style-react/pull/6138)
 
 ## 9.29.3 - 2020-10-28
 ### Fixed
