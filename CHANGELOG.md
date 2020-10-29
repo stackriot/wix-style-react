@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.30.0 - 2020-10-29
 ### Added
 - `<AddressInput/>` – [Internal] New component [#6049](https://github.com/wix/wix-style-react/pull/6049)
 - `<Layout/>` - Add rowHeight prop [#6135](https://github.com/wix/wix-style-react/pull/6135)
