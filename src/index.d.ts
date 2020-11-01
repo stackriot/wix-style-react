@@ -481,5 +481,8 @@ export * from './AddressInput';
 export { default as SparklineChart } from './SparklineChart';
 export * from './SparklineChart';
 
+export { default as CardFolderTabs } from './CardFolderTabs';
+export * from './CardFolderTabs';
+
 export { default as StackedBarChart } from './StackedBarChart';
 export * from './StackedBarChart';
