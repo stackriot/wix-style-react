@@ -1,6 +1,5 @@
 export const appearance = `
-<React.Fragment>
-
+<Layout cols={1}>
 <SectionHelper
   actionText="I understand the consequences"
   appearance="standard"
@@ -10,7 +9,6 @@ export const appearance = `
 >
   This is a very important message
 </SectionHelper>
-<br/>
 <SectionHelper
   actionText="I understand the consequences"
   appearance="warning"
@@ -20,7 +18,6 @@ export const appearance = `
 >
   This is a very important message
 </SectionHelper>
-<br/>
 <SectionHelper
   actionText="I understand the consequences"
   appearance="danger"
@@ -30,7 +27,6 @@ export const appearance = `
 >
   This is a very important message
 </SectionHelper>
-<br/>
 <SectionHelper
   actionText="I understand the consequences"
   appearance="success"
@@ -40,7 +36,6 @@ export const appearance = `
 >
   This is a very important message
 </SectionHelper>
-<br/>
 <SectionHelper
   actionText="I understand the consequences"
   appearance="premium"
@@ -50,7 +45,6 @@ export const appearance = `
 >
   This is a very important message
 </SectionHelper>
-<br/>
 <SectionHelper
   actionText="I understand the consequences"
   appearance="experimentalDark"
@@ -60,5 +54,26 @@ export const appearance = `
 >
   This is a very important message
 </SectionHelper>
-</React.Fragment>
+</Layout>
+`;
+
+export const textbutton = `
+<Layout cols={1}>
+  <SectionHelper title="Don't forget to set up payments">
+    In order to sell your music you need to choose a payment method.
+    <Box>
+      <TextButton size="small" skin="dark" underline="always">
+        Learn More
+      </TextButton>
+    </Box>
+  </SectionHelper>
+  <SectionHelper title="Don't forget to set up payments">
+    In order to sell your music you need to choose a payment method.
+    <Box inline>
+      <TextButton size="small" skin="dark" underline="always">
+        Learn More
+      </TextButton>
+    </Box>
+  </SectionHelper>
+</Layout>
 `;

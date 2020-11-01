@@ -85,6 +85,12 @@ export default {
           title('Examples'),
 
           example({ title: 'Appearance', source: examples.appearance }),
+
+          example({
+            title: 'Text Button',
+            description: 'Text button can be added as a child item.',
+            source: examples.textbutton,
+          }),
         ],
       }),
 
