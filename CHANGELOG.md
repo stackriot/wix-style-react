@@ -16,8 +16,16 @@ Types of changes:
 
 ## Next
 
+## 9.31.0 - 2020-11-01
 ### Added
-`<DatePicker/>` - RTL support [#6129](https://github.com/wix/wix-style-react/pull/6129)
+- `<CardFolderTabs/>` - new component [#6037](https://github.com/wix/wix-style-react/pull/6037)
+- `<DatePicker/>` - RTL support [#6129](https://github.com/wix/wix-style-react/pull/6129)
+- `<SectionHelper/>` - Added text button example to a story [#6153](https://github.com/wix/wix-style-react/pull/6153)
+
+### Fixed
+- `<Text/>` - add skin primary to definitions [#6155](https://github.com/wix/wix-style-react/pull/6155)
+- `<ImageViewer/>` - Fix typo in docs [#6154](https://github.com/wix/wix-style-react/pull/6154/files)
+
 
 ## 9.30.0 - 2020-10-29
 ### Added
