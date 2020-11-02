@@ -155,10 +155,14 @@ class DropdownLayout extends React.PureComponent {
     ) : null;
   }
 
-  _patchOptionToBuilder({ option, idx }) {
+  _convertOptionToListItemSection({ option, idx }) {
     const { value, id, title: isTitle } = option;
 
     if (value === DIVIDER_OPTION_VALUE) {
+      deprecationLog(
+        'to render a divider, please use `listItemSectionBuilder`',
+      );
+
       return listItemSectionBuilder({
         dataHook: OPTION_DATA_HOOKS.DIVIDER,
         id: id || idx,
@@ -167,6 +171,8 @@ class DropdownLayout extends React.PureComponent {
     }
 
     if (isTitle) {
+      deprecationLog('to render a title, please use `listItemSectionBuilder`');
+
       return listItemSectionBuilder({
         dataHook: OPTION_DATA_HOOKS.TITLE,
         id,
@@ -174,8 +180,6 @@ class DropdownLayout extends React.PureComponent {
         title: value,
       });
     }
-
-    return option;
   }
 
   _isControlled() {
@@ -389,9 +393,10 @@ class DropdownLayout extends React.PureComponent {
   };
 
   _renderOption({ option, idx }) {
-    const builderOption = this._patchOptionToBuilder({ option, idx });
+    const newOption =
+      this._convertOptionToListItemSection({ option, idx }) || option;
 
-    const content = this._renderOptionContent({ builderOption, idx });
+    const content = this._renderOptionContent({ option: newOption, idx });
 
     return option.linkTo ? (
       <a
@@ -425,11 +430,11 @@ class DropdownLayout extends React.PureComponent {
     );
   };
 
-  _renderOptionContent({ builderOption, idx }) {
+  _renderOptionContent({ option, idx }) {
     const { itemHeight, selectedHighlight } = this.props;
     const { selectedId, hovered } = this.state;
 
-    const { id, disabled, overrideStyle } = builderOption;
+    const { id, disabled, overrideStyle, overrideOptionStyle } = option;
 
     const optionState = {
       selected: id === selectedId,
@@ -440,22 +445,26 @@ class DropdownLayout extends React.PureComponent {
     return (
       <div
         {...this._getItemDataAttr({ ...optionState, overrideStyle })}
-        className={st(classes.option, {
-          ...optionState,
-          selected: optionState.selected && selectedHighlight,
-          itemHeight,
-          overrideStyle,
-        })}
-        ref={node => this._setSelectedOptionNode(node, builderOption)}
+        className={
+          overrideOptionStyle
+            ? null
+            : st(classes.option, {
+                ...optionState,
+                selected: optionState.selected && selectedHighlight,
+                itemHeight,
+                overrideStyle,
+              })
+        }
+        ref={node => this._setSelectedOptionNode(node, option)}
         onClick={!disabled ? e => this._onSelect(idx, e) : null}
         key={idx}
         onMouseEnter={() => this._onMouseEnter(idx)}
         onMouseLeave={this._onMouseLeave}
         data-hook={`dropdown-item-${id}`}
       >
-        {typeof builderOption.value === 'function'
-          ? builderOption.value(optionState)
-          : builderOption.value}
+        {typeof option.value === 'function'
+          ? option.value(optionState)
+          : option.value}
       </div>
     );
   }
@@ -564,7 +573,11 @@ const optionPropTypes = PropTypes.shape({
   value: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.func])
     .isRequired,
   disabled: PropTypes.bool,
+  /** @deprecated*/
   overrideStyle: PropTypes.bool,
+  /** @deprecated*/
+  title: PropTypes.bool,
+  overrideOptionStyle: PropTypes.bool,
   /* the string displayed within the input when the option is selected */
   label: PropTypes.string,
 });
@@ -627,7 +640,9 @@ DropdownLayout.propTypes = {
    * - value `<function / string / node>` *required*: can be a string, react element or a builder function.
    * - disabled `<bool>` *default value- false*: whether this option is disabled or not
    * - linkTo `<string>`: when provided the option will be an anchor to the given value
-   * - overrideStyle `<bool>` *default value- false*: when this is on, no external style will be added to this option, only the internal node style, for further information see the examples
+   * - title `<bool>`  *default value- false*  **deprecated**: please use `listItemSectionBuilder` for rendering a title.
+   * - overrideStyle `<bool>` *default value- false*  **deprecated**: please use `overrideOptionStyle` for override option styles.
+   * - overrideOptionStyle `<bool>` *default value- false* - when set to `true`, the option will be responsible to its own styles. No styles will be applied from the DropdownLayout itself.
    * - label `<string>`: the string displayed within an input when the option is selected. This is used when using `<DropdownLayout/>` with an `<Input/>`.
    */
   options: PropTypes.arrayOf(optionValidator),

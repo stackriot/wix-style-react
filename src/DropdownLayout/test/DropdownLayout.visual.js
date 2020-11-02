@@ -202,6 +202,33 @@ const tests = [
         },
       },
       {
+        it: 'overrideOptionStyle',
+        props: {
+          options: [
+            { id: 1, value: 'option 1', overrideOptionStyle: true },
+            {
+              id: 2,
+              value: <div style={{ color: 'red' }}>option 2 - node</div>,
+              overrideOptionStyle: true,
+            },
+            {
+              id: 3,
+              value: 'option 3 disabled',
+              overrideOptionStyle: true,
+              disabled: true,
+            },
+            {
+              id: 4,
+              value: (
+                <div style={{ color: 'red' }}>option 4- node disabled</div>
+              ),
+              overrideOptionStyle: true,
+              disabled: true,
+            },
+          ],
+        },
+      },
+      {
         it: 'custom builder',
         props: {
           options: customBuilderOptions,

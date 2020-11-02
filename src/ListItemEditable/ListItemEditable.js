@@ -148,7 +148,7 @@ export const listItemEditableBuilder = ({
 }) => ({
   id,
   disabled: true,
-  overrideStyle: true,
+  overrideOptionStyle: true,
   value: props => (
     <ListItemEditable
       {...props}

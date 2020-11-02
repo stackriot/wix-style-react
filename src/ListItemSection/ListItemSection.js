@@ -137,7 +137,7 @@ export const listItemSectionBuilder = ({
   ellipsis,
 }) => ({
   id,
-  overrideStyle: true,
+  overrideOptionStyle: true,
   disabled: true,
   value: props => (
     <ListItemSection

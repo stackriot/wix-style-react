@@ -189,7 +189,7 @@ export const listItemActionBuilder = ({
 }) => ({
   id,
   disabled,
-  overrideStyle: true,
+  overrideOptionStyle: true,
   value: ({ hovered }) => (
     <ListItemAction
       {...rest}

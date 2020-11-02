@@ -31,7 +31,7 @@ function ListItemActionWithAllProps() {
 }
 
 function ListItemActionBuilderWithAllProps() {
-  const { disabled, id, overrideStyle, value } = listItemActionBuilder({
+  const { disabled, id, overrideOptionStyle, value } = listItemActionBuilder({
     autoFocus: true,
     as: 'button',
     className: 'cls',

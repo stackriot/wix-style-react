@@ -37,7 +37,7 @@ const javascriptFiles = [
   ['ContactItemBuilder.bundle.min.js', 56],
   ['CounterBadge.bundle.min.js', 35],
   ['CustomModalLayout.bundle.min.js', 49],
-  ['DatePicker.bundle.min.js', 125],
+  ['DatePicker.bundle.min.js', 126],
   ['Divider.bundle.min.js', 4],
   ['Dropdown.bundle.min.js', 78],
   ['DropdownBase.bundle.min.js', 52],

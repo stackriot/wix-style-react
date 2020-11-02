@@ -41,7 +41,7 @@ function listItemEditableBuilderWithMandatoryProps() {
 }
 
 function listItemEditableBuilderWithAllProps() {
-  listItemEditableBuilder({
+  const {id , disabled, overrideOptionStyle, value } = listItemEditableBuilder({
     id: '1',
     onApprove: () => null,
     onCancel: () => null,

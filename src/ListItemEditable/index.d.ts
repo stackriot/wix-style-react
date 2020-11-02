@@ -45,7 +45,8 @@ export const listItemEditableBuilder: (data: {
   margins?: ListItemEditableMargins;
 }) => {
   id: string | number;
-  overrideStyle: true;
+  disabled: true;
+  overrideOptionStyle: true;
   value: (props?: Partial<ListItemEditableProps>) => React.ReactNode;
 };
 

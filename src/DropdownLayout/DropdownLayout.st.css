@@ -121,15 +121,15 @@
   align-items: center;
 }
 
-.option:overrideStyle {
+.option:overrideStyle{
   padding: 0;
 }
 
-.option:itemHeight(small):not(:overrideStyle) {
+.option:itemHeight(small):not(:overrideStyle){
   min-height: value(option_height);
 }
 
-.option:itemHeight(big):not(:overrideStyle) {
+.option:itemHeight(big):not(:overrideStyle){
   min-height: value(big_option_height);
 }
 

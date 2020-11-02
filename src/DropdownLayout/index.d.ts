@@ -54,6 +54,7 @@ export type DropdownLayoutValueOption = {
   title?: boolean;
   linkTo?: string;
   overrideStyle?: boolean;
+  overrideOptionStyle? : boolean;
   label?: string;
 };
 

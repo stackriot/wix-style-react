@@ -203,7 +203,7 @@ export const listItemSelectBuilder = ({
 }) => ({
   id,
   disabled,
-  overrideStyle: true,
+  overrideOptionStyle: true,
   label,
   value: ({ selected, hovered, ...rest }) => (
     <ListItemSelect

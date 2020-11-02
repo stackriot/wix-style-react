@@ -77,6 +77,6 @@ export const listItemActionBuilder: <T extends Partial<
 }) => {
   id: string | number;
   disabled: boolean | undefined;
-  overrideStyle: true;
+  overrideOptionStyle: true;
   value: (props: T) => React.ReactNode;
 };

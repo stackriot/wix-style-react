@@ -127,8 +127,8 @@ export const groups = `
 
 export const functionOptions = `() => {
 
-const setTextSkin = ({selected, hovered, disabled }) =>
-    selected && 'error' || hovered && 'premium' || disabled &&  'disabled' || 'standard';
+const setBoxBackground = ({selected, hovered }) =>
+    (selected && hovered && 'R20') ||  (selected && 'R10') ||(hovered && 'R50') || 'D80';
 
 const customBuilderFunction = ({
   id,
@@ -137,14 +137,15 @@ const customBuilderFunction = ({
 }) => ({
   id,
   disabled,
-  overrideStyle: true,
-  value: props => (
-  <Box padding="3px 24px">
+  overrideOptionStyle: true,
+  value: ({selected, hovered, disabled, ...rest }) => (
+  <Box backgroundColor={setBoxBackground({selected, hovered})} padding="6px 24px">
     <Text
       weight="bold"
       children={title}
-      skin={setTextSkin(props)}
-      {...props}
+      skin={disabled? 'disabled' : 'standard'}
+      light={selected}
+      {...rest}
     />
  </Box>
   ),
