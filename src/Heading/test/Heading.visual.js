@@ -46,15 +46,25 @@ const tests = [
   },
 ];
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props, container }) => {
-    storiesOf(`Heading${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <div {...container}>
-          <Heading {...defaultProps} {...props} />
-        </div>
-      ),
-    );
+export const runTests = (
+  { themeName, testWithTheme } = { testWithTheme: i => i },
+) => {
+  tests.forEach(({ describe, its }) => {
+    its.forEach(({ it, props, container }) => {
+      storiesOf(
+        `${themeName ? `${themeName}|` : ''}Heading${
+          describe ? '/' + describe : ''
+        }`,
+        module,
+      ).add(it, () =>
+        testWithTheme(
+          <div {...container}>
+            <Heading {...defaultProps} {...props} />
+          </div>,
+        ),
+      );
+    });
   });
-});
+};
+
+runTests();

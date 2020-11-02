@@ -15,6 +15,9 @@ import { businessDashboardComponents } from '../../../../stories/utils/allCompon
 import SectionHelper from '../../../SectionHelper';
 import * as carousel from './components/Carousel';
 import * as buttons from './components/Button';
+import * as headings from './components/Heading';
+import * as texts from './components/Text';
+import * as textButtons from './components/TextButton';
 import * as circularProgressBar from './components/CircularProgressBar';
 import { Category } from '../../../../stories/storiesHierarchy';
 import Box from '../../../Box';
@@ -76,6 +79,18 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('CircularProgressBar'),
             source: circularProgressBar.playground,
+          }),
+          example({
+            text: TextComponent('Heading'),
+            source: headings.playground,
+          }),
+          example({
+            text: TextComponent('Text'),
+            source: texts.playground,
+          }),
+          example({
+            text: TextComponent('TextButton'),
+            source: textButtons.playground,
           }),
         ],
       }),

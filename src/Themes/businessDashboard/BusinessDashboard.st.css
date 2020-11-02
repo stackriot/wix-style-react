@@ -9,6 +9,21 @@
   -st-default: CircularProgressBar;
 }
 
+:import {
+  -st-from: "../../Heading/Heading.st.css";
+  -st-default: Heading;
+}
+
+:import {
+  -st-from: "../../Text/Text.st.css";
+  -st-default: Text;
+}
+
+:import {
+  -st-from: "../../TextButton/TextButton.st.css";
+  -st-default: TextButton;
+}
+
 /* Overrides */
 :import {
   -st-from: "./components/Button.st.css";
@@ -20,11 +35,35 @@
   -st-default: CircularProgressBarOverrides;
 }
 
+:import {
+  -st-from: "./components/Heading.st.css";
+  -st-default: HeadingOverrides;
+}
+
+:import {
+  -st-from: "./components/Text.st.css";
+  -st-default: TextOverrides;
+}
+
+:import {
+  -st-from: "./components/TextButton.st.css";
+  -st-default: TextButtonOverrides;
+}
+
 @st-scope .root {
   Button {
     -st-mixin: ButtonOverrides();
   }
   CircularProgressBar {
     -st-mixin: CircularProgressBarOverrides();
+  }
+  Heading {
+    -st-mixin: HeadingOverrides();
+  }
+  Text {
+    -st-mixin: TextOverrides();
+  }
+  TextButton {
+    -st-mixin: TextButtonOverrides();
   }
 }

@@ -21,6 +21,7 @@
   B40: #C3DAFF;
   B50: #E8F1FF;
   B60: #F8FAFF;
+  D80: #FFFFFF;
 
   /* With Opacity */
   D10-40: calc_rgba(value(D10), 0.4);

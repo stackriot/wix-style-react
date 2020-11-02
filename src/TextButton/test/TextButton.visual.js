@@ -70,22 +70,32 @@ const blockOfTests = [
   },
 ];
 
-visualize('TextButton', () => {
-  blockOfTests.forEach(({ it, render }) => {
-    snap(it, render);
-  });
+export const runTests = (
+  { themeName, testWithTheme } = { testWithTheme: i => i },
+) => {
+  visualize(`${themeName ? `${themeName}|` : ''}TextButton`, () => {
+    blockOfTests.forEach(({ it, render }) => {
+      snap(it, render);
+    });
 
-  tests.forEach(({ describe, its }) => {
-    story(describe, () => {
-      its.map(({ it, props }) => snap(it, () => <TextButton {...props} />));
+    tests.forEach(({ describe, its }) => {
+      story(describe, () => {
+        its.map(({ it, props }) =>
+          snap(it, () => testWithTheme(<TextButton {...props} />)),
+        );
+      });
+    });
+
+    story('ellipsis', () => {
+      snap('Using Text', () => (
+        <Box width="150px">
+          {testWithTheme(
+            <TextButton ellipsis>TextButton that gets shrinked</TextButton>,
+          )}
+        </Box>
+      ));
     });
   });
+};
 
-  story('ellipsis', () => {
-    snap('Using Text', () => (
-      <Box width="150px">
-        <TextButton ellipsis>TextButton that gets shrinked</TextButton>
-      </Box>
-    ));
-  });
-});
+runTests();

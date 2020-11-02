@@ -85,40 +85,53 @@ const tests = [
   },
 ];
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props, backgroundColor }) => {
-    const testStories = [];
-    Object.keys(SIZES).forEach(size => {
-      Object.keys(WEIGHTS).forEach(weight => {
-        testStories.push(
-          <Cell span={4} key={testStories.length}>
-            <Box>
-              <Text
-                size={size}
-                weight={weight}
-                children={'ABCDEFGHIJKLMNOPQRSTUVWXYZ'}
-                {...props}
-              />
-            </Box>
-            {!props.children && (
+export const runTests = (
+  { themeName, testWithTheme } = { testWithTheme: i => i },
+) => {
+  tests.forEach(({ describe, its }) => {
+    its.forEach(({ it, props, backgroundColor }) => {
+      const testStories = [];
+      Object.keys(SIZES).forEach(size => {
+        Object.keys(WEIGHTS).forEach(weight => {
+          testStories.push(
+            <Cell span={4} key={testStories.length}>
               <Box>
                 <Text
                   size={size}
                   weight={weight}
-                  children={'abcdefghijklmnopqrstuvwxyz'}
+                  children={'ABCDEFGHIJKLMNOPQRSTUVWXYZ'}
                   {...props}
                 />
               </Box>
-            )}
-          </Cell>,
-        );
+              {!props.children && (
+                <Box>
+                  <Text
+                    size={size}
+                    weight={weight}
+                    children={'abcdefghijklmnopqrstuvwxyz'}
+                    {...props}
+                  />
+                </Box>
+              )}
+            </Cell>,
+          );
+        });
       });
-    });
 
-    storiesOf(`Text${describe ? '/' + describe : ''}`, module).add(it, () => (
-      <div style={{ backgroundColor: backgroundColor }}>
-        <Layout>{testStories}</Layout>
-      </div>
-    ));
+      storiesOf(
+        `${themeName ? `${themeName}|` : ''}Text${
+          describe ? '/' + describe : ''
+        }`,
+        module,
+      ).add(it, () =>
+        testWithTheme(
+          <div style={{ backgroundColor: backgroundColor }}>
+            <Layout>{testStories}</Layout>
+          </div>,
+        ),
+      );
+    });
   });
-});
+};
+
+runTests();
