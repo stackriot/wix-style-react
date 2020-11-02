@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `Themes | Business Dashboard` - theme `Heading`, `Text` & `TextButton` [#6157](https://github.com/wix/wix-style-react/pull/6157)
+
 ### Changed
 - `<DropdownLayout/>` and list builders-  adding `overrideOptionStyle` prop [#6151](https://github.com/wix/wix-style-react/pull/6151)
 
