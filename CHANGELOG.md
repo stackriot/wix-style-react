@@ -16,7 +16,7 @@ Types of changes:
 
 ## Next
 ### Changed
--`<DropdownLayout/>` and list builders-  adding `overrideOptionStyle` prop [#6151](https://github.com/wix/wix-style-react/pull/6151)
+- `<DropdownLayout/>` and list builders-  adding `overrideOptionStyle` prop [#6151](https://github.com/wix/wix-style-react/pull/6151)
 
 
 ## 9.31.0 - 2020-11-01
