@@ -46,7 +46,7 @@
 /* Suffix */
 .suffix {
   -st-states: ellipsis;
-  margin: auto 6px 0 auto;
+  margin: auto 0 0 auto;
   padding-left: 6px;
   flex-shrink: 0;
   max-width: 30%;
