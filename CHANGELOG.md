@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.32.0 - 2020-11-02
 ### Added
 - `Themes | Business Dashboard` - theme `Heading`, `Text` & `TextButton` [#6157](https://github.com/wix/wix-style-react/pull/6157)
 
