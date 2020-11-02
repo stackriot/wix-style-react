@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Changed
+-`<DropdownLayout/>` and list builders-  adding `overrideOptionStyle` prop [#6151](https://github.com/wix/wix-style-react/pull/6151)
+
 
 ## 9.31.0 - 2020-11-01
 ### Added
