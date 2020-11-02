@@ -24,6 +24,9 @@ Types of changes:
 ### Fixed
 - `<ListItemSection/>` - Removed redundant margin [#6156](https://github.com/wix/wix-style-react/pull/6156)
 
+### Docs
+- `<TimeInput/>` - refactor story page [#6158](https://github.com/wix/wix-style-react/pull/6158)
+
 ## 9.31.0 - 2020-11-01
 ### Added
 - `<CardFolderTabs/>` - new component [#6037](https://github.com/wix/wix-style-react/pull/6037)
