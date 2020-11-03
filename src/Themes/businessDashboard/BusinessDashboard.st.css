@@ -10,6 +10,11 @@
 }
 
 :import {
+  -st-from: "../../LinearProgressBar/LinearProgressBar.st.css";
+  -st-default: LinearProgressBar;
+}
+
+:import {
   -st-from: "../../Heading/Heading.st.css";
   -st-default: Heading;
 }
@@ -36,6 +41,11 @@
 }
 
 :import {
+  -st-from: "./components/LinearProgressBar.st.css";
+  -st-default: LinearProgressBarOverrides;
+}
+
+:import {
   -st-from: "./components/Heading.st.css";
   -st-default: HeadingOverrides;
 }
@@ -56,6 +66,9 @@
   }
   CircularProgressBar {
     -st-mixin: CircularProgressBarOverrides();
+  }
+  LinearProgressBar {
+    -st-mixin: LinearProgressBarOverrides();
   }
   Heading {
     -st-mixin: HeadingOverrides();

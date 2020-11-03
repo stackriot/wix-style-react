@@ -19,6 +19,7 @@ import * as headings from './components/Heading';
 import * as texts from './components/Text';
 import * as textButtons from './components/TextButton';
 import * as circularProgressBar from './components/CircularProgressBar';
+import * as linearProgressBar from './components/LinearProgressBar';
 import { Category } from '../../../../stories/storiesHierarchy';
 import Box from '../../../Box';
 import Text from '../../../Text';
@@ -79,6 +80,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('CircularProgressBar'),
             source: circularProgressBar.playground,
+          }),
+          example({
+            text: TextComponent('LinearProgressBar'),
+            source: linearProgressBar.playground,
           }),
           example({
             text: TextComponent('Heading'),

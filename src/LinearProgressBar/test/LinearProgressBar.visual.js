@@ -137,51 +137,65 @@ const interactiveTests = [
   },
 ];
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`LinearProgressBar${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <Box
-          backgroundColor={props.light ? 'D10' : 'D80'}
-          align="center"
-          verticalAlign="middle"
-          padding="40px"
-        >
-          <Layout>
-            <Cell>
-              <LinearProgressBar dataHook={dataHook} {...props} />
-            </Cell>
-            <Cell>
-              <LinearProgressBar
-                dataHook={dataHook}
-                {...props}
-                skin={SKINS.success}
-              />
-            </Cell>
-          </Layout>
-        </Box>
-      ),
-    );
+export const runTests = (
+  { themeName, testWithTheme } = { testWithTheme: i => i },
+) => {
+  tests.forEach(({ describe, its }) => {
+    its.forEach(({ it, props }) => {
+      storiesOf(
+        `${themeName ? `${themeName}|` : ''}LinearProgressBar${
+          describe ? '/' + describe : ''
+        }`,
+        module,
+      ).add(it, () =>
+        testWithTheme(
+          <Box
+            backgroundColor={props.light ? 'D10' : 'D80'}
+            align="center"
+            verticalAlign="middle"
+            padding="40px"
+          >
+            <Layout>
+              <Cell>
+                <LinearProgressBar dataHook={dataHook} {...props} />
+              </Cell>
+              <Cell>
+                <LinearProgressBar
+                  dataHook={dataHook}
+                  {...props}
+                  skin={SKINS.success}
+                />
+              </Cell>
+            </Layout>
+          </Box>,
+        ),
+      );
+    });
   });
-});
 
-interactiveTests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props, componentDidMount }) => {
-    storiesOf(`LinearProgressBar${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <Box>
-          <Layout>
-            <Cell>
-              <InteractiveEyeTest
-                {...props}
-                componentDidMount={componentDidMount}
-              />
-            </Cell>
-          </Layout>
-        </Box>
-      ),
-    );
+  interactiveTests.forEach(({ describe, its }) => {
+    its.forEach(({ it, props, componentDidMount }) => {
+      storiesOf(
+        `${themeName ? `${themeName}|` : ''}LinearProgressBar${
+          describe ? '/' + describe : ''
+        }`,
+        module,
+      ).add(it, () =>
+        testWithTheme(
+          <Box>
+            <Layout>
+              <Cell>
+                <InteractiveEyeTest
+                  {...props}
+                  componentDidMount={componentDidMount}
+                />
+              </Cell>
+            </Layout>
+          </Box>,
+        ),
+      );
+    });
   });
-});
+};
+
+runTests();
