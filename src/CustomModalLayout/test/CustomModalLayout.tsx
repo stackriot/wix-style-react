@@ -50,6 +50,8 @@ function customModalLayoutWithAllProps() {
       sideActions={<div />}
       footnote={<div />}
       width="3px"
+      height="50%"
+      maxHeight={500}
       showHeaderDivider
       showFooterDivider
       contentHideDividers

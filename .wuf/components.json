@@ -371,6 +371,9 @@
       "docs"
     ]
   },
+  "SelectorList": {
+    "path": "src/SelectorList"
+  },
   "SidePanel": {
     "path": "src/SidePanel"
   },

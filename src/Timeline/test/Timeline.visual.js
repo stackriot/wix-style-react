@@ -77,8 +77,7 @@ const tests = [
               label: 'simple text',
             },
             {
-              label:
-                'some long text '.repeat(24),
+              label: 'some long text '.repeat(24),
             },
           ],
         },

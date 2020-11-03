@@ -14,16 +14,22 @@ const CustomModalLayout = ({
   showFooterDivider,
   hideContentDividers,
   width,
+  height,
+  maxHeight,
   className,
   style,
   ...restProps
 }) => {
-  const compStyle = width ? { ...style, width } : style;
   return (
     <BaseModalLayout
       {...restProps}
       className={st(classes.root, { removeContentPadding }, className)}
-      style={compStyle}
+      style={{
+        ...style,
+        width: width !== undefined ? width : style.width,
+        height: height !== undefined ? height : style.height,
+        maxHeight: maxHeight !== undefined ? maxHeight : style.maxHeight,
+      }}
       data-contentpadding={!removeContentPadding}
     >
       <BaseModalLayout.Header showHeaderDivider={showHeaderDivider} />
@@ -92,8 +98,12 @@ CustomModalLayout.propTypes = {
   /** CustomModalLayout */
   /** When set to true, there will be no content padding */
   removeContentPadding: PropTypes.bool,
-  /** The modal desired width */
-  width: PropTypes.string,
+  /** Modal desired width */
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /** Modal desired height */
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /** Modal desired max-height */
+  maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Shows a divider at the bottom of the Header */
   showHeaderDivider: PropTypes.bool,
   /** Shows a divider at the top of the Footer */
@@ -108,6 +118,7 @@ CustomModalLayout.defaultProps = {
   removeContentPadding: false,
   showHeaderDivider: false,
   hideContentDividers: false,
+  style: {},
 };
 
 export default CustomModalLayout;
