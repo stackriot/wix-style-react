@@ -15,6 +15,11 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<SelectorList/>` - new component [#6098](https://github.com/wix/wix-style-react/pull/6098)
+
+### Deprecated
+- Deprecated `<MessageBoxFunctionalLayout/>` and `<ModalSelectorLayout/>` modal layouts [#6150](https://github.com/wix/wix-style-react/pull/6150)
 
 ## 9.32.0 - 2020-11-02
 ### Added
