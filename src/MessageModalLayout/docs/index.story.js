@@ -6,7 +6,6 @@ import {
   description,
   importExample,
   title,
-  columns,
   divider,
   example as baseExample,
   playground,

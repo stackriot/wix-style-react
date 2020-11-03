@@ -11,6 +11,7 @@ import { dataHooks } from './ModalSelectorLayout.helpers';
 import Checkbox from '../Checkbox';
 
 import css from './ModalSelectorLayout.scss';
+import deprecationLog from '../utils/deprecationLog';
 
 const DEFAULT_EMPTY = (
   <div className={css.defaultEmptyStateWrapper}>
@@ -182,6 +183,12 @@ export default class ModalSelectorLayout extends React.PureComponent {
     shouldShowNoResultsFoundState: false,
     isEmpty: false,
   };
+
+  componentDidMount() {
+    deprecationLog(
+      `Using "<ModalSelectorLayout/>" is deprecated. Instead, we advise you to use the newer "<SelectorList/>" component in combination with "<CustomModalLayout/>". Please refer to it's documentation for an example.`,
+    );
+  }
 
   render() {
     const {
