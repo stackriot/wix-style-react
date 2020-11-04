@@ -17,6 +17,8 @@ Types of changes:
 ## Next
 ### Added
 - `<SelectorList/>` - new component [#6098](https://github.com/wix/wix-style-react/pull/6098)
+- `<Carousel/>` - Add controlsPosition prop [#6164](https://github.com/wix/wix-style-react/pull/6164)
+- `<Search/>` - Add highlight prop [#6174](https://github.com/wix/wix-style-react/pull/6174)
 - `Themes | Business Dashboard` - Add theme for `LinearProgressBar` [#6136](https://github.com/wix/wix-style-react/pull/6136)
 
 ### Changed
