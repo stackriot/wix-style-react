@@ -19,6 +19,9 @@ Types of changes:
 - `<SelectorList/>` - new component [#6098](https://github.com/wix/wix-style-react/pull/6098)
 - `Themes | Business Dashboard` - Add theme for `LinearProgressBar` [#6136](https://github.com/wix/wix-style-react/pull/6136)
 
+### Changed
+- `Themes | Business Dashboard` - improve `Text` & `TextButton` [#6173](https://github.com/wix/wix-style-react/pull/6173)
+
 ### Deprecated
 - Deprecated `<MessageBoxFunctionalLayout/>` and `<ModalSelectorLayout/>` modal layouts [#6150](https://github.com/wix/wix-style-react/pull/6150)
 
