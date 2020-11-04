@@ -14,7 +14,6 @@ const LINE_WIDTH = 2;
 const AREA_MASK_ID = 'areaMaskId';
 const TOOLTIP_ELEMENT_RADIUS = 4;
 const DEFAULT_COLOR = colors.A1;
-const TRANSITION_DURATION = 300;
 
 /** SparklineChart */
 class SparklineChart extends React.PureComponent {
@@ -252,10 +251,11 @@ class SparklineChart extends React.PureComponent {
   };
 
   _updateComponent = (container, className, fncUpdater) => {
+    const { animationDuration } = this.props;
     container
       .select(className)
       .transition()
-      .duration(TRANSITION_DURATION)
+      .duration(animationDuration)
       .ease(easeQuadIn)
       .attr('d', fncUpdater);
   };
@@ -437,8 +437,13 @@ SparklineChart.propTypes = {
 
   /** Tooltip content (JSX) getter function.  */
   getTooltipContent: PropTypes.func,
+
+  /** Sets the duration of the animation in milliseconds */
+  animationDuration: PropTypes.number,
 };
 
-SparklineChart.defaultProps = {};
+SparklineChart.defaultProps = {
+  animationDuration: 300,
+};
 
 export default SparklineChart;
