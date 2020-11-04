@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<SparklineChart/>` - add onHover prop [#6178](https://github.com/wix/wix-style-react/pull/6178)
+
 ## 9.33.0 - 2020-11-04
 ### Added
 - `<SelectorList/>` - new component [#6098](https://github.com/wix/wix-style-react/pull/6098)
