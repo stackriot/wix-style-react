@@ -14,6 +14,7 @@ export interface SparklineChartProps {
   height?: number;
   highlightedStartingIndex?: number;
   getTooltipContent?: (index: number) => React.ReactNode;
+  onHover?: (index: number) => void;
   animationDuration?: number;
 }
 

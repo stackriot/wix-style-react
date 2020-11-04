@@ -29,6 +29,7 @@ function sparklineChartWithAllProps() {
       getTooltipContent={(index: number): React.ReactNode => (
         <div>tool tip content</div>
       )}
+      onHover={index => `Point at index ${index} is hovered!`}
       animationDuration={300}
     />
   );

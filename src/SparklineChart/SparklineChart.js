@@ -127,6 +127,7 @@ class SparklineChart extends React.PureComponent {
 
   _drawSparkline = () => {
     const { width, height, data } = this.chartContext;
+    const { onHover } = this.props;
     const labels = this._getLabels(data);
 
     const container = select(this.svgRef.current);
@@ -156,9 +157,22 @@ class SparklineChart extends React.PureComponent {
             ? afterDate
             : beforeDate;
 
+        if (
+          typeof onHover === 'function' &&
+          !this._areDatesEqual(closestDate, this.state.hoveredLabel)
+        ) {
+          const labelIndex = labels.indexOf(closestDate);
+          onHover(labelIndex);
+        }
         this.setState({ hoveredLabel: closestDate });
       });
   };
+
+  _areDatesEqual(date1, date2) {
+    const date1Time = date1 && date1.getTime();
+    const date2Time = date2 && date2.getTime();
+    return date1Time === date2Time;
+  }
 
   _getLineColorId(dataSet, componentId) {
     return `${componentId}color`;
@@ -437,6 +451,9 @@ SparklineChart.propTypes = {
 
   /** Tooltip content (JSX) getter function.  */
   getTooltipContent: PropTypes.func,
+
+  /** callback when graph is hovered*/
+  onHover: PropTypes.func,
 
   /** Sets the duration of the animation in milliseconds */
   animationDuration: PropTypes.number,
