@@ -34,28 +34,42 @@ class Carousel extends React.Component {
   static propTypes = {
     /** Applied as data-hook HTML attribute that can be used in the tests */
     dataHook: PropTypes.string,
+
     /** A single CSS class name to be appended to the Carousel's wrapper element. */
     className: PropTypes.string,
+
     /** Array of objects where each contains the `src` of an image (in \<img src="your_src" /\>) */
     images: PropTypes.array,
+
     /** Any element to render inside */
     children: PropTypes.node,
+
     /** Sets the skin of the arrow buttons */
     buttonSkin: PropTypes.oneOf(['standard', 'inverted']),
+
     /** Images loop endlessly */
     infinite: PropTypes.bool,
+
     /** Auto-playing of images */
     autoplay: PropTypes.bool,
+
     /** Show dots */
     dots: PropTypes.bool,
+
     /** Variable width of children */
     variableWidth: PropTypes.bool,
+
     /** An index of the slide to start on */
     initialSlideIndex: PropTypes.number,
+
     /** Index change callback. `index => ...` */
     afterChange: PropTypes.func,
+
     /** Index change callback. `(oldIndex, newIndex) => ...` */
     beforeChange: PropTypes.func,
+
+    /** Sets the arrows position */
+    controlsPosition: PropTypes.oneOf(['sides', 'overlay', 'bottom', 'none']),
   };
 
   static defaultProps = {
@@ -65,6 +79,7 @@ class Carousel extends React.Component {
     initialSlideIndex: 0,
     images: [],
     buttonSkin: 'standard',
+    controlsPosition: 'sides',
   };
 
   constructor(props) {
@@ -76,12 +91,21 @@ class Carousel extends React.Component {
   }
 
   render() {
-    const { dataHook, className, images, children } = this.props;
+    const {
+      dataHook,
+      className,
+      images,
+      children,
+      controlsPosition,
+    } = this.props;
     const { sliderSettings } = this.state;
     const hasImages = !children && images.length > 0;
 
     return (
-      <div data-hook={dataHook} className={st(classes.root, className)}>
+      <div
+        data-hook={dataHook}
+        className={st(classes.root, { controlsPosition }, className)}
+      >
         <Slider {...sliderSettings}>
           {children}
           {hasImages && this._renderImages(images)}
@@ -99,6 +123,7 @@ class Carousel extends React.Component {
     initialSlideIndex,
     afterChange,
     beforeChange,
+    controlsPosition,
   }) => {
     return {
       infinite,
@@ -126,6 +151,7 @@ class Carousel extends React.Component {
           icon={<ChevronLeftLarge />}
         />
       ),
+      arrows: controlsPosition !== 'none',
       appendDots: pages => (
         <Pagination className={classes.pagination} pages={pages} />
       ),

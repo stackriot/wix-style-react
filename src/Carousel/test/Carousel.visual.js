@@ -3,7 +3,7 @@ import { visualize, story, snap } from 'storybook-snapper';
 import Carousel from '..';
 import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 import { carouselUniDriverFactory } from '../Carousel.uni.driver';
-import { storySettings } from '../docs/storySettings';
+import { storySettings } from './storySettings';
 import eventually from 'wix-eventually';
 
 const sampleImages = [
@@ -43,13 +43,34 @@ const tests = [
     ],
   },
   {
-    describe: 'Button Skin',
+    describe: 'Controls',
     its: [
       {
-        it: 'Display inverted buttons',
+        it: 'Display inverted colors',
         props: {
           images: sampleImages,
           buttonSkin: 'inverted',
+        },
+      },
+      {
+        it: 'Display controls as overlay',
+        props: {
+          images: sampleImages,
+          controlsPosition: 'overlay',
+        },
+      },
+      {
+        it: 'Display controls on bottom',
+        props: {
+          images: sampleImages,
+          controlsPosition: 'bottom',
+        },
+      },
+      {
+        it: 'Remove controls',
+        props: {
+          images: sampleImages,
+          controlsPosition: 'none',
         },
       },
     ],

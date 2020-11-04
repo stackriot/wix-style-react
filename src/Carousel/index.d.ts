@@ -1,5 +1,13 @@
 import * as React from 'react';
 
+export type CarouselControlsPosition = 'sides' | 'overlay' | 'bottom' | 'none';
+
+export default class Carousel extends React.Component<CarouselProps> {}
+
+export type CarouselButtonSkin = 'standard' | 'inverted';
+
+export type CarouselImage = Partial<HTMLImageElement> & { src: string };
+
 export interface CarouselProps {
   dataHook?: string;
   className?: string;
@@ -12,10 +20,5 @@ export interface CarouselProps {
   initialSlideIndex?: number;
   afterChange?: (currentSlide: number) => void;
   beforeChange?: (currentSlide: number, nextSlide: number) => void;
+  controlsPosition?: CarouselControlsPosition;
 }
-
-export default class Carousel extends React.Component<CarouselProps> {}
-
-export type CarouselButtonSkin = 'standard' | 'inverted';
-
-export type CarouselImage = Partial<HTMLImageElement> & { src: string };

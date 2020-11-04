@@ -14,18 +14,37 @@
   verticalSpacingSize: 7px;
 }
 
+.root {
+  -st-states: controlsPosition(enum(sides, overlay, bottom, none));
+}
+
 .root[data-is-loading='true'] {
   display: none;
 }
 
 .root :global(.slick-list) {
-  width: calc(100% - (2 * value(arrowSize)) - value(horizontalSpacingSize));
   min-height: value(arrowSize);
   margin: auto;
 }
 
-.root :global(.slick-arrow) {
+.root:controlsPosition(sides) :global(.slick-list) {
+  width: calc(100% - (2 * value(arrowSize)) - value(horizontalSpacingSize));
+}
+
+.root:controlsPosition(sides) :global(.slick-arrow) {
   top: calc(50% - value(arrowSize) + value(verticalSpacingSize));
+  transform: none;
+}
+
+.root:controlsPosition(overlay) :global(.slick-arrow) {
+  top: calc(50% - value(arrowSize) + value(verticalSpacingSize));
+  transform: none;
+  margin: 0 12px;
+  z-index: 1;
+}
+
+.root:controlsPosition(bottom) :global(.slick-arrow) {
+  top: calc(100% - 20px);
   transform: none;
 }
 

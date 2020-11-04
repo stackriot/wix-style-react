@@ -10,9 +10,10 @@ export const InfoChild = ({ text }) => (
   </Box>
 );
 
-export const buttonSkinExample = `
+export const controlsPositionExample = `
 <Carousel
   buttonSkin="inverted"
+  controlsPosition="bottom"
   images={[
     {
       src: 'https://a-static.besthdwallpaper.com/garfield-wallpaper-2800x2100-815_28.jpg'
