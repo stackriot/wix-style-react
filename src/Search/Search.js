@@ -41,6 +41,9 @@ class Search extends Component {
 
     /** onChange debounce in milliseconds */
     debounceMs: PropTypes.number,
+
+    /** Mark in bold word parts based on search pattern */
+    highlight: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -51,6 +54,7 @@ class Search extends Component {
     expandWidth: '100%',
     debounceMs: 0,
     onChange: () => {},
+    highlight: true,
   };
 
   constructor(props) {
@@ -188,7 +192,13 @@ class Search extends Component {
   };
 
   render() {
-    const { defaultValue, dataHook, expandWidth, ...restProps } = this.props;
+    const {
+      defaultValue,
+      dataHook,
+      expandWidth,
+      highlight,
+      ...restProps
+    } = this.props;
     const { expandable, size } = restProps;
     const { collapsed, inputValue } = this.state;
 
@@ -228,7 +238,7 @@ class Search extends Component {
             onChange={this._onChange}
             onFocus={this._onFocus}
             onBlur={this._onBlur}
-            highlight
+            highlight={highlight}
           />
         </div>
       </div>
