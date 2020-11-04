@@ -20,6 +20,7 @@ Types of changes:
 - `<Carousel/>` - Add controlsPosition prop [#6164](https://github.com/wix/wix-style-react/pull/6164)
 - `<Search/>` - Add highlight prop [#6174](https://github.com/wix/wix-style-react/pull/6174)
 - `Themes | Business Dashboard` - Add theme for `LinearProgressBar` [#6136](https://github.com/wix/wix-style-react/pull/6136)
+- `<Range/>` - add unidriver [#6170](https://github.com/wix/wix-style-react/pull/6170)
 
 ### Changed
 - `Themes | Business Dashboard` - improve `Text` & `TextButton` [#6173](https://github.com/wix/wix-style-react/pull/6173)
