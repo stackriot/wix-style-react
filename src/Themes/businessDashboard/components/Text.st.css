@@ -5,7 +5,7 @@
 
 :import {
   -st-from: '../foundations/colors.st.css';
-  -st-named: D10, D20, D30, D80;
+  -st-named: D10, D20, D30, D40, D80, B10, B20;
 }
 
 .root {
@@ -50,6 +50,21 @@
   line-height: 20px;
 }
 
+/* Primary */
+.root:skin(primary) {
+  color: value(B10);
+}
+
+/******** Link ********/
+.root > a {
+  color: value(B10);
+  text-decoration: none;
+}
+
+.root > a:hover {
+  color: value(B20);
+}
+
 /* Bold */
 .root:weight(bold):size(tiny) {
   line-height: 16px;
@@ -60,5 +75,5 @@
 
 /* Disabled */
 .root:skin(disabled) {
-  color: value(D30);
+  color: value(D40);
 }
