@@ -21,7 +21,7 @@ Types of changes:
 
 ### Changed
 - `<TimeInput/>` - replace css with stylable [#6177](https://github.com/wix/wix-style-react/pull/6177)
-- `<ModalSelectorLayout/>` - implement using the new <SelectorList/> [#6171](https://github.com/wix/wix-style-react/pull/6171)
+- `<ModalSelectorLayout/>` - implement using the new `<SelectorList/>` [#6171](https://github.com/wix/wix-style-react/pull/6171)
 
 ### Fixed
 - `<SelectableAccordion/>` - Fix testkit types [#6181](https://github.com/wix/wix-style-react/pull/6181)
