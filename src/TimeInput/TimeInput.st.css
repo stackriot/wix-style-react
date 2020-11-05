@@ -15,7 +15,7 @@
 }
 
 .root {
-  -st-states: disabled, rtl;
+  -st-states: disabled, rtl, showSeconds;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -29,6 +29,10 @@
 
 .root:rtl {
   flex-direction: row-reverse;
+}
+
+.root:showSeconds .input::input {
+  width: 73px;
 }
 
 .input {

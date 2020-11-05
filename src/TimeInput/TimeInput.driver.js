@@ -35,6 +35,7 @@ const timeInputDriverFactory = ({ element }) => {
     blur: () => input().blur(),
     hasStatus: status => input().hasStatus(status),
     getStatusMessage: () => input().getStatusMessage(),
+    isShowSeconds: () => input().getValue().length === 8,
   };
 };
 export default timeInputDriverFactory;

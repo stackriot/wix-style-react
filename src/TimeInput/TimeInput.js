@@ -53,6 +53,9 @@ export default class TimeInput extends Component {
 
     /** The status message to display when hovering the status icon, if not given or empty there will be no tooltip */
     statusMessage: PropTypes.node,
+
+    /** Display seconds  */
+    showSeconds: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -64,6 +67,7 @@ export default class TimeInput extends Component {
     dashesWhenDisabled: false,
     minutesStep: 20,
     width: 'auto',
+    showSeconds: false,
   };
 
   constructor(props) {
@@ -73,33 +77,51 @@ export default class TimeInput extends Component {
       focus: false,
       lastCaretIdx: 0,
       hover: false,
-      ...this._getInitTime(this.props.defaultValue),
+      ...this._getInitTime(
+        this.props.defaultValue,
+        this.props.showSeconds,
+        this.props.disableAmPm,
+      ),
     };
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.defaultValue !== this.props.defaultValue) {
-      this.setState(this._getInitTime(nextProps.defaultValue));
+    if (this._shouldUpdateState(nextProps)) {
+      this.setState(
+        this._getInitTime(
+          nextProps.defaultValue,
+          nextProps.showSeconds,
+          nextProps.disableAmPm,
+        ),
+      );
     }
   }
 
-  _isAmPmMode() {
+  _shouldUpdateState(nextProps) {
     return (
-      !this.props.disableAmPm &&
+      nextProps.defaultValue !== this.props.defaultValue ||
+      nextProps.showSeconds !== this.props.showSeconds ||
+      nextProps.disableAmPm !== this.props.disableAmPm
+    );
+  }
+
+  _isAmPmMode(disableAmPm) {
+    return (
+      !disableAmPm &&
       moment('2016-04-03 13:14:00')
         .format('LT')
         .indexOf('PM') !== -1
     );
   }
 
-  _getInitTime(value) {
+  _getInitTime(value, showSeconds, disableAmPm) {
     let time = value || moment(),
       am = time.hours() < 12;
 
-    const ampmMode = this._isAmPmMode();
+    const ampmMode = this._isAmPmMode(disableAmPm);
 
     ({ time, am } = this._normalizeTime(am, time, ampmMode));
-    const text = this._formatTime(time, ampmMode);
+    const text = this._formatTime(time, ampmMode, showSeconds);
 
     return { time, am, text, ampmMode };
   }
@@ -145,8 +167,15 @@ export default class TimeInput extends Component {
     this._updateDate({ am, time });
   }
 
-  _formatTime(time, ampmMode = this.state.ampmMode) {
-    return ampmMode ? time.format('hh:mm') : time.format('HH:mm');
+  _formatTime(
+    time,
+    ampmMode = this.state.ampmMode,
+    showSeconds = this.props.showSeconds,
+  ) {
+    const withSeconds = showSeconds ? ':ss' : '';
+    return ampmMode
+      ? time.format(`hh:mm${withSeconds}`)
+      : time.format(`HH:mm${withSeconds}`);
   }
 
   _getFocusedTimeUnit(caretIdx, currentValue) {
@@ -310,12 +339,20 @@ export default class TimeInput extends Component {
   }
 
   render() {
-    const { className, style, dataHook, rtl, disabled, width } = this.props;
+    const {
+      className,
+      style,
+      dataHook,
+      rtl,
+      disabled,
+      width,
+      showSeconds,
+    } = this.props;
     const { focus, hover } = this.state;
 
     return (
       <div
-        className={st(classes.root, { disabled, rtl }, className)}
+        className={st(classes.root, { disabled, rtl, showSeconds }, className)}
         style={style}
         data-hook={dataHook}
       >
