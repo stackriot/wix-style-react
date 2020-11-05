@@ -128,7 +128,7 @@ class Search extends Component {
       stateChanges.inputValue = '';
     }
 
-    if (expandable && !collapsed) {
+    if (expandable && !collapsed && this._currentValue === '') {
       stateChanges.collapsed = true;
       this.searchInput.input.blur();
     }
@@ -157,8 +157,9 @@ class Search extends Component {
     onFocus && onFocus(event);
   };
 
-  _onBlur = event => {
+  _onBlur = async event => {
     const { onBlur } = this.props;
+    onBlur && (await onBlur(event));
 
     if (!this.state.collapsed && this.props.expandable) {
       const value = this._currentValue();
@@ -169,8 +170,6 @@ class Search extends Component {
         });
       }
     }
-
-    onBlur && onBlur(event);
   };
 
   _onWrapperClick = () => {
