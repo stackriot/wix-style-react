@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isUndefined from 'lodash/isUndefined';
-import classNames from 'classnames';
 import moment from 'moment';
 import Text from '../Text';
 import Input from '../Input';
 import Box from '../Box';
-
-import styles from './TimeInput.scss';
+import { st, classes } from './TimeInput.st.css';
 import { dataHooks } from './constants';
 
 /**
@@ -251,7 +249,7 @@ export default class TimeInput extends Component {
               <Text
                 weight="normal"
                 skin={disabled ? 'disabled' : 'standard'}
-                className={styles.ampm}
+                className={classes.ampm}
                 onClick={this._handleAmPmClick}
                 dataHook={dataHooks.amPmIndicator}
               >
@@ -262,7 +260,7 @@ export default class TimeInput extends Component {
           <Box
             align="right"
             verticalAlign="middle"
-            className={styles.suffixEndWrapper}
+            className={classes.suffixEndWrapper}
           >
             {customSuffix && (
               <Box marginRight="6px" width="max-content">
@@ -297,9 +295,7 @@ export default class TimeInput extends Component {
         ref="input"
         rtl={rtl}
         value={text}
-        className={classNames({
-          [styles.input]: width === 'auto',
-        })}
+        className={width === 'auto' ? classes.input : undefined}
         onFocus={this._handleFocus}
         onChange={this._handleInputChange}
         onBlur={this._handleInputBlur}
@@ -316,23 +312,25 @@ export default class TimeInput extends Component {
   render() {
     const { className, style, dataHook, rtl, disabled, width } = this.props;
     const { focus, hover } = this.state;
+
     return (
       <div
-        className={classNames(styles.wrapper, className, {
-          [styles.disabled]: disabled,
-        })}
+        className={st(classes.root, { disabled, rtl }, className)}
         style={style}
         data-hook={dataHook}
       >
         <div
           onMouseOver={() => this._handleHover(true)}
           onMouseOut={() => this._handleHover(false)}
-          className={classNames(styles.time, {
-            focus,
-            hover: hover && !focus,
-            rtl,
-            [styles.stretch]: width === '100%',
-          })}
+          className={st(
+            classes.time,
+            {
+              focus,
+              hover: hover && !focus,
+              stretch: width === '100%',
+            },
+            className,
+          )}
         >
           {this._renderTimeTextbox()}
         </div>

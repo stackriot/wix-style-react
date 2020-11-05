@@ -1,0 +1,78 @@
+:import {
+  -st-from: '../Foundation/stylable/colors.st.css';
+  -st-named: B10;
+}
+
+:import {
+  -st-from: '../Input/Input.st.css';
+  -st-default: Input;
+}
+
+:vars {
+  hoverAmPmIndicationColor: value(B10);
+  timeHoverOutlineColor: 1px solid blue;
+  timeFocusOutlineColor: 1px solid black;
+}
+
+.root {
+  -st-states: disabled, rtl;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  line-height: 15px;
+}
+
+.root:disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.root:rtl {
+  flex-direction: row-reverse;
+}
+
+.input {
+  -st-extends: Input;
+}
+
+.input::input {
+  width: 55px;
+}
+
+.time {
+  -st-states: focus, hover, stretch;
+  cursor: pointer;
+  display: block;
+  width: inherit;
+  white-space: nowrap;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.time:stretch {
+   width: 100%;
+ }
+
+.time:focus {
+  outline: value(timeFocusOutlineColor);
+}
+
+.time:hover {
+   outline: value(timeHoverOutlineColor);
+ }
+
+.root:rtl .time {
+   flex-direction: row-reverse;
+ }
+
+.ampm {
+  text-transform: uppercase;
+}
+
+.ampm.ampm:hover {
+  color: value(hoverAmPmIndicationColor);
+}
+
+.suffixEndWrapper div {
+  flex-grow: 0;
+}
