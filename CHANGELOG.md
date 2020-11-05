@@ -22,6 +22,7 @@ Types of changes:
 ### Fixed
 - `<SelectableAccordion/>` - Fix testkit types [#6181](https://github.com/wix/wix-style-react/pull/6181)
 - `Themes | Business Dashboard` - fix CircularProgressBar styling [#6179](https://github.com/wix/wix-style-react/pull/6179)
+- `<Search/>` - fix `onBlur` behaviour [#6169](https://github.com/wix/wix-style-react/pull/6169)
 
 ## 9.33.0 - 2020-11-04
 ### Added
