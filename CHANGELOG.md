@@ -16,6 +16,8 @@ Types of changes:
 
 ## Next
 
+## 9.34.0 - 2020-11-06
+
 ### Added
 - `<SparklineChart/>` - add onHover prop [#6178](https://github.com/wix/wix-style-react/pull/6178)
 - `<TimeInput/>` - added showSeconds prop [#6186](https://github.com/wix/wix-style-react/pull/6186)
