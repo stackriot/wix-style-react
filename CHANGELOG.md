@@ -18,6 +18,9 @@ Types of changes:
 ### Added
 - `<CircularProgressBar/>` - support custom label label + add Business Dashboard theme [#6192](https://github.com/wix/wix-style-react/pull/6192)
 
+### Fixed
+- `<DatePicker/>` - add the public methods to the index.d.ts file [#6189](https://github.com/wix/wix-style-react/pull/6189)
+
 ## 9.34.0 - 2020-11-06
 
 ### Added
