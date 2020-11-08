@@ -20,6 +20,8 @@ Types of changes:
 
 ### Fixed
 - `<DatePicker/>` - add the public methods to the index.d.ts file [#6189](https://github.com/wix/wix-style-react/pull/6189)
+- `<CustomModalLayout/>` - fix top and bottom dividers [#6149](https://github.com/wix/wix-style-react/pull/6149)
+- Don't clear value when entering text into rich text inputs [#6168](https://github.com/wix/wix-style-react/pull/6168)
 
 ## 9.34.0 - 2020-11-06
 
