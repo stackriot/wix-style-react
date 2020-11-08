@@ -24,7 +24,7 @@ Types of changes:
 - `<DatePicker/>` - add the public methods to the index.d.ts file [#6189](https://github.com/wix/wix-style-react/pull/6189)
 - `<CustomModalLayout/>` - fix top and bottom dividers [#6149](https://github.com/wix/wix-style-react/pull/6149)
 - Don't clear value when entering text into rich text inputs [#6168](https://github.com/wix/wix-style-react/pull/6168)
-- `<BadgeOption/>` and `badgeSelectItemBuilder`- adding visuals and fix types [](https://github.com/wix/wix-style-react/pull/6196)
+- `<BadgeOption/>` and `badgeSelectItemBuilder`- adding visuals and fix types [#6196](https://github.com/wix/wix-style-react/pull/6196)
 
 ## 9.34.0 - 2020-11-06
 
