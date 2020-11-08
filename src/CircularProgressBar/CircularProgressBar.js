@@ -23,12 +23,13 @@ const sizeToErrorIcon = {
 
 class CircularProgressBar extends React.PureComponent {
   _renderProgressBar() {
-    const { light, size, ...otherProps } = this.props;
+    const { light, size, label, ...otherProps } = this.props;
 
     return (
       <CoreCircularProgressBar
         className={st(classes.progressBar, { light, size })}
         {...otherProps}
+        label={label}
         data-hook={dataHooks.circularProgressBar}
         size={sizesMap[size]}
         data-size={size}
@@ -76,6 +77,9 @@ CircularProgressBar.propTypes = {
 
   /** Use to display a percentage progress */
   showProgressIndication: PropTypes.bool,
+
+  /** Use to display custom text in the progress bar */
+  label: PropTypes.string,
 
   /** Size of the bar */
   size: PropTypes.string,

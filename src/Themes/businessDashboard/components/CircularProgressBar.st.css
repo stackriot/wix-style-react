@@ -33,7 +33,7 @@
   color: value(A2);
 }
 
-.root::progressBar::progressIndicator {
+.root::progressBar::label, .root::progressBar::progressIndicator {
   position: absolute;
   margin: 0;
   width: 100%;
@@ -44,11 +44,11 @@
   color: value(D10);
 }
 
-.root::progressBar:success::progressIndicator {
+.root::progressBar:success::label, .root::progressBar:success::progressIndicator {
   display: none;
 }
 
-.root::progressBar:error::progressIndicator {
+.root::progressBar:error::label, .root::progressBar:error::progressIndicator {
   display: none;
 }
 
@@ -63,6 +63,6 @@
   width: 56px !important;
 }
 
-.root::progressBar:size(medium)::progressIndicator {
+.root::progressBar:size(medium)::label, .root::progressBar:size(medium)::progressIndicator {
   font-size: 14px;
 }
