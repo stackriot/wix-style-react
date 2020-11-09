@@ -15,9 +15,13 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<Carousel/>` - Added controlsSize prop [#6182](https://github.com/wix/wix-style-react/pull/6182)
+
 ## 9.36.0 - 2020-11-09
 ### Added
 - `Themes | Business Dashboard` - theme the `IconButton` component [#6187](https://github.com/wix/wix-style-react/pull/6187)
+
 ### Changed
 - `<DropdownLayout/>`-  align driver and uni driver [#6184](https://github.com/wix/wix-style-react/pull/6184)
 
