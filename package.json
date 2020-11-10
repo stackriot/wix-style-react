@@ -246,7 +246,7 @@
     "wix-ui-core": "^3.0.148",
     "wix-ui-icons-common": "^2.0.293",
     "wix-ui-test-utils": "^1.0.177",
-    "yoshi-stylable-dependencies": "^4.167.0"
+    "yoshi-stylable-dependencies": "^4.0.0"
   },
   "lint-staged": {
     "linters": {
