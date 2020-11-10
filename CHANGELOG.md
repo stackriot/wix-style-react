@@ -16,7 +16,10 @@ Types of changes:
 
 ## Next
 ### Added
-- `<Carousel/>` - Added controlsSize prop [#6182](https://github.com/wix/wix-style-react/pull/6182)
+- `<Carousel/>` - Added `controlsSize` prop [#6182](https://github.com/wix/wix-style-react/pull/6182)
+- `Themes | Business Dashboard` - adjust Heading, Text & TextButton styles [#6188](https://github.com/wix/wix-style-react/pull/6188)
+- `Themes | Business Dashboard` - Add Carousel theme [#6194](https://github.com/wix/wix-style-react/pull/6194)
+- `<Text/>` - Added listStyle prop [#6165](https://github.com/wix/wix-style-react/pull/6165)
 
 ### Changed
 - `<Popover/>` - Rearrange testkit docs [#6210](https://github.com/wix/wix-style-react/pull/6210)
@@ -24,7 +27,9 @@ Types of changes:
 
 ### Fixed
 - `<BadgeOption/>` and `badgeSelectItemBuilder`- builder fixes and adding selected, hovered and disabled styles to the `BadgeOption` itself [#6166](https://github.com/wix/wix-style-react/pull/6166)
-
+- `Themes | Business Dashboard` - correlate FontUpgrade with the theme active state [#6206](https://github.com/wix/wix-style-react/pull/6206)
+- infra - lower the specific yoshi-stylable-dependencies minor version to a public one [#6211](https://github.com/wix/wix-style-react/pull/6211)
+- Themes | Business Dashboard - adjust Button theme [#6203](https://github.com/wix/wix-style-react/pull/6203)
 
 ## 9.36.0 - 2020-11-09
 ### Added
