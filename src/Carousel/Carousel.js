@@ -178,9 +178,15 @@ class Carousel extends React.Component {
         />
       ),
       arrows: controlsPosition !== 'none',
-      appendDots: pages => (
-        <Pagination className={classes.pagination} pages={pages} />
-      ),
+      appendDots: pages => {
+        /*
+         * originalClassName is a workaround for stylable API extend to work and pass an extendable className.
+         * This is because react-slick overrides brutally the className prop with cloneElement().
+         */
+        return (
+          <Pagination originalClassName={classes.pagination} pages={pages} />
+        );
+      },
       customPaging: i => (
         <div
           className={classes.pageNavigation}
