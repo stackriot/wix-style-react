@@ -22,6 +22,10 @@ Types of changes:
 - `<Popover/>` - Rearrange testkit docs [#6210](https://github.com/wix/wix-style-react/pull/6210)
 - `<CardHeader/>` - remove redundant div [#6209](https://github.com/wix/wix-style-react/pull/6209)
 
+### Fixed
+- `<BadgeOption/>` and `badgeSelectItemBuilder`- builder fixes and adding selected, hovered and disabled styles to the `BadgeOption` itself [#6166](https://github.com/wix/wix-style-react/pull/6166)
+
+
 ## 9.36.0 - 2020-11-09
 ### Added
 - `Themes | Business Dashboard` - theme the `IconButton` component [#6187](https://github.com/wix/wix-style-react/pull/6187)
