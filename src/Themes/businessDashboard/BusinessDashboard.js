@@ -4,5 +4,5 @@ import FontUpgrade from '../../FontUpgrade';
 
 export default ({ active } = {}) => ({
   className: active === false ? '' : classes.root,
-  componentWrapper: ({ children }) => <FontUpgrade>{children}</FontUpgrade>,
+  componentWrapper: ({ children }) => <FontUpgrade active={active}>{children}</FontUpgrade>,
 });
