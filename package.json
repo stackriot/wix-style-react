@@ -135,7 +135,7 @@
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-dynamic-import-node": "^2.3.3",
-    "babel-preset-yoshi": "^4.177.0",
+    "babel-preset-yoshi": "^4.78.0",
     "cista": "0.0.3",
     "concurrently": "^3.6.1",
     "copy": "^0.3.2",
