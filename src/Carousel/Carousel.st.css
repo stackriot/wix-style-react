@@ -14,7 +14,7 @@
 }
 
 .root {
-  -st-states: controlsPosition(enum(sides, overlay, bottom, none)), controlsSize(enum(small, medium));
+  -st-states: controlsPosition(enum(sides, overlay, bottom, none)), controlsSize(enum(tiny, small, medium, large));
 }
 
 .root:controlsSize(tiny) {
