@@ -21,6 +21,7 @@ import * as textButtons from './components/TextButton';
 import * as iconButtons from './components/IconButton';
 import * as circularProgressBar from './components/CircularProgressBar';
 import * as linearProgressBar from './components/LinearProgressBar';
+import * as sidebar from './components/Sidebar';
 import { Category } from '../../../../stories/storiesHierarchy';
 import Box from '../../../Box';
 import Text from '../../../Text';
@@ -101,6 +102,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('IconButton'),
             source: iconButtons.playground,
+          }),
+          example({
+            text: TextComponent('Sidebar'),
+            source: sidebar.playground,
           }),
         ],
       }),

@@ -39,6 +39,36 @@
   -st-default: Carousel;
 }
 
+:import {
+  -st-from: "../../Sidebar/Sidebar.st.css";
+  -st-default: Sidebar;
+}
+
+:import {
+  -st-from: "../../SidebarBackButton/SidebarBackButton.st.css";
+  -st-default: SidebarBackButton;
+}
+
+:import {
+  -st-from: "../../SidebarDivider/SidebarDivider.st.css";
+  -st-default: SidebarDivider;
+}
+
+:import {
+  -st-from: "../../SidebarHeader/SidebarHeader.st.css";
+  -st-default: SidebarHeader;
+}
+
+:import {
+  -st-from: "../../SidebarSectionTitle/SidebarSectionTitle.st.css";
+  -st-default: SidebarSectionTitle;
+}
+
+:import {
+  -st-from: "../../SidebarSectionItem/SidebarSectionItem.st.css";
+  -st-default: SidebarSectionItem;
+}
+
 /* Overrides */
 :import {
   -st-from: "./components/Button.st.css";
@@ -80,6 +110,36 @@
   -st-default: CarouselOverrides;
 }
 
+:import {
+  -st-from: "./components/SidebarBackButton.st.css";
+  -st-default: SidebarBackButtonOverrides;
+}
+
+:import {
+  -st-from: "./components/Sidebar.st.css";
+  -st-default: SidebarOverrides;
+}
+
+:import {
+  -st-from: "./components/SidebarDivider.st.css";
+  -st-default: SidebarDividerOverrides;
+}
+
+:import {
+  -st-from: "./components/SidebarHeader.st.css";
+  -st-default: SidebarHeaderOverrides;
+}
+
+:import {
+  -st-from: "./components/SidebarSectionItem.st.css";
+  -st-default: SidebarSectionItemOverrides;
+}
+
+:import {
+  -st-from: "./components/SidebarSectionTitle.st.css";
+  -st-default: SidebarSectionTitleOverrides;
+}
+
 @st-scope .root {
   Button {
     -st-mixin: ButtonOverrides();
@@ -104,5 +164,23 @@
   }
   Carousel {
     -st-mixin: CarouselOverrides();
+  }
+  Sidebar {
+    -st-mixin: SidebarOverrides();
+  }
+  SidebarBackButton {
+    -st-mixin: SidebarBackButtonOverrides();
+  }
+  SidebarDivider {
+    -st-mixin: SidebarDividerOverrides();
+  }
+  SidebarHeader {
+    -st-mixin: SidebarHeaderOverrides();
+  }
+  SidebarSectionTitle {
+    -st-mixin: SidebarSectionTitleOverrides();
+  }
+  SidebarSectionItem {
+    -st-mixin: SidebarSectionItemOverrides();
   }
 }
