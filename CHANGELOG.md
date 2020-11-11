@@ -21,6 +21,9 @@ Types of changes:
 ### Fixed
 - `<SparklineChart/>` - fix highlightedAreaEffect issue [#6219](https://github.com/wix/wix-style-react/pull/6219)
 
+### Changed
+- `<SidebarSectionItem/>` - limit suffix size to 30% to support madeFor font [#6146](https://github.com/wix/wix-style-react/pull/6146)
+
 ## 9.37.0 - 2020-11-10
 ### Added
 - `<Carousel/>` - Added `controlsSize` prop [#6182](https://github.com/wix/wix-style-react/pull/6182)
