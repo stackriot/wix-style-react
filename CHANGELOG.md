@@ -20,6 +20,7 @@ Types of changes:
 
 ### Fixed
 - `<SparklineChart/>` - fix highlightedAreaEffect issue [#6219](https://github.com/wix/wix-style-react/pull/6219)
+- `<TimeInput/>` - fix hover/focus styles [#6230](https://github.com/wix/wix-style-react/pull/6230)
 
 ### Changed
 - `<SidebarSectionItem/>` - limit suffix size to 30% to support madeFor font [#6146](https://github.com/wix/wix-style-react/pull/6146)
