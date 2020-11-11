@@ -32,7 +32,7 @@
   width: 36px;
 }
 
-.root:size(medium):not(:small) .content {
+.root:size(small):expanded .content {
   width: 30px;
 }
 
