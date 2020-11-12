@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<PageFooter/>` - new component [#6215](https://github.com/wix/wix-style-react/pull/6215)
 
 ## 9.38.0 - 2020-11-11
 ### Added
