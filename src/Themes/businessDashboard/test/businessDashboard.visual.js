@@ -13,8 +13,9 @@ import { runTests as SidebarDividerTests } from '../../../SidebarDivider/test/Si
 import { runTests as SidebarHeaderTests } from '../../../SidebarHeader/test/SidebarHeader.visual';
 import { runTests as SidebarSectionItemTests } from '../../../SidebarSectionItem/test/SidebarSectionItem.visual';
 import { runTests as SidebarSectionTitleTests } from '../../../SidebarSectionTitle/test/SidebarSectionTitle.visual';
-import { ThemeProvider } from '../../..';
+import { runTests as CardTests } from '../../../Card/Card.visual';
 import { runTests as CarouselTests } from '../../../Carousel/test/Carousel.visual';
+import { ThemeProvider } from '../../..';
 
 const themeName = 'Business Dashboard';
 const testWithTheme = test => {
@@ -32,6 +33,7 @@ HeadingTests({ themeName, testWithTheme });
 TextTests({ themeName, testWithTheme });
 TextButtonTests({ themeName, testWithTheme });
 IconButtonTests({ themeName, testWithTheme });
+CardTests({ themeName, testWithTheme });
 CarouselTests({ themeName, testWithTheme });
 SidebarTests({ themeName, testWithTheme });
 SidebarBackButtonTests({ themeName, testWithTheme });

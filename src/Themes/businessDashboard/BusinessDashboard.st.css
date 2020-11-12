@@ -35,6 +35,16 @@
 }
 
 :import {
+  -st-from: "../../Card/Header/Header.st.css";
+  -st-default: CardHeader;
+}
+
+:import {
+  -st-from: "../../Card/Content/Content.st.css";
+  -st-default: CardContent;
+}
+
+:import {
   -st-from: "../../Carousel/Carousel.st.css";
   -st-default: Carousel;
 }
@@ -106,6 +116,16 @@
 }
 
 :import {
+  -st-from: "./components/Card/Header.st.css";
+  -st-default: CardHeaderOverrides;
+}
+
+:import {
+  -st-from: "./components/Card/Content.st.css";
+  -st-default: CardContentOverrides;
+}
+
+:import {
   -st-from: "./components/Carousel.st.css";
   -st-default: CarouselOverrides;
 }
@@ -161,6 +181,12 @@
   }
   IconButton {
     -st-mixin: IconButtonOverrides();
+  }
+  CardHeader {
+    -st-mixin: CardHeaderOverrides();
+  }
+  CardContent {
+    -st-mixin: CardContentOverrides();
   }
   Carousel {
     -st-mixin: CarouselOverrides();
