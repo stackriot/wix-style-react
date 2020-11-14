@@ -8,6 +8,6 @@
   padding: 12px 24px 24px;
 }
 
-.root::emptyStateContent {
+.root:emptyStateContent {
   padding: 28px 24px;
 }
