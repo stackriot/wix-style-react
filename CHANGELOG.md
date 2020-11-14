@@ -18,6 +18,9 @@ Types of changes:
 ### Added
 - `<PageFooter/>` - new component [#6215](https://github.com/wix/wix-style-react/pull/6215)
 
+### Changed
+- `Themes | Busines Dashboard` - adjust Text & Button styles [#6240](https://github.com/wix/wix-style-react/pull/6240)
+
 ## 9.38.0 - 2020-11-11
 ### Added
 - `<AutoCompleteWithLabel/>` - Added maxHeightPixel property [#6217](https://github.com/wix/wix-style-react/pull/6217)
