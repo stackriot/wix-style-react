@@ -21,6 +21,7 @@ Types of changes:
 
 ### Fixed
 - `<Input/>` - fix overflow (FF only) [#6245](https://github.com/wix/wix-style-react/pull/6245)
+- `<Accordion/>` - remove unwanted color background color [#6248](https://github.com/wix/wix-style-react/pull/6248)
 
 ### Changed
 - `<NumberInput/>` - add hideStepper property [#6233](https://github.com/wix/wix-style-react/pull/6233)
