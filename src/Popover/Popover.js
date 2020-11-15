@@ -47,8 +47,10 @@ class Popover extends React.Component {
 
   static propTypes = {
     ...CorePopover.propTypes,
+    /** Applied as data-hook HTML attribute that can be used in the tests */
     dataHook: PropTypes.string,
 
+    /** Adds enter and exit animation */
     animate: PropTypes.bool,
 
     /** The theme of the popover */
