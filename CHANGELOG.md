@@ -23,6 +23,7 @@ Types of changes:
 - `<Input/>` - fix overflow (FF only) [#6245](https://github.com/wix/wix-style-react/pull/6245)
 
 ### Changed
+- `<NumberInput/>` - add hideStepper property [#6233](https://github.com/wix/wix-style-react/pull/6233)
 - `Themes | Busines Dashboard` - adjust Text & Button styles [#6240](https://github.com/wix/wix-style-react/pull/6240)
 
 ## 9.38.0 - 2020-11-11
