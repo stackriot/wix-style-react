@@ -5,7 +5,6 @@ import Sound from 'wix-ui-icons-common/Sound';
 import SidebarSectionItem from '../SidebarSectionItem';
 import { SidebarContext } from '../../Sidebar/SidebarAPI';
 import Box from '../../Box';
-import Badge from '../../Badge';
 
 const skins = ['dark', 'light'];
 
@@ -18,12 +17,6 @@ const SamplePrefix = () => (
 );
 
 const SampleSuffix = () => <Sound />;
-
-const SampleNewBadgeSuffix = () => (
-  <Badge size="small" skin="warning" type="solid" uppercase>
-    NEW
-  </Badge>
-);
 
 const tests = [
   {
@@ -141,14 +134,6 @@ const tests = [
             'This is a very long text which exceeds the maximum width of its container',
           prefix: <SamplePrefix />,
           suffix: <SampleSuffix />,
-        },
-      },
-      {
-        it: 'Should display suffix with new badge and multiple lines',
-        props: {
-          children:
-            'This is a very long text which exceeds the maximum width of its container',
-          suffix: <SampleNewBadgeSuffix />,
         },
       },
     ],
