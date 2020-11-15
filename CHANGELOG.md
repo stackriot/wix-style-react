@@ -19,6 +19,9 @@ Types of changes:
 ### Added
 - `<PageFooter/>` - new component [#6215](https://github.com/wix/wix-style-react/pull/6215)
 
+### Fixed
+- `<Input/>` - fix overflow (FF only) [#6245](https://github.com/wix/wix-style-react/pull/6245)
+
 ### Changed
 - `Themes | Busines Dashboard` - adjust Text & Button styles [#6240](https://github.com/wix/wix-style-react/pull/6240)
 
