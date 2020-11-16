@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.39.0 - 2020-11-16
 ### Added
 - `<PageFooter/>` - new component [#6215](https://github.com/wix/wix-style-react/pull/6215)
 
