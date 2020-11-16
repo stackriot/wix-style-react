@@ -19,6 +19,8 @@ Types of changes:
 ## 9.39.0 - 2020-11-16
 ### Added
 - `<PageFooter/>` - new component [#6215](https://github.com/wix/wix-style-react/pull/6215)
+- `Themes | Business Dashboard` - add ListItemSelect theme [#6235](https://github.com/wix/wix-style-react/pull/6235)
+- `Themes | Business Dashboard` - Add Tooltip theme [#6220](https://github.com/wix/wix-style-react/pull/6220)
 
 ### Fixed
 - `<Input/>` - fix overflow (FF only) [#6245](https://github.com/wix/wix-style-react/pull/6245)
@@ -26,8 +28,11 @@ Types of changes:
 
 ### Changed
 - `<NumberInput/>` - add hideStepper property [#6233](https://github.com/wix/wix-style-react/pull/6233)
-- `Themes | Busines Dashboard` - adjust Text & Button styles [#6240](https://github.com/wix/wix-style-react/pull/6240)
+- `Themes | Business Dashboard` - adjust Text & Button styles [#6240](https://github.com/wix/wix-style-react/pull/6240)
 - `<DropdownLayout/>` - convert selectable option to `<ListItemSelect/>` [#6163](https://github.com/wix/wix-style-react/pull/6163)
+- `<Page/>` - migrate to Stylable [#6241](https://github.com/wix/wix-style-react/pull/6241)
+- `<Caption/>` - (internal refactor) - use design tokens instead of Text component [#6250](https://github.com/wix/wix-style-react/pull/6250)
+- `Themes | Business Dashboard` - change the CircularProgressBar success icon [#6251](https://github.com/wix/wix-style-react/pull/6251)
 
 ## 9.38.0 - 2020-11-11
 ### Added
