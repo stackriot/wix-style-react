@@ -26,6 +26,7 @@ Types of changes:
 ### Changed
 - `<NumberInput/>` - add hideStepper property [#6233](https://github.com/wix/wix-style-react/pull/6233)
 - `Themes | Busines Dashboard` - adjust Text & Button styles [#6240](https://github.com/wix/wix-style-react/pull/6240)
+- `<DropdownLayout/>` - convert selectable option to `<ListItemSelect/>` [#6163](https://github.com/wix/wix-style-react/pull/6163)
 
 ## 9.38.0 - 2020-11-11
 ### Added
