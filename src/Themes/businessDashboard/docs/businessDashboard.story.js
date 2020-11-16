@@ -22,6 +22,7 @@ import * as iconButtons from './components/IconButton';
 import * as card from './components/Card';
 import * as circularProgressBar from './components/CircularProgressBar';
 import * as linearProgressBar from './components/LinearProgressBar';
+import * as listItemSelect from './components/ListItemSelect';
 import * as sidebar from './components/Sidebar';
 import { Category } from '../../../../stories/storiesHierarchy';
 import Box from '../../../Box';
@@ -103,6 +104,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('IconButton'),
             source: iconButtons.playground,
+          }),
+          example({
+            text: TextComponent('ListItemSelect'),
+            source: listItemSelect.playground,
           }),
           example({
             text: TextComponent('Sidebar'),

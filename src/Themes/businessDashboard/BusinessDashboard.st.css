@@ -79,6 +79,11 @@
   -st-default: SidebarSectionItem;
 }
 
+:import {
+  -st-from: "../../ListItemSelect/ListItemSelect.st.css";
+  -st-default: ListItemSelect;
+}
+
 /* Overrides */
 :import {
   -st-from: "./components/Button.st.css";
@@ -160,6 +165,11 @@
   -st-default: SidebarSectionTitleOverrides;
 }
 
+:import {
+  -st-from: "./components/ListItemSelect.st.css";
+  -st-default: ListItemSelectOverrides;
+}
+
 @st-scope .root {
   Button {
     -st-mixin: ButtonOverrides();
@@ -208,5 +218,8 @@
   }
   SidebarSectionItem {
     -st-mixin: SidebarSectionItemOverrides();
+  }
+  ListItemSelect {
+    -st-mixin: ListItemSelectOverrides();
   }
 }
