@@ -128,6 +128,7 @@ class Tooltip extends React.PureComponent {
       <CoreTooltip
         {...rest}
         data-hook={dataHook}
+        data-size={size}
         className={st(classes.root, { size }, className)}
         content={this._renderContent()}
         hideDelay={exitDelay}
