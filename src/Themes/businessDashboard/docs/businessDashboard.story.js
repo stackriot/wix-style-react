@@ -19,6 +19,7 @@ import * as headings from './components/Heading';
 import * as texts from './components/Text';
 import * as textButtons from './components/TextButton';
 import * as iconButtons from './components/IconButton';
+import * as tooltips from './components/Tooltip';
 import * as card from './components/Card';
 import * as circularProgressBar from './components/CircularProgressBar';
 import * as linearProgressBar from './components/LinearProgressBar';
@@ -108,6 +109,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('ListItemSelect'),
             source: listItemSelect.playground,
+          }),
+          example({
+            text: TextComponent('Tooltip'),
+            source: tooltips.playground,
           }),
           example({
             text: TextComponent('Sidebar'),

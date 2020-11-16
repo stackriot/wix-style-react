@@ -50,6 +50,11 @@
 }
 
 :import {
+  -st-from: "../../Tooltip/Tooltip.st.css";
+  -st-default: Tooltip;
+}
+
+:import {
   -st-from: "../../Sidebar/Sidebar.st.css";
   -st-default: Sidebar;
 }
@@ -136,6 +141,11 @@
 }
 
 :import {
+  -st-from: "./components/Tooltip.st.css";
+  -st-default: TooltipOverrides;
+}
+
+:import {
   -st-from: "./components/SidebarBackButton.st.css";
   -st-default: SidebarBackButtonOverrides;
 }
@@ -201,6 +211,9 @@
   Carousel {
     -st-mixin: CarouselOverrides();
   }
+  Tooltip {
+    -st-mixin: TooltipOverrides();
+  }
   Sidebar {
     -st-mixin: SidebarOverrides();
   }
@@ -221,5 +234,18 @@
   }
   ListItemSelect {
     -st-mixin: ListItemSelectOverrides();
+  }
+}
+
+/* Portaled node support
+ * ----------------------
+ * This is an ugly yet powerful hack.
+ * In some cases, a component is portaled and loses the css structure (e.g. .root > Popover  =>  body > PopoverContent).
+ * To solve that, the portaled node needs to be wrapped with an additional div that maintains both componetn and theme structure (Popover3250267766---size-6-medium BusinessDashboard606879188__root > Popover2497687595__popoverContent).
+ * A better approach would be having two divs (and that would remove the following solution), but that's not easy to solve.
+*/
+@st-scope * {
+  Tooltip.root {
+    -st-mixin: TooltipOverrides();
   }
 }
