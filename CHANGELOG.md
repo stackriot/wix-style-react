@@ -17,12 +17,13 @@ Types of changes:
 ## Next
 ### Added 
 - `Themes | Business Dashboard` - add ListItemSelect theme [#6235](https://github.com/wix/wix-style-react/pull/6235)
-- `Themes | Business Dashboard` - Add Tooltip theme [#6220](https://github.com/wix/wix-style-react/pull/6220)
+- `Themes | Business Dashboard` - add Tooltip theme [#6220](https://github.com/wix/wix-style-react/pull/6220)
+- `Themes | Business Dashboard` - add Badge theme [#6259](https://github.com/wix/wix-style-react/pull/6259
 
 ### Changed
 - `<Page/>` - migrate to Stylable [#6241](https://github.com/wix/wix-style-react/pull/6241)
 - `<Caption/>` - (internal refactor) - use design tokens instead of Text component [#6250](https://github.com/wix/wix-style-react/pull/6250)
-- `Themes | Business Dashboard` - change the CircularProgressBar success icon [#6251](https://github.com/wix/wix-style-react/pull/6251)
+- `Themes | Business Dashboard` - change the CircularProgressBar success icon [#6251](https://github.com/wix/wix-style-react/pull/6251))
 
 ## 9.39.0 - 2020-11-16
 ### Added
