@@ -16,6 +16,7 @@ import { runTests as SidebarSectionItemTests } from '../../../SidebarSectionItem
 import { runTests as SidebarSectionTitleTests } from '../../../SidebarSectionTitle/test/SidebarSectionTitle.visual';
 import { runTests as CardTests } from '../../../Card/Card.visual';
 import { runTests as CarouselTests } from '../../../Carousel/test/Carousel.visual';
+import { runTests as BadgeTests } from '../../../Badge/test/Badge.visual';
 import { ThemeProvider } from '../../..';
 
 const themeName = 'Business Dashboard';
@@ -43,3 +44,4 @@ SidebarHeaderTests({ themeName, testWithTheme });
 SidebarSectionItemTests({ themeName, testWithTheme });
 SidebarSectionTitleTests({ themeName, testWithTheme });
 ListItemSelectTests({ themeName, testWithTheme });
+BadgeTests({ themeName, testWithTheme });

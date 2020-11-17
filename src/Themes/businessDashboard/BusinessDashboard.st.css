@@ -89,6 +89,11 @@
   -st-default: ListItemSelect;
 }
 
+:import {
+  -st-from: "../../Badge/Badge.st.css";
+  -st-default: Badge;
+}
+
 /* Overrides */
 :import {
   -st-from: "./components/Button.st.css";
@@ -180,6 +185,11 @@
   -st-default: ListItemSelectOverrides;
 }
 
+:import {
+  -st-from: "./components/Badge.st.css";
+  -st-default: BadgeOverrides;
+}
+
 @st-scope .root {
   Button {
     -st-mixin: ButtonOverrides();
@@ -234,6 +244,9 @@
   }
   ListItemSelect {
     -st-mixin: ListItemSelectOverrides();
+  }
+  Badge {
+    -st-mixin: BadgeOverrides();
   }
 }
 
