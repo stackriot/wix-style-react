@@ -15,6 +15,7 @@ import { runTests as SidebarHeaderTests } from '../../../SidebarHeader/test/Side
 import { runTests as SidebarSectionItemTests } from '../../../SidebarSectionItem/test/SidebarSectionItem.visual';
 import { runTests as SidebarSectionTitleTests } from '../../../SidebarSectionTitle/test/SidebarSectionTitle.visual';
 import { runTests as CardTests } from '../../../Card/Card.visual';
+import { runTests as ListItemActionTests } from '../../../ListItemAction/test/ListItemAction.visual';
 import { runTests as CarouselTests } from '../../../Carousel/test/Carousel.visual';
 import { runTests as BadgeTests } from '../../../Badge/test/Badge.visual';
 import { ThemeProvider } from '../../..';
@@ -43,5 +44,6 @@ SidebarDividerTests({ themeName, testWithTheme });
 SidebarHeaderTests({ themeName, testWithTheme });
 SidebarSectionItemTests({ themeName, testWithTheme });
 SidebarSectionTitleTests({ themeName, testWithTheme });
+ListItemActionTests({ themeName, testWithTheme });
 ListItemSelectTests({ themeName, testWithTheme });
 BadgeTests({ themeName, testWithTheme });

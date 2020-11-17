@@ -55,6 +55,26 @@
 }
 
 :import {
+  -st-from: "../../ListItemAction/ListItemAction.st.css";
+  -st-default: ListItemAction;
+}
+
+:import {
+  -st-from: "../../ListItemSection/ListItemSection.st.css";
+  -st-default: ListItemSection;
+}
+
+:import {
+  -st-from: "../../DropdownLayout/DropdownLayout.st.css";
+  -st-default: DropdownLayout;
+}
+
+:import {
+  -st-from: "../../PopoverMenu/PopoverMenu.st.css";
+  -st-default: PopoverMenu;
+}
+
+:import {
   -st-from: "../../Sidebar/Sidebar.st.css";
   -st-default: Sidebar;
 }
@@ -151,6 +171,26 @@
 }
 
 :import {
+  -st-from: "./components/ListItemAction.st.css";
+  -st-default: ListItemActionOverrides;
+}
+
+:import {
+  -st-from: "./components/ListItemSection.st.css";
+  -st-default: ListItemSectionOverrides;
+}
+
+:import {
+  -st-from: "./components/PopoverMenu.st.css";
+  -st-default: PopoverMenuOverrides;
+}
+
+:import {
+  -st-from: "./components/DropdownLayout.st.css";
+  -st-default: DropdownLayoutOverrides;
+}
+
+:import {
   -st-from: "./components/SidebarBackButton.st.css";
   -st-default: SidebarBackButtonOverrides;
 }
@@ -224,6 +264,15 @@
   Tooltip {
     -st-mixin: TooltipOverrides();
   }
+  ListItemAction {
+    -st-mixin: ListItemActionOverrides();
+  }
+  ListItemSection {
+    -st-mixin: ListItemSectionOverrides();
+  }
+  DropdownLayout {
+    -st-mixin: DropdownLayoutOverrides();
+  }
   Sidebar {
     -st-mixin: SidebarOverrides();
   }
@@ -260,5 +309,9 @@
 @st-scope * {
   Tooltip.root {
     -st-mixin: TooltipOverrides();
+  }
+
+  PopoverMenu.root {
+    -st-mixin: PopoverMenuOverrides();
   }
 }

@@ -26,6 +26,8 @@ import * as circularProgressBar from './components/CircularProgressBar';
 import * as linearProgressBar from './components/LinearProgressBar';
 import * as listItemSelect from './components/ListItemSelect';
 import * as sidebar from './components/Sidebar';
+import * as listItemActions from './components/ListItemAction';
+import * as popoverMenu from './components/PopoverMenu';
 import { Category } from '../../../../stories/storiesHierarchy';
 import Box from '../../../Box';
 import Text from '../../../Text';
@@ -122,6 +124,14 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('Card'),
             source: card.playground,
+          }),
+          example({
+            text: TextComponent('ListItemAction'),
+            source: listItemActions.playground,
+          }),
+          example({
+            text: TextComponent('PopoverMenu'),
+            source: popoverMenu.playground,
           }),
           example({
             text: TextComponent('Badge'),

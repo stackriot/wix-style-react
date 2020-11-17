@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { st, classes } from './Popover.st.css';
 import { FontUpgradeContext } from '../FontUpgrade/context';
 import FontUpgrade from '../FontUpgrade';
+import { ThemeProviderConsumerBackwardCompatible } from '../ThemeProvider/ThemeProviderConsumerBackwardCompatible';
 
 export { placements } from './constants';
 /**
@@ -105,13 +106,17 @@ class Popover extends React.Component {
       : undefined;
 
     return (
-      <CorePopover
-        disableClickOutsideWhenClosed
-        timeout={timeout}
-        data-hook={dataHook}
-        {...rest}
-        className={st(classes.root, { theme }, className)}
-      />
+      <ThemeProviderConsumerBackwardCompatible>
+        {({ className: themeClassName }) => (
+          <CorePopover
+            disableClickOutsideWhenClosed
+            timeout={timeout}
+            data-hook={dataHook}
+            {...rest}
+            className={st(classes.root, { theme }, className, themeClassName)}
+          />
+        )}
+      </ThemeProviderConsumerBackwardCompatible>
     );
   }
 }
