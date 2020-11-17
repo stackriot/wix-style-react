@@ -39,16 +39,6 @@
   padding-left: 4px;
 }
 
-.root:size(small)::prefix {
-  width: 24px;
-  height: 24px;
-}
-
-.root:size(small)::suffix {
-  width: 24px;
-  height: 24px;
-}
-
 /****** Weights ******/
 .root:size(tiny):weight(normal) {
   -st-mixin: bold;
@@ -78,11 +68,13 @@
   line-height: 16px;
   height: 16px;
   font-size: 12px;
+  align-items: center;
 }
 
 .root:size(small) {
   line-height: 20px;
   height: 20px;
+  align-items: center;
 }
 
 /* Skin: light */
