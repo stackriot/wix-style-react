@@ -18,6 +18,7 @@ import { runTests as CardTests } from '../../../Card/Card.visual';
 import { runTests as ListItemActionTests } from '../../../ListItemAction/test/ListItemAction.visual';
 import { runTests as CarouselTests } from '../../../Carousel/test/Carousel.visual';
 import { runTests as BadgeTests } from '../../../Badge/test/Badge.visual';
+import { runTests as InputTests } from '../../../Input/test/Input.visual';
 import { runTests as EmptyStateTests } from '../../../EmptyState/test/EmptyState.visual';
 import { ThemeProvider } from '../../..';
 
@@ -48,4 +49,5 @@ SidebarSectionTitleTests({ themeName, testWithTheme });
 ListItemActionTests({ themeName, testWithTheme });
 ListItemSelectTests({ themeName, testWithTheme });
 BadgeTests({ themeName, testWithTheme });
+InputTests({ themeName, testWithTheme });
 EmptyStateTests({ themeName, testWithTheme });

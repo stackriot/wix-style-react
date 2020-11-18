@@ -115,6 +115,16 @@
 }
 
 :import {
+  -st-from: "../../Input/Input.st.css";
+  -st-default: Input;
+}
+
+:import {
+  -st-from: "../../Input/IconAffix/IconAffix.st.css";
+  -st-default: IconAffix;
+}
+
+:import {
   -st-from: "../../EmptyState/EmptyState.st.css";
   -st-default: EmptyState;
 }
@@ -236,6 +246,16 @@
 }
 
 :import {
+  -st-from: "./components/Input/Input.st.css";
+  -st-default: InputOverrides;
+}
+
+:import {
+  -st-from: "./components/Input/IconAffix.st.css";
+  -st-default: IconAffixOverrides;
+}
+
+:import {  
   -st-from: "./components/EmptyState.st.css";
   -st-default: EmptyStateOverrides;
 }
@@ -307,6 +327,12 @@
   Badge {
     -st-mixin: BadgeOverrides();
   }
+  Input {
+    -st-mixin: InputOverrides();
+  }
+  IconAffix {
+    -st-mixin: IconAffixOverrides();
+  }
   EmptyState {
     -st-mixin: EmptyStateOverrides();
   }
@@ -323,7 +349,6 @@
   Tooltip.root {
     -st-mixin: TooltipOverrides();
   }
-
   PopoverMenu.root {
     -st-mixin: PopoverMenuOverrides();
   }

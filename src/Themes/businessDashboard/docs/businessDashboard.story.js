@@ -28,6 +28,8 @@ import * as listItemSelect from './components/ListItemSelect';
 import * as sidebar from './components/Sidebar';
 import * as listItemActions from './components/ListItemAction';
 import * as popoverMenu from './components/PopoverMenu';
+import * as input from './components/Input';
+import * as search from './components/Search';
 import * as emptyState from './components/EmptyState';
 import { Category } from '../../../../stories/storiesHierarchy';
 import Box from '../../../Box';
@@ -137,6 +139,14 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('Badge'),
             source: badge.playground,
+          }),
+          example({
+            text: TextComponent('Input'),
+            source: input.playground,
+          }),
+          example({
+            text: TextComponent('Search'),
+            source: search.playground,
           }),
           example({
             text: TextComponent('EmptyState'),
