@@ -115,6 +115,11 @@
 }
 
 :import {
+  -st-from: "../../Loader/Loader.st.css";
+  -st-default: Loader;
+}
+
+:import {
   -st-from: "../../Input/Input.st.css";
   -st-default: Input;
 }
@@ -246,6 +251,11 @@
 }
 
 :import {
+  -st-from: "./components/Loader.st.css";
+  -st-default: LoaderOverrides;
+}
+
+:import {
   -st-from: "./components/Input/Input.st.css";
   -st-default: InputOverrides;
 }
@@ -326,6 +336,9 @@
   }
   Badge {
     -st-mixin: BadgeOverrides();
+  }
+  Loader {
+    -st-mixin: LoaderOverrides();
   }
   Input {
     -st-mixin: InputOverrides();
