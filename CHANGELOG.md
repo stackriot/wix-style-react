@@ -18,6 +18,9 @@ Types of changes:
 ### Added
 - `<Card/>` - add withShadow prop [#6257](https://github.com/wix/wix-style-react/pull/6257)
 
+### Changed
+- `<Modal/>` - migrate to stylable [#6266](https://github.com/wix/wix-style-react/pull/6266)
+
 ### Fixed
 - `<GoogleAddressInput/>`- adding IDs to options recevied from client [#6258](https://github.com/wix/wix-style-react/pull/6258)
 
