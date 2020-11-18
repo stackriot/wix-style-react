@@ -144,6 +144,7 @@ require('../src/StatisticsWidget/docs/index.story');
 require('../src/StatusIndicator/docs/index.story');
 require('../src/Stepper/docs/index.story');
 require('../src/Swatches/docs/index.story');
+require('../src/StyledNestableList/docs/index.story');
 require('../src/Table/docs/index.story');
 require('../src/TableActionCell/docs/index.story');
 require('../src/TableListItem/docs/index.story');
