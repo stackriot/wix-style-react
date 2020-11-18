@@ -114,6 +114,11 @@
   -st-default: Badge;
 }
 
+:import {
+  -st-from: "../../EmptyState/EmptyState.st.css";
+  -st-default: EmptyState;
+}
+
 /* Overrides */
 :import {
   -st-from: "./components/Button.st.css";
@@ -230,6 +235,11 @@
   -st-default: BadgeOverrides;
 }
 
+:import {
+  -st-from: "./components/EmptyState.st.css";
+  -st-default: EmptyStateOverrides;
+}
+
 @st-scope .root {
   Button {
     -st-mixin: ButtonOverrides();
@@ -296,6 +306,9 @@
   }
   Badge {
     -st-mixin: BadgeOverrides();
+  }
+  EmptyState {
+    -st-mixin: EmptyStateOverrides();
   }
 }
 
