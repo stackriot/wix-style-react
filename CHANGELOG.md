@@ -20,10 +20,11 @@ Types of changes:
 
 ### Changed
 - `<Modal/>` - migrate to stylable [#6266](https://github.com/wix/wix-style-react/pull/6266)
+- `<Image/>` - Add className prop [#6272](https://github.com/wix/wix-style-react/pull/6272)
 
 ### Fixed
 - `<GoogleAddressInput/>`- adding IDs to options recevied from client [#6258](https://github.com/wix/wix-style-react/pull/6258)
-
+- `<TableListItem/>` - fix width/align not working [#6271](https://github.com/wix/wix-style-react/pull/6271)
 
 ## 9.40.0 - 2020-11-17
 ### Added 
