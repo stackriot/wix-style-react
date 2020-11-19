@@ -1,3 +1,10 @@
+@st-global-custom-property --wsr-shadow10, --wsr-shadow20, --wsr-shadow30, --wsr-shadow40;
+
+:import {
+  -st-from: "./foundations/colors.st.css";
+  -st-named: S4, S5;
+}
+
 /* Components */
 :import {
   -st-from: "../../Button/Button.st.css";
@@ -364,5 +371,12 @@
   }
   PopoverMenu.root {
     -st-mixin: PopoverMenuOverrides();
+  }
+
+  .root {
+    --wsr-shadow10: 0 0 8px 0 value(S5);
+    --wsr-shadow20: 0 2px 12px 0 value(S4);
+    --wsr-shadow30: 0 0 12px 0 value(S5);
+    --wsr-shadow40: 0 0 24px 0 value(S5);
   }
 }

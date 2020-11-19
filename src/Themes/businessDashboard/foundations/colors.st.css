@@ -51,4 +51,8 @@
   dividerColor: calc_rgba(value(D80), 0.1);
   darkScrollbarThumbColor: #717479;
   darkScrollbarThumbHoverColor: #b8b9bc;
+
+  /* Shadows */
+  S4: calc_rgba(value(D10), 0.2);
+  S5: calc_rgba(value(D10), 0.16);
 }
