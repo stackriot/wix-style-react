@@ -5,7 +5,7 @@
 
 :import {
   -st-from: "../foundations/colors.st.css";
-  -st-named: B10, B05, B50, D10-40, D55, D70, D80;
+  -st-named: B10, B05, B40, B50, D10-40, D55, D70, D80;
 }
 
 :import {
@@ -15,6 +15,10 @@
 
 .root {
   -st-extends: Button;
+}
+
+.root:focus-visible {
+  box-shadow: 0 0 0 3px value(B40);
 }
 
 /* Skin standard primary */
