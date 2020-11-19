@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `Themes | Business Dashboard` - changed focus ring color of Button, IconButton, TextButton [#6282](https://github.com/wix/wix-style-react/pull/6282)
+
 ## 9.41.0 - 2020-11-19
 ### Added
 - `<Card/>` - add withShadow prop [#6257](https://github.com/wix/wix-style-react/pull/6257)
