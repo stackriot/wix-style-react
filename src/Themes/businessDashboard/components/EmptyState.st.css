@@ -13,11 +13,6 @@
   -st-named: SP1, SP2, SP4, SP6;
 }
 
-:import {
-  -st-from: "../../../Foundation/stylable/typography.st.css";
-  -st-named: text-small-thin;
-}
-
 .root {
   -st-extends: EmptyState;
   padding: value(SP6);
@@ -34,7 +29,8 @@
 }
 
 .root::subtitle {
-  -st-mixin: text-small-thin;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .root::childrenContainer {
