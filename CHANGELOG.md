@@ -15,8 +15,6 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
-### Added
-- `Themes | Business Dashboard` - added box-shadow theming [#6263](https://github.com/wix/wix-style-react/pull/6263)
 
 ## 9.41.0 - 2020-11-19
 ### Added
@@ -25,6 +23,9 @@ Types of changes:
 - `Themes | Business Dashboard` - add Input theme [#6265](https://github.com/wix/wix-style-react/pull/6265)
 - `Themes | Business Dashboard` - add EmptyState theme [#6262](https://github.com/wix/wix-style-react/pull/6262)
 - `Themes | Business Dashboard` - add Loader theme [#6277](https://github.com/wix/wix-style-react/pull/6277)
+- `Themes | Business Dashboard` - Modal [#6274](https://github.com/wix/wix-style-react/pull/6274)
+- `Themes | Business Dashboard` - added box-shadow theming [#6263](https://github.com/wix/wix-style-react/pull/6263)
+- `Themes | Business Dashboard` - UX fixes to CircularProgressBar, EmptyState, ListItemSelect, Tooltip, Loader & colors [#6279](https://github.com/wix/wix-style-react/pull/6279)
 
 ### Changed
 - `<Modal/>` - migrate to stylable [#6266](https://github.com/wix/wix-style-react/pull/6266)
