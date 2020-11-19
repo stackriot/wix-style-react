@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `Themes | Business Dashboard` - added box-shadow theming [#6263](https://github.com/wix/wix-style-react/pull/6263)
 
 ## 9.41.0 - 2020-11-19
 ### Added
