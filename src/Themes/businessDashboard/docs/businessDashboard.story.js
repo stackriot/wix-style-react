@@ -32,6 +32,7 @@ import * as popoverMenu from './components/PopoverMenu';
 import * as input from './components/Input';
 import * as search from './components/Search';
 import * as emptyState from './components/EmptyState';
+import * as modal from './components/Modal';
 import { Category } from '../../../../stories/storiesHierarchy';
 import Box from '../../../Box';
 import Text from '../../../Text';
@@ -156,6 +157,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('EmptyState'),
             source: emptyState.playground,
+          }),
+          example({
+            text: TextComponent('Modal'),
+            source: modal.playground,
           }),
         ],
       }),

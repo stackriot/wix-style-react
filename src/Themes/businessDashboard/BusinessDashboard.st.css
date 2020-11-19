@@ -141,6 +141,11 @@
   -st-default: EmptyState;
 }
 
+:import {
+  -st-from: "../../Modal/Modal.st.css";
+  -st-default: Modal;
+}
+
 /* Overrides */
 :import {
   -st-from: "./components/Button.st.css";
@@ -272,9 +277,14 @@
   -st-default: IconAffixOverrides;
 }
 
-:import {  
+:import {
   -st-from: "./components/EmptyState.st.css";
   -st-default: EmptyStateOverrides;
+}
+
+:import {
+  -st-from: "./components/Modal.st.css";
+  -st-default: ModalOverrides;
 }
 
 @st-scope .root {
@@ -369,6 +379,7 @@
   Tooltip.root {
     -st-mixin: TooltipOverrides();
   }
+
   PopoverMenu.root {
     -st-mixin: PopoverMenuOverrides();
   }
@@ -378,5 +389,9 @@
     --wsr-shadow20: 0 2px 12px 0 value(S4);
     --wsr-shadow30: 0 0 12px 0 value(S5);
     --wsr-shadow40: 0 0 24px 0 value(S5);
+  }
+
+  Modal.root {
+    -st-mixin: ModalOverrides();
   }
 }
