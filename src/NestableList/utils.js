@@ -94,3 +94,14 @@ export function hoverAboveItself(prevPosition, nextPosition) {
 export function isItemHasChildren(item, childrenProperty) {
   return Boolean(item[childrenProperty] && item[childrenProperty].length);
 }
+
+export function getDropParent(items, nextPosition, childrenProperty) {
+  return nextPosition
+    .slice(1, nextPosition.length - 1)
+    .reduce((item, childIndex) => {
+      if (!item) {
+        return null;
+      }
+      return item[childrenProperty][childIndex];
+    }, items[nextPosition[0]]);
+}

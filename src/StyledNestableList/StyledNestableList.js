@@ -142,7 +142,7 @@ class StyledNestableList extends React.PureComponent {
             marginLeft: '84px',
           }}
           childrenProperty={'children'}
-          isRenderDraggingChildren={false}
+          isRenderDraggingChildren
         />
         {this.props.addItemLabel &&
           this.renderAction({

@@ -1,5 +1,5 @@
 import React from 'react';
-import { removeFromTree, addToTree } from './utils';
+import { addToTree, getDropParent, removeFromTree } from './utils';
 
 import CustomDragLayer from './DragLayer';
 import Container from './Container';
@@ -70,6 +70,16 @@ class NestableList extends React.PureComponent {
     const { childrenProperty } = this.props;
     let newItems = this.state.items.slice();
 
+    if (this.props.preventChangeDepth && nextPosition.length > 1) {
+      const parent = getDropParent(
+        this.props.items,
+        nextPosition,
+        childrenProperty,
+      );
+      if (!parent) {
+        return prevPosition;
+      }
+    }
     // the remove action might affect the next position,
     // so update next coordinates accordingly
     let realNextPosition = getRealNextPosition(prevPosition, nextPosition);
