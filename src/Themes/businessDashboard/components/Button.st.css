@@ -51,7 +51,7 @@
 
 /* Skin: standard - secondary */
 
-.root:priority(secondary) {
+.root:skin(standard):priority(secondary) {
   -st-mixin: bold;
 
   background-color: transparent;
@@ -59,19 +59,19 @@
   color: value(B10);
 }
 
-.root:priority(secondary):hover {
+.root:skin(standard):priority(secondary):hover {
   color: value(B05);
   border-color: value(B05);
   background-color: transparent;
 }
 
-.root:priority(secondary):active {
+.root:skin(standard):priority(secondary):active {
   background-color: transparent;
   border-color: value(D55);
   color: value(B10);
 }
 
-.root:priority(secondary):disabled {
+.root:skin(standard):priority(secondary):disabled {
   color: value(D10-40);
   background-color: transparent;
   border-color: value(D55);
