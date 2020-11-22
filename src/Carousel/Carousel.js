@@ -4,6 +4,9 @@ import ChevronLeftLarge from 'wix-ui-icons-common/ChevronLeftLarge';
 import ChevronRightLarge from 'wix-ui-icons-common/ChevronRightLarge';
 import ChevronLeftLargeSmall from 'wix-ui-icons-common/ChevronLeftLargeSmall';
 import ChevronRightLargeSmall from 'wix-ui-icons-common/ChevronRightLargeSmall';
+import ChevronLeftSmall from 'wix-ui-icons-common/ChevronLeftSmall';
+import ChevronRightSmall from 'wix-ui-icons-common/ChevronRightSmall';
+
 // This is here and not in the test setup because we don't want consumers to need to run it as well
 import '../common/match-media-register';
 import Slider from 'react-slick';
@@ -125,6 +128,28 @@ class Carousel extends React.Component {
     );
   }
 
+  leftIconByControlSize = controlSize => {
+    switch (controlSize) {
+      case 'tiny':
+        return <ChevronLeftSmall />;
+      case 'small':
+        return <ChevronLeftLargeSmall />;
+      default:
+        return <ChevronLeftLarge />;
+    }
+  };
+
+  rightIconByControlSize = controlSize => {
+    switch (controlSize) {
+      case 'tiny':
+        return <ChevronRightSmall />;
+      case 'small':
+        return <ChevronRightLargeSmall />;
+      default:
+        return <ChevronRightLarge />;
+    }
+  };
+
   _resolveSliderSettings = ({
     infinite,
     autoplay,
@@ -154,13 +179,7 @@ class Carousel extends React.Component {
           dataHook={dataHooks.nextButton}
           buttonSkin={buttonSkin}
           arrowSize={controlsSize}
-          icon={
-            controlsSize === 'tiny' || controlsSize === 'small' ? (
-              <ChevronRightLargeSmall />
-            ) : (
-              <ChevronRightLarge />
-            )
-          }
+          icon={this.rightIconByControlSize(controlsSize)}
         />
       ),
       prevArrow: (
@@ -168,13 +187,7 @@ class Carousel extends React.Component {
           dataHook={dataHooks.prevButton}
           buttonSkin={buttonSkin}
           arrowSize={controlsSize}
-          icon={
-            controlsSize === 'tiny' || controlsSize === 'small' ? (
-              <ChevronLeftLargeSmall />
-            ) : (
-              <ChevronLeftLarge />
-            )
-          }
+          icon={this.leftIconByControlSize(controlsSize)}
         />
       ),
       arrows: controlsPosition !== 'none',

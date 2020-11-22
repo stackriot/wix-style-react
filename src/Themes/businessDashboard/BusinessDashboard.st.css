@@ -52,8 +52,8 @@
 }
 
 :import {
-  -st-from: "../../Carousel/Carousel.st.css";
-  -st-default: Carousel;
+  -st-from: "../../Carousel/Pagination/Pagination.st.css";
+  -st-default: Pagination;
 }
 
 :import {
@@ -193,8 +193,8 @@
 }
 
 :import {
-  -st-from: "./components/Carousel.st.css";
-  -st-default: CarouselOverrides;
+  -st-from: "./components/Pagination.st.css";
+  -st-default: PaginationOverrides;
 }
 
 :import {
@@ -315,8 +315,8 @@
   CardContent {
     -st-mixin: CardContentOverrides();
   }
-  Carousel {
-    -st-mixin: CarouselOverrides();
+  Pagination {
+    -st-mixin: PaginationOverrides();
   }
   Tooltip {
     -st-mixin: TooltipOverrides();
