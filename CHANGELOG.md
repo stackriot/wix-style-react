@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.42.0 - 2020-11-22
 ### Added
 - `<MarketingLayout/>` - add alignItems prop [#6275](https://github.com/wix/wix-style-react/pull/6275)
 - `<BadgeSelectItem/>`- adding a uni driver [#6124](https://github.com/wix/wix-style-react/pull/6124)
