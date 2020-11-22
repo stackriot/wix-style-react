@@ -5,7 +5,7 @@
 
 :import {
   -st-from: '../foundations/colors.st.css';
-  -st-named: B05, B10, B40, D10, D20, D30, D80, D10-30, D10-40, D80-70;
+  -st-named: B05, B10, B40, B50, D10, D20, D30, D80, D10-30, D10-40, D80-70;
 }
 
 :import {
@@ -87,6 +87,10 @@
   color: value(D80);
 }
 
+.root:skin(light):hover {
+  color: value(B50);
+}
+
 .root:skin(light):disabled {
   color: value(D80-70);
 }
@@ -105,10 +109,6 @@
   color: value(D10);
 }
 
-.root:skin(dark):disabled {
-  color: value(D10-40);
-}
-
 .root:skin(dark):weight(thin) {
   color: value(D20);
 }
@@ -119,4 +119,8 @@
 
 .root:skin(dark):weight(thin):active {
   color: value(D20);
+}
+
+.root:skin(dark):disabled {
+  color: value(D10-40);
 }
