@@ -3,7 +3,7 @@
 > An option builder for the `<DropdownLayout/>` component and its consumers.
 
 ```js
-import { badgeSelectItemBuilder } from 'wix-style-react/BadgeSelectItemBuilder';
+import { badgeSelectItemBuilder } from 'wix-style-react';
 ```
 
 This builder is being used in `<BadgeSelect/>` under the hood.

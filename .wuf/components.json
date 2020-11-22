@@ -35,8 +35,8 @@
   "BadgeSelect": {
     "path": "src/BadgeSelect"
   },
-  "BadgeSelectItemBuilder": {
-    "path": "src/BadgeSelectItemBuilder",
+  "BadgeSelectItem": {
+    "path": "src/BadgeSelectItem",
     "missingFiles": [
       "docs/index.story.js"
     ]

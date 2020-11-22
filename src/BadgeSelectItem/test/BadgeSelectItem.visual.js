@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import BadgeOption, { badgeSelectItemBuilder } from '../BadgeSelectItemBuilder';
-import Box from '../../Box';
+import BadgeSelectItem, { badgeSelectItemBuilder } from '../BadgeSelectItem';
 import { SKINS } from '../constants';
 import DropdownLayout from '../../DropdownLayout';
 
@@ -74,18 +73,14 @@ const tests = [
 
 tests.forEach(({ describe, its }) => {
   its.forEach(({ it, props }) => {
-    storiesOf(`BadgeOption${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <Box>
-          <BadgeOption {...props} />
-        </Box>
-      ),
-    );
+    storiesOf(
+      `BadgeSelectItem${describe ? '/' + describe : ''}`,
+      module,
+    ).add(it, () => <BadgeSelectItem {...props} />);
   });
 });
 
-storiesOf('BadgeOption', module).add('builder', () => (
+storiesOf('BadgeSelectItem', module).add('builder', () => (
   <DropdownLayout
     visible
     selectedId={0}

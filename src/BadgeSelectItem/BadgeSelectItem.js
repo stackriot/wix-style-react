@@ -3,7 +3,7 @@ import { st, classes } from './BadgeSelectItem.st.css';
 import PropTypes from 'prop-types';
 import ListItemSelect from '../ListItemSelect';
 
-const BadgeOption = props => {
+const BadgeSelectItem = props => {
   const {
     dataHook,
     skin,
@@ -33,7 +33,7 @@ const BadgeOption = props => {
   );
 };
 
-BadgeOption.propTypes = {
+BadgeSelectItem.propTypes = {
   dataHook: PropTypes.string,
   className: PropTypes.string,
   text: PropTypes.node.isRequired,
@@ -45,7 +45,7 @@ BadgeOption.propTypes = {
   disabled: PropTypes.bool,
 };
 
-export default BadgeOption;
+export default BadgeSelectItem;
 
 export const badgeSelectItemBuilder = ({
   id,
@@ -61,7 +61,7 @@ export const badgeSelectItemBuilder = ({
   disabled,
   overrideOptionStyle: true,
   value: ({ selected, hovered, disabled }) => (
-    <BadgeOption
+    <BadgeSelectItem
       dataHook={dataHook}
       className={className}
       skin={skin}

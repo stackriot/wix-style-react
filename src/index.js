@@ -45,7 +45,10 @@ export { default as Breadcrumbs } from './Breadcrumbs';
 export { default as ImageViewer } from './ImageViewer';
 export { default as Badge } from './Badge';
 export { default as BadgeSelect } from './BadgeSelect';
-export { badgeSelectItemBuilder } from './BadgeSelectItemBuilder';
+export {
+  default as BadgeSelectItem,
+  badgeSelectItemBuilder,
+} from './BadgeSelectItem';
 export { contactItemBuilder } from './ContactItemBuilder';
 export { default as EditableSelector } from './EditableSelector';
 export { default as Card } from './Card';
