@@ -26,6 +26,9 @@ Types of changes:
 - `Themes | Business Dashboard` - adjusted TextButton dark disabled color & light hover color [#6291](https://github.com/wix/wix-style-react/pull/6291)
 - `Themes | Business Dashboard` - Changing Carousel icons size and pagination color [#6287](https://github.com/wix/wix-style-react/pull/6287)
 
+### Fixed
+- `<NestableList/>` - fix drag and drop with preventChangeDepth [#6286](https://github.com/wix/wix-style-react/pull/6286)
+
 ## 9.41.0 - 2020-11-19
 ### Added
 - `<Card/>` - add withShadow prop [#6257](https://github.com/wix/wix-style-react/pull/6257)
