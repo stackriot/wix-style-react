@@ -17,7 +17,11 @@ Types of changes:
 ## Next
 
 ### Added
+- <MarketingLayout/> - add alignItems prop [#6275](https://github.com/wix/wix-style-react/pull/6275)
+
+### Changed
 - `Themes | Business Dashboard` - changed focus ring color of Button, IconButton, TextButton [#6282](https://github.com/wix/wix-style-react/pull/6282)
+- `Themes | Business Dashboard` - changed ListItemSelect color back to D20 [#6288](https://github.com/wix/wix-style-react/pull/6288)
 
 ## 9.41.0 - 2020-11-19
 ### Added
