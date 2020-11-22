@@ -28,6 +28,23 @@ const tests = [
     ],
   },
   {
+    describe: 'Align Items',
+    its: [
+      {
+        it: 'Center',
+        props: {
+          alignItems: 'center',
+        },
+      },
+      {
+        it: 'Stretch',
+        props: {
+          alignItems: 'stretch',
+        },
+      },
+    ],
+  },
+  {
     describe: 'Size',
     its: [
       {

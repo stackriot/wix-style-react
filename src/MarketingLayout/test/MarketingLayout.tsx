@@ -21,6 +21,7 @@ function marketingLayoutWithAllProps() {
       actions={<div />}
       title="title"
       description="description"
+      alignItems="center"
     />
   );
 }

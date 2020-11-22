@@ -1,5 +1,5 @@
 .root {
-  -st-states: size(enum(small, medium, large)), inverted, withActions, withImageBackground;
+  -st-states: size(enum(small, medium, large)), alignItems(enum(center, stretch)), inverted, withActions, withImageBackground;
   padding: 30px;
 }
 
@@ -47,6 +47,9 @@
 :global([dir="rtl"]) .root:inverted:withImageBackground .contentContainer {
   padding-left: 0;
   padding-right: 30px;
+}
+.root:alignItems(stretch) .contentContainer {
+  justify-content: space-between;
 }
 
 .title {

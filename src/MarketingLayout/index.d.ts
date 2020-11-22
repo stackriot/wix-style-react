@@ -9,6 +9,7 @@ export interface MarketingLayoutProps {
   actions?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
+  alignItems?: 'center' | 'stretch';
 }
 
 export default class MarketingLayout extends React.PureComponent<

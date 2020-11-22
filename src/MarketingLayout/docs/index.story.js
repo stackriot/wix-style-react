@@ -20,6 +20,7 @@ import {
   sizeMedium,
   sizeLarge,
   inverted,
+  alignItemsStretch,
   imageBackgroundColor,
   advanced,
   description as descriptionText,
@@ -92,6 +93,16 @@ export default {
           code({
             compact: true,
             source: inverted,
+          }),
+
+          description({
+            title: 'Align Items',
+            text:
+              'The content can be displayed centered or stretched out, using the alignItems prop.',
+          }),
+          code({
+            compact: true,
+            source: alignItemsStretch,
           }),
 
           description({

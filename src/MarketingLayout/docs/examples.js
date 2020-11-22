@@ -48,6 +48,17 @@ export const inverted = `
   />
 `;
 
+export const alignItemsStretch = `
+  <MarketingLayout
+    title="Align Items Stretched"
+    description="This layout has its content stretched instead of the default centered alignment."
+    actions={<Button size="medium">Get Started</Button>}
+    size="large"
+    image={<Image/>}
+    alignItems="stretch"
+  />
+`;
+
 export const imageBackgroundColor = `
   <MarketingLayout
     title="Image Background"

@@ -22,8 +22,12 @@ const descriptionSizeBySize = {
 
 const Content = ({ size, actions, title, description }) => (
   <div className={classes.contentContainer}>
-    <Title appearance={titleAppearanceBySize[size]}>{title}</Title>
-    <Description size={descriptionSizeBySize[size]}>{description}</Description>
+    <div>
+      <Title appearance={titleAppearanceBySize[size]}>{title}</Title>
+      <Description size={descriptionSizeBySize[size]}>
+        {description}
+      </Description>
+    </div>
     {actions}
   </div>
 );
