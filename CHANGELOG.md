@@ -24,6 +24,7 @@ Types of changes:
 - `Themes | Business Dashboard` - changed focus ring color of Button, IconButton, TextButton [#6282](https://github.com/wix/wix-style-react/pull/6282)
 - `Themes | Business Dashboard` - changed ListItemSelect color back to D20 [#6288](https://github.com/wix/wix-style-react/pull/6288)
 - `Themes | Business Dashboard` - adjusted TextButton dark disabled color & light hover color [#6291](https://github.com/wix/wix-style-react/pull/6291)
+- `Themes | Business Dashboard` - Changing Carousel icons size and pagination color [#6287](https://github.com/wix/wix-style-react/pull/6287)
 
 ## 9.41.0 - 2020-11-19
 ### Added
