@@ -17,7 +17,8 @@ Types of changes:
 ## Next
 
 ### Added
-- <MarketingLayout/> - add alignItems prop [#6275](https://github.com/wix/wix-style-react/pull/6275)
+- `<MarketingLayout/>` - add alignItems prop [#6275](https://github.com/wix/wix-style-react/pull/6275)
+- `<BadgeSelectItem/>`- adding a uni driver [#6124](https://github.com/wix/wix-style-react/pull/6124)
 
 ### Changed
 - `Themes | Business Dashboard` - changed focus ring color of Button, IconButton, TextButton [#6282](https://github.com/wix/wix-style-react/pull/6282)
