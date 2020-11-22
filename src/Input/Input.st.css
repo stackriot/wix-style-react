@@ -25,7 +25,7 @@
               status(enum(error, warning)), forceHover, readOnly,
               disabled, roundInput,
               noLeftBorderRadius, noRightBorderRadius;
-  -st-mixin: boxSizingMixin, borderRadiusMixin(6px);
+  -st-mixin: boxSizingMixin('border-box'), borderRadiusMixin(6px);
   position: relative;
   display: flex;
   border: solid 1px value(THEME-COLOR-30);
@@ -112,6 +112,7 @@
 .root:hover.readOnly:not(:disabled) {
    border: solid 1px value(THEME-COLOR-30);
  }
+
 .root:hover.readOnly.disabled {
    border: solid 1px value(D60);
  }

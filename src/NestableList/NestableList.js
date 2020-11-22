@@ -67,19 +67,16 @@ class NestableList extends React.PureComponent {
   };
 
   moveItem = ({ dragItem, prevPosition, nextPosition }) => {
-    const { childrenProperty } = this.props;
+    const { childrenProperty, preventChangeDepth, items } = this.props;
     let newItems = this.state.items.slice();
 
-    if (this.props.preventChangeDepth && nextPosition.length > 1) {
-      const parent = getDropParent(
-        this.props.items,
-        nextPosition,
-        childrenProperty,
-      );
+    if (preventChangeDepth && nextPosition.length > 1) {
+      const parent = getDropParent(items, nextPosition, childrenProperty);
       if (!parent) {
         return prevPosition;
       }
     }
+
     // the remove action might affect the next position,
     // so update next coordinates accordingly
     let realNextPosition = getRealNextPosition(prevPosition, nextPosition);
