@@ -117,9 +117,14 @@
 /* Status */
 .status {
   position: absolute;
-  inset-inline-end: 6px;
+  right: 6px;
   top: 0;
   margin: 6px;
+}
+
+:global([dir='rtl']) .status {
+  right: unset;
+  left: 6px;
 }
 
 .root:not(:disabled):status(error) .inputArea {
