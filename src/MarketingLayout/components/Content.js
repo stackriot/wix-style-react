@@ -9,12 +9,14 @@ import { SIZES as TEXT_SIZES } from '../../Text';
 import { classes } from '../MarketingLayout.st.css';
 
 const titleAppearanceBySize = {
+  [SIZES.tiny]: SIZES.tiny,
   [SIZES.small]: APPEARANCES.H3,
   [SIZES.medium]: APPEARANCES.H2,
   [SIZES.large]: APPEARANCES.H2,
 };
 
 const descriptionSizeBySize = {
+  [SIZES.tiny]: TEXT_SIZES.small,
   [SIZES.small]: TEXT_SIZES.small,
   [SIZES.medium]: TEXT_SIZES.medium,
   [SIZES.large]: TEXT_SIZES.medium,

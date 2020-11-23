@@ -1,6 +1,23 @@
+:import {
+  -st-from: "../Foundation/stylable/typography.st.css";
+  -st-named: text-medium-bold;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: D10;
+}
+
 .root {
-  -st-states: size(enum(small, medium, large)), alignItems(enum(center, stretch)), badge, hiddenBadge, inverted, withActions, withImageBackground;
+  -st-states: size(enum(tiny, small, medium, large)), alignItems(enum(center, stretch)), badge, hiddenBadge, inverted, withActions, withImageBackground;
   padding: 30px;
+}
+
+.root:size(tiny) {
+  padding: 18px 30px;
+}
+:global([dir="rtl"]) .root:size(tiny) {
+  padding: 18px 30px;
 }
 
 .root:size(small) {
@@ -62,12 +79,25 @@
   padding-bottom: 18px;
 }
 
+.root:size(tiny) .title {
+  padding-bottom: 12px;
+
+  -st-mixin: text-medium-bold;
+
+  font-size: 20px;
+  color: value(D10);
+}
+
 .root:size(small) .title {
   padding-bottom: 12px;
 }
 
 .root:withActions .description {
   padding-bottom: 36px;
+}
+
+.root:size(tiny):withActions .description {
+  padding-bottom: 18px;
 }
 
 .root:size(small):withActions .description {

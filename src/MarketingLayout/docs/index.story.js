@@ -16,6 +16,7 @@ import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
 import MarketingLayout from '..';
 import {
+  sizeTiny,
   sizeSmall,
   sizeMedium,
   sizeLarge,
@@ -72,7 +73,11 @@ export default {
           description({
             title: 'Size',
             text:
-              'Component supports three sizes - small, medium and large. For each size are dedicated illustration sizes. Please note, action button sizes must be adjusted based on marketing layout size.',
+              'Component supports four sizes - tiny, small, medium and large. For each size are dedicated illustration sizes. Please note, action button sizes must be adjusted based on marketing layout size.',
+          }),
+          code({
+            compact: true,
+            source: sizeTiny,
           }),
           code({
             compact: true,

@@ -49,6 +49,12 @@ const tests = [
     describe: 'Size',
     its: [
       {
+        it: 'Tiny',
+        props: {
+          size: 'tiny',
+        },
+      },
+      {
         it: 'Small',
         props: {
           size: 'small',
@@ -71,6 +77,13 @@ const tests = [
   {
     describe: 'Image',
     its: [
+      {
+        it: 'Tiny',
+        props: {
+          size: 'tiny',
+          image: customImageNode,
+        },
+      },
       {
         it: 'Small',
         props: {
@@ -104,6 +117,13 @@ const tests = [
     describe: 'Inverted Layout',
     its: [
       {
+        it: 'Tiny',
+        props: {
+          inverted: true,
+          size: 'tiny',
+        },
+      },
+      {
         it: 'Small',
         props: {
           inverted: true,
@@ -129,6 +149,13 @@ const tests = [
   {
     describe: 'No actions',
     its: [
+      {
+        it: 'Tiny',
+        props: {
+          size: 'tiny',
+          actions: null,
+        },
+      },
       {
         it: 'Small',
         props: {

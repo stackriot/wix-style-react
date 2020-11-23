@@ -4,7 +4,7 @@ export interface MarketingLayoutProps {
   dataHook?: string;
   image?: React.ReactNode;
   imageBackgroundColor?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'tiny' | 'small' | 'medium' | 'large';
   inverted?: boolean;
   actions?: React.ReactNode;
   title?: React.ReactNode;

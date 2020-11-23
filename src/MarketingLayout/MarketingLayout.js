@@ -9,6 +9,11 @@ import { st, classes } from './MarketingLayout.st.css';
 import colors from '../colors.scss';
 
 const cellSpansBySize = {
+  [SIZES.tiny]: {
+    image: 3,
+    spacer: 1,
+    content: 8,
+  },
   [SIZES.small]: {
     image: 2,
     spacer: 1,
@@ -27,6 +32,7 @@ const cellSpansBySize = {
 };
 
 const imagePlaceholderAspectRatioBySize = {
+  [SIZES.tiny]: 1,
   [SIZES.small]: 1,
   [SIZES.medium]: 282 / 188,
   [SIZES.large]: 360 / 240,
@@ -45,7 +51,7 @@ class MarketingLayout extends React.PureComponent {
     /** Image area background color. Can be a keyword from color palette or any supported CSS color value (Hex, RGB, etc.) */
     imageBackgroundColor: PropTypes.string,
     /** Size of the marketing layout. */
-    size: PropTypes.oneOf(['small', 'medium', 'large']),
+    size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
     /** Alignment of the content of the marketing layout. */
     alignItems: PropTypes.oneOf(['center', 'stretch']),
     /** Invert marketing layout (with image displayed on the left). */
