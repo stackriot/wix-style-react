@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+#### Fixed
+- `Themes | Business Dashboard` - Misc Sidebar Fixes [#6295](https://github.com/wix/wix-style-react/pull/6295)
+
 ### Deprecated
 - `<Table/>` - deprecate hideHeader prop [#6255](https://github.com/wix/wix-style-react/pull/6255)
 
