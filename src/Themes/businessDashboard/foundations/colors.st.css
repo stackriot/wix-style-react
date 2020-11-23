@@ -43,7 +43,9 @@
 
   /* Sidebar */
   sidebarBackgroundColor: #131720;
+  textColor: value(D80);
   selectedBackgroundColor: calc_rgba(value(D80), 0.1);
+  selectedTextColor: value(D80);
   hoveredBackgroundColor: calc_rgba(value(D80), 0.05);
   disabledBackgroundColor: value(sidebarBackgroundColor);
   disabledTextColor: calc_rgba(value(D80), 0.6);
