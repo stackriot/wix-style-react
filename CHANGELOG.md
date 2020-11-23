@@ -16,6 +16,10 @@ Types of changes:
 
 ## Next
 ### Added
+- `<Carousel/>` - add showControlsShadow prop [#6301](https://github.com/wix/wix-style-react/pull/6301)
+
+## 9.43.0 - 2020-11-23
+### Added
 - `<MarketingLayout/>` - add badge and hiddenBadge props [#6273](https://github.com/wix/wix-style-react/pull/6273)
 - `<MarketingLayout/>` - add size tiny [#6269](https://github.com/wix/wix-style-react/pull/6269)
 
