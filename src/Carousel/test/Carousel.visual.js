@@ -67,6 +67,13 @@ const tests = [
         },
       },
       {
+        it: 'Display shadow behind controls',
+        props: {
+          images: sampleImages,
+          showControlsShadow: true,
+        },
+      },
+      {
         it: 'Remove controls',
         props: {
           images: sampleImages,

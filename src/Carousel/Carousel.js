@@ -52,6 +52,9 @@ class Carousel extends React.Component {
     /** Sets the skin of the arrow buttons */
     buttonSkin: PropTypes.oneOf(['standard', 'inverted', 'light']),
 
+    /** Show a shadow for the carousel controls */
+    showControlsShadow: PropTypes.bool,
+
     /** Images loop endlessly */
     infinite: PropTypes.bool,
 
@@ -89,6 +92,7 @@ class Carousel extends React.Component {
     buttonSkin: 'standard',
     controlsPosition: 'sides',
     controlsSize: 'medium',
+    showControlsShadow: false,
   };
 
   constructor(props) {
@@ -107,6 +111,7 @@ class Carousel extends React.Component {
       children,
       controlsPosition,
       controlsSize,
+      showControlsShadow,
     } = this.props;
     const { sliderSettings } = this.state;
     const hasImages = !children && images.length > 0;
@@ -116,7 +121,7 @@ class Carousel extends React.Component {
         data-hook={dataHook}
         className={st(
           classes.root,
-          { controlsPosition, controlsSize },
+          { controlsPosition, controlsSize, showControlsShadow },
           className,
         )}
       >
