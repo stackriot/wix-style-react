@@ -21,6 +21,7 @@ Types of changes:
 
 ### Fixed
 - `Themes | Business Dashboard` - Misc Sidebar Fixes [#6295](https://github.com/wix/wix-style-react/pull/6295)
+- `<InputArea/>` - fix rtl css [#6302](https://github.com/wix/wix-style-react/pull/6302)
 
 ### Deprecated
 - `<Table/>` - deprecate hideHeader prop [#6255](https://github.com/wix/wix-style-react/pull/6255)
