@@ -19,6 +19,8 @@ import {
   sizeSmall,
   sizeMedium,
   sizeLarge,
+  badge,
+  hiddenBadge,
   inverted,
   alignItemsStretch,
   imageBackgroundColor,
@@ -113,6 +115,20 @@ export default {
           code({
             compact: true,
             source: imageBackgroundColor,
+          }),
+
+          description({
+            title: 'Badge',
+            text:
+              'Marketing layout can contain a `<Badge>` in the `badge` prop, or have the `hiddenBadge` prop enabled. These examples use `<Card>` component as a container for marketing layout.',
+          }),
+          code({
+            compact: true,
+            source: badge,
+          }),
+          code({
+            compact: true,
+            source: hiddenBadge,
           }),
 
           description({

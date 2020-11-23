@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import MarketingLayout from '../MarketingLayout';
 import Button from '../../Button';
 import Box from '../../Box';
+import Badge from '../../Badge';
 
 const customImageNode = (
   <Box backgroundColor="R00" width="100%" height="200px" />
@@ -178,6 +179,23 @@ const tests = [
         props: {
           imageBackgroundColor: 'B20',
           image: customImageNode,
+        },
+      },
+    ],
+  },
+  {
+    describe: 'Badge',
+    its: [
+      {
+        it: 'with badge',
+        props: {
+          badge: <Badge size="small">badge</Badge>,
+        },
+      },
+      {
+        it: 'with hidden badge',
+        props: {
+          hiddenBadge: true,
         },
       },
     ],

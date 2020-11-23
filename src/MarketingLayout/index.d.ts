@@ -9,6 +9,8 @@ export interface MarketingLayoutProps {
   actions?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
+  badge?: React.ReactNode;
+  hiddenBadge?: boolean;
   alignItems?: 'center' | 'stretch';
 }
 
