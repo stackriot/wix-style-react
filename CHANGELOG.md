@@ -15,7 +15,10 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
-#### Fixed
+### Added
+- `<MarketingLayout/>` - add badge and hiddenBadge props [#6273](https://github.com/wix/wix-style-react/pull/6273)
+
+### Fixed
 - `Themes | Business Dashboard` - Misc Sidebar Fixes [#6295](https://github.com/wix/wix-style-react/pull/6295)
 
 ### Deprecated
