@@ -28,5 +28,3 @@ export const runTests = (
 
   storyOfAllPermutations(Story, Loader, options);
 };
-
-runTests();
