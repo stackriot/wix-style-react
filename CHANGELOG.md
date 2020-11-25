@@ -22,6 +22,7 @@ Types of changes:
 - `<Carousel/>` - [Testkit] Add 'clickNext' and 'clickPrevious' [#6303](https://github.com/wix/wix-style-react/pull/6303)
 
 ### Changed
+- `<StatisticsWidget/>` - use TrendIndicator component [#6316](https://github.com/wix/wix-style-react/pull/6316)
 - `Themes | Business Dashboard` - Adjustments to DropdownLayout & PopoverMenu [#6307](https://github.com/wix/wix-style-react/pull/6307)
 
 ## 9.43.0 - 2020-11-23
