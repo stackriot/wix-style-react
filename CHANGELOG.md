@@ -18,6 +18,9 @@ Types of changes:
 ### Added
 - `<Carousel/>` - add showControlsShadow prop [#6301](https://github.com/wix/wix-style-react/pull/6301)
 
+### Changed
+- `Themes | Business Dashboard` - Adjustments to DropdownLayout & PopoverMenu [#6307](https://github.com/wix/wix-style-react/pull/6307)
+
 ## 9.43.0 - 2020-11-23
 ### Added
 - `<MarketingLayout/>` - add badge and hiddenBadge props [#6273](https://github.com/wix/wix-style-react/pull/6273)
