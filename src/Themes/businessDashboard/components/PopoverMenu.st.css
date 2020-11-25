@@ -25,5 +25,5 @@
 .root:withArrow::popover[data-placement*="left"] .popoverContent,
 .root:withArrow::popover[data-placement*="right"] .popoverContent,
 .root:withArrow::popover[data-placement*="bottom"] .popoverContent {
-  padding: 8px 0;
+  padding: 0;
 }

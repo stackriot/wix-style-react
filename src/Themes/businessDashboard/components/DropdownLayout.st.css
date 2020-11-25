@@ -21,6 +21,11 @@
   box-shadow: value(shadow10);
 }
 
+.root:visible::contentContainer {
+  padding: 8px 0;
+  border-radius: 8px;
+}
+
 .root::options::-webkit-scrollbar {
   width: 12px;
 }
