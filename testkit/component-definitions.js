@@ -823,4 +823,10 @@ export default {
       ),
     },
   },
+
+  TrendIndicator: {
+    props: {
+      value: 0,
+    },
+  },
 };

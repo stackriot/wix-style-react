@@ -496,6 +496,10 @@ export { default as PageFooter } from './PageFooter';
 export * from './PageFooter';
 
 export { default as StyledNestableList } from './StyledNestableList';
+
+export { default as TrendIndicator } from './TrendIndicator';
+export * from './TrendIndicator';
+
 export * from './StyledNestableList';
 
 export * from './StackedBarChart';
