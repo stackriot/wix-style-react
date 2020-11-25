@@ -105,22 +105,8 @@
 }
 
 .percentage {
-  -st-states: clickable;
   margin-top: auto;
-}
-
-.percentage:clickable {
-  cursor: pointer;
-}
-
-.percentageInner {
-  height: 12px;
-}
-
-.trendIndicator {
-  display: inline-block;
-  margin-right: 5px;
-  vertical-align: middle;
+  padding: 6px 13px;
 }
 
 .tooltip {
