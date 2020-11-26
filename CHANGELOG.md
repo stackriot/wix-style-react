@@ -18,6 +18,9 @@ Types of changes:
 ### Added
 - `Themes | Business Dashboard` - feat(TextButton): add premium theme [#6318](https://github.com/wix/wix-style-react/pull/6318)
 
+### Fixed
+- `<Table/>` - [types] Add `content`to `infoTooltipProps` [#6315](https://github.com/wix/wix-style-react/pull/6315)
+
 ## 9.44.0 - 2020-11-25
 ### Added
 - `<TrendIndicator/>` - Add new component [#6305](https://github.com/wix/wix-style-react/pull/6305)
