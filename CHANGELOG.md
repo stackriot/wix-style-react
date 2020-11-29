@@ -21,6 +21,7 @@ Types of changes:
 - `Themes | Business Dashboard` - feat(TextButton): add premium theme [#6318](https://github.com/wix/wix-style-react/pull/6318)
 - `Themes | Business Dashboard` - add TrendIndicator component [#6325](https://github.com/wix/wix-style-react/pull/6325)
 - `Themes | Business Dashboard` - Keep color when hovering dark disabled ButtonText [#6323](https://github.com/wix/wix-style-react/pull/6323)
+- `<Box/>` - support space-separated spacing tokens  [#6281](https://github.com/wix/wix-style-react/pull/6281)
 
 ### Fixed
 - `<Table/>` - [types] Add `content`to `infoTooltipProps` [#6315](https://github.com/wix/wix-style-react/pull/6315)
