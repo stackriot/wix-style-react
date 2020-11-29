@@ -15,6 +15,7 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+## 9.45.0 - 2020-11-29
 ### Added
 - `<Tag/>` - add lightOutlined theme [#6319](https://github.com/wix/wix-style-react/pull/6319)
 - `Themes | Business Dashboard` - feat(TextButton): add premium theme [#6318](https://github.com/wix/wix-style-react/pull/6318)
@@ -86,7 +87,7 @@ Types of changes:
 - `<TableListItem/>` - fix width/align not working [#6271](https://github.com/wix/wix-style-react/pull/6271)
 
 ## 9.40.0 - 2020-11-17
-### Added 
+### Added
 - `Themes | Business Dashboard` - add ListItemSelect theme [#6235](https://github.com/wix/wix-style-react/pull/6235)
 - `Themes | Business Dashboard` - add Tooltip theme [#6220](https://github.com/wix/wix-style-react/pull/6220)
 - `Themes | Business Dashboard` - add Badge theme [#6259](https://github.com/wix/wix-style-react/pull/6259)
