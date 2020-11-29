@@ -21,6 +21,9 @@ Types of changes:
 ### Fixed
 - `<Table/>` - [types] Add `content`to `infoTooltipProps` [#6315](https://github.com/wix/wix-style-react/pull/6315)
 
+### Changed
+- `<BadgeSelectItem />` - refactor storybook page [#6321](https://github.com/wix/wix-style-react/pull/6321)
+
 ## 9.44.0 - 2020-11-25
 ### Added
 - `<TrendIndicator/>` - Add new component [#6305](https://github.com/wix/wix-style-react/pull/6305)
