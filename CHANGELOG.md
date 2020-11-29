@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 ### Added
+- `<Tag/>` - add lightOutlined theme [#6319](https://github.com/wix/wix-style-react/pull/6319)
 - `Themes | Business Dashboard` - feat(TextButton): add premium theme [#6318](https://github.com/wix/wix-style-react/pull/6318)
 - `Themes | Business Dashboard` - add TrendIndicator component [#6325](https://github.com/wix/wix-style-react/pull/6325)
 - `Themes | Business Dashboard` - Keep color when hovering dark disabled ButtonText [#6323](https://github.com/wix/wix-style-react/pull/6323)
