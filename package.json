@@ -1,7 +1,7 @@
 {
   "name": "wix-style-react",
   "description": "wix-style-react",
-  "version": "9.45.0",
+  "version": "9.46.0",
   "main": "./dist/src/index.js",
   "module": "./dist/es/src/index.js",
   "typings": "./dist/es/src/index.d.ts",
@@ -236,7 +236,7 @@
     "slick-carousel": "^1.8.1",
     "wix-animations": "^1.0.403",
     "wix-eventually": "^2.3.0",
-    "wix-ui-core": "^3.0.151",
+    "wix-ui-core": "^3.0.156",
     "wix-ui-icons-common": "^2.0.294",
     "wix-ui-test-utils": "^1.0.177",
     "yoshi-stylable-dependencies": "^4.0.0"
