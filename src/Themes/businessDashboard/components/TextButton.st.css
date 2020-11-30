@@ -5,7 +5,7 @@
 
 :import {
   -st-from: '../foundations/colors.st.css';
-  -st-named: B05, B10, B40, B50, D10, D20, D30, D80, D10-30, D10-40, D80-70;
+  -st-named: B05, B10, B40, B50, D10, D20, D30, D80, D10-30, D10-40, D80-70, P10, P20;
 }
 
 :import {
@@ -15,6 +15,8 @@
 
 .root {
   -st-extends: TextButton;
+  color: value(B10);
+  align-items: flex-start;
 }
 
 .root:hover {
@@ -112,11 +114,11 @@
 }
 
 .root:skin(dark):weight(thin):hover {
-  color: value(D20);
+  color: value(D10);
 }
 
 .root:skin(dark):weight(thin):active {
-  color: value(D20);
+  color: value(D10);
 }
 
 .root:skin(dark):disabled,
@@ -124,3 +126,20 @@
   color: value(D10-40);
 }
 
+/* skin: premium */
+
+.root:skin(premium) {
+  color: value(P10);
+}
+
+.root:skin(premium):hover {
+  color: value(P20);
+}
+
+.root:skin(premium):active {
+  color: value(P10);
+}
+
+.root:skin(premium):disabled {
+  color: value(D10-30);
+}
