@@ -86,6 +86,11 @@
   left: 0;
 }
 
+.imageContainer {
+  display: flex;
+  height: 100%;
+}
+
 .image {
   width: 100%;
 }
