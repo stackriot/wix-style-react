@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<Carousel/>` - add `imagesPosition` and `imagesFit` props [#6328](https://github.com/wix/wix-style-react/pull/6328)
+
 ## 9.45.0 - 2020-11-29
 ### Added
 - `<Tag/>` - add lightOutlined theme [#6319](https://github.com/wix/wix-style-react/pull/6319)
