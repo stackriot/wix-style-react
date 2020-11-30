@@ -18,6 +18,9 @@ Types of changes:
 ### Added
 - `<Carousel/>` - add `imagesPosition` and `imagesFit` props [#6328](https://github.com/wix/wix-style-react/pull/6328)
 
+### Fixed
+- `Themes | Business Dashboard` - fixed TextButton default skin color override & replace G20 theme color [#6334](https://github.com/wix/wix-style-react/pull/6334)
+
 ## 9.45.0 - 2020-11-29
 ### Added
 - `<Tag/>` - add lightOutlined theme [#6319](https://github.com/wix/wix-style-react/pull/6319)
