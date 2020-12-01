@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.46.0 - 2020-11-30
 ### Added
 - `<Carousel/>` - add `imagesPosition` and `imagesFit` props [#6328](https://github.com/wix/wix-style-react/pull/6328)
 
