@@ -15,11 +15,13 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<DatePicker/>` - expose theming capabilities [#6195](https://github.com/wix/wix-style-react/pull/6195)
+
 
 ## 9.46.0 - 2020-11-30
 ### Added
 - `<Carousel/>` - add `imagesPosition` and `imagesFit` props [#6328](https://github.com/wix/wix-style-react/pull/6328)
-- `<DatePicker/>` - expose theming capabilities [#6195](https://github.com/wix/wix-style-react/pull/6195)
 
 ### Fixed
 - `Themes | Business Dashboard` - fixed TextButton default skin color override & replace G20 theme color [#6334](https://github.com/wix/wix-style-react/pull/6334)
