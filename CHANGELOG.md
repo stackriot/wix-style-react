@@ -15,9 +15,11 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+### 9.47.0 - 2020-12-01
 ### Added
 - `<DatePicker/>` - expose theming capabilities [#6195](https://github.com/wix/wix-style-react/pull/6195)
-
+- Typography- add medium weight to Madefor typography and update components accordingly [#6256](https://github.com/wix/wix-style-react/pull/6256)
 
 ## 9.46.0 - 2020-11-30
 ### Added
