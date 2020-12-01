@@ -19,7 +19,7 @@ const javascriptFiles = [
   ['BrowserPreviewWidget.bundle.min.js', 8],
   ['Button.bundle.min.js', 40],
   ['Calendar.bundle.min.js', 116],
-  ['CalendarPanel.bundle.min.js', 118],
+  ['CalendarPanel.bundle.min.js', 119],
   ['CalendarPanelFooter.bundle.min.js', 120],
   ['Card.bundle.min.js', 41],
   ['CardFolderTabs.bundle.min.js', 39],
