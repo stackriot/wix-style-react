@@ -109,7 +109,7 @@
   -st-mixin: text-medium-normal;
 }
 
-.root .title:isMadefor {
+.root:isMadefor  .title{
   -st-mixin: text-medium-thin;
 }
 
@@ -117,7 +117,7 @@
   -st-mixin: text-tiny-normal;
 }
 
-.root .subtitle:isMadefor {
+.root:isMadefor .subtitle {
   -st-mixin: text-tiny-thin;
 }
 
