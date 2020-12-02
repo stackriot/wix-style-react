@@ -39,6 +39,8 @@ export type SelectorListCommonProps = {
   initialAmountToLoad?: number;
   children?: SelectorListRenderProp;
   subtitle?: React.ReactNode;
+  selectAllText?: string;
+  deselectAllText?: string;
 };
 
 export default class SelectorList extends React.PureComponent<
