@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+`<TimeTable/>`- fix typo with styles [#6346](https://github.com/wix/wix-style-react/pull/6346)
+
 
 ### 9.47.0 - 2020-12-01
 ### Added
