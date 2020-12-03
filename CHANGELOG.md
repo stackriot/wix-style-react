@@ -26,6 +26,7 @@ Types of changes:
 - `<SelectorList/>` - [types] Added `selectAllText` and `deselectAllText` props [#6345](https://github.com/wix/wix-style-react/pull/6345)
 - `Themes | Business Dashboard` - fixed PopoverMenu without arrow padding [#6338](https://github.com/wix/wix-style-react/pull/6338)
 - Fix un-needed `import as` syntax to fix compatibility issue with webpack v5 [#6347](https://github.com/wix/wix-style-react/pull/6347)
+- `<Collapse/>` - implement with wix-animations [#6208](https://github.com/wix/wix-style-react/pull/6208)
 
 ### 9.47.1 - 2020-12-02
 ### Fixed
