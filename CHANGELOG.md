@@ -15,6 +15,13 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Changed
+- `<MessageModalLayout/>` - [types] changed title to be node [#6339](https://github.com/wix/wix-style-react/pull/6339)
+
+### Fixed
+- `<SelectorList/>` - [types] Added `selectAllText` and `deselectAllText` props [#6345](https://github.com/wix/wix-style-react/pull/6345)
+- `Themes | Business Dashboard` - fixed PopoverMenu without arrow padding [#6338](https://github.com/wix/wix-style-react/pull/6338)
+
 ### 9.47.1 - 2020-12-02
 ### Fixed
 `<TimeTable/>`- fix typo with styles [#6346](https://github.com/wix/wix-style-react/pull/6346)
