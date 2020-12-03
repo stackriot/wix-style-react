@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<Cell/>` - add rows prop #[6355](https://github.com/wix/wix-style-react/pull/6355)
+
 ### Changed
 - `<MessageModalLayout/>` - [types] changed title to be node [#6339](https://github.com/wix/wix-style-react/pull/6339)
 
