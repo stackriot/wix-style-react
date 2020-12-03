@@ -74,7 +74,7 @@
     "test5:types": "npm run test:types && npm run pr-storybook:publish",
     "test6:sanity": "npm run lint && npm run sanity && npm run test:e2e-runtime",
     "test7:performance": "npm run test:performance",
-    "test8:chromatic": "npm run test:swimm",
+    "test8:chromatic": "echo ok",
     "------performance analysis tools": "",
     "bundles:analyse": "npm run analyse --prefix .perfer"
   },
