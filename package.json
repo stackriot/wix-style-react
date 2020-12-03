@@ -49,6 +49,7 @@
     "test:visual": "eyes-storybook -c ./.storybook/visual",
     "test:chromatic": "chromatic --build-script-name=storybook:build-visual --app-code=$CHROMATIC_WIX_STYLE_REACT",
     "test:types": "tsc -p tsconfig.declarations.json",
+    "test:swimm": "SWIMM_PATH=./node_modules/.bin/swimm_cli && ./scripts/get-swimm.sh $SWIMM_PATH $FORCE && ./scripts/run-swimm.sh $SWIMM_PATH",
     "test:performance": "npm run transpile && npm run bundles:generate && npm install --no-save @wix/perfer && perfer --verbose",
     "bundles:generate": "npm run build --prefix .perfer",
     "sanity": "autotools-sanity --files './src/**/*.meta.js'",
@@ -73,7 +74,7 @@
     "test5:types": "npm run test:types && npm run pr-storybook:publish",
     "test6:sanity": "npm run lint && npm run sanity && npm run test:e2e-runtime",
     "test7:performance": "npm run test:performance",
-    "test8:chromatic": "echo ok",
+    "test8:chromatic": "npm run test:swimm",
     "------performance analysis tools": "",
     "bundles:analyse": "npm run analyse --prefix .perfer"
   },
