@@ -18,14 +18,14 @@ Types of changes:
 ### Fixed
 - `<SelectorList/>` - [types] update renderToggleAllCheckbox name in type [#6354](https://github.com/wix/wix-style-react/pull/6354)
 
-### 9.49.0 - 2020-12-06
+## 9.49.0 - 2020-12-06
 ### Fixed
 - `<Page/>` - fixed page crashing [#6349](https://github.com/wix/wix-style-react/pull/6349)
 
 ### Added
 - `<Page/>` - add fixed footer [#6349](https://github.com/wix/wix-style-react/pull/6349)
 
-### 9.48.0 - 2020-12-03
+## 9.48.0 - 2020-12-03
 ### Added
 - `<Cell/>` - add rows prop [#6355](https://github.com/wix/wix-style-react/pull/6355)
 
@@ -39,12 +39,12 @@ Types of changes:
 - Fix un-needed `import as` syntax to fix compatibility issue with webpack v5 [#6347](https://github.com/wix/wix-style-react/pull/6347)
 - `<Collapse/>` - implement with wix-animations [#6208](https://github.com/wix/wix-style-react/pull/6208)
 
-### 9.47.1 - 2020-12-02
+## 9.47.1 - 2020-12-02
 ### Fixed
 `<TimeTable/>`- fix typo with styles [#6346](https://github.com/wix/wix-style-react/pull/6346)
 
 
-### 9.47.0 - 2020-12-01
+## 9.47.0 - 2020-12-01
 ### Added
 - `<DatePicker/>` - expose theming capabilities [#6195](https://github.com/wix/wix-style-react/pull/6195)
 - Typography- add medium weight to Madefor typography and update components accordingly [#6256](https://github.com/wix/wix-style-react/pull/6256)
