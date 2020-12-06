@@ -744,7 +744,7 @@ DropdownLayout.propTypes = {
   selectedHighlight: PropTypes.bool,
   /** Whether the `<DropdownLayout/>` is in a container component. If `true`, some styles such as shadows, positioning and padding will be added the the component contentContainer. */
   inContainer: PropTypes.bool,
-  /** Set this prop for lacy loading of the dropdown layout items.*/
+  /** Set this prop for lazy loading of the dropdown layout items.*/
   infiniteScroll: PropTypes.bool,
   /** A callback called when more items are requested to be rendered. */
   loadMore: PropTypes.func,

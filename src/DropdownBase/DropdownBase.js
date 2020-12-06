@@ -126,6 +126,15 @@ class DropdownBase extends React.PureComponent {
 
     /** Scroll to the selected option on opening the dropdown */
     focusOnSelectedOption: PropTypes.bool,
+
+    /** Set this prop for lazy loading of the dropdown layout items.*/
+    infiniteScroll: PropTypes.bool,
+
+    /** A callback called when more items are requested to be rendered. */
+    loadMore: PropTypes.func,
+
+    /** Whether there are more items to be loaded. */
+    hasMore: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -341,13 +350,16 @@ class DropdownBase extends React.PureComponent {
       animate,
       className,
       focusOnSelectedOption,
+      infiniteScroll,
+      loadMore,
+      hasMore,
     } = this.props;
 
     const { open, selectedId } = this.state;
 
     return (
       <Popover
-        {...this.props}
+        {...this.props} // backward compatible for migration stylable 1 to stylable 3
         animate={animate}
         dataHook={dataHook}
         shown={open}
@@ -396,6 +408,9 @@ class DropdownBase extends React.PureComponent {
               visible
               overflow={overflow}
               focusOnSelectedOption={focusOnSelectedOption}
+              infiniteScroll={infiniteScroll}
+              loadMore={loadMore}
+              hasMore={hasMore}
             />
           </div>
         </Popover.Content>
