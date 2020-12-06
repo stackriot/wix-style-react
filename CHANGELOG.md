@@ -15,6 +15,15 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+### 9.49.0 - 2020-12-06
+### Fixed
+- `<Page/>` - fixed page crashing [#6349](https://github.com/wix/wix-style-react/pull/6349)
+
+### Added
+- `<Page/>` - add fixed footer [#6349](https://github.com/wix/wix-style-react/pull/6349)
+
+### 9.48.0 - 2020-12-03
 ### Added
 - `<Cell/>` - add rows prop #[6355](https://github.com/wix/wix-style-react/pull/6355)
 
