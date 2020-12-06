@@ -18,6 +18,9 @@ Types of changes:
 ### Fixed
 - `<SelectorList/>` - [types] update renderToggleAllCheckbox name in type [#6354](https://github.com/wix/wix-style-react/pull/6354)
 
+### Added 
+- `<DropdownBase/>` - expose lazy loading props [#6351](https://github.com/wix/wix-style-react/pull/6351)
+
 ## 9.49.0 - 2020-12-06
 ### Fixed
 - `<Page/>` - fixed page crashing [#6349](https://github.com/wix/wix-style-react/pull/6349)
