@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+- `<SelectorList/>` - [types] update renderToggleAllCheckbox name in type [#6354](https://github.com/wix/wix-style-react/pull/6354)
 
 ### 9.49.0 - 2020-12-06
 ### Fixed
@@ -25,7 +27,7 @@ Types of changes:
 
 ### 9.48.0 - 2020-12-03
 ### Added
-- `<Cell/>` - add rows prop #[6355](https://github.com/wix/wix-style-react/pull/6355)
+- `<Cell/>` - add rows prop [#6355](https://github.com/wix/wix-style-react/pull/6355)
 
 ### Changed
 - `<MessageModalLayout/>` - [types] changed title to be node [#6339](https://github.com/wix/wix-style-react/pull/6339)
