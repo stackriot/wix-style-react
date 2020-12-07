@@ -19,6 +19,7 @@ Types of changes:
 - `<NestableList/>` - fix issue with position fixed inside parent with transform [#6335](https://github.com/wix/wix-style-react/pull/6335)
 - `<SelectorList/>` - [types] update renderToggleAllCheckbox name in type [#6354](https://github.com/wix/wix-style-react/pull/6354)
 - `<Carousel/>` - Hide slick-track if it's width is undetermined [#6358](https://github.com/wix/wix-style-react/pull/6358)
+- `<ListItemSection/>`- suffix fix [#6092](https://github.com/wix/wix-style-react/pull/6092)
 
 ### Added 
 - `<DropdownBase/>` - expose lazy loading props [#6351](https://github.com/wix/wix-style-react/pull/6351)
