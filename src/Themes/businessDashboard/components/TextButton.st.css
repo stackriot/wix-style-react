@@ -10,7 +10,7 @@
 
 :import {
   -st-from: "../../../Foundation/stylable/typography.st.css";
-  -st-named: normal, bold;
+  -st-named: thin, normal, bold;
 }
 
 .root {
@@ -57,15 +57,15 @@
 }
 
 .root:size(tiny):weight(thin) {
-  -st-mixin: normal;
+  -st-mixin: thin;
 }
 
 .root:size(small):weight(thin) {
-  -st-mixin: normal;
+  -st-mixin: thin;
 }
 
 .root:size(medium):weight(thin) {
-  -st-mixin: normal;
+  -st-mixin: thin;
 }
 
 .root:size(tiny) {
