@@ -15,13 +15,17 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.50.0 - 2020-12-08
 ### Fixed
 - `<NestableList/>` - fix issue with position fixed inside parent with transform [#6335](https://github.com/wix/wix-style-react/pull/6335)
 - `<SelectorList/>` - [types] update renderToggleAllCheckbox name in type [#6354](https://github.com/wix/wix-style-react/pull/6354)
 - `<Carousel/>` - Hide slick-track if it's width is undetermined [#6358](https://github.com/wix/wix-style-react/pull/6358)
 - `<ListItemSection/>`- suffix fix [#6092](https://github.com/wix/wix-style-react/pull/6092)
+- `<Page/>` - [types] fix FixedFooter type [#6363](https://github.com/wix/wix-style-react/pull/6363)
 
-### Added 
+
+### Added
 - `<DropdownBase/>` - expose lazy loading props [#6351](https://github.com/wix/wix-style-react/pull/6351)
 
 ## 9.49.0 - 2020-12-06
