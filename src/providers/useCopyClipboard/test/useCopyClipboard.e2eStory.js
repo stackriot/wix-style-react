@@ -49,7 +49,7 @@ const CopyClipboard = () => {
         <Input
           prefix={<Input.Affix>onCopy:</Input.Affix>}
           dataHook={storySettings.dataHookInputOnCopy}
-          value={onCopyState ? onCopyState : 'null'}
+          value={onCopyState ? onCopyState.toString() : 'null'}
         />
       </Cell>
     </Layout>
