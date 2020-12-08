@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Changed
+- `Themes | Business Dashboard` - Set default font weight to regular [#6362](https://github.com/wix/wix-style-react/pull/6362)
+
 ## 9.50.0 - 2020-12-08
 ### Fixed
 - `<NestableList/>` - fix issue with position fixed inside parent with transform [#6335](https://github.com/wix/wix-style-react/pull/6335)
