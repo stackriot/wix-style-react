@@ -6,6 +6,12 @@ export * from './Accordion';
 export { default as AddItem } from './AddItem';
 export * from './AddItem';
 
+export {
+  default as AddressInputItem,
+  addressInputItemBuilder
+} from './AddressInputItem';
+export * from './AddressInputItem';
+
 export { default as AnnouncementModalLayout } from './AnnouncementModalLayout';
 export * from './AnnouncementModalLayout';
 
