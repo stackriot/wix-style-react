@@ -148,6 +148,7 @@ export default class DatePicker extends React.PureComponent {
       dateFormatV2,
       dateFormat,
       inputProps = {},
+      locale,
     } = this.props;
     const { onFocus, ...inputPropsRest } = inputProps;
     return (
@@ -174,6 +175,7 @@ export default class DatePicker extends React.PureComponent {
         dateFormat={dateFormat}
         dateFormatV2={dateFormatV2}
         customInput={customInput}
+        locale={locale}
         {...(customInput ? customInput.props : {})}
         {...inputPropsRest}
       />
