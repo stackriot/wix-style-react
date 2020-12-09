@@ -19,6 +19,9 @@ Types of changes:
 ### Changed
 - `Themes | Business Dashboard` - Set default font weight to regular [#6362](https://github.com/wix/wix-style-react/pull/6362)
 
+### Added
+- `<AddressInputItem/>` - new component [#6191](https://github.com/wix/wix-style-react/pull/6191)
+
 ## 9.50.0 - 2020-12-08
 ### Fixed
 - `<NestableList/>` - fix issue with position fixed inside parent with transform [#6335](https://github.com/wix/wix-style-react/pull/6335)
