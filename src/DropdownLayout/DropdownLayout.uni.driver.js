@@ -2,6 +2,7 @@ import {
   baseUniDriverFactory,
   ReactBase,
   findByHook,
+  getDataAttributeValue,
 } from '../../test/utils/unidriver';
 import {
   DATA_OPTION,
@@ -10,6 +11,7 @@ import {
   DATA_SHOWN,
   DROPDOWN_LAYOUT_DIRECTIONS,
   OPTION_DATA_HOOKS,
+  DATA_SELECTED_OPTION_ID,
 } from './DataAttr';
 
 export const dropdownLayoutDriverFactory = base => {
@@ -244,6 +246,11 @@ export const dropdownLayoutDriverFactory = base => {
         null
       );
     },
+    getSelectedOptionId: async () =>
+      await getDataAttributeValue(
+        await contentContainer(),
+        DATA_SELECTED_OPTION_ID,
+      ),
     optionsLength,
     /** @deprecated should be private */
     optionsScrollTop: () => optionsElement()._prop('scrollTop'),

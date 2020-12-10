@@ -65,6 +65,10 @@ export const dropdownBaseDriverFactory = (base, body) => {
       }
     },
 
+    /** Returns the selected option (requires the DropdownBase to be opened)*/
+    getSelectedOptionId: async () =>
+      (await createDropdownLayoutDriver()).getSelectedOptionId(),
+
     mouseEnter: () => testkit(base, body).mouseEnter(),
     mouseLeave: () => testkit(base, body).mouseLeave(),
   };

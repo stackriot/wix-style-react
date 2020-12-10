@@ -16,6 +16,8 @@ export const DATA_SHOWN = 'data-shown';
 
 export const DATA_DIRECTION = 'data-direction';
 
+export const DATA_SELECTED_OPTION_ID = 'data-selected-option-id';
+
 export const DROPDOWN_LAYOUT_LOADER = 'dropdownLayout-loader';
 
 export const DATA_OPTION = {

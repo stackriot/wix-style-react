@@ -7,6 +7,7 @@ import {
   DATA_DIRECTION,
   DROPDOWN_LAYOUT_DIRECTIONS,
   OPTION_DATA_HOOKS,
+  DATA_SELECTED_OPTION_ID,
 } from './DataAttr';
 
 const dropdownLayoutDriverFactory = ({ element }) => {
@@ -200,6 +201,8 @@ const dropdownLayoutDriverFactory = ({ element }) => {
         (hoveredOption && createOptionDriver(hoveredOption).content()) || null
       );
     },
+    getSelectedOptionId: () =>
+      contentContainer.getAttribute(DATA_SELECTED_OPTION_ID),
 
     optionsLength,
     /** @deprecated should be private */

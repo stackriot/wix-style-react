@@ -30,6 +30,7 @@ export interface DropdownLayoutDriver extends BaseDriver {
   options: () => DropdownLayoutOptionDriver[];
   optionsContent: () => string[];
   markedOption: () => string | null;
+  getSelectedOptionId: () => string | null;
   optionsLength: () => number;
   /** @deprecated should be private */
   optionsScrollTop: () => number;

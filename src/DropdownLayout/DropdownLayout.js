@@ -11,6 +11,7 @@ import {
   DROPDOWN_LAYOUT_DIRECTIONS,
   OPTION_DATA_HOOKS,
   DROPDOWN_LAYOUT_LOADER,
+  DATA_SELECTED_OPTION_ID,
 } from './DataAttr';
 import { st, classes } from './DropdownLayout.st.css';
 import deprecationLog from '../utils/deprecationLog';
@@ -379,11 +380,14 @@ class DropdownLayout extends React.PureComponent {
   /** for testing purposes only */
   _getDataAttributes = () => {
     const { visible, dropDirectionUp } = this.props;
+    const { selectedId } = this.state;
 
     return filterObject(
       {
         'data-hook': DATA_HOOKS.CONTENT_CONTAINER,
         [DATA_SHOWN]: visible,
+        [DATA_SELECTED_OPTION_ID]:
+          selectedId === 0 ? `${selectedId}` : selectedId,
         [DATA_DIRECTION]: dropDirectionUp
           ? DROPDOWN_LAYOUT_DIRECTIONS.UP
           : DROPDOWN_LAYOUT_DIRECTIONS.DOWN,
