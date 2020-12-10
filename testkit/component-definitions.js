@@ -829,4 +829,11 @@ export default {
       value: 0,
     },
   },
+
+  CopyClipboard: {
+    props: {
+      value: 'https://www.wix.com',
+      children: ({ copyToClipboard }) => <button onClick={copyToClipboard} />,
+    },
+  },
 };
