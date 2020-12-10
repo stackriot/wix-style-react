@@ -18,6 +18,7 @@ Types of changes:
 
 ### Added
 - `<CopyClipboard/>` - new component [#6367](https://github.com/wix/wix-style-react/pull/6367)
+- `<Radio/>` - new component [#6326](https://github.com/wix/wix-style-react/pull/6326)
 - `usePlacesAutocomplete` - new custom hook [#6324](https://github.com/wix/wix-style-react/pull/6324)
 
 ## 9.51.0 - 2020-12-10
