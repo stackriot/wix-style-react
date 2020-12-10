@@ -8,7 +8,7 @@ export * from './AddItem';
 
 export {
   default as AddressInputItem,
-  addressInputItemBuilder
+  addressInputItemBuilder,
 } from './AddressInputItem';
 export * from './AddressInputItem';
 
@@ -35,7 +35,7 @@ export * from './BadgeSelect';
 
 export {
   default as BadgeSelectItem,
-  badgeSelectItemBuilder
+  badgeSelectItemBuilder,
 } from './BadgeSelectItem';
 export * from './BadgeSelectItem';
 
@@ -504,6 +504,9 @@ export * from './PageFooter';
 export { default as StyledNestableList } from './StyledNestableList';
 
 export { default as TrendIndicator } from './TrendIndicator';
+
+export { default as Radio } from './Radio';
+export * from './Radio';
 
 export { default as CopyClipboard } from './CopyClipboard';
 export * from './CopyClipboard';

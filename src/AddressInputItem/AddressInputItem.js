@@ -95,7 +95,7 @@ AddressInputItem.propTypes = {
   /** The main matched part of the address based on the search term.*/
   mainLabel: PropTypes.string,
 
-  /**Address additional information. Usually contains region, country, etc.*/
+  /** Address additional information. Usually contains region, country, etc.*/
   secondaryLabel: PropTypes.string,
 
   /** Sets the layout of `mainLabel` and `secondaryLabel`. The possible options can be either side by side: `single-line` or double lined: `double-line`*/

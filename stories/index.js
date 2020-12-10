@@ -119,6 +119,7 @@ require('../src/Popover/docs/index.story');
 require('../src/PopoverMenu/docs/index.story');
 require('../src/PreviewWidget/docs/index.story');
 require('../src/Proportion/docs/index.story');
+require('../src/Radio/docs/index.story');
 require('../src/RadioGroup/docs/index.story');
 require('../src/Range/docs/index.story');
 require('../src/RichTextInputArea/docs/index.story');
