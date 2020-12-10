@@ -21,6 +21,7 @@ Types of changes:
 
 ### Added
 - `<AddressInputItem/>` - new component [#6191](https://github.com/wix/wix-style-react/pull/6191)
+- `<Page/>` - Add scrollTo function [#6180](https://github.com/wix/wix-style-react/pull/6180)
 
 ### Fixed
 - `<DatePicker/>` - Fix locale in TimeInput
