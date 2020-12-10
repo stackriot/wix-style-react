@@ -340,8 +340,10 @@ export default {
 
           example({
             title: 'Full page - scrollable',
-            text:
-              'A full view of a scrollable page with a header and a footer.',
+            text: `
+A full view of a scrollable page with a header and a footer.\n
+This example also demonstrate the \`scrollTo\` functionality.
+            `,
             source: examples.fullScrollableContent,
           }),
         ],
