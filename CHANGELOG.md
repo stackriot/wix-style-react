@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<CopyClipboard/>` - new component [#6367](https://github.com/wix/wix-style-react/pull/6367)
+
 ## 9.51.0 - 2020-12-10
 ### Changed
 - `Themes | Business Dashboard` - Set default font weight to regular [#6362](https://github.com/wix/wix-style-react/pull/6362)
