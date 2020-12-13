@@ -21,6 +21,7 @@ Types of changes:
 - `<Radio/>` - new component [#6326](https://github.com/wix/wix-style-react/pull/6326)
 - `usePlacesAutocomplete` - new custom hook [#6324](https://github.com/wix/wix-style-react/pull/6324)
 - `<DropdownBase/>` and `<DropdownLayout />` - add "getSelectedOptionId" to testkit [#6115](https://github.com/wix/wix-style-react/pull/6115)
+- `<Card/>` - Expose divider props [#6378](https://github.com/wix/wix-style-react/pull/6378)
 
 ### Fixed
 - `<Page/>` - fix broken css due to missing semicolon [#6374](https://github.com/wix/wix-style-react/pull/6374)
