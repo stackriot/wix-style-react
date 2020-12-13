@@ -24,6 +24,7 @@ Types of changes:
 
 ### Fixed
 - `<Page/>` - fix broken css due to missing semicolon [#6374](https://github.com/wix/wix-style-react/pull/6374)
+- `<BadgeSelectItem/>` - remove extra margin-right when subtitle is enabled and expose size and suffix props [#6330](https://github.com/wix/wix-style-react/pull/6330)
 
 ## 9.51.0 - 2020-12-10
 ### Changed
