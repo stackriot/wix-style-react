@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.52.0 - 2020-12-13
 ### Added
 - `<CopyClipboard/>` - new component [#6367](https://github.com/wix/wix-style-react/pull/6367)
 - `<Radio/>` - new component [#6326](https://github.com/wix/wix-style-react/pull/6326)
