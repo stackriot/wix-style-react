@@ -8,7 +8,7 @@ import Button from '../Button';
 import IconButton from '../IconButton';
 import TextButton from '../TextButton';
 import EditableRow from './EditableRow/EditableRow';
-import styles from './EditableSelector.scss';
+import { classes } from './EditableSelector.st.css';
 
 class EditableSelector extends React.PureComponent {
   static propTypes = {
@@ -113,7 +113,7 @@ class EditableSelector extends React.PureComponent {
     return (
       <div data-hook={dataHook}>
         {title && (
-          <div className={styles.title} data-hook="editable-selector-title">
+          <div className={classes.title} data-hook="editable-selector-title">
             <Text weight="normal">{title}</Text>
           </div>
         )}
@@ -124,7 +124,7 @@ class EditableSelector extends React.PureComponent {
             ) : (
               <div
                 data-hook="editable-selector-row"
-                className={styles.row}
+                className={classes.row}
                 key={index}
               >
                 <Selector
@@ -134,8 +134,9 @@ class EditableSelector extends React.PureComponent {
                   isSelected={option.isSelected}
                   toggleType={toggleType}
                   onToggle={id => this._onOptionToggle(id)}
+                  className={classes.editableSelectorItem}
                 />
-                <div className={styles.optionMenu}>
+                <div className={classes.optionMenu}>
                   <IconButton
                     onClick={() => this._deleteItem(index)}
                     dataHook="delete-item"
@@ -147,7 +148,7 @@ class EditableSelector extends React.PureComponent {
                       <Delete />
                     </span>
                   </IconButton>
-                  <div className={styles.editRow}>
+                  <div className={classes.editRow}>
                     <Button
                       onClick={() => this._editItem(index)}
                       dataHook="edit-item"
@@ -162,12 +163,12 @@ class EditableSelector extends React.PureComponent {
           )}
         </div>
         {this.state.addingNewRow && this._renderInput()}
-        <div className={styles.newRowButton}>
+        <div className={classes.newRowButton}>
           <TextButton
             as="a"
             underline="none"
             onClick={this._addNewRow}
-            prefixIcon={<Add className={styles.icon} />}
+            prefixIcon={<Add className={classes.icon} />}
             dataHook="new-row-button-text"
           >
             {newRowLabel}
