@@ -88,6 +88,20 @@ import { badgeSelectItemBuilder } from 'wix-style-react';
           }),
 
           example({
+            title: 'Suffix',
+            text:
+              'Component has a suffix area. If plain text or icon is inserted, component automatically inverts the color when selected.',
+            source: examples.suffix,
+          }),
+
+          example({
+            title: 'Sizes',
+            text:
+              'The component supports 2 text sizes - medium (default) and small.',
+            source: examples.sizes,
+          }),
+
+          example({
             title: 'Text cropping',
             text:
               'By default component wraps the text. If needed it can be configured to show ellipsis and display full value on hover.',

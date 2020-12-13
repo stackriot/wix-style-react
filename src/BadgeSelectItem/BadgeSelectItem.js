@@ -14,13 +14,15 @@ const BadgeSelectItem = props => {
     highlighted,
     disabled,
     className,
+    size,
+    suffix,
   } = props;
 
   const prefix = <div className={st(classes.marker, { skin })} />;
 
   return (
     <ListItemSelect
-      className={className}
+      className={st(classes.root, className)}
       title={text}
       ellipsis={ellipsis}
       dataHook={dataHook}
@@ -29,6 +31,8 @@ const BadgeSelectItem = props => {
       highlighted={highlighted}
       disabled={disabled}
       subtitle={subtitle}
+      size={size}
+      suffix={suffix}
     />
   );
 };
@@ -52,6 +56,10 @@ BadgeSelectItem.propTypes = {
   highlighted: PropTypes.bool,
   /** If true, the item is disabled */
   disabled: PropTypes.bool,
+  /** Any suffix */
+  suffix: PropTypes.node,
+  /** Changing text size */
+  size: PropTypes.oneOf(['small', 'medium']),
 };
 
 export default BadgeSelectItem;
@@ -65,6 +73,8 @@ export const badgeSelectItemBuilder = ({
   ellipsis,
   disabled,
   dataHook,
+  size,
+  suffix,
 }) => ({
   id,
   disabled,
@@ -80,6 +90,8 @@ export const badgeSelectItemBuilder = ({
       selected={selected}
       highlighted={hovered}
       disabled={disabled}
+      size={size}
+      suffix={suffix}
     />
   ),
 });

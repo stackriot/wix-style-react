@@ -11,5 +11,7 @@ function badgeSelectItemBuilderWithAllProps() {
     subtitle: 'subtitle text',
     ellipsis: true,
     disabled: true,
+    size: 'medium',
+    suffix: 'suffix',
   });
 }

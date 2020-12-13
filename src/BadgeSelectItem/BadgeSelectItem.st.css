@@ -3,10 +3,23 @@
   -st-named: G10, B20, R10, D20, R30, G30, B30, D40, D80, O10, Y10, D70, Y30, P10;
 }
 
+:import {
+  -st-from: "../ListItemSelect/ListItemSelect.st.css";
+  -st-default: ListItemSelect;
+}
+
 :vars {
   borderSize: 2px;
   widthSize: 18px;
   heightSize: 10px;
+}
+
+ .root{
+   -st-extends: ListItemSelect;
+ }
+
+.root::prefix:subtitle {
+  margin: auto 0;
 }
 
 .marker {

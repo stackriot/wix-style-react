@@ -4,9 +4,20 @@ export const subtitleExample = `
 
 export const skins = `
 <Layout cols={1}>
-<BadgeSelectItem text='General skin - default' skin='general' />
-<BadgeSelectItem text='Standard skin' skin='standard' />
-<BadgeSelectItem text='Success skin' skin='success' />
+  <BadgeSelectItem text='General skin - default' skin='general' />
+  <BadgeSelectItem text='Standard skin' skin='standard' /> 
+  <BadgeSelectItem text='Success skin' skin='success' />
+</Layout>
+`;
+
+export const suffix = `
+  <BadgeSelectItem text='BadgeSelectItem with suffix' suffix='suffix' />
+`;
+
+export const sizes = `
+<Layout cols={1}>
+  <BadgeSelectItem text='Medium size - default' size='medium' />
+  <BadgeSelectItem text='Small size' size='small' />
 </Layout>
 `;
 

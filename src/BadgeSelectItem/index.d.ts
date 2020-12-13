@@ -2,6 +2,8 @@ import * as React from 'react';
 import { BadgeSkin } from '../Badge';
 
 
+export type BadgeSelectItemSizes = 'small' | 'medium';
+
 export type BadgeSelectItemBuilderFn = (data: {
   id: string | number;
   dataHook?: string;
@@ -11,6 +13,8 @@ export type BadgeSelectItemBuilderFn = (data: {
   skin: BadgeSelectItemSkin;
   ellipsis?: boolean;
   disabled?: boolean;
+  suffix?: React.ReactNode;
+  size?: BadgeSelectItemSizes;
 }) => {
   disabled: boolean;
   overrideOptionStyle: true;
@@ -52,6 +56,8 @@ export interface BadgeSelectOption {
   text: React.ReactNode;
   subtitle?: string;
   ellipsis?: boolean;
+  suffix?: React.ReactNode;
+  size?: BadgeSelectItemSizes;
 }
 
 type BadgeSelectItem = BadgeSelectOption ;

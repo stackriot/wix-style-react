@@ -3,6 +3,8 @@ import { storiesOf } from '@storybook/react';
 import BadgeSelectItem, { badgeSelectItemBuilder } from '../BadgeSelectItem';
 import { SKINS } from '../constants';
 import DropdownLayout from '../../DropdownLayout';
+import Box from '../../Box';
+import Badge from '../../Badge';
 
 const skins = Object.keys(SKINS);
 
@@ -65,6 +67,64 @@ const tests = [
           text: 'standard',
           disabled: true,
           subtitle: `subtitle text`,
+        },
+      },
+    ],
+  },
+  {
+    describe: 'badge select sizes',
+    its: [
+      {
+        it: 'medium - default',
+        props: {
+          id: 1,
+          skin: 'standard',
+          text: 'standard',
+          size: 'medium',
+          subtitle: `subtitle text`,
+        },
+      },
+      {
+        it: 'small',
+        props: {
+          id: 2,
+          text: 'standard',
+          skin: 'standard',
+          subtitle: `subtitle text`,
+          size: 'small',
+        },
+      },
+    ],
+  },
+  {
+    describe: 'suffix',
+    its: [
+      {
+        it: 'no suffix - default',
+        props: {
+          id: 1,
+          skin: 'standard',
+          text: 'standard',
+          subtitle: `subtitle text`,
+        },
+      },
+      {
+        it: 'text suffix',
+        props: {
+          id: 2,
+          text: 'standard',
+          subtitle: `subtitle text`,
+          size: 'small',
+          suffix: 'suffix',
+        },
+      },
+      {
+        it: 'node suffix',
+        props: {
+          id: 3,
+          text: 'standard',
+          subtitle: `subtitle text`,
+          suffix: <div style={{ backgroundColor: 'lightblue' }}>suffix</div>,
         },
       },
     ],
