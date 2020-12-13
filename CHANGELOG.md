@@ -22,6 +22,9 @@ Types of changes:
 - `usePlacesAutocomplete` - new custom hook [#6324](https://github.com/wix/wix-style-react/pull/6324)
 - `<DropdownBase/>` and `<DropdownLayout />` - add "getSelectedOptionId" to testkit [#6115](https://github.com/wix/wix-style-react/pull/6115)
 
+### Fixed
+- `<Page/>` - fix broken css due to missing semicolon [#6374](https://github.com/wix/wix-style-react/pull/6374)
+
 ## 9.51.0 - 2020-12-10
 ### Changed
 - `Themes | Business Dashboard` - Set default font weight to regular [#6362](https://github.com/wix/wix-style-react/pull/6362)
