@@ -60,3 +60,15 @@ function baseModalLayoutWithAllProps() {
     </BaseModalLayout>
   );
 }
+
+function baseModalLayoutWithCustomHeader() {
+  return (
+    <BaseModalLayout>
+      <BaseModalLayout.Header
+        title={
+          <BaseModalLayout.Header.Title>Hello</BaseModalLayout.Header.Title>
+        }
+      />
+    </BaseModalLayout>
+  );
+}

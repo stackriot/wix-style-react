@@ -59,6 +59,14 @@ function customModalLayoutWithAllProps() {
   );
 }
 
+function customModalLayoutWithCustomTitle() {
+  return (
+    <CustomModalLayout
+      title={<CustomModalLayout.Title>Hello</CustomModalLayout.Title>}
+    />
+  );
+}
+
 async function testkits() {
   const testkit = customModalLayoutTestkitFactory({
     dataHook: 'hook',

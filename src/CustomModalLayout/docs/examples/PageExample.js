@@ -22,7 +22,14 @@ class PageExample extends React.Component {
         >
           <CustomModalLayout
             width="1254px"
-            title="Title"
+            title={
+              <CustomModalLayout.Title>
+                Custom title
+                <IconButton size="small">
+                  <Icons.More />
+                </IconButton>
+              </CustomModalLayout.Title>
+            }
             removeContentPadding
             primaryButtonText="Save"
             primaryButtonOnClick={this.closeModal}

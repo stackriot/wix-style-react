@@ -113,22 +113,22 @@ export default {
           example({
             title: 'Table example - No content padding',
             text:
-              'A simple example with a table as the content and without content padding',
+              'A simple example with a table as the content and without content padding.',
             source: TableExample,
           }),
           example({
             title: 'Help Button Example',
-            text: 'A basic example with a help button shown',
+            text: 'A basic example with a help button shown.',
             source: HelpButtonExample,
           }),
           example({
             title: 'Marketing Layout Example',
-            text: 'A custom modal example with a marketing layout',
+            text: 'A custom modal example with a marketing layout.',
             source: MarketingExample,
           }),
           example({
-            title: 'Custom Page Example',
-            text: 'Open a custom page in a modal',
+            title: 'Custom Page & Title Example',
+            text: 'Open a custom page in a modal with a custom title.',
             source: PageExample,
           }),
           example({

@@ -25,5 +25,7 @@ export interface CustomModalLayoutProps extends BaseModalLayoutProps {
   hideContentDividers?: boolean;
 }
 
-declare const CustomModalLayout: React.FC<CustomModalLayoutProps>;
+declare const CustomModalLayout: React.FC<CustomModalLayoutProps> & {
+  Title: React.FunctionComponent;
+};
 export default CustomModalLayout;

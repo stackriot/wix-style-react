@@ -23,13 +23,9 @@ export const Header = ({
       >
         <div className={classes.innerContent}>
           {typeof title === 'string' ? (
-            <ModalHeading
-              className={classes.title}
-              dataHook={dataHooks.headerTitle}
-              headingAppearance={titleAppearance}
-            >
+            <Header.Title headingAppearance={titleAppearance}>
               {title}
-            </ModalHeading>
+            </Header.Title>
           ) : (
             title
           )}
@@ -49,6 +45,15 @@ export const Header = ({
     null
   );
 };
+
+Header.Title = ({ headingAppearance = 'custom', children }) => (
+  <ModalHeading
+    headingAppearance={headingAppearance}
+    children={children}
+    className={classes.title}
+    dataHook={dataHooks.headerTitle}
+  />
+);
 
 Header.displayName = 'BaseModalLayout.Header';
 

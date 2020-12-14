@@ -57,6 +57,8 @@ const CustomModalLayout = ({
   );
 };
 
+CustomModalLayout.Title = BaseModalLayout.Header.Title;
+
 CustomModalLayout.displayName = 'CustomModalLayout';
 
 CustomModalLayout.propTypes = {
