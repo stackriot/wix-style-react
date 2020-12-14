@@ -18,6 +18,7 @@ Types of changes:
 
 ### Added
 - `<CustomModal/>` - Expose title typography [#6380](https://github.com/wix/wix-style-react/pull/6380)
+- `<ToggleButton/>` - add `destructive` and `success` skins [#6372](https://github.com/wix/wix-style-react/pull/6372)
 
 ### Fixed
 - `<Search/>` - fixed the condition to update the on change function [#6386](https://github.com/wix/wix-style-react/pull/6386)
