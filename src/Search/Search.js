@@ -60,7 +60,7 @@ class Search extends Component {
       ? props.value
       : props.defaultValue || '';
 
-    this._onChangeHandler = this._makeOnChange();
+    this._onChangeHandler = this._createDebouncedOnChange();
 
     this.state = {
       inputValue: initialValue,
@@ -73,15 +73,21 @@ class Search extends Component {
       this.setState({ inputValue: this.props.value });
     }
 
-    if (prevProps.debounceMs !== this.props.debounceMs) {
-      this._onChangeHandler = this._makeOnChange();
+    if (
+      prevProps.debounceMs !== this.props.debounceMs ||
+      prevProps.onChange !== this.props.onChange
+    ) {
+      this._onChangeHandler = this._createDebouncedOnChange();
     }
   }
 
-  _makeOnChange = () =>
-    this.props.debounceMs > 0
-      ? debounce(this.props.onChange, this.props.debounceMs)
-      : this.props.onChange;
+  /**
+   * Creates an onChange debounced function
+   */
+  _createDebouncedOnChange = () => {
+    const { debounceMs, onChange } = this.props;
+    return debounceMs > 0 ? debounce(onChange, debounceMs) : onChange;
+  };
 
   _getIsControlled = () => 'value' in this.props && 'onChange' in this.props;
 

@@ -32,7 +32,8 @@ describe('Search', () => {
       REGEXP_SPECIAL_CHARS,
     ].map((value, index) => ({ id: index, value }));
     const createDriver = jsx => render(jsx).driver;
-    afterEach(() => cleanup());
+    afterEach(cleanup);
+
     describe('Controlled', () => {
       const ControlledSearch = makeControlled(Search);
 
@@ -495,6 +496,26 @@ describe('Search', () => {
         await inputDriver.keyDown('Enter');
 
         expect(onEnterPressed).toHaveBeenCalled();
+      });
+    });
+
+    describe('onChange', () => {
+      it('should update onChange callback', async () => {
+        const onChange1 = jest.fn();
+        const onChange2 = jest.fn();
+        const { driver, rerender } = render(<Search onChange={onChange1} />);
+
+        // Expect to call onChange
+        expect(onChange1).toHaveBeenCalledTimes(0);
+        await driver.inputDriver.enterText('yay');
+        expect(onChange1).toHaveBeenCalledTimes(1);
+
+        rerender(<Search onChange={onChange2} />);
+
+        // Expect to update and call the new onChange
+        expect(onChange2).toHaveBeenCalledTimes(0);
+        await driver.inputDriver.enterText('yay');
+        expect(onChange2).toHaveBeenCalledTimes(1);
       });
     });
   }
