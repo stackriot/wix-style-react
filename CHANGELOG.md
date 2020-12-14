@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.53.0 - 2020-12-14
 ### Added
 - `<CustomModal/>` - Expose title typography [#6380](https://github.com/wix/wix-style-react/pull/6380)
 - `<ToggleButton/>` - add `destructive` and `success` skins [#6372](https://github.com/wix/wix-style-react/pull/6372)
