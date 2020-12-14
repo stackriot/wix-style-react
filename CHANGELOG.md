@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<CustomModal/>` - Expose title typography [#6380](https://github.com/wix/wix-style-react/pull/6380)
+
 ## 9.52.0 - 2020-12-13
 ### Added
 - `<CopyClipboard/>` - new component [#6367](https://github.com/wix/wix-style-react/pull/6367)
