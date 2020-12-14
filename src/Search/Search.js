@@ -73,10 +73,9 @@ class Search extends Component {
       this.setState({ inputValue: this.props.value });
     }
 
-    if (prevProps.debounceMs !== this.props.debounceMs || prevProps.onChange !== this.props.onChange) {
+    if (prevProps.debounceMs !== this.props.debounceMs) {
       this._onChangeHandler = this._makeOnChange();
     }
-
   }
 
   _makeOnChange = () =>
