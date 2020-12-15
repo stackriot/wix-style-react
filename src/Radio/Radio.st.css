@@ -37,15 +37,15 @@
   box-shadow: 0 0 0 3px value(F00);
 }
 
-.root:active::icon:after {
+.root:active::icon::after {
   background-color: value(THEME-COLOR-20);
 }
 
-.root:checked::icon:after {
+.root:checked::icon::after {
   background-color: value(THEME-COLOR-10);
 }
 
-.root:disabled:checked::icon:after {
+.root:disabled:checked::icon::after {
   background-color: value(D10-30);
 }
 
@@ -64,7 +64,7 @@
   border-radius: 50%;
 }
 
-.root::icon:after {
+.root::icon::after {
   content: '';
   display: block;
   border-radius: 50%;
