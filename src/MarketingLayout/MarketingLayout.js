@@ -6,7 +6,7 @@ import { Layout, Cell } from '../Layout';
 import Proportion from '../Proportion';
 import { SIZES } from './constants';
 import { st, classes } from './MarketingLayout.st.css';
-import colors from '../colors.scss';
+import { stVars as colorsStVars } from '../Foundation/stylable/colors.st.css';
 
 const cellSpansBySize = {
   [SIZES.tiny]: {
@@ -97,7 +97,7 @@ class MarketingLayout extends React.PureComponent {
               className={classes.imageBackground}
               style={{
                 backgroundColor:
-                  colors[imageBackgroundColor] || imageBackgroundColor,
+                  colorsStVars[imageBackgroundColor] || imageBackgroundColor,
               }}
             />
           )}

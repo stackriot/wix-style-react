@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import colors from '../colors.scss';
 import { st, classes } from './Box.st.css';
-import { stVars } from '../Foundation/stylable/spacing.st.css';
+import { stVars as spacingStVars } from '../Foundation/stylable/spacing.st.css';
+import { stVars as colorsStVars } from '../Foundation/stylable/colors.st.css';
 import { filterObject } from '../utils/filterObject';
 import {
   directions,
@@ -36,10 +36,10 @@ export const formatComplexSpacingValue = value => {
 
 const formatSpacingValue = value => {
   if (isFinite(value)) {
-    return `${value * parseInt(stVars.Spacing)}px`;
+    return `${value * parseInt(spacingStVars.Spacing)}px`;
   }
 
-  return stVars[value] || spacingValues[value] || `${value}`;
+  return spacingStVars[value] || spacingValues[value] || `${value}`;
 };
 
 const formatSizeValue = value => {
@@ -170,25 +170,25 @@ const Box = ({
     ...sizeValues,
 
     // Styling
-    color: colors[color] || color,
-    backgroundColor: colors[backgroundColor] || backgroundColor,
+    color: colorsStVars[color] || color,
+    backgroundColor: colorsStVars[backgroundColor] || backgroundColor,
     border, // Must be assigned before the border color props (otherwise it would override them)
 
     // Props which are spread just in case these are actually defined
     ...(borderColor && {
-      borderColor: colors[borderColor] || borderColor,
+      borderColor: colorsStVars[borderColor] || borderColor,
     }),
     ...(borderTopColor && {
-      borderTopColor: colors[borderTopColor] || borderTopColor,
+      borderTopColor: colorsStVars[borderTopColor] || borderTopColor,
     }),
     ...(borderRightColor && {
-      borderRightColor: colors[borderRightColor] || borderRightColor,
+      borderRightColor: colorsStVars[borderRightColor] || borderRightColor,
     }),
     ...(borderBottomColor && {
-      borderBottomColor: colors[borderBottomColor] || borderBottomColor,
+      borderBottomColor: colorsStVars[borderBottomColor] || borderBottomColor,
     }),
     ...(borderLeftColor && {
-      borderLeftColor: colors[borderLeftColor] || borderLeftColor,
+      borderLeftColor: colorsStVars[borderLeftColor] || borderLeftColor,
     }),
 
     // All other props which are passed (without those that are specified above)
