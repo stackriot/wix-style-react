@@ -17,7 +17,6 @@ export type AutocompleteClient<Prediction, RequestOptions = any> =
   | NotReadyAutocompleteClient;
 
 export type UseAutocompleteClient<
-  Prediction,
-  RequestOptions = any,
+  Client extends AutocompleteClient<any, any>,
   InitOptions = any
-> = (options?: InitOptions) => AutocompleteClient<Prediction, RequestOptions>;
+> = (options?: InitOptions) => Client;
