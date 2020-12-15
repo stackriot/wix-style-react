@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- Add Atlas autocomplete client [#6377](https://github.com/wix/wix-style-react/pull/6377)
 
 ## 9.53.0 - 2020-12-14
 ### Added
