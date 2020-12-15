@@ -14,6 +14,11 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
+
+## Next
+### Changed
+- `<Dropdown/>`- improve story page examples [#6387](https://github.com/wix/wix-style-react/pull/6387)
+
 ## 9.54.0 - 2020-12-15
 ### Added
 - Add Atlas autocomplete client [#6377](https://github.com/wix/wix-style-react/pull/6377)
