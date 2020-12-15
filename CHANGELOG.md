@@ -21,6 +21,9 @@ Types of changes:
 ### Added
 - `<Image/>` - showBorder prop [#6379](https://github.com/wix/wix-style-react/pull/6379)
 
+### Docs
+- `<MultiSelect/>` - add onOptionsShow/Hide to prop-types [#6268](https://github.com/wix/wix-style-react/pull/6268)
+
 ## 9.54.0 - 2020-12-15
 ### Added
 - Add Atlas autocomplete client [#6377](https://github.com/wix/wix-style-react/pull/6377)
