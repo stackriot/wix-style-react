@@ -5,8 +5,8 @@ import { ButtonProps, ButtonSize } from '../Button';
 
 export interface CustomModalLayoutProps extends BaseModalLayoutProps {
   title?: React.ReactNode;
-  subtitle?: string;
-  content?: string | React.ReactNode;
+  subtitle?: React.ReactNode;
+  content?: React.ReactNode;
   primaryButtonText?: string;
   primaryButtonProps?: OmitPolyfill<ButtonProps, 'dataHook'>;
   primaryButtonOnClick?(): void;
