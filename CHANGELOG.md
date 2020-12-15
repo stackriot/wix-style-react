@@ -14,14 +14,13 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## Next
+## 9.54.0 - 2020-12-15
+### Added
+- Add Atlas autocomplete client [#6377](https://github.com/wix/wix-style-react/pull/6377)
 
 ### Fixed
 - `<CustomModalLayout/>` - [types] fix subtitle type [#6395](https://github.com/wix/wix-style-react/pull/6395)
-- `<Radio/>` - fixed stylable warning [#6394](https://github.com/wix/wix-style-react/pull/6394)
-
-### Added
-- Add Atlas autocomplete client [#6377](https://github.com/wix/wix-style-react/pull/6377)
+- `<Radio />` - fix stylable warning [#6394] (https://github.com/wix/wix-style-react/pull/6394)
 
 ## 9.53.0 - 2020-12-14
 ### Added
