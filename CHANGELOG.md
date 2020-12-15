@@ -18,6 +18,8 @@ Types of changes:
 
 ### Fixed
 - `<CustomModalLayout/>` - [types] fix subtitle type [#6395](https://github.com/wix/wix-style-react/pull/6395)
+- `<Radio/>` - fixed stylable warning [#6394](https://github.com/wix/wix-style-react/pull/6394)
+
 ### Added
 - Add Atlas autocomplete client [#6377](https://github.com/wix/wix-style-react/pull/6377)
 
