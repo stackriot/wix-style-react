@@ -14,13 +14,12 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## 9.59.0 - 2020-12-15
-### Added
-- `<Image/>` - showBorder prop [#6379](https://github.com/wix/wix-style-react/pull/6379)
-
 ## Next
 ### Changed
 - `<Dropdown/>`- improve story page examples [#6387](https://github.com/wix/wix-style-react/pull/6387)
+
+### Added
+- `<Image/>` - showBorder prop [#6379](https://github.com/wix/wix-style-react/pull/6379)
 
 ## 9.54.0 - 2020-12-15
 ### Added
