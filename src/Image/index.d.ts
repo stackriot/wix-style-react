@@ -7,6 +7,7 @@ export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
   fit?: ImageFit;
   position?: string;
+  showBorder?: boolean;
 }
 
 declare const Image: React.FC<ImageProps>;

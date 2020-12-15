@@ -39,6 +39,7 @@ function ImageWithAllProps() {
       height={100}
       fit="contain"
       position="center"
+      showBorder={true}
     />
   );
 }

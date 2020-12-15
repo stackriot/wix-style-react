@@ -164,6 +164,15 @@ const tests = [
       },
     ],
   },
+  {
+    describe: 'showBorder',
+    its: [
+      {
+        it: 'should show border if showBorder prop is true',
+        props: { showBorder: true },
+      },
+    ],
+  },
 ];
 
 tests.forEach(({ describe, its }) => {

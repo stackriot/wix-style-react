@@ -17,11 +17,14 @@ import {
 import Box from '../../Box';
 import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
-import sourceExample from '!raw-loader!./examples/source';
-import sizeExample from '!raw-loader!./examples/size';
-import fitExample from '!raw-loader!./examples/fit';
-import positionExample from '!raw-loader!./examples/position';
-import lazyExample from '!raw-loader!./examples/lazy';
+import {
+  sourceExample,
+  sizeExample,
+  fitExample,
+  positionExample,
+  lazyExample,
+  borderExample,
+} from './examples/examples';
 
 import Image from '..';
 
@@ -112,6 +115,12 @@ export default {
             text:
               'An image marked with `loading="lazy"` prop will only load source asset when it reaches a calculated distance from the viewport.',
             source: lazyExample,
+          }),
+          example({
+            title: 'Show Border',
+            text:
+              'When content is light, the image can appear with a border to make image ratio visible.',
+            source: borderExample,
           }),
         ],
       }),
