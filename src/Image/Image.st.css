@@ -7,7 +7,6 @@
   -st-states: tiled, showBorder;
   display: inline-block;
   overflow: hidden;
-  border-radius: 6px;
   font-size: 0;
   background-color: value(D60);
   max-width: 100%;

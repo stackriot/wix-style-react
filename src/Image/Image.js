@@ -15,6 +15,7 @@ const Image = ({
   position,
   style,
   className,
+  borderRadius,
   showBorder,
   ...otherProps
 }) => {
@@ -38,12 +39,17 @@ const Image = ({
       className={st(classes.root, { tiled: isTiled, showBorder }, className)}
       data-hook={dataHook}
       src={source}
-      style={{ ...style, ...imgStyle }}
+      style={{ ...style, ...imgStyle, borderRadius }}
     />
   );
 };
 
 Image.propTypes = {
+  /**
+   * Border radius of the image element box.
+   */
+  borderRadius: PropTypes.string,
+
   /** Applied as data-hook HTML attribute that can be used in the tests */
   dataHook: PropTypes.string,
 
@@ -85,6 +91,7 @@ Image.defaultProps = {
   fit: 'cover',
   position: 'center',
   showBorder: false,
+  borderRadius: '8px',
 };
 
 Image.displayName = 'Image';

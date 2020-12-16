@@ -24,6 +24,7 @@ import {
   positionExample,
   lazyExample,
   borderExample,
+  borderRadius,
 } from './examples/examples';
 
 import Image from '..';
@@ -121,6 +122,12 @@ export default {
             text:
               'When content is light, the image can appear with a border to make image ratio visible.',
             source: borderExample,
+          }),
+          example({
+            title: 'Border Radius',
+            text:
+              'A `borderRadius` prop can be used to customize the border radius of the image element. if the prop is not passed - the default value is 8px',
+            source: borderRadius,
           }),
         ],
       }),

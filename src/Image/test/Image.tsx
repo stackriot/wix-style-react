@@ -40,6 +40,7 @@ function ImageWithAllProps() {
       fit="contain"
       position="center"
       showBorder={true}
+      borderRadius={'10px 20px 30px 40px'}
     />
   );
 }

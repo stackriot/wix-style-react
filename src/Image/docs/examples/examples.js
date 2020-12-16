@@ -27,3 +27,5 @@ export const positionExample = `<Layout cols={3}>
 export const borderExample = `<Layout cols={1}>
   <Image src="example.jpg" showBorder/>
 </Layout>`;
+
+export const borderRadius = `<Image borderRadius={'10px 20px 30px 40px'} src="example.jpg" />`;
