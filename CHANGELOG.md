@@ -20,6 +20,7 @@ Types of changes:
 
 ### Added
 - `<Image/>` - showBorder prop [#6379](https://github.com/wix/wix-style-react/pull/6379)
+- `<Image/>` - borderRadius prop [#6384](https://github.com/wix/wix-style-react/pull/6384)
 
 ### Docs
 - `<MultiSelect/>` - add onOptionsShow/Hide to prop-types [#6268](https://github.com/wix/wix-style-react/pull/6268)
