@@ -24,6 +24,9 @@ Types of changes:
 ### Docs
 - `<MultiSelect/>` - add onOptionsShow/Hide to prop-types [#6268](https://github.com/wix/wix-style-react/pull/6268)
 
+### Fixed
+- `<FormField/>` - fix label placement [#6392](https://github.com/wix/wix-style-react/pull/6392)
+
 ## 9.54.0 - 2020-12-15
 ### Added
 - Add Atlas autocomplete client [#6377](https://github.com/wix/wix-style-react/pull/6377)
