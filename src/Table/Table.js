@@ -153,7 +153,7 @@ export class Table extends React.Component {
     );
 
     if (hasUnselectables === hasUnselectablesSymbol) {
-      allIds = allIds.filter(rowId => rowId !== hasUnselectablesSymbol);
+      allIds = allIds.filter((rowId) => rowId !== hasUnselectablesSymbol);
     }
 
     const { leftShadowVisible, rightShadowVisible } = this.state;
@@ -168,7 +168,7 @@ export class Table extends React.Component {
       <TableContext.Provider value={contextValue}>
         {showSelection ? (
           <BulkSelection
-            ref={_ref => (this.bulkSelection = _ref)}
+            ref={(_ref) => (this.bulkSelection = _ref)}
             selectedIds={selectedIds}
             deselectRowsByDefault={deselectRowsByDefault}
             disabled={selectionDisabled}
@@ -331,7 +331,7 @@ Table.propTypes = {
   /** Add scroll listeners to specified DOM Object. */
   scrollElement: PropTypes.object,
   /** Table cell vertical padding. should be 'medium' or 'large'  */
-  rowVerticalPadding: PropTypes.oneOf(['medium', 'large']),
+  rowVerticalPadding: PropTypes.oneOf(['small', 'medium', 'large']),
   /** Function that returns React component that will be rendered in row details section. Example: `rowDetails={(row, rowNum) => <MyRowDetailsComponent {...row} />}` */
   rowDetails: PropTypes.func,
   /** A string data-hook to apply to all table body rows. or a func which calculates the data-hook for each row  - Signature: `(rowData, rowNum) => string` */

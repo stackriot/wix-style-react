@@ -43,7 +43,7 @@ export interface DataTableProps<RowData = RowDataDefaultType> {
 
 export default class DataTable<
   RowData = RowDataDefaultType
-> extends React.Component<DataTableProps<RowData>> {}
+  > extends React.Component<DataTableProps<RowData>> { }
 
 export type DataTableColumnAlign = 'start' | 'center' | 'end';
 export type DataTableRowDataHookFn<RowData = RowDataDefaultType> = (
@@ -51,7 +51,7 @@ export type DataTableRowDataHookFn<RowData = RowDataDefaultType> = (
   rowNum: number,
 ) => string;
 export type DataTableSkin = 'standard' | 'neutral';
-export type DataTableRowVerticalPadding = 'medium' | 'large';
+export type DataTableRowVerticalPadding = 'small' | 'medium' | 'large';
 export interface PopoverPropsWithContent extends PopoverCommonProps {
   content?: React.ReactNode
 }
