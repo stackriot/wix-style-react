@@ -15,7 +15,7 @@ import InfoIcon from '../../InfoIcon';
 
 import { virtualRowsAreEqual, getStickyColumnStyle } from './DataTable.utils';
 
-export const DataTableHeader = (props) => {
+export const DataTableHeader = props => {
   const {
     dataHook,
     horizontalScroll,
@@ -24,7 +24,7 @@ export const DataTableHeader = (props) => {
     stickyColumns,
   } = props;
 
-  const wrapWithHorizontalScroll = (table) => (
+  const wrapWithHorizontalScroll = table => (
     <div
       className={classNames(styles.scrollWrapper, {
         [styles.leftShadowVisible]: !!leftShadowVisible,
@@ -158,7 +158,7 @@ class DataTable extends React.Component {
     return table;
   }
 
-  wrapWithInfiniteScroll = (table) => {
+  wrapWithInfiniteScroll = table => {
     return (
       <InfiniteScroll
         pageStart={0}
@@ -175,7 +175,7 @@ class DataTable extends React.Component {
     );
   };
 
-  wrapWithHorizontalScroll = (table) => {
+  wrapWithHorizontalScroll = table => {
     const { leftShadowVisible, rightShadowVisible, stickyColumns } = this.props;
     return (
       <div
@@ -190,7 +190,7 @@ class DataTable extends React.Component {
     );
   };
 
-  renderTable = (rowsToRender) => {
+  renderTable = rowsToRender => {
     const { dataHook, showLastRowDivider, horizontalScroll } = this.props;
     const style = { width: this.props.width };
     return (
@@ -218,7 +218,7 @@ class DataTable extends React.Component {
     );
   };
 
-  renderBody = (rows) => (
+  renderBody = rows => (
     <tbody>
       {rows.map((rowData, index) => this.renderRow(rowData, index))}
     </tbody>
@@ -257,7 +257,7 @@ class DataTable extends React.Component {
 
     handlers.forEach(({ rowEventHandler, eventHandler }) => {
       if (rowEventHandler) {
-        optionalRowProps[eventHandler] = (event) => {
+        optionalRowProps[eventHandler] = event => {
           if (event.isDefaultPrevented()) {
             return;
           }
@@ -390,7 +390,7 @@ class DataTable extends React.Component {
         className={classes}
         onClick={
           column.onCellClick
-            ? (event) => column.onCellClick(column, rowData, rowNum, event)
+            ? event => column.onCellClick(column, rowData, rowNum, event)
             : undefined
         }
         key={colNum}
@@ -411,7 +411,7 @@ class DataTable extends React.Component {
     }
   };
 
-  toggleRowDetails = (selectedRow) => {
+  toggleRowDetails = selectedRow => {
     const { selectedRows } = this.state;
 
     const allowMultipleRowDetails =

@@ -153,7 +153,7 @@ export class Table extends React.Component {
     );
 
     if (hasUnselectables === hasUnselectablesSymbol) {
-      allIds = allIds.filter((rowId) => rowId !== hasUnselectablesSymbol);
+      allIds = allIds.filter(rowId => rowId !== hasUnselectablesSymbol);
     }
 
     const { leftShadowVisible, rightShadowVisible } = this.state;
@@ -168,7 +168,7 @@ export class Table extends React.Component {
       <TableContext.Provider value={contextValue}>
         {showSelection ? (
           <BulkSelection
-            ref={(_ref) => (this.bulkSelection = _ref)}
+            ref={_ref => (this.bulkSelection = _ref)}
             selectedIds={selectedIds}
             deselectRowsByDefault={deselectRowsByDefault}
             disabled={selectionDisabled}
