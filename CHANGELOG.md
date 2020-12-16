@@ -27,6 +27,9 @@ Types of changes:
 ### Fixed
 - `<FormField/>` - fix label placement [#6392](https://github.com/wix/wix-style-react/pull/6392)
 
+### Removed
+- Revert "Add Atlas autocomplete client" [#6401](https://github.com/wix/wix-style-react/pull/6401)
+
 ## 9.54.0 - 2020-12-15
 ### Added
 - Add Atlas autocomplete client [#6377](https://github.com/wix/wix-style-react/pull/6377)
