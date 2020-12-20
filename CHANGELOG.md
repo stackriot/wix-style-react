@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+`<Heading/>`- new spacing specification, `<WixStyleReactProvider/>` - new component and update typography mixins [#6360](https://github.com/wix/wix-style-react/pull/6360)
+
 ## 9.55.0 - 2020-12-16
 
 ### Changed
