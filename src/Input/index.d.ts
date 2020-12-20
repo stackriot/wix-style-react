@@ -68,10 +68,9 @@ export default class Input extends React.Component<InputProps> {
   static StatusLoading: InputStatusLoading;
   static StatusWarning: InputStatusWarning;
 
-  clear: (event: any) => void;
+  clear: (event?: React.ChangeEvent<HTMLInputElement>) => void;
   blur: () => void;
-  focus: (options: any) => void;
-  handleSuffixOnClear: (event: any) => void;
+  focus: HTMLElement['focus'];
   select: () => void;
 }
 
