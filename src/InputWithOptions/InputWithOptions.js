@@ -11,7 +11,7 @@ import { classes } from './InputWithOptions.st.css';
 import uniqueId from 'lodash/uniqueId';
 import Popover from '../Popover';
 
-export const DEFAULT_VALUE_PARSER = (option) => option.value;
+export const DEFAULT_VALUE_PARSER = option => option.value;
 
 const DEFAULT_POPOVER_PROPS = {
   appendTo: 'parent',
@@ -135,7 +135,7 @@ class InputWithOptions extends Component {
     const { inputElement } = inputProps;
     return React.cloneElement(inputElement, {
       menuArrow: true,
-      ref: (input) => (this.input = input),
+      ref: input => (this.input = input),
       ...inputProps,
       onKeyDown: chainEventHandlers(
         inputAdditionalProps && inputAdditionalProps.onKeyDown,
@@ -154,7 +154,7 @@ class InputWithOptions extends Component {
   _processOptions(options) {
     return !this.props.highlight
       ? options
-      : options.map((option) => {
+      : options.map(option => {
           return {
             ...option,
             value:
@@ -195,7 +195,7 @@ class InputWithOptions extends Component {
         data-hook="dropdown-layout-wrapper"
       >
         <DropdownLayout
-          ref={(dropdownLayout) => (this.dropdownLayout = dropdownLayout)}
+          ref={dropdownLayout => (this.dropdownLayout = dropdownLayout)}
           {...dropdownProps}
           dataHook="inputwithoptions-dropdownlayout"
           options={this._processOptions(dropdownProps.options)}
@@ -218,7 +218,7 @@ class InputWithOptions extends Component {
         <select
           data-hook="native-select"
           className={classes.nativeSelect}
-          onChange={(event) => {
+          onChange={event => {
             this._onChange(event);
 
             // In this case we don't use DropdownLayout so we need to invoke `onSelect` manually
@@ -344,7 +344,7 @@ class InputWithOptions extends Component {
     inputValue = inputValue.trim();
 
     const suggestedOption = this.props.options.find(
-      (element) => element.value === inputValue,
+      element => element.value === inputValue,
     );
 
     if (this.props.onManuallyInput) {
@@ -362,7 +362,7 @@ class InputWithOptions extends Component {
     if (onSelect) {
       onSelect(
         this.props.highlight
-          ? this.props.options.find((opt) => opt.id === option.id)
+          ? this.props.options.find(opt => opt.id === option.id)
           : option,
       );
     }
