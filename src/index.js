@@ -200,3 +200,7 @@ export { default as StyledNestableList } from './StyledNestableList';
 export { default as TrendIndicator } from './TrendIndicator';
 export { default as Radio } from './Radio';
 export { default as CopyClipboard } from './CopyClipboard';
+export {
+  default as WixStyleReactProvider,
+  FEATURES,
+} from './WixStyleReactProvider';

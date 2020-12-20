@@ -514,5 +514,8 @@
   },
   "VerticalTabsItem": {
     "path": "src/VerticalTabsItem"
+  },
+  "WixStyleReactProvider": {
+    "path": "src/WixStyleReactProvider"
   }
 }

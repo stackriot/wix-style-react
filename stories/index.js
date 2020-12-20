@@ -172,6 +172,7 @@ require('../src/VerticalTabs/docs/index.story');
 require('../src/VerticalTabs/docs/index.story');
 require('../src/VerticalTabsItem/docs/index.story');
 require('../src/VerticalTabsItem/docs/index.story');
+require('../src/WixStyleReactProvider/docs/index.story');
 require('./WIP');
 require('./Internal');
 
