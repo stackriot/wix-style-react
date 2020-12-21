@@ -16,6 +16,10 @@ Types of changes:
 
 ## Next
 
+### Changed
+- `<MarketingLayout/>` - update padding of size tiny with badge [#6390](https://github.com/wix/wix-style-react/pull/6390)
+
+
 ### Added
 `<Heading/>`- new spacing specification, `<WixStyleReactProvider/>` - new component and update typography mixins [#6360](https://github.com/wix/wix-style-react/pull/6360)
 
