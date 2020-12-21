@@ -16,12 +16,12 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<AnalyticsSummaryCard/>` - new component [#6312](https://github.com/wix/wix-style-react/pull/6312)
+`<Heading/>`- new spacing specification, `<WixStyleReactProvider/>` - new component and update typography mixins [#6360](https://github.com/wix/wix-style-react/pull/6360)
+
 ### Changed
 - `<MarketingLayout/>` - update padding of size tiny with badge [#6390](https://github.com/wix/wix-style-react/pull/6390)
-
-
-### Added
-`<Heading/>`- new spacing specification, `<WixStyleReactProvider/>` - new component and update typography mixins [#6360](https://github.com/wix/wix-style-react/pull/6360)
 
 ## 9.55.0 - 2020-12-16
 
