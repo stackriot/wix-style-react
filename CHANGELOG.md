@@ -24,6 +24,9 @@ Types of changes:
 ### Changed
 - `<MarketingLayout/>` - update padding of size tiny with badge [#6390](https://github.com/wix/wix-style-react/pull/6390)
 
+### Fixed
+- <Input/> - Fixed onFocus called twice with autoFocus prop [#6409](https://github.com/wix/wix-style-react/pull/6409)
+
 ## 9.55.0 - 2020-12-16
 
 ### Changed
