@@ -20,6 +20,7 @@ Types of changes:
 - `<AnalyticsSummaryCard/>` - new component [#6312](https://github.com/wix/wix-style-react/pull/6312)
 - `<Heading/>`- new spacing specification [#6360](https://github.com/wix/wix-style-react/pull/6360)
 - `<WixStyleReactProvider/>` - new component and update typography mixins [#6360](https://github.com/wix/wix-style-react/pull/6360)
+- `<StatisticsWidget/>` - add ellipsis to description for size tiny [#6350](https://github.com/wix/wix-style-react/pull/6350)
 
 ### Changed
 - `<MarketingLayout/>` - update padding of size tiny with badge [#6390](https://github.com/wix/wix-style-react/pull/6390)
