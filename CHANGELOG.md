@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.56.0 - 2020-12-21
 ### Added
 - `<AnalyticsSummaryCard/>` - new component [#6312](https://github.com/wix/wix-style-react/pull/6312)
 - `<Heading/>`- new spacing specification [#6360](https://github.com/wix/wix-style-react/pull/6360)
@@ -29,7 +30,6 @@ Types of changes:
 - <Input/> - Fixed onFocus called twice with autoFocus prop [#6409](https://github.com/wix/wix-style-react/pull/6409)
 
 ## 9.55.0 - 2020-12-16
-
 ### Changed
 - `<Dropdown/>`- improve story page examples [#6387](https://github.com/wix/wix-style-react/pull/6387)
 
