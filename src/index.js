@@ -204,3 +204,4 @@ export {
   default as WixStyleReactProvider,
   FEATURES,
 } from './WixStyleReactProvider';
+export { default as AnalyticsSummaryCard } from './AnalyticsSummaryCard';

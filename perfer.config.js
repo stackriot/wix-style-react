@@ -2,6 +2,7 @@ const javascriptFiles = [
   ['Accordion.bundle.min.js', 51],
   ['AddItem.bundle.min.js', 44],
   ['AddressInput.bundle.min.js', 73],
+  ['AnalyticsSummaryCard.bundle.min.js', 70],
   ['Animate.bundle.min.js', 5],
   ['AnnouncementModalLayout.bundle.min.js', 52],
   ['AreaChart.bundle.min.js', 87],
@@ -108,6 +109,7 @@ const javascriptFiles = [
   ['Popover.bundle.min.js', 29],
   ['PreviewWidget.bundle.min.js', 8],
   ['Proportion.bundle.min.js', 5],
+  ['Radio.bundle.min.js', 40],
   ['RadioGroup.bundle.min.js', 40],
   ['Range.bundle.min.js', 36],
   ['RichTextInputArea.bundle.min.js', 140],
@@ -164,7 +166,6 @@ const javascriptFiles = [
   ['VerticalTabsItem.bundle.min.js', 40],
   ['WarningIndicator.bundle.min.js', 40],
   ['WixStyleReactProvider.bundle.min.js', 10],
-  ['Radio.bundle.min.js', 40],
 ];
 
 const cssFiles = [

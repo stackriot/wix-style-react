@@ -11,6 +11,7 @@ require('./Playground/Playground.story');
 require('../src/Accordion/docs/index.story');
 require('../src/AddItem/docs/index.story');
 require('../src/AddressInputItem/docs/index.story');
+require('../src/AnalyticsSummaryCard/docs/index.story');
 require('../src/Animate/docs/index.story');
 require('../src/AnnouncementModalLayout/docs/index.story');
 require('../src/AreaChart/docs/index.story');
