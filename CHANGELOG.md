@@ -21,6 +21,7 @@ Types of changes:
 
 ### Changed
 - `<AddressInput/>` - update to match design spec [#6400](https://github.com/wix/wix-style-react/pull/6400)
+- `Themes | Business Dashboard` - updated circular progress bar colors [#6422](https://github.com/wix/wix-style-react/pull/6422)
 
 ## 9.56.0 - 2020-12-21
 ### Added
