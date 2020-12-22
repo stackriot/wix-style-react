@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- Add Atlas autocomplete client [#6418](https://github.com/wix/wix-style-react/pull/6418)
+
 ### Changed
 - `<AddressInput/>` - update to match design spec [#6400](https://github.com/wix/wix-style-react/pull/6400)
 
