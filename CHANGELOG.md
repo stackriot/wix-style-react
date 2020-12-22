@@ -23,6 +23,9 @@ Types of changes:
 - `<AddressInput/>` - update to match design spec [#6400](https://github.com/wix/wix-style-react/pull/6400)
 - `Themes | Business Dashboard` - updated circular progress bar colors [#6422](https://github.com/wix/wix-style-react/pull/6422)
 
+### Fixed
+- `<Collapse/>` - skip mount transition [#6424](https://github.com/wix/wix-style-react/pull/6424)
+
 ## 9.56.0 - 2020-12-21
 ### Added
 - `<AnalyticsSummaryCard/>` - new component [#6312](https://github.com/wix/wix-style-react/pull/6312)
