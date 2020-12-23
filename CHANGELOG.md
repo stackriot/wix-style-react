@@ -18,6 +18,8 @@ Types of changes:
 ### Added
 - Add Atlas autocomplete client [#6418](https://github.com/wix/wix-style-react/pull/6418)
 - `<Radio/>`- add unidriver [#6420](https://github.com/wix/wix-style-react/pull/6420)
+- `<RadioGroup/>` - add `selectionAreaSkin` and `selectionAreaPadding` props [#6408](https://github.com/wix/wix-style-react/pull/6408)
+- `<Checkbox/>` - add `selectionAreaSkin` and `selectionAreaPadding` props [#6403](https://github.com/wix/wix-style-react/pull/6403)
 
 ### Changed
 - `<AddressInput/>` - update to match design spec [#6400](https://github.com/wix/wix-style-react/pull/6400)
