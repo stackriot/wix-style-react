@@ -16,6 +16,13 @@ Types of changes:
 
 ## Next
 
+### Breaking
+-  `<Animate/>`- refactor component to be internal component [#6426](https://github.com/wix/wix-style-react/pull/6426/)
+
+### Added
+- `<BounceAnimation/>`- new component [#6426](https://github.com/wix/wix-style-react/pull/6426/)
+
+
 ## 9.57.0 - 2020-12-23
 ### Added
 - Add Atlas autocomplete client [#6418](https://github.com/wix/wix-style-react/pull/6418)
