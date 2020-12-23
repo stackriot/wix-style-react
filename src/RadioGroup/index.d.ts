@@ -10,6 +10,8 @@ export interface RadioGroupProps {
   type?: RadioButtonProps['type'];
   display?: RadioGroupDisplay;
   selectionArea?: RadioButtonProps['selectionArea'];
+  selectionAreaSkin?: RadioButtonProps['selectionAreaSkin'];
+  selectionAreaPadding?: RadioButtonProps['selectionAreaPadding'];
   spacing?: string;
   lineHeight?: string;
   name?: string;
@@ -34,6 +36,8 @@ export interface RadioButtonProps {
   lineHeight?: string;
   tabIndex?: number;
   selectionArea?: RadioButtonSelectionArea;
+  selectionAreaSkin?: RadioButtonSelectionAreaSkin;
+  selectionAreaPadding?: React.CSSProperties['padding'];
   content?: React.ReactNode;
   className?: string;
 }
@@ -41,5 +45,6 @@ export interface RadioButtonProps {
 export type RadioButtonVAlign = 'center' | 'top';
 export type RadioButtonType = 'default' | 'button';
 export type RadioButtonSelectionArea = 'none' | 'hover' | 'always';
+export type RadioButtonSelectionAreaSkin = 'filled' | 'outlined';
 
 export class RadioButton extends React.PureComponent<RadioButtonProps> {}
