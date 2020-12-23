@@ -462,9 +462,6 @@ export * from './FileUpload';
 export { default as TableListItem } from './TableListItem';
 export * from './TableListItem';
 
-export { default as Animate } from './Animate';
-export * from './Animate';
-
 export { default as Dropzone } from './Dropzone';
 export * from './Dropzone';
 
@@ -515,11 +512,12 @@ export * from './Radio';
 export { default as CopyClipboard } from './CopyClipboard';
 export * from './CopyClipboard';
 
-export {
-  default as WixStyleReactProvider,
-  FEATURES,
-} from './WixStyleReactProvider';
+export { default as WixStyleReactProvider , FEATURES } from './WixStyleReactProvider';
 export * from './WixStyleReactProvider';
+
+export { default as BounceAnimation } from './BounceAnimation';
+export * from './BounceAnimation';
+
 
 export * from './TrendIndicator';
 

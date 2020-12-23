@@ -15,6 +15,7 @@ const javascriptFiles = [
   ['BadgeSelectItemBuilder.bundle.min.js', 42],
   ['BarChart.bundle.min.js', 43],
   ['BaseModalLayout.bundle.min.js', 51],
+  ['BounceAnimation.bundle.min.js', 10],
   ['BusinessDashboard_theme.bundle.min.js', 60],
   ['Box.bundle.min.js', 6],
   ['Breadcrumbs.bundle.min.js', 38],

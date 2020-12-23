@@ -36,6 +36,12 @@ export default {
     },
   },
 
+  BounceAnimation: {
+    props: {
+      children: <div />,
+    },
+  },
+
   BadgeSelectItem: {
     props: {
       skin: 'general',

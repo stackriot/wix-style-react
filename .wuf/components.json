@@ -15,7 +15,10 @@
     "path": "src/AnalyticsSummaryCard"
   },
   "Animate": {
-    "path": "src/Animate"
+    "path": "src/Animate",
+    "missingFiles": [
+      "docs"
+    ]
   },
   "AnnouncementModalLayout": {
     "path": "src/AnnouncementModalLayout"
@@ -52,6 +55,9 @@
     "missingFiles": [
       "docs"
     ]
+  },
+  "BounceAnimation": {
+    "path": "src/BounceAnimation"
   },
   "Box": {
     "path": "src/Box"

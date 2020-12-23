@@ -3,11 +3,11 @@ export const controlledExample = `() => {
     return (
          <Layout>
           <Cell span="8">
-            <Animate onEnd={()=>setActive(false)} active={active}>
+            <BounceAnimation onEnd={()=>setActive(false)} active={active}>
               <FormField labelPlacement="left" label="Field label">
                 <Input />
               </FormField>
-            </Animate>
+            </BounceAnimation>
           </Cell>
           <Cell span="4">
             <Button onClick={() => setActive(true)}>Play</Button>
@@ -23,7 +23,7 @@ export const onEndExample = `() => {
     return (
         <Layout>
           <Cell span='8'>
-            <Animate
+            <BounceAnimation
               onEnd={() => {
                 inputRef.current.focus();
                 setActive(false);
@@ -35,7 +35,7 @@ export const onEndExample = `() => {
                    <Input ref={inputRef} />
                 </Tooltip>
               </FormField>
-            </Animate>
+            </BounceAnimation>
           </Cell>
           <Cell span='4'><Button onClick={() => setActive(true)}>Play</Button></Cell>
     </Layout>
@@ -49,11 +49,11 @@ export const loopExample = `() => {
     return (
         <Layout>
           <Cell span='8'>
-            <Animate loop active={active}>
+            <BounceAnimation loop active={active}>
               <FormField labelPlacement="left" label="Field label">
                 <Input />
               </FormField>
-            </Animate>
+            </BounceAnimation>
           </Cell>
           <Cell span='4'>
              <Button onClick={() => setActive(!active)}>{active ? 'Stop' : 'Play'}</Button>
@@ -69,11 +69,11 @@ export const delayExample = `() => {
     return (
         <Layout>
           <Cell span='8'>
-            <Animate onEnd={()=>setActive(false)} delay="500ms" active={active}>
+            <BounceAnimation onEnd={()=>setActive(false)} delay="500ms" active={active}>
               <FormField label="With delay" labelPlacement="left">
                 <Input />
               </FormField>
-            </Animate>
+            </BounceAnimation>
           </Cell>
           <Cell span="4"><Button onClick={() => setActive(true)}>Play</Button></Cell>
         </Layout>
@@ -89,11 +89,11 @@ export const childSizeExamples = `() => {
       <Cell>
         <Layout>
           <Cell span='5'>
-            <Animate onEnd={()=>setActive1(false)} active={active1}>
+            <BounceAnimation onEnd={()=>setActive1(false)} active={active1}>
                <FormField labelPlacement="left" label="Small">
                 <Input placeholder="I scale to 1.03" />
               </FormField>
-            </Animate>
+            </BounceAnimation>
           </Cell>
           <Cell span="4"><Button onClick={() => setActive1(true)}>Play</Button></Cell>
         </Layout>
@@ -101,11 +101,11 @@ export const childSizeExamples = `() => {
       <Cell>
         <Layout>
           <Cell span='8'>
-            <Animate onEnd={()=>setActive2(false)} active={active2}>
+            <BounceAnimation onEnd={()=>setActive2(false)} active={active2}>
               <FormField labelPlacement="left" label="Medium">
                 <Input placeholder="I scale to 1.07" />
               </FormField>
-            </Animate>
+            </BounceAnimation>
           </Cell>
           <Cell span="4"><Button onClick={() => setActive2(true)}>Play</Button></Cell>
         </Layout>

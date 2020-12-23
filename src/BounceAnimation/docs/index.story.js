@@ -15,11 +15,11 @@ import {
 
 import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
-import * as examples from './examples';
 
-import Animate from '..';
+import BounceAnimation from '..';
 import FormField from '../../FormField';
 import Input from '../../Input';
+import * as examples from './examples';
 
 const example = config => baseExample({ components: allComponents, ...config });
 
@@ -50,7 +50,7 @@ export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
 
-  component: Animate,
+  component: BounceAnimation,
   componentPath: '..',
 
   componentProps: { children: exampleChildren[0].value },
@@ -59,7 +59,7 @@ export default {
 
   sections: [
     header({
-      component: <Animate children={<div />} />,
+      component: <BounceAnimation children={<div />} />,
     }),
 
     tabs([
@@ -69,10 +69,10 @@ export default {
           description({
             title: 'Description',
             text:
-              'Animate component is a wrapper that contains predefined animations. Animations are used to emphasize UI elements with particular motion.',
+              '`<BounceAnimation/>` component is a wrapper that contains predefined bounce animation. It is used to emphasize UI elements with bounce motion.',
           }),
 
-          importExample("import { Animate } from 'wix-style-react';"),
+          importExample("import { BounceAnimation } from 'wix-style-react';"),
 
           divider(),
 
@@ -80,7 +80,7 @@ export default {
 
           example({
             title: 'Controlled example',
-            text: 'A simple example of usage of Animate component',
+            text: 'A simple example of usage of `<BounceAnimation/>`.',
             source: examples.controlledExample,
           }),
 
