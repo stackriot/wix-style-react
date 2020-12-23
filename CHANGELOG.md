@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.57.0 - 2020-12-23
 ### Added
 - Add Atlas autocomplete client [#6418](https://github.com/wix/wix-style-react/pull/6418)
 - `<Radio/>`- add unidriver [#6420](https://github.com/wix/wix-style-react/pull/6420)
