@@ -30,4 +30,4 @@ export interface AnalyticsSummaryCardProps {
 
 export default class AnalyticsSummaryCard extends React.PureComponent<
   AnalyticsSummaryCardProps
-  > { }
+> {}

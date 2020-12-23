@@ -8,10 +8,12 @@ export interface WixStyleReactProviderProps {
   features?: object;
 }
 
-export default class WixStyleReactProvider extends React.PureComponent<WixStyleReactProviderProps>{}
+export default class WixStyleReactProvider extends React.PureComponent<
+  WixStyleReactProviderProps
+> {}
 
 interface Features {
-  reducedSpacingAndImprovedLayout: 'reduce-spacing-layout'
+  reducedSpacingAndImprovedLayout: 'reduce-spacing-layout';
 }
 
 export const FEATURES: Features;

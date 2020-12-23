@@ -17,10 +17,6 @@ export interface RadioGroupProps {
   name?: string;
 }
 
-export default class RadioGroup extends React.PureComponent<RadioGroupProps> {
-  static Radio: typeof RadioButton;
-}
-
 export type RadioGroupDisplay = 'vertical' | 'horizontal';
 
 export interface RadioButtonProps {
@@ -48,3 +44,7 @@ export type RadioButtonSelectionArea = 'none' | 'hover' | 'always';
 export type RadioButtonSelectionAreaSkin = 'filled' | 'outlined';
 
 export class RadioButton extends React.PureComponent<RadioButtonProps> {}
+
+export default class RadioGroup extends React.PureComponent<RadioGroupProps> {
+  static Radio: typeof RadioButton;
+}

@@ -515,7 +515,10 @@ export * from './Radio';
 export { default as CopyClipboard } from './CopyClipboard';
 export * from './CopyClipboard';
 
-export { default as WixStyleReactProvider , FEATURES } from './WixStyleReactProvider';
+export {
+  default as WixStyleReactProvider,
+  FEATURES,
+} from './WixStyleReactProvider';
 export * from './WixStyleReactProvider';
 
 export * from './TrendIndicator';
