@@ -2,6 +2,7 @@ import { baseUniDriverFactory, findByHook } from '../../test/utils/unidriver';
 import { inputWithOptionsUniDriverFactory } from '../InputWithOptions/InputWithOptions.uni.driver';
 import { loaderUniDriverFactory } from '../Loader/Loader.uni.driver';
 import { statusIndicatorDriverFactory } from '../StatusIndicator/StatusIndicator.uni.driver';
+import { addressInputItemDriverFactory } from '../AddressInputItem/AddressInputItem.uni.driver';
 import { dataHooks } from './constants';
 import { dataHooks as inputDataHooks } from '../Input/constants';
 
@@ -11,6 +12,12 @@ export const addressInputDriverFactory = (base, body) => {
     inputDriver,
     dropdownLayoutDriver,
   } = inputWithOptionsUniDriverFactory(base, body);
+
+  const getItemDriverAt = async index => {
+    const optionDrivers = await dropdownLayoutDriver.options();
+    const item = await optionDrivers[index].element();
+    return addressInputItemDriverFactory(item);
+  };
 
   const loaderTestkit = () =>
     loaderUniDriverFactory(findByHook(base, dataHooks.loader));
@@ -46,10 +53,10 @@ export const addressInputDriverFactory = (base, body) => {
     enterText: text => inputDriver.enterText(text),
 
     /**
-     * Clears the input
+     * Clicks on the clear button to clear input text
      * @returns {Promise<void>}
      */
-    clearText: () => inputDriver.clearText(),
+    clickClear: () => inputDriver.clickClear(),
 
     /**
      * Checks if input is disabled
@@ -82,6 +89,28 @@ export const addressInputDriverFactory = (base, body) => {
      * Clicks on input
      * @returns {Promise<void>}
      */
-    clickInput: inputDriver.click,
+    clickInput: () => inputDriver.click(),
+
+    /**
+     * Gets amount of dropdown items
+     * @returns {Promise<number>}
+     */
+    getAmountOfItems: () => dropdownLayoutDriver.optionsLength(),
+
+    /**
+     * Gets item main label text at given index
+     * @param {number} index
+     * @returns {Promise<string>}
+     */
+    getItemMainLabelAt: async index =>
+      (await getItemDriverAt(index)).getMainLabelText(),
+
+    /**
+     * Gets item secondary label text at given index
+     * @param {number} index
+     * @returns {Promise<string>}
+     */
+    getItemSecondaryLabelAt: async index =>
+      (await getItemDriverAt(index)).getSecondaryLabelText(),
   };
 };

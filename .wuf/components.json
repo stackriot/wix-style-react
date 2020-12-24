@@ -26,6 +26,9 @@
   "AreaChart": {
     "path": "src/AreaChart"
   },
+  "AtlasAddressInput": {
+    "path": "src/AtlasAddressInput"
+  },
   "AudioPlayer": {
     "path": "src/AudioPlayer"
   },

@@ -1,5 +1,4 @@
 import React from 'react';
-import Sinon from 'sinon';
 import { createRendererWithUniDriver, cleanup } from '../../../test/utils/unit';
 import { addressInputItemBuilder } from '../../AddressInputItem';
 
@@ -49,29 +48,45 @@ describe(AddressInput.displayName, () => {
   it('should invoke onChange', async () => {
     const text = 'test';
     const props = {
-      onChange: Sinon.spy(),
+      onChange: jest.fn(),
     };
     const { driver } = render(<AddressInput {...props} />);
 
-    expect(props.onChange.called).toEqual(false);
+    expect(props.onChange).not.toHaveBeenCalled();
     expect(await driver.getInputValue()).toEqual('');
 
     await driver.enterText(text);
 
-    expect(props.onChange.called).toEqual(true);
+    expect(props.onChange).toHaveBeenCalled();
     expect(await driver.getInputValue()).toEqual(text);
+  });
+
+  it('should invoke onClear', async () => {
+    const props = {
+      onClear: jest.fn(),
+      initialValue: 'test',
+    };
+    const { driver } = render(<AddressInput {...props} />);
+
+    expect(props.onClear).not.toHaveBeenCalled();
+    expect(await driver.getInputValue()).toEqual('test');
+
+    await driver.clickClear();
+
+    expect(props.onClear).toHaveBeenCalled();
+    expect(await driver.getInputValue()).toEqual('');
   });
 
   it('should invoke onSelect', async () => {
     const props = {
-      onSelect: Sinon.spy(),
+      onSelect: jest.fn(),
       options: mockOptions,
     };
     const { driver } = render(<AddressInput {...props} />);
 
     await driver.clickAtOption(0);
 
-    expect(props.onSelect.calledWith(mockOption)).toEqual(true);
+    expect(props.onSelect).toHaveBeenCalledWith(mockOption);
     expect(await driver.getInputValue()).toEqual(mockOption.label);
   });
 

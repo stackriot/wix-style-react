@@ -487,6 +487,9 @@ export * from './FunnelChart';
 export { default as AddressInput } from './AddressInput';
 export * from './AddressInput';
 
+export { default as AtlasAddressInput } from './AtlasAddressInput';
+export * from './AtlasAddressInput';
+
 export { default as SparklineChart } from './SparklineChart';
 export * from './SparklineChart';
 
@@ -512,7 +515,10 @@ export * from './Radio';
 export { default as CopyClipboard } from './CopyClipboard';
 export * from './CopyClipboard';
 
-export { default as WixStyleReactProvider , FEATURES } from './WixStyleReactProvider';
+export {
+  default as WixStyleReactProvider,
+  FEATURES,
+} from './WixStyleReactProvider';
 export * from './WixStyleReactProvider';
 
 export { default as BounceAnimation } from './BounceAnimation';
