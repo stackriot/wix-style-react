@@ -36,13 +36,21 @@ const Collapse = ({ children, open, dataHook }) => {
 Collapse.displayName = 'Collapse';
 
 Collapse.propTypes = {
+  /**
+   * any node to be rendered inside
+   */
   children: PropTypes.node,
+  /**
+   * determinants whether the element is collapsed.
+   */
   open: PropTypes.bool,
+  /**
+   * string based data hook for testing
+   */
   dataHook: PropTypes.string,
 };
 
 Collapse.defaultProps = {
   open: true,
 };
-
 export default Collapse;
