@@ -1,5 +1,5 @@
-# Grid <span style="color: red">(DEPRECATED)</span>
-### * Please use \<Layout/\> instead *
+# Grid
+### * Please avoid using Grid,  use \<Layout/\> instead *
 
 ### Description:
 A grid is a collection of `<Container/>`, `<Row/>` and `<Col/>` components that help laying out

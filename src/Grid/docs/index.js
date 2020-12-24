@@ -18,7 +18,7 @@ import ExampleAutoAdjustedRowRaw from '!raw-loader!./ExampleAutoAdjustedRow';
 import GridReadme from '../README.md';
 import { Category } from '../../../stories/storiesHierarchy';
 
-storiesOf(Category.DEPRECATED, module).add('Grid', () => (
+storiesOf(Category.COMPONENTS, module).add('Grid', () => (
   <div>
     <Markdown source={GridReadme} />
 
