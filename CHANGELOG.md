@@ -21,6 +21,7 @@ Types of changes:
 
 ### Added
 - `<BounceAnimation/>`- new component [#6426](https://github.com/wix/wix-style-react/pull/6426/)
+- `<AtlasAddressInput/>` - new component [#6428](https://github.com/wix/wix-style-react/pull/6428)
 
 
 ## 9.57.0 - 2020-12-23
