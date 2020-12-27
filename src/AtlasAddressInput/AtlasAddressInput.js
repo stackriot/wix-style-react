@@ -29,7 +29,7 @@ const AtlasAddressInput = ({
 
   const options = useMemo(
     () =>
-      predictions.map((prediction) =>
+      predictions.map(prediction =>
         addressInputItemBuilder({
           id: prediction.searchId,
           mainLabel: prediction.textStructure.mainText,
@@ -45,7 +45,7 @@ const AtlasAddressInput = ({
   );
 
   const _onChange = useCallback(
-    (event) => {
+    event => {
       updatePredictions(event.target.value);
       onChange && onChange(event);
     },

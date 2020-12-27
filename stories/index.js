@@ -89,6 +89,7 @@ require('../src/InputArea/docs/index.story');
 require('../src/InputWithLabel/docs/index.story');
 require('../src/InputWithOptions/docs/index.story');
 require('../src/Layout/docs/index.story');
+require('../src/AnalyticsLayout/docs/index.story');
 require('../src/LinearProgressBar/docs/index.story');
 require('../src/ListItemAction/docs/index.story');
 require('../src/ListItemEditable/docs/index.story');

@@ -21,8 +21,8 @@ export const atlasAddressInputPrivateDriverFactory = (base, body) => {
      */
     getItemPrefixAt: async index => (await getItemDriverAt(index)).getPrefix(),
 
-    /** 
-    * Gets item suffix at given index
+    /**
+     * Gets item suffix at given index
      * @param {number} index
      * @returns {Promise<node>} Item suffix
      */

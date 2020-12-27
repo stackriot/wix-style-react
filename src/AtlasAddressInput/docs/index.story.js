@@ -23,12 +23,12 @@ import { SectionHelper } from '../..';
 
 // We've set up a mock Atlas api in Storybook middleware file
 const BASE_URL = '/api/atlas/';
-const MockAtlasAddressInput = (props) => (
+const MockAtlasAddressInput = props => (
   <AtlasAddressInput baseUrl={BASE_URL} {...props} />
 );
 const MockWixAtlasServiceWeb = WixAtlasServiceWeb.bind(null, BASE_URL);
 
-const example = (config) =>
+const example = config =>
   baseExample({
     components: {
       ...allComponents,

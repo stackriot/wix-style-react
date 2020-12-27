@@ -497,6 +497,7 @@ export { default as CardFolderTabs } from './CardFolderTabs';
 export * from './CardFolderTabs';
 
 export { default as StackedBarChart } from './StackedBarChart';
+export * from './StackedBarChart';
 
 export { default as PageFooter } from './PageFooter';
 
@@ -506,8 +507,13 @@ export * from './AnalyticsSummaryCard';
 export * from './PageFooter';
 
 export { default as StyledNestableList } from './StyledNestableList';
+export * from './StyledNestableList';
 
 export { default as TrendIndicator } from './TrendIndicator';
+export * from './TrendIndicator';
+
+export { default as AnalyticsLayout } from './AnalyticsLayout';
+export * from './AnalyticsLayout';
 
 export { default as Radio } from './Radio';
 export * from './Radio';

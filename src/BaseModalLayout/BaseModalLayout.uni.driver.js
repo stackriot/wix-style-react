@@ -38,8 +38,7 @@ export const baseModalLayoutDriverFactory = base => {
      * @param {string} dataHook
      * @returns {Promise<boolean>}
      * */
-    childExists: async (dataHook) =>
-      base.$(`[data-hook="${dataHook}"]`).exists(),
+    childExists: async dataHook => base.$(`[data-hook="${dataHook}"]`).exists(),
 
     /**
      * Gets the title's text

@@ -59,7 +59,8 @@ class Checkbox extends React.PureComponent {
         '<Checkbox/> - errorMessage prop is deprecated and will be removed in next major release, please use tooltipContent instead',
       );
     }
-    const isDisabled = disabled || (!tooltipContent && (!hasError || !errorMessage));
+    const isDisabled =
+      disabled || (!tooltipContent && (!hasError || !errorMessage));
     return (
       <div
         data-hook={dataHook}

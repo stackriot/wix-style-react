@@ -854,4 +854,10 @@ export default {
       ],
     },
   },
+  AnalyticsLayout: {
+    props: {
+      items: [],
+      children: () => null,
+    },
+  },
 };

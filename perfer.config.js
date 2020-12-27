@@ -81,6 +81,7 @@ const javascriptFiles = [
   ['Label.bundle.min.js', 8],
   ['LabelledElement.bundle.min.js', 40],
   ['Layout.bundle.min.js', 3],
+  ['AnalyticsLayout.bundle.min.js', 8],
   ['LinearProgressBar.bundle.min.js', 47],
   ['ListItemAction.bundle.min.js', 41],
   ['ListItemEditable.bundle.min.js', 60],

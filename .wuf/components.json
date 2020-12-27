@@ -11,6 +11,9 @@
   "AddressInputItem": {
     "path": "src/AddressInputItem"
   },
+  "AnalyticsLayout": {
+    "path": "src/AnalyticsLayout"
+  },
   "AnalyticsSummaryCard": {
     "path": "src/AnalyticsSummaryCard"
   },

@@ -28,7 +28,7 @@ export const checkboxUniDriverFactory = (base, body) => {
     } catch (e) {
       throw new Error('Failed getting checkbox error message');
     }
-  }
+  };
   return {
     ...baseUniDriverFactory(base),
     /**

@@ -118,15 +118,23 @@ describe('Checkbox', () => {
     it('should show tooltipContent message on tooltip when both tooltipContent and errorMessage props are passed', async () => {
       const tooltipContent = 'tooltip content';
       const tooltipErrorMessage = 'error message';
-      const { driver } = render(<Checkbox tooltipContent={tooltipContent} hasError errorMessage={tooltipErrorMessage}/>);
+      const { driver } = render(
+        <Checkbox
+          tooltipContent={tooltipContent}
+          hasError
+          errorMessage={tooltipErrorMessage}
+        />,
+      );
       expect(await driver.getTooltipContent()).toEqual(tooltipContent);
     });
 
     it('should show tooltip message if tooltipContent and hasError props passed', async () => {
       const tooltipContent = 'tooltip content';
-      const { driver } = render(<Checkbox tooltipContent={tooltipContent} hasError />);
+      const { driver } = render(
+        <Checkbox tooltipContent={tooltipContent} hasError />,
+      );
       expect(await driver.getTooltipContent()).toEqual(tooltipContent);
-    })
+    });
 
     describe('Label', () => {
       it('should have the correct label text', async () => {
