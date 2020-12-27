@@ -23,6 +23,8 @@ Types of changes:
 - `<BounceAnimation/>`- new component [#6426](https://github.com/wix/wix-style-react/pull/6426/)
 - `<AtlasAddressInput/>` - new component [#6428](https://github.com/wix/wix-style-react/pull/6428)
 
+### Changed
+- `<Checkbox/>` - errorMessage props depricated, tooltipContent and tooltipProps was added [#6438](https://github.com/wix/wix-style-react/pull/6438/)
 
 ## 9.57.0 - 2020-12-23
 ### Added
