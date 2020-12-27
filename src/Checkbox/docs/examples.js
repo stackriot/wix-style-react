@@ -13,7 +13,7 @@ export const checkboxStates = `
 <Layout>
     <Cell><Checkbox> Unchecked</Checkbox></Cell>
     <Cell><Checkbox checked> Checked</Checkbox></Cell>
-    <Cell><Checkbox hasError errorMessage="Oops!">Error</Checkbox></Cell>
+    <Cell><Checkbox hasError tooltipContent="Oops!">Error</Checkbox></Cell>
     <Cell><Checkbox disabled>Disabled</Checkbox></Cell>
 </Layout>
 `;
@@ -94,4 +94,22 @@ export const controlledCheckbox = `
 
   return <Checkbox checked={checked} onChange={() => setChecked(!checked)}>Hello World!</Checkbox>
 }
+`;
+
+export const withTooltipProps = `
+<Layout>
+    <Cell>
+        <Checkbox tooltipContent="My Tooltip Message">Hello World!</Checkbox>
+    </Cell>
+    <Cell>
+        <Checkbox
+            tooltipContent="My Tooltip Message"
+            tooltipProps={{
+                moveArrowTo: 100,
+                enterDelay: 500,
+                placement: 'bottom'
+                }}>Hello World!
+        </Checkbox>
+    </Cell>
+</Layout>
 `;

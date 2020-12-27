@@ -21,6 +21,14 @@ export const checkboxUniDriverFactory = (base, body) => {
   const getTooltipDriver = async () =>
     tooltipDriverFactory(base.$(`[data-hook="${dataHooks.boxTooltip}"]`), body);
 
+  const getTooltipMessage = async () => {
+    try {
+      const tooltipDriver = await getTooltipDriver();
+      return tooltipDriver.getTooltipText();
+    } catch (e) {
+      throw new Error('Failed getting checkbox error message');
+    }
+  }
   return {
     ...baseUniDriverFactory(base),
     /**
@@ -71,17 +79,17 @@ export const checkboxUniDriverFactory = (base, body) => {
     hasError: async () =>
       (await base.attr(DATA_ATTR.DATA_HAS_ERROR)) === 'true',
     /**
+     * Gets the tooltip message.
+     * @returns {Promise<string>}
+     * @deprecated
+     */
+    getTooltipContent: getTooltipMessage,
+    /**
      * Gets the error message.
      * @returns {Promise<string>}
+     * @deprecated
      */
-    getErrorMessage: async () => {
-      try {
-        const tooltipDriver = await getTooltipDriver();
-        return tooltipDriver.getTooltipText();
-      } catch (e) {
-        throw new Error('Failed getting checkbox error message');
-      }
-    },
+    getErrorMessage: getTooltipMessage,
     /**
      * Gets checkbox's label.
      * @returns {Promise<string>}

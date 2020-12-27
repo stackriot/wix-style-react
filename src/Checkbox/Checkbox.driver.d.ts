@@ -17,4 +17,5 @@ export interface CheckboxDriver extends BaseDriver {
   getLabel(): string;
   getLabelSize(): CheckboxLabelSize;
   getErrorMessage(): Promise<string>;
+  getTooltipContent(): Promise<string>;
 }

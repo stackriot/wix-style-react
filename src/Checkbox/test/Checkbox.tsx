@@ -28,6 +28,8 @@ function CheckboxWithAllProps() {
       size="medium"
       vAlign="center"
       className="some-class"
+      tooltipContent="hello world"
+      tooltipProps={{size: 'small'}}
     />
   );
 }

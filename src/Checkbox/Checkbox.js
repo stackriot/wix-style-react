@@ -6,10 +6,12 @@ import { st, classes } from './Checkbox.st.css';
 import Text from '../Text';
 import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable/FocusableHOC';
 
+import deprecationLog from '../utils/deprecationLog';
 import { generateID } from '../utils/generateId';
 import Tooltip from '../Tooltip';
 import * as DATA_ATTR from './DataAttr';
 import { dataHooks } from './constants';
+import { TooltipCommonProps } from '../common/PropTypes/TooltipCommon';
 
 /** a simple WixStyle checkbox */
 class Checkbox extends React.PureComponent {
@@ -46,10 +48,18 @@ class Checkbox extends React.PureComponent {
       focusableOnFocus,
       focusableOnBlur,
       className,
+      tooltipProps,
+      tooltipContent,
       selectionAreaSkin,
       selectionAreaPadding,
     } = this.props;
 
+    if (errorMessage) {
+      deprecationLog(
+        '<Checkbox/> - errorMessage prop is deprecated and will be removed in next major release, please use tooltipContent instead',
+      );
+    }
+    const isDisabled = disabled || (!tooltipContent && (!hasError || !errorMessage));
     return (
       <div
         data-hook={dataHook}
@@ -95,13 +105,13 @@ class Checkbox extends React.PureComponent {
           >
             <Tooltip
               dataHook={dataHooks.boxTooltip}
-              disabled={disabled || !hasError || !errorMessage}
-              placement="top"
+              disabled={isDisabled}
+              content={tooltipContent || errorMessage || ' '}
               textAlign="center"
-              content={errorMessage || ' '}
               maxWidth={230}
               hideDelay={150}
               zIndex={10000}
+              {...tooltipProps}
             >
               <div className={classes.outer}>
                 <div data-hook={dataHooks.box} className={classes.checkbox}>
@@ -159,7 +169,10 @@ Checkbox.propTypes = {
   /** Checkbox is in an indeterminate state */
   indeterminate: PropTypes.bool,
 
-  /** The error message when there's an error */
+  /**
+   * The error message when there's an error
+   * @deprecated
+   * */
   errorMessage: PropTypes.string,
 
   /** Selection area emphasises the clickable area, none means no emphasis, hover is when the mouse is on the component, and always will show constantly */
@@ -185,6 +198,12 @@ Checkbox.propTypes = {
 
   /** Selection area padding emphasises the padding of the clickable area, empty means default padding, not empty overrides the default padding*/
   selectionAreaPadding: PropTypes.string,
+
+  /** Tooltip content. Can be either string or renderable node */
+  tooltipContent: PropTypes.node,
+
+  /** Tooltip props, common for all tooltips */
+  tooltipProps: PropTypes.shape(TooltipCommonProps),
 };
 
 Checkbox.defaultProps = {

@@ -14,7 +14,7 @@ const checkboxDriverFactory = ({ element, eventTrigger }) => {
 
   const labelTextDriver = () => textDriverFactory({ element: labelText() });
 
-  const getErrorMessage = async () => {
+  const getTooltipText = async () => {
     const tooltipTestkit = tooltipDriverFactory({
       element: byHook(dataHooks.boxTooltip),
       eventTrigger,
@@ -44,7 +44,8 @@ const checkboxDriverFactory = ({ element, eventTrigger }) => {
       element.getAttribute(DATA_ATTR.DATA_CHECK_TYPE) ===
       DATA_ATTR.CHECK_TYPES.INDETERMINATE,
     hasError: () => element.getAttribute(DATA_ATTR.DATA_HAS_ERROR) === 'true',
-    getErrorMessage,
+    getErrorMessage: getTooltipText,
+    getTooltipContent: getTooltipText,
     getLabel: () => labelTextDriver().getText(),
     getLabelSize: () => labelTextDriver().getSize(),
   };

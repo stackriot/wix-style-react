@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { TooltipCommonProps } from '../common';
 
 export interface CheckboxProps {
   dataHook?: string;
@@ -14,6 +15,8 @@ export interface CheckboxProps {
   size?: CheckboxLabelSize;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   className?: string;
+  tooltipProps?: TooltipCommonProps;
+  tooltipContent?: React.ReactNode;
   selectionAreaSkin?: CheckboxSelectionAreaSkin;
   selectionAreaPadding?: React.CSSProperties['padding'];
 }

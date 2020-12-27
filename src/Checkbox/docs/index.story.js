@@ -120,6 +120,10 @@ export default {
             title: 'Controlled checkbox',
             source: examples.controlledCheckbox,
           }),
+          example({
+            title: 'Checkbox with tooltip props',
+            source: examples.withTooltipProps,
+          }),
         ],
       }),
       ...[
