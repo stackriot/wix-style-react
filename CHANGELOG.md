@@ -20,6 +20,7 @@ Types of changes:
 -  `<Animate/>`- refactor component to be internal component [#6426](https://github.com/wix/wix-style-react/pull/6426/)
 
 ### Added
+- `<AnalyticsLayout/>` - new component [#6368](https://github.com/wix/wix-style-react/pull/6368)
 - `<BounceAnimation/>`- new component [#6426](https://github.com/wix/wix-style-react/pull/6426/)
 - `<AtlasAddressInput/>` - new component [#6428](https://github.com/wix/wix-style-react/pull/6428)
 
