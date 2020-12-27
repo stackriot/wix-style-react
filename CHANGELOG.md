@@ -24,6 +24,7 @@ Types of changes:
 - `<AtlasAddressInput/>` - new component [#6428](https://github.com/wix/wix-style-react/pull/6428)
 
 ### Changed
+- `<SelectorList>` - change padding when there is no search bar [#6434](https://github.com/wix/wix-style-react/pull/6434)
 - `<Checkbox/>` - errorMessage prop depricated, tooltipContent and tooltipProps was added [#6438](https://github.com/wix/wix-style-react/pull/6438/)
 
 ## 9.57.0 - 2020-12-23
@@ -36,8 +37,6 @@ Types of changes:
 ### Changed
 - `<AddressInput/>` - update to match design spec [#6400](https://github.com/wix/wix-style-react/pull/6400)
 - `Themes | Business Dashboard` - updated circular progress bar colors [#6422](https://github.com/wix/wix-style-react/pull/6422)
-- `<SelectorList>` - change padding when there is no search bar [#6434](https://github.com/wix/wix-style-react/pull/6434)
-
 
 ### Fixed
 - `<Collapse/>` - skip mount transition [#6424](https://github.com/wix/wix-style-react/pull/6424)
