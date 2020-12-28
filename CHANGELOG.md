@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Fixed
+- `<AtlasAddressInput/>` - remove export from index [#6451](https://github.com/wix/wix-style-react/pull/6451)
+
 ### Changed
 - `<AddItem/>` - remove pointer events on disabled [#6449](https://github.com/wix/wix-style-react/pull/6449)
 - `<Input/>` - trigger blur onWheel event when type=number [#6448](https://github.com/wix/wix-style-react/pull/6448)
