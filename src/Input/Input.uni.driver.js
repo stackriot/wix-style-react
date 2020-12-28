@@ -71,6 +71,7 @@ export const testkit = (base, body) => {
     keyUp: async () => await reactBaseInput.keyUp(),
     keyDown: async eventData => await reactBaseInput.keyDown(eventData),
     paste: async () => await reactBaseInput.paste(),
+    wheel: async () => await reactBaseInput.wheel(),
     trigger: async (eventType, event) => {
       if (eventType === 'focus') {
         return await driver.focus();
@@ -89,6 +90,9 @@ export const testkit = (base, body) => {
       }
       if (eventType === 'change') {
         return await driver.enterText(event.target.value);
+      }
+      if (eventType === 'wheel') {
+        return await driver.wheel();
       }
     },
     isFocus: async () => await reactBaseInput.isFocus(),

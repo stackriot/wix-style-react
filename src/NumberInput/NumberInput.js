@@ -151,10 +151,13 @@ class NumberInput extends React.PureComponent {
 
 NumberInput.propTypes = {
   ...Input.propTypes,
+
   /** Default value for those who wants to use this component un-controlled */
   defaultValue: PropTypes.number,
+
   /** If set to true - typing values beyond `min`/`max` values will round to nearest range  */
   strict: PropTypes.bool,
+
   /** If set to true - hides the stepper.*/
   hideStepper: PropTypes.bool,
 };
@@ -164,4 +167,5 @@ NumberInput.defaultProps = {
   strict: false,
   hideStepper: false,
 };
+
 export default NumberInput;

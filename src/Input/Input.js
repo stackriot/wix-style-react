@@ -324,6 +324,10 @@ class Input extends Component {
       maxLength,
       onFocus: this._onFocus,
       onBlur: this._onBlur,
+      onWheel: () => {
+        // Although it's opposed to the native behavior, we decided to blur an input type="number" on wheel event in order to prevent change in value.
+        if (type === 'number') this.blur();
+      },
       onKeyDown: this._onKeyDown,
       onPaste,
       placeholder,

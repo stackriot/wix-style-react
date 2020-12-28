@@ -749,5 +749,29 @@ describe('Input', () => {
         expect(await driver.isOfSize('large')).toBe(true);
       });
     });
+
+    describe('onWheel event', () => {
+      it('should keep focus on wheel for text input', async () => {
+        const { driver } = render(<Input />);
+
+        expect(await driver.isFocus()).toBe(false);
+
+        await driver.focus();
+        await driver.trigger('wheel');
+
+        expect(await driver.isFocus()).toBe(true);
+      });
+
+      it('should lose focus on wheel for number input', async () => {
+        const { driver } = render(<Input type="number" />);
+
+        expect(await driver.isFocus()).toBe(false);
+
+        await driver.focus();
+        await driver.trigger('wheel');
+
+        expect(await driver.isFocus()).toBe(false);
+      });
+    });
   }
 });
