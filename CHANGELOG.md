@@ -18,6 +18,7 @@ Types of changes:
 
 ### Changed
 - `<AddItem/>` - remove pointer events on disabled [#6449](https://github.com/wix/wix-style-react/pull/6449)
+- `<Input/>` - trigger blur onWheel event when type=number [#6448](https://github.com/wix/wix-style-react/pull/6448)
 
 ## 9.58.0 - 2020-12-28
 ### Breaking
