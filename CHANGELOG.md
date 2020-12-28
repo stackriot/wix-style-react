@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.58.0 - 2020-12-28
 ### Breaking
 -  `<Animate/>`- refactor component to be internal component [#6426](https://github.com/wix/wix-style-react/pull/6426/)
 
