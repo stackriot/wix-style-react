@@ -1,22 +1,32 @@
-import { baseUniDriverFactory } from '../../test/utils/unidriver';
+import {
+  baseUniDriverFactory,
+  findByHook,
+  findByHookAtIndex,
+  countByHook,
+} from '../../test/utils/unidriver';
 import { selectorUniDriverFactory } from '../Selector/Selector.uni.driver';
 import { editableRowUniDriverFactory } from './EditableRow/EditableRow.uni.driver';
+import { dataHooks } from './constants';
 
 export const editableSelectorUniDriverFactory = (base, body) => {
-  const newRowButton = () => base.$('[data-hook="new-row-button-text"]');
+  const newRowButton = () => findByHook(base, dataHooks.newRowButtonText);
   const selectorRowDriver = async index =>
     selectorUniDriverFactory(
-      await base.$$('[data-hook="editable-selector-item"]').get(index),
+      await findByHookAtIndex(base, dataHooks.item, index),
       body,
     );
-  const editButtonAt = index => base.$$('[data-hook="edit-item"]').get(index);
+  const editButtonAt = index =>
+    findByHookAtIndex(base, dataHooks.editItem, index);
   const deleteButtonAt = index =>
-    base.$$('[data-hook="delete-item"]').get(index);
-  const editableRowDriver = () =>
-    editableRowUniDriverFactory(base.$('[data-hook="edit-row-wrapper"]'), body);
-  const isEditRowActive = async () =>
-    !!(await base.$$('[data-hook="edit-row-wrapper"]').count());
+    findByHookAtIndex(base, dataHooks.deleteItem, index);
 
+  const editableRowDriver = () =>
+    editableRowUniDriverFactory(
+      findByHook(base, dataHooks.editRowWrapper),
+      body,
+    );
+  const isEditRowActive = async () =>
+    !!(await countByHook(base, dataHooks.editRowWrapper));
   return {
     ...baseUniDriverFactory(base),
 
@@ -26,7 +36,7 @@ export const editableSelectorUniDriverFactory = (base, body) => {
      */
     items: () => {
       return base
-        .$$('[data-hook="editable-selector-item"]')
+        .$$(`[data-hook="${dataHooks.item}"]`)
         .map(selector => selectorUniDriverFactory(selector, body));
     },
     /**
@@ -119,7 +129,7 @@ export const editableSelectorUniDriverFactory = (base, body) => {
      * Gets the title
      * @returns {Promise<string>}
      */
-    title: () => base.$('[data-hook="editable-selector-title"] > span').text(),
+    title: () => base.$(`[data-hook="${dataHooks.title}"] > span`).text(),
     /**
      * Toggles selector of the item at index
      * @param {number} index Item index

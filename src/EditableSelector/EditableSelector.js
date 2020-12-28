@@ -9,6 +9,7 @@ import IconButton from '../IconButton';
 import TextButton from '../TextButton';
 import EditableRow from './EditableRow/EditableRow';
 import { classes } from './EditableSelector.st.css';
+import { dataHooks } from './constants';
 
 class EditableSelector extends React.PureComponent {
   static propTypes = {
@@ -92,7 +93,7 @@ class EditableSelector extends React.PureComponent {
     return (
       <EditableRow
         key={index}
-        dataHook="edit-row-wrapper"
+        dataHook={dataHooks.editRowWrapper}
         onApprove={newTitle => this._onNewOptionApprove({ newTitle, index })}
         onCancel={() => this._onNewOptionCancel()}
         newOption={title}
@@ -113,7 +114,7 @@ class EditableSelector extends React.PureComponent {
     return (
       <div data-hook={dataHook}>
         {title && (
-          <div className={classes.title} data-hook="editable-selector-title">
+          <div className={classes.title} data-hook={dataHooks.title}>
             <Text weight="normal">{title}</Text>
           </div>
         )}
@@ -123,12 +124,12 @@ class EditableSelector extends React.PureComponent {
               this._renderInput(option.title, index)
             ) : (
               <div
-                data-hook="editable-selector-row"
+                data-hook={dataHooks.row}
                 className={classes.row}
                 key={index}
               >
                 <Selector
-                  dataHook="editable-selector-item"
+                  dataHook={dataHooks.item}
                   id={index}
                   title={option.title}
                   isSelected={option.isSelected}
@@ -139,7 +140,7 @@ class EditableSelector extends React.PureComponent {
                 <div className={classes.optionMenu}>
                   <IconButton
                     onClick={() => this._deleteItem(index)}
-                    dataHook="delete-item"
+                    dataHook={dataHooks.deleteItem}
                     type="button"
                     size="small"
                     skin="inverted"
@@ -151,7 +152,7 @@ class EditableSelector extends React.PureComponent {
                   <div className={classes.editRow}>
                     <Button
                       onClick={() => this._editItem(index)}
-                      dataHook="edit-item"
+                      dataHook={dataHooks.editItem}
                       size="small"
                     >
                       {editButtonText}
@@ -169,7 +170,7 @@ class EditableSelector extends React.PureComponent {
             underline="none"
             onClick={this._addNewRow}
             prefixIcon={<Add className={classes.icon} />}
-            dataHook="new-row-button-text"
+            dataHook={dataHooks.newRowButtonText}
           >
             {newRowLabel}
           </TextButton>

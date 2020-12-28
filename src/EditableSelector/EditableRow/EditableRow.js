@@ -7,6 +7,7 @@ import Input from '../../Input';
 import Tooltip from '../../Tooltip';
 import IconButton from '../../IconButton';
 import { classes } from '../EditableSelector.st.css';
+import { dataHooks } from './constants';
 
 class EditableRow extends Component {
   static propTypes = {
@@ -42,7 +43,7 @@ class EditableRow extends Component {
           <Input
             ref={input => (this.input = input)}
             className={classes.editableRowInput}
-            dataHook="edit-row-input"
+            dataHook={dataHooks.editRowInput}
             value={this.state.newOption}
             onChange={event => this.setState({ newOption: event.target.value })}
             onEnterPressed={() => this.onApprove()}
@@ -60,7 +61,7 @@ class EditableRow extends Component {
               onClick={this.onCancel}
               size="medium"
               priority="secondary"
-              dataHook="edit-row-cancel-button"
+              dataHook={dataHooks.editRowCancelButton}
             >
               <X />
             </IconButton>
@@ -71,7 +72,7 @@ class EditableRow extends Component {
               onClick={this.onApprove}
               size="medium"
               disabled={this.state.newOption.length === 0}
-              dataHook="edit-row-approve-button"
+              dataHook={dataHooks.editRowApproveButton}
             >
               <Check />
             </IconButton>
