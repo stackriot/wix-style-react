@@ -16,8 +16,10 @@ Types of changes:
 
 ## Next
 
-## 9.59.0 - 2020-12-28
+### Fixed
+- `<StyledNestableList/>` UI fixes, a11ty [#6416](https://github.com/wix/wix-style-react/pull/6416)
 
+## 9.59.0 - 2020-12-28
 ### Fixed
 - `<AtlasAddressInput/>` - remove export from index [#6451](https://github.com/wix/wix-style-react/pull/6451)
 
