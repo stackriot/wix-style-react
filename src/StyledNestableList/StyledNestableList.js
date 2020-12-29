@@ -5,23 +5,68 @@ import { classes as theme } from './NestableListTheme.st.css';
 import { classes, st } from './StyledNestableList.st.css';
 import NestableList from '../NestableList';
 import TableListItem from '../TableListItem';
-import classNames from 'classnames';
 import Box from '../Box';
 
 import { Arrow } from './Arrow';
 import { TextButton } from '../index';
 import Add from 'wix-ui-icons-common/Add';
-import { isFistItem, isLastItem, isRootItem } from '../NestableList/utils';
+import {
+  isFistItem,
+  isLastItem,
+  isRootItem,
+  moveItemOutsideOfTheParent,
+  moveItemToTheChildOfPrevSibling,
+  moveItemVertically,
+  setCollapse,
+  VerticalMovementDirection,
+} from '../NestableList/utils';
 
 /** A styled list with drag and drop and nesting capabilities. */
 class StyledNestableList extends React.PureComponent {
-  renderArrow = ({ isLastChild = false, isPreview = false } = {}) => {
+  state = {
+    movedItem: null,
+    backup: null,
+    isDragging: false,
+    isInternalStateUpdate: false,
+    items: this.props.items,
+  };
+  // according to make possible use setState along with getDerivedStateFromProps
+  // https://stackoverflow.com/questions/51019936/why-getderivedstatefromprops-is-called-after-setstate
+  _setStateDecorator = state => {
+    this.setState({
+      ...state,
+      isInternalStateUpdate: true,
+    });
+  };
+
+  static getDerivedStateFromProps = (props, state) => {
+    if (state.isInternalStateUpdate) {
+      return {
+        ...state,
+        isInternalStateUpdate: false,
+      };
+    }
+    return {
+      items: props.items,
+    };
+  };
+
+  _renderArrow = ({
+    isLastChild = false,
+    isPreview = false,
+    isPlaceholder,
+  } = {}) => {
     return (
-      <Box className={classes.arrowContainer} direction={'vertical'}>
+      <Box
+        className={classes.arrowContainer}
+        backgroundColor={isPlaceholder ? 'D60' : undefined}
+        direction={'vertical'}
+      >
         <div
-          className={classNames(classes.verticalArrow, {
-            [classes.lastItemVerticalArrow]: isLastChild,
-            [classes.previewArrows]: isPreview,
+          className={st(classes.arrow, {
+            lastChild: isLastChild,
+            preview: isPreview,
+            placeholder: isPlaceholder,
           })}
         >
           <Arrow className={classes.horizontalArrow} />
@@ -30,7 +75,7 @@ class StyledNestableList extends React.PureComponent {
     );
   };
 
-  renderAction = data => {
+  _renderAction = data => {
     const label = data.isRootAction
       ? this.props.addItemLabel
       : data.item.addItemLabel;
@@ -38,30 +83,31 @@ class StyledNestableList extends React.PureComponent {
     if (!label || this.props.maxDepth <= data.depth) {
       return;
     }
-
     return (
       <Box
-        className={classNames(
-          {
-            [classes.draggablePlaceholder]: data.isPlaceholder,
-            [classes.draggablePreview]: data.isPreview,
-            [classes.rootAction]: data.isRootAction,
-          },
+        direction={'vertical'}
+        className={st(
           classes.item,
+          {
+            rootAction: data.isRootAction,
+            dragging: this.state.isDragging,
+            withoutBottomBorder:
+              !this.props.withBottomBorder &&
+              ((data.veryLastItem && !data.addItemLabel) || data.isRootAction),
+          },
           classes.actionItem,
         )}
       >
         <TableListItem
+          onClick={() => this.props.onAddItem(data.item)}
           options={[
             {
               value: (
-                <TextButton
-                  onClick={() => this.props.onAddItem(data.item)}
-                  size={'small'}
-                  prefixIcon={<Add />}
-                >
-                  {label}
-                </TextButton>
+                <Box>
+                  <TextButton size={'small'} prefixIcon={<Add />}>
+                    {label}
+                  </TextButton>
+                </Box>
               ),
             },
           ]}
@@ -70,7 +116,7 @@ class StyledNestableList extends React.PureComponent {
     );
   };
 
-  renderPrefix = data => {
+  _renderPrefix = data => {
     if (
       data.isPreview ||
       isLastItem(data.siblings, data.item) ||
@@ -81,30 +127,47 @@ class StyledNestableList extends React.PureComponent {
     return <div className={classes.childArrow} />;
   };
 
-  renderItem = options => {
-    const { isPlaceholder, depth, isPreview, siblings, item } = options;
+  _renderItem = options => {
+    const {
+      isPlaceholder,
+      depth,
+      isPreview,
+      isVeryLastItem,
+      siblings,
+      item,
+    } = options;
     const { id, children, isCollapsed, draggable = true, ...rest } = item;
     const isLastChild = isLastItem(siblings, item);
-
+    const focused = this.state.movedItem && id === this.state.movedItem.id;
     return (
-      <Box>
-        {!isRootItem(depth) && this.renderArrow({ isLastChild, isPreview })}
+      <Box position={'relative'}>
+        {!isRootItem(depth) &&
+          this._renderArrow({
+            isLastChild,
+            isPreview,
+            isPlaceholder,
+          })}
         <div
-          className={classNames(
-            {
-              [classes.rootItem]: isRootItem(depth),
-              [classes.firstItem]: isFistItem(siblings, item),
-              [classes.lastItem]: isLastItem(siblings, item),
-              [classes.haveChildren]: Boolean(item.children),
-              [classes.draggablePlaceholder]: isPlaceholder,
-              [classes.draggablePreview]: isPreview,
-            },
-            classes.item,
-          )}
+          className={st(classes.item, {
+            root: isRootItem(depth),
+            firstSibling: isFistItem(siblings, item),
+            placeholder: isPlaceholder,
+            preview: isPreview,
+            focused,
+            dragging: this.state.isDragging || focused,
+            withoutBottomBorder:
+              isVeryLastItem &&
+              !this.props.withBottomBorder &&
+              !this.props.addItemLabel,
+          })}
         >
           <TableListItem
             {...rest}
+            focused={focused}
+            onBlur={this._onBlur}
+            onKeyUp={e => this._moveItemViaKeyboard(e, options)}
             showDivider={false}
+            dragging={isPreview || focused}
             dragDisabled={!draggable && !this.props.readOnly}
             draggable={!this.props.readOnly}
             options={rest.options ? rest.options : []}
@@ -114,11 +177,118 @@ class StyledNestableList extends React.PureComponent {
     );
   };
 
+  _onBlur = () => {
+    this._releaseItems();
+  };
+
+  _moveItemViaKeyboard = (e, itemOptions) => {
+    const left = 'ArrowLeft';
+    const top = 'ArrowUp';
+    const right = 'ArrowRight';
+    const bottom = 'ArrowDown';
+    const enter = 'Enter';
+    const esc = 'Escape';
+    // start dragend-drop
+    if (e.key === enter && !this.state.movedItem) {
+      this._setStateDecorator({
+        backup: this.state.items,
+        movedItem: itemOptions.item,
+        items: setCollapse(this.state.items, itemOptions.item.id, true),
+      });
+    }
+
+    if (!this.state.movedItem) {
+      return;
+    }
+
+    switch (e.key) {
+      case esc:
+        this._setStateDecorator({
+          items: this.state.backup,
+          backup: null,
+          movedItem: null,
+        });
+        break;
+      case left:
+        if (!this.props.preventChangeDepth) {
+          this._setStateDecorator({
+            items: moveItemOutsideOfTheParent(
+              this.state.items,
+              itemOptions.item,
+            ),
+          });
+        }
+        break;
+      case right:
+        if (!this.props.preventChangeDepth) {
+          this._setStateDecorator({
+            items: moveItemToTheChildOfPrevSibling(
+              this.state.items,
+              itemOptions.item,
+            ),
+          });
+        }
+        break;
+      case top:
+        this._setStateDecorator({
+          items: moveItemVertically(
+            this.state.items,
+            itemOptions.item,
+            VerticalMovementDirection.top,
+          ),
+        });
+        break;
+      case bottom:
+        this._setStateDecorator({
+          items: moveItemVertically(
+            this.state.items,
+            itemOptions.item,
+            VerticalMovementDirection.bottom,
+          ),
+        });
+        break;
+      default:
+      case enter:
+        this._releaseItems();
+        break;
+    }
+  };
+
+  _releaseItems() {
+    if (this.state.movedItem) {
+      const releaseItems = setCollapse(
+        this.state.items,
+        this.state.movedItem.id,
+        this.state.movedItem.isCollapsed,
+      );
+      this.props.onChange({
+        items: releaseItems,
+        item: this.state.movedItem,
+      });
+      this._setStateDecorator({
+        movedItem: null,
+        backup: null,
+        items: releaseItems,
+      });
+    }
+  }
+
+  _onDragEnd = () => {
+    this._setStateDecorator({
+      isDragging: false,
+    });
+  };
+
+  _onDragStart = () => {
+    this._setStateDecorator({
+      isDragging: true,
+    });
+  };
+
   render() {
     const {
       dataHook,
       className,
-      items,
       maxDepth,
       onChange,
       preventChangeDepth,
@@ -127,13 +297,20 @@ class StyledNestableList extends React.PureComponent {
     return (
       <div data-hook={dataHook} className={st(classes.root, {}, className)}>
         <NestableList
-          items={items}
-          renderItem={this.renderItem}
-          renderPrefix={this.renderPrefix}
-          renderAction={this.renderAction}
-          onUpdate={onChange}
+          items={this.state.items}
+          renderItem={this._renderItem}
+          renderPrefix={this._renderPrefix}
+          renderAction={this._renderAction}
+          onDragEnd={this._onDragEnd}
+          onDragStart={this._onDragStart}
+          onUpdate={({ items, item }) => {
+            this._setStateDecorator({
+              items: items,
+            });
+            onChange({ items, item: item.data });
+          }}
           maxDepth={maxDepth}
-          threshold={30}
+          threshold={84}
           theme={theme}
           readOnly={this.props.readOnly}
           preventChangeDepth={preventChangeDepth}
@@ -142,10 +319,10 @@ class StyledNestableList extends React.PureComponent {
             marginLeft: '84px',
           }}
           childrenProperty={'children'}
-          isRenderDraggingChildren
+          isRenderDraggingChildren={false}
         />
         {this.props.addItemLabel &&
-          this.renderAction({
+          this._renderAction({
             depth: 0,
             isRootAction: true,
           })}
@@ -167,6 +344,8 @@ const NodeShape = PropTypes.shape(Node);
 Node.children = PropTypes.arrayOf(NodeShape);
 
 StyledNestableList.propTypes = {
+  /** Add bottom border to the last node default is false*/
+  withBottomBorder: PropTypes.bool,
   /** Prevents item from being dragging and removes draggable or dragDisabled icon */
   readOnly: PropTypes.bool,
   /** label for add new item button */
@@ -196,6 +375,7 @@ StyledNestableList.propTypes = {
 
 StyledNestableList.defaultProps = {
   maxDepth: 10,
+  withBottomBorder: false,
   preventChangeDepth: false,
   items: [],
   onAddItem: () => {},

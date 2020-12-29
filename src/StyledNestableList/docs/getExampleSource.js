@@ -4,7 +4,7 @@ export function getSource({
   preventChangeDepth,
   readOnly = false,
   items = getSimpleExampleItems(),
-  addItemLabel,
+  addItemLabel = '',
   maxDepth,
 }) {
   return `
@@ -13,7 +13,7 @@ export function getSource({
   return <StyledNestableList 
     preventChangeDepth={${preventChangeDepth}}
     maxDepth={${maxDepth}}
-    addItemLabel={${addItemLabel}}
+    addItemLabel={"${addItemLabel}"}
     readOnly={${readOnly}}
     onAddItem={console.log}
     items={items}

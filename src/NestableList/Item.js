@@ -50,11 +50,14 @@ const cardSource = {
         clientRect,
       );
     }
+
     return {
       id: props.id,
+      dragged: false, // needed for workaround of immediately fired dragend event after dragstart
       index: props.index,
       position: props.position,
       data: props.item,
+      groupName: props.groupName,
       depth: props.depth,
       // rect for entire component including children
       clientRect,
@@ -226,7 +229,9 @@ const allowItemMove = ({
 
 const cardTarget = {
   hover(props, monitor, component) {
-    if (!component) {
+    // prevent drag and drop between different groups.
+    // currently drag and drop between multiple nestable lists is not supported
+    if (monitor.getItem().groupName !== props.groupName) {
       return;
     }
 
@@ -268,6 +273,7 @@ const cardTarget = {
 
     item.prevPosition = prevPosition;
     item.prevIndex = item.index;
+    item.dragged = true;
     // note: we're mutating the monitor item here!
     // generally it's better to avoid mutations,
     // but it's good here for the sake of performance
@@ -278,6 +284,16 @@ const cardTarget = {
 };
 
 class Item extends React.PureComponent {
+  state = {
+    shouldRenderChildren: true,
+  };
+
+  unmounted = false;
+
+  componentWillUnmount() {
+    this.unmounted = true;
+  }
+
   componentDidMount() {
     // use empty image as a drag preview so browsers don't draw it
     // and we can draw whatever we want on the custom drag layer instead.
@@ -286,6 +302,37 @@ class Item extends React.PureComponent {
       // when it already knows it's being dragged so we can hide it with CSS.
       captureDraggingState: true,
     });
+    this.updateShouldRenderChildren();
+  }
+
+  componentDidUpdate() {
+    this.updateShouldRenderChildren();
+  }
+
+  updateShouldRenderChildren() {
+    const { isPlaceholder, isRenderDraggingChildren } = this.props;
+    const shouldRenderChildren = !isPlaceholder || isRenderDraggingChildren;
+    // start workaround of immediately fired dragend event after dragstart
+    // https://github.com/react-dnd/react-dnd/issues/766#issuecomment-748255082
+    if (shouldRenderChildren !== this.state.shouldRenderChildren) {
+      if (
+        !this.props.dragged &&
+        this.state.shouldRenderChildren !== shouldRenderChildren
+      ) {
+        setTimeout(() => {
+          if (!this.unmounted) {
+            this.setState({
+              shouldRenderChildren: shouldRenderChildren,
+            });
+          }
+        }, 0);
+      } else {
+        this.setState({
+          shouldRenderChildren: shouldRenderChildren,
+        });
+      }
+    }
+    // end workaround of immediately fired dragend event after dragstart
   }
 
   render() {
@@ -296,20 +343,20 @@ class Item extends React.PureComponent {
       isPlaceholder,
       connectDragSource,
       connectDropTarget,
-      isRenderDraggingChildren,
       useDragHandle,
       renderItem,
       renderPrefix,
       theme,
       readOnly,
+      isVeryLastItem,
       siblings,
     } = this.props;
 
-    const shouldRenderChildren = !isPlaceholder || isRenderDraggingChildren;
     // params passed to renderItem callback
     const renderParams = {
       item,
       siblings,
+      isVeryLastItem,
       isPlaceholder,
       isPreview: false,
       connectDragSource: () => {},
@@ -324,7 +371,7 @@ class Item extends React.PureComponent {
         <div className={classes} data-hook="nestable-item">
           {renderPrefix(renderParams)}
           {renderItem(renderParams)}
-          {shouldRenderChildren && children}
+          {this.state.shouldRenderChildren && children}
         </div>,
       );
     }
@@ -341,7 +388,7 @@ class Item extends React.PureComponent {
         <div className={classes} data-hook="nestable-item">
           {renderPrefix(renderParams)}
           {renderItem(renderParams)}
-          {shouldRenderChildren && children}
+          {this.state.shouldRenderChildren && children}
         </div>,
       );
     }
@@ -351,7 +398,7 @@ class Item extends React.PureComponent {
         <div className={classes} data-hook="nestable-item">
           {renderPrefix(renderParams)}
           {renderItem(renderParams)}
-          {shouldRenderChildren && children}
+          {this.state.shouldRenderChildren && children}
         </div>,
       ),
     );
@@ -365,6 +412,7 @@ export const DragItemSource = DragSource(
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
     isPlaceholder: monitor.isDragging(),
+    dragged: monitor.getItem() && monitor.getItem().dragged,
   }),
 )(Item);
 

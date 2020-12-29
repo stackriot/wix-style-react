@@ -1,5 +1,10 @@
 import React from 'react';
-import { addToTree, getDropParent, removeFromTree } from './utils';
+import {
+  addToTree,
+  generateUniqueGroupId,
+  getDropParent,
+  removeFromTree,
+} from './utils';
 
 import CustomDragLayer from './DragLayer';
 import Container from './Container';
@@ -64,7 +69,12 @@ class NestableList extends React.PureComponent {
 
   state = {
     items: this.props.items,
+    dragging: false,
   };
+  // drag and drop between multiple nestable lists is not supported
+  // according to prevent it for now was created groupName - unique value for every nestable list
+  // somethings similar exists in SortableList component.
+  groupName = generateUniqueGroupId();
 
   moveItem = ({ dragItem, prevPosition, nextPosition }) => {
     const { childrenProperty, preventChangeDepth, items } = this.props;
@@ -109,10 +119,16 @@ class NestableList extends React.PureComponent {
 
   onDragStart = itemProps => {
     this.props.onDragStart && this.props.onDragStart(itemProps);
+    this.setState({
+      dragging: true,
+    });
   };
 
   onDragEnd = itemProps => {
     this.props.onDragEnd && this.props.onDragEnd(itemProps);
+    this.setState({
+      dragging: false,
+    });
   };
 
   render() {
@@ -136,6 +152,7 @@ class NestableList extends React.PureComponent {
       <div data-hook={dataHook}>
         <NestableListContext.Provider
           value={{
+            groupName: this.groupName,
             useDragHandle,
             maxDepth,
             preventChangeDepth,
@@ -161,13 +178,15 @@ class NestableList extends React.PureComponent {
               topLevel
               theme={theme}
             />
-            <CustomDragLayer
-              isRenderDraggingChildren={isRenderDraggingChildren}
-              renderItem={renderItem}
-              childrenProperty={childrenProperty}
-              childrenStyle={childrenStyle}
-              theme={theme}
-            />
+            {this.state.dragging && (
+              <CustomDragLayer
+                isRenderDraggingChildren={isRenderDraggingChildren}
+                renderItem={renderItem}
+                childrenProperty={childrenProperty}
+                childrenStyle={childrenStyle}
+                theme={theme}
+              />
+            )}
           </div>
         </NestableListContext.Provider>
       </div>

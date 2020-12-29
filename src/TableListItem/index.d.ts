@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { FocusEvent } from 'react';
 
 export type TableListItemColumn = {
   value: React.ReactNode;
@@ -15,8 +16,12 @@ export interface TableListItemProps {
   checkbox?: boolean;
   checkboxDisabled?: boolean;
   checked?: boolean;
+  focused?: boolean;
+  onBlur?(e: FocusEvent): void;
+  onKeyUp?(e: KeyboardEvent): void;
   onCheckboxChange?: React.ChangeEventHandler<HTMLInputElement>;
   draggable?: boolean;
+  dragging?: boolean;
   dragDisabled?: boolean;
   showDivider?: boolean;
 }

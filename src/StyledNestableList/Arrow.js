@@ -41,7 +41,6 @@ export function Arrow({ className = undefined }) {
         </filter>
       </defs>
       <g
-        fill="#DFE5EB"
         fillRule="evenodd"
         filter="url(#zaxo0jk8xa)"
         transform="translate(-33 -269)"

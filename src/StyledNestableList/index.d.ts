@@ -11,6 +11,7 @@ export type StyledNestableListItem = {
 
 export interface StyledNestableListProps {
   dataHook?: string;
+  withBottomBorder?: boolean;
   className?: string;
   readOnly?: boolean;
   items: StyledNestableListItem[];

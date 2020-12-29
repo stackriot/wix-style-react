@@ -18,6 +18,13 @@ const tests = [
         },
       },
       {
+        it: 'With bottom border', // prop variation (e.g. small)
+        props: {
+          items: getSimpleExampleItems(),
+          withBottomBorder: true,
+        },
+      },
+      {
         it: 'With add button', // prop variation (e.g. small)
         props: {
           maxDepth: 2,

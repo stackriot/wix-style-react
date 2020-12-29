@@ -34,8 +34,8 @@ export default {
     items: getSimpleExampleItems({
       draggable: true,
     }),
+    withBottomBorder: false,
     preventChangeDepth: false,
-    maxDepth: 2,
     addItemLabel: 'Add item',
     onChange(data) {
       // eslint-disable-next-line no-console
@@ -99,12 +99,23 @@ export default {
             }),
           }),
           example({
-            title: 'Add new item',
+            title: 'Add new item to the root',
             text: 'This component has build in add new item button.',
             source: getSource({
               preventChangeDepth: false,
-              addItemLabel: JSON.stringify('Add New Node To The Root'),
+              addItemLabel: 'Add New Node To The Root',
               maxDepth: 2,
+              items: getSimpleExampleItems({
+                draggable: true,
+              }),
+            }),
+          }),
+          example({
+            title: 'Add new item to the nodes',
+            text: 'This component has build in add new item button.',
+            source: getSource({
+              preventChangeDepth: false,
+              addItemLabel: 'Add New Node To The Root',
               items: getSimpleExampleItems({
                 draggable: true,
                 addItemLabel: 'Add New Item',

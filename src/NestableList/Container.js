@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import Item from './Item';
 import { getDepth } from './utils';
-import Collapse from '../Collapse';
 
 class Container extends Component {
   render() {
@@ -13,6 +12,7 @@ class Container extends Component {
       childrenStyle,
       renderAction,
       treeDepth,
+      isParentLastItem = true,
       isRenderDraggingChildren,
       topLevel,
       theme,
@@ -33,36 +33,53 @@ class Container extends Component {
         {items.map((item, i) => {
           const position = parentPosition.concat([i]);
           const children = item[childrenProperty];
+          const hasChildren = children && children.length;
+          const isLastItem = items.length - 1 === i;
+          const actionButton = renderAction({
+            siblings: items,
+            item,
+            veryLastItem: isLastItem && isParentLastItem,
+            depth: treeDepth,
+          });
+          const veryLastItem =
+            isLastItem &&
+            isParentLastItem &&
+            (!hasChildren || item.isCollapsed) &&
+            !actionButton;
+
           return (
             <Item
               id={item.id}
               key={item.id}
               item={item}
               index={i}
+              isVeryLastItem={veryLastItem}
               siblings={items}
               isRenderDraggingChildren={isRenderDraggingChildren}
               position={position}
               depth={getDepth(item, childrenProperty)}
               theme={theme}
             >
-              {children && !item.isCollapsed && children.length ? (
-                <WrappedContainer
-                  items={children}
-                  renderAction={renderAction}
-                  isRenderDraggingChildren={isRenderDraggingChildren}
-                  parentPosition={position}
-                  childrenProperty={childrenProperty}
-                  childrenStyle={childrenStyle}
-                  theme={theme}
-                  treeDepth={treeDepth + 1}
-                />
-              ) : null}
-              {!item.isCollapsed &&
-                renderAction({
-                  siblings: items,
-                  item,
-                  depth: treeDepth,
-                })}
+              {!item.isCollapsed && (
+                <div>
+                  {hasChildren ? (
+                    <WrappedContainer
+                      isParentLastItem={
+                        isLastItem && isParentLastItem && !actionButton
+                      }
+                      items={children}
+                      renderAction={renderAction}
+                      isRenderDraggingChildren={isRenderDraggingChildren}
+                      parentPosition={position}
+                      childrenProperty={childrenProperty}
+                      childrenStyle={childrenStyle}
+                      theme={theme}
+                      treeDepth={treeDepth + 1}
+                    />
+                  ) : null}
+                  {actionButton}
+                </div>
+              )}
             </Item>
           );
         })}

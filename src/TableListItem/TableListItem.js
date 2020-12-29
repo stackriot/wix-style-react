@@ -34,13 +34,23 @@ const TableListItem = ({
   checked,
   onCheckboxChange,
   draggable,
+  focused,
+  onBlur,
   dragDisabled,
   showDivider,
+  onKeyUp,
   onClick,
+  dragging,
   className,
   dataHook,
 }) => {
   const DragHandleIcon = dragDisabled ? DragHandleDisabled : DragHandle;
+  const ref = React.useRef();
+  React.useEffect(() => {
+    if (ref.current && focused) {
+      ref.current.focus();
+    }
+  }, [ref, focused]);
   return (
     <div
       onClick={onClick}
@@ -48,6 +58,7 @@ const TableListItem = ({
         classes.root,
         {
           draggable: draggable && !dragDisabled,
+          dragging,
           checked: checkbox && checked,
           showDivider,
           clickable: !!onClick,
@@ -60,6 +71,10 @@ const TableListItem = ({
       <Box>
         {draggable && (
           <div
+            tabIndex={onKeyUp ? 0 : undefined}
+            ref={ref}
+            onBlur={onBlur}
+            onKeyUp={onKeyUp}
             className={st(classes.dragHandle, {
               disabled: dragDisabled,
             })}
@@ -129,7 +144,10 @@ TableListItem.propTypes = {
     VERTICAL_PADDING.medium,
     VERTICAL_PADDING.small,
   ]),
-
+  /**
+   *
+   */
+  dragging: PropTypes.bool,
   /**
     Show checkbox
    */
@@ -164,7 +182,18 @@ TableListItem.propTypes = {
     Show divider on the bottom of the list item
    */
   showDivider: PropTypes.bool,
-
+  /**
+   * Called when item is lost focus
+   */
+  onBlur: PropTypes.func,
+  /**
+   * Called when item is focused, and key is pressed and released. Used for dnd via keyboard
+   */
+  onKeyUp: PropTypes.func,
+  /**
+   * Forces focus on drag handle
+   */
+  focused: PropTypes.bool,
   /**
     Called when the item is clicked
    */

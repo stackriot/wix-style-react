@@ -16,7 +16,7 @@
 }
 
 .root {
-  -st-states: checked, showDivider, verticalPadding(enum(small, medium)), draggable, clickable;
+  -st-states: checked, showDivider, dragging, verticalPadding(enum(small, medium)), draggable, clickable;
   background-color: value(D80);
   padding: 0 value(horizontalPadding);
 }
@@ -48,6 +48,14 @@
 .root:draggable:hover {
   background-color: value(B60);
   cursor: move;
+}
+
+.root:dragging {
+  background-color: value(B60);
+}
+
+.root:dragging .dragHandle {
+  color: value(B10);
 }
 
 .root:draggable:hover .dragHandle {
