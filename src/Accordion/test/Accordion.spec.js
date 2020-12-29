@@ -1,13 +1,10 @@
 import React from 'react';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
-
-import Accordion from './Accordion';
-import { accordionPrivateDriverFactory } from './Accordion.private.uni.driver';
-
-import { eventually } from '../../test/utils/unit';
-import { buttonTypes } from './constants';
-
-import { createRendererWithUniDriver } from '../../test/utils/react';
+import Accordion, { accordionItemBuilder } from '../Accordion';
+import { accordionPrivateDriverFactory } from '../Accordion.private.uni.driver';
+import { buttonTypes } from '../constants';
+import { createRendererWithUniDriver } from '../../../test/utils/react';
+import { eventually } from '../../../test/utils/unit';
 
 describe('Accordion', () => {
   const FakeIcon = () => <div>fake icon</div>;
@@ -144,9 +141,7 @@ describe('Accordion', () => {
       await driver.clickItemAt(0);
       expect(await driver.isItemExpandedAt(0)).toBe(true);
       await driver.clickItemAt(0);
-      await eventually(async () => {
-        expect(await driver.isItemExpandedAt(0)).toBe(false);
-      });
+      expect(await driver.isItemExpandedAt(0)).toBe(false);
     });
 
     it('should collapse an initially expanded item on click', async () => {
@@ -155,9 +150,7 @@ describe('Accordion', () => {
       );
       expect(await driver.isItemExpandedAt(0)).toBe(true);
       await driver.clickItemAt(0);
-      await eventually(async () => {
-        expect(await driver.isItemExpandedAt(0)).toBe(false);
-      });
+      expect(await driver.isItemExpandedAt(0)).toBe(false);
     });
 
     it('should accept an expand and collapse button labels', async () => {
@@ -199,9 +192,7 @@ describe('Accordion', () => {
 
       await driver.clickToggleButtonAt(0);
       await driver.clickToggleButtonAt(1);
-      await eventually(async () =>
-        expect(await driver.isItemExpandedAt(0)).toBe(false),
-      );
+      expect(await driver.isItemExpandedAt(0)).toBe(false);
       expect(await driver.isItemExpandedAt(1)).toBe(true);
     });
 
@@ -230,9 +221,102 @@ describe('Accordion', () => {
           ]}
         />,
       );
+
       await eventually(async () => {
         expect(await driver.isItemExpandedAt(0)).toBe(false);
       });
+    });
+  });
+
+  // TODO - remove other tests once the old API is obsolete
+  describe('builders', () => {
+    it('should get title at first item', async () => {
+      const title = 'hello!';
+      const driver = createDriver(
+        <Accordion items={[accordionItemBuilder({ title })]} />,
+      );
+
+      expect(await driver.getItemTitleAt(0)).toBe(title);
+      expect(await driver.isIconExistsAt(0)).toBe(false);
+      expect(await driver.isItemExpandedAt(0)).toBe(false);
+    });
+
+    it('should render an icon', async () => {
+      const driver = createDriver(
+        <Accordion items={[accordionItemBuilder({ icon: <FakeIcon /> })]} />,
+      );
+
+      expect(await driver.isIconExistsAt(0)).toBe(true);
+    });
+
+    it('should expand first item (uncontrolled)', async () => {
+      const driver = createDriver(
+        <Accordion
+          items={[
+            accordionItemBuilder({
+              initiallyOpen: true,
+            }),
+          ]}
+        />,
+      );
+
+      expect(await driver.isItemExpandedAt(0)).toBe(true);
+    });
+
+    it('should expand first item (controlled)', async () => {
+      const driver = createDriver(
+        <Accordion
+          items={[
+            accordionItemBuilder({
+              open: true,
+            }),
+          ]}
+        />,
+      );
+
+      expect(await driver.isItemExpandedAt(0)).toBe(true);
+    });
+
+    it('should toggle first item (click button)', async () => {
+      const driver = createDriver(
+        <Accordion
+          items={[accordionItemBuilder({}), accordionItemBuilder({})]}
+        />,
+      );
+
+      expect(await driver.isItemExpandedAt(0)).toBe(false);
+      expect(await driver.isItemExpandedAt(1)).toBe(false);
+
+      await driver.clickToggleButtonAt(0);
+
+      expect(await driver.isItemExpandedAt(0)).toBe(true);
+      expect(await driver.isItemExpandedAt(1)).toBe(false);
+
+      await driver.clickToggleButtonAt(1);
+
+      expect(await driver.isItemExpandedAt(0)).toBe(false);
+      expect(await driver.isItemExpandedAt(1)).toBe(true);
+    });
+
+    it('should toggle first item (click body)', async () => {
+      const driver = createDriver(
+        <Accordion
+          items={[accordionItemBuilder({}), accordionItemBuilder({})]}
+        />,
+      );
+
+      expect(await driver.isItemExpandedAt(0)).toBe(false);
+      expect(await driver.isItemExpandedAt(1)).toBe(false);
+
+      await driver.clickItemAt(0);
+
+      expect(await driver.isItemExpandedAt(0)).toBe(true);
+      expect(await driver.isItemExpandedAt(1)).toBe(false);
+
+      await driver.clickItemAt(1);
+
+      expect(await driver.isItemExpandedAt(0)).toBe(false);
+      expect(await driver.isItemExpandedAt(1)).toBe(true);
     });
   });
 });

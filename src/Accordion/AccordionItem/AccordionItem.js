@@ -46,6 +46,7 @@ class AccordionItem extends React.PureComponent {
     this.setState({ hover: false });
     !disabled && onMouseLeave && onMouseLeave(e);
   };
+
   _onMouseEnter = e => {
     const { disabled, onMouseEnter } = this.props;
 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { st, classes } from './Accordion.st.css';
 import AccordionItem from './AccordionItem';
+import AccordionSectionItem from './AccordionSectionItem';
 
 class Accordion extends React.Component {
   static displayName = 'Accordion';
@@ -21,22 +22,29 @@ class Accordion extends React.Component {
     hideShadow: PropTypes.bool,
 
     /** accordion items nodes */
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.node,
-        icon: PropTypes.node,
-        children: PropTypes.node,
-        expandLabel: PropTypes.node,
-        collapseLabel: PropTypes.node,
-        buttonType: PropTypes.oneOf(['textButton', 'button']),
-        disabled: PropTypes.bool,
-        onToggle: PropTypes.func,
-        onMouseEnter: PropTypes.func,
-        onMouseleave: PropTypes.func,
-        open: PropTypes.bool,
-        initiallyOpen: PropTypes.bool,
-      }),
-    ),
+    items: PropTypes.oneOfType([
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          render: PropTypes.func,
+        }),
+      ),
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.node,
+          icon: PropTypes.node,
+          children: PropTypes.node,
+          expandLabel: PropTypes.node,
+          collapseLabel: PropTypes.node,
+          buttonType: PropTypes.oneOf(['textButton', 'button']),
+          disabled: PropTypes.bool,
+          onToggle: PropTypes.func,
+          onMouseEnter: PropTypes.func,
+          onMouseleave: PropTypes.func,
+          open: PropTypes.bool,
+          initiallyOpen: PropTypes.bool,
+        }),
+      ),
+    ]),
   };
 
   static defaultProps = {
@@ -96,22 +104,58 @@ class Accordion extends React.Component {
 
     return (
       <div data-hook={dataHook}>
-        {items.map((item, index, allItems) => (
-          <AccordionItem
-            className={st(classes.item, {
+        {items.map((item, index, allItems) => {
+          const uncontrolledProps = {
+            onToggle: this._toggle(index),
+            open: openIndexes.includes(index),
+          };
+
+          const internalProps = {
+            className: st(classes.item, {
               last: index === allItems.length - 1,
-            })}
-            key={index}
-            onToggle={this._toggle(index)}
-            open={openIndexes.includes(index)}
-            {...item}
-            skin={skin}
-            hideShadow={hideShadow}
-          />
-        ))}
+            }),
+            key: index,
+            skin,
+            hideShadow,
+          };
+
+          if (typeof item.render === 'function') {
+            return item.render(uncontrolledProps, internalProps);
+          } else {
+            return (
+              <AccordionItem
+                {...uncontrolledProps}
+                {...item}
+                {...internalProps}
+              />
+            );
+          }
+        })}
       </div>
     );
   }
 }
+
+export const accordionItemBuilder = item => {
+  return {
+    ...item,
+    render: (uncontrolledProps, internalProps) => (
+      <AccordionItem {...uncontrolledProps} {...item} {...internalProps} />
+    ),
+  };
+};
+
+export const accordionSectionItemBuilder = item => {
+  return {
+    ...item,
+    render: (uncontrolledProps, internalProps) => (
+      <AccordionSectionItem
+        {...uncontrolledProps}
+        {...item}
+        {...internalProps}
+      />
+    ),
+  };
+};
 
 export default Accordion;

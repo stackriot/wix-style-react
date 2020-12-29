@@ -15,7 +15,7 @@ import {
 import InfoCircle from 'wix-ui-icons-common/InfoCircle';
 
 import { storySettings } from './storySettings';
-import Accordion from '..';
+import Accordion, { accordionItemBuilder } from '..';
 import RichTextInputArea from '../../RichTextInputArea';
 import { buttonTypes } from '../constants';
 
@@ -24,14 +24,15 @@ import * as examples from './examples';
 
 const example = config => baseExample({ components: allComponents, ...config });
 
-const item = config => ({
-  title: 'Item',
-  icon: <InfoCircle />,
-  expandLabel: 'See More',
-  collapseLabel: 'Less',
-  children: examples.text,
-  ...config,
-});
+const item = config =>
+  accordionItemBuilder({
+    title: 'Item',
+    icon: <InfoCircle />,
+    expandLabel: 'See More',
+    collapseLabel: 'Less',
+    children: examples.text,
+    ...config,
+  });
 
 const exampleItems = [
   {
@@ -92,26 +93,49 @@ export default {
       tab({
         title: 'Description',
         sections: [
-          description(`Component for collapsible content`),
+          description('Accordion is a list of expandable/collapsible items.'),
 
-          importExample("import { Accordion } from 'wix-style-react';"),
+          importExample(
+            `import { Accordion, accordionItemBuilder } from 'wix-style-react';`,
+          ),
 
           divider(),
 
           title('Examples'),
 
-          example({ title: 'Simple Usage', source: examples.simple }),
-          example({ title: 'With Button & Icon', source: examples.withButton }),
+          example({
+            title: 'Using item builders',
+            text: `
+Accordion is composed from a list of items that share expand/collapse functionality.\n
+As a best practice, we recommend using the builder pattern in order to create accordion items.
+            `,
+            source: examples.simple,
+          }),
           example({
             title: 'Multiple with Initially Open',
+            text: `
+By default, all accordion items are closed initially and only one can be opened at the same time.\n
+Using the \`multiple\` prop, open items will not close when other items are opened.\n
+When the component is uncontrolled, use the \`initiallyOpen\` prop of an accordion item in order for it to be open when the component mounts.
+            `,
             source: examples.multiple,
           }),
           example({
             title: 'Disabled Accordion Rows',
+            text:
+              'Disabled rows cannot be expand/collapsed by the user nor they can focus the expand/collapsed button.',
             source: examples.disabled,
           }),
-          example({ title: 'Usage in Card', source: examples.inCard }),
           example({ title: 'Skins', source: examples.skins }),
+          example({ title: 'With Button & Icon', source: examples.withButton }),
+          example({
+            title: 'Backward compatibility',
+            text: `
+Before the builders pattern, accordion items were plain objects.\n
+In order not to break old behavior, it can still be used until we decide to deprecate it.
+            `,
+            source: examples.backwardCompatibility,
+          }),
         ],
       }),
 

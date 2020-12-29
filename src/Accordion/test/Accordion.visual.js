@@ -1,10 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
 import InfoCircle from 'wix-ui-icons-common/InfoCircle';
 import { skins } from '../constants';
-
-import { Accordion, Text, Card, Layout, Cell } from 'wix-style-react';
+import Accordion, { accordionItemBuilder } from '../Accordion';
+import Text from '../../Text';
+import { Layout, Cell } from '../../Layout';
+import Card from '../../Card';
 
 export const text =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua';
@@ -12,8 +13,14 @@ export const text =
 storiesOf('Accordion', module).add('simple', () => (
   <Accordion
     items={[
-      { title: 'First Row', children: <Text>${text}</Text> },
-      { title: 'Second Row', children: <Text>${text}</Text> },
+      accordionItemBuilder({
+        title: 'First Row',
+        children: <Text>${text}</Text>,
+      }),
+      accordionItemBuilder({
+        title: 'Second Row',
+        children: <Text>${text}</Text>,
+      }),
     ]}
   />
 ));
@@ -21,20 +28,20 @@ storiesOf('Accordion', module).add('simple', () => (
 storiesOf('Accordion', module).add('withButton', () => (
   <Accordion
     items={[
-      {
+      accordionItemBuilder({
         title: 'First Row With Button',
         children: <Text>${text}</Text>,
         buttonType: 'button',
         expandLabel: 'Show More',
         collapseLabel: 'Less',
-      },
-      {
+      }),
+      accordionItemBuilder({
         title: 'Second Row With Icon',
         children: <Text>${text}</Text>,
         icon: <InfoCircle />,
         expandLabel: 'Show More',
         collapseLabel: 'Less',
-      },
+      }),
     ]}
   />
 ));
@@ -43,29 +50,29 @@ storiesOf('Accordion', module).add('multiple', () => (
   <Accordion
     multiple
     items={[
-      {
+      accordionItemBuilder({
         title: 'First Initially Open Row',
         children: <Text>${text}</Text>,
         initiallyOpen: true,
         collapseLabel: 'Less',
-      },
-      {
+      }),
+      accordionItemBuilder({
         title: 'Second Row',
         children: <Text>${text}</Text>,
         open: true,
         collapseLabel: 'Less',
-      },
-      {
+      }),
+      accordionItemBuilder({
         title: 'Third Row',
         children: <Text>${text}</Text>,
         collapseLabel: 'Less',
-      },
-      {
+      }),
+      accordionItemBuilder({
         title: 'Disable Row',
         children: <Text>${text}</Text>,
         collapseLabel: 'Less',
         disabled: true,
-      },
+      }),
     ]}
   />
 ));
@@ -78,29 +85,29 @@ storiesOf('Accordion', module).add('skins', () => (
           multiple
           skin={skinColor}
           items={[
-            {
+            accordionItemBuilder({
               title: 'First Initially Open Row',
               children: <Text>${text}</Text>,
               initiallyOpen: true,
               collapseLabel: 'Less',
-            },
-            {
+            }),
+            accordionItemBuilder({
               title: 'Second Row',
               children: <Text>${text}</Text>,
               open: true,
               collapseLabel: 'Less',
-            },
-            {
+            }),
+            accordionItemBuilder({
               title: 'Third Row',
               children: <Text>${text}</Text>,
               collapseLabel: 'Less',
-            },
-            {
+            }),
+            accordionItemBuilder({
               title: 'Disable Row',
               children: <Text>${text}</Text>,
               collapseLabel: 'Less',
               disabled: true,
-            },
+            }),
           ]}
         />
       </Cell>
@@ -118,12 +125,12 @@ storiesOf('Accordion', module).add('skins and shadow', () => (
             skin={skinColor}
             hideShadow={hideShadow}
             items={[
-              {
+              accordionItemBuilder({
                 title: 'First Initially Open Row',
                 children: <Text>${text}</Text>,
                 initiallyOpen: true,
                 collapseLabel: 'Less',
-              },
+              }),
             ]}
           />
         </Cell>
@@ -138,14 +145,14 @@ storiesOf('Accordion', module).add('inCard', () => (
     <Card.Divider />
     <Accordion
       items={[
-        {
+        accordionItemBuilder({
           title: 'First Item',
           icon: <InfoCircle />,
           expandLabel: 'More',
           collapseLabel: 'Less',
           buttonType: 'button',
           children: <Text>${text}</Text>,
-        },
+        }),
       ]}
     />
   </Card>
