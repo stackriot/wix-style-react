@@ -18,6 +18,7 @@ Types of changes:
 
 ### Fixed
 - `<StyledNestableList/>` UI fixes, a11ty [#6416](https://github.com/wix/wix-style-react/pull/6416)
+- `<AnalyticsLayout/>` - fix Cell export [#6456](https://github.com/wix/wix-style-react/pull/6456)
 
 ## 9.59.0 - 2020-12-28
 ### Fixed
