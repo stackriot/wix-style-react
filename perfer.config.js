@@ -144,7 +144,7 @@ const javascriptFiles = [
   ['StatusIndicator.bundle.min.js', 44],
   ['Stepper.bundle.min.js', 41],
   ['Swatches.bundle.min.js', 86],
-  ['StyledNestableList.bundle.min.js', 74],
+  ['StyledNestableList.bundle.min.js', 78],
   ['Table.bundle.min.js', 68],
   ['TableActionCell.bundle.min.js', 71],
   ['TableListItem.bundle.min.js', 44],
