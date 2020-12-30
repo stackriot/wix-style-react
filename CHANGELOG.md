@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<Accordion/>` - Add items size prop [#6436](https://github.com/wix/wix-style-react/pulls)
+
 ## 9.60.0 - 2020-12-30
 ### Added
 - `<Accordion/>` - Add a `node` button type [#6459](https://github.com/wix/wix-style-react/pull/6459)
