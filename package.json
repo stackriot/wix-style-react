@@ -136,7 +136,7 @@
     "@ui-autotools/sanity": "^5.0.1",
     "@wix/ambassador": "^4.0.0",
     "@wix/ambassador-testkit": "^5.0.316",
-    "@wix/ambassador-wix-atlas-service-web": "^1.0.135",
+    "@wix/ambassador-wix-atlas-service-web": "^1.0.147",
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-dynamic-import-node": "^2.3.3",
@@ -196,7 +196,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "@wix/ambassador": "^4.0.0",
-    "@wix/ambassador-wix-atlas-service-web": "^1.0.135"
+    "@wix/ambassador-wix-atlas-service-web": "^1.0.147"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",

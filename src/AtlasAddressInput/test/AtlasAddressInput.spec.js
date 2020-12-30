@@ -2,7 +2,7 @@ import React from 'react';
 import { AmbassadorTestkit } from '@wix/ambassador-testkit';
 import { WixAtlasServiceWeb } from '@wix/ambassador-wix-atlas-service-web/http';
 import {
-  aListPredictionsResponse,
+  aPredictResponse,
   aV2Prediction as aPrediction,
 } from '@wix/ambassador-wix-atlas-service-web/builders';
 import {
@@ -34,17 +34,12 @@ const mockResults = (ambassadorTestkit, amountOfItems) => {
       })
       .build();
   });
-  const response = aListPredictionsResponse()
-    .withPredictions(predictions)
-    .build();
+  const response = aPredictResponse().withPredictions(predictions).build();
   const atlasStub = ambassadorTestkit.createStub(
     WixAtlasServiceWeb,
     BASE_ATLAS_URL,
   );
-  atlasStub
-    .AutocompleteServiceV2()
-    .listPredictions.always()
-    .resolve(response);
+  atlasStub.AutocompleteServiceV2().predict.always().resolve(response);
 };
 
 describe(AtlasAddressInput.displayName, () => {

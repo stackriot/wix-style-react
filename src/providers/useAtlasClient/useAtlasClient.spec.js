@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { AmbassadorTestkit } from '@wix/ambassador-testkit';
 import { WixAtlasServiceWeb } from '@wix/ambassador-wix-atlas-service-web/http';
 import {
-  aListPredictionsResponse,
+  aPredictResponse,
   aV2Prediction as aPrediction,
 } from '@wix/ambassador-wix-atlas-service-web/builders';
 import useAtlasClient, { BASE_ATLAS_URL } from './useAtlasClient';
@@ -13,16 +13,14 @@ describe('useAtlasClient', () => {
   const renderHelper = () => renderHook(() => useAtlasClient()).result;
   it('fetches autocomplete predictions from Atlas location service', async () => {
     const predictions = [aPrediction().build()];
-    const response = aListPredictionsResponse()
-      .withPredictions(predictions)
-      .build();
+    const response = aPredictResponse().withPredictions(predictions).build();
     const atlasStub = ambassadorTestkit.createStub(
       WixAtlasServiceWeb,
       BASE_ATLAS_URL,
     );
     atlasStub
       .AutocompleteServiceV2()
-      .listPredictions.when({ input: 'Paris' })
+      .predict.when({ input: 'Paris' })
       .resolve(response);
 
     const result = renderHelper();

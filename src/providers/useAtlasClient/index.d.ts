@@ -1,6 +1,6 @@
 import {
   V2Prediction as Prediction,
-  ListPredictionsRequest,
+  PredictRequest,
 } from '@wix/ambassador-wix-atlas-service-web/types';
 import { OmitPolyfill } from '../../common';
 import {
@@ -8,7 +8,7 @@ import {
   UseAutocompleteClient,
 } from '../usePlacesAutocomplete/autocompleteClient';
 
-export type AtlasRequestOptions = OmitPolyfill<ListPredictionsRequest, 'input'>;
+export type AtlasRequestOptions = OmitPolyfill<PredictRequest, 'input'>;
 export interface AtlasInitOptions {
   baseUrl?: string;
 }

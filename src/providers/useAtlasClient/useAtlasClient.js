@@ -17,7 +17,7 @@ const useAtlasClient = ({
   const fetchPredictions = useCallback(
     async (value, requestOptions) => {
       // fetch autocomplete predictions based on value
-      const { predictions } = await autocompleteService().listPredictions({
+      const { predictions } = await autocompleteService().predict({
         ...requestOptions,
         input: value,
       });
