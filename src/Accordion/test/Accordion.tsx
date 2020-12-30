@@ -20,6 +20,7 @@ function AccordionWithAllProps() {
       multiple
       skin="light"
       hideShadow
+      size="small"
       items={[
         {
           buttonType: 'button',

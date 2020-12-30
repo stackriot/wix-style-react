@@ -21,6 +21,9 @@ class Accordion extends React.Component {
     /** Hide Accordion shadow effect */
     hideShadow: PropTypes.bool,
 
+    /** Change items size */
+    size: PropTypes.oneOf(['small', 'large']),
+
     /** accordion items nodes */
     items: PropTypes.oneOfType([
       PropTypes.arrayOf(
@@ -53,6 +56,7 @@ class Accordion extends React.Component {
     multiple: false,
     skin: 'standard',
     hideShadow: false,
+    size: 'large',
   };
 
   _findOpenIndexes = (items, initial) =>
@@ -101,7 +105,7 @@ class Accordion extends React.Component {
 
   render() {
     const { openIndexes } = this.state;
-    const { dataHook, items, skin, hideShadow } = this.props;
+    const { dataHook, items, skin, hideShadow, size } = this.props;
 
     return (
       <div data-hook={dataHook}>
@@ -118,6 +122,7 @@ class Accordion extends React.Component {
             key: index,
             skin,
             hideShadow,
+            size,
           };
 
           if (typeof item.render === 'function') {

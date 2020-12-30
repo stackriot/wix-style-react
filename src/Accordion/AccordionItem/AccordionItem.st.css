@@ -9,7 +9,8 @@
 }
 
 .root {
-  -st-states: hover, disabled, open, skin(enum(standard, light)), hideShadow ;
+  -st-states: hover, disabled, open, hideShadow,
+    skin(enum(standard, light)), size(enum(small, large));
   overflow: hidden;
 }
 
@@ -18,10 +19,17 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 24px;
-  height: 72px;
+  padding: 0 24px;
   transition: background-color .3s;
   outline: none;
+}
+
+.root:size(small) .header {
+  height: 48px;
+}
+
+.root:size(large) .header {
+  height: 72px;
 }
 
 .root:not(:disabled):hover .header {

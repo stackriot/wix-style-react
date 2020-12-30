@@ -4,7 +4,9 @@ export interface AccordionSectionItemCommonProps {
   title: string;
 }
 
-export interface AccordionSectionItemProps {}
+export interface AccordionSectionItemProps {
+  size?: 'small' | 'large';
+}
 
 export default class AccordionSectionItem extends React.Component<
   AccordionSectionItemProps & AccordionSectionItemCommonProps

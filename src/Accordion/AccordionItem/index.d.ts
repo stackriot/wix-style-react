@@ -25,6 +25,12 @@ export interface AccordionItemCommonProps {
   onMouseLeave?: React.MouseEventHandler<HTMLElement>;
 }
 
+export interface AccordionItemProps {
+  skin?: 'light' | 'standard';
+  hideShadow?: boolean;
+  size?: 'small' | 'large';
+}
+
 export default class AccordionItem extends React.Component<
   AccordionItemProps & AccordionItemCommonProps
 > {}

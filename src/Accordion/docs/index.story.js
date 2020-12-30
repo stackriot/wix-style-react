@@ -80,6 +80,7 @@ export default {
     items: exampleItems[0].value,
     multiple: false,
     skin: 'standard',
+    size: 'large',
   },
 
   exampleProps: {
@@ -149,7 +150,22 @@ The label can be shown \`always\` or on \`hover\`
               'Disabled rows cannot be expand/collapsed by the user nor they can focus the expand/collapsed button.',
             source: examples.disabled,
           }),
-          example({ title: 'Skins', source: examples.skins }),
+          example({
+            title: 'Skins',
+            text: `
+Skin is global prop that affect all accordion items together.
+It is applied only on the accordion item content.\n
+            `,
+            source: examples.skins,
+          }),
+          example({
+            title: 'Sizes',
+            text: `
+Size is global prop that affect all accordion items together.
+It is applied only on the accordion item header.\n
+            `,
+            source: examples.sizes,
+          }),
           example({
             title: 'Backward compatibility',
             text: `

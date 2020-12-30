@@ -31,6 +31,7 @@ class AccordionItem extends React.PureComponent {
     skin: PropTypes.oneOf(['standard', 'light']),
     hideShadow: PropTypes.bool,
     className: PropTypes.string,
+    size: PropTypes.oneOf(['small', 'large']),
   };
 
   static defaultProps = {
@@ -161,6 +162,7 @@ class AccordionItem extends React.PureComponent {
       skin,
       hideShadow,
       className,
+      size,
     } = this.props;
     const { hover } = this.state;
 
@@ -168,14 +170,14 @@ class AccordionItem extends React.PureComponent {
       <div
         className={st(
           classes.root,
-          { disabled, hover, open, skin, hideShadow },
+          { disabled, hover, open, skin, hideShadow, size },
           className,
         )}
       >
         <div data-hook={dataHooks.item}>
           <div
             onClick={!disabled ? onToggle : null}
-            className={classes.header}
+            className={st(classes.header, { size })}
             data-hook="header"
             onMouseEnter={this._onMouseEnter}
             onMouseLeave={this._onMouseLeave}

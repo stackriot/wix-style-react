@@ -18,3 +18,8 @@ export const skins = {
   standard: 'standard',
   light: 'light',
 };
+
+export const SIZES = {
+  small: 'small',
+  large: 'large',
+};

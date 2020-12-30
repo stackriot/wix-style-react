@@ -121,6 +121,35 @@ export const skins = `
 </Layout>
 `;
 
+export const sizes = `
+<Layout>
+  <Cell span={6}>
+    <Accordion
+      size="small"
+      items={[
+        accordionItemBuilder({
+          title: 'Accordion with small size',
+          children: <Text>This is an accordion item content</Text>,
+          initiallyOpen: true,
+        }),
+      ]}
+    />
+  </Cell>
+  <Cell span={6}>
+    <Accordion
+      size="large"
+      items={[
+        accordionItemBuilder({
+          title: 'Accordion with large size',
+          children: <Text>This is an accordion item content</Text>,
+          initiallyOpen: true,
+        }),
+      ]}
+    />
+  </Cell>
+</Layout>
+`;
+
 export const backwardCompatibility = `
 <Accordion
   items={[

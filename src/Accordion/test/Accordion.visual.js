@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import InfoCircle from 'wix-ui-icons-common/InfoCircle';
-import { skins } from '../constants';
+import { skins, SIZES } from '../constants';
 import Accordion, { accordionItemBuilder } from '../Accordion';
 import Text from '../../Text';
 import { Layout, Cell } from '../../Layout';
@@ -193,5 +193,23 @@ storiesOf('Accordion', module).add('button types', () => (
         </Cell>
       )),
     )}
+  </Layout>
+));
+
+storiesOf('Accordion', module).add('sizes', () => (
+  <Layout>
+    {Object.values(SIZES).map(size => (
+      <Cell span={4}>
+        <Accordion
+          size={size}
+          items={[
+            accordionItemBuilder({
+              title: 'First Row',
+              children: <Text>${text}</Text>,
+            }),
+          ]}
+        />
+      </Cell>
+    ))}
   </Layout>
 ));

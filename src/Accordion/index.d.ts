@@ -15,6 +15,7 @@ export interface AccordionProps {
   items?: (AccordionItemCommonProps | AccordionRenderOptionFn)[];
   skin?: AccordionItemProps['skin'];
   hideShadow?: AccordionItemProps['hideShadow'];
+  size?: AccordionItemProps['size'];
 }
 
 export default class Accordion extends React.Component<AccordionProps> {}
