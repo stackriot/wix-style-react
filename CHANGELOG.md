@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<Accordion/>` - Add a 'node' button type [#6459](https://github.com/wix/wix-style-react/pull/6459)
+
 ### Fixed
 - `<StyledNestableList/>` UI fixes, a11ty [#6416](https://github.com/wix/wix-style-react/pull/6416)
 - `<AnalyticsLayout/>` - fix Cell export [#6456](https://github.com/wix/wix-style-react/pull/6456)
