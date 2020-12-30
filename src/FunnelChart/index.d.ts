@@ -3,6 +3,7 @@ import * as React from 'react';
 export interface FunnelChartItem {
   value?: number;
   label: string;
+  displayValue?: string;
 }
 
 type percentageDifferenceCbData = {
@@ -25,6 +26,4 @@ export interface FunnelChartProps {
   }: percentageDifferenceCbData) => void;
 }
 
-export default class FunnelChart extends React.PureComponent<
-  FunnelChartProps
-> {}
+export default class FunnelChart extends React.PureComponent<FunnelChartProps> {}
