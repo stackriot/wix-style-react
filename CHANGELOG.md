@@ -17,7 +17,8 @@ Types of changes:
 ## Next
 
 ### Added
-- `<Accordion/>` - Add a 'node' button type [#6459](https://github.com/wix/wix-style-react/pull/6459)
+- `<Accordion/>` - Add a `node` button type [#6459](https://github.com/wix/wix-style-react/pull/6459)
+- `<FunnelChart>` - add `displayValue` prop [#6457](https://github.com/wix/wix-style-react/pull/6457)
 
 ### Fixed
 - `<StyledNestableList/>` UI fixes, a11ty [#6416](https://github.com/wix/wix-style-react/pull/6416)
