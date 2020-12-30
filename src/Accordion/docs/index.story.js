@@ -121,13 +121,35 @@ When the component is uncontrolled, use the \`initiallyOpen\` prop of an accordi
             source: examples.multiple,
           }),
           example({
+            title: 'Expand/collapse button',
+            text: `
+<b>Button type</b>\n
+
+The expand/collapse button can be one of the following:
+- textButton
+- button
+- node
+
+<b>Expand/Collapse label</b>
+- textButton - can be with or without label
+- button - must be with label
+- node - can be with or without label
+
+<b>Show label</b>\n
+The label can be shown \`always\` or on \`hover\`
+- textButton - hover by default (only for the label, the chevron will always be shown)
+- button - always by default
+- node - hover by default
+            `,
+            source: examples.withButton,
+          }),
+          example({
             title: 'Disabled Accordion Rows',
             text:
               'Disabled rows cannot be expand/collapsed by the user nor they can focus the expand/collapsed button.',
             source: examples.disabled,
           }),
           example({ title: 'Skins', source: examples.skins }),
-          example({ title: 'With Button & Icon', source: examples.withButton }),
           example({
             title: 'Backward compatibility',
             text: `

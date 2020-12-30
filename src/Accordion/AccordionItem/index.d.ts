@@ -1,5 +1,13 @@
 import * as React from 'react';
 
+export interface AccordionItemProps {
+  skin?: 'light' | 'standard';
+  hideShadow?: boolean;
+}
+
+export type AccordionItemButtonType = 'textButton' | 'button' | 'node';
+export type AccordionItemShowLabel = 'hover' | 'always';
+
 export interface AccordionItemCommonProps {
   title?: React.ReactNode;
   icon?: React.ReactNode;
@@ -7,6 +15,7 @@ export interface AccordionItemCommonProps {
   expandLabel?: React.ReactNode;
   collapseLabel?: React.ReactNode;
   buttonType?: AccordionItemButtonType;
+  showLabel?: AccordionItemShowLabel;
   className?: string;
   open?: boolean;
   initiallyOpen?: boolean;
@@ -15,13 +24,6 @@ export interface AccordionItemCommonProps {
   onMouseEnter?: React.MouseEventHandler<HTMLElement>;
   onMouseLeave?: React.MouseEventHandler<HTMLElement>;
 }
-
-export interface AccordionItemProps {
-  skin?: 'light' | 'standard';
-  hideShadow?: boolean;
-}
-
-export type AccordionItemButtonType = 'textButton' | 'button';
 
 export default class AccordionItem extends React.Component<
   AccordionItemProps & AccordionItemCommonProps

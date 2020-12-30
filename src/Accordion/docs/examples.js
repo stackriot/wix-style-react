@@ -10,24 +10,66 @@ export const simple = `
 `;
 
 export const withButton = `
-<Accordion
-  items={[
-    accordionItemBuilder({
-      title: 'First Row With Button',
-      children: <Text>${text}</Text>,
-      buttonType: 'button',
-      expandLabel: 'Show More',
-      collapseLabel: 'Less' ,
-    }),
-    accordionItemBuilder({
-      title: 'Second Row With Icon',
-      children: <Text>${text}</Text>,
-      icon: <Icons.InfoCircle />,
-      expandLabel: 'Show More',
-      collapseLabel: 'Less',
-    }),
-  ]}
-/>
+<Layout>
+  <Cell span={6}>
+    <Accordion
+      items={[
+        accordionItemBuilder({
+          title: 'Chevron',
+          children: <Text>This is an accordion item content</Text>,
+        }),
+      ]}
+    />
+  </Cell>
+  <Cell span={6}>
+    <Accordion
+      items={[
+        accordionItemBuilder({
+          title: 'Chevron + label',
+          children: <Text>This is an accordion item content</Text>,
+          buttonType: 'textButton',
+          expandLabel: 'expand',
+          collapseLabel: 'collapse',
+        }),
+      ]}
+    />
+  </Cell>
+  <Cell span={6}>
+    <Accordion
+      items={[
+        accordionItemBuilder({
+          title: 'Button',
+          children: <Text>This is an accordion item content</Text>,
+          buttonType: 'button',
+          expandLabel: 'expand',
+          collapseLabel: 'collapse',
+        }),
+      ]}
+    />
+  </Cell>
+  <Cell span={6}>
+    <Accordion
+      items={[
+        accordionItemBuilder({
+          title: 'Custom node',
+          children: <Text>This is an accordion item content</Text>,
+          buttonType: 'node',
+          showLabel: 'always',
+          expandLabel: (
+            <IconButton>
+              <Icons.More />
+            </IconButton>
+          ),
+          collapseLabel: (
+            <IconButton>
+              <Icons.X />
+            </IconButton>
+          ),
+        }),
+      ]}
+    />
+  </Cell>
+</Layout>
 `;
 
 export const multiple = `

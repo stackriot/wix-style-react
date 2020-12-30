@@ -157,3 +157,41 @@ storiesOf('Accordion', module).add('inCard', () => (
     />
   </Card>
 ));
+
+storiesOf('Accordion', module).add('button types', () => (
+  <Layout>
+    {Object.values([false, true]).map(open => (
+      <Cell span={6}>
+        <Accordion
+          items={[
+            accordionItemBuilder({
+              title: 'Item',
+              children: <Text>${text}</Text>,
+              open,
+              showLabel: 'always',
+            }),
+          ]}
+        />
+      </Cell>
+    ))}
+    {Object.values(['textButton', 'button', 'node']).map(buttonType =>
+      Object.values([false, true]).map(open => (
+        <Cell span={6}>
+          <Accordion
+            items={[
+              accordionItemBuilder({
+                title: 'Item',
+                children: <Text>${text}</Text>,
+                expandLabel: 'expand',
+                collapseLabel: 'collapse',
+                buttonType,
+                open,
+                showLabel: 'always',
+              }),
+            ]}
+          />
+        </Cell>
+      )),
+    )}
+  </Layout>
+));
