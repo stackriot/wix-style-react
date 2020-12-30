@@ -17,7 +17,7 @@ Types of changes:
 ## Next
 
 ### Added
-- `<Accordion/>` - Add items size prop [#6436](https://github.com/wix/wix-style-react/pulls)
+- `<Accordion/>` - Add items size prop [#6436](https://github.com/wix/wix-style-react/pull/6436)
 
 ## 9.60.0 - 2020-12-30
 ### Added
