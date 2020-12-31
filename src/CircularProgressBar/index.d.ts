@@ -12,8 +12,6 @@ export interface CircularProgressBarProps {
   dataHook?: string;
 }
 
-export default class CircularProgressBar extends React.PureComponent<
-  CircularProgressBarProps
-> {}
+export default class CircularProgressBar extends React.PureComponent<CircularProgressBarProps> {}
 
 export type CircularProgressBarSize = 'small' | 'medium' | 'large';

@@ -12,6 +12,4 @@ export interface SortableGridProps extends DraggableProps {
   endFixedElement?: React.ReactNode;
 }
 
-export default class SortableGrid extends React.PureComponent<
-  SortableGridProps
-> {}
+export default class SortableGrid extends React.PureComponent<SortableGridProps> {}

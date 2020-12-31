@@ -9,6 +9,4 @@ export type NumberInputProps = OmitPolyfill<InputProps, 'onChange'> & {
   onChange?: (value: number | null) => void;
 };
 
-export default class NumberInput extends React.PureComponent<
-  NumberInputProps
-> {}
+export default class NumberInput extends React.PureComponent<NumberInputProps> {}

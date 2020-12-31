@@ -26,6 +26,4 @@ export interface TableListItemProps {
   showDivider?: boolean;
 }
 
-export default class TableListItem extends React.PureComponent<
-  TableListItemProps
-> {}
+export default class TableListItem extends React.PureComponent<TableListItemProps> {}

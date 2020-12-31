@@ -31,6 +31,4 @@ export const addressInputItemBuilder: (data: {
   onClick?: React.MouseEventHandler<HTMLElement>;
 }) => DropdownLayoutValueOption;
 
-export default class AddressInputItem extends React.PureComponent<
-  AddressInputItemProps
-> {}
+export default class AddressInputItem extends React.PureComponent<AddressInputItemProps> {}

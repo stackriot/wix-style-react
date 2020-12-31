@@ -36,9 +36,7 @@ export interface DropdownLayoutProps {
 
 export type Overflow = 'visible' | 'hidden' | 'scroll' | 'auto';
 
-export default class DropdownLayout extends React.PureComponent<
-  DropdownLayoutProps
-> {
+export default class DropdownLayout extends React.PureComponent<DropdownLayoutProps> {
   static NONE_SELECTED_ID: NoneSelectedId;
 }
 

@@ -28,6 +28,4 @@ export interface AnalyticsSummaryCardProps {
   footer?: React.ReactNode;
 }
 
-export default class AnalyticsSummaryCard extends React.PureComponent<
-  AnalyticsSummaryCardProps
-> {}
+export default class AnalyticsSummaryCard extends React.PureComponent<AnalyticsSummaryCardProps> {}

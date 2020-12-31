@@ -10,7 +10,7 @@ export interface RadioGroupDriver extends BaseDriver {
   getRadioAtIndex: (index: number) => HTMLElement & RadioButtonDriver;
   getSelectedValue: () => string | number | null;
   isRadioDisabled: (index: number) => boolean;
-  getClassOfLabelAt: (index: number) => String;
+  getClassOfLabelAt: (index: number) => string;
   isVerticalDisplay: () => boolean;
   isHorizontalDisplay: () => boolean;
   isButtonType: () => boolean;

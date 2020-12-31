@@ -22,8 +22,10 @@ export default class Accordion extends React.Component<AccordionProps> {}
 
 export const accordionItemBuilder: (
   props: AccordionItemCommonProps,
-) => (internalProps?: AccordionItemProps) => { render(): React.ReactNode};
+) => (internalProps?: AccordionItemProps) => { render(): React.ReactNode };
 
 export const accordionSectionItemBuilder: (
   props: AccordionSectionItemCommonProps,
-) => (internalProps?: AccordionSectionItemProps) => { render(): React.ReactNode};
+) => (
+  internalProps?: AccordionSectionItemProps,
+) => { render(): React.ReactNode };

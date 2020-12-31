@@ -26,6 +26,4 @@ export interface NestableListProps {
   renderPrefix?: (data: IRenderData) => React.ReactNode;
 }
 
-export default class NestableList extends React.PureComponent<
-  NestableListProps
-> {}
+export default class NestableList extends React.PureComponent<NestableListProps> {}

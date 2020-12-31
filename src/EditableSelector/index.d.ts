@@ -19,6 +19,4 @@ export type EditableSelectorOption = {
   isSelected?: boolean;
 };
 
-export default class EditableSelector extends React.Component<
-  EditableSelectorProps
-> {}
+export default class EditableSelector extends React.Component<EditableSelectorProps> {}

@@ -22,6 +22,4 @@ export interface StyledNestableListProps {
   onAddItem?(item: StyledNestableListItem): void;
 }
 
-export default class StyledNestableList extends React.PureComponent<
-  StyledNestableListProps
-> {}
+export default class StyledNestableList extends React.PureComponent<StyledNestableListProps> {}

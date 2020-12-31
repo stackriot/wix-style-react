@@ -9,6 +9,4 @@ export interface EditableTitleProps {
   autoFocus?: boolean;
 }
 
-export default class EditableTitle extends React.Component<
-  EditableTitleProps
-> {}
+export default class EditableTitle extends React.Component<EditableTitleProps> {}

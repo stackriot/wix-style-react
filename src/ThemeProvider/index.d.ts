@@ -49,6 +49,4 @@ export interface ThemeProviderProps {
   theme?: ThemeInterface;
 }
 
-export default class ThemeProvider extends React.PureComponent<
-  ThemeProviderProps
-> {}
+export default class ThemeProvider extends React.PureComponent<ThemeProviderProps> {}

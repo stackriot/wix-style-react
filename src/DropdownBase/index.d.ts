@@ -39,9 +39,7 @@ export interface DropdownBaseProps {
   hasMore?: boolean;
 }
 
-export default class DropdownBase extends React.PureComponent<
-  DropdownBaseProps
-> {}
+export default class DropdownBase extends React.PureComponent<DropdownBaseProps> {}
 
 export type DropdownBaseChildrenFn = React.ReactNode | ChildrenFnArgs;
 export type ChildrenFnArgs = (data: {

@@ -18,6 +18,4 @@ export interface SparklineChartProps {
   animationDuration?: number;
 }
 
-export default class SparklineChart extends React.PureComponent<
-  SparklineChartProps
-> {}
+export default class SparklineChart extends React.PureComponent<SparklineChartProps> {}

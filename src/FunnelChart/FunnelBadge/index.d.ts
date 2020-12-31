@@ -6,6 +6,4 @@ export interface FunnelBadgeProps {
   onTooltipShow?(): void;
 }
 
-export default class FunnelBadge extends React.PureComponent<
-  FunnelBadgeProps
-> {}
+export default class FunnelBadge extends React.PureComponent<FunnelBadgeProps> {}

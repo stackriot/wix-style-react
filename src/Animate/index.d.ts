@@ -9,6 +9,5 @@ export interface AnimateProps {
   delay?: string | number;
 }
 
-
 declare const Animate: React.FC<AnimateProps>;
 export default Animate;

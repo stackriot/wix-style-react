@@ -22,6 +22,4 @@ export interface AddressInputProps {
   noResultsText?: React.ReactNode;
 }
 
-export default class AddressInput extends React.PureComponent<
-  AddressInputProps
-> {}
+export default class AddressInput extends React.PureComponent<AddressInputProps> {}

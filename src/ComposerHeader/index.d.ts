@@ -26,9 +26,7 @@ interface ComposerHeaderMainActionsProps {
   dataHook?: string;
 }
 
-export default class ComposerHeader extends React.Component<
-  ComposerHeaderProps
-> {
+export default class ComposerHeader extends React.Component<ComposerHeaderProps> {
   static SaveStatus: typeof ComposerHeaderSaveStatus;
   static Actions: typeof ComposerHeaderActions;
   static MainActions: typeof ComposerHeaderMainActions;

@@ -14,6 +14,4 @@ export interface MarketingLayoutProps {
   alignItems?: 'center' | 'stretch';
 }
 
-export default class MarketingLayout extends React.PureComponent<
-  MarketingLayoutProps
-> {}
+export default class MarketingLayout extends React.PureComponent<MarketingLayoutProps> {}

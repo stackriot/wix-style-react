@@ -13,6 +13,4 @@ export interface SelectableAccordionProps {
   onSelectionChanged?(selectedIds: number[]): void;
 }
 
-export default class SelectableAccordion extends React.PureComponent<
-  SelectableAccordionProps
-> {}
+export default class SelectableAccordion extends React.PureComponent<SelectableAccordionProps> {}

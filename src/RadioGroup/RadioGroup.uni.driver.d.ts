@@ -17,7 +17,7 @@ export interface RadioGroupUniDriver extends BaseUniDriver {
   ) => Promise<HTMLElement & RadioButtonUniDriver>;
   getSelectedValue: () => Promise<string | number | null>;
   isRadioDisabled: (index: number) => Promise<boolean>;
-  getClassOfLabelAt: (index: number) => Promise<String>;
+  getClassOfLabelAt: (index: number) => Promise<string>;
   isVerticalDisplay: () => Promise<boolean>;
   isHorizontalDisplay: () => Promise<boolean>;
   isButtonType: () => Promise<boolean>;

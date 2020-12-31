@@ -31,9 +31,9 @@ declare const Content: React.SFC<{
 }>;
 declare const BulkSelectionCheckbox: React.SFC<{ dataHook: string }>;
 
-export type TableColumn<RowDataType = RowDataDefaultType> = DataTableColumn<
-  RowDataType
->;
+export type TableColumn<
+  RowDataType = RowDataDefaultType
+> = DataTableColumn<RowDataType>;
 
 export type OnSelectionChangedFn = (
   selectedIds: TableProps['selectedIds'] | null,

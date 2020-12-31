@@ -30,6 +30,4 @@ export interface AutoCompleteWithLabelProps {
   value?: string | number;
 }
 
-export default class AutoCompleteWithLabel extends React.PureComponent<
-  AutoCompleteWithLabelProps
-> {}
+export default class AutoCompleteWithLabel extends React.PureComponent<AutoCompleteWithLabelProps> {}

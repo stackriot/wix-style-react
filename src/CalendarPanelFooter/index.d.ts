@@ -12,9 +12,7 @@ export interface CalendarPanelFooterProps {
   dateToString: (selectedDays: SelectedDaysType) => string;
 }
 
-export default class CalendarPanelFooter extends React.Component<
-  CalendarPanelFooterProps
-> {}
+export default class CalendarPanelFooter extends React.Component<CalendarPanelFooterProps> {}
 
 export interface CalendarPanelFooterItem {
   title?: React.ReactNode;

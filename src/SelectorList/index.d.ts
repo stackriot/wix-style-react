@@ -43,9 +43,7 @@ export type SelectorListCommonProps = {
   deselectAllText?: string;
 };
 
-export default class SelectorList extends React.PureComponent<
-  SelectorListProps
-> {}
+export default class SelectorList extends React.PureComponent<SelectorListProps> {}
 
 export type SelectorListDatasourceFn = (
   searchQuery: string,

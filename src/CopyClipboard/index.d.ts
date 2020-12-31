@@ -15,6 +15,4 @@ export interface CopyClipboardProps {
   resetTimeout?: number;
 }
 
-export default class CopyClipboard extends React.PureComponent<
-  CopyClipboardProps
-> {}
+export default class CopyClipboard extends React.PureComponent<CopyClipboardProps> {}

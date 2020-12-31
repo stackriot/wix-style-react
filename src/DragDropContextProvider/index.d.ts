@@ -4,6 +4,4 @@ export interface DragDropContextProviderProps {
   backend?: Function;
 }
 
-export default class DragDropContextProvider extends React.Component<
-  DragDropContextProviderProps
-> {}
+export default class DragDropContextProvider extends React.Component<DragDropContextProviderProps> {}

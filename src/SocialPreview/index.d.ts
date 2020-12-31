@@ -8,6 +8,4 @@ export interface SocialPreviewProps {
   media?: React.ReactNode;
 }
 
-export default class SocialPreview extends React.Component<
-  SocialPreviewProps
-> {}
+export default class SocialPreview extends React.Component<SocialPreviewProps> {}

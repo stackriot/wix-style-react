@@ -10,4 +10,4 @@ export interface BounceAnimationProps {
   delay?: string | number;
 }
 
-export default class BounceAnimation extends React.PureComponent<BounceAnimationProps>{}
+export default class BounceAnimation extends React.PureComponent<BounceAnimationProps> {}

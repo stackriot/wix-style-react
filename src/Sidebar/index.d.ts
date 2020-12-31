@@ -28,19 +28,13 @@ interface SidebarItemProps {
   onClick?: (itemKey: string, e: React.MouseEvent<HTMLElement>) => void;
 }
 
-export class SidebarPersistentHeader extends React.Component<
-  SidebarPersistentHeaderProps
-> {}
+export class SidebarPersistentHeader extends React.Component<SidebarPersistentHeaderProps> {}
 interface SidebarPersistentHeaderProps {}
 
-export class SidebarPersistentFooter extends React.Component<
-  SidebarPersistentFooterProps
-> {}
+export class SidebarPersistentFooter extends React.Component<SidebarPersistentFooterProps> {}
 interface SidebarPersistentFooterProps {}
 
-export class SidebarContextConsumer extends React.Component<
-  SidebarContextConsumerProps
-> {}
+export class SidebarContextConsumer extends React.Component<SidebarContextConsumerProps> {}
 interface SidebarContextConsumerProps {
   children(renderProps: {
     itemClicked: (itemKey: string) => void;
@@ -50,9 +44,7 @@ interface SidebarContextConsumerProps {
   }): React.ReactNode;
 }
 
-export class SidebarItemContextConsumer extends React.Component<
-  SidebarItemContextConsumerProps
-> {}
+export class SidebarItemContextConsumer extends React.Component<SidebarItemContextConsumerProps> {}
 interface SidebarItemContextConsumerProps {
   children(renderProps: { selected: () => boolean }): React.ReactNode;
 }

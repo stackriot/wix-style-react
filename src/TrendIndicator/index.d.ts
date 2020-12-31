@@ -7,6 +7,4 @@ export interface TrendIndicatorProps {
   inverted?: boolean;
 }
 
-export default class TrendIndicator extends React.PureComponent<
-  TrendIndicatorProps
-> {}
+export default class TrendIndicator extends React.PureComponent<TrendIndicatorProps> {}
