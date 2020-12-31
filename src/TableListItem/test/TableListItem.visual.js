@@ -1,6 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import TableListItem from '../TableListItem';
+import TableListItem, { VERTICAL_PADDING } from '../TableListItem';
+
+const sizes = Object.values(VERTICAL_PADDING);
 
 const commonProps = {
   options: [
@@ -34,6 +36,19 @@ const tests = [
         },
       },
     ],
+  },
+  {
+    describe: 'vertical padding',
+    its: sizes.map(verticalPadding => ({
+      it: verticalPadding,
+      props: {
+        verticalPadding,
+        checkbox: true,
+        draggable: true,
+        showDivider: true,
+        options: [{ value: 'Personal Finance' }],
+      },
+    })),
   },
 ];
 
