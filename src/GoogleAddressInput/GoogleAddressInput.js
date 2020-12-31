@@ -79,9 +79,7 @@ class GoogleAddressInput extends React.Component {
       <Input.IconAffix>
         <Search data-hook="search-icon" />
       </Input.IconAffix>
-    ) : (
-      undefined
-    );
+    ) : undefined;
 
     return (
       <div>

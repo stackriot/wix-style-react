@@ -109,9 +109,7 @@ export default class TimeInput extends Component {
   _isAmPmMode(disableAmPm) {
     return (
       !disableAmPm &&
-      moment('2016-04-03 13:14:00')
-        .format('LT')
-        .indexOf('PM') !== -1
+      moment('2016-04-03 13:14:00').format('LT').indexOf('PM') !== -1
     );
   }
 

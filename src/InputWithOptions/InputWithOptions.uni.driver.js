@@ -62,9 +62,7 @@ export const inputWithOptionsUniDriverFactory = (base, body) => {
       ).optionById(optionId);
       return (
         (await optionElm().exists()) &&
-        (await optionElm()
-          .$(`[data-hook=highlighter-${optionId}]`)
-          .exists())
+        (await optionElm().$(`[data-hook=highlighter-${optionId}]`).exists())
       );
     },
   };

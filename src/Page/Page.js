@@ -385,9 +385,11 @@ class Page extends React.PureComponent {
   _renderScrollableBackground() {
     const { headerContainerHeight, tailHeight } = this.state;
 
-    const backgroundHeight = `${headerContainerHeight -
+    const backgroundHeight = `${
+      headerContainerHeight -
       tailHeight +
-      (this._hasTail() ? 0 : parseInt(stVars.backgroundCoverContentPx, 10))}px`;
+      (this._hasTail() ? 0 : parseInt(stVars.backgroundCoverContentPx, 10))
+    }px`;
 
     if (this._hasBackgroundImage()) {
       return (
@@ -447,8 +449,9 @@ class Page extends React.PureComponent {
       <PageContext.Provider
         value={{
           stickyStyle: {
-            top: `${this._getMinimizedHeaderWrapperHeight() +
-              this.state.tailHeight}px`,
+            top: `${
+              this._getMinimizedHeaderWrapperHeight() + this.state.tailHeight
+            }px`,
           },
         }}
       >
