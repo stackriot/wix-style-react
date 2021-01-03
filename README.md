@@ -40,6 +40,7 @@ Take a look at our usage guide [Create Stylable App](https://github.com/wix/wix-
 
 #### Requirements
 wix-style-react requires react version `16.13.1` and up.
+For typescript users version `^3.9.7` is required.
 
 #### How to load wix-style-react compatible fonts:
 
