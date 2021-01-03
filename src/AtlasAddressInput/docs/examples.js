@@ -1,80 +1,29 @@
 export const simple = `<AtlasAddressInput headers={{ Authorization: 'some_auth_token' }} />`;
 
 export const controlled = `
-class MyAddressInput extends React.Component {
-  atlasUrl = 'https://www.wix.com/wix-atlas-service-web';
-  placesService = WixAtlasServiceWeb(this.atlasUrl).PlacesServiceV2();
-  headers = { Authorization: 'some_auth_token' };
+() => {
+  const [value, setValue] = React.useState('');
 
-  state = {
-    value: '',
-  };
+  const placesService = WixAtlasServiceWeb().PlacesServiceV2();
 
-  _setAddressPostalCode = option => {
-    this.placesService(this.headers)
+  const showAddressPostalCode = option => {
+    placesService()
       .getPlace({ searchId: option.id })
-      .then(({ place }) => {
-        this.setState({ value: place.address.postalCode });
-      });
+      .then(({ place }) => setValue(\`\${value} - \${place.address.postalCode}\`));
   };
 
-  _onChange = event => {
-    this.setState({ value: event.target.value });
-  }
+  _onChange = event => setValue(event.target.value);
 
-  _onClear = () => this.setState({ value: '' });
-
-  render() {
-    const { value } = this.state;
-
-    return (
-      <AtlasAddressInput
-        onChange={this._onChange}
-        onClear={this._onClear}
-        onSelect={this._setAddressPostalCode}
-        value={value}
-        headers={this.headers}
-      />
-    );
-  }
-}`;
-
-export const sizes = `
-() => {
-  const props = {
-    placeholder: 'Search places...',
-  };
+  _onClear = () => setValue('');
 
   return (
-    <Layout cols={1}>
-      <AtlasAddressInput {...props} size="small" />
-      <AtlasAddressInput {...props} />
-      <AtlasAddressInput {...props} size="large" />
-    </Layout>
+    <AtlasAddressInput
+      onChange={_onChange}
+      onClear={_onClear}
+      onSelect={showAddressPostalCode}
+      value={value}
+      headers={{ Authorization: 'some_auth_token' }}
+    />
   );
-}
+};
 `;
-
-export const shape = `
-() => {
-  const props = {
-    placeholder: 'Search places...',
-  };
-
-  return (
-    <Layout cols={1}>
-      <AtlasAddressInput {...props} />
-      <AtlasAddressInput {...props} roundInput={false} />
-    </Layout>
-  );
-}
-`;
-
-export const clearButton = `
-<Layout cols={1}>
-  <AtlasAddressInput initialValue="Some text" />
-  <AtlasAddressInput initialValue="Some text" clearButton={false} />
-</Layout>
-`;
-
-export const disabled = `<AtlasAddressInput placeholder="Disabled..." disabled />`;

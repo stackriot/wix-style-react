@@ -78,10 +78,13 @@ export default {
 
           description({
             text: (
-              <SectionHelper title="Dependencies">
+              <SectionHelper title="Dependencies" fullWidth>
                 <p>
-                  To use this component please install the `@wix/ambassador` and
-                  `@wix/ambassador-wix-atlas-service-web` peer dependencies.
+                  To use this component please install:
+                  <ul style={{ position: 'relative' }}>
+                    <li>@wix/ambassador</li>
+                    <li>@wix/ambassador-wix-atlas-service-web</li>
+                  </ul>
                 </p>
                 <p>
                   <h5>Using NPM:</h5>
@@ -113,45 +116,21 @@ You can pass a headers object to \`AtlasAddressInput\` using the \`headers\` pro
           title('Examples'),
 
           example({
-            title: 'Simple Usage',
-            text: 'A simple example.',
+            title: 'Basic usage',
+            text: `
+Atlas address input provides UI and the Atlas service internally.\n
+This is a mock example, type anything to see suggestions that match your input.
+            `,
             source: examples.simple,
           }),
 
           example({
-            title: 'Controlled',
-            text: `You can pass a \`value\` prop to control the value of input.\n
-Using the \`onSelect\` prop, we can fetch additional data based on selected place\n
-and set custom value on selection.`,
+            title: 'Display custom address',
+            text: `
+In order to custom the address displayed, use placesService to get all meta-data from Atlas.\n
+In this example we want to display a postal code along with the address, try to type anything and select any suggestion.
+            `,
             source: examples.controlled,
-          }),
-
-          example({
-            title: 'Sizes',
-            text:
-              'You can set the size of the input to be `small`, `medium` or `large` (default: `medium`)',
-            source: examples.sizes,
-          }),
-
-          example({
-            title: 'Shape',
-            text:
-              'AtlasAddressInput can be either round or square depending on the `roundInput` prop (default: `true`).',
-            source: examples.shape,
-          }),
-
-          example({
-            title: 'Clear button',
-            text:
-              'A clear button can be displayed using the `clearButton` prop (default: `true`).',
-            source: examples.clearButton,
-          }),
-
-          example({
-            title: 'Disabled input',
-            text:
-              'AtlasAddressInput can be disabled using the `disabled` prop.',
-            source: examples.disabled,
           }),
         ],
       }),
