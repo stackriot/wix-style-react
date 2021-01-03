@@ -23,6 +23,7 @@ Types of changes:
 
 ### Changed
 - Updated typescript version to `^3.9.7` [#6467](https://github.com/wix/wix-style-react/pull/6467)
+- `<AtlasAddressInput/>` - get place details on onSelect [#6481](https://github.com/wix/wix-style-react/pull/6481)
 
 ## 9.60.1 - 2020-12-30
 ### Fixed
