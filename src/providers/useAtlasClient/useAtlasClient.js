@@ -11,23 +11,37 @@ const useAtlasClient = ({
   /** Headers to pass to Atlas Autocomplete Service */
   headers,
 } = {}) => {
+  const atlas = useMemo(() => WixAtlasServiceWeb(baseUrl), [baseUrl]);
   // Atlas Ambassador autocomplete service (memoized)
   const autocompleteService = useMemo(
-    () => WixAtlasServiceWeb(baseUrl).AutocompleteServiceV2(),
-    [baseUrl],
+    () => atlas.AutocompleteServiceV2()(headers),
+    [atlas, headers],
   );
+  // Atlas Ambassador places service (memoized)
+  const placesService = useMemo(() => atlas.PlacesServiceV2()(headers), [
+    atlas,
+    headers,
+  ]);
 
   const fetchPredictions = useCallback(
     async (value, requestOptions) => {
       // fetch autocomplete predictions based on value
-      const { predictions } = await autocompleteService(headers).predict({
+      const { predictions } = await autocompleteService.predict({
         ...requestOptions,
         input: value,
       });
 
       return predictions;
     },
-    [autocompleteService, headers],
+    [autocompleteService],
+  );
+
+  const getPlaceDetails = useCallback(
+    async searchId => {
+      const { place } = await placesService.getPlace({ searchId });
+      return place;
+    },
+    [placesService],
   );
 
   return {
@@ -41,8 +55,13 @@ const useAtlasClient = ({
       *  @property {latitude: number, longitude: number} origin
               (optional) the origin point from which to calculate straight-line distance to the destination;
       *  @property {number} radius (optional) the distance (in meters) within which to return place results;
-   * } */
+   * }
+   * @returns {Promise<Prediction[]>} */
     fetchPredictions,
+    /** callback that fetches details for a place given its atlas `searchId`
+     * @param {string} searchId identifier for atlas prediction result we want to get additional details for
+     * @returns {Promise<V2Place>} */
+    getPlaceDetails,
     /** whether component is ready */
     ready: true,
   };

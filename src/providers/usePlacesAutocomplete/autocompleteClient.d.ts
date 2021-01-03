@@ -3,8 +3,17 @@ export type FetchPredictions<Prediction, RequestOptions = any> = (
   requestOptions?: RequestOptions,
 ) => Promise<Prediction[]>;
 
-interface ReadyAutocompleteClient<Prediction, RequestOptions = any> {
+export type GetPlaceDetails<PlaceDetails> = (
+  placeId: string,
+) => Promise<PlaceDetails>;
+
+interface ReadyAutocompleteClient<
+  Prediction,
+  PlaceDetails,
+  RequestOptions = any
+> {
   fetchPredictions: FetchPredictions<Prediction, RequestOptions>;
+  getPlaceDetails: GetPlaceDetails<PlaceDetails>;
   ready: true;
 }
 
@@ -12,11 +21,15 @@ interface NotReadyAutocompleteClient {
   ready: false;
 }
 
-export type AutocompleteClient<Prediction, RequestOptions = any> =
-  | ReadyAutocompleteClient<Prediction, RequestOptions>
+export type AutocompleteClient<
+  Prediction,
+  PlaceDetails,
+  RequestOptions = any
+> =
+  | ReadyAutocompleteClient<Prediction, PlaceDetails, RequestOptions>
   | NotReadyAutocompleteClient;
 
 export type UseAutocompleteClient<
-  Client extends AutocompleteClient<any, any>,
+  Client extends AutocompleteClient<any, any, any>,
   InitOptions = any
 > = (options?: InitOptions) => Client;

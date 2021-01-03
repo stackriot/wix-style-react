@@ -13,6 +13,7 @@ const AtlasAddressInput = ({
   debounceFn,
   onChange,
   onClear,
+  onSelect,
   optionLayout,
   optionPrefix,
   optionSuffix,
@@ -60,12 +61,21 @@ const AtlasAddressInput = ({
     onClear && onClear();
   }, [clearPredictions, onClear]);
 
+  const _onSelect = useCallback(
+    option => {
+      const getPlaceDetails = () => client.getPlaceDetails(option.id);
+      onSelect && onSelect(option, getPlaceDetails);
+    },
+    [client, onSelect],
+  );
+
   return (
     <AddressInput
       {...props}
       options={options}
       onChange={_onChange}
       onClear={_onClear}
+      onSelect={_onSelect}
       status={status}
     />
   );
@@ -103,7 +113,10 @@ AtlasAddressInput.propTypes = {
   /** When set to true this component is disabled */
   disabled: PropTypes.bool,
 
-  /** Handler for address selection changes */
+  /** Handler for address selection changes
+   * @param {DropdownLayoutOption} option selected option
+   * @param {() => Promise<V2GetPlaceResponse>} getPlaceDetails function for retrieving additional place details
+   */
   onSelect: PropTypes.func,
 
   /** Handler for input changes */

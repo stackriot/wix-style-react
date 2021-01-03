@@ -37,9 +37,9 @@ const buildAtlasPlaceResponse = id => {
 };
 
 const mockAtlasRouter = function (router, baseRoute) {
-  router.get(`${baseRoute}/v2/predictions`, function (req, res) {
+  router.post(`${baseRoute}/v2/predict`, function (req, res) {
     const {
-      query: { input },
+      body: { input },
     } = req;
     res.json(buildAtlasAutocompleteResponse(input));
     res.end();

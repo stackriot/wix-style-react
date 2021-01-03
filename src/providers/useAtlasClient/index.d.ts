@@ -1,5 +1,6 @@
 import {
   V2Prediction as Prediction,
+  V2Place as PlaceDetails,
   PredictRequest,
 } from '@wix/ambassador-wix-atlas-service-web/types';
 import { OmitPolyfill } from '../../common';
@@ -15,9 +16,13 @@ export interface AtlasInitOptions {
     [headerName: string]: any;
   };
 }
-export { Prediction };
+export { Prediction, PlaceDetails };
 
-export type AtlasClient = AutocompleteClient<Prediction, AtlasRequestOptions>;
+export type AtlasClient = AutocompleteClient<
+  Prediction,
+  PlaceDetails,
+  AtlasRequestOptions
+>;
 
 declare const useAtlasClient: UseAutocompleteClient<
   AtlasClient,

@@ -40,6 +40,7 @@ const mockResults = (ambassadorTestkit, amountOfItems) => {
     BASE_ATLAS_URL,
   );
   atlasStub.AutocompleteServiceV2().predict.always().resolve(response);
+  return predictions;
 };
 
 describe(AtlasAddressInput.displayName, () => {
@@ -108,6 +109,31 @@ describe(AtlasAddressInput.displayName, () => {
 
     expect(props.onClear).toHaveBeenCalled();
     expect(await driver.getInputValue()).toEqual('');
+  });
+
+  it('should invoke onSelect', async () => {
+    const amountOfItems = 5;
+    const predictions = mockResults(ambassadorTestkit, amountOfItems);
+    const props = {
+      ...commonProps,
+      onSelect: jest.fn((option, getPlaceDetails) => {}),
+    };
+    const { driver } = render(<AtlasAddressInput {...props} />);
+
+    expect(props.onSelect).not.toHaveBeenCalled();
+
+    await driver.enterText('test');
+
+    await act(async () =>
+      eventually(async () => {
+        expect(await driver.getAmountOfItems()).toBe(amountOfItems);
+        await driver.clickAtOption(0);
+        expect(props.onSelect).toHaveBeenCalledWith(
+          expect.objectContaining({ id: predictions[0].searchId }),
+          expect.any(Function),
+        );
+      }),
+    );
   });
 
   it('should display option prefix when prop is passed', async () => {

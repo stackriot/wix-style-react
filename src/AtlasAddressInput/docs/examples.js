@@ -4,23 +4,22 @@ export const controlled = `
 () => {
   const [value, setValue] = React.useState('');
 
-  const placesService = WixAtlasServiceWeb().PlacesServiceV2();
+  const _onChange = event => setValue(event.target.value);
 
-  const showAddressPostalCode = option => {
-    placesService()
-      .getPlace({ searchId: option.id })
-      .then(({ place }) => setValue(\`\${value} - \${place.address.postalCode}\`));
-  };
+  const _onClear = () => setValue('');
 
-  _onChange = event => setValue(event.target.value);
-
-  _onClear = () => setValue('');
+  // Show address postal code
+  const _onSelect = (option, getPlaceDetails) => {
+    getPlaceDetails().then(placeDetails => {
+      setValue(\`\${option.label} - \${placeDetails.address.postalCode}\`);
+    });
+  }
 
   return (
     <AtlasAddressInput
       onChange={_onChange}
       onClear={_onClear}
-      onSelect={showAddressPostalCode}
+      onSelect={_onSelect}
       value={value}
       headers={{ Authorization: 'some_auth_token' }}
     />

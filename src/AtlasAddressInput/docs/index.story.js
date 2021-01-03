@@ -12,7 +12,6 @@ import {
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
-import { WixAtlasServiceWeb } from '@wix/ambassador-wix-atlas-service-web/http';
 
 import * as examples from './examples';
 import { storySettings } from '../test/storySettings';
@@ -26,14 +25,12 @@ const BASE_URL = '/api/atlas/';
 const MockAtlasAddressInput = props => (
   <AtlasAddressInput baseUrl={BASE_URL} {...props} />
 );
-const MockWixAtlasServiceWeb = WixAtlasServiceWeb.bind(null, BASE_URL);
 
 const example = config =>
   baseExample({
     components: {
       ...allComponents,
       AtlasAddressInput: MockAtlasAddressInput,
-      WixAtlasServiceWeb: MockWixAtlasServiceWeb,
     },
     ...config,
   });
@@ -127,7 +124,7 @@ This is a mock example, type anything to see suggestions that match your input.
           example({
             title: 'Display custom address',
             text: `
-In order to custom the address displayed, use placesService to get all meta-data from Atlas.\n
+In order to custom the address displayed, the \`onSelect\` callback provides a \`getPlaceDetails\` function to get all meta-data from Atlas.\n
 In this example we want to display a postal code along with the address, try to type anything and select any suggestion.
             `,
             source: examples.controlled,

@@ -19,7 +19,7 @@ function addressInputWithAllProps() {
       initialValue="address"
       value="address"
       disabled
-      onSelect={option => {}}
+      onSelect={(option, getPlaceDetails) => {}}
       onChange={value => {}}
       onClear={() => {}}
       roundInput={false}
@@ -30,6 +30,8 @@ function addressInputWithAllProps() {
       optionLayout="double-line"
       optionPrefix={<div />}
       optionSuffix={<span />}
+      debounceFn={(callback, debounceMs) => callback}
+      debounceMs={500}
     />
   );
 }
