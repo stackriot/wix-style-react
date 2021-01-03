@@ -18,6 +18,10 @@ Types of changes:
 
 ### Added
 - `<Accordion/>` - Add items size prop [#6436](https://github.com/wix/wix-style-react/pull/6436)
+- `<TableActionCell/>` - [Testkit] expose puppeteer testkit [#6476](https://github.com/wix/wix-style-react/pull/6476)
+
+### Changed
+- Updated typescript version to `^3.9.7` [#6467](https://github.com/wix/wix-style-react/pull/6467)
 
 ## 9.60.1 - 2020-12-30
 ### Fixed
