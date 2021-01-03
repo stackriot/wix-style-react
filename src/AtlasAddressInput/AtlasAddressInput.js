@@ -8,6 +8,7 @@ import { dataHooks } from './constants';
 
 const AtlasAddressInput = ({
   baseUrl,
+  headers,
   debounceMs,
   debounceFn,
   onChange,
@@ -15,9 +16,10 @@ const AtlasAddressInput = ({
   optionLayout,
   optionPrefix,
   optionSuffix,
+  status: statusProp,
   ...props
 }) => {
-  const client = useAtlasClient({ baseUrl });
+  const client = useAtlasClient({ baseUrl, headers });
   const {
     predictions,
     updatePredictions,
@@ -25,7 +27,8 @@ const AtlasAddressInput = ({
     loading,
   } = usePlacesAutocomplete({ client, debounceMs, debounceFn });
 
-  const status = loading ? 'loading' : undefined;
+  // If not loading, show the status passed from props
+  const status = loading ? 'loading' : statusProp;
 
   const options = useMemo(
     () =>
@@ -72,6 +75,9 @@ AtlasAddressInput.propTypes = {
   /** Custom domain for WixAtlasServiceWeb to retreive predictions from  */
   baseUrl: PropTypes.string,
 
+  /** Headers to pass to Atlas Autocomplete Service */
+  headers: PropTypes.object,
+
   /** Fetch predictions debounce in milliseconds (default: 200) */
   debounceMs: PropTypes.number,
 
@@ -105,6 +111,15 @@ AtlasAddressInput.propTypes = {
 
   /** Handler for getting notified upon a clear event, will show the clear button in the component input when passed. */
   onClear: PropTypes.func,
+
+  /** Handler for input blur */
+  onBlur: PropTypes.func,
+
+  /** Shows a status indication, will mostly be used for “loading” indication upon async request calls. */
+  status: PropTypes.oneOf(['loading', 'error', 'warning']),
+
+  /** The status message to display when hovering the status icon, if not given or empty there will be no tooltip */
+  statusMessage: PropTypes.node,
 
   /** The shape of the component input */
   roundInput: PropTypes.bool,

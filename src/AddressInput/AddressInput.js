@@ -63,6 +63,19 @@ class AddressInput extends React.PureComponent {
     return status === 'loading';
   };
 
+  _getStatus = () => {
+    const { status } = this.props;
+    const { isDropdownOpen } = this.state;
+    const isLoading = this._getIsLoading();
+    /** If addresses are loading and dropdown is open,
+     * displays loader in dropdown instead of in input.
+     */
+    if (isLoading && isDropdownOpen) {
+      return undefined;
+    }
+    return status;
+  };
+
   _setDropdownOpen = () => this.setState({ isDropdownOpen: true });
 
   _setDropdownClosed = () => this.setState({ isDropdownOpen: false });
@@ -125,17 +138,11 @@ class AddressInput extends React.PureComponent {
       clearButton,
       placeholder,
       disabled,
+      onBlur,
+      statusMessage,
     } = this.props;
-    const { isDropdownOpen } = this.state;
     const value = this._getInputValue();
-
-    const isLoading = this._getIsLoading();
-
-    /** If addresses are loading:
-     * when dropdown is closed - loader is shown on input,
-     * otherwise, loader is show in dropdown loading option.
-     */
-    const showLoadingStatusIndicator = isLoading && !isDropdownOpen;
+    const status = this._getStatus();
 
     return (
       <InputWithOptions
@@ -151,7 +158,9 @@ class AddressInput extends React.PureComponent {
         /** <Input /> always shows clear button when `onClear` prop is passed,
         so we only pass handler when clearButton is `true` */
         onClear={clearButton ? this._onClear : undefined}
-        status={showLoadingStatusIndicator ? 'loading' : undefined}
+        onBlur={onBlur}
+        status={status}
+        statusMessage={statusMessage}
         menuArrow={false}
         /* TODO: add highlight after this prop is fixed */
         prefix={
@@ -201,8 +210,14 @@ AddressInput.propTypes = {
   /** Handler for getting notified upon a clear event, will show the clear button in the component input when passed. */
   onClear: PropTypes.func,
 
+  /** Handler for input blur */
+  onBlur: PropTypes.func,
+
   /** Shows a status indication, will mostly be used for “loading” indication upon async request calls. */
   status: PropTypes.oneOf(['loading', 'error', 'warning']),
+
+  /** The status message to display when hovering the status icon, if not given or empty there will be no tooltip */
+  statusMessage: PropTypes.node,
 
   /** The shape of the component input */
   roundInput: PropTypes.bool,

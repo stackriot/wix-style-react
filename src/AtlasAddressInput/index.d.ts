@@ -4,7 +4,7 @@ import { OmitPolyfill } from '../common';
 import { AtlasInitOptions } from '../providers/useAtlasClient';
 
 export interface AtlasAddressInputProps
-  extends OmitPolyfill<AddressInputProps, 'options' | 'status'>,
+  extends OmitPolyfill<AddressInputProps, 'options'>,
     AtlasInitOptions {
   debounceMs?: number;
   debounceFn?: (callback: Function, debounceMs: number) => Function;

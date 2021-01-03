@@ -23,7 +23,9 @@ function addressInputWithAllProps() {
       onChange={value => {}}
       options={[{ id: 0, value: 'value' }]}
       onClear={() => {}}
+      onBlur={() => {}}
       status="loading"
+      statusMessage="error!"
       roundInput={false}
       size="small"
       placeholder="write something"

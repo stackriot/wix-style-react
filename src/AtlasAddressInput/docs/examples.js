@@ -1,15 +1,17 @@
-export const simple = `<AtlasAddressInput />`;
+export const simple = `<AtlasAddressInput headers={{ Authorization: 'some_auth_token' }} />`;
 
 export const controlled = `
 class MyAddressInput extends React.Component {
-  placesService = WixAtlasServiceWeb().PlacesServiceV2();
+  atlasUrl = 'https://www.wix.com/wix-atlas-service-web';
+  placesService = WixAtlasServiceWeb(this.atlasUrl).PlacesServiceV2();
+  headers = { Authorization: 'some_auth_token' };
 
   state = {
     value: '',
   };
 
   _setAddressPostalCode = option => {
-    this.placesService()
+    this.placesService(this.headers)
       .getPlace({ searchId: option.id })
       .then(({ place }) => {
         this.setState({ value: place.address.postalCode });
@@ -31,6 +33,7 @@ class MyAddressInput extends React.Component {
         onClear={this._onClear}
         onSelect={this._setAddressPostalCode}
         value={value}
+        headers={this.headers}
       />
     );
   }

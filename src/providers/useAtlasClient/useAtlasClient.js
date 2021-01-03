@@ -7,6 +7,9 @@ export const BASE_ATLAS_URL = 'https://www.wix.com/wix-atlas-service-web';
 const useAtlasClient = ({
   /** Custom domain to retreive predictions from  */
   baseUrl = BASE_ATLAS_URL,
+
+  /** Headers to pass to Atlas Autocomplete Service */
+  headers,
 } = {}) => {
   // Atlas Ambassador autocomplete service (memoized)
   const autocompleteService = useMemo(
@@ -17,14 +20,14 @@ const useAtlasClient = ({
   const fetchPredictions = useCallback(
     async (value, requestOptions) => {
       // fetch autocomplete predictions based on value
-      const { predictions } = await autocompleteService().predict({
+      const { predictions } = await autocompleteService(headers).predict({
         ...requestOptions,
         input: value,
       });
 
       return predictions;
     },
-    [autocompleteService],
+    [autocompleteService, headers],
   );
 
   return {

@@ -11,6 +11,9 @@ import {
 export type AtlasRequestOptions = OmitPolyfill<PredictRequest, 'input'>;
 export interface AtlasInitOptions {
   baseUrl?: string;
+  headers?: {
+    [headerName: string]: any;
+  };
 }
 export { Prediction };
 
