@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+- `<StatisticsWidget/>` - fixed padding for size tiny [#6472](https://github.com/wix/wix-style-react/pull/6472)
+
 ### Added
 - `<GooglePreview>` - Add `titleMaxLines`, `descriptionMaxLines` and `skin` props [#6474](https://github.com/wix/wix-style-react/pull/6474)
 
