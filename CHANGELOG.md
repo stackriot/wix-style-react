@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Changed
+- `<InputArea>` - move cursor to end on autoFocus [#6483](https://github.com/wix/wix-style-react/pull/6483)
 
 ## 9.61.0 - 2021-01-04
 ### Added
