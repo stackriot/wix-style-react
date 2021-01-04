@@ -36,7 +36,7 @@
 }
 
 .item:size(tiny) {
-  padding: 24px value(gap);
+  padding: 24px;
 }
 
 .item:size(large) {
