@@ -49,7 +49,8 @@ class Sidebar extends Component {
 
   itemKey2Children = {};
   itemKey2ParentKey = {};
-  onScreenChildrenRef = React.createRef();
+  childrenContainerRef = React.createRef();
+  childrenContentRef = React.createRef();
 
   state = {
     persistentTopChildren: [],
@@ -62,8 +63,46 @@ class Sidebar extends Component {
     isScrollbarDisplayed: false,
   };
 
+  _handleChildrenResize = () => {
+    this._shouldAddGradient();
+  };
+
+  childrenResizeObserver =
+    'ResizeObserver' in window &&
+    new ResizeObserver(this._handleChildrenResize);
+
   componentDidMount() {
     this._shouldAddGradient();
+
+    const {
+      childrenResizeObserver,
+      childrenContainerRef,
+      childrenContentRef,
+    } = this;
+
+    if (childrenResizeObserver && childrenContainerRef.current) {
+      childrenResizeObserver.observe(childrenContainerRef.current);
+    }
+
+    if (childrenResizeObserver && childrenContentRef.current) {
+      childrenResizeObserver.observe(childrenContentRef.current);
+    }
+  }
+
+  componentWillUnmount() {
+    const {
+      childrenResizeObserver,
+      childrenContainerRef,
+      childrenContentRef,
+    } = this;
+
+    if (childrenResizeObserver && childrenContainerRef.current) {
+      childrenResizeObserver.unobserve(childrenContainerRef.current);
+    }
+
+    if (childrenResizeObserver && childrenContentRef.current) {
+      childrenResizeObserver.unobserve(childrenContentRef.current);
+    }
   }
 
   _navigateTo = itemKey => {
@@ -115,7 +154,7 @@ class Sidebar extends Component {
   };
 
   _shouldAddGradient() {
-    const { scrollHeight, clientHeight } = this.onScreenChildrenRef.current;
+    const { scrollHeight, clientHeight } = this.childrenContainerRef.current;
     this.setState({ isScrollbarDisplayed: scrollHeight > clientHeight });
   }
 
@@ -260,10 +299,12 @@ class Sidebar extends Component {
 
             <div
               className={sliderClasses}
-              ref={this.onScreenChildrenRef}
-              data-hook={dataHooks.onScreenChildren}
+              ref={this.childrenContainerRef}
+              data-hook={dataHooks.childrenContainer}
             >
-              {this.state.onScreenChildren}
+              <div ref={this.childrenContentRef}>
+                {this.state.onScreenChildren}
+              </div>
               {this.state.isScrollbarDisplayed && (
                 <div
                   className={gradientClasses}
