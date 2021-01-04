@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.61.0 - 2021-01-04
 ### Added
 - `<Accordion/>` - Add items size prop [#6436](https://github.com/wix/wix-style-react/pull/6436)
 - `<TableActionCell/>` - [Testkit] expose puppeteer testkit [#6476](https://github.com/wix/wix-style-react/pull/6476)
