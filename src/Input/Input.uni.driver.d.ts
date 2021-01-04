@@ -60,7 +60,7 @@ export interface InputUniDriver extends BaseUniDriver {
   clickMenuArrow: () => Promise<void>;
   hasMenuArrow: () => Promise<boolean>;
   isRTL: () => Promise<boolean>;
-  getCursorLocation: () => Promise<any>;
+  getCursorLocation: () => Promise<number>;
   clearText: () => Promise<void>;
   clickOutside: () => boolean;
 

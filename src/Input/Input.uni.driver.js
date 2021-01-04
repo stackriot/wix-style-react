@@ -99,7 +99,7 @@ export const testkit = (base, body) => {
     clickMenuArrow: async () => await menuArrowNode.click(),
     hasMenuArrow: async () => await menuArrowNode.exists(),
     isRTL: async () => (await base.attr('dir')) === 'rtl',
-    getCursorLocation: async () => await input._prop('selectionStart'),
+    getCursorLocation: () => input._prop('selectionStart'),
     clearText: () => driver.enterText(''),
     clickOutside: () => ReactBase.clickDocument(),
 

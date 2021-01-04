@@ -28,6 +28,7 @@ export const inputAreaUniDriverFactory = (base, body) => {
     getMaxLength: () => textArea._prop('maxLength'),
     getTabIndex: () => textArea._prop('tabIndex'),
     getReadOnly: () => textArea._prop('readOnly'),
+    getCursorLocation: () => textArea._prop('selectionStart'),
     getResizable: async () => !!(await base.attr(dataAttr.RESIZABLE)),
     getDisabled: async () =>
       !!(await base.attr(dataAttr.DISABLED)) &&

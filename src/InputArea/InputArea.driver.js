@@ -25,6 +25,7 @@ const inputAreaDriverFactory = ({ element, eventTrigger }) => {
     getMaxLength: () => textArea().maxLength,
     getTabIndex: () => textArea().tabIndex,
     getReadOnly: () => textArea().readOnly,
+    getCursorLocation: () => textArea().selectionStart,
     getResizable: () => element.hasAttribute(dataAttr.RESIZABLE),
     getDisabled: () =>
       element.hasAttribute(dataAttr.DISABLED) && textArea().disabled,

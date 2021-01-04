@@ -371,6 +371,16 @@ describe('InputArea', () => {
         const driver = createDriver(<InputAreaForTesting autoFocus />);
         expect(await driver.isFocus()).toBe(true);
       });
+      describe('with value attribute', () => {
+        const value = 'this is a string';
+
+        it('Should focus with cursor located at the end of the value', async () => {
+          const { driver } = render(
+            <InputAreaForTesting autoFocus value={value} />,
+          );
+          expect(await driver.getCursorLocation()).toEqual(value.length);
+        });
+      });
     });
 
     describe('focus function', () => {

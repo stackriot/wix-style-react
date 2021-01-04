@@ -58,11 +58,18 @@ class InputArea extends React.PureComponent {
   };
 
   componentDidMount() {
-    const { autoFocus, autoGrow } = this.props;
+    const { autoFocus, autoGrow, value } = this.props;
 
     autoFocus && this._onFocus();
     if (autoGrow) {
       this._calculateComputedRows();
+    }
+    /*
+     * autoFocus doesn't automatically selects text like focus do.
+     * Therefore we set the selection range, but in order to support prior implementation we set the start position as the end in order to place the cursor there.
+     */
+    if (autoFocus && !!value) {
+      this.textArea.setSelectionRange(value.length, value.length);
     }
   }
 
