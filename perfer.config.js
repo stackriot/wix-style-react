@@ -147,7 +147,7 @@ const javascriptFiles = [
   ['StyledNestableList.bundle.min.js', 78],
   ['Table.bundle.min.js', 68],
   ['TableActionCell.bundle.min.js', 71],
-  ['TableListItem.bundle.min.js', 44],
+  ['TableListItem.bundle.min.js', 48],
   ['TableToolbar.bundle.min.js', 38],
   ['Tabs.bundle.min.js', 42],
   ['Tag.bundle.min.js', 41],
