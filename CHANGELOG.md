@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Changed
 - `<InputArea>` - move cursor to end on autoFocus [#6483](https://github.com/wix/wix-style-react/pull/6483)
+- `<AtlasAddressInput/>` - export component from subfolder [#6485](https://github.com/wix/wix-style-react/pull/6485)
 
 ### Fixed
 - `<Sidebar/>` - show gradient dynamically [#6471](https://github.com/wix/wix-style-react/pull/6471)
