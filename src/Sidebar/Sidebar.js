@@ -47,29 +47,31 @@ class Sidebar extends Component {
     isHidden: false,
   };
 
-  itemKey2Children = {};
-  itemKey2ParentKey = {};
-  childrenContainerRef = React.createRef();
-  childrenContentRef = React.createRef();
+  constructor(props) {
+    super(props);
 
-  state = {
-    persistentTopChildren: [],
-    drivenOutChildren: [],
-    onScreenChildren: [],
-    drivenInChildren: [],
-    persistentBottomChildren: [],
-    selectedKey: '',
-    lastSelectedKey: '',
-    isScrollbarDisplayed: false,
-  };
+    this.itemKey2Children = {};
+    this.itemKey2ParentKey = {};
+    this.childrenContainerRef = React.createRef();
+    this.childrenContentRef = React.createRef();
+    this.state = {
+      persistentTopChildren: [],
+      drivenOutChildren: [],
+      onScreenChildren: [],
+      drivenInChildren: [],
+      persistentBottomChildren: [],
+      selectedKey: '',
+      lastSelectedKey: '',
+      isScrollbarDisplayed: false,
+    };
+    this.childrenResizeObserver =
+      'ResizeObserver' in window &&
+      new ResizeObserver(this._handleChildrenResize);
+  }
 
   _handleChildrenResize = () => {
     this._shouldAddGradient();
   };
-
-  childrenResizeObserver =
-    'ResizeObserver' in window &&
-    new ResizeObserver(this._handleChildrenResize);
 
   componentDidMount() {
     this._shouldAddGradient();
