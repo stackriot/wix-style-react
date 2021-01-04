@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<GooglePreview>` - Add `titleMaxLines`, `descriptionMaxLines` and `skin` props [#6474](https://github.com/wix/wix-style-react/pull/6474)
+
 ### Changed
 - `<InputArea>` - move cursor to end on autoFocus [#6483](https://github.com/wix/wix-style-react/pull/6483)
 - `<AtlasAddressInput/>` - export component from subfolder [#6485](https://github.com/wix/wix-style-react/pull/6485)
