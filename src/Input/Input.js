@@ -468,11 +468,20 @@ Input.propTypes = {
   /** Used to reference element data when a form is submitted. */
   name: PropTypes.string,
 
+  /** Borders type */
+  borders: PropTypes.oneOf(['standard', 'round', 'borderless']),
+
+  /**
+   * When set to true, this input will be rounded
+   * @deprecated
+   */
+  roundInput: PropTypes.bool,
+
   /** When set to true, this input will have no rounded corners on its left */
-  noLeftBorderRadius: borderRadiusValidator,
+  noLeftBorderRadius: PropTypes.bool,
 
   /** When set to true, this input will have no rounded corners on its right */
-  noRightBorderRadius: borderRadiusValidator,
+  noRightBorderRadius: PropTypes.bool,
 
   /** Standard input onBlur callback */
   onBlur: PropTypes.func,
@@ -516,9 +525,6 @@ Input.propTypes = {
 
   /** When set to true, this input will not be editable */
   disableEditing: PropTypes.bool,
-
-  /** When set to true, this input will be rounded */
-  roundInput: PropTypes.bool,
 
   /** Flip the magnify glass image so it be more suitable to rtl */
   rtl: PropTypes.bool,
