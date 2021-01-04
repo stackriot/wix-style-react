@@ -2,8 +2,10 @@ import * as React from 'react';
 import { V2Place } from '@wix/ambassador-wix-atlas-service-web/http';
 import { AddressInputProps } from '../AddressInput';
 import { OmitPolyfill } from '../common';
-import { DropdownLayoutOption } from '../DropdownLayout';
+import { DropdownLayoutValueOption } from '../DropdownLayout';
 import { AtlasInitOptions } from '../providers/useAtlasClient';
+
+export type GetPlaceDetails = () => Promise<V2Place>;
 
 export interface AtlasAddressInputProps
   extends OmitPolyfill<AddressInputProps, 'options' | 'onSelect'>,
@@ -14,8 +16,8 @@ export interface AtlasAddressInputProps
   optionPrefix?: React.ReactNode;
   optionSuffix?: React.ReactNode;
   onSelect?: (
-    option: DropdownLayoutOption,
-    getPlaceDetails: () => Promise<V2Place>,
+    option: DropdownLayoutValueOption,
+    getPlaceDetails: GetPlaceDetails,
   ) => void;
 }
 

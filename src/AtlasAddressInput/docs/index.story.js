@@ -69,7 +69,18 @@ export default {
             text: 'An address search component, requires an address provider.',
           }),
 
-          importExample(),
+          description({
+            text: (
+              <SectionHelper title="Internal component">
+                This is an internal Wix component which cannot be used outside
+                of Wix projects.
+              </SectionHelper>
+            ),
+          }),
+
+          importExample(
+            "import AtlasAddressInput from 'wix-style-react/AtlasAddressInput';",
+          ),
 
           divider(),
 
