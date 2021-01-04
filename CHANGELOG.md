@@ -18,6 +18,9 @@ Types of changes:
 ### Changed
 - `<InputArea>` - move cursor to end on autoFocus [#6483](https://github.com/wix/wix-style-react/pull/6483)
 
+### Fixed
+- `<Sidebar/>` - show gradient dynamically [#6471](https://github.com/wix/wix-style-react/pull/6471)
+
 ## 9.61.0 - 2021-01-04
 ### Added
 - `<Accordion/>` - Add items size prop [#6436](https://github.com/wix/wix-style-react/pull/6436)
