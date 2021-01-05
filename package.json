@@ -15,6 +15,7 @@
     "dist",
     "src",
     "themes",
+    "AtlasAddressInput",
     "scripts",
     "babel.config.js",
     "testkit",
