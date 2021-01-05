@@ -138,7 +138,6 @@
     "@wix/ambassador": "^4.0.0",
     "@wix/ambassador-testkit": "^5.0.316",
     "@wix/ambassador-wix-atlas-service-web": "^1.0.147",
-    "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "babel-preset-yoshi": "^4.78.0",
