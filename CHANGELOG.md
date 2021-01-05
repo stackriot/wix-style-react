@@ -15,8 +15,11 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.62.1 - 2021-01-05
 ### Fixed
 - `<StatisticsWidget/>` - fixed padding for size tiny [#6472](https://github.com/wix/wix-style-react/pull/6472)
+- `<Sidebar/>` - show gradient dynamically [#6471](https://github.com/wix/wix-style-react/pull/6471)
 
 ### Added
 - `<GooglePreview>` - Add `titleMaxLines`, `descriptionMaxLines` and `skin` props [#6474](https://github.com/wix/wix-style-react/pull/6474)
@@ -25,8 +28,8 @@ Types of changes:
 - `<InputArea>` - move cursor to end on autoFocus [#6483](https://github.com/wix/wix-style-react/pull/6483)
 - `<AtlasAddressInput/>` - export component from subfolder [#6485](https://github.com/wix/wix-style-react/pull/6485)
 
-### Fixed
-- `<Sidebar/>` - show gradient dynamically [#6471](https://github.com/wix/wix-style-react/pull/6471)
+### Internal
+- Remove Axios [#6497](https://github.com/wix/wix-style-react/pull/6497)
 
 ## 9.61.0 - 2021-01-04
 ### Added
