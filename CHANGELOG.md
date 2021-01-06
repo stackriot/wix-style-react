@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+- `<Sidebar/>` - fix inner div scrollbar to be hidden [#6499](https://github.com/wix/wix-style-react/pull/6499)
 
 ## 9.62.1 - 2021-01-05
 ### Fixed
