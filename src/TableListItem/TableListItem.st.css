@@ -13,10 +13,12 @@
   checkedBorderWidth: 2px;
   smallPadding: 12px;
   mediumPadding: 18px;
+  newSmallPadding: 15px;
+  tinyPadding: 12px;
 }
 
 .root {
-  -st-states: checked, showDivider, dragging, verticalPadding(enum(small, medium)), draggable, clickable;
+  -st-states: reducedSpacingAndImprovedLayout, checked, showDivider, dragging, verticalPadding(enum(tiny, small, medium)), draggable, clickable;
   background-color: value(D80);
   padding: 0 value(horizontalPadding);
 }
@@ -35,9 +37,19 @@
   border-bottom-color: value(D60);
 }
 
+.root:verticalPadding(tiny) {
+  padding-top: value(tinyPadding);
+  padding-bottom: value(tinyPadding);
+}
+
 .root:verticalPadding(small) {
   padding-top: value(smallPadding);
   padding-bottom: value(smallPadding);
+}
+
+.root:verticalPadding(small):reducedSpacingAndImprovedLayout {
+  padding-top: value(newSmallPadding);
+  padding-bottom: value(newSmallPadding);
 }
 
 .root:verticalPadding(medium) {

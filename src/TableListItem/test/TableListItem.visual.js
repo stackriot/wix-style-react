@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import TableListItem, { VERTICAL_PADDING } from '../TableListItem';
+import WixStyleReactProvider from '../../WixStyleReactProvider';
 
 const sizes = Object.values(VERTICAL_PADDING);
 
@@ -58,5 +59,20 @@ tests.forEach(({ describe, its }) => {
       `${TableListItem.displayName}${describe ? '/' + describe : ''}`,
       module,
     ).add(it, () => <TableListItem {...commonProps} {...props} />);
+  });
+});
+
+tests.forEach(({ describe, its }) => {
+  its.forEach(({ it, props }) => {
+    storiesOf(
+      `Layout And Spacing| ${TableListItem.displayName}/${describe}`,
+      module,
+    ).add(it, () => (
+      <WixStyleReactProvider
+        features={{ reducedSpacingAndImprovedLayout: true }}
+      >
+        <TableListItem {...commonProps} {...props} />
+      </WixStyleReactProvider>
+    ));
   });
 });
