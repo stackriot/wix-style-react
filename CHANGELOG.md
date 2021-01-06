@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.63.0 - 2021-01-06
 ### Added
 - `Themes | Business Dashboard` - add 3 more colors [#6498](https://github.com/wix/wix-style-react/pull/6498)
 - `<ColorPicker/> `- Reduce Spacing feature toggle [#6441](https://github.com/wix/wix-style-react/pull/6441)
