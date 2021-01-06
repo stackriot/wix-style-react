@@ -304,10 +304,7 @@ class Sidebar extends Component {
               ref={this.childrenContainerRef}
               data-hook={dataHooks.childrenContainer}
             >
-              <div
-                className={st(css.childrenContent)}
-                ref={this.childrenContentRef}
-              >
+              <div ref={this.childrenContentRef}>
                 {this.state.onScreenChildren}
               </div>
               {this.state.isScrollbarDisplayed && (
