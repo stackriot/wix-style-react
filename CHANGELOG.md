@@ -17,11 +17,12 @@ Types of changes:
 ## Next
 ### Added
 - `<TableListItem/>`- reduce spacing (feature toggle) and add `tiny` to `verticalPadding` prop [#6470](https://github.com/wix/wix-style-react/pull/6470)
+- `<Card.Subheader/>`- reduce spacing (feature toggle) [#6452](https://github.com/wix/wix-style-react/pull/6452)
 
 ## 9.63.0 - 2021-01-06
 ### Added
 - `Themes | Business Dashboard` - add 3 more colors [#6498](https://github.com/wix/wix-style-react/pull/6498)
-- `<ColorPicker/> `- Reduce Spacing feature toggle [#6441](https://github.com/wix/wix-style-react/pull/6441)
+- `<ColorPicker/> `- reduce spacing (feature toggle) [#6441](https://github.com/wix/wix-style-react/pull/6441)
 
 ### Fixed
 - `<Sidebar/>` - fix inner div scrollbar to be hidden [#6499](https://github.com/wix/wix-style-react/pull/6499)
