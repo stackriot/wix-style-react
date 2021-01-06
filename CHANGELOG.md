@@ -21,6 +21,9 @@ Types of changes:
 - `<SelectableAccordion/>`- reduce spacing (feature toggle) and adding `verticalPadding` prop [#6479](https://github.com/wix/wix-style-react/pull/6479)
 
 ### Changed
+- `Themes | Business Dashboard` - Badge - add urgent skin color override [#6505](https://github.com/wix/wix-style-react/pull/6505)
+
+### Changed
 - `<Tag/>` - migrate to stylable [#6432](https://github.com/wix/wix-style-react/pull/6432)
 
 ## 9.63.0 - 2021-01-06
