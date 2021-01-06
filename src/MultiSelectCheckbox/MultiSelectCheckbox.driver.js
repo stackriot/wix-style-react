@@ -1,6 +1,6 @@
 import inputWithOptionsDriverFactory from '../InputWithOptions/InputWithOptions.driver';
 
-const multiSelectCheckboxDriverFactory = ({ element, component }) => {
+const multiSelectCheckboxDriverFactory = ({ element }) => {
   const {
     driver,
     inputDriver,
@@ -10,8 +10,8 @@ const multiSelectCheckboxDriverFactory = ({ element, component }) => {
     getNumOfLabels() {
       return this.getLabels().length;
     },
-    getLabels: () => {
-      return inputDriver.getValue().split(component.props.delimiter);
+    getLabels: (delimiter = `, `) => {
+      return inputDriver.getValue().split(delimiter);
     },
     getLabelAt(index) {
       return this.getLabels()[index];
