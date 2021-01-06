@@ -18,6 +18,7 @@ Types of changes:
 
 ### Added
 - `Themes | Business Dashboard` - add 3 more colors [#6498](https://github.com/wix/wix-style-react/pull/6498)
+- `<ColorPicker/> `- Reduce Spacing feature toggle [#6441](https://github.com/wix/wix-style-react/pull/6441)
 
 ### Fixed
 - `<Sidebar/>` - fix inner div scrollbar to be hidden [#6499](https://github.com/wix/wix-style-react/pull/6499)
