@@ -18,7 +18,7 @@ Types of changes:
 ### Added
 - `<TableListItem/>`- reduce spacing (feature toggle) and add `tiny` to `verticalPadding` prop [#6470](https://github.com/wix/wix-style-react/pull/6470)
 - `<Card.Subheader/>`- reduce spacing (feature toggle) [#6452](https://github.com/wix/wix-style-react/pull/6452)
-- `<SelectableAccordion/>`- reduce spacing and adding `verticalPadding` prop [#6479](https://github.com/wix/wix-style-react/pull/6479)
+- `<SelectableAccordion/>`- reduce spacing (feature toggle) and adding `verticalPadding` prop [#6479](https://github.com/wix/wix-style-react/pull/6479)
 
 ### Changed
 - `<Tag/>` - migrate to stylable [#6432](https://github.com/wix/wix-style-react/pull/6432)
