@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import styles from './Tag.scss';
+import { st, classes } from './Tag.st.css';
 import CloseButton from '../CloseButton';
 import Text from '../Text';
-import noop from 'lodash/noop';
 import { dataHooks } from './Tag.helpers';
 import { FontUpgradeContext } from '../FontUpgrade/context';
+import { generateDataAttr } from '../utils/generateDataAttr';
 
 const tagToTextSize = {
   tiny: 'tiny',
@@ -23,7 +22,11 @@ class Tag extends React.PureComponent {
 
   _renderThumb() {
     const { thumb } = this.props;
-    return thumb ? <span className={styles.thumb}>{thumb}</span> : null;
+    return thumb ? (
+      <span data-hook={dataHooks.thumb} className={classes.thumb}>
+        {thumb}
+      </span>
+    ) : null;
   }
 
   _renderText({ isMadefor }) {
@@ -53,7 +56,7 @@ class Tag extends React.PureComponent {
           skin={theme === 'dark' ? 'light' : 'dark'}
           disabled={disabled}
           dataHook={dataHooks.removeButton}
-          className={styles.removeButton}
+          className={classes.removeButton}
           onClick={this._handleRemoveClick}
         />
       );
@@ -68,39 +71,45 @@ class Tag extends React.PureComponent {
     onRemove(id);
   };
 
-  _getClassName() {
+  render() {
     const {
-      thumb,
-      removable,
+      id,
+      onClick,
+      maxWidth,
+      dataHook,
       size,
       disabled,
       theme,
+      thumb,
+      removable,
       className,
-      onClick,
     } = this.props;
-    return classNames(
-      styles.root,
-      className,
-      styles[`${theme}Theme`],
-      styles[`${size}Size`],
-      {
-        [styles.withRemoveButton]: removable,
-        [styles.withThumb]: thumb,
-        [styles.disabled]: disabled,
-        [styles.clickable]: onClick !== noop,
-        [styles.hoverable]: !disabled && onClick !== noop,
-      },
-    );
-  }
-
-  render() {
-    const { id, onClick, maxWidth, dataHook } = this.props;
-
+    const clickable = !!onClick;
+    const hoverable = !disabled && !!onClick;
     return (
       <FontUpgradeContext.Consumer>
         {({ active: isMadefor }) => (
           <span
-            className={this._getClassName()}
+            className={st(
+              classes.root,
+              {
+                withRemoveButton: removable,
+                withThumb: !!thumb,
+                disabled,
+                clickable,
+                hoverable,
+                size,
+                theme,
+              },
+              className,
+            )}
+            {...generateDataAttr({ ...this.props, hoverable, clickable }, [
+              'size',
+              'disabled',
+              'theme',
+              'hoverable',
+              'clickable',
+            ])}
             data-hook={dataHook}
             id={id}
             onClick={event => onClick(id, event)}
@@ -164,8 +173,6 @@ Tag.propTypes = {
 };
 
 Tag.defaultProps = {
-  onClick: noop,
-  onRemove: noop,
   size: 'small',
   removable: true,
   theme: 'standard',
