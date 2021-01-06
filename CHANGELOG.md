@@ -19,6 +19,9 @@ Types of changes:
 - `<TableListItem/>`- reduce spacing (feature toggle) and add `tiny` to `verticalPadding` prop [#6470](https://github.com/wix/wix-style-react/pull/6470)
 - `<Card.Subheader/>`- reduce spacing (feature toggle) [#6452](https://github.com/wix/wix-style-react/pull/6452)
 
+### Changed
+- `<Tag/>` - migrate to stylable [#6432](https://github.com/wix/wix-style-react/pull/6432)
+
 ## 9.63.0 - 2021-01-06
 ### Added
 - `Themes | Business Dashboard` - add 3 more colors [#6498](https://github.com/wix/wix-style-react/pull/6498)
