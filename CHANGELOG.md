@@ -21,6 +21,7 @@ Types of changes:
 
 ### Fixed
 - `<Sidebar/>` - fix inner div scrollbar to be hidden [#6499](https://github.com/wix/wix-style-react/pull/6499)
+- `<Checkbox/>` - fix disabled prop overrides tooltipProps [#6486](https://github.com/wix/wix-style-react/pull/6486)
 
 ## 9.62.1 - 2021-01-05
 ### Fixed
