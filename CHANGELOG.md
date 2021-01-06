@@ -19,6 +19,9 @@ Types of changes:
 ### Added
 - `Themes | Business Dashboard` - add 3 more colors [#6498](https://github.com/wix/wix-style-react/pull/6498)
 
+### Fixed
+- `<Sidebar/>` - fix inner div scrollbar to be hidden [#6499](https://github.com/wix/wix-style-react/pull/6499)
+
 ## 9.62.1 - 2021-01-05
 ### Fixed
 - `<StatisticsWidget/>` - fixed padding for size tiny [#6472](https://github.com/wix/wix-style-react/pull/6472)
