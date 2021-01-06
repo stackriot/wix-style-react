@@ -13,6 +13,7 @@ export interface CheckboxDriver extends BaseDriver {
   isChecked(): boolean;
   isDisabled(): boolean;
   isIndeterminate(): boolean;
+  isTooltipEnabled(): Promise<boolean>;
   hasError(): boolean;
   getLabel(): string;
   getLabelSize(): CheckboxLabelSize;

@@ -29,6 +29,13 @@ export const checkboxUniDriverFactory = (base, body) => {
       throw new Error('Failed getting checkbox error message');
     }
   };
+
+  const isTooltipEnabled = async () => {
+    const tooltipDriver = await getTooltipDriver();
+    await tooltipDriver.mouseEnter();
+    return await tooltipDriver.tooltipExists();
+  };
+
   return {
     ...baseUniDriverFactory(base),
     /**
@@ -72,6 +79,11 @@ export const checkboxUniDriverFactory = (base, body) => {
      */
     isIndeterminate: async () =>
       (await getDataCheckType(base)) === DATA_ATTR.CHECK_TYPES.INDETERMINATE,
+    /**
+     * Checks whether the checkbox's tooltip is enabled.
+     * @returns {Promise<boolean>}
+     */
+    isTooltipEnabled: isTooltipEnabled,
     /**
      * Checks whether the checkbox hasError prop is true.
      * @returns {Promise<boolean>}
