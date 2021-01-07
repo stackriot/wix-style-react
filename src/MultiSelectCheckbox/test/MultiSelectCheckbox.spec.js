@@ -351,5 +351,22 @@ describe('multiSelectCheckbox', () => {
         options[1].value,
       ]);
     });
+
+    it('should getLabelAt with delimiter', async () => {
+      const selectedOptions = [options[0].id, options[1].id];
+      const onDeselect = jest.fn();
+      const delimiter = '.';
+
+      const { driver } = createDriver(
+        <MultiSelectCheckbox
+          options={options}
+          selectedOptions={selectedOptions}
+          onDeselect={onDeselect}
+          delimiter={delimiter}
+        />,
+      );
+
+      expect(await driver.getLabelAt(1, delimiter)).toEqual(selectedOptions[1]);
+    });
   }
 });

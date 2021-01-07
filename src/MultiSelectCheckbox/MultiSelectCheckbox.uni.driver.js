@@ -7,17 +7,16 @@ export const multiSelectCheckboxUniDriverFactory = (base, body) => {
     dropdownLayoutDriver,
   } = inputWithOptionsUniDriverFactory(base, body);
 
+  const getLabels = async (delimiter = `, `) =>
+    (await inputDriver.getValue()).split(delimiter);
+
   return {
     driver: {
       ...driver,
-      async getNumOfLabels() {
-        return (await this.getLabels()).length;
-      },
-      getLabels: async (delimiter = `, `) =>
-        (await inputDriver.getValue()).split(delimiter),
-      async getLabelAt(index) {
-        return (await this.getLabels())[index];
-      },
+      getNumOfLabels: async () => (await getLabels()).length,
+      getLabels: async delimiter => getLabels(delimiter),
+      getLabelAt: async (index, delimiter) =>
+        (await getLabels(delimiter))[index],
     },
     inputDriver,
     dropdownLayoutDriver,

@@ -6,16 +6,14 @@ const multiSelectCheckboxDriverFactory = ({ element }) => {
     inputDriver,
     dropdownLayoutDriver,
   } = inputWithOptionsDriverFactory({ element });
+
+  const getLabels = (delimiter = `, `) =>
+    inputDriver.getValue().split(delimiter);
+
   const multiSelectCheckboxDriver = Object.assign(driver, {
-    getNumOfLabels() {
-      return this.getLabels().length;
-    },
-    getLabels: (delimiter = `, `) => {
-      return inputDriver.getValue().split(delimiter);
-    },
-    getLabelAt(index) {
-      return this.getLabels()[index];
-    },
+    getNumOfLabels: () => getLabels().length,
+    getLabels: delimiter => getLabels(delimiter),
+    getLabelAt: (index, delimiters) => getLabels(delimiters)[index],
   });
 
   return {
