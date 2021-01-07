@@ -15,6 +15,10 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<Accordion/>` - add bottom shadow to open item [#6509](https://github.com/wix/wix-style-react/pull/6509)
+- `Themes | Business Dashboard` - LinearProgressBar - add standard skin color override [#6504](https://github.com/wix/wix-style-react/pull/6504)
+
 ### Docs
 - `<AddressInput/>` - move story to components category [#6508](https://github.com/wix/wix-style-react/pull/6508)
 
