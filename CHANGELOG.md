@@ -19,6 +19,7 @@ Types of changes:
 - `<TableListItem/>`- reduce spacing (feature toggle) and add `tiny` to `verticalPadding` prop [#6470](https://github.com/wix/wix-style-react/pull/6470)
 - `<Card.Subheader/>`- reduce spacing (feature toggle) [#6452](https://github.com/wix/wix-style-react/pull/6452)
 - `<SelectableAccordion/>`- reduce spacing (feature toggle) and adding `verticalPadding` prop [#6479](https://github.com/wix/wix-style-react/pull/6479)
+- `<FormField/>`- reduce spacing and deprecate `labelSize` prop [#6439](https://github.com/wix/wix-style-react/pull/6439)
 
 ### Changed
 - `Themes | Business Dashboard` - Badge - add urgent skin color override [#6505](https://github.com/wix/wix-style-react/pull/6505)
