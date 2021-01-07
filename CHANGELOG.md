@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Docs
+- `<AddressInput/>` - move story to components category [#6508](https://github.com/wix/wix-style-react/pull/6508)
 
 ## 9.64.0 - 2021-01-07
 ### Added
