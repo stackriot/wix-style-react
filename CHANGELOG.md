@@ -23,6 +23,9 @@ Types of changes:
 ### Changed
 - `Themes | Business Dashboard` - Badge - add urgent skin color override [#6505](https://github.com/wix/wix-style-react/pull/6505)
 
+### Fixed
+- `<MultiSelectCheckbox/>` - <MultiSelectCheckbox/> - [testkit] fix getLabels and getLabelAt functions [#6482](https://github.com/wix/wix-style-react/pull/6482)
+
 ### Changed
 - `<Tag/>` - migrate to stylable [#6432](https://github.com/wix/wix-style-react/pull/6432)
 
