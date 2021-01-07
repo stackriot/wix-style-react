@@ -18,7 +18,7 @@ Types of changes:
 ### Added
 - `<Accordion/>` - add bottom shadow to open item [#6509](https://github.com/wix/wix-style-react/pull/6509)
 - `Themes | Business Dashboard` - LinearProgressBar - add standard skin color override [#6504](https://github.com/wix/wix-style-react/pull/6504)
-- `Themes | Business Dashboard` - CloseButton - Add theme style #6506
+- `Themes | Business Dashboard` - CloseButton - Add theme style [#6506](https://github.com/wix/wix-style-react/pull/6506)
 
 ### Docs
 - `<AddressInput/>` - move story to components category [#6508](https://github.com/wix/wix-style-react/pull/6508)
