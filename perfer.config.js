@@ -139,8 +139,6 @@ const javascriptFiles = [
   ['StarsRatingBar.bundle.min.js', 40],
   ['StackedBarChart.bundle.min.js', 48],
   ['StatisticsWidget.bundle.min.js', 47],
-  ['StatisticsWidget.bundle.min.js', 47],
-  ['StatusIndicator.bundle.min.js', 38],
   ['StatusIndicator.bundle.min.js', 44],
   ['Stepper.bundle.min.js', 41],
   ['Swatches.bundle.min.js', 86],
@@ -173,7 +171,6 @@ const javascriptFiles = [
 
 const cssFiles = [
   ['Accordion.min.css', 2],
-  ['AddItem.min.css', 2],
   ['CalendarPanel.min.css', 5],
   ['CalendarPanelFooter.min.css', 5],
   ['Carousel.min.css', 10],
@@ -182,6 +179,7 @@ const cssFiles = [
   ['EditableSelector.min.css', 7],
   ['EditableTitle.min.css', 6],
   ['EndorseContentLayout.min.css', 1],
+  ['FloatingNotification.bundle.min.css', 2],
   ['GenericModalLayout.min.css', 1],
   ['GoogleAddressInput.min.css', 12],
   ['Grid.min.css', 4],
@@ -197,9 +195,6 @@ const cssFiles = [
   ['SelectorList.min.css', 3],
   ['Table.min.css', 3],
   ['TableToolbar.min.css', 1],
-  ['Tag.min.css', 2],
-  ['TagList.min.css', 1],
-  ['VariableInput.min.css', 2],
 ];
 
 const getJS = () =>
