@@ -20,6 +20,9 @@ Types of changes:
 - `Themes | Business Dashboard` - LinearProgressBar - add standard skin color override [#6504](https://github.com/wix/wix-style-react/pull/6504)
 - `Themes | Business Dashboard` - CloseButton - Add theme style [#6506](https://github.com/wix/wix-style-react/pull/6506)
 
+### Fixed
+- `<Tag/>` - prevent onClick firing when its undefined [#6521](https://github.com/wix/wix-style-react/pull/6521)
+
 ### Docs
 - `<AddressInput/>` - move story to components category [#6508](https://github.com/wix/wix-style-react/pull/6508)
 
