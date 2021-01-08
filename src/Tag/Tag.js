@@ -14,6 +14,8 @@ const tagToTextSize = {
   large: 'medium',
 };
 
+const noop = () => ({});
+
 /**
  * A Tag component
  */
@@ -71,6 +73,11 @@ class Tag extends React.PureComponent {
     onRemove(id);
   };
 
+  _handleOnClick = event => {
+    const { id, onClick } = this.props;
+    return onClick && onClick(id, event);
+  };
+
   render() {
     const {
       id,
@@ -112,7 +119,7 @@ class Tag extends React.PureComponent {
             ])}
             data-hook={dataHook}
             id={id}
-            onClick={event => onClick(id, event)}
+            onClick={this._handleOnClick}
             style={{ maxWidth: `${maxWidth}px` }}
           >
             {this._renderThumb()}
