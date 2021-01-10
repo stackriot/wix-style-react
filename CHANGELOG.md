@@ -20,6 +20,9 @@ Types of changes:
 - `Themes | Business Dashboard` - Checkbox - Add checkbox to dashboard storybook [#6511](https://github.com/wix/wix-style-react/pull/6511)
 - `<DatePicker/>` - New Unidriver testkit [$6466](https://github.com/wix/wix-style-react/pull/6466)
 
+### Changed
+- `<AtlasAddressInput/>` (WIP) - replace `headers` prop with `token` prop [#6527](https://github.com/wix/wix-style-react/pull/6527)
+
 ## 9.65.0 - 2021-01-08
 ### Added
 - `<Accordion/>` - add bottom shadow to open item [#6509](https://github.com/wix/wix-style-react/pull/6509)
