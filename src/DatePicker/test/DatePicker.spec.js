@@ -9,10 +9,6 @@ import datePickerDriverFactory from '../DatePicker.driver.js';
 import { datePickerUniDriverFactory } from '../DatePicker.uni.driver.js';
 import Input from '../../Input';
 import DatePicker from '../DatePicker';
-import {
-  rangePolyfill,
-  requestAnimationFramePolyfill,
-} from '../../../testkit/polyfills';
 import eventually from 'wix-eventually';
 import { is as isLocale } from 'date-fns/locale';
 import { convertTokens } from '@date-fns/upgrade/v2';
@@ -29,10 +25,6 @@ describe('DatePicker', () => {
 
   function runTests(render) {
     afterEach(cleanup);
-    beforeAll(() => {
-      rangePolyfill.install();
-      requestAnimationFramePolyfill.install();
-    });
 
     describe('date picker input', () => {
       it('should exist', async () => {
@@ -864,33 +856,6 @@ describe('DatePicker', () => {
           expect(await inputDriver.getValue()).toBe('');
           expect(await inputDriver.getPlaceholder()).toBe('hello');
         });
-      });
-    });
-
-    describe('borderRadius', () => {
-      // move to visual tests
-      it.skip('should have both borderRadius by default', async () => {
-        const {
-          driver: { inputDriver },
-        } = render(<DatePicker onChange={noop} />);
-        expect(await inputDriver.hasRightBorderRadius()).toBe(true);
-        expect(await inputDriver.hasLeftBorderRadius()).toBe(true);
-      });
-    });
-
-    describe('inputProps prop', () => {
-      // move to visual tests
-      it.skip('should pass inputProps to input component', async () => {
-        const {
-          driver: { inputDriver },
-        } = render(
-          <DatePicker
-            inputProps={{ noRightBorderRadius: true, noLeftBorderRadius: true }}
-            onChange={noop}
-          />,
-        );
-        expect(await inputDriver.hasRightBorderRadius()).toBe(false);
-        expect(await inputDriver.hasLeftBorderRadius()).toBe(false);
       });
     });
 
