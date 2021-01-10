@@ -18,13 +18,16 @@ Types of changes:
 ### Added
 - `<Input/>` - add border prop [#6496](https://github.com/wix/wix-style-react/pull/6496)
 - `<Accordion/>` - Add accordionSectionItem [#6475](https://github.com/wix/wix-style-react/pull/6475)
-- `<DatePicker/>` - New Unidriver testkit [$6466](https://github.com/wix/wix-style-react/pull/6466)
+- `<DatePicker/>` - New Unidriver testkit [#6466](https://github.com/wix/wix-style-react/pull/6466)
 - `<SidePanel/>` - adding support for noPadding [#6517](https://github.com/wix/wix-style-react/pull/6517)
 - `Themes | Business Dashboard` - Checkbox - Add checkbox to dashboard storybook [#6511](https://github.com/wix/wix-style-react/pull/6511)
 - `Themes | Business Dashboard` - Thumbnail - Style override [#6531](https://github.com/wix/wix-style-react/pull/6531)
 
 ### Changed
 - `<AtlasAddressInput/>` (WIP) - replace `headers` prop with `token` prop [#6527](https://github.com/wix/wix-style-react/pull/6527)
+
+### Docs
+- `<DatePicker/>` - Update locale example [#6529](https://github.com/wix/wix-style-react/pull/6529)
 
 ## 9.65.0 - 2021-01-08
 ### Added
