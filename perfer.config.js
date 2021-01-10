@@ -125,7 +125,7 @@ const javascriptFiles = [
   ['Sidebar.bundle.min.js', 7],
   ['SidebarBackButton.bundle.min.js', 39],
   ['SidebarDivider.bundle.min.js', 7],
-  ['SidebarHeader.bundle.min.js', 39],
+  ['SidebarHeader.bundle.min.js', 42],
   ['SidebarSectionItem.bundle.min.js', 40],
   ['SidebarSectionTitle.bundle.min.js', 37],
   ['SidePanel.bundle.min.js', 48],
