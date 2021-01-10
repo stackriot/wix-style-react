@@ -1,12 +1,12 @@
 import React from 'react';
-import {isSameDay, format} from 'date-fns';
+import { isSameDay, format } from 'date-fns';
 import {
   createRendererWithDriver,
   createRendererWithUniDriver,
   cleanup,
 } from '../../../test/utils/react';
 import datePickerDriverFactory from '../DatePicker.driver.js';
-import {datePickerUniDriverFactory} from '../DatePicker.uni.driver.js';
+import { datePickerUniDriverFactory } from '../DatePicker.uni.driver.js';
 import Input from '../../Input';
 import DatePicker from '../DatePicker';
 import {
@@ -14,11 +14,10 @@ import {
   requestAnimationFramePolyfill,
 } from '../../../testkit/polyfills';
 import eventually from 'wix-eventually';
-import {is as isLocale} from 'date-fns/locale';
-import {convertTokens} from '@date-fns/upgrade/v2';
+import { is as isLocale } from 'date-fns/locale';
+import { convertTokens } from '@date-fns/upgrade/v2';
 
-const noop = () => {
-};
+const noop = () => {};
 describe('DatePicker', () => {
   describe('[sync]', () => {
     runTests(createRendererWithDriver(datePickerDriverFactory));
@@ -37,65 +36,67 @@ describe('DatePicker', () => {
 
     describe('date picker input', () => {
       it('should exist', async () => {
-        const {driver: {inputDriver}} = render(
-          <DatePicker onChange={noop}/>,
-        );
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} />);
         expect(await inputDriver.exists()).toBe(true);
       });
 
       describe('given `disabled` prop', () => {
         it('should be disabled', async () => {
-          const {driver: {inputDriver}} = render(
-            <DatePicker onChange={noop} disabled/>,
-          );
+          const {
+            driver: { inputDriver },
+          } = render(<DatePicker onChange={noop} disabled />);
           expect(await inputDriver.isDisabled()).toBe(true);
         });
 
         it('should not open calendar on click', async () => {
-          const {driver: {inputDriver, calendarDriver}} = render(
-            <DatePicker onChange={noop} disabled/>,
-          );
+          const {
+            driver: { inputDriver, calendarDriver },
+          } = render(<DatePicker onChange={noop} disabled />);
           await inputDriver.click();
           expect(await calendarDriver.isVisible()).toBe(false);
         });
       });
 
       it('has prefix by default', async () => {
-        const {driver: {inputDriver}} = render(
-          <DatePicker onChange={noop}/>,
-        );
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} />);
         expect(await inputDriver.hasPrefix()).toBe(true);
       });
 
       it('has custom prefix', async () => {
-        const {driver: {inputDriver}} = render(
-          <DatePicker onChange={noop} prefix={<span>#</span>}/>,
-        );
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} prefix={<span>#</span>} />);
 
         expect(await inputDriver.hasPrefix()).toBe(true);
       });
 
       it('allow rendering custom input', async () => {
         const placeHolder = 'input date';
-        const customInput = <Input placeholder={placeHolder}/>;
-        const {driver: {inputDriver}} = render(
-          <DatePicker onChange={noop} customInput={customInput}/>,
-        );
+        const customInput = <Input placeholder={placeHolder} />;
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} customInput={customInput} />);
         expect(await inputDriver.getPlaceholder()).toEqual(placeHolder);
       });
     });
 
     describe('calendar', () => {
       it('should be hidden by default', async () => {
-        const {driver: {calendarDriver}} = render(<DatePicker onChange={noop}/>);
+        const {
+          driver: { calendarDriver },
+        } = render(<DatePicker onChange={noop} />);
         expect(await calendarDriver.isVisible()).toBe(false);
       });
 
       describe('should open', () => {
         it('on click on datePickerInput', async () => {
-          const {driver: {inputDriver, calendarDriver}} = render(
-            <DatePicker onChange={noop}/>,
-          );
+          const {
+            driver: { inputDriver, calendarDriver },
+          } = render(<DatePicker onChange={noop} />);
 
           await inputDriver.click();
           expect(await calendarDriver.isVisible()).toBe(true);
@@ -103,9 +104,9 @@ describe('DatePicker', () => {
 
         it('on focus', async () => {
           const value = new Date(2017, 5, 2);
-          const {driver: {inputDriver, calendarDriver}} = render(
-            <DatePicker onChange={noop} value={value}/>,
-          );
+          const {
+            driver: { inputDriver, calendarDriver },
+          } = render(<DatePicker onChange={noop} value={value} />);
           await inputDriver.focus();
           expect(await calendarDriver.isVisible()).toBe(true);
         });
@@ -113,8 +114,10 @@ describe('DatePicker', () => {
         it('on render when given `initialOpen` prop', async () => {
           const onChange = jest.fn();
           const date = new Date(2015, 9, 2);
-          const {driver: {calendarDriver}} = render(
-            <DatePicker onChange={onChange} value={date} initialOpen/>,
+          const {
+            driver: { calendarDriver },
+          } = render(
+            <DatePicker onChange={onChange} value={date} initialOpen />,
           );
           expect(await calendarDriver.isVisible()).toBe(true);
         });
@@ -122,36 +125,36 @@ describe('DatePicker', () => {
 
       describe('should close', () => {
         it('on select date with click', async () => {
-          const {driver: {inputDriver, calendarDriver}} = render(
-            <DatePicker onChange={noop}/>,
-          );
+          const {
+            driver: { inputDriver, calendarDriver },
+          } = render(<DatePicker onChange={noop} />);
 
           await inputDriver.click();
           await calendarDriver.clickOnNthDay();
           await eventually(async () => {
-            expect(await calendarDriver.isVisible()).toBe(false)
-          })
+            expect(await calendarDriver.isVisible()).toBe(false);
+          });
         });
 
         it('on press "Escape" key', async () => {
-          const {driver: {inputDriver, calendarDriver}} = render(
-            <DatePicker onChange={noop}/>,
-          );
+          const {
+            driver: { inputDriver, calendarDriver },
+          } = render(<DatePicker onChange={noop} />);
 
           await inputDriver.click();
-          await calendarDriver.triggerKeyDown({key: 'Escape', keyCode: 27});
+          await calendarDriver.triggerKeyDown({ key: 'Escape', keyCode: 27 });
 
           expect(await calendarDriver.isVisible()).toBe(false);
         });
 
         it('on press "Escape" key and call onClose callback', async () => {
           const onClose = jest.fn();
-          const {driver: {inputDriver, calendarDriver}} = render(
-            <DatePicker onChange={noop} onClose={onClose}/>,
-          );
+          const {
+            driver: { inputDriver, calendarDriver },
+          } = render(<DatePicker onChange={noop} onClose={onClose} />);
 
           await inputDriver.click();
-          await calendarDriver.triggerKeyDown({key: 'Escape', keyCode: 27});
+          await calendarDriver.triggerKeyDown({ key: 'Escape', keyCode: 27 });
 
           expect(await calendarDriver.isVisible()).toBe(false);
           expect(onClose).toBeCalled();
@@ -159,9 +162,9 @@ describe('DatePicker', () => {
 
         it('on press "Tab" key', async () => {
           const preventDefault = jest.fn();
-          const {driver: {inputDriver, calendarDriver}} = render(
-            <DatePicker onChange={noop}/>,
-          );
+          const {
+            driver: { inputDriver, calendarDriver },
+          } = render(<DatePicker onChange={noop} />);
 
           await inputDriver.click();
           await calendarDriver.triggerKeyDown({
@@ -175,9 +178,9 @@ describe('DatePicker', () => {
         });
 
         it('on outside click', async () => {
-          const {driver: {inputDriver, calendarDriver}} = render(
-            <DatePicker onChange={noop}/>,
-          );
+          const {
+            driver: { inputDriver, calendarDriver },
+          } = render(<DatePicker onChange={noop} />);
 
           await inputDriver.click();
           await calendarDriver.mouseClickOutside();
@@ -187,9 +190,9 @@ describe('DatePicker', () => {
       });
 
       it('should not close on select when "shouldCloseOnSelect" property is false', async () => {
-        const {driver: {inputDriver, calendarDriver}} = render(
-          <DatePicker onChange={noop} shouldCloseOnSelect={false}/>,
-        );
+        const {
+          driver: { inputDriver, calendarDriver },
+        } = render(<DatePicker onChange={noop} shouldCloseOnSelect={false} />);
 
         await inputDriver.click();
         await calendarDriver.clickOnNthDay();
@@ -200,8 +203,10 @@ describe('DatePicker', () => {
       it('should disable past dates given `excludePastDates` prop', async () => {
         const onChange = jest.fn();
         const date = new Date(2015, 9, 2);
-        const {driver: {calendarDriver, inputDriver}} = render(
-          <DatePicker onChange={onChange} value={date} excludePastDates/>,
+        const {
+          driver: { calendarDriver, inputDriver },
+        } = render(
+          <DatePicker onChange={onChange} value={date} excludePastDates />,
         );
 
         await inputDriver.click();
@@ -216,8 +221,10 @@ describe('DatePicker', () => {
         const now = new Date();
         const date = new Date(now);
         date.setDate(now.getDate() === 1 ? 2 : 1); // set selected date other then now, but stay in the same month
-        const {driver: {calendarDriver, inputDriver}} = render(
-          <DatePicker onChange={onChange} value={date} excludePastDates/>,
+        const {
+          driver: { calendarDriver, inputDriver },
+        } = render(
+          <DatePicker onChange={onChange} value={date} excludePastDates />,
         );
 
         await inputDriver.click();
@@ -234,8 +241,10 @@ describe('DatePicker', () => {
       describe('navbar arrow navigation', () => {
         it('should select previous month on previous month button click - LTR mode', async () => {
           const onChange = jest.fn();
-          const {driver: {calendarDriver, inputDriver}} = render(
-            <DatePicker onChange={onChange} value={new Date(2015, 9, 2)}/>,
+          const {
+            driver: { calendarDriver, inputDriver },
+          } = render(
+            <DatePicker onChange={onChange} value={new Date(2015, 9, 2)} />,
           );
 
           await inputDriver.click();
@@ -250,9 +259,9 @@ describe('DatePicker', () => {
         it('should select next month on next month button click - LTR mode', async () => {
           const onChange = jest.fn();
           const date = new Date(2015, 9, 2);
-          const {driver: {calendarDriver, inputDriver}} = render(
-            <DatePicker onChange={onChange} value={date}/>,
-          );
+          const {
+            driver: { calendarDriver, inputDriver },
+          } = render(<DatePicker onChange={onChange} value={date} />);
 
           await inputDriver.click();
           await calendarDriver.clickOnNextMonthButton();
@@ -267,9 +276,9 @@ describe('DatePicker', () => {
         it('should select previous month on previous month button click - RTL mode', async () => {
           const onChange = jest.fn();
           const date = new Date(2015, 9, 2);
-          const {driver: {calendarDriver, inputDriver}} = render(
-            <DatePicker onChange={onChange} value={date} rtl/>,
-          );
+          const {
+            driver: { calendarDriver, inputDriver },
+          } = render(<DatePicker onChange={onChange} value={date} rtl />);
           await inputDriver.click();
 
           await calendarDriver.clickOnPrevMonthButton();
@@ -283,9 +292,9 @@ describe('DatePicker', () => {
         it('should select next month on next month button click - RTL mode', async () => {
           const onChange = jest.fn();
           const date = new Date(2015, 9, 2);
-          const {driver: {calendarDriver, inputDriver}} = render(
-            <DatePicker onChange={onChange} value={date} rtl/>,
-          );
+          const {
+            driver: { calendarDriver, inputDriver },
+          } = render(<DatePicker onChange={onChange} value={date} rtl />);
 
           await inputDriver.click();
           await calendarDriver.clickOnNextMonthButton();
@@ -299,9 +308,9 @@ describe('DatePicker', () => {
 
       it('should show header', async () => {
         const date = new Date(2015, 9, 2);
-        const {driver: {calendarDriver, inputDriver}} = render(
-          <DatePicker onChange={noop} value={date}/>,
-        );
+        const {
+          driver: { calendarDriver, inputDriver },
+        } = render(<DatePicker onChange={noop} value={date} />);
         await inputDriver.click();
         expect(await calendarDriver.isHeaderVisible()).toEqual(true);
         expect(await calendarDriver.isYearCaptionExists()).toEqual(true);
@@ -310,8 +319,10 @@ describe('DatePicker', () => {
 
       it('should show year dropdown', async () => {
         const date = new Date(2015, 9, 2);
-        const {driver: {calendarDriver, inputDriver}} = render(
-          <DatePicker onChange={noop} showYearDropdown value={date}/>,
+        const {
+          driver: { calendarDriver, inputDriver },
+        } = render(
+          <DatePicker onChange={noop} showYearDropdown value={date} />,
         );
         await inputDriver.click();
         expect(await calendarDriver.isYearDropdownExists()).toEqual(true);
@@ -320,8 +331,10 @@ describe('DatePicker', () => {
 
       it('should show month dropdown', async () => {
         const date = new Date(2015, 9, 2);
-        const {driver: {calendarDriver, inputDriver}} = render(
-          <DatePicker onChange={noop} showMonthDropdown value={date}/>,
+        const {
+          driver: { calendarDriver, inputDriver },
+        } = render(
+          <DatePicker onChange={noop} showMonthDropdown value={date} />,
         );
         await inputDriver.click();
         expect(await calendarDriver.isMonthDropdownExists()).toEqual(true);
@@ -330,7 +343,9 @@ describe('DatePicker', () => {
 
       describe('given date in far future', () => {
         it('should not fail', async () => {
-          const {driver: {calendarDriver, driver}} = render(
+          const {
+            driver: { calendarDriver, driver },
+          } = render(
             <DatePicker
               value={new Date('2055/01/01')}
               onChange={noop}
@@ -341,9 +356,9 @@ describe('DatePicker', () => {
           await driver.open();
 
           const yearDropdownDriver = await calendarDriver.getYearDropdownDriver();
-          const years = Array.from(await yearDropdownDriver
-            .optionsContent())
-            .map((n) => parseInt(n, 10));
+          const years = Array.from(
+            await yearDropdownDriver.optionsContent(),
+          ).map(n => parseInt(n, 10));
           const firstYear = years[0];
           const lastYear = years[years.length - 1];
 
@@ -354,18 +369,18 @@ describe('DatePicker', () => {
 
       describe('`width` prop', () => {
         it('should set 150px by default to Input', async () => {
-          const {driver: {driver, inputDriver}} = render(
-            <DatePicker onChange={noop}/>,
-          );
+          const {
+            driver: { driver, inputDriver },
+          } = render(<DatePicker onChange={noop} />);
           await inputDriver.click();
 
           expect(await driver.getWidth()).toBe('150px');
         });
 
         it('should allow to be changed to Input', async () => {
-          const {driver: {driver, inputDriver}} = render(
-            <DatePicker onChange={noop} width={4}/>,
-          );
+          const {
+            driver: { driver, inputDriver },
+          } = render(<DatePicker onChange={noop} width={4} />);
 
           await inputDriver.click();
 
@@ -376,8 +391,10 @@ describe('DatePicker', () => {
       describe('with year dropdown', () => {
         it('should give a possibility to choose date from another year', async () => {
           const date = new Date(2015, 9, 2);
-          const {driver: {calendarDriver, inputDriver}} = render(
-            <DatePicker onChange={noop} showYearDropdown value={date}/>,
+          const {
+            driver: { calendarDriver, inputDriver },
+          } = render(
+            <DatePicker onChange={noop} showYearDropdown value={date} />,
           );
 
           await inputDriver.click();
@@ -391,25 +408,27 @@ describe('DatePicker', () => {
 
       describe('When trigger open and close', () => {
         it('should open calendar using ref', async () => {
-          const {driver: {calendarDriver, driver}} = render(
-            <DatePicker onChange={noop}/>,
-          );
+          const {
+            driver: { calendarDriver, driver },
+          } = render(<DatePicker onChange={noop} />);
           await driver.open();
           expect(await calendarDriver.isVisible()).toBe(true);
         });
 
         it('should hide the focus visually on the current element from the user', async () => {
-          const {driver: {calendarDriver, driver}} = render(
-            <DatePicker onChange={noop}/>,
-          );
+          const {
+            driver: { calendarDriver, driver },
+          } = render(<DatePicker onChange={noop} />);
           await driver.open();
-          expect(await calendarDriver.isFocusedDayVisuallyUnfocused()).toBe(true);
+          expect(await calendarDriver.isFocusedDayVisuallyUnfocused()).toBe(
+            true,
+          );
         });
 
         it('should close calendar using ref', async () => {
-          const {driver: {calendarDriver, driver}} = render(
-            <DatePicker onChange={noop}/>,
-          );
+          const {
+            driver: { calendarDriver, driver },
+          } = render(<DatePicker onChange={noop} />);
 
           await driver.open();
           expect(await calendarDriver.isVisible()).toBe(true);
@@ -422,37 +441,37 @@ describe('DatePicker', () => {
       describe('keyboard navigation', () => {
         it('should navigate days correctly with keyboard - LTR mode', async () => {
           const date = new Date(2018, 1, 5);
-          const {driver: {calendarDriver, driver}} = render(
-            <DatePicker onChange={noop} value={date}/>,
-          );
+          const {
+            driver: { calendarDriver, driver },
+          } = render(<DatePicker onChange={noop} value={date} />);
 
           await driver.open();
           expect(await calendarDriver.getFocusedDay()).toEqual('5');
           await calendarDriver.pressLeftArrow();
-          await eventually(async ()=> {
+          await eventually(async () => {
             expect(await calendarDriver.getFocusedDay()).toEqual('4');
-          })
+          });
         });
 
         it('should navigate days correctly with keyboard - RTL mode', async () => {
           const date = new Date(2018, 1, 5);
-          const {driver: {calendarDriver, driver}} = render(
-            <DatePicker onChange={noop} rtl value={date}/>,
-          );
+          const {
+            driver: { calendarDriver, driver },
+          } = render(<DatePicker onChange={noop} rtl value={date} />);
 
           await driver.open();
           expect(await calendarDriver.getFocusedDay()).toEqual('5');
           await calendarDriver.pressLeftArrow();
-          await eventually(async ()=> {
+          await eventually(async () => {
             expect(await calendarDriver.getFocusedDay()).toEqual('6');
-          })
+          });
         });
 
         it('should not update input value while navigating the calendar', async () => {
           const date = new Date(2018, 1, 5);
-          const {driver: {calendarDriver, inputDriver, driver}} = render(
-            <DatePicker onChange={noop} value={date}/>,
-          );
+          const {
+            driver: { calendarDriver, inputDriver, driver },
+          } = render(<DatePicker onChange={noop} value={date} />);
 
           await driver.open();
           expect(await inputDriver.getValue()).toEqual('02/05/2018');
@@ -463,9 +482,9 @@ describe('DatePicker', () => {
 
         it('should keep selected day unchanged when navigating with keyboard', async () => {
           const date = new Date(2018, 1, 5);
-          const {driver: {calendarDriver, driver}} = render(
-            <DatePicker onChange={noop} value={date}/>,
-          );
+          const {
+            driver: { calendarDriver, driver },
+          } = render(<DatePicker onChange={noop} value={date} />);
 
           await driver.open();
 
@@ -476,27 +495,33 @@ describe('DatePicker', () => {
           await eventually(async () => {
             expect(await calendarDriver.getSelectedDay()).toEqual('5');
             expect(await calendarDriver.getFocusedDay()).toEqual('4');
-          })
+          });
         });
 
         it('should remove unfocused class from the selected day while navigating the calendar', async () => {
           const date = new Date(2018, 1, 5);
-          const {driver: {calendarDriver, driver}} = render(
-            <DatePicker onChange={noop} value={date}/>,
-          );
+          const {
+            driver: { calendarDriver, driver },
+          } = render(<DatePicker onChange={noop} value={date} />);
 
           await driver.open();
-          expect(await calendarDriver.isFocusedDayVisuallyUnfocused()).toBe(true);
+          expect(await calendarDriver.isFocusedDayVisuallyUnfocused()).toBe(
+            true,
+          );
 
           await calendarDriver.pressLeftArrow();
-          expect(await calendarDriver.containsVisuallyUnfocusedDay()).toBe(false);
+          expect(await calendarDriver.containsVisuallyUnfocusedDay()).toBe(
+            false,
+          );
         });
       });
     });
 
     describe('`format` prop', () => {
       it('should display date according to string format (dateFormat)', async () => {
-        const {driver: {inputDriver}} = render(
+        const {
+          driver: { inputDriver },
+        } = render(
           <DatePicker
             onChange={noop}
             value={new Date(2017, 9, 2)}
@@ -509,7 +534,9 @@ describe('DatePicker', () => {
 
       it('should ignore format from locale (dateFormat)', async () => {
         const date = new Date(2017, 9, 2);
-        const {driver: {inputDriver}} = render(
+        const {
+          driver: { inputDriver },
+        } = render(
           <DatePicker
             onChange={noop}
             locale="fr"
@@ -523,11 +550,13 @@ describe('DatePicker', () => {
 
       it('should display date according to custom function format (dateFormat)', async () => {
         const date = new Date(2017, 9, 2);
-        const {driver: {inputDriver}} = render(
+        const {
+          driver: { inputDriver },
+        } = render(
           <DatePicker
             onChange={noop}
             locale="fr"
-            dateFormat={(_date) => format(_date, convertTokens('YYYY MMM DD'))}
+            dateFormat={_date => format(_date, convertTokens('YYYY MMM DD'))}
             value={date}
           />,
         );
@@ -536,7 +565,9 @@ describe('DatePicker', () => {
       });
 
       it('should display date according to string format (dateFormatV2)', async () => {
-        const {driver: {inputDriver}} = render(
+        const {
+          driver: { inputDriver },
+        } = render(
           <DatePicker
             onChange={noop}
             value={new Date(2017, 9, 2)}
@@ -549,7 +580,9 @@ describe('DatePicker', () => {
 
       it('should ignore format from locale (dateFormatV2)', async () => {
         const date = new Date(2017, 9, 2);
-        const {driver: {inputDriver}} = render(
+        const {
+          driver: { inputDriver },
+        } = render(
           <DatePicker
             onChange={noop}
             locale="fr"
@@ -563,11 +596,13 @@ describe('DatePicker', () => {
 
       it('should display date according to custom function format (dateFormatV2)', async () => {
         const date = new Date(2017, 9, 2);
-        const {driver: {inputDriver}} = render(
+        const {
+          driver: { inputDriver },
+        } = render(
           <DatePicker
             onChange={noop}
             locale="fr"
-            dateFormatV2={(_date) => format(_date, 'yyyy LLL dd')}
+            dateFormatV2={_date => format(_date, 'yyyy LLL dd')}
             value={date}
           />,
         );
@@ -576,7 +611,9 @@ describe('DatePicker', () => {
       });
 
       it('should display date according to string format dateFormatV2 if both dateFormat and dateFormatV2 given', async () => {
-        const {driver: {inputDriver}} = render(
+        const {
+          driver: { inputDriver },
+        } = render(
           <DatePicker
             onChange={noop}
             value={new Date(2017, 9, 2)}
@@ -589,9 +626,9 @@ describe('DatePicker', () => {
       });
 
       it('should fallback to default dateFormatV2 if both dateFormat and dateFormatV2 not given', async () => {
-        const {driver: {inputDriver}} = render(
-          <DatePicker onChange={noop} value={new Date(2017, 9, 2)}/>,
-        );
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} value={new Date(2017, 9, 2)} />);
 
         expect(await inputDriver.getValue()).toBe('10/02/2017');
       });
@@ -600,19 +637,23 @@ describe('DatePicker', () => {
     describe('placeholder', () => {
       it('should be taken from `placeholderText` prop', async () => {
         const placeholder = 'Datepicker test placeholder';
-        const {driver: {inputDriver}} = render(
-          <DatePicker onChange={noop} placeholderText={placeholder}/>,
+        const {
+          driver: { inputDriver },
+        } = render(
+          <DatePicker onChange={noop} placeholderText={placeholder} />,
         );
         expect(await inputDriver.getPlaceholder()).toBe(placeholder);
       });
 
       it('should be taken from `placeholder` prop of `customInput`', async () => {
         const placeholder = 'Input test placeholder';
-        const {driver: {inputDriver}} = render(
+        const {
+          driver: { inputDriver },
+        } = render(
           <DatePicker
             onChange={noop}
             placeholderText={'you should not see me!'}
-            customInput={<Input placeholder={placeholder}/>}
+            customInput={<Input placeholder={placeholder} />}
           />,
         );
 
@@ -625,9 +666,9 @@ describe('DatePicker', () => {
         const onChange = jest.fn();
         const value = new Date(2017, 7, 1);
         const expectedValue = new Date(2017, 7, 2);
-        const {driver: {calendarDriver, inputDriver}} = render(
-          <DatePicker value={value} onChange={onChange}/>,
-        );
+        const {
+          driver: { calendarDriver, inputDriver },
+        } = render(<DatePicker value={value} onChange={onChange} />);
 
         await inputDriver.click();
         await calendarDriver.clickOnNthDay(1);
@@ -641,12 +682,12 @@ describe('DatePicker', () => {
       it('should not be called choosing already selected date with enter key', async () => {
         const onChange = jest.fn();
         const value = new Date(2017, 5, 2);
-        const {driver: {inputDriver}} = render(
-          <DatePicker value={value} onChange={onChange}/>,
-        );
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker value={value} onChange={onChange} />);
 
         await inputDriver.click();
-        await inputDriver.trigger('keyDown', {keyCode: 13});
+        await inputDriver.trigger('keyDown', { keyCode: 13 });
 
         expect(onChange).not.toHaveBeenCalled();
       });
@@ -654,9 +695,9 @@ describe('DatePicker', () => {
       it('should not be called clicking already selected date', async () => {
         const onChange = jest.fn();
         const value = new Date();
-        const {driver: {calendarDriver, inputDriver}} = render(
-          <DatePicker value={value} onChange={onChange}/>,
-        );
+        const {
+          driver: { calendarDriver, inputDriver },
+        } = render(<DatePicker value={value} onChange={onChange} />);
 
         await inputDriver.click();
         await calendarDriver.clickOnSelectedDay();
@@ -667,9 +708,9 @@ describe('DatePicker', () => {
       it('should not adjust time of given value', async () => {
         const onChange = jest.fn();
         const value = new Date('2017/01/01 12:34:56.000Z');
-        const {driver: {calendarDriver, driver}} = render(
-          <DatePicker value={value} onChange={onChange}/>,
-        );
+        const {
+          driver: { calendarDriver, driver },
+        } = render(<DatePicker value={value} onChange={onChange} />);
         await driver.open();
         await calendarDriver.clickOnNthDay(1);
         expect(onChange.mock.calls[0][0]).toEqual(
@@ -679,9 +720,9 @@ describe('DatePicker', () => {
 
       it('should adjust time if no value given to midnight', async () => {
         const onChange = jest.fn();
-        const {driver: {calendarDriver, driver}} = render(
-          <DatePicker onChange={onChange}/>,
-        );
+        const {
+          driver: { calendarDriver, driver },
+        } = render(<DatePicker onChange={onChange} />);
         await driver.open();
         await calendarDriver.clickOnNthDay(1);
 
@@ -695,19 +736,25 @@ describe('DatePicker', () => {
 
     describe('`readonly` prop', () => {
       it('should be false by default', async () => {
-        const {driver: {inputDriver}} = render(<DatePicker onChange={noop}/>);
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} />);
         expect(await inputDriver.getReadOnly()).toBe(false);
       });
 
       it('should be readonly when true', async () => {
-        const {driver: {inputDriver}} = render(<DatePicker onChange={noop} readOnly/>);
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} readOnly />);
         expect(await inputDriver.getReadOnly()).toBe(true);
       });
     });
 
     describe('`locale` prop', () => {
       const setup = async (props = {}) => {
-        const {driver: {calendarDriver, inputDriver, driver}} = render(
+        const {
+          driver: { calendarDriver, inputDriver, driver },
+        } = render(
           <DatePicker
             onChange={noop}
             locale="fr"
@@ -726,57 +773,63 @@ describe('DatePicker', () => {
       };
 
       it('should display translated month in caption', async () => {
-        const {calendarDriver} = await setup();
+        const { calendarDriver } = await setup();
         expect(await calendarDriver.getMonthCaption()).toEqual('octobre');
       });
 
       it('should display translated month in dropdown label', async () => {
-        const {calendarDriver} = await setup({
+        const { calendarDriver } = await setup({
           showMonthDropdown: true,
         });
         expect(await calendarDriver.getMonthDropdownLabel()).toEqual('octobre');
       });
 
       it('should display translated months in dropdown options', async () => {
-        const {calendarDriver} = await setup({
+        const { calendarDriver } = await setup({
           showMonthDropdown: true,
         });
         expect(
-          await (await calendarDriver.getMonthDropdownDriver()).optionContentAt(0),
+          await (await calendarDriver.getMonthDropdownDriver()).optionContentAt(
+            0,
+          ),
         ).toEqual('janvier');
       });
 
       it('should display translated weekdays', async () => {
-        const {calendarDriver} = await setup();
+        const { calendarDriver } = await setup();
         expect(await calendarDriver.getNthWeekDayName(0)).toEqual('lu');
       });
 
       describe('when function from date-fns', () => {
         it('should display translated month in caption', async () => {
-          const {calendarDriver} = await setup({locale: isLocale});
+          const { calendarDriver } = await setup({ locale: isLocale });
           expect(await calendarDriver.getMonthCaption()).toEqual('október');
         });
 
         it('should display translated month in dropdown label', async () => {
-          const {calendarDriver} = await setup({
+          const { calendarDriver } = await setup({
             locale: isLocale,
             showMonthDropdown: true,
           });
-          expect(await calendarDriver.getMonthDropdownLabel()).toEqual('október');
+          expect(await calendarDriver.getMonthDropdownLabel()).toEqual(
+            'október',
+          );
         });
 
         it('should display translated months in dropdown options', async () => {
-          const {calendarDriver} = await setup({
+          const { calendarDriver } = await setup({
             locale: isLocale,
             showMonthDropdown: true,
           });
           expect(
-            await (await calendarDriver.getMonthDropdownDriver()).optionContentAt(0)
+            await (
+              await calendarDriver.getMonthDropdownDriver()
+            ).optionContentAt(0),
           ).toEqual('janúar');
         });
 
         it('should display translated weekdays', async () => {
-          const {calendarDriver} = await setup({locale: isLocale});
+          const { calendarDriver } = await setup({ locale: isLocale });
           expect(await calendarDriver.getNthWeekDayName(0)).toEqual('Má');
         });
       });
@@ -784,20 +837,24 @@ describe('DatePicker', () => {
 
     describe('`value` prop', () => {
       it('should show correct value from props', async () => {
-        const {driver: {inputDriver}} = render(
-          <DatePicker onChange={noop} value={new Date(2017, 9, 2)}/>,
-        );
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} value={new Date(2017, 9, 2)} />);
         expect(await inputDriver.getValue()).toBe('10/02/2017');
       });
 
       it('should show empty value', async () => {
-        const {driver: {inputDriver}} = render(<DatePicker onChange={noop}/>);
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} />);
         expect(await inputDriver.getValue()).toBe('');
       });
 
       describe('when undefined', () => {
         it('should display `placeholderText`', async () => {
-          const {driver: {inputDriver}} = render(
+          const {
+            driver: { inputDriver },
+          } = render(
             <DatePicker
               value={undefined}
               placeholderText="hello"
@@ -813,7 +870,9 @@ describe('DatePicker', () => {
     describe('borderRadius', () => {
       // move to visual tests
       it.skip('should have both borderRadius by default', async () => {
-        const {driver: {inputDriver}} = render(<DatePicker onChange={noop}/>);
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} />);
         expect(await inputDriver.hasRightBorderRadius()).toBe(true);
         expect(await inputDriver.hasLeftBorderRadius()).toBe(true);
       });
@@ -822,9 +881,11 @@ describe('DatePicker', () => {
     describe('inputProps prop', () => {
       // move to visual tests
       it.skip('should pass inputProps to input component', async () => {
-        const {driver: {inputDriver}} = render(
+        const {
+          driver: { inputDriver },
+        } = render(
           <DatePicker
-            inputProps={{noRightBorderRadius: true, noLeftBorderRadius: true}}
+            inputProps={{ noRightBorderRadius: true, noLeftBorderRadius: true }}
             onChange={noop}
           />,
         );
@@ -835,9 +896,9 @@ describe('DatePicker', () => {
 
     describe('two months layout', () => {
       it('should switch to 2 months layout if we set twoMonths prop to true', async () => {
-        const {driver: {inputDriver, calendarDriver}} = render(
-          <DatePicker twoMonths onChange={noop}/>,
-        );
+        const {
+          driver: { inputDriver, calendarDriver },
+        } = render(<DatePicker twoMonths onChange={noop} />);
         await inputDriver.click();
         expect(await calendarDriver.isTwoMonthsLayout()).toBe(true);
       });
@@ -845,10 +906,9 @@ describe('DatePicker', () => {
 
     describe('firstDayOfWeek', () => {
       it('should show correct first day of the week', async () => {
-        const {driver: {inputDriver, calendarDriver}} = render(
-          <DatePicker onChange={() => {
-          }} firstDayOfWeek={0}/>,
-        );
+        const {
+          driver: { inputDriver, calendarDriver },
+        } = render(<DatePicker onChange={() => {}} firstDayOfWeek={0} />);
 
         await inputDriver.click();
 
@@ -857,7 +917,3 @@ describe('DatePicker', () => {
     });
   }
 });
-
-
-
-
