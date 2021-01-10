@@ -14,6 +14,10 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
+## Next
+### Added
+- `Themes | Business Dashboard` - Checkbox - Add checkbox to dashboard storybook [#6511](https://github.com/wix/wix-style-react/pull/6511)
+
 ## 9.65.0 - 2021-01-08
 ### Added
 - `<Accordion/>` - add bottom shadow to open item [#6509](https://github.com/wix/wix-style-react/pull/6509)
