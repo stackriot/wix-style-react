@@ -21,6 +21,7 @@ Types of changes:
 - `<DatePicker/>` - New Unidriver testkit [$6466](https://github.com/wix/wix-style-react/pull/6466)
 - `<SidePanel/>` - adding support for noPadding [#6517](https://github.com/wix/wix-style-react/pull/6517)
 - `Themes | Business Dashboard` - Checkbox - Add checkbox to dashboard storybook [#6511](https://github.com/wix/wix-style-react/pull/6511)
+- `Themes | Business Dashboard` - Thumbnail - Style override [#6531](https://github.com/wix/wix-style-react/pull/6531)
 
 ### Changed
 - `<AtlasAddressInput/>` (WIP) - replace `headers` prop with `token` prop [#6527](https://github.com/wix/wix-style-react/pull/6527)
