@@ -161,6 +161,11 @@
   -st-default: CloseButton;
 }
 
+:import {
+  -st-from: "../../Thumbnail/Thumbnail.st.css";
+  -st-default: Thumbnail;
+}
+
 /* Overrides */
 :import {
   -st-from: "./components/Button.st.css";
@@ -317,6 +322,11 @@
   -st-default: CloseButtonOverrides;
 }
 
+:import {
+  -st-from: "./components/Thumbnail.st.css";
+  -st-default: ThumbnailOverrides;
+}
+
 @st-scope .root {
   Button {
     -st-mixin: ButtonOverrides();
@@ -406,6 +416,9 @@
   }
   CloseButton {
     -st-mixin: CloseButtonOverrides();
+  }
+  Thumbnail {
+    -st-mixin: ThumbnailOverrides();
   }
 }
 
