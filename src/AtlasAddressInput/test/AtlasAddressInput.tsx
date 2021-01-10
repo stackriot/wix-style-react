@@ -27,6 +27,7 @@ function addressInputWithAllProps() {
       placeholder="write something"
       noResultsText="nothing to see here"
       baseUrl="http://localhost:9999/"
+      token="SOME_AUTH_TOKEN"
       optionLayout="double-line"
       optionPrefix={<div />}
       optionSuffix={<span />}

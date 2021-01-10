@@ -8,7 +8,7 @@ import { dataHooks } from './constants';
 
 const AtlasAddressInput = ({
   baseUrl,
-  headers,
+  token,
   debounceMs,
   debounceFn,
   onChange,
@@ -20,7 +20,7 @@ const AtlasAddressInput = ({
   status: statusProp,
   ...props
 }) => {
-  const client = useAtlasClient({ baseUrl, headers });
+  const client = useAtlasClient({ baseUrl, token });
   const {
     predictions,
     updatePredictions,
@@ -85,8 +85,8 @@ AtlasAddressInput.propTypes = {
   /** Custom domain for WixAtlasServiceWeb to retreive predictions from  */
   baseUrl: PropTypes.string,
 
-  /** Headers to pass to Atlas Autocomplete Service */
-  headers: PropTypes.object,
+  /** Authorization token to pass to the Atlas Service */
+  token: PropTypes.string,
 
   /** Fetch predictions debounce in milliseconds (default: 200) */
   debounceMs: PropTypes.number,
