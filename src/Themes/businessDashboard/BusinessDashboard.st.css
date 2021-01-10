@@ -17,6 +17,11 @@
 }
 
 :import {
+  -st-from: "../../Checkbox/Checkbox.st.css";
+  -st-default: Checkbox;
+}
+
+:import {
   -st-from: "../../LinearProgressBar/LinearProgressBar.st.css";
   -st-default: LinearProgressBar;
 }
@@ -168,6 +173,11 @@
 }
 
 :import {
+  -st-from: "./components/Checkbox.st.css";
+  -st-default: CheckboxOverrides;
+}
+
+:import {
   -st-from: "./components/LinearProgressBar.st.css";
   -st-default: LinearProgressBarOverrides;
 }
@@ -314,6 +324,11 @@
   CircularProgressBar {
     -st-mixin: CircularProgressBarOverrides();
   }
+
+  Checkbox {
+    -st-mixin: CheckboxOverrides();
+  }
+
   LinearProgressBar {
     -st-mixin: LinearProgressBarOverrides();
   }
