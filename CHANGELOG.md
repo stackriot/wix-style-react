@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 ### Added
+- `<Accordion/>` - Add accordionSectionItem [#6475](https://github.com/wix/wix-style-react/pull/6475)
 - `Themes | Business Dashboard` - Checkbox - Add checkbox to dashboard storybook [#6511](https://github.com/wix/wix-style-react/pull/6511)
 
 ## 9.65.0 - 2021-01-08
