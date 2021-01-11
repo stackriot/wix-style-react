@@ -22,6 +22,7 @@ Types of changes:
 - `<SidePanel/>` - adding support for noPadding [#6517](https://github.com/wix/wix-style-react/pull/6517)
 - `Themes | Business Dashboard` - Checkbox - Add checkbox to dashboard storybook [#6511](https://github.com/wix/wix-style-react/pull/6511)
 - `Themes | Business Dashboard` - Thumbnail - Style override [#6531](https://github.com/wix/wix-style-react/pull/6531)
+- `<Table/>` - reduce spacing (feature toggle) and add `tiny` to `rowVerticalPadding` prop [#6488](https://github.com/wix/wix-style-react/pull/6488)
 
 ### Fixed
 - `<MultiSelectCheckbox/>` - make delimiter parameter optional for getLabel and getLabelAt [#6537](https://github.com/wix/wix-style-react/pull/6537)
