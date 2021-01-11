@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `Themes | Business Dashboard` - Tag - styling override [#6514](https://github.com/wix/wix-style-react/pull/6514)
+
 ### Fixed
 - `<Tabs/>` - fix testing in puppeteer [#6533](https://github.com/wix/wix-style-react/pull/6533)
 
