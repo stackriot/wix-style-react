@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.66.0 - 2021-01-11
 ### Added
 - `<Input/>` - add border prop [#6496](https://github.com/wix/wix-style-react/pull/6496)
 - `<Accordion/>` - Add accordionSectionItem [#6475](https://github.com/wix/wix-style-react/pull/6475)
