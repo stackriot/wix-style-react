@@ -22,7 +22,7 @@ function addressInputWithAllProps() {
       onSelect={(option, getPlaceDetails) => {}}
       onChange={value => {}}
       onClear={() => {}}
-      roundInput={false}
+      border="round"
       size="small"
       placeholder="write something"
       noResultsText="nothing to see here"

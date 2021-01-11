@@ -40,7 +40,7 @@ export default {
 
   componentProps: {
     clearButton: true,
-    roundInput: true,
+    border: 'round',
     disabled: false,
     size: 'medium',
     placeholder: 'Placeholder text...',

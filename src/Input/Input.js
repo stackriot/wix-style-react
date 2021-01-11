@@ -463,8 +463,8 @@ Input.propTypes = {
   /** Used to reference element data when a form is submitted. */
   name: PropTypes.string,
 
-  /** border type */
-  border: PropTypes.oneOf(['standard', 'round', 'borderless']),
+  /** Border type */
+  border: PropTypes.oneOf(['standard', 'round', 'bottomLine']),
 
   /**
    * When set to true, this input will be rounded

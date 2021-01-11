@@ -134,8 +134,8 @@ AtlasAddressInput.propTypes = {
   /** The status message to display when hovering the status icon, if not given or empty there will be no tooltip */
   statusMessage: PropTypes.node,
 
-  /** The shape of the component input */
-  roundInput: PropTypes.bool,
+  /** Border type */
+  border: PropTypes.oneOf(['standard', 'round', 'bottomLine']),
 
   /** Specifies the size of the input */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
