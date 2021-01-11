@@ -35,6 +35,7 @@ import * as emptyState from './components/EmptyState';
 import * as modal from './components/Modal';
 import * as trendIndicator from './components/TrendIndicator';
 import * as closeButton from './components/CloseButton';
+import * as tag from './components/Tag';
 import * as checkbox from './components/Checkbox';
 import * as thumbnail from './components/Thumbnail';
 import { Category } from '../../../../stories/storiesHierarchy';
@@ -173,6 +174,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('CloseButton'),
             source: closeButton.playground,
+          }),
+          example({
+            text: TextComponent('Tag'),
+            source: tag.playground,
           }),
           example({
             text: TextComponent('Checkbox'),

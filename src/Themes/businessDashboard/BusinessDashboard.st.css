@@ -162,6 +162,11 @@
 }
 
 :import {
+  -st-from: "../../Tag/Tag.st.css";
+  -st-default: Tag;
+}
+
+:import {
   -st-from: "../../Thumbnail/Thumbnail.st.css";
   -st-default: Thumbnail;
 }
@@ -323,6 +328,11 @@
 }
 
 :import {
+  -st-from: "./components/Tag.st.css";
+  -st-default: TagOverrides;
+}
+
+:import {
   -st-from: "./components/Thumbnail.st.css";
   -st-default: ThumbnailOverrides;
 }
@@ -416,6 +426,9 @@
   }
   CloseButton {
     -st-mixin: CloseButtonOverrides();
+  }
+  Tag {
+    -st-mixin: TagOverrides();
   }
   Thumbnail {
     -st-mixin: ThumbnailOverrides();
