@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Fixed
+- `<Tabs/>` - fix testing in puppeteer [#6533](https://github.com/wix/wix-style-react/pull/6533)
+
 ## 9.66.0 - 2021-01-11
 ### Added
 - `<Input/>` - add border prop [#6496](https://github.com/wix/wix-style-react/pull/6496)
