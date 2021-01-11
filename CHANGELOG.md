@@ -27,6 +27,7 @@ Types of changes:
 ### Fixed
 - `<MultiSelectCheckbox/>` - make delimiter parameter optional for getLabel and getLabelAt [#6537](https://github.com/wix/wix-style-react/pull/6537)
 - `<AddressInput/>` - disable browser autofill [#6532](https://github.com/wix/wix-style-react/pull/6532)
+- `<Tabs/>` - fix testing in puppeteer [#6533](https://github.com/wix/wix-style-react/pull/6533)
 
 ### Changed
 - `<AtlasAddressInput/>` (WIP) - replace `headers` prop with `token` prop [#6527](https://github.com/wix/wix-style-react/pull/6527)
