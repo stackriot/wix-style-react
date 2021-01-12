@@ -5,7 +5,7 @@
 
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
-  -st-named: D10-20, D10-30, D40, D10, D60, D70, D80, F00,
+  -st-named: D10-20, D10-30, D40, THEME-TEXT-COLOR-PRIMARY, D60, D70, D80, F00,
   R10, R30, Y10, Y30,
   THEME-COLOR-10, THEME-COLOR-30, THEME-COLOR-40, THEME-COLOR-50;
 }
@@ -36,12 +36,12 @@
   display: flex;
   border: solid 1px value(THEME-COLOR-30);
   background-color: value(D80);
-  color: value(D10);
+  color: value(THEME-TEXT-COLOR-PRIMARY);
 }
 
 .input {
   -st-mixin: placeholderMixin(value(D40));
-  color: value(D10);
+  color: value(THEME-TEXT-COLOR-PRIMARY);
   display: block;
   flex: 1 1 auto;
   margin: 0;
