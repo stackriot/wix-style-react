@@ -11,7 +11,7 @@ import {
   includes,
   trySetStreetNumberIfNotReceived,
 } from './google2address';
-import styles from './GoogleAddressInput.scss';
+import { classes } from './GoogleAddressInput.st.css';
 
 export const GoogleAddressInputHandler = {
   geocode: 'geocode',
@@ -107,7 +107,7 @@ class GoogleAddressInput extends React.Component {
   }
 
   static getGoogleFooter = () => (
-    <div className={styles.googleFooter} data-hook="google-footer" />
+    <div className={classes.googleFooter} data-hook="google-footer" />
   );
 
   focus() {

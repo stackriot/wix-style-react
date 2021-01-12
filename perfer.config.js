@@ -64,7 +64,7 @@ const javascriptFiles = [
   ['FormField.bundle.min.js', 44],
   ['FunnelChart.bundle.min.js', 44],
   ['GenericModalLayout.bundle.min.js', 4],
-  ['GoogleAddressInput.bundle.min.js', 73],
+  ['GoogleAddressInput.bundle.min.js', 80],
   ['GooglePreview.bundle.min.js', 39],
   ['Grid.bundle.min.js', 8],
   ['Heading.bundle.min.js', 35],

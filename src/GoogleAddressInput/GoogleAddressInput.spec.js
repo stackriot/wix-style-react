@@ -1,6 +1,5 @@
 import 'react';
-import { componentFactory } from './GoogleAddressInput.driver';
-
+import { componentFactory } from './GoogleAddressInput.private.driver';
 import eventually from 'wix-eventually';
 import sinon from 'sinon';
 import { GoogleAddressInputHandler } from './GoogleAddressInput';
