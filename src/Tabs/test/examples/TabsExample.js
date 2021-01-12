@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import RadioGroup from '../../RadioGroup';
-import Input from '../../Input';
+import RadioGroup from '../../../RadioGroup';
+import Input from '../../../Input';
 import TabsTemplate from './TabsTemplate';
-import Button from '../../Button';
-import styles from './TabsExample.scss';
-import FormField from '../../FormField';
-import Text from '../../Text';
+import Button from '../../../Button';
+import { classes } from './TabsExample.st.css';
+import FormField from '../../../FormField';
+import Text from '../../../Text';
 
 const SideContentExample = () => (
-  <div className={styles.sideContentExample}>
+  <div className={classes.sideContentExample}>
     <Button theme="whiteblue">Cancel</Button>
     <Button>Save</Button>
   </div>
@@ -26,9 +26,9 @@ class TabsExample extends Component {
   render() {
     return (
       <div>
-        <div className={styles.controlGroup}>
+        <div className={classes.controlGroup}>
           <Text>Type</Text>
-          <div className={styles.radioGroup}>
+          <div className={classes.radioGroup}>
             <RadioGroup
               display="horizontal"
               value={this.state.type}
@@ -49,8 +49,8 @@ class TabsExample extends Component {
           </div>
         </div>
         {this.state.type === 'uniformSide' ? (
-          <div className={styles.option}>
-            <div className={styles.column} style={{ width: '100px' }}>
+          <div>
+            <div style={{ width: '100px' }}>
               <br />
               <FormField label="Tab Width">
                 <Input
@@ -81,9 +81,9 @@ class TabsExample extends Component {
             </div>
           </div>
         ) : null}
-        <div className={styles.controlGroup}>
+        <div className={classes.controlGroup}>
           <Text>Divider</Text>
-          <div className={styles.radioGroup}>
+          <div className={classes.radioGroup}>
             <RadioGroup
               display="horizontal"
               value={this.state.hasDivider}
@@ -94,9 +94,9 @@ class TabsExample extends Component {
             </RadioGroup>
           </div>
         </div>
-        <div className={styles.controlGroup}>
+        <div className={classes.controlGroup}>
           <Text>Side Content</Text>
-          <div className={styles.radioGroup}>
+          <div className={classes.radioGroup}>
             <RadioGroup
               display="horizontal"
               value={this.state.showSideContent}
@@ -107,7 +107,7 @@ class TabsExample extends Component {
             </RadioGroup>
           </div>
         </div>
-        <div className={styles.preview}>
+        <div className={classes.preview}>
           <TabsTemplate
             onChange={this.props.onChange}
             type={this.state.type}

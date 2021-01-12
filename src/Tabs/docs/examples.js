@@ -3,36 +3,24 @@ const items = [1, 2, 3, 4, 5].map(index => ({
   title: `item ${index}`,
 }));
 
-const sideContent = `
-<div>
-  <div>This is a</div>
-  <div>side content</div>
-</div>
-`;
-
 export const base = `
-class TabsExample extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      activeId: 1,
-    };
-    this.change = this.change.bind(this);
-  }
+() => {
+  const [activeId, setActiveId] = React.useState(2);
 
-  change(value) { this.setState({ activeId: value.id }) }
-
-  render() {
-    const { activeId } = this.state;
-    return (
-      <Tabs
-        activeId={activeId}
-        onClick={this.change}
-        items={${JSON.stringify(items)}}
-      />
-    );
-  }
-}
+  return (
+    <Tabs
+      activeId={activeId}
+      onClick={value => setActiveId(value.id)}
+      items={[
+        { id: 1, title: 'item 1' },
+        { id: 2, title: 'item 2' },
+        { id: 3, title: 'item 3' },
+        { id: 4, title: 'item 4' },
+        { id: 5, title: 'item 5' },
+      ]}
+    />
+  );
+};
 `;
 
 export const hasDivider = `

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import Tabs from '..';
-import * as TabPropTypes from '../core/constants/tab-prop-types';
+import Tabs from '../../index';
+import * as TabPropTypes from '../../core/constants/tab-prop-types';
 
 const items = [
   { id: 1, title: 'First Item' },

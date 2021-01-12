@@ -12,7 +12,7 @@ class Tabs extends React.Component {
     size: 'medium',
   };
 
-  getTabItemsProps = () => {
+  _getTabItemsProps = () => {
     /* eslint-disable no-unused-vars */
     const { sideContent, dataHook, ...tabItemsProps } = this.props;
     return tabItemsProps;
@@ -20,7 +20,7 @@ class Tabs extends React.Component {
 
   render() {
     const { sideContent, hasDivider, dataHook, size, className } = this.props;
-    const tabItemsProps = this.getTabItemsProps();
+    const tabItemsProps = this._getTabItemsProps();
 
     return (
       <div

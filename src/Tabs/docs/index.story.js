@@ -4,7 +4,6 @@ import { createAutoExampleWrapper } from '../../../stories/utils/AutoExampleWrap
 import {
   api,
   example as baseExample,
-  columns,
   description,
   divider,
   header,
@@ -17,7 +16,6 @@ import {
 } from 'wix-storybook-utils/dist/src/Sections';
 import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
-import TabsHeaderExample from './TabsHeaderExample';
 
 const example = config => baseExample({ components: allComponents, ...config });
 
@@ -42,7 +40,7 @@ export default {
 
   sections: [
     header({
-      component: <TabsHeaderExample />,
+      sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${Tabs.displayName}/`,
     }),
 
     tabs([
@@ -59,16 +57,39 @@ export default {
 
           title('Examples'),
 
-          example({ title: 'Basic use', source: examples.base }),
+          example({
+            title: 'Basic use',
+            text:
+              'Tabs is a controlled component, provide `activeId` and `onClick` to use.',
+            source: examples.base,
+          }),
+
           example({
             title: 'Without bottom divider',
+            text:
+              'By default, Tabs has a bottom divider, in order to remove it use the `hasDivider` prop.',
             source: examples.hasDivider,
           }),
+
           example({
             title: 'Small Tab size',
+            text: 'Tabs comes in two sizes `medium` (default) and `small`.',
             source: examples.smallSize,
           }),
-          example({ title: 'Tabs types', source: examples.types }),
+
+          example({
+            title: 'Tabs types',
+            text: `
+Tabs component has a minimal width of 628px by design.\n
+It has some variations how to spread the tab items with respect to the width:
+- \`default\` - Every item can grow/shrink according to the content.
+- \`compact\` - Every item can grow/shrink according to the content with a maximal width accross the whole width.
+- \`compactSide\` - Every item can grow/shrink according to the content with a maximal width.
+- \`uniformSide\` - All items grow to the same size.
+- \`uniformFull\` - All items grow to the same size accross the whole width.
+            `,
+            source: examples.types,
+          }),
         ],
       }),
 

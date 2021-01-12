@@ -1,11 +1,10 @@
 import React from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import * as TabPropTypes from '../constants/tab-prop-types';
 import TabItem from '../TabItem';
 import withItemMaxWidth from '../withItemMaxWidth';
-import { classes } from '../../Tabs.st.css';
+import { st, classes } from '../../Tabs.st.css';
 
 class TabItems extends React.Component {
   renderItem(item) {
@@ -27,13 +26,12 @@ class TabItems extends React.Component {
 
   render() {
     const { items, type, dataHook } = this.props;
-    const className = classNames(classes.itemsContainer, classes[type]);
 
     return (
       <ul
         data-type={type}
         data-hook={dataHook}
-        className={className}
+        className={st(classes.itemsContainer, classes[type])}
         style={{ minWidth: this.props.minWidth }}
       >
         {items.map(item => this.renderItem(item))}
