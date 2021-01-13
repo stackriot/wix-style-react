@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.67.0 - 2021-01-13
 ### Added
 - `Themes | Business Dashboard` - Tag - styling override [#6514](https://github.com/wix/wix-style-react/pull/6514)
 - `Themes | Business Dashboard` - VerticalTabsItem styling [#6540](https://github.com/wix/wix-style-react/pull/6540)
