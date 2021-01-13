@@ -18,13 +18,13 @@ Types of changes:
 
 ### Added
 - `Themes | Business Dashboard` - Tag - styling override [#6514](https://github.com/wix/wix-style-react/pull/6514)
+- `Themes | Business Dashboard` - VerticalTabsItem styling [#6540](https://github.com/wix/wix-style-react/pull/6540)
 
 ### Fixed
 - `<Tabs/>` - fix testing in puppeteer [#6533](https://github.com/wix/wix-style-react/pull/6533)
 
 ### Changed 
 - `<GoogleAddressInput/>` - migrate to Stylable [#6544](https://github.com/wix/wix-style-react/pull/6544)
-- `<MarketingLayout/>` - update size tiny columns and spacing [#6458](https://github.com/wix/wix-style-react/pull/6458)
 
 ## 9.66.0 - 2021-01-11
 ### Added
