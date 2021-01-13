@@ -5,7 +5,9 @@ import { st, classes } from './ListItemSelect.st.css';
 import { FontUpgradeContext } from '../FontUpgrade/context';
 import Checkbox from '../Checkbox';
 import Box from '../Box';
+import HighlightContext from '../InputWithOptions/HighlightContext';
 import { dataHooks } from './constants';
+import Highlighter from '../Highlighter/Highlighter';
 
 export const SIZES = {
   small: 'small',
@@ -110,11 +112,30 @@ class ListItemSelect extends React.PureComponent {
     );
   }
 
+  _renderTitle(textProps) {
+    const { title } = this.props;
+    const titleElement = (
+      <Text className={classes.title} dataHook={dataHooks.TITLE} {...textProps}>
+        {title}
+      </Text>
+    );
+    return (
+      <HighlightContext.Consumer>
+        {({ highlight, match }) =>
+          highlight ? (
+            <Highlighter match={match}>{titleElement}</Highlighter>
+          ) : (
+            titleElement
+          )
+        }
+      </HighlightContext.Consumer>
+    );
+  }
+
   _renderContent({ isMadefor }) {
     const {
       checkbox,
       prefix,
-      title,
       subtitle,
       suffix,
       selected,
@@ -157,13 +178,7 @@ class ListItemSelect extends React.PureComponent {
         <div
           className={st(classes.titleWrapper, { subtitle: Boolean(subtitle) })}
         >
-          <Text
-            className={classes.title}
-            dataHook={dataHooks.TITLE}
-            {...textProps}
-          >
-            {title}
-          </Text>
+          {this._renderTitle(textProps)}
           {subtitle && (
             <Text
               className={classes.subtitle}

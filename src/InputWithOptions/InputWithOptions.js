@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Input from '../Input';
 import omit from 'omit';
-import DropdownLayout, {
-  DIVIDER_OPTION_VALUE,
-} from '../DropdownLayout/DropdownLayout';
-import Highlighter from '../Highlighter/Highlighter';
+import DropdownLayout from '../DropdownLayout/DropdownLayout';
 import { chainEventHandlers } from '../utils/ChainEventHandlers';
 import { classes } from './InputWithOptions.st.css';
 import uniqueId from 'lodash/uniqueId';
 import Popover from '../Popover';
+import HighlightContext from './HighlightContext';
 
 export const DEFAULT_VALUE_PARSER = option => option.value;
 
@@ -151,32 +149,13 @@ class InputWithOptions extends Component {
     });
   }
 
-  _processOptions(options) {
-    return !this.props.highlight
-      ? options
-      : options.map(option => {
-          return {
-            ...option,
-            value:
-              option.value === DIVIDER_OPTION_VALUE ? (
-                option.value
-              ) : (
-                <Highlighter
-                  match={this.state.inputValue}
-                  dataHook={`highlighter-${option.id}`}
-                >
-                  {option.value}
-                </Highlighter>
-              ),
-          };
-        });
-  }
-
   isDropdownLayoutVisible = () =>
     this.state.showOptions &&
     (this.props.showOptionsIfEmptyInput || this.state.inputValue.length > 0);
 
   _renderDropdownLayout() {
+    const { highlight } = this.props;
+    const { inputValue } = this.state;
     const inputOnlyProps = omit(['tabIndex'], Input.propTypes);
     const dropdownProps = Object.assign(
       omit(
@@ -194,18 +173,19 @@ class InputWithOptions extends Component {
         style={customStyle}
         data-hook="dropdown-layout-wrapper"
       >
-        <DropdownLayout
-          ref={dropdownLayout => (this.dropdownLayout = dropdownLayout)}
-          {...dropdownProps}
-          dataHook="inputwithoptions-dropdownlayout"
-          options={this._processOptions(dropdownProps.options)}
-          visible
-          onClose={this.hideOptions}
-          onSelect={this._onSelect}
-          isComposing={this.state.isComposing}
-          inContainer
-          tabIndex={-1}
-        />
+        <HighlightContext.Provider value={{ highlight, match: inputValue }}>
+          <DropdownLayout
+            ref={dropdownLayout => (this.dropdownLayout = dropdownLayout)}
+            {...dropdownProps}
+            dataHook="inputwithoptions-dropdownlayout"
+            visible
+            onClose={this.hideOptions}
+            onSelect={this._onSelect}
+            isComposing={this.state.isComposing}
+            inContainer
+            tabIndex={-1}
+          />
+        </HighlightContext.Provider>
       </div>
     );
   }

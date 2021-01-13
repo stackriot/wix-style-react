@@ -4,6 +4,7 @@ import Favorite from 'wix-ui-icons-common/Favorite';
 import ListItemSelect, { listItemSelectBuilder } from '../ListItemSelect';
 import DropdownLayout from '../../DropdownLayout';
 import Box from '../../Box';
+import HighlightContext from '../../InputWithOptions/HighlightContext';
 
 const componentProps = {
   title: ['List item select'],
@@ -148,9 +149,8 @@ export const runTests = (
     });
   });
 
-  storiesOf(`${themeName ? `${themeName}|` : ''}ListItemSelect`, module).add(
-    'builder',
-    () =>
+  storiesOf(`${themeName ? `${themeName}|` : ''}ListItemSelect`, module)
+    .add('builder', () =>
       testWithTheme(
         <DropdownLayout
           visible
@@ -177,5 +177,35 @@ export const runTests = (
           ]}
         />,
       ),
-  );
+    )
+    .add('with highlighting', () =>
+      testWithTheme(
+        <HighlightContext.Provider value={{ highlight: true, match: 'tion' }}>
+          <DropdownLayout
+            visible
+            selectedId={1}
+            options={[
+              listItemSelectBuilder({
+                id: 0,
+                title: 'option 1',
+                subtitle: 'subtitle 1',
+                checkbox: true,
+              }),
+              listItemSelectBuilder({
+                id: 1,
+                title: 'option 2',
+                subtitle: 'subtitle 2',
+                checkbox: true,
+              }),
+              listItemSelectBuilder({
+                id: 2,
+                title: 'option 3',
+                subtitle: 'subtitle 3',
+                checkbox: true,
+              }),
+            ]}
+          />
+        </HighlightContext.Provider>,
+      ),
+    );
 };

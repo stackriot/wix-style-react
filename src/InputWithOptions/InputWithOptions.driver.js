@@ -45,13 +45,6 @@ const inputWithOptionsDriverFactory = ({ element, eventTrigger }) => {
     pressKey: key => inputDriver.keyDown(key),
     isMenuOpen: () => popoverTestkit().isContentElementExists(),
     outsideClick: () => popoverTestkit().clickOutside(),
-    isOptionWrappedToHighlighter: optionId => {
-      inputDriver.keyDown('ArrowDown');
-      const { element: optionElm } = dropdownLayoutTestkit().optionById(
-        optionId,
-      );
-      return !!optionElm().querySelector(`[data-hook=highlighter-${optionId}]`);
-    },
   };
 
   const dropdownLayoutDummy = dropdownLayoutDriverFactory({

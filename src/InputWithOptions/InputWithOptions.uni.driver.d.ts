@@ -15,9 +15,6 @@ export interface InputWithOptionsUniDriver extends BaseUniDriver {
     blur: () => Promise<void>;
     pressKey: (key: string) => Promise<void>;
     outsideClick: () => Promise<void>;
-    isOptionWrappedToHighlighter: (
-      optionId: string | number,
-    ) => Promise<boolean>;
   };
   inputDriver: InputUniDriver;
   dropdownLayoutDriver: DropdownLayoutUniDriver;

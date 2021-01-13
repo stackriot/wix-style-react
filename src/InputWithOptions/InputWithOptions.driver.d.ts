@@ -16,6 +16,5 @@ export interface InputWithOptionsDriver extends BaseDriver {
     blur: () => void;
     pressKey: (key: string) => void;
     outsideClick: () => void;
-    isOptionWrappedToHighlighter: (optionId: string | number) => void;
   };
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import {
   createRendererWithDriver,
@@ -11,6 +11,7 @@ import inputWithOptionsDriverFactory from '../InputWithOptions.driver';
 import { inputWithOptionsUniDriverFactory } from './InputWithOptions.private.uni.driver';
 import { mount } from 'enzyme';
 import { enzymeUniTestkitFactoryCreator } from 'wix-ui-test-utils/enzyme';
+import HighlightContext from '../HighlightContext';
 
 describe('InputWithOptions', () => {
   const ControlledInputWithOptions = makeControlled(InputWithOptions);
@@ -551,21 +552,29 @@ describe('InputWithOptions', () => {
       expect(onManualInput).toBeCalled();
     });
 
-    it('should wrap all options to highlighter component if prop highlight true', async () => {
-      const { driver } = createDriver(
-        <InputWithOptions options={options} highlight />,
-      );
-      expect(await driver.isOptionWrappedToHighlighter(options[0].id)).toBe(
-        true,
-      );
-    });
+    it('should provide highlighting context to options', async () => {
+      const getHighlightText = (highlight, match) =>
+        `highlight: ${highlight}, match: ${match}`;
 
-    it('should not wrap all options to highlighter component if prop highlight false', async () => {
-      const { driver } = createDriver(
-        <InputWithOptions options={options} highlight={false} />,
+      const HighlightContextOption = () => {
+        const { highlight, match } = useContext(HighlightContext);
+        return getHighlightText(highlight, match);
+      };
+
+      const highlight = true;
+      const value = 'hello';
+      const options = [{ id: 0, value: () => <HighlightContextOption /> }];
+
+      const { dropdownLayoutDriver } = createDriver(
+        <InputWithOptions
+          options={options}
+          highlight={highlight}
+          value={value}
+        />,
       );
-      expect(await driver.isOptionWrappedToHighlighter(options[0].id)).toBe(
-        false,
+
+      expect(await dropdownLayoutDriver.optionContentAt(0)).toBe(
+        getHighlightText(highlight, value),
       );
     });
 

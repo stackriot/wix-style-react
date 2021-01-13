@@ -56,6 +56,13 @@ const tests = [
           disabled: true,
         },
       },
+      {
+        it: 'highlight',
+        props: {
+          highlight: true,
+          value: 'tion',
+        },
+      },
     ],
   },
 ];

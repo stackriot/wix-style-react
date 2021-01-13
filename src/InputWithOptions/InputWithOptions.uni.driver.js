@@ -55,16 +55,6 @@ export const inputWithOptionsUniDriverFactory = (base, body) => {
     // TODO: use pressKey instead of keyDown
     pressKey: async key => await inputTestkit.keyDown({ key }),
     outsideClick: async () => await popoverTestkit().clickOutside(),
-    isOptionWrappedToHighlighter: async optionId => {
-      await driver.pressKey('ArrowDown');
-      const { element: optionElm } = await (
-        await dropdownLayoutTestkit()
-      ).optionById(optionId);
-      return (
-        (await optionElm().exists()) &&
-        (await optionElm().$(`[data-hook=highlighter-${optionId}]`).exists())
-      );
-    },
   };
 
   const dropdownLayoutDummy = () => dropdownLayoutDriverFactory(base);
