@@ -64,6 +64,13 @@ ThemeProvider.propTypes = {
     textColorPrimaryLight: PropTypes.string,
     textColorSecondaryLight: PropTypes.string,
     dividerColor: PropTypes.string,
+    borderRadius02: PropTypes.string,
+    borderRadius04: PropTypes.string,
+    borderRadius06: PropTypes.string,
+    borderRadius08: PropTypes.string,
+
+    // Button
+    buttonBorderRadius: PropTypes.string,
   }),
 };
 

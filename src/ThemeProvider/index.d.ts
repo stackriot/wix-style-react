@@ -42,6 +42,13 @@ export interface ThemeInterface {
   textColorPrimaryLight?: React.CSSProperties['color'];
   textColorSecondaryLight?: React.CSSProperties['color'];
   dividerColor?: React.CSSProperties['color'];
+  borderRadius02?: React.CSSProperties['borderRadius'];
+  borderRadius04?: React.CSSProperties['borderRadius'];
+  borderRadius06?: React.CSSProperties['borderRadius'];
+  borderRadius08?: React.CSSProperties['borderRadius'];
+
+  // Button
+  buttonBorderRadius?: React.CSSProperties['borderRadius'];
 }
 
 export interface ThemeProviderProps {

@@ -21,8 +21,13 @@
 }
 
 :import {
-  -st-from: "../CloseButton/CloseButton.st.css";
+  -st-from: '../CloseButton/CloseButton.st.css';
   -st-default: CloseButton;
+}
+
+:import {
+  -st-from: '../Foundation/stylable/border.st.css';
+  -st-named: THEME-RADIUS-06;
 }
 
 .root {
@@ -31,7 +36,7 @@
               disabled, isMadefor,
               border(enum(standard, round, bottomLine)),
               noLeftBorderRadius, noRightBorderRadius;
-  -st-mixin: boxSizingMixin('border-box'), borderRadiusMixin(6px);
+  -st-mixin: boxSizingMixin('border-box'), borderRadiusMixin(value(THEME-RADIUS-06));
   position: relative;
   display: flex;
   border: solid 1px value(THEME-COLOR-30);
@@ -234,7 +239,7 @@
   margin: auto 0 auto 6px;
 }
 
-:global([dir="rtl"]) :size(small) .statusWrapper {
+:global([dir='rtl']) :size(small) .statusWrapper {
   margin: auto 6px auto 0;
 }
 
@@ -243,8 +248,8 @@
   margin: auto 3px auto 6px;
 }
 
-:global([dir="rtl"]) :size(medium) .statusWrapper,
-:global([dir="rtl"]) :size(large) .statusWrapper {
+:global([dir='rtl']) :size(medium) .statusWrapper,
+:global([dir='rtl']) :size(large) .statusWrapper {
   margin: auto 6px auto 3px;
 }
 
@@ -273,7 +278,7 @@
   margin: auto 0 auto 3px;
 }
 
-:global([dir="rtl"]) .clearButtonWrapper {
+:global([dir='rtl']) .clearButtonWrapper {
   margin: auto 3px auto 0;
 }
 
@@ -291,7 +296,7 @@
   padding: 5px 9px 5px 6px;
 }
 
-:global([dir="rtl"]) :size(medium):border(round) .menuArrow {
+:global([dir='rtl']) :size(medium):border(round) .menuArrow {
   padding: 5px 6px 5px 9px;
 }
 
@@ -303,7 +308,7 @@
   padding: 8px 6px 8px 9px;
 }
 
-:global([dir="rtl"]) :size(large) .menuArrow {
+:global([dir='rtl']) :size(large) .menuArrow {
   padding: 8px 9px 8px 6px;
 }
 

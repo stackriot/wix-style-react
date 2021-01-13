@@ -100,9 +100,7 @@ const ThemeWSR = makeDecorator({
               ]}
             />
             <Card.Divider />
-            <Card.Content>
-              <StylePanel onChange={themeData => setThemeData(themeData)} />
-            </Card.Content>
+            <StylePanel onChange={themeData => setThemeData(themeData)} />
           </Card>
         </div>
       </div>

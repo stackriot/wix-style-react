@@ -5,8 +5,8 @@
   radius08: 8px;
 
   /* Theme */
-  THEME-RADIUS-02: var(--wsr-radius-02, value(radius02));
-  THEME-RADIUS-04: var(--wsr-radius-04, value(radius04));
-  THEME-RADIUS-06: var(--wsr-radius-06, value(radius06));
-  THEME-RADIUS-08: var(--wsr-radius-08, value(radius08));
+  THEME-RADIUS-02: var(--wsr-border-radius-02, value(radius02));
+  THEME-RADIUS-04: var(--wsr-border-radius-04, value(radius04));
+  THEME-RADIUS-06: var(--wsr-border-radius-06, value(radius06));
+  THEME-RADIUS-08: var(--wsr-border-radius-08, value(radius08));
 }

@@ -1,3 +1,5 @@
+@st-global-custom-property --wsr-button-border-radius;
+
 :import {
   -st-from: 'wix-ui-core/dist/src/components/button-next/button-next.st.css';
   -st-default: ButtonNext;
@@ -41,7 +43,7 @@
 
   height: 36px;
   min-width: 84px;
-  border-radius: 18px;
+  border-radius: var(--wsr-button-border-radius, 18px);
   padding: 0 23px;
 
   background-color: value(THEME-COLOR-10);
@@ -455,7 +457,7 @@
 
   -st-mixin: text-medium-normal;
 
-  border-radius: 21px;
+  border-radius: var(--wsr-button-border-radius, 21px);
   padding: 0 29px;
 }
 
@@ -465,7 +467,7 @@
 
     -st-mixin:text-small-normal;
 
-    border-radius: 15px;
+    border-radius: var(--wsr-button-border-radius, 15px);
     padding: 0 17px;
 }
 
@@ -476,7 +478,7 @@
     -st-mixin: text-tiny-normal;
 
     line-height: 16px;
-    border-radius: 18px;
+    border-radius: var(--wsr-button-border-radius, 18px);
     padding: 0 11px;
 }
 
