@@ -24,6 +24,7 @@ Types of changes:
 
 ### Changed 
 - `<GoogleAddressInput/>` - migrate to Stylable [#6544](https://github.com/wix/wix-style-react/pull/6544)
+- `<MarketingLayout/>` - update size tiny columns and spacing [#6458](https://github.com/wix/wix-style-react/pull/6458)
 
 ## 9.66.0 - 2021-01-11
 ### Added
