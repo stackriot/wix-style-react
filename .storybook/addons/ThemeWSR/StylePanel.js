@@ -90,6 +90,7 @@ function StylePanel({ onChange }) {
         <FormField label="Color" labelPlacement="left">
           <Box width="160px" marginLeft="auto">
             <ColorInput
+              popoverAppendTo="window"
               value={mainColor}
               onChange={color => setMainColor(color)}
             />
@@ -162,6 +163,7 @@ function StylePanel({ onChange }) {
         <FormField label="Primary" labelPlacement="left">
           <Box width="160px" marginLeft="auto">
             <ColorInput
+              popoverAppendTo="window"
               value={textColorPrimary}
               onChange={color => setTextColorPrimary(color)}
             />
@@ -170,6 +172,7 @@ function StylePanel({ onChange }) {
         <FormField label="Primary light" labelPlacement="left">
           <Box width="160px" marginLeft="auto">
             <ColorInput
+              popoverAppendTo="window"
               value={textColorPrimaryLight}
               onChange={color => setTextColorPrimaryLight(color)}
             />
@@ -178,6 +181,7 @@ function StylePanel({ onChange }) {
         <FormField label="Secondary" labelPlacement="left">
           <Box width="160px" marginLeft="auto">
             <ColorInput
+              popoverAppendTo="window"
               value={textColorSecondary}
               onChange={color => setTextColorSecondary(color)}
             />
@@ -186,6 +190,7 @@ function StylePanel({ onChange }) {
         <FormField label="Secondary light" labelPlacement="left">
           <Box width="160px" marginLeft="auto">
             <ColorInput
+              popoverAppendTo="window"
               value={textColorSecondaryLight}
               onChange={color => setTextColorSecondaryLight(color)}
             />
@@ -194,6 +199,7 @@ function StylePanel({ onChange }) {
         <FormField label="Divider" labelPlacement="left">
           <Box width="160px" marginLeft="auto">
             <ColorInput
+              popoverAppendTo="window"
               value={dividerColor}
               onChange={color => setDividerColor(color)}
             />
