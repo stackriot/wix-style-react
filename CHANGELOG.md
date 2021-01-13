@@ -22,6 +22,7 @@ Types of changes:
 
 ### Fixed
 - `<Tabs/>` - fix testing in puppeteer [#6533](https://github.com/wix/wix-style-react/pull/6533)
+- `<InputWithOptions/>` - fix highlighting for builder options [#6538](https://github.com/wix/wix-style-react/pull/6538)
 
 ### Changed 
 - `<GoogleAddressInput/>` - migrate to Stylable [#6544](https://github.com/wix/wix-style-react/pull/6544)
