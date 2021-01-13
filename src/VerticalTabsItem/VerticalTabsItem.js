@@ -52,6 +52,7 @@ class VerticalTabsItem extends React.PureComponent {
       </TextButton>
     ) : (
       <Text
+        className={classes.text}
         light={isTitle}
         secondary={isTitle}
         skin={disabled ? 'disabled' : 'standard'}

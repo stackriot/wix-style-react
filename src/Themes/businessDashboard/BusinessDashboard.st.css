@@ -171,6 +171,11 @@
   -st-default: Thumbnail;
 }
 
+:import {
+  -st-from: "../../VerticalTabsItem/VerticalTabsItem.st.css";
+  -st-default: VerticalTabsItem;
+}
+
 /* Overrides */
 :import {
   -st-from: "./components/Button.st.css";
@@ -337,6 +342,11 @@
   -st-default: ThumbnailOverrides;
 }
 
+:import {
+  -st-from: "./components/VerticalTabsItem.st.css";
+  -st-default: VerticalTabsItemOverrides;
+}
+
 @st-scope .root {
   Button {
     -st-mixin: ButtonOverrides();
@@ -432,6 +442,9 @@
   }
   Thumbnail {
     -st-mixin: ThumbnailOverrides();
+  }
+  VerticalTabsItem {
+    -st-mixin: VerticalTabsItemOverrides();
   }
 }
 

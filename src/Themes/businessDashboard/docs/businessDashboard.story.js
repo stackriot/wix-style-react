@@ -38,6 +38,7 @@ import * as closeButton from './components/CloseButton';
 import * as tag from './components/Tag';
 import * as checkbox from './components/Checkbox';
 import * as thumbnail from './components/Thumbnail';
+import * as verticalTabsItem from './components/VerticalTabsItem';
 import { Category } from '../../../../stories/storiesHierarchy';
 import Box from '../../../Box';
 import Text from '../../../Text';
@@ -186,6 +187,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('Thumbnail'),
             source: thumbnail.playground,
+          }),
+          example({
+            text: TextComponent('VerticalTabsItem'),
+            source: verticalTabsItem.playground,
           }),
         ],
       }),

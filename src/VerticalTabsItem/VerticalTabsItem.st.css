@@ -1,4 +1,9 @@
 :import {
+  -st-from: "../Text/Text.st.css";
+  -st-default: Text;
+}
+
+:import {
   -st-from: "../Foundation/stylable/colors.st.css";
   -st-named:
     B10, B40, B50,
@@ -46,6 +51,10 @@
 }
 .root:prefixIcon {
   padding-left: 24px;
+}
+
+.text {
+  -st-extends: Text;
 }
 
 .prefixIcon {
