@@ -10,8 +10,7 @@ import { stVars as colorsStVars } from '../Foundation/stylable/colors.st.css';
 
 const cellSpansBySize = {
   [SIZES.tiny]: {
-    image: 3,
-    spacer: 1,
+    image: 4,
     content: 8,
   },
   [SIZES.small]: {
@@ -143,7 +142,11 @@ class MarketingLayout extends React.PureComponent {
     const imageCell = this._renderImageCell(cellSpans.image);
     const contentCell = this._renderContentCell(cellSpans.content);
 
-    return (
+    return size === SIZES.tiny ? (
+      <Layout gap="24px">
+        {inverted ? [imageCell, contentCell] : [contentCell, imageCell]}
+      </Layout>
+    ) : (
       <Layout>
         {inverted
           ? [imageCell, contentCell, spacerCell]
