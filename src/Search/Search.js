@@ -176,7 +176,10 @@ class Search extends Component {
   };
 
   _onWrapperClick = () => {
-    if (this.props.expandable && this.state.collapsed) {
+    if (
+      !this.props.expandable ||
+      (this.props.expandable && this.state.collapsed)
+    ) {
       this.searchInput.input.focus();
     }
   };
