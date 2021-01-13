@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+- `<Search/>` - fix clicking search icon to focus the input [#6550](https://github.com/wix/wix-style-react/pull/6550)
 
 ## 9.67.0 - 2021-01-13
 ### Added
