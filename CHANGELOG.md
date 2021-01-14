@@ -22,6 +22,9 @@ Types of changes:
 - `<AnalyticsLayout/>` - added rowItemsCount [#6548](https://github.com/wix/wix-style-react/pull/6548)
 - `<AtlasAddressInput/>` - add onError prop for error handling [#6553](https://github.com/wix/wix-style-react/pull/6553)
 
+### Docs
+- `<InputWithOptions/>` - expose existing class methods in types [#6549](https://github.com/wix/wix-style-react/pull/6549)
+
 ## 9.67.0 - 2021-01-13
 ### Added
 - `Themes | Business Dashboard` - Tag - styling override [#6514](https://github.com/wix/wix-style-react/pull/6514)
