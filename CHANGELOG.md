@@ -22,6 +22,7 @@ Types of changes:
 - `<AnalyticsLayout/>` - added rowItemsCount [#6548](https://github.com/wix/wix-style-react/pull/6548)
 - `<AtlasAddressInput/>` - add onError prop for error handling [#6553](https://github.com/wix/wix-style-react/pull/6553)
 - `<SkeletonGroup/>` - created new skeleton components [#6141](https://github.com/wix/wix-style-react/pull/6141)
+- `<PopoverMenu/>` - pass isOpen prop to triggerElement [#6543](https://github.com/wix/wix-style-react/pull/6543)
 
 ### Docs
 - `<InputWithOptions/>` - expose existing class methods in types [#6549](https://github.com/wix/wix-style-react/pull/6549)
