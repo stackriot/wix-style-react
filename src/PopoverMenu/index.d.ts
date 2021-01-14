@@ -11,6 +11,7 @@ export interface PopoverTriggerElementProps {
   toggle: () => void;
   open: () => void;
   close: (event: React.SyntheticEvent) => void;
+  isOpen: boolean;
 }
 
 export interface PopoverMenuProps {

@@ -263,7 +263,7 @@ class PopoverMenu extends React.PureComponent {
     });
   };
 
-  _renderTriggerElement = ({ toggle, open, close }) => {
+  _renderTriggerElement = ({ toggle, open, close, isOpen }) => {
     const { triggerElement } = this.props;
     if (!triggerElement) {
       return null;
@@ -278,6 +278,7 @@ class PopoverMenu extends React.PureComponent {
           toggle,
           open,
           close,
+          isOpen,
         });
   };
 
@@ -315,8 +316,8 @@ class PopoverMenu extends React.PureComponent {
         maxHeight={maxHeight}
         zIndex={zIndex}
       >
-        {({ toggle, open, close }) =>
-          this._renderTriggerElement({ toggle, open, close })
+        {({ toggle, open, close, isOpen }) =>
+          this._renderTriggerElement({ toggle, open, close, isOpen })
         }
       </DropdownBase>
     );

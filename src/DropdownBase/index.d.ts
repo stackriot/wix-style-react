@@ -48,4 +48,5 @@ export type ChildrenFnArgs = (data: {
   toggle: () => void;
   delegateKeyDown: React.KeyboardEventHandler;
   selectedOption: DropdownLayoutValueOption;
+  isOpen: boolean;
 }) => React.ReactNode;
