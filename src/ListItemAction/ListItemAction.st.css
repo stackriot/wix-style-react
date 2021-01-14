@@ -1,27 +1,21 @@
-
 :import {
-  -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named:
-    B10, B40, B50,
-    D10, D55, D80,
-    F00,
-    G30,
-    R10, R30;
+  -st-from: '../Foundation/stylable/colors.st.css';
+  -st-named: B10, B40, B50, D10, D55, D80, F00, G30, R10, R30;
 }
 
 :import {
-  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-from: '../Foundation/stylable/colors.st.css';
   -st-named: D10-30;
 }
 
 :import {
-  -st-from: "wix-ui-core/dist/src/hocs/Focusable/Focusable.st.css";
+  -st-from: 'wix-ui-core/dist/src/hocs/Focusable/Focusable.st.css';
   -st-default: Focusable;
 }
 
-
 .root {
-  -st-states: skin(enum(standard, dark, destructive)), disabled, highlighted, ellipsis;
+  -st-states: skin(enum(standard, dark, destructive)), disabled, highlighted,
+    ellipsis;
   -st-extends: Focusable;
 
   overflow: hidden;
@@ -29,7 +23,6 @@
   padding: 6px 24px 6px 18px;
   width: 100%;
   align-items: center;
-  margin: 0;
 
   background-color: value(D80);
   cursor: pointer;
@@ -38,7 +31,7 @@
   text-align: left;
   text-align: start;
 
-  outline:none;
+  outline: none;
   border: none;
 
   text-decoration: none;
@@ -46,24 +39,22 @@
 
 .root:disabled {
   cursor: default;
-  pointer-events: none;
   color: value(D10-30);
 }
 
 .root:not(:disabled):focus-visible {
   background-color: value(B40);
-  box-shadow:inset 0 0 0 3px value(F00);
+  box-shadow: inset 0 0 0 3px value(F00);
 }
 
 /* Skin standard */
-
 .root:skin(standard) .text,
 .root:skin(standard) .prefixIcon {
-  color: value(B10)
+  color: value(B10);
 }
 
 .root:skin(standard):highlighted,
-.root:skin(standard):hover {
+.root:skin(standard):not(:disabled):hover {
   background-color: value(B50);
 }
 
@@ -76,8 +67,8 @@
 }
 
 .root:skin(standard):not(:disabled):focus-visible .text,
-.root:skin(standard):not(:disabled):focus-visible .prefixIcon  {
-   color: value(D80);
+.root:skin(standard):not(:disabled):focus-visible .prefixIcon {
+  color: value(D80);
 }
 
 .root:skin(standard):disabled .text,
@@ -86,22 +77,21 @@
 }
 
 /* Skin dark */
-
 .root:skin(dark) .text,
 .root:skin(dark) .prefixIcon {
-  color: value(D10)
+  color: value(D10);
 }
 
 .root:skin(dark):highlighted .text,
 .root:skin(dark):highlighted .prefixIcon,
-.root:skin(dark):hover .text,
-.root:skin(dark):hover .prefixIcon {
-  color: value(B10)
+.root:skin(dark):not(:disabled):hover .text,
+.root:skin(dark):not(:disabled):hover .prefixIcon {
+  color: value(B10);
 }
 
 .root:skin(dark):active .text,
 .root:skin(dark):active .prefixIcon {
-  color: value(B10)
+  color: value(B10);
 }
 
 .root:skin(dark):disabled .text,
@@ -110,10 +100,9 @@
 }
 
 /* Skin destructive */
-
 .root:skin(destructive) .text,
 .root:skin(destructive) .prefixIcon {
-  color: value(R10)
+  color: value(R10);
 }
 
 .root:skin(destructive):disabled .text,
@@ -130,19 +119,13 @@
 }
 
 .prefixIcon:subtitle {
-  margin: 0 0 auto 0;
+  margin-block-end: auto;
 }
 
 .textBox {
-  margin: 0 0 0 6px;
+  margin-inline-start: 6px;
 }
 
 .root:ellipsis .textBox {
   overflow: hidden;
-}
-
-/* RTL support */
-
-:global([dir='rtl']) .textBox {
-  margin: 0 6px 0 0;
 }
