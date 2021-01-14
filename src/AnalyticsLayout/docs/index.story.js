@@ -12,7 +12,6 @@ import {
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
-
 import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
 
@@ -57,9 +56,9 @@ export default {
             text:
               'Width depends on parent’s container, but cannot be less than 636px.',
             source: `<AnalyticsLayout items={[1,2,3, 4 ,5 ,6, 7, 8]}>
-            {( item ) => (
+            {( item, index, rowItemsCount ) => (
               <AnalyticsLayout.Cell>
-                <div style={{padding: 20}}>item {item}</div>
+                <Box margin="SP4">item {item} ({index + 1} / {rowItemsCount})</Box>
               </AnalyticsLayout.Cell>
             )}
           </AnalyticsLayout>`,
@@ -68,9 +67,9 @@ export default {
             title: 'Disabled Highlight',
             text: 'Disable cell highlighting state',
             source: `<AnalyticsLayout items={[1,2,3, 4 ,5 ,6, 7, 8]}>
-            {( item ) => (
+            {( item, index, rowItemsCount ) => (
               <AnalyticsLayout.Cell disableHighlight>
-                <div style={{padding: 20}}>item {item}</div>
+                <Box margin="SP4">item {item} ({index + 1} / {rowItemsCount})</Box>
               </AnalyticsLayout.Cell>
             )}
           </AnalyticsLayout>`,

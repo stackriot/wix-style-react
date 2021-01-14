@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Cell from './Cell';
 
-type AnalyticsLayouterChildren = (item: any, index: number) => React.ReactNode;
+type AnalyticsLayouterChildren = (item: any, index: number, rowItemsCount: number) => React.ReactNode;
 
 export interface AnalyticsLayouterProps {
   dataHook?: string;

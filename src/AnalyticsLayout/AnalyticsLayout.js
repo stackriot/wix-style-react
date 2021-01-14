@@ -40,7 +40,7 @@ class AnalyticsLayout extends React.PureComponent {
               style={{ gridTemplateColumns: `repeat(${row.length}, 1fr)` }}
             >
               {row.map((item, index) => {
-                return children(item, index);
+                return children(item, index, row.length);
               })}
             </div>
           );
