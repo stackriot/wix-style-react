@@ -24,6 +24,9 @@ Types of changes:
 - `<SkeletonGroup/>` - created new skeleton components [#6141](https://github.com/wix/wix-style-react/pull/6141)
 - `<PopoverMenu/>` - pass isOpen prop to triggerElement [#6543](https://github.com/wix/wix-style-react/pull/6543)
 
+### Changed
+- `<ListItemAction/>` - allow events on disabled [#6560](https://github.com/wix/wix-style-react/pull/6560)
+
 ### Docs
 - `<InputWithOptions/>` - expose existing class methods in types [#6549](https://github.com/wix/wix-style-react/pull/6549)
 
