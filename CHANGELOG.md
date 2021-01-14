@@ -18,6 +18,9 @@ Types of changes:
 ### Fixed
 - `<Search/>` - fix clicking search icon to focus the input [#6550](https://github.com/wix/wix-style-react/pull/6550)
 
+### Added
+- `<AnalyticsLayout/>` - added rowItemsCount [#6548](https://github.com/wix/wix-style-react/pull/6548)
+
 ## 9.67.0 - 2021-01-13
 ### Added
 - `Themes | Business Dashboard` - Tag - styling override [#6514](https://github.com/wix/wix-style-react/pull/6514)
