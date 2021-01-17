@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import SelectorList from '../SelectorList';
 import HeaderLayout from '../MessageBox/FunctionalLayout/HeaderLayout';
 import FooterLayout from '../MessageBox/FunctionalLayout/FooterLayout';
-
-import css from './ModalSelectorLayout.scss';
+import { classes } from './ModalSelectorLayout.st.css';
 import deprecationLog from '../utils/deprecationLog';
 import { dataHooks } from './ModalSelectorLayout.helpers';
 
@@ -218,7 +217,7 @@ export default class ModalSelectorLayout extends React.PureComponent {
           return (
             <div
               data-hook={dataHook}
-              className={css.modalContent}
+              className={classes.modalContent}
               style={{ height, maxHeight }}
             >
               <HeaderLayout title={title} onCancel={onClose} />

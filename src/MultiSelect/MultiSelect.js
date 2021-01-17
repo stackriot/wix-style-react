@@ -5,7 +5,7 @@ import InputWithOptions from '../InputWithOptions/InputWithOptions';
 import InputWithTags from './InputWithTags';
 import last from 'lodash/last';
 import difference from 'difference';
-import styles from './MultiSelect.scss';
+import { classes } from './MultiSelect.st.css';
 
 class MultiSelect extends InputWithOptions {
   constructor(props) {
@@ -182,14 +182,14 @@ class MultiSelect extends InputWithOptions {
   }
 
   static autoSizeInput = ({ className, 'data-ref': dataRef, ...rest }) => {
-    const inputClassName = classNames(className, styles.autoSizeInput);
+    const inputClassName = classNames(className, classes.autoSizeInput);
     return <input {...rest} ref={dataRef} className={inputClassName} />;
   };
 
   static autoSizeInputWithRef = () =>
     React.forwardRef((props, ref) =>
       (({ className, ref, ...rest }) => {
-        const inputClassName = classNames(className, styles.autoSizeInput);
+        const inputClassName = classNames(className, classes.autoSizeInput);
         return <input {...rest} ref={ref} className={inputClassName} />;
       })({ ...props, ref }),
     );

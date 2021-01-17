@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import InputWithOptions from '../InputWithOptions/InputWithOptions';
 import Input from '../Input';
-import styles from './MultiSelectCheckbox.scss';
+import { classes } from './MultiSelectCheckbox.st.css';
 import { listItemSelectBuilder } from '../ListItemSelect';
 import { listItemSectionBuilder } from '../ListItemSection';
 
@@ -88,7 +88,7 @@ class MultiSelectCheckbox extends InputWithOptions {
   }
 
   inputClasses() {
-    return styles.showPointer;
+    return classes.showPointer;
   }
 
   _onSelect(option) {

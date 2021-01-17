@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './ProgressBar.scss';
+import { classes } from './ProgressBar.st.css';
 import Heading from '../../Heading';
 
 class ProgressBar extends React.PureComponent {
   render() {
     const { dataHook, progress } = this.props;
     return (
-      <div data-hook={dataHook} className={s['progress-bar']}>
+      <div data-hook={dataHook} className={classes.root}>
         <Heading appearance="H6">{`${progress}%`}</Heading>
-        <span className={s.bar}>
-          <span className={s['bar-value']} style={{ width: progress + '%' }} />
+        <span className={classes.bar}>
+          <span className={classes.value} style={{ width: progress + '%' }} />
           <span
-            className={s['bar-leftover']}
+            className={classes.leftover}
             style={{ width: 100 - progress + '%' }}
           />
         </span>
