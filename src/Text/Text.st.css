@@ -109,6 +109,7 @@
 
 /******** Link ********/
 .root > a {
+  cursor: pointer;
   color: value(B10);
   text-decoration: none;
 }
