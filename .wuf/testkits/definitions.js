@@ -202,10 +202,7 @@ module.exports = {
   DatePicker: {
     vanillaLegacyTestkit: true,
     enzymeLegacyTestkit: true,
-    protractorLegacyTestkit: true,
-    skipSanityTest: true, // testkit does not have root `exists` method
-    noPuppeteerTestkit: true,
-    noUnidriver: true,
+    protractorLegacyTestkit: true
   },
 
   Dropdown: {
