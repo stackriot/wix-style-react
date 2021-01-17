@@ -45,8 +45,8 @@
   background-color: value(B50);
 }
 
-.root:selection(indeterminate):hover::checkbox,
-.root:selection(checked):hover::checkbox {
+.root:selection(indeterminate):not(:disabled):hover::checkbox,
+.root:selection(checked):not(:disabled):hover::checkbox {
   background-color: value(B05);
 }
 
