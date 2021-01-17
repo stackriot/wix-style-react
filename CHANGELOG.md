@@ -16,7 +16,10 @@ Types of changes:
 
 ## Next
 ### Added
-`<Calendar/>` -  Add day indication slot[#6495](https://github.com/wix/wix-style-react/pull/6495)
+- `<Calendar/>` -  Add day indication slot[#6495](https://github.com/wix/wix-style-react/pull/6495)
+
+### Fixed
+- `Themes | Business Dashboard` - fix checkbox hover [#6567](https://github.com/wix/wix-style-react/pull/6567)
 
 ## 9.68.0 - 2021-01-14
 ### Fixed
