@@ -16,14 +16,60 @@ export default class DropdownPicker extends React.Component {
     selectedId: PropTypes.number,
   };
 
-  onSelect = data => {
+  state = {
+    open: false,
+  };
+
+  _onSelect = data => {
     const { onChange } = this.props;
 
-    if (typeof onChange === 'function') onChange(data);
+    this.setState(
+      {
+        open: false,
+      },
+      () => {
+        if (typeof onChange === 'function') onChange(data);
+      },
+    );
+  };
+
+  _toggle = () => {
+    this.setState({ open: !this.state.open });
+  };
+
+  _onKeyDown = (e, delegateKeyDown) => {
+    const eventWasHandled = delegateKeyDown(e);
+    const { open } = this.state;
+    // We'll open the list when pressing the ArrowDown key
+    if (!eventWasHandled && e.key === 'ArrowDown') {
+      this._open();
+      e.preventDefault();
+      return;
+    }
+
+    // close on Escape
+    if (e.key === 'Escape') {
+      this._close();
+      e.preventDefault();
+    }
+
+    // prevent TextButton onClick event
+    if (open && (e.key === 'Enter' || e.key === 'Spacebar' || e.key === ' ')) {
+      e.preventDefault();
+    }
+  };
+
+  _close = () => {
+    this.setState({ open: false });
+  };
+
+  _open = () => {
+    this.setState({ open: true });
   };
 
   render() {
     const { className, caption, options, dataHook, selectedId } = this.props;
+    const { open } = this.state;
 
     return (
       <Box className={st(classes.root, className)} padding="0 6px">
@@ -31,21 +77,24 @@ export default class DropdownPicker extends React.Component {
           data-hook={dataHook}
           className={classes.dropdown}
           options={options}
+          onClickOutside={this._close}
           dynamicWidth
           minWidth={120}
           selectedId={selectedId}
-          onSelect={this.onSelect}
+          onSelect={this._onSelect}
           focusOnSelectedOption
+          open={open}
         >
-          {({ toggle }) => {
+          {({ delegateKeyDown }) => {
             return (
               <TextButton
                 className={classes.caption}
                 skin="dark"
                 size="small"
                 suffixIcon={<ChevronDown />}
-                onClick={toggle}
+                onClick={this._toggle}
                 dataHook={`${dataHook}-button`}
+                onKeyDown={e => this._onKeyDown(e, delegateKeyDown)}
               >
                 {caption}
               </TextButton>
