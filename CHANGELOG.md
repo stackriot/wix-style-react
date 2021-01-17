@@ -23,6 +23,7 @@ Types of changes:
 ### Fixed
 - `<Text/>` - fix cursor for inner links [#6571](https://github.com/wix/wix-style-react/pull/6571)
 - `Themes | Business Dashboard` - fix checkbox hover [#6567](https://github.com/wix/wix-style-react/pull/6567)
+- `<Calendar/>` - close month and year dropdown after selection [#6565](https://github.com/wix/wix-style-react/pull/6565)
 
 ## 9.68.0 - 2021-01-14
 ### Fixed
