@@ -169,7 +169,27 @@ export const dropdownLayoutDriverFactory = base => {
         return optionDriver.mouseEnter();
       }),
 
-    mouseLeave: () => reactBase.mouseLeave(),
+    mouseLeave: async () => {
+      switch (base.type) {
+        case 'react':
+          reactBase.mouseLeave();
+          return;
+        case 'puppeteer':
+          const { element } = await baseUniDriverFactory(base).element();
+          page.evaluate(element => {
+            element.dispatchEvent(
+              new MouseEvent('mouseout', {
+                bubbles: true,
+                view: window,
+                cancelable: true,
+              }),
+            );
+          }, element);
+          return;
+        default:
+          return;
+      }
+    },
 
     /** @deprecated deprecated prop */
     mouseClickOutside: () => ReactBase.clickBody(),
