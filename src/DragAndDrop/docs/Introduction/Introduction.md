@@ -1,7 +1,6 @@
-# Drag and Drop Introduction
-## Drag and Drop in wix-style-react
+# Drag and Drop in wix-style-react
 `wix-style-react` aims to provide following solutions:
-1. ADD the Drag and Drop functionality to existing components (Tags for example)
+1. ADD the D&D functionality to existing components (Tags for example)
 2. Reusable D&D components and common stylesheets.
 
 ### How does it work

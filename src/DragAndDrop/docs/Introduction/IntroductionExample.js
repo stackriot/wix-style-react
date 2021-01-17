@@ -1,6 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
-import styles from './IntroductionExample.scss';
+import { st, classes } from './IntroductionExample.st.css';
 import { SortableList } from 'wix-style-react';
 
 /**
@@ -56,13 +55,15 @@ export default class IntroductionExample extends React.Component {
   };
 
   renderItem = ({ isPlaceholder, isPreview, id, previewStyles, item }) => {
-    const classes = classNames(styles.card, {
-      [styles.placeholder]: isPlaceholder,
-      [styles.preview]: isPreview,
-    });
-
     return (
-      <div className={classes} style={previewStyles} data-hook={`item-${id}`}>
+      <div
+        className={st(classes.root, {
+          placeholder: isPlaceholder,
+          preview: isPreview,
+        })}
+        style={previewStyles}
+        data-hook={`item-${id}`}
+      >
         {item.text}
       </div>
     );

@@ -53,7 +53,6 @@ require('../src/CounterBadge/docs/index.story');
 require('../src/CustomModalLayout/docs/index.story');
 require('../src/DatePicker/docs/index.story');
 require('../src/Divider/docs/index.story');
-require('../src/DragAndDrop/docs/DragAndDrop');
 require('../src/Dropdown/docs/index.story');
 require('../src/DropdownBase/docs/index.story');
 require('../src/DropdownLayout/docs/index.story');
@@ -177,6 +176,10 @@ require('../src/VerticalTabs/docs/index.story');
 require('../src/VerticalTabsItem/docs/index.story');
 require('../src/VerticalTabsItem/docs/index.story');
 require('../src/WixStyleReactProvider/docs/index.story');
+
+// Drag and Drop
+require('../src/DragAndDrop/docs/index');
+
 require('./WIP');
 require('./Internal');
 
