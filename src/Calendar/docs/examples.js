@@ -86,3 +86,40 @@ export const ExampleStandard = `class ControlledCalendarExample extends React.Co
       );
     }
   }`;
+
+export const ExampleIndication = `class YearMonthsCalendarExample extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        selectedDate: new Date('2020/12/16'),
+      };
+    }
+
+    onChange(selectedDate) {
+      this.setState({ selectedDate });
+    }
+
+    render() {
+      const { selectedDate } = this.state;
+
+      return (
+        <Calendar
+          showMonthDropdown
+          showYearDropdown
+          onChange={date => this.onChange(date)}
+          value={selectedDate}
+          dateIndication={({date, isSelected }) => {
+            if (date.getTime() < new Date('2020/12/17').getTime()) {
+              const IndicationColor = isSelected  ? 'white' : '#4EB7F5';
+
+              return (
+                <div className="Indications" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                     <div className="indication" style={{ borderRadius: '50%', width: '4px', height: '4px', backgroundColor: IndicationColor }}/>
+                </div>
+                );
+            }
+          }}
+        />
+      );
+    }
+  }`;

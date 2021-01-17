@@ -140,6 +140,37 @@ const tests = [
           showYearDropdown: true,
         },
       },
+      {
+        it: 'Date Indication',
+        props: {
+          placeholderText: 'Select Date',
+          value: new Date('2020/10/8'),
+          showMonthDropdown: true,
+          showYearDropdown: true,
+          dateIndication: ({ date, isSelected }) =>
+            date <= new Date('2020/10/10') ? (
+              <div
+                className="Indications"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <div
+                  className="indication"
+                  style={{
+                    borderRadius: '50%',
+                    width: '4px',
+                    height: '4px',
+                    backgroundColor: 'black',
+                  }}
+                />
+              </div>
+            ) : null,
+        },
+      },
     ],
   },
 ];

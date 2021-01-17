@@ -40,6 +40,7 @@ function CalendarWithAllProps() {
       locale="en"
       firstDayOfWeek={1}
       rtl
+      dateIndication={() => null}
     />
   );
 }

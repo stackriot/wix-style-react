@@ -170,26 +170,41 @@
   border-radius: 50% !important;
 }
 
-.day:selected:start:not(:outside) .dayCircle,
-.day:selected:end:not(:outside) .dayCircle,
-.day:singleDay:not(:outside) .dayCircle {
+.day:selected:start:not(:outside) .dayWrapper,
+.day:selected:end:not(:outside) .dayWrapper,
+.day:selected:singleDay:not(:outside) .dayWrapper {
   background-color: value(THEME-COLOR-10);
 }
 
-.day:selected:start:not(:outside):hover .dayCircle,
-.day:selected:end:not(:outside):hover .dayCircle,
-.day:singleDay:not(:outside):hover .dayCircle {
+.day:selected:start:not(:outside):hover .dayWrapper,
+.day:selected:end:not(:outside):hover .dayWrapper,
+.day:selected:singleDay:not(:outside):hover .dayWrapper {
   background-color: value(THEME-COLOR-20);
 }
 
-.day .dayCircle {
+.dayWrapper {
+  -st-states: hasIndication;
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.dayWrapper:hasIndication {
+  justify-content: flex-end;
+}
+
+.dayText {
+  text-align: center;
+  line-height: 1;
+}
+
+.dayIndicationContainer {
+  height: 12px;
+  padding: 4px 0;
+  box-sizing: border-box;
 }
 
 /** for selection mode type range **/

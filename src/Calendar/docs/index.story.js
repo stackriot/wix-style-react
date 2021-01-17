@@ -20,7 +20,11 @@ import { storySettings } from './storySettings';
 
 import allComponents from '../../../stories/utils/allComponents';
 
-import { ExampleYearMonths, ExampleStandard } from './examples';
+import {
+  ExampleYearMonths,
+  ExampleStandard,
+  ExampleIndication,
+} from './examples';
 
 const example = config => baseExample({ components: allComponents, ...config });
 
@@ -142,6 +146,13 @@ export default {
           example({
             title: 'With Years and Months selection',
             source: ExampleYearMonths,
+          }),
+
+          example({
+            title: 'Date Indication',
+            description:
+              'Date indication allows you to add a custom indication under a specific date. It could be an indication for event, appointment, meeting etc.',
+            source: ExampleIndication,
           }),
         ],
       }),

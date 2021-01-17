@@ -1,5 +1,10 @@
 import * as React from 'react';
 
+export interface dateIndicationProps {
+  date: Date;
+  isSelected: boolean;
+}
+
 export interface CalendarProps {
   dataHook?: string;
   autoFocus?: boolean;
@@ -23,6 +28,7 @@ export interface CalendarProps {
   locale?: string | { distanceInWords?: {}; format?: {} };
   firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   rtl?: boolean;
+  dateIndication?: React.FC<dateIndicationProps>;
 }
 
 export default class Calendar extends React.PureComponent<CalendarProps> {
