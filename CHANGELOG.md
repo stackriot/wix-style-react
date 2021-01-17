@@ -17,8 +17,10 @@ Types of changes:
 ## Next
 ### Added
 - `<Calendar/>` -  Add day indication slot[#6495](https://github.com/wix/wix-style-react/pull/6495)
+- `<DropdownLayout/>` - support puppeteer in mouseLeave function [#6469](https://github.com/wix/wix-style-react/pull/6469)
 
 ### Fixed
+- `<Text/>` - fix cursor for inner links [#6571](https://github.com/wix/wix-style-react/pull/6571)
 - `Themes | Business Dashboard` - fix checkbox hover [#6567](https://github.com/wix/wix-style-react/pull/6567)
 
 ## 9.68.0 - 2021-01-14
