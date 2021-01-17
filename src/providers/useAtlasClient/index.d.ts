@@ -1,6 +1,6 @@
 import {
   V2Prediction as Prediction,
-  V2Place as PlaceDetails,
+  CommonAddress as Address,
   PredictRequest,
 } from '@wix/ambassador-wix-atlas-service-web/types';
 import { OmitPolyfill } from '../../common';
@@ -14,11 +14,11 @@ export interface AtlasInitOptions {
   baseUrl?: string;
   token?: string;
 }
-export { Prediction, PlaceDetails };
+export { Prediction, Address };
 
 export type AtlasClient = AutocompleteClient<
   Prediction,
-  PlaceDetails,
+  Address,
   AtlasRequestOptions
 >;
 

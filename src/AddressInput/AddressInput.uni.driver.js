@@ -112,5 +112,11 @@ export const addressInputDriverFactory = (base, body) => {
      */
     getItemSecondaryLabelAt: async index =>
       (await getItemDriverAt(index)).getSecondaryLabelText(),
+
+    /**
+     * Press enter on address input
+     * @returns {Promise<void>}
+     */
+    pressEnter: () => driver.pressKey('Enter'),
   };
 };

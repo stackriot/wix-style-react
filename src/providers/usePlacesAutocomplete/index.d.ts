@@ -13,17 +13,17 @@ export interface UsePlacesAutocompleteReturn<Prediction, RequestOptions> {
 }
 export interface UsePlacesAutocompleteProps<
   Prediction,
-  PlaceDetails,
+  Address,
   RequestOptions
 > {
-  client: AutocompleteClient<Prediction, PlaceDetails, RequestOptions>;
+  client: AutocompleteClient<Prediction, Address, RequestOptions>;
   debounceMs?: number;
   debounceFn?: (callback: Function, debounceMs: number) => Function;
   onError?: (error: Error) => any;
 }
 
-declare const usePlacesAutocomplete: <Prediction, PlaceDetails, RequestOptions>(
-  props?: UsePlacesAutocompleteProps<Prediction, PlaceDetails, RequestOptions>,
+declare const usePlacesAutocomplete: <Prediction, Address, RequestOptions>(
+  props?: UsePlacesAutocompleteProps<Prediction, Address, RequestOptions>,
 ) => UsePlacesAutocompleteReturn<Prediction, RequestOptions>;
 
 export default usePlacesAutocomplete;

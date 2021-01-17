@@ -3,7 +3,10 @@ import { AmbassadorTestkit } from '@wix/ambassador-testkit';
 import { WixAtlasServiceWeb } from '@wix/ambassador-wix-atlas-service-web/http';
 import { AmbassadorHTTPError } from '@wix/ambassador/runtime/http';
 import {
+  aCommonAddress,
   aPredictResponse,
+  aSearchResponse,
+  aSearchResult,
   aV2Prediction as aPrediction,
 } from '@wix/ambassador-wix-atlas-service-web/builders';
 import {
@@ -42,6 +45,25 @@ const mockResults = (ambassadorTestkit, amountOfItems) => {
   );
   atlasStub.AutocompleteServiceV2().predict.always().resolve(response);
   return predictions;
+};
+
+const mockSearchAddresses = (ambassadorTestkit, amountOfItems = 5) => {
+  const addresses = Array.from({ length: amountOfItems }, (_, index) => {
+    const mainText = `Address ${index + 1}`;
+    const secondaryText = 'Country';
+    const formattedAddress = `${mainText}, ${secondaryText}`;
+    return aCommonAddress().withFormattedAddress(formattedAddress).build();
+  });
+  const searchResults = addresses.map(address =>
+    aSearchResult().withAddress(address).build(),
+  );
+  const response = aSearchResponse().withSearchResults(searchResults).build();
+  const atlasStub = ambassadorTestkit.createStub(
+    WixAtlasServiceWeb,
+    BASE_ATLAS_URL,
+  );
+  atlasStub.LocationServiceV2().search.always().resolve(response);
+  return addresses;
 };
 
 const mockAmbassadorError = ambassadorTestkit => {
@@ -125,7 +147,7 @@ describe(AtlasAddressInput.displayName, () => {
     const predictions = mockResults(ambassadorTestkit, amountOfItems);
     const props = {
       ...commonProps,
-      onSelect: jest.fn((option, getPlaceDetails) => {}),
+      onSelect: jest.fn((option, getAddress) => {}),
     };
     const { driver } = render(<AtlasAddressInput {...props} />);
 
@@ -143,6 +165,39 @@ describe(AtlasAddressInput.displayName, () => {
         );
       }),
     );
+  });
+
+  it('should invoke onSelect with search result when `fallbackToManual` is true', async () => {
+    const addresses = mockSearchAddresses(ambassadorTestkit);
+    let getAddress;
+    const props = {
+      ...commonProps,
+      onSelect: jest.fn(async (option, getAddressFn) => {
+        // set getAddress to the resulting function
+        getAddress = getAddressFn;
+      }),
+      fallbackToManual: true,
+    };
+    const { driver } = render(<AtlasAddressInput {...props} />);
+
+    const testValue = 'test';
+    await driver.enterText(testValue);
+    expect(props.onSelect).not.toHaveBeenCalled();
+    await driver.pressEnter();
+
+    await act(async () =>
+      eventually(async () => {
+        expect(props.onSelect).toHaveBeenCalledWith(
+          expect.objectContaining({
+            label: testValue,
+          }),
+          expect.any(Function),
+        );
+      }),
+    );
+    await act(async () => {
+      expect(await getAddress()).toEqual(addresses[0]);
+    });
   });
 
   it('should display option prefix when prop is passed', async () => {

@@ -9,11 +9,11 @@ export const controlled = `
   const _onClear = () => setValue('');
 
   // Show address postal code
-  const _onSelect = (option, getPlaceDetails) => {
-    getPlaceDetails().then(placeDetails => {
-      setValue(\`\${option.label} - \${placeDetails.address.postalCode}\`);
+  const _onSelect = (option, getAddress) => {
+    getAddress().then(address => {
+      setValue(\`\${option.label} - \${address.postalCode}\`);
     });
-  }
+  };
 
   return (
     <AtlasAddressInput

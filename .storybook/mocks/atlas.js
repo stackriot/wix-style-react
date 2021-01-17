@@ -4,6 +4,8 @@ const {
   aV2GetPlaceResponse,
   aV2Place: aPlace,
   aCommonAddress,
+  aSearchResponse,
+  aSearchResult,
 } = require('@wix/ambassador-wix-atlas-service-web/builders');
 const { AmbassadorHTTPError } = require('@wix/ambassador/runtime/http');
 
@@ -37,6 +39,16 @@ const buildAtlasPlaceResponse = id => {
   return response;
 };
 
+const buildAtlasSearchResponse = query => {
+  const address = aCommonAddress()
+    .withFormattedAddress(query)
+    .withPostalCode('06510')
+    .build();
+  const searchResults = [aSearchResult().withAddress(address)];
+  const response = aSearchResponse().withSearchResults(searchResults).build();
+  return response;
+};
+
 const WixAtlasServiceWeb = () => ({
   AutocompleteServiceV2: () => () => ({
     predict: ({ input = '' }) =>
@@ -52,6 +64,9 @@ const WixAtlasServiceWeb = () => ({
   PlacesServiceV2: () => () => ({
     getPlace: ({ searchId }) =>
       Promise.resolve(buildAtlasPlaceResponse(searchId)),
+  }),
+  LocationServiceV2: () => () => ({
+    search: ({ query }) => Promise.resolve(buildAtlasSearchResponse(query)),
   }),
 });
 

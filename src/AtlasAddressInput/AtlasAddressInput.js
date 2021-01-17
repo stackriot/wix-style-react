@@ -15,6 +15,7 @@ const AtlasAddressInput = ({
   onClear,
   onSelect,
   onError,
+  fallbackToManual,
   optionLayout,
   optionPrefix,
   optionSuffix,
@@ -64,10 +65,32 @@ const AtlasAddressInput = ({
 
   const _onSelect = useCallback(
     option => {
-      const getPlaceDetails = () => client.getPlaceDetails(option.id);
-      onSelect && onSelect(option, getPlaceDetails);
+      const getAddress = () => client.getAddress(option.id);
+      onSelect && onSelect(option, getAddress);
     },
     [client, onSelect],
+  );
+
+  // A callback which is called when the user performs a Submit-Action
+  const _onManualSubmit = useCallback(
+    inputValue => {
+      if (fallbackToManual && onSelect && inputValue) {
+        const option = addressInputItemBuilder({
+          id: inputValue,
+          mainLabel: inputValue,
+          displayLabel: inputValue,
+        });
+        const getAddress = async () => {
+          // search for address matching input value
+          const addresses = await client.searchAddresses(inputValue);
+          // Return first address result
+          return addresses[0];
+        };
+
+        onSelect(option, getAddress);
+      }
+    },
+    [fallbackToManual, onSelect, client],
   );
 
   return (
@@ -77,6 +100,7 @@ const AtlasAddressInput = ({
       onChange={_onChange}
       onClear={_onClear}
       onSelect={_onSelect}
+      onManuallyInput={_onManualSubmit}
       status={status}
     />
   );
@@ -116,7 +140,7 @@ AtlasAddressInput.propTypes = {
 
   /** Handler for address selection changes
    * @param {DropdownLayoutOption} option selected option
-   * @param {() => Promise<V2GetPlaceResponse>} getPlaceDetails function for retrieving additional place details
+   * @param {() => Promise<Address>} getAddress function for retrieving additional place details
    */
   onSelect: PropTypes.func,
 
@@ -128,6 +152,9 @@ AtlasAddressInput.propTypes = {
 
   /** Handler for input blur */
   onBlur: PropTypes.func,
+
+  /** If set to `true`, we will attempt to get a Atlas address from the input's text if there are no suggestions. This is useful when looking for locations for which Atlas does not give suggestions - for example: Apartment/Apt  */
+  fallbackToManual: PropTypes.bool,
 
   /** Handler for prediction fetching errors
    * returns an error object containing: {

@@ -22,6 +22,11 @@ const useAtlasClient = ({
     () => atlas.PlacesServiceV2()({ Authorization: token }),
     [atlas, token],
   );
+  // Atlas Ambassador location service (memoized)
+  const locationService = useMemo(
+    () => atlas.LocationServiceV2()({ Authorization: token }),
+    [atlas, token],
+  );
 
   const fetchPredictions = useCallback(
     async (value, requestOptions) => {
@@ -36,12 +41,25 @@ const useAtlasClient = ({
     [autocompleteService],
   );
 
-  const getPlaceDetails = useCallback(
+  const getAddress = useCallback(
     async searchId => {
-      const { place } = await placesService.getPlace({ searchId });
-      return place;
+      const {
+        place: { address },
+      } = await placesService.getPlace({ searchId });
+      return address;
     },
     [placesService],
+  );
+
+  const searchAddresses = useCallback(
+    async query => {
+      const { searchResults } = await locationService.search({
+        query,
+      });
+      const addresses = searchResults.map(({ address }) => address);
+      return addresses;
+    },
+    [locationService],
   );
 
   return {
@@ -58,10 +76,18 @@ const useAtlasClient = ({
    * }
    * @returns {Promise<Prediction[]>} */
     fetchPredictions,
+
     /** callback that fetches details for a place given its atlas `searchId`
      * @param {string} searchId identifier for atlas prediction result we want to get additional details for
-     * @returns {Promise<V2Place>} */
-    getPlaceDetails,
+     * @returns {Promise<Address>} */
+    getAddress,
+
+    /** callback that searches for addresses matching given value
+     * @param {string} query Input text to search address for
+     * @returns {Promise<Address[]>}
+     */
+    searchAddresses,
+
     /** whether component is ready */
     ready: true,
   };

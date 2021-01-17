@@ -19,7 +19,8 @@ function addressInputWithAllProps() {
       initialValue="address"
       value="address"
       disabled
-      onSelect={(option, getPlaceDetails) => {}}
+      fallbackToManual
+      onSelect={(option, getAddress) => {}}
       onChange={value => {}}
       onClear={() => {}}
       border="round"
