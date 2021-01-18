@@ -4,10 +4,9 @@ import { DragLayer } from 'react-dnd';
 import itemTypes from './itemTypes';
 import { Portal } from 'react-portal';
 
-const layerStyles = {
+const defaultLayerStyles = {
   position: 'fixed',
   pointerEvents: 'none',
-  zIndex: 100,
   left: 0,
   top: 0,
 };
@@ -78,6 +77,7 @@ class CustomDragLayer extends Component {
       childrenProperty,
       isRenderDraggingChildren,
       theme,
+      dragLayerZIndex,
     } = this.props;
 
     if (!isPlaceholder || itemType !== itemTypes.nestedItem) {
@@ -92,7 +92,7 @@ class CustomDragLayer extends Component {
     // portal is used because of position fixed and transform issue
     return (
       <Portal>
-        <div style={layerStyles}>
+        <div style={{ ...defaultLayerStyles, zIndex: dragLayerZIndex }}>
           <div
             className={classes}
             style={getItemStyles(

@@ -55,6 +55,7 @@ class NestableList extends React.PureComponent {
     preventChangeDepth: false,
     maxDepth: Infinity,
     threshold: 30,
+    dragLayerZIndex: 100,
   };
 
   // tried to use getDerivedStateFromProps but encounter an issue where the state was
@@ -147,6 +148,7 @@ class NestableList extends React.PureComponent {
       threshold,
       theme,
       renderPrefix,
+      dragLayerZIndex,
     } = this.props;
     return (
       <div data-hook={dataHook}>
@@ -185,6 +187,7 @@ class NestableList extends React.PureComponent {
                 childrenProperty={childrenProperty}
                 childrenStyle={childrenStyle}
                 theme={theme}
+                dragLayerZIndex={dragLayerZIndex}
               />
             )}
           </div>

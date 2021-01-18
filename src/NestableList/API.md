@@ -46,7 +46,7 @@
   | onUpdate         | func     | -            | -          | A function invoked with the new array of items whenever an item is dropped in a new location |
   | onDragStart      | func     | -            | -        | A function invoked when drag of item starts, the item's props passed as argument |
   | onDragEnd        | func     | -            | -          | A function invoked when drag of item ends, the item's props passed as argument |
-
+  | dragLayerZIndex  | number     | 100           | -          | zindex of the list item drag container |
 </details>
 
 Some details about complex props
