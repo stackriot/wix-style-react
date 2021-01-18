@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.69.0 - 2021-01-18
 ### Added
 - `<Calendar/>` -  Add day indication slot[#6495](https://github.com/wix/wix-style-react/pull/6495)
 - `<DropdownLayout/>` - support puppeteer in mouseLeave function [#6469](https://github.com/wix/wix-style-react/pull/6469)
