@@ -13,6 +13,7 @@ npm install
 
 Let's get the storybook running locally
 ```bash
+cd packages/wix-style-react
 npm start
 ```
 

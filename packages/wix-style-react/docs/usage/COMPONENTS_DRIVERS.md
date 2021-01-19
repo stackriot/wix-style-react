@@ -145,4 +145,4 @@ await inputDriver.enterText('hello world');
 ```
 
 ## Drivers APIs
-Each component has its own driver implementation, check the `Testkit` tab in the components documentation pages http://wix-wix-style-react.surge.sh
+Each component has its own driver implementation, check the `Testkit` tab in the components documentation pages https://wix-style-react.com

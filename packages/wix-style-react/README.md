@@ -1,7 +1,8 @@
 <p align="center">
 
   <a href="https://wix.github.com/wix-style-react">
-      <img src="https://raw.githubusercontent.com/wix/wix-style-react/master/.storybook/logo.svg?sanitize=true" alt="Wix Style React" width="400">
+      <img
+      src="https://raw.githubusercontent.com/wix/wix-style-react/master/packages/wix-style-react/.storybook/logo.svg?sanitize=true" alt="Wix Style React" width="400">
   </a>
   </br>
 <span>
@@ -36,7 +37,8 @@ yarn add wix-style-react
 ## 🔨 Setup
 
 wix-style-react is built with [Stylable](https://stylable.io/), therefore we recommend you build your project using a **Stylable compatible** template in order to save some configurations.
-Take a look at our usage guide [Create Stylable App](https://github.com/wix/wix-style-react/blob/master/docs/usage/usage-with-create-stylable-app.md) to create a new Stylable project from a boilerplate.
+Take a look at our usage guide [Create Stylable
+App](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/usage/usage-with-create-stylable-app.md) to create a new Stylable project from a boilerplate.
 
 #### Requirements
 wix-style-react requires react version `16.13.1` and up.<br/>
@@ -100,23 +102,30 @@ it('test', async () => {
 ```
 All methods are documented in our storybook components stories and some can be viewed through typescript interface.
 
-Our testkits currently support four major testing frameworks: `react-jsdom`, `protractor`, `puppeteer` and `selenium`. Read our [testing guidelines](https://github.com/wix/wix-style-react/blob/master/docs/usage/testing.md)
+Our testkits currently support four major testing frameworks:
+`react-jsdom`, `protractor`, `puppeteer` and `selenium`. Read our
+[testing
+guidelines](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/usage/testing.md)
 
 ## ⌨️ Typescript
 
 The library is javascript based but types are supported with `d.ts` files.
 You should get the types automatically when installing `wix-style-react`.
-For any issues, check out our types [FAQ](https://github.com/wix/wix-style-react/blob/master/docs/FAQ/TYPES.MD)
+For any issues, check out our types
+[FAQ](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/FAQ/TYPES.MD)
 
 ## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 We welcome contributions to Wix-Style-React!
 
-Read our [contributing guide](https://github.com/wix/wix-style-react/blob/master/CONTRIBUTING.md) and help us build or improve our components.
+Read our [contributing
+guide](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/CONTRIBUTING.md) and help us build or improve our components.
 
 ## 🙋 Support
-Check out our [support guide](https://github.com/wix/wix-style-react/blob/master/SUPPORT.md)
+Check out our [support
+guide](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/SUPPORT.md)
 
 ## 📝 License
 
-This project is offered under [MIT License](https://github.com/wix/wix-style-react/blob/master/LICENSE).
+This project is offered under [MIT
+License](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/LICENSE).
