@@ -25,7 +25,7 @@
 .root {
   -st-extends: Focusable;
   -st-states: skin(string), type(string), size(string), clickable(boolean), uppercase(boolean);
-  cursor: default;
+
   border: 1px solid;
   border-radius: 2px;
   display: inline-flex;
