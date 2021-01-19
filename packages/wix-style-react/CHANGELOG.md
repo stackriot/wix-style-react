@@ -14,7 +14,7 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## Next
+## NEXT
 
 ## 9.69.0 - 2021-01-18
 ### Added
