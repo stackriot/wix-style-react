@@ -3,7 +3,7 @@ import * as React from 'react';
 export interface CardFolderTabProps {
   id: string;
   children: React.ReactNode;
-  name: string;
+  name: React.ReactNode;
   disabled?: boolean;
 }
 

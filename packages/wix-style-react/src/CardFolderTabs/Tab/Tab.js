@@ -10,7 +10,7 @@ class Tab extends React.PureComponent {
     children: PropTypes.node.isRequired,
 
     /** The title of the tab */
-    name: PropTypes.string.isRequired,
+    name: PropTypes.node.isRequired,
 
     /** Makes the tab unselectable */
     disabled: PropTypes.bool,
