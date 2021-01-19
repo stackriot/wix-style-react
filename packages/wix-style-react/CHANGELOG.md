@@ -22,6 +22,7 @@ Types of changes:
 ### Changed
 - `<CardFolderTab/>` - change name to node [#6598](https://github.com/wix/wix-style-react/pull/6598)
 - VanillaTestkitParams.wrapper: `HTMLElement` -> `Element` [#6599](https://github.com/wix/wix-style-react/pull/6599)
+- `<Badge/>` - change cursor to be inherit [#6596](https://github.com/wix/wix-style-react/pull/6596)
 
 ## 9.69.0 - 2021-01-18
 ### Added
