@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { WixStyleReactContext } from '../WixStyleReactProvider/context';
 import Content from './components/Content';
 import { Layout, Cell } from '../Layout';
 import Proportion from '../Proportion';
 import { SIZES } from './constants';
 import { st, classes } from './MarketingLayout.st.css';
 import { stVars as colorsStVars } from '../Foundation/stylable/colors.st.css';
+import deprecationLog from '../utils/deprecationLog';
 
 const cellSpansBySize = {
   [SIZES.tiny]: {
@@ -49,7 +50,7 @@ class MarketingLayout extends React.PureComponent {
     image: PropTypes.node,
     /** Image area background color. Can be a keyword from color palette or any supported CSS color value (Hex, RGB, etc.) */
     imageBackgroundColor: PropTypes.string,
-    /** Size of the marketing layout. */
+    /** Size of the marketing layout. Large size will be deprecated in the next major version. */
     size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
     /** Alignment of the content of the marketing layout. */
     alignItems: PropTypes.oneOf(['center', 'stretch']),
@@ -167,21 +168,32 @@ class MarketingLayout extends React.PureComponent {
       imageBackgroundColor,
     } = this.props;
 
+    if (size === SIZES.large) {
+      deprecationLog(
+        `<MarketingLayout/> size large wil be deprecated in the next major version`,
+      );
+    }
+
     return (
-      <div
-        className={st(classes.root, {
-          size,
-          badge: !!badge,
-          hiddenBadge,
-          alignItems,
-          inverted,
-          withActions: !!actions,
-          withImageBackground: !!imageBackgroundColor,
-        })}
-        data-hook={dataHook}
-      >
-        {this._renderContent()}
-      </div>
+      <WixStyleReactContext.Consumer>
+        {({ reducedSpacingAndImprovedLayout }) => (
+          <div
+            className={st(classes.root, {
+              size,
+              badge: !!badge,
+              hiddenBadge,
+              alignItems,
+              inverted,
+              withActions: !!actions,
+              withImageBackground: !!imageBackgroundColor,
+              reducedSpacingAndImprovedLayout,
+            })}
+            data-hook={dataHook}
+          >
+            {this._renderContent()}
+          </div>
+        )}
+      </WixStyleReactContext.Consumer>
     );
   }
 }

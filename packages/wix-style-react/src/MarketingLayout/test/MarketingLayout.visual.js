@@ -4,12 +4,15 @@ import MarketingLayout from '../MarketingLayout';
 import Button from '../../Button';
 import Box from '../../Box';
 import Badge from '../../Badge';
+import { SIZES } from '../constants';
 
 const customImageNode = (
   <Box backgroundColor="R00" width="100%" height="200px" />
 );
 const customImageUrl =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8Exv7FAAF8AJtZv8v8wAAAABJRU5ErkJggg==';
+
+const sizes = Object.values(SIZES);
 
 const commonProps = {
   title: 'Marketing Card Title',
@@ -47,32 +50,10 @@ const tests = [
   },
   {
     describe: 'Size',
-    its: [
-      {
-        it: 'Tiny',
-        props: {
-          size: 'tiny',
-        },
-      },
-      {
-        it: 'Small',
-        props: {
-          size: 'small',
-        },
-      },
-      {
-        it: 'Medium',
-        props: {
-          size: 'medium',
-        },
-      },
-      {
-        it: 'Large',
-        props: {
-          size: 'large',
-        },
-      },
-    ],
+    its: sizes.map(size => ({
+      it: size,
+      props: { size, image: customImageNode },
+    })),
   },
   {
     describe: 'Image',
@@ -229,11 +210,29 @@ const tests = [
   },
 ];
 
+const reduceSpacingTests = [
+  {
+    describe: 'Size',
+    its: sizes
+      .filter(size => size !== SIZES.large)
+      .map(size => ({ it: size, props: { size, image: customImageNode } })),
+  },
+];
+
 tests.forEach(({ describe, its }) => {
   its.forEach(({ it, props }) => {
     storiesOf(
       `MarketingLayout${describe ? '/' + describe : ''}`,
       module,
     ).add(it, () => <MarketingLayout {...commonProps} {...props} />);
+  });
+});
+
+reduceSpacingTests.forEach(({ describe, its }) => {
+  its.forEach(({ it, props }) => {
+    storiesOf(`Layout And Spacing| MarketingLayout/${describe}`, module).add(
+      it,
+      () => <MarketingLayout {...commonProps} {...props} />,
+    );
   });
 });
