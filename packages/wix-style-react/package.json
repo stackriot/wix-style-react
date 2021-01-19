@@ -192,8 +192,8 @@
     "yoshi-style-dependencies": "^4.71.0"
   },
   "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^16.13.1 || ^17.0.0",
+    "react-dom": "^16.13.1 || ^17.0.0",
     "@wix/ambassador": "^4.0.485",
     "@wix/ambassador-wix-atlas-service-web": "^1.0.150"
   },
