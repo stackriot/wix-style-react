@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<MarketingLayout/>`- reduce spacing (feature toggle) [#6568](https://github.com/wix/wix-style-react/pull/6568)
+
 ## 9.69.0 - 2021-01-18
 ### Added
 - `<Calendar/>` -  Add day indication slot[#6495](https://github.com/wix/wix-style-react/pull/6495)
