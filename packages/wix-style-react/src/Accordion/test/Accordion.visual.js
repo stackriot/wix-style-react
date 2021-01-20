@@ -51,6 +51,13 @@ storiesOf('Accordion', module).add('multiple', () => (
     multiple
     items={[
       accordionItemBuilder({
+        title: 'Disable Row',
+        children: <Text>${text}</Text>,
+        collapseLabel: 'Less',
+        open: true,
+        disabled: true,
+      }),
+      accordionItemBuilder({
         title: 'First Initially Open Row',
         children: <Text>${text}</Text>,
         initiallyOpen: true,
@@ -65,13 +72,8 @@ storiesOf('Accordion', module).add('multiple', () => (
       accordionItemBuilder({
         title: 'Third Row',
         children: <Text>${text}</Text>,
+        open: true,
         collapseLabel: 'Less',
-      }),
-      accordionItemBuilder({
-        title: 'Disable Row',
-        children: <Text>${text}</Text>,
-        collapseLabel: 'Less',
-        disabled: true,
       }),
     ]}
   />

@@ -115,14 +115,14 @@ class Accordion extends React.Component {
             open: openIndexes.includes(index),
           };
 
+          const last = index === allItems.length - 1;
           const internalProps = {
-            className: st(classes.item, {
-              last: index === allItems.length - 1,
-            }),
+            className: st(classes.item, { last }),
             key: index,
             skin,
             hideShadow,
             size,
+            last,
           };
 
           if (typeof item.render === 'function') {

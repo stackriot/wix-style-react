@@ -28,6 +28,9 @@ Types of changes:
 - `Themes | Business Dashboard - CustomModalLayout` - update scrollbar colors [#6574](https://github.com/wix/wix-style-react/pull/6574)
 - `Themes | Business Dashboard - Text` - add error skin override [#6576](https://github.com/wix/wix-style-react/pull/6576)
 
+### Changed
+- `<Accordion/>` - Remove last item bottom shadow [#6597](https://github.com/wix/wix-style-react/pull/6597)
+
 ## 9.69.0 - 2021-01-18
 ### Added
 - `<Calendar/>` -  Add day indication slot[#6495](https://github.com/wix/wix-style-react/pull/6495)

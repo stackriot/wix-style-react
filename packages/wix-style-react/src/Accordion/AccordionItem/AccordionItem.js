@@ -163,6 +163,7 @@ class AccordionItem extends React.PureComponent {
       hideShadow,
       className,
       size,
+      last,
     } = this.props;
     const { hover } = this.state;
 
@@ -170,7 +171,7 @@ class AccordionItem extends React.PureComponent {
       <div
         className={st(
           classes.root,
-          { disabled, hover, open, skin, hideShadow, size },
+          { disabled, hover, open, skin, hideShadow, size, last },
           className,
         )}
       >

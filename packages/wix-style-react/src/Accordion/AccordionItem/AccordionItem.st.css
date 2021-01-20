@@ -9,7 +9,7 @@
 }
 
 .root {
-  -st-states: hover, disabled, open, hideShadow,
+  -st-states: hover, disabled, open, hideShadow, last,
     skin(enum(standard, light)), size(enum(small, large));
   overflow: hidden;
 }
@@ -58,6 +58,10 @@
 
 .root:open .children {
   box-shadow: value(shadow30InnerTop), value(shadow30InnerBottom);
+}
+
+.root:last .children {
+  box-shadow: value(shadow30InnerTop);
 }
 
 .root:open:hideShadow .children {
