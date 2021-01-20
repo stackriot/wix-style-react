@@ -18,6 +18,7 @@ Types of changes:
 
 ### Added
 - `<MarketingLayout/>`- reduce spacing (feature toggle) [#6568](https://github.com/wix/wix-style-react/pull/6568)
+- `<AddressInput/>` - add highlighting [#6594](https://github.com/wix/wix-style-react/pull/6594)
 
 ### Changed
 - `<CardFolderTab/>` - change name to node [#6598](https://github.com/wix/wix-style-react/pull/6598)
