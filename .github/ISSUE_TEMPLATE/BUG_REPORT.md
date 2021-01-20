@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: "Something isn't working as expected \U0001F914."
+about: If you're part of wix organization, please open a Jira issue.
 title: ''
 labels: ''
 assignees: ''
