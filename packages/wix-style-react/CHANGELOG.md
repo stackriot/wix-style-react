@@ -25,6 +25,7 @@ Types of changes:
 - VanillaTestkitParams.wrapper: `HTMLElement` -> `Element` [#6599](https://github.com/wix/wix-style-react/pull/6599)
 - `<Badge/>` - change cursor to be inherit [#6596](https://github.com/wix/wix-style-react/pull/6596)
 - `Themes | Business Dashboard - CustomModalLayout` - update scrollbar colors [#6574](https://github.com/wix/wix-style-react/pull/6574)
+- `Themes | Business Dashboard - Text` - add error skin override [#6576](https://github.com/wix/wix-style-react/pull/6576)
 
 ## 9.69.0 - 2021-01-18
 ### Added
