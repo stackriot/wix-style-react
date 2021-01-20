@@ -39,6 +39,8 @@ import * as tag from './components/Tag';
 import * as checkbox from './components/Checkbox';
 import * as thumbnail from './components/Thumbnail';
 import * as verticalTabsItem from './components/VerticalTabsItem';
+import * as customModalLayout from './components/CustomModalLayout';
+
 import { Category } from '../../../../stories/storiesHierarchy';
 import Box from '../../../Box';
 import Text from '../../../Text';
@@ -191,6 +193,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('VerticalTabsItem'),
             source: verticalTabsItem.playground,
+          }),
+          example({
+            text: TextComponent('CustomModalLayout'),
+            source: customModalLayout.playground,
           }),
         ],
       }),
