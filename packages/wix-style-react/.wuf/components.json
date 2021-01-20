@@ -98,6 +98,9 @@
   "Carousel": {
     "path": "src/Carousel"
   },
+  "CarouselWIP": {
+    "path": "src/CarouselWIP"
+  },
   "CheckToggle": {
     "path": "src/CheckToggle"
   },

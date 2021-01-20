@@ -534,6 +534,9 @@ export * from './Radio';
 export { default as CopyClipboard } from './CopyClipboard';
 export * from './CopyClipboard';
 
+export { default as CarouselWIP } from './CarouselWIP';
+export * from './CarouselWIP';
+
 export {
   default as WixStyleReactProvider,
   FEATURES,

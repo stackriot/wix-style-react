@@ -29,6 +29,7 @@ const javascriptFiles = [
   ['CardFolderTabs.bundle.min.js', 39],
   ['CardGalleryItem.bundle.min.js', 65],
   ['Carousel.bundle.min.js', 68],
+  ['CarouselWIP.bundle.min.js', 50],
   ['Checkbox.bundle.min.js', 44],
   ['CheckToggle.bundle.min.js', 37],
   ['CircularProgressBar.bundle.min.js', 43],
