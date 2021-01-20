@@ -1,6 +1,10 @@
 export const playground = `
 <div>
-  <ThemeProvider theme={theme()}> 
+  <ThemeProvider theme={theme()}>
+    <Box padding="3px">
+      <Text size="small" skin="error">skin="error" size="small"</Text>
+    </Box>
+    <hr />
     <Box padding="3px">
       <Text>skin="standard" size="medium"</Text>
     </Box>

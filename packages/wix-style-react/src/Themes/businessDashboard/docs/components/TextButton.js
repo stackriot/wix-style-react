@@ -2,6 +2,9 @@ export const playground = `
 <div>
   <ThemeProvider theme={theme()}>
     <Box padding="3px">
+      <TextButton skin="destructive">Destructive skin</TextButton>
+    </Box>
+    <Box padding="3px">
       <TextButton size="tiny">Standard thin</TextButton>
     </Box>
     <Box padding="3px">
