@@ -2,7 +2,6 @@ import React from 'react';
 import Star from 'wix-ui-icons-common/Star';
 
 import { createRendererWithUniDriver, cleanup } from '../../../test/utils/unit';
-import HighlightContext from '../../InputWithOptions/HighlightContext';
 import ListItemSelect from '../ListItemSelect';
 import { listItemSelectPrivateDriverFactory } from './ListItemSelect.private.uni.driver';
 

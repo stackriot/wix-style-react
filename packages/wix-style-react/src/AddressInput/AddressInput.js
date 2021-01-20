@@ -164,7 +164,7 @@ class AddressInput extends React.PureComponent {
         status={status}
         statusMessage={statusMessage}
         menuArrow={false}
-        /* TODO: add highlight after this prop is fixed */
+        highlight
         prefix={
           <Input.IconAffix>
             <SearchIcon />
