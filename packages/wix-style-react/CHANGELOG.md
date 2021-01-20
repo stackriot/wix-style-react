@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.70.0 - 2021-01-20
 ### Added
 - `<MarketingLayout/>`- reduce spacing (feature toggle) [#6568](https://github.com/wix/wix-style-react/pull/6568)
 - `<AddressInput/>` - add highlighting [#6594](https://github.com/wix/wix-style-react/pull/6594)
