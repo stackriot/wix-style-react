@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.71.0 - 2021-01-21
 ### Added
 - `<Modal/>`- add screen prop [#6556](https://github.com/wix/wix-style-react/pull/6556)
 - `<Page/>`- reduce spacing (feature toggle)[#6609](https://github.com/wix/wix-style-react/pull/6609)
@@ -23,7 +25,6 @@ Types of changes:
 
 ### Fixed
 - `<Card.Subheader/>`- reduce spacing (feature toggle)[#6592](https://github.com/wix/wix-style-react/pull/6592)
-
 
 ## 9.70.0 - 2021-01-20
 ### Added
