@@ -29,6 +29,10 @@ export interface CalendarProps {
   firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   rtl?: boolean;
   dateIndication?: React.FC<dateIndicationProps>;
+  leftArrowAriaLabel?: string;
+  leftArrowAriaLabelledBy?: string;
+  rightArrowAriaLabel?: string;
+  rightArrowAriaLabelledBy?: string;
 }
 
 export default class Calendar extends React.PureComponent<CalendarProps> {

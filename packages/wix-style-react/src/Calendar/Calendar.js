@@ -225,7 +225,15 @@ export default class Calendar extends React.PureComponent {
   };
 
   _createCaptionElement = month => {
-    const { locale, showMonthDropdown, showYearDropdown } = this.props;
+    const {
+      locale,
+      showMonthDropdown,
+      showYearDropdown,
+      leftArrowAriaLabel,
+      leftArrowAriaLabelledBy,
+      rightArrowAriaLabel,
+      rightArrowAriaLabelledBy,
+    } = this.props;
 
     const localeUtils = localeUtilsFactory(locale);
 
@@ -242,6 +250,10 @@ export default class Calendar extends React.PureComponent {
             this._setMonth(startOfMonth(addMonths(month, -1))),
           onRightArrowClick: () =>
             this._setMonth(startOfMonth(addMonths(month, 1))),
+          leftArrowAriaLabel,
+          leftArrowAriaLabelledBy,
+          rightArrowAriaLabel,
+          rightArrowAriaLabelledBy,
         }}
       />
     );
@@ -495,6 +507,18 @@ Calendar.propTypes = {
    * `return` {React.node} - the indication node of a specific date or null if this day doesn't have an indication.
   */
   dateIndication: PropTypes.func,
+
+  /** a string to be added as aria-label to left arrow in calender header */
+  leftArrowAriaLabel: PropTypes.string,
+
+  /** a string to be added as aria-labelledby to left arrow in calender header */
+  leftArrowAriaLabelledBy: PropTypes.string,
+
+  /** a string to be added as aria-label to right arrow in calender header */
+  rightArrowAriaLabel: PropTypes.string,
+
+  /** a string to be added as aria-labelledby to right arrow in calender header */
+  rightArrowAriaLabelledBy: PropTypes.string,
 };
 
 function nextDay(date) {

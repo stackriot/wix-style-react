@@ -41,6 +41,10 @@ function CalendarWithAllProps() {
       firstDayOfWeek={1}
       rtl
       dateIndication={() => null}
+      leftArrowAriaLabel="left label"
+      leftArrowAriaLabelledBy="left labelledby"
+      rightArrowAriaLabel="right label"
+      rightArrowAriaLabelledBy="right labelledby"
     />
   );
 }

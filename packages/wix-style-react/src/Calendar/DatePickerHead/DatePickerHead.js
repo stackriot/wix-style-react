@@ -20,6 +20,10 @@ const DatePickerHead = ({
   onRightArrowClick,
   showMonthDropdown,
   showYearDropdown,
+  leftArrowAriaLabel,
+  leftArrowAriaLabelledBy,
+  rightArrowAriaLabel,
+  rightArrowAriaLabelledBy,
 }) => {
   return (
     <div data-hook="datepicker-head" className={st(classes.root, className)}>
@@ -27,6 +31,7 @@ const DatePickerHead = ({
         className={st(classes.arrow, classes.arrowLeft)}
         data-hook="datepicker-left-arrow"
         onClick={onLeftArrowClick}
+        role="button"
       >
         <ChevronLeftLarge className={classes.arrowIcon} />
       </div>
@@ -68,6 +73,7 @@ const DatePickerHead = ({
         className={st(classes.arrow, classes.arrowRight)}
         data-hook="datepicker-right-arrow"
         onClick={onRightArrowClick}
+        role="button"
       >
         <ChevronRightLarge className={classes.arrowIcon} />
       </div>
@@ -83,6 +89,10 @@ DatePickerHead.propTypes = {
   onRightArrowClick: PropTypes.func.isRequired,
   showMonthDropdown: PropTypes.bool,
   showYearDropdown: PropTypes.bool,
+  leftArrowAriaLabel: PropTypes.string,
+  leftArrowAriaLabelledBy: PropTypes.string,
+  rightArrowAriaLabel: PropTypes.string,
+  rightArrowAriaLabelledBy: PropTypes.string,
 };
 
 export default DatePickerHead;
