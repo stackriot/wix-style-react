@@ -94,7 +94,11 @@
 }
 
 .headerWrapper {
-  -st-states: minimized;
+  -st-states: minimized , reducedSpacingAndImprovedLayout;
+}
+
+.pageHeaderContainer .headerWrapper:reducedSpacingAndImprovedLayout {
+  padding-top: 24px;
 }
 
 .pageHeaderContainer .headerWrapper {

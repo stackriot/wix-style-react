@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { WixStyleReactContext } from '../WixStyleReactProvider/context';
 import PropTypes from 'prop-types';
 import { ResizeSensor } from 'css-element-queries';
 import { st, classes, stVars } from './Page.st.css';
@@ -297,19 +297,23 @@ class Page extends React.PureComponent {
 
     return (
       PageHeaderChild && (
-        <div
-          data-hook={dataHook}
-          key={dataHook}
-          className={st(classes.headerWrapper, { minimized })}
-          ref={ref => {
-            this.headerWrapperRef = ref;
-          }}
-        >
-          {React.cloneElement(PageHeaderChild, {
-            minimized,
-            hasBackgroundImage: this._hasBackgroundImage(),
-          })}
-        </div>
+        <WixStyleReactContext.Consumer key={dataHook}>
+          {({ reducedSpacingAndImprovedLayout }) => (
+            <div
+              data-hook={dataHook}
+              className={st(classes.headerWrapper, {
+                reducedSpacingAndImprovedLayout,
+                minimized,
+              })}
+              ref={ref => (this.headerWrapperRef = ref)}
+            >
+              {React.cloneElement(PageHeaderChild, {
+                minimized,
+                hasBackgroundImage: this._hasBackgroundImage(),
+              })}
+            </div>
+          )}
+        </WixStyleReactContext.Consumer>
       )
     );
   }
