@@ -19,7 +19,7 @@ Types of changes:
 - `<Page/>`- reduce spacing (feature toggle)[#6609](https://github.com/wix/wix-style-react/pull/6609)
 
 ### Fixed
-- `<Card.Subheader/>`- reduce spacing phase 2 [#6592](https://github.com/wix/wix-style-react/pull/6592)
+- `<Card.Subheader/>`- reduce spacing (feature toggle)[#6592](https://github.com/wix/wix-style-react/pull/6592)
 
 
 ## 9.70.0 - 2021-01-20
