@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 ### Added
+- `<Modal/>`- add screen prop [#6556](https://github.com/wix/wix-style-react/pull/6556)
 - `<Page/>`- reduce spacing (feature toggle)[#6609](https://github.com/wix/wix-style-react/pull/6609)
 
 ### Fixed
