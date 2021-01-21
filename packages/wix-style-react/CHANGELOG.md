@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<Page/>`- reduce spacing (feature toggle)[#6609](https://github.com/wix/wix-style-react/pull/6609)
+
 
 ## 9.70.0 - 2021-01-20
 ### Added
