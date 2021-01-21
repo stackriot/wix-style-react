@@ -16,7 +16,7 @@
 
 .root:reducedSpacingAndImprovedLayout{
   min-height: 42px;
-  padding: 9px 30px;
+  padding: 9px 24px;
 }
 
 .root:skin(standard) {
