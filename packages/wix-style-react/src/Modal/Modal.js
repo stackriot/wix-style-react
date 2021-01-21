@@ -55,6 +55,8 @@ class Modal extends React.PureComponent {
     parentSelector: PropTypes.func,
     /** selector specifying where to apply the aria-hidden attribute */
     appElement: PropTypes.string,
+    /** specifies minimum spacing between full viewport and modal content */
+    screen: PropTypes.oneOf(['full', 'desktop', 'mobile']),
   };
 
   static defaultProps = {
@@ -69,6 +71,7 @@ class Modal extends React.PureComponent {
     height: '100%',
     maxHeight: 'auto',
     overlayPosition: 'fixed',
+    screen: 'full',
   };
 
   render() {
@@ -92,6 +95,7 @@ class Modal extends React.PureComponent {
       appElement,
       overlayPosition,
       parentSelector,
+      screen,
     } = this.props;
 
     let { maxHeight } = this.props;
@@ -172,7 +176,9 @@ class Modal extends React.PureComponent {
                       <div
                         data-scrollable={scrollable || null}
                         id={CHILDREN_WRAPPER_DIV_ID}
-                        className={classes.childrenContainer}
+                        className={st(classes.childrenContainer, {
+                          screen,
+                        })}
                         onClick={this.handleOverlayClick}
                       >
                         {children}

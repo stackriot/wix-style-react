@@ -53,10 +53,23 @@
 }
 
 .childrenContainer {
+  -st-states: screen(enum(desktop, mobile, full))
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.childrenContainer:screen(full) {
+  padding: 0px;
+}
+
+.childrenContainer:screen(desktop) {
+  padding: 48px;
+}
+
+.childrenContainer:screen(mobile) {
+  padding: 30px;
 }
 
 .closeButton {
