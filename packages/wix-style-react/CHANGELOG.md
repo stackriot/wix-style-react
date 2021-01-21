@@ -19,6 +19,7 @@ Types of changes:
 - `<Modal/>`- add screen prop [#6556](https://github.com/wix/wix-style-react/pull/6556)
 - `<Page/>`- reduce spacing (feature toggle)[#6609](https://github.com/wix/wix-style-react/pull/6609)
 - `<Calendar/>`- Head - add aria-label and aria-labelledby to arrows [#6610](https://github.com/wix/wix-style-react/pull/6610)
+- `<Calendar/>`- add a11y attributes to month and year dropdown in header [#6572](https://github.com/wix/wix-style-react/pull/6572)
 
 ### Fixed
 - `<Card.Subheader/>`- reduce spacing (feature toggle)[#6592](https://github.com/wix/wix-style-react/pull/6592)
