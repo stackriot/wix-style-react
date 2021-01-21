@@ -4,7 +4,6 @@ import { st, classes } from './DatePickerDropdown.st.css';
 import ChevronDown from 'wix-ui-icons-common/ChevronDown';
 import DropdownBase from '../../DropdownBase';
 import TextButton from '../../TextButton';
-import Box from '../../Box';
 
 export default class DropdownPicker extends React.Component {
   static propTypes = {
@@ -14,6 +13,8 @@ export default class DropdownPicker extends React.Component {
     options: PropTypes.array,
     onChange: PropTypes.func,
     selectedId: PropTypes.number,
+    ariaLabel: PropTypes.string,
+    ariaLabelledBy: PropTypes.string,
   };
 
   state = {
@@ -68,11 +69,26 @@ export default class DropdownPicker extends React.Component {
   };
 
   render() {
-    const { className, caption, options, dataHook, selectedId } = this.props;
+    const {
+      className,
+      caption,
+      options,
+      dataHook,
+      selectedId,
+      ariaLabel,
+      ariaLabelledBy,
+    } = this.props;
+
     const { open } = this.state;
 
+    const finalAriaLabel = ariaLabel ? `${ariaLabel} ${caption}` : undefined;
+
     return (
-      <Box className={st(classes.root, className)} padding="0 6px">
+      <div
+        className={st(classes.root, className)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
         <DropdownBase
           data-hook={dataHook}
           className={classes.dropdown}
@@ -95,13 +111,15 @@ export default class DropdownPicker extends React.Component {
                 onClick={this._toggle}
                 dataHook={`${dataHook}-button`}
                 onKeyDown={e => this._onKeyDown(e, delegateKeyDown)}
+                ariaLabel={finalAriaLabel}
+                ariaLabelledBy={ariaLabelledBy}
               >
                 {caption}
               </TextButton>
             );
           }}
         </DropdownBase>
-      </Box>
+      </div>
     );
   }
 }

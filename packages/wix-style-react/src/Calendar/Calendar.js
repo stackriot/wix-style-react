@@ -233,6 +233,10 @@ export default class Calendar extends React.PureComponent {
       leftArrowAriaLabelledBy,
       rightArrowAriaLabel,
       rightArrowAriaLabelledBy,
+      monthDropdownAriaLabel,
+      monthDropdownAriaLabelledBy,
+      yearDropdownAriaLabel,
+      yearDropdownAriaLabelledBy,
     } = this.props;
 
     const localeUtils = localeUtilsFactory(locale);
@@ -254,6 +258,10 @@ export default class Calendar extends React.PureComponent {
           leftArrowAriaLabelledBy,
           rightArrowAriaLabel,
           rightArrowAriaLabelledBy,
+          monthDropdownAriaLabel,
+          monthDropdownAriaLabelledBy,
+          yearDropdownAriaLabel,
+          yearDropdownAriaLabelledBy,
         }}
       />
     );
@@ -519,6 +527,18 @@ Calendar.propTypes = {
 
   /** a string to be added as aria-labelledby to right arrow in calender header */
   rightArrowAriaLabelledBy: PropTypes.string,
+
+  /** a string to be added as aria-label to the caption in months dropdown in header */
+  monthDropdownAriaLabel: PropTypes.string,
+
+  /** a string to be added as aria-labelledby to the caption in months dropdown in header */
+  monthDropdownAriaLabelledBy: PropTypes.string,
+
+  /** a string to be added as aria-label to the caption in years dropdown in header */
+  yearDropdownAriaLabel: PropTypes.string,
+
+  /** a string to be added as aria-labelledby to the caption in years dropdown in header */
+  yearDropdownAriaLabelledBy: PropTypes.string,
 };
 
 function nextDay(date) {

@@ -47,6 +47,12 @@ class TextButton extends PureComponent {
     showTooltip: PropTypes.bool,
     /** Props that modify the Tooltip created from text ellipsis */
     tooltipProps: PropTypes.shape(TooltipCommonProps),
+
+    /** string to be added as aria-label to the button */
+    ariaLabel: PropTypes.string,
+
+    /** string to be added as aria-labelby to the button */
+    ariaLabelledBy: PropTypes.string,
   };
 
   static defaultProps = {
@@ -72,6 +78,8 @@ class TextButton extends PureComponent {
       ellipsis,
       showTooltip,
       tooltipProps,
+      ariaLabel,
+      ariaLabelledBy,
       ...rest
     } = this.props;
 
@@ -97,6 +105,8 @@ class TextButton extends PureComponent {
             data-hook={dataHook}
             contentClassName={ellipsisClasses()}
             contentRef={ref}
+            aria-label={ariaLabel}
+            aria-labelledby={ariaLabelledBy}
           >
             {children}
           </ButtonNext>

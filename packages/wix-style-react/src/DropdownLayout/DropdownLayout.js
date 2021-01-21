@@ -467,7 +467,11 @@ class DropdownLayout extends React.PureComponent {
   _renderOption({ option, idx }) {
     const builderOption = this._convertOptionToBuilder(option, idx);
 
-    const content = this._renderOptionContent({ option: builderOption, idx });
+    const content = this._renderOptionContent({
+      option: builderOption,
+      idx,
+      hasLink: !!option.linkTo,
+    });
 
     return option.linkTo ? (
       <a
@@ -475,6 +479,8 @@ class DropdownLayout extends React.PureComponent {
         key={idx}
         data-hook={DATA_HOOKS.LINK_ITEM}
         href={option.linkTo}
+        role="option"
+        aria-selected={option.id === this.state.selectedId}
       >
         {content}
       </a>
@@ -499,7 +505,7 @@ class DropdownLayout extends React.PureComponent {
     );
   };
 
-  _renderOptionContent({ option, idx }) {
+  _renderOptionContent({ option, idx, hasLink }) {
     const { itemHeight, selectedHighlight } = this.props;
     const { selectedId, hovered } = this.state;
 
@@ -514,6 +520,8 @@ class DropdownLayout extends React.PureComponent {
     return (
       <div
         {...this._getItemDataAttr({ ...optionState })}
+        role={hasLink ? undefined : 'option'}
+        aria-selected={hasLink ? undefined : optionState.selected}
         className={
           overrideOptionStyle
             ? null
@@ -627,6 +635,7 @@ class DropdownLayout extends React.PureComponent {
             }}
             ref={_options => (this.options = _options)}
             data-hook={DATA_HOOKS.DROPDOWN_LAYOUT_OPTIONS}
+            role="listbox"
           >
             {infiniteScroll
               ? this._wrapWithInfiniteScroll(renderedOptions)

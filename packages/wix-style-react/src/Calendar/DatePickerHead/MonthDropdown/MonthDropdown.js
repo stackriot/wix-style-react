@@ -8,7 +8,14 @@ import DatePickerDropdown from '../../DatePickerDropdown';
 const optionsOf = items =>
   items.map((item, index) => ({ value: item, id: index }));
 
-const MonthDropdown = ({ className, months, date, onChange }) => {
+const MonthDropdown = ({
+  className,
+  months,
+  date,
+  onChange,
+  ariaLabel,
+  ariaLabelledBy,
+}) => {
   const options = optionsOf(months);
   const selectedMonth = options.find(({ id }) => id === date.getMonth());
 
@@ -20,6 +27,8 @@ const MonthDropdown = ({ className, months, date, onChange }) => {
       options={options}
       selectedId={selectedMonth.id}
       onChange={({ id }) => onChange(setMonth(date, id))}
+      ariaLabel={ariaLabel}
+      ariaLabelledBy={ariaLabelledBy}
     />
   );
 };
@@ -29,6 +38,8 @@ MonthDropdown.propTypes = {
   months: PropTypes.arrayOf(PropTypes.string).isRequired,
   date: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
+  ariaLabel: PropTypes.string,
+  ariaLabelledBy: PropTypes.string,
 };
 
 export default MonthDropdown;

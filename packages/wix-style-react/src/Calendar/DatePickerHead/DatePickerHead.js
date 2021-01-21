@@ -24,6 +24,10 @@ const DatePickerHead = ({
   leftArrowAriaLabelledBy,
   rightArrowAriaLabel,
   rightArrowAriaLabelledBy,
+  monthDropdownAriaLabel,
+  monthDropdownAriaLabelledBy,
+  yearDropdownAriaLabel,
+  yearDropdownAriaLabelledBy,
 }) => {
   return (
     <div data-hook="datepicker-head" className={st(classes.root, className)}>
@@ -42,6 +46,8 @@ const DatePickerHead = ({
           date={date}
           onChange={onChange}
           months={localeUtils.getMonths()}
+          ariaLabel={monthDropdownAriaLabel}
+          ariaLabelledBy={monthDropdownAriaLabelledBy}
         />
       ) : (
         <Text
@@ -58,6 +64,8 @@ const DatePickerHead = ({
           className={classes.yearDropdown}
           date={date}
           onChange={onChange}
+          ariaLabel={yearDropdownAriaLabel}
+          ariaLabelledBy={yearDropdownAriaLabelledBy}
         />
       ) : (
         <Text
@@ -93,6 +101,10 @@ DatePickerHead.propTypes = {
   leftArrowAriaLabelledBy: PropTypes.string,
   rightArrowAriaLabel: PropTypes.string,
   rightArrowAriaLabelledBy: PropTypes.string,
+  monthDropdownAriaLabel: PropTypes.string,
+  monthDropdownAriaLabelledBy: PropTypes.string,
+  yearDropdownAriaLabel: PropTypes.string,
+  yearDropdownAriaLabelledBy: PropTypes.string,
 };
 
 export default DatePickerHead;

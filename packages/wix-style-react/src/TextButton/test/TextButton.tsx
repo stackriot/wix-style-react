@@ -34,6 +34,8 @@ function TextButtonWithAllProps() {
         flip: true,
         maxWidth: '700px',
       }}
+      ariaLabel="label"
+      ariaLabelledBy="labelledBy"
     />
   );
 }

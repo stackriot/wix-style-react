@@ -45,6 +45,10 @@ function CalendarWithAllProps() {
       leftArrowAriaLabelledBy="left labelledby"
       rightArrowAriaLabel="right label"
       rightArrowAriaLabelledBy="right labelledby"
+      monthDropdownAriaLabel="label"
+      monthDropdownAriaLabelBy="labelledby"
+      yearDropdownAriaLabel="label"
+      yearDropdownAriaLabelBy="labelledby"
     />
   );
 }

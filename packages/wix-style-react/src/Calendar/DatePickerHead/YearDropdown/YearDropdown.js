@@ -9,7 +9,13 @@ import DatePickerDropdown from '../../DatePickerDropdown';
 const optionsOf = items =>
   items.map((item, index) => ({ value: item, id: index }));
 
-const YearDropdown = ({ className, date, onChange }) => {
+const YearDropdown = ({
+  className,
+  date,
+  onChange,
+  ariaLabel,
+  ariaLabelledBy,
+}) => {
   const year = date.getFullYear();
   const [lowerLimit, upperLimit] = [1899, 2028];
   const years = optionsOf(
@@ -26,6 +32,8 @@ const YearDropdown = ({ className, date, onChange }) => {
       options={years}
       selectedId={selectedYear.id}
       onChange={({ value }) => onChange(setYear(date, value))}
+      ariaLabel={ariaLabel}
+      ariaLabelledBy={ariaLabelledBy}
     />
   );
 };
@@ -34,6 +42,8 @@ YearDropdown.propTypes = {
   className: PropTypes.string,
   date: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
+  ariaLabel: PropTypes.string,
+  ariaLabelledBy: PropTypes.string,
 };
 
 export default YearDropdown;
