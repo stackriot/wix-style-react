@@ -19,6 +19,9 @@ Types of changes:
 ### Changed
 - `Themes | Business Dashboard - Thumbnail` - Update box-shadow style on selected [#6575](https://github.com/wix/wix-style-react/pull/6575)
 
+### Fixed
+- `<Input/>` - fixed chrome autofill styles [#6586](https://github.com/wix/wix-style-react/pull/6586)
+
 ## 9.71.0 - 2021-01-21
 ### Added
 - `<Modal/>`- add screen prop [#6556](https://github.com/wix/wix-style-react/pull/6556)
