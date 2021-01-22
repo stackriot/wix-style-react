@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.72.0 - 2021-01-22
 ### Changed
 - `<Modal/>` - updated storybook examples with new prop `screen` [#6617](https://github.com/wix/wix-style-react/pull/6617)
 - `Themes | Business Dashboard - Thumbnail` - Update box-shadow style on selected [#6575](https://github.com/wix/wix-style-react/pull/6575)
