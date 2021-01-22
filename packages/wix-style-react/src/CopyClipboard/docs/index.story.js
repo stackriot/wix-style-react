@@ -97,7 +97,17 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
-        { title: 'Testkit', sections: [testkit()] },
+        {
+          title: 'Testkit',
+          sections: [
+            testkit(),
+            divider(),
+            title('Required polyfills for JSDom environment'),
+            importExample(
+              `import { selectionBehaviorPolyfill, rangePolyfill, execCommandBehaviorPolyfill } from 'wix-style-react/dist/testkit/polyfills';`,
+            ),
+          ],
+        },
         { title: 'Playground', sections: [playground()] },
       ].map(tab),
     ]),

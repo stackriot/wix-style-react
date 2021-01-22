@@ -20,7 +20,7 @@ export const createToggleSelection = () => {
     activeElement && activeElement.focus();
   };
 
-  const selectionObject = document.getSelection();
+  const selectionObject = window.getSelection();
   let activeElement = document.activeElement;
   const ranges = [];
   for (let i = 0; i < selectionObject.rangeCount; i++) {

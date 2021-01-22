@@ -1,22 +1,14 @@
 import { act, renderHook } from '@testing-library/react-hooks';
+import {
+  selectionBehaviorPolyfill,
+  rangePolyfill,
+} from '../../../../testkit/polyfills';
 import useCopyClipboard from '../useCopyClipboard';
 
 describe('useCopyClipboard', () => {
   beforeEach(() => {
-    document.createRange = () => ({
-      setStart: () => {},
-      setEnd: () => {},
-      commonAncestorContainer: {
-        nodeName: 'BODY',
-        ownerDocument: document,
-      },
-      selectNodeContents: () => {},
-    });
-    document.getSelection = () => ({
-      addRange: () => {},
-      removeRange: () => {},
-      removeAllRanges: () => {},
-    });
+    selectionBehaviorPolyfill.install();
+    rangePolyfill.install();
     document.execCommand = jest.fn(() => true);
   });
 

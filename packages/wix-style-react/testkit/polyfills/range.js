@@ -9,6 +9,8 @@ const install = () => {
     document.createRange = () => {
       return (function () {
         const pub = {};
+        pub.selectNodeContents = () => {};
+
         pub.setEnd = function (elem) {
           pub.commonAncestorContainer = elem;
         };

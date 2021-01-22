@@ -23,7 +23,7 @@ function useCopyClipboard({ value, onCopy, resetTimeout }) {
   const copyToClipboard = useCallback(() => {
     const range = document.createRange();
     const copyElement = createCopyElement(value);
-    const selection = document.getSelection();
+    const selection = window.getSelection();
 
     const _onCopy = event => {
       event.stopPropagation();
