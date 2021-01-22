@@ -22,6 +22,7 @@ Types of changes:
 
 ### Fixed
 - `<Input/>` - fixed chrome autofill styles [#6586](https://github.com/wix/wix-style-react/pull/6586)
+- `useCopyClipboard` - introduce browser api polyfills to cover CopyClipboard in JSDOM [#6628](https://github.com/wix/wix-style-react/pull/6628)
 
 ## 9.71.0 - 2021-01-21
 ### Added
