@@ -6,7 +6,10 @@ export const playground = `
       </Cell>
       <Cell span={2}>
         <Thumbnail size="small" selected title="Selecetd 2" />
-    </Cell>
+      </Cell>
+      <Cell span={2}>
+        <Thumbnail size="small" disabled title="Disabled 3" />
+      </Cell>
     </Layout>
   </ThemeProvider>
 `;
