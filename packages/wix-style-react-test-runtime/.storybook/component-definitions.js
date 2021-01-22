@@ -1,16 +1,15 @@
 import React from 'react';
 
-import { GmapsTestClient } from '../../../dist/es/src/GoogleAddressInput/gmapsTestClient';
-import CropRotate from 'wix-ui-icons-common/CropRotate';
-import Popover from '../../../dist/es/src/Popover';
-import MultiSelect from '../../../dist/es/src/MultiSelect';
-import AutoComplete from '../../../dist/es/src/AutoComplete';
-import Input from '../../../dist/es/src/Input';
-import Notification from '../../../dist/es/src/Notification';
-import FloatingHelper from '../../../dist/es/src/FloatingHelper';
-import GoogleAddressInput from '../../../dist/es/src/GoogleAddressInput';
-import VerticalTabs from '../../../dist/es/src/VerticalTabs';
-import SegmentedToggle from '../../../dist/es/src/SegmentedToggle';
+import { GmapsTestClient } from 'wix-style-react/dist/es/src/GoogleAddressInput/gmapsTestClient';
+import Popover from 'wix-style-react/dist/es/src/Popover';
+import MultiSelect from 'wix-style-react/dist/es/src/MultiSelect';
+import AutoComplete from 'wix-style-react/dist/es/src/AutoComplete';
+import Input from 'wix-style-react/dist/es/src/Input';
+import Notification from 'wix-style-react/dist/es/src/Notification';
+import FloatingHelper from 'wix-style-react/dist/es/src/FloatingHelper';
+import GoogleAddressInput from 'wix-style-react/dist/es/src/GoogleAddressInput';
+import VerticalTabs from 'wix-style-react/dist/es/src/VerticalTabs';
+import SegmentedToggle from 'wix-style-react/dist/es/src/SegmentedToggle';
 
 /*
  * This file exports object with config for components.
@@ -210,7 +209,7 @@ export default {
     },
   },
   ToggleButton: {
-    props: { tooltipContent: 'Crop & Rotate', children: <CropRotate /> },
+    props: { tooltipContent: 'Crop & Rotate', children: <>ToggleButton</> },
   },
 
   Button: {

@@ -5,7 +5,7 @@ const app = express();
 
 app.get('/puppeteer-testkit-require', (req, res) => {
   try {
-    require('../../dist/testkit/puppeteer');
+    require('wix-style-react/dist/testkit/puppeteer');
     res.send(200);
   } catch (e) {
     res.status(500).send({

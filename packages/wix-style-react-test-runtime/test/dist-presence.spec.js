@@ -11,7 +11,7 @@ const throwIfNotFound = error => {
 describe('testkit', () => {
   it('load teskit files', async () => {
     try {
-      require('../../../../../dist/testkit');
+      require('wix-style-react/dist/testkit');
     } catch (e) {
       throwIfNotFound(e);
     }
@@ -21,7 +21,7 @@ describe('testkit', () => {
 describe('test utils', () => {
   it('load test utils files', async () => {
     try {
-      require('../../../../../dist/test/utils');
+      require('wix-style-react/dist/test/utils');
     } catch (e) {
       throwIfNotFound(e);
     }

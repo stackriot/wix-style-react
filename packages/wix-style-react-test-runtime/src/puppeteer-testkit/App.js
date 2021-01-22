@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '../../../../dist/src/Button';
-import Heading from '../../../../dist/src/Heading';
+import Button from 'wix-style-react/dist/src/Button';
+import Heading from 'wix-style-react/dist/src/Heading';
 
 class App extends React.Component {
   state = {

@@ -1,10 +1,10 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import componentsMeta from '../../../.wuf/components.json';
+import { storiesOf } from 'wix-style-react/node_modules/@storybook/react';
+import componentsMeta from 'wix-style-react/.wuf/components.json';
 import DEFINITIONS from './component-definitions';
-import { Layout, Cell } from '../../../';
-import { Box } from '../../../';
-import * as wsr from '../../../';
+import { Layout, Cell } from 'wix-style-react';
+import { Box } from 'wix-style-react';
+import * as wsr from 'wix-style-react';
 
 const components = Object.keys(componentsMeta);
 

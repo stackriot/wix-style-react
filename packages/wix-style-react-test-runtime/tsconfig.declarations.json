@@ -13,9 +13,12 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strictFunctionTypes": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "typeRoots": [
+      "node_modules/wix-style-react/node_modules/@types"
+    ]
   },
   "include": [
-    "../../dist/testkit/*.d.ts"
+    "node_modules/wix-style-react/dist/testkit/*.d.ts"
   ]
 }

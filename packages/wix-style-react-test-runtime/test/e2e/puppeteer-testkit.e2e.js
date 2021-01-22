@@ -1,7 +1,7 @@
 import {
   buttonTestkitFactory,
   headingTestkitFactory,
-} from '../../../../dist/testkit/puppeteer';
+} from 'wix-style-react/dist/testkit/puppeteer';
 import http from 'http';
 
 describe('React application to be interacted with puppeteer testkit', () => {
