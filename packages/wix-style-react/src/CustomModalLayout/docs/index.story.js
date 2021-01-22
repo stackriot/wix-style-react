@@ -74,7 +74,7 @@ export default {
             description({
               title: 'Description',
               text:
-                'Use this component inside a <Modal /> to display content in this layout. You may place a title and/or a footer with actions relevant to the displayed content.',
+                'Use this component inside a Modal component to display content in this layout. You may place a title and/or a footer with actions relevant to the displayed content.',
             }),
           ]),
 

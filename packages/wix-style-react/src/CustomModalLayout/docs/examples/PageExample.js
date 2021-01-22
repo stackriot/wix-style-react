@@ -19,6 +19,7 @@ class PageExample extends React.Component {
           isOpen={isModalOpened}
           onRequestClose={this.closeModal}
           shouldCloseOnOverlayClick
+          screen="desktop"
         >
           <CustomModalLayout
             width="1254px"

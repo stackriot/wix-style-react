@@ -16,7 +16,12 @@ class MarketingExample extends React.Component {
     return (
       <>
         <Button onClick={this.openModal}>Open Modal</Button>
-        <Modal isOpen={isModalOpened} onRequestClose={this.closeModal} shouldCloseOnOverlayClick >
+        <Modal
+          isOpen={isModalOpened}
+          onRequestClose={this.closeModal}
+          shouldCloseOnOverlayClick
+          screen="desktop"
+        >
           <CustomModalLayout width="800px" removeContentPadding onCloseButtonClick={this.closeModal}>
             <Card>
               <MarketingLayout

@@ -15,7 +15,11 @@ class SimpleExample extends React.Component {
     return (
       <Box>
         <Button onClick={this.openModal}>Open Modal</Button>
-        <Modal isOpen={isModalOpened} onRequestClose={this.closeModal}>
+        <Modal
+          isOpen={isModalOpened}
+          onRequestClose={this.closeModal}
+          screen="desktop"
+        >
           <MessageBoxFunctionalLayout
             confirmText="Leave this page"
             onOk={this.closeModal}

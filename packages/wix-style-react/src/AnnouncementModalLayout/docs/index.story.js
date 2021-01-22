@@ -18,6 +18,7 @@ import allComponents from '../../../stories/utils/allComponents';
 
 import AnnouncementModalLayout from '..';
 
+import SimpleExample from '!raw-loader!./examples/SimpleExample';
 import BasicExample from '!raw-loader!./examples/BasicExample';
 import FootnoteExample from '!raw-loader!./examples/FootnoteExample';
 import SecondaryButtonExample from '!raw-loader!./examples/SecondaryButtonExample';
@@ -68,13 +69,19 @@ export default {
           description({
             title: 'Description',
             text:
-              'Use this component inside a <Modal /> to display content in the AnnouncementModalLayout. You may place a title and/or a footer with actions relevant to the displayed content',
+              'Use this component inside a Modal component to display content in the AnnouncementModalLayout. You may place a title and/or a footer with actions relevant to the displayed content',
           }),
           importExample(
             "import { AnnouncementModalLayout } from 'wix-style-react';",
           ),
           divider(),
           title('Examples'),
+          example({
+            title: 'Opening a modal',
+            text:
+              'Use Modal component to reveal the announcement modal layout.',
+            source: SimpleExample,
+          }),
           example({
             title: 'Simple Usage',
             text: 'A simple example with compact preview',
