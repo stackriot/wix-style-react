@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Changed
+- `Themes | Business Dashboard - Thumbnail` - Update box-shadow style on selected [#6575](https://github.com/wix/wix-style-react/pull/6575)
+
 ## 9.71.0 - 2021-01-21
 ### Added
 - `<Modal/>`- add screen prop [#6556](https://github.com/wix/wix-style-react/pull/6556)
