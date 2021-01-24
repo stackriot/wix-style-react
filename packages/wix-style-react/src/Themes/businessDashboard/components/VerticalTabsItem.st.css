@@ -4,6 +4,11 @@
 }
 
 :import {
+  -st-from: "../../../Text/Text.st.css";
+  -st-default: Text;
+}
+
+:import {
   -st-from: '../foundations/colors.st.css';
   -st-named: D80, B50;
 }
@@ -13,7 +18,7 @@
   position: relative;
   padding: 0 0 0 16px;
   overflow: hidden;
-  background-color: value(D80);
+  max-height: 52px;
 }
 
 .root::prefixIcon {
@@ -23,22 +28,38 @@
 
 .root::text {
   padding: 8px 36px 8px 0;
+  width: 100%;
 }
 
-.root:not(:action):hover {
+.root:selected,
+.root:not(:action):not(:title):hover {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  background-color: value(B50);
+  background: value(B50);
 }
 
-.root:not(:action):hover::text::after {
-    content: '';
+.root:selected::before,
+.root:not(:action):not(:title):hover::before {
     position: absolute;
     right: 0;
-    top: calc(50% - 36px);
-    width: 0;
-    height: 0;
-    border-left: 16px solid value(B50);
-    border-top: 36px solid value(D80);
-    border-bottom: 36px solid value(D80);
+    content: "";
+    display: block;
+    background: white;
+    width:14px;
+    height:52px;
+    margin:0 0 0 0px;
+}
+
+.root:selected::after,
+.root:not(:action):not(:title):hover::after {
+    position: absolute;
+    right: -1px;
+    content: "";
+    display: block;
+    background: value(B50);
+    width:30px;
+    height:30px;
+    border-radius: 4px;
+    margin:0 0 0 0px;
+    transform:rotate(45deg) skew(18deg, 18deg);
 }
