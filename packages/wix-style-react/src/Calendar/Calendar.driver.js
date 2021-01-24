@@ -29,7 +29,7 @@ const calendarDriverFactory = ({ element }) => {
     element.querySelector('[data-hook="datepicker-year-caption"]');
   const getMonthAndYear = () => [getMonthCaption(), getYearCaption()];
   const getNthWeekDayName = n =>
-    element.querySelectorAll('[class*="DayPicker-Weekday"] abbr')[n];
+    element.querySelectorAll(`[data-hook="weekday-day"]`)[n];
   const getPrevMonthButton = () =>
     element.querySelector('[data-hook="datepicker-left-arrow"]');
   const getNextMonthButton = () =>

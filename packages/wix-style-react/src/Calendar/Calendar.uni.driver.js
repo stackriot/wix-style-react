@@ -29,8 +29,7 @@ export const calendarUniDriverFactory = base => {
     base.$$('[data-hook="datepicker-month-caption"]').get(0);
   const getYearCaption = () => base.$('[data-hook="datepicker-year-caption"]');
   const getMonthAndYear = () => [getMonthCaption(), getYearCaption()];
-  const getNthWeekDayName = n =>
-    base.$$('[class*="DayPicker-Weekday"] abbr').get(n);
+  const getNthWeekDayName = n => base.$$(`[data-hook="weekday-day"]`).get(n);
   const getPrevMonthButton = () =>
     base.$('[data-hook="datepicker-left-arrow"]');
   const getNextMonthButton = () =>

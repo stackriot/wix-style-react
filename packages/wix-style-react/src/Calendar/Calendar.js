@@ -267,6 +267,22 @@ export default class Calendar extends React.PureComponent {
     );
   };
 
+  _createWeekdayElement = localeUtils => {
+    return ({ weekday }) => {
+      const weekdayShort = localeUtils.formatWeekdayShort(weekday);
+      const weekdayLong = localeUtils.formatWeekdayLong(weekday);
+      return (
+        <div
+          className={st(classes.weekday)}
+          aria-label={weekdayLong}
+          role="columnheader"
+        >
+          <abbr data-hook="weekday-day">{weekdayShort}</abbr>
+        </div>
+      );
+    };
+  };
+
   _createDayPickerProps = () => {
     const {
       locale,
@@ -295,6 +311,7 @@ export default class Calendar extends React.PureComponent {
 
     const captionElement = this._createCaptionElement(month);
     const selectedDays = this._getSelectedDays(value);
+    const weekdayElement = this._createWeekdayElement(localeUtils);
 
     return {
       disabledDays: excludePastDates
@@ -325,8 +342,9 @@ export default class Calendar extends React.PureComponent {
       },
       renderDay: this._renderDay,
       dir: rtl ? 'rtl' : 'ltr',
+      weekdayElement,
       classNames: {
-        /* The classes: 'DayPicker', 'DayPicker-wrapper', 'DayPicker-Month', 'DayPicker-Weekday', 'DayPicker-Day', 'disabled'
+        /* The classes: 'DayPicker', 'DayPicker-wrapper', 'DayPicker-Month', 'DayPicker-Day', 'disabled'
         are used as selectors for the elements at the drivers and at the e2e tests */
 
         container: st('DayPicker', classes.container),
@@ -337,7 +355,6 @@ export default class Calendar extends React.PureComponent {
         month: st('DayPicker-Month', classes.month),
         weekdays: classes.weekdays,
         weekdaysRow: classes.weekdaysRow,
-        weekday: st('DayPicker-Weekday', classes.weekday),
         body: classes.body,
         week: classes.week,
         weekNumber: 'DayPicker-WeekNumber',
