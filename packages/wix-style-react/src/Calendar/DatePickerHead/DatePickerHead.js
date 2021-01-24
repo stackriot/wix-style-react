@@ -39,44 +39,44 @@ const DatePickerHead = ({
       >
         <ChevronLeftLarge className={classes.arrowIcon} />
       </div>
+      <div className={st(classes.yearAndMonthWrapper)} role="alert">
+        {showMonthDropdown ? (
+          <MonthDropdown
+            className={classes.monthDropdown}
+            date={date}
+            onChange={onChange}
+            months={localeUtils.getMonths()}
+            ariaLabel={monthDropdownAriaLabel}
+            ariaLabelledBy={monthDropdownAriaLabelledBy}
+          />
+        ) : (
+          <Text
+            className={classes.caption}
+            weight="normal"
+            dataHook={'datepicker-month-caption'}
+          >
+            {getMonthName(localeUtils.getMonths(), date.getMonth())}
+          </Text>
+        )}
 
-      {showMonthDropdown ? (
-        <MonthDropdown
-          className={classes.monthDropdown}
-          date={date}
-          onChange={onChange}
-          months={localeUtils.getMonths()}
-          ariaLabel={monthDropdownAriaLabel}
-          ariaLabelledBy={monthDropdownAriaLabelledBy}
-        />
-      ) : (
-        <Text
-          className={classes.caption}
-          weight="normal"
-          dataHook={'datepicker-month-caption'}
-        >
-          {getMonthName(localeUtils.getMonths(), date.getMonth())}
-        </Text>
-      )}
-
-      {showYearDropdown ? (
-        <YearDropdown
-          className={classes.yearDropdown}
-          date={date}
-          onChange={onChange}
-          ariaLabel={yearDropdownAriaLabel}
-          ariaLabelledBy={yearDropdownAriaLabelledBy}
-        />
-      ) : (
-        <Text
-          className={classes.caption}
-          weight="normal"
-          dataHook={'datepicker-year-caption'}
-        >
-          {date.getFullYear()}
-        </Text>
-      )}
-
+        {showYearDropdown ? (
+          <YearDropdown
+            className={classes.yearDropdown}
+            date={date}
+            onChange={onChange}
+            ariaLabel={yearDropdownAriaLabel}
+            ariaLabelledBy={yearDropdownAriaLabelledBy}
+          />
+        ) : (
+          <Text
+            className={classes.caption}
+            weight="normal"
+            dataHook={'datepicker-year-caption'}
+          >
+            {date.getFullYear()}
+          </Text>
+        )}
+      </div>
       <div
         className={st(classes.arrow, classes.arrowRight)}
         data-hook="datepicker-right-arrow"

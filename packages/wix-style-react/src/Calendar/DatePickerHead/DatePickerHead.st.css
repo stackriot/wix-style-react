@@ -28,6 +28,12 @@
   color: value(THEME-COLOR-10);
 }
 
+.yearAndMonthWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .caption {
   padding: 0 6px;
 }
