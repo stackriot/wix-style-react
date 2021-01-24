@@ -10,34 +10,32 @@
 
 .root {
   -st-extends: Tag;
-  border-radius: 4px;
 }
 
-.root:size(medium) {
+.root:size(medium):theme(lightOutlined) {
   max-height: 28px;
   padding: 4px 12px;
-}
-
-.root:theme(lightOutlined) {
+  border-radius: 4px;
   border: 1px solid value(D55);
   background-color: value(D80);
 }
 
-.root:theme(lightOutlined)::text {
+.root:size(medium):theme(lightOutlined)::text {
   color: value(D20);
 }
 
-.root:theme(lightOutlined):hover, .root:theme(lightOutlined):active  {
+.root:size(medium):theme(lightOutlined):hover,
+.root:size(medium):theme(lightOutlined):active {
   border-color: value(B05);
   background-color: value(D80)!important;
 }
 
-.root:theme(lightOutlined):hover::text,
-.root:theme(lightOutlined):active::text  {
+.root:size(medium):theme(lightOutlined):hover::text,
+.root:size(medium):theme(lightOutlined):active::text {
   color: value(B05);
 }
 
-.root:theme(lightOutlined):focus  {
+.root:size(medium):theme(lightOutlined):focus {
   box-shadow: 0px 0px 0px 2px value(B50);
   outline: none;
 }
