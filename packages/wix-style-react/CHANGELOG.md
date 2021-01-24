@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Added
 - `<Calendar/>` - Add role="alert" to the wrapper container in Header [#6619](https://github.com/wix/wix-style-react/pull/6619)
+- ` <DatePicker />` - add aria labels props and pass them to the Calendar [#6630](https://github.com/wix/wix-style-react/pull/6630)
 - `Themes | Business Dashboard` - LinearProgressBar error state [#6622](https://github.com/wix/wix-style-react/pull/6622)
 - `Themes | Business Dashboard` - Tag - Set override only for lightOutlined and medium [#6554](https://github.com/wix/wix-style-react/pull/6554)
 
