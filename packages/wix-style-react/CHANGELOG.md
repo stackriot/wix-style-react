@@ -20,6 +20,7 @@ Types of changes:
 - ` <DatePicker />` - add aria labels props and pass them to the Calendar [#6630](https://github.com/wix/wix-style-react/pull/6630)
 - `Themes | Business Dashboard` - LinearProgressBar error state [#6622](https://github.com/wix/wix-style-react/pull/6622)
 - `Themes | Business Dashboard` - Tag - Set override only for lightOutlined and medium [#6554](https://github.com/wix/wix-style-react/pull/6554)
+- `Themes | Business Dashboard` - VerticalTabsItem update [#6595](https://github.com/wix/wix-style-react/pull/6595)
 
 ### Fixed
 - `<Sidebar />` - add data-hook to onScreen children content [#6585](https://github.com/wix/wix-style-react/pull/6585)
