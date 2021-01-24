@@ -4,8 +4,13 @@
 }
 
 :import {
+  -st-from: "../../../StatusIndicator/StatusIndicator.st.css";
+  -st-default: StatusIndicator;
+}
+
+:import {
   -st-from: "../foundations/colors.st.css";
-  -st-named: G20, D60, B10;
+  -st-named: G20, D60, B10, R10;
 }
 
 .root {
@@ -14,7 +19,7 @@
   height: 16px;
 }
 
-.root:skin(success)::barForeground {
+.root:skin(success):not(:error)::barForeground {
   background: value(G20);
 }
 
@@ -22,8 +27,16 @@
   background: value(D60);
 }
 
-.root:skin(standard)::barForeground {
+.root:skin(standard):not(:error)::barForeground {
   background: value(B10);
+}
+
+.root:error::barForeground {
+  background: value(R10);
+}
+
+.root:error StatusIndicator {
+  color: value(R10);
 }
 
 .root:skin(standard)::barBackground {
