@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<Calendar/>` - Add role="alert" to the wrapper container in Header [#6619](https://github.com/wix/wix-style-react/pull/6619)
 
 ## 9.72.0 - 2021-01-22
 ### Changed
