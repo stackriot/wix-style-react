@@ -43,6 +43,14 @@ function datePickerWithAllProps() {
         width: 100,
       }}
       firstDayOfWeek={1}
+      leftArrowAriaLabel="left arrow label"
+      leftArrowAriaLabelledBy="left_arrow_labelledby"
+      rightArrowAriaLabel="right arrow label"
+      rightArrowAriaLabelledBy="right_arrow_labelledby"
+      monthDropdownAriaLabel="month label"
+      monthDropdownAriaLabelBy="month_labelledby"
+      yearDropdownAriaLabel="year label"
+      yearDropdownAriaLabelBy="year_labelledby"
     />
   );
 }

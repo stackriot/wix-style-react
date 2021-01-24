@@ -199,6 +199,14 @@ export default class DatePicker extends React.PureComponent {
       dataHook,
       popoverProps,
       firstDayOfWeek,
+      leftArrowAriaLabel,
+      leftArrowAriaLabelledBy,
+      rightArrowAriaLabel,
+      rightArrowAriaLabelledBy,
+      monthDropdownAriaLabel,
+      monthDropdownAriaLabelledBy,
+      yearDropdownAriaLabel,
+      yearDropdownAriaLabelledBy,
     } = this.props;
 
     const { isOpen, value } = this.state;
@@ -223,6 +231,14 @@ export default class DatePicker extends React.PureComponent {
       shouldCloseOnSelect,
       numOfMonths: twoMonths ? 2 : 1,
       firstDayOfWeek,
+      leftArrowAriaLabel,
+      leftArrowAriaLabelledBy,
+      rightArrowAriaLabel,
+      rightArrowAriaLabelledBy,
+      monthDropdownAriaLabel,
+      monthDropdownAriaLabelledBy,
+      yearDropdownAriaLabel,
+      yearDropdownAriaLabelledBy,
     };
 
     return (
