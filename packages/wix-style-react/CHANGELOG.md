@@ -18,6 +18,7 @@ Types of changes:
 ### Added
 - `<Calendar/>` - Add role="alert" to the wrapper container in Header [#6619](https://github.com/wix/wix-style-react/pull/6619)
 - `Themes | Business Dashboard` - LinearProgressBar error state [#6622](https://github.com/wix/wix-style-react/pull/6622)
+- `Themes | Business Dashboard` - Tag - Set override only for lightOutlined and medium [#6554](https://github.com/wix/wix-style-react/pull/6554)
 
 ## 9.72.0 - 2021-01-22
 ### Changed
