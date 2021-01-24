@@ -20,6 +20,9 @@ Types of changes:
 - `Themes | Business Dashboard` - LinearProgressBar error state [#6622](https://github.com/wix/wix-style-react/pull/6622)
 - `Themes | Business Dashboard` - Tag - Set override only for lightOutlined and medium [#6554](https://github.com/wix/wix-style-react/pull/6554)
 
+### Fixed
+- `<Sidebar />` - add data-hook to onScreen children content [#6585](https://github.com/wix/wix-style-react/pull/6585)
+
 ## 9.72.0 - 2021-01-22
 ### Changed
 - `<Modal/>` - updated storybook examples with new prop `screen` [#6617](https://github.com/wix/wix-style-react/pull/6617)
