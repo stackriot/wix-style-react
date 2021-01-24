@@ -302,11 +302,12 @@ class Sidebar extends Component {
             <div
               className={sliderClasses}
               ref={this.childrenContainerRef}
-              data-hook={dataHooks.childrenContainer}
+              data-hook={dataHooks.onScreenChildrenContainer}
             >
               <div
                 className={st(css.childrenContent)}
                 ref={this.childrenContentRef}
+                data-hook={dataHooks.onScreenChildrenContent}
               >
                 {this.state.onScreenChildren}
               </div>
