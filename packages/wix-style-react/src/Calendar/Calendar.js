@@ -516,28 +516,28 @@ Calendar.propTypes = {
   */
   dateIndication: PropTypes.func,
 
-  /** a string to be added as aria-label to left arrow in calender header */
+  /** Defines a string value that labels the left arrow in calendar header */
   leftArrowAriaLabel: PropTypes.string,
 
-  /** a string to be added as aria-labelledby to left arrow in calender header */
+  /**  Identifies the element that labels the left arrow in calendar header */
   leftArrowAriaLabelledBy: PropTypes.string,
 
-  /** a string to be added as aria-label to right arrow in calender header */
+  /** Defines a string value that labels the right arrow in calendar header */
   rightArrowAriaLabel: PropTypes.string,
 
-  /** a string to be added as aria-labelledby to right arrow in calender header */
+  /** Identifies the element that labels the right arrow in calendar header */
   rightArrowAriaLabelledBy: PropTypes.string,
 
-  /** a string to be added as aria-label to the caption in months dropdown in header */
+  /** Defines a string value that labels the months dropdown in calendar header */
   monthDropdownAriaLabel: PropTypes.string,
 
-  /** a string to be added as aria-labelledby to the caption in months dropdown in header */
+  /** Identifies the element that labels the months dropdown in calendar header */
   monthDropdownAriaLabelledBy: PropTypes.string,
 
-  /** a string to be added as aria-label to the caption in years dropdown in header */
+  /** Defines a string value that labels the years dropdown in calendar header */
   yearDropdownAriaLabel: PropTypes.string,
 
-  /** a string to be added as aria-labelledby to the caption in years dropdown in header */
+  /** Identifies the element that labels the years dropdown in calendar header */
   yearDropdownAriaLabelledBy: PropTypes.string,
 };
 

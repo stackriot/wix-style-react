@@ -41,14 +41,14 @@ function CalendarWithAllProps() {
       firstDayOfWeek={1}
       rtl
       dateIndication={() => null}
-      leftArrowAriaLabel="left label"
-      leftArrowAriaLabelledBy="left labelledby"
-      rightArrowAriaLabel="right label"
-      rightArrowAriaLabelledBy="right labelledby"
-      monthDropdownAriaLabel="label"
-      monthDropdownAriaLabelBy="labelledby"
-      yearDropdownAriaLabel="label"
-      yearDropdownAriaLabelBy="labelledby"
+      leftArrowAriaLabel="left arrow label"
+      leftArrowAriaLabelledBy="left_arrow_labelledby"
+      rightArrowAriaLabel="right arrow label"
+      rightArrowAriaLabelledBy="right_arrow_labelledby"
+      monthDropdownAriaLabel="months dropdown label"
+      monthDropdownAriaLabelBy="months_dropdown_labelledby"
+      yearDropdownAriaLabel="years dropdown label"
+      yearDropdownAriaLabelBy="years_dropdown_labelledby"
     />
   );
 }
