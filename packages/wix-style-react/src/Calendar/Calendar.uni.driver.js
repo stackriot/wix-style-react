@@ -10,7 +10,7 @@ export const calendarUniDriverFactory = base => {
       )
       .get(n);
   const getNthDayOfTheMonth = n =>
-    base.$$('[role="gridcell"][n]>[data-outsideday="false"]');
+    base.$$(`[role="gridcell"]>[data-outsideday="false"]`).get(n);
   const getDayOfDate = (year, month, day) =>
     base.$(
       `[role="gridcell"]>[data-outsideday="false"][data-date='${year}-${month}-${day}']`,

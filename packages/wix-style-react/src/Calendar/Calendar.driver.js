@@ -8,7 +8,7 @@ const calendarDriverFactory = ({ element }) => {
       '[role="gridcell"]:not([class*="disabled"])>[data-outsideday="false"]',
     )[n];
   const getNthDayOfTheMonth = n =>
-    element.querySelectorAll('[role="gridcell"][n]>[data-outsideday="false"]');
+    element.querySelectorAll('[role="gridcell"]>[data-outsideday="false"]')[n];
   const getDayOfDate = (year, month, day) =>
     element.querySelector(
       `[role="gridcell"]>[data-outsideday="false"][data-date='${year}-${month}-${day}']`,

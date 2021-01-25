@@ -724,6 +724,20 @@ describe('DatePicker', () => {
         expect(chosenDate.getSeconds()).toEqual(0);
         expect(chosenDate.getMilliseconds()).toEqual(0);
       });
+
+      it('should trigger onChange when using clickOnNthDayOfTheMonth', async () => {
+        const onChange = jest.fn();
+        const value = new Date('2021-01-05T10:00:00.000Z');
+        const {
+          driver: { inputDriver, calendarDriver },
+        } = render(<DatePicker onChange={onChange} value={value} />);
+        await inputDriver.click();
+        await calendarDriver.clickOnNthDayOfTheMonth(7);
+
+        expect(onChange.mock.calls[0][0]).toEqual(
+          new Date('2021-01-08T10:00:00.000Z'),
+        );
+      });
     });
 
     describe('`readonly` prop', () => {
