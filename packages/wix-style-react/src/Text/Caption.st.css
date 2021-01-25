@@ -20,5 +20,5 @@
   -st-mixin: text-medium-bold;
   color: value(THEME-TEXT-COLOR-PRIMARY-LIGHT);
   font-size: 10px;
-  line-height: 12px;
+  line-height: 14px;
 }
