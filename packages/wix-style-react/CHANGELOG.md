@@ -24,7 +24,7 @@ Types of changes:
 ### Added
 - `<BaseModalLayout/>` - reduce spacing [#6621](https://github.com/wix/wix-style-react/pull/6621)
 - `<Accodrion/>` - reduce spacing [#6615](https://github.com/wix/wix-style-react/pull/6615)
-- <Calendar/> - change the header navigation order [#6605](https://github.com/wix/wix-style-react/pull/6605)
+- `<Calendar/>` - change the header navigation order [#6605](https://github.com/wix/wix-style-react/pull/6605)
 
 ### Docs
 - `<AddressInput/>` - improve docs [#6604](https://github.com/wix/wix-style-react/pull/6604)
