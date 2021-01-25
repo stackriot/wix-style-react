@@ -6,9 +6,11 @@ import SidebarSectionItem from '../../SidebarSectionItem/SidebarSectionItem';
 import { getTestStoryKind } from '../../../stories/storiesHierarchy';
 import Button from '../../Button/Button';
 import Box from '../../Box';
+import { SidebarBackButton } from '../SidebarBackButton/SidebarBackButton';
 
 const SidebarWithState = () => {
-  const [items, setItems] = useState(Array(5).fill('item'));
+  const [items, setItems] = useState(Array(4).fill('item'));
+  const innerItems = Array(10).fill('inner item');
   const [boxHeight, setBoxHeight] = React.useState('200');
 
   return (
@@ -17,6 +19,25 @@ const SidebarWithState = () => {
       height={`${boxHeight}px`}
     >
       <Sidebar dataHook={storySettings.dataHooks.sidebar}>
+        <Sidebar.Item
+          itemKey={'drilldown'}
+          innerMenu={[
+            <Sidebar.BackButton>
+              <SidebarBackButton>Main Menu</SidebarBackButton>
+            </Sidebar.BackButton>,
+            innerItems.map(item => {
+              return <SidebarSectionItem>{item}</SidebarSectionItem>;
+            }),
+          ]}
+        >
+          <SidebarSectionItem
+            dataHook={storySettings.dataHooks.innerMenuItem}
+            drillable
+          >
+            Inner Menu
+          </SidebarSectionItem>
+        </Sidebar.Item>
+
         {items.map(item => {
           return <SidebarSectionItem>{item}</SidebarSectionItem>;
         })}
