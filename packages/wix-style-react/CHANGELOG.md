@@ -26,6 +26,9 @@ Types of changes:
 ### Fixed
 - `<Sidebar />` - add data-hook to onScreen children content [#6585](https://github.com/wix/wix-style-react/pull/6585)
 
+### Changed
+- `<AtlasAddressInput/>` - rename fallbackToManual to selectOnSubmit [#6625](https://github.com/wix/wix-style-react/pull/6625)
+
 ## 9.72.0 - 2021-01-22
 ### Changed
 - `<Modal/>` - updated storybook examples with new prop `screen` [#6617](https://github.com/wix/wix-style-react/pull/6617)
