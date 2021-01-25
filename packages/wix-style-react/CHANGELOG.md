@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.73.0 - 2021-01-25
 ### Added
 - `<Calendar/>` - Add role="alert" to the wrapper container in Header [#6619](https://github.com/wix/wix-style-react/pull/6619)
 - `<DatePicker/>` - add aria labels props and pass them to the Calendar [#6630](https://github.com/wix/wix-style-react/pull/6630)
