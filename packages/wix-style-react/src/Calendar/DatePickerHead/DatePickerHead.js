@@ -41,6 +41,16 @@ const DatePickerHead = ({
       >
         <ChevronLeftLarge className={classes.arrowIcon} />
       </div>
+      <div
+        className={st(classes.arrow, classes.arrowRight)}
+        data-hook="datepicker-right-arrow"
+        onClick={onRightArrowClick}
+        role="button"
+        aria-label={rightArrowAriaLabel}
+        aria-labelledby={rightArrowAriaLabelledBy}
+      >
+        <ChevronRightLarge className={classes.arrowIcon} />
+      </div>
       <div className={st(classes.yearAndMonthWrapper)} role="alert">
         {showMonthDropdown ? (
           <MonthDropdown
@@ -78,16 +88,6 @@ const DatePickerHead = ({
             {date.getFullYear()}
           </Text>
         )}
-      </div>
-      <div
-        className={st(classes.arrow, classes.arrowRight)}
-        data-hook="datepicker-right-arrow"
-        onClick={onRightArrowClick}
-        role="button"
-        aria-label={rightArrowAriaLabel}
-        aria-labelledby={rightArrowAriaLabelledBy}
-      >
-        <ChevronRightLarge className={classes.arrowIcon} />
       </div>
     </div>
   );
