@@ -24,7 +24,7 @@ Types of changes:
 - `Themes | Business Dashboard` - VerticalTabsItem update [#6595](https://github.com/wix/wix-style-react/pull/6595)
 
 ### Fixed
-- `<Sidebar />` - add data-hook to onScreen children content [#6585](https://github.com/wix/wix-style-react/pull/6585)
+- `<Sidebar/>` - fix gradient for inner menu [#6634](https://github.com/wix/wix-style-react/pull/6634)
 
 ### Changed
 - `<AtlasAddressInput/>` - rename fallbackToManual to selectOnSubmit [#6625](https://github.com/wix/wix-style-react/pull/6625)
