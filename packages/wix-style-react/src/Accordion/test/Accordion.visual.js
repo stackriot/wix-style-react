@@ -6,6 +6,7 @@ import Accordion, { accordionItemBuilder } from '../Accordion';
 import Text from '../../Text';
 import { Layout, Cell } from '../../Layout';
 import Card from '../../Card';
+import WixStyleReactProvider from '../../WixStyleReactProvider';
 
 export const text =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua';
@@ -214,4 +215,63 @@ storiesOf('Accordion', module).add('sizes', () => (
       </Cell>
     ))}
   </Layout>
+));
+
+storiesOf(`Layout And Spacing| Accordion`, module).add('sanity', () => (
+  <WixStyleReactProvider features={{ reducedSpacingAndImprovedLayout: true }}>
+    <Layout>
+      <Cell>
+        <Accordion
+          items={[
+            accordionItemBuilder({
+              title: 'Item',
+              children: <Text>${text}</Text>,
+              showLabel: 'always',
+              initiallyOpen: true,
+            }),
+          ]}
+        />
+      </Cell>
+      <Cell>
+        <Accordion
+          skin="light"
+          items={[
+            accordionItemBuilder({
+              title: 'Item',
+              children: <Text>${text}</Text>,
+              showLabel: 'always',
+              initiallyOpen: true,
+            }),
+          ]}
+        />
+      </Cell>
+      <Cell>
+        <Accordion
+          hideShadow
+          items={[
+            accordionItemBuilder({
+              title: 'Item',
+              children: <Text>${text}</Text>,
+              showLabel: 'always',
+              initiallyOpen: true,
+            }),
+          ]}
+        />
+      </Cell>
+      <Cell>
+        <Accordion
+          hideShadow
+          skin="light"
+          items={[
+            accordionItemBuilder({
+              title: 'Item',
+              children: <Text>${text}</Text>,
+              showLabel: 'always',
+              initiallyOpen: true,
+            }),
+          ]}
+        />
+      </Cell>
+    </Layout>
+  </WixStyleReactProvider>
 ));

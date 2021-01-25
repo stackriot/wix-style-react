@@ -9,7 +9,7 @@
 }
 
 .root {
-  -st-states: hover, disabled, open, hideShadow, last,
+  -st-states: hover, disabled, open, hideShadow, last, reducedSpacingAndImprovedLayout,
     skin(enum(standard, light)), size(enum(small, large));
   overflow: hidden;
 }
@@ -54,6 +54,10 @@
 .children {
   padding: 24px 30px 30px;
   background-color: value(B60);
+}
+
+.root:reducedSpacingAndImprovedLayout .children {
+  padding: 18px 24px;
 }
 
 .root:open .children {

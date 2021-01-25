@@ -3,7 +3,7 @@ import { Animator } from 'wix-animations';
 import PropTypes from 'prop-types';
 import ChevronDown from 'wix-ui-icons-common/ChevronDown';
 import ChevronUp from 'wix-ui-icons-common/ChevronUp';
-
+import { WixStyleReactContext } from '../../WixStyleReactProvider/context';
 import Text from '../../Text';
 import Button from '../../Button';
 import TextButton from '../../TextButton';
@@ -168,51 +168,64 @@ class AccordionItem extends React.PureComponent {
     const { hover } = this.state;
 
     return (
-      <div
-        className={st(
-          classes.root,
-          { disabled, hover, open, skin, hideShadow, size, last },
-          className,
-        )}
-      >
-        <div data-hook={dataHooks.item}>
+      <WixStyleReactContext.Consumer>
+        {({ reducedSpacingAndImprovedLayout }) => (
           <div
-            onClick={!disabled ? onToggle : null}
-            className={st(classes.header, { size })}
-            data-hook="header"
-            onMouseEnter={this._onMouseEnter}
-            onMouseLeave={this._onMouseLeave}
+            className={st(
+              classes.root,
+              {
+                disabled,
+                hover,
+                open,
+                skin,
+                hideShadow,
+                size,
+                last,
+                reducedSpacingAndImprovedLayout,
+              },
+              className,
+            )}
           >
-            {icon && (
-              <div className={classes.icon} data-hook="icon">
-                {icon}
-              </div>
-            )}
-            {title && (
-              <div className={classes.title} data-hook="titleContainer">
-                {typeof title === 'string' ? (
-                  <Text dataHook="title" ellipsis weight="normal">
-                    {title}
-                  </Text>
-                ) : (
-                  title
+            <div data-hook={dataHooks.item}>
+              <div
+                onClick={!disabled ? onToggle : null}
+                className={st(classes.header, { size })}
+                data-hook="header"
+                onMouseEnter={this._onMouseEnter}
+                onMouseLeave={this._onMouseLeave}
+              >
+                {icon && (
+                  <div className={classes.icon} data-hook="icon">
+                    {icon}
+                  </div>
                 )}
+                {title && (
+                  <div className={classes.title} data-hook="titleContainer">
+                    {typeof title === 'string' ? (
+                      <Text dataHook="title" ellipsis weight="normal">
+                        {title}
+                      </Text>
+                    ) : (
+                      title
+                    )}
+                  </div>
+                )}
+                <div
+                  className={classes.toggleButton}
+                  data-hook="toggle-accordion-wrapper"
+                  children={this._renderButton()}
+                />
               </div>
-            )}
-            <div
-              className={classes.toggleButton}
-              data-hook="toggle-accordion-wrapper"
-              children={this._renderButton()}
-            />
-          </div>
 
-          <Animator show={open} height>
-            <div data-hook="children" className={classes.children}>
-              {children}
+              <Animator show={open} height>
+                <div data-hook="children" className={classes.children}>
+                  {children}
+                </div>
+              </Animator>
             </div>
-          </Animator>
-        </div>
-      </div>
+          </div>
+        )}
+      </WixStyleReactContext.Consumer>
     );
   }
 }
