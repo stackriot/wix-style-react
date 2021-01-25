@@ -15,7 +15,7 @@ const AtlasAddressInput = ({
   onClear,
   onSelect,
   onError,
-  fallbackToManual,
+  selectOnSubmit,
   optionLayout,
   optionPrefix,
   optionSuffix,
@@ -74,7 +74,7 @@ const AtlasAddressInput = ({
   // A callback which is called when the user performs a Submit-Action
   const _onManualSubmit = useCallback(
     inputValue => {
-      if (fallbackToManual && onSelect && inputValue) {
+      if (selectOnSubmit && onSelect && inputValue) {
         const option = addressInputItemBuilder({
           id: inputValue,
           mainLabel: inputValue,
@@ -90,7 +90,7 @@ const AtlasAddressInput = ({
         onSelect(option, getAddress);
       }
     },
-    [fallbackToManual, onSelect, client],
+    [selectOnSubmit, onSelect, client],
   );
 
   return (
@@ -153,8 +153,16 @@ AtlasAddressInput.propTypes = {
   /** Handler for input blur */
   onBlur: PropTypes.func,
 
-  /** If set to `true`, we will attempt to get a Atlas address from the input's text if there are no suggestions. This is useful when looking for locations for which Atlas does not give suggestions - for example: Apartment/Apt  */
-  fallbackToManual: PropTypes.bool,
+  /** Whether to trigger the `onSelect` handler when preforming a Submit-Action (Enter or Tab).
+   * If set to true, `onSelect` will be called with the following params:
+   *
+   * `option`: an option with label set to input value
+   *
+   * `getAddress`: function for retrieving additional place details
+   *    uses Atlas's search function to return the closest result to the input value
+   *
+   * This is useful when looking for locations for which Atlas does not give suggestions - for example: Apartment/Apt  */
+  selectOnSubmit: PropTypes.bool,
 
   /** Handler for prediction fetching errors
    * returns an error object containing: {

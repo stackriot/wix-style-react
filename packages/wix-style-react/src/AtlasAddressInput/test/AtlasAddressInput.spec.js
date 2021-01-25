@@ -167,7 +167,7 @@ describe(AtlasAddressInput.displayName, () => {
     );
   });
 
-  it('should invoke onSelect with search result when `fallbackToManual` is true', async () => {
+  it('should invoke onSelect with search result when `selectOnSubmit` is true', async () => {
     const addresses = mockSearchAddresses(ambassadorTestkit);
     let getAddress;
     const props = {
@@ -176,7 +176,7 @@ describe(AtlasAddressInput.displayName, () => {
         // set getAddress to the resulting function
         getAddress = getAddressFn;
       }),
-      fallbackToManual: true,
+      selectOnSubmit: true,
     };
     const { driver } = render(<AtlasAddressInput {...props} />);
 

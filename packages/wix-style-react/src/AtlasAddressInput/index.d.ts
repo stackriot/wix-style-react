@@ -23,7 +23,7 @@ export interface AtlasAddressInputProps
   optionSuffix?: React.ReactNode;
   onSelect?: (option: Option, getAddress: GetAddress) => void;
   onError?: (error: AtlasError) => any;
-  fallbackToManual?: boolean;
+  selectOnSubmit?: boolean;
 }
 
 declare const AtlasAddressInput: React.FC<AtlasAddressInputProps>;
