@@ -24,6 +24,9 @@ Types of changes:
 - `<BaseModalLayout/>` - reduce spacing [#6621](https://github.com/wix/wix-style-react/pull/6621)
 - `<Accodrion/>` - reduce spacing [#6615](https://github.com/wix/wix-style-react/pull/6615)
 
+### Docs
+- `<AddressInput/>` - improve docs [#6604](https://github.com/wix/wix-style-react/pull/6604)
+
 ## 9.73.0 - 2021-01-25
 ### Added
 - `<Calendar/>` - Add role="alert" to the wrapper container in Header [#6619](https://github.com/wix/wix-style-react/pull/6619)
