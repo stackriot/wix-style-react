@@ -156,10 +156,6 @@ class MultiSelect extends InputWithOptions {
     if (onSelect) {
       onSelect(this.props.options.find(o => o.id === option.id));
     }
-
-    setTimeout(() => {
-      this.input && this.input.focus();
-    }, 0);
   }
 
   submitValue(inputValue) {

@@ -540,6 +540,19 @@ describe('InputWithOptions', () => {
       expect(onBlur).toBeCalled();
     });
 
+    it('should not call onBlur if selected an option', async () => {
+      const onBlur = jest.fn();
+      const OPTION_INDEX = 0;
+      const { driver, dropdownLayoutDriver, inputDriver } = createDriver(
+        <InputWithOptions options={options} onBlur={onBlur} />,
+      );
+      await driver.focus();
+      expect(await inputDriver.isFocus()).toBe(true);
+      await dropdownLayoutDriver.clickAtOption(OPTION_INDEX);
+      expect(onBlur).not.toBeCalled();
+      expect(await inputDriver.isFocus()).toBe(true);
+    });
+
     it('should not call onManuallyInput when composing text via external means', async () => {
       const onManualInput = jest.fn();
       const { driver, inputDriver } = createDriver(

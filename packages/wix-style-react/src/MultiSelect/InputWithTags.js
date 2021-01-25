@@ -36,12 +36,12 @@ class InputWithTags extends React.Component {
   }
 
   handleInputFocus(e) {
-    !this.state.inputHasFocus && this.setState({ inputHasFocus: true });
+    this.setState({ inputHasFocus: true });
     this.props.onFocus && this.props.onFocus(e);
   }
 
   handleInputBlur(e) {
-    this.state.inputHasFocus && this.setState({ inputHasFocus: false });
+    this.setState({ inputHasFocus: false });
     this.props.onBlur && this.props.onBlur(e);
   }
 

@@ -3,7 +3,8 @@ import { $, browser } from 'protractor';
 import { isFocused, waitForVisibilityOf } from 'wix-ui-test-utils/protractor';
 import { createTestStoryUrl } from '../../../test/utils/storybook-helpers';
 import {
-  storySettings,
+  focusStorySettings,
+  tabSwitchesStorySettings,
   insideFormStorySettings,
   testStories,
 } from '../docs/storySettings';
@@ -52,8 +53,8 @@ describe('InputWithOptions', () => {
     expect(await driver.isFocused()).toEqual(true);
   }
 
-  describe('Component', () => {
-    runBeforeEach(testStories.tabsSwitches, storySettings);
+  describe('Tab switches', () => {
+    runBeforeEach(testStories.tabsSwitches, tabSwitchesStorySettings);
 
     it('should move out focus of input if nothing is pressed / selected', async () => {
       await focusOnInputWithOptions();
@@ -68,6 +69,16 @@ describe('InputWithOptions', () => {
       await driver.enterText('some option');
       await pressTab();
       expect(await driver.isFocused()).toEqual(false);
+    });
+  });
+
+  describe('Element focus', () => {
+    runBeforeEach(testStories.focus, focusStorySettings);
+
+    it('should not blur input if selected an option', async () => {
+      await driver.click();
+      await driver.selectOptionAt(0);
+      expect(await driver.isFocused()).toBe(true);
     });
   });
 

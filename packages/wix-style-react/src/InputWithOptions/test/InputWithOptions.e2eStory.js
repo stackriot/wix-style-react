@@ -5,16 +5,25 @@ import { storiesOf } from '@storybook/react';
 
 import { getTestStoryKind } from '../../../stories/storiesHierarchy';
 import {
-  storySettings,
+  focusStorySettings,
+  tabSwitchesStorySettings,
   insideFormStorySettings,
   testStories,
 } from '../docs/storySettings';
+import TestFocus from '../docs/tests/TestFocus';
 import TestTabSwitches from '../docs/tests/TestTabSwitches';
 import TestInsideWrapperForm from '../docs/tests/TestInsideWrapperForm';
 
-const kind = getTestStoryKind({
-  storyName: storySettings.storyName,
-  category: storySettings.category,
+const focusKind = getTestStoryKind({
+  storyName: focusStorySettings.storyName,
+  category: focusStorySettings.category,
+});
+
+storiesOf(focusKind, module).add(testStories.focus, () => <TestFocus />);
+
+const tabSwitchesKind = getTestStoryKind({
+  storyName: tabSwitchesStorySettings.storyName,
+  category: tabSwitchesStorySettings.category,
 });
 
 const TestContainer = ({ children }) => (
@@ -32,7 +41,7 @@ const TestContainer = ({ children }) => (
   </div>
 );
 
-storiesOf(kind, module).add(testStories.tabsSwitches, () => (
+storiesOf(tabSwitchesKind, module).add(testStories.tabsSwitches, () => (
   <TestContainer>
     <input data-hook="input-for-focus-1" />
     <TestTabSwitches />

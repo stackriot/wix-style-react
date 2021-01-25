@@ -68,6 +68,8 @@ class DropdownLayout extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    this.containerRef = React.createRef();
+
     this.state = {
       hovered: NOT_HOVERED_INDEX,
       selectedId: props.selectedId,
@@ -616,6 +618,7 @@ class DropdownLayout extends React.PureComponent {
         onKeyDown={this._onKeyDown}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        ref={this.containerRef}
       >
         <div
           {...this._getDataAttributes()}

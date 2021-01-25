@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { storySettings } from '../storySettings';
+import { tabSwitchesStorySettings as storySettings } from '../storySettings';
 
 import { InputWithOptions } from 'wix-style-react';
 

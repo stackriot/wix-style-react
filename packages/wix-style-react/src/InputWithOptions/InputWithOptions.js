@@ -392,10 +392,32 @@ class InputWithOptions extends Component {
     }
   }
 
-  _onBlur(e) {
+  /** Checks if the element is inside the options dropdown */
+  _isElementInDropdown = element => {
+    const dropdownContainer =
+      this.dropdownLayout && this.dropdownLayout.containerRef.current;
+    if (!element || !dropdownContainer) {
+      return false;
+    }
+    const isInDropdown = dropdownContainer.contains(element);
+
+    // Returns true if element is the dropdown container or is inside of it
+    return isInDropdown;
+  };
+
+  _onBlur(event) {
+    const focusedElement = event && event.relatedTarget;
+    // Don't blur input if focused element is in dropdown
+    const stopBlur = this._isElementInDropdown(focusedElement);
+    if (stopBlur) {
+      // Restore focus to input element
+      this.focus();
+      return;
+    }
+
     this._focused = false;
     if (this.props.onBlur) {
-      this.props.onBlur(e);
+      this.props.onBlur(event);
     }
   }
 
