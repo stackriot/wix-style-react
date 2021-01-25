@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import AnnouncementModalLayout from '../AnnouncementModalLayout';
 import { BASE64_IMAGE } from './data/base64Image';
+import WixStyleReactProvider from '../../WixStyleReactProvider';
 
 const commonProps = {
   onCloseButtonClick: () => {},
@@ -138,3 +139,12 @@ tests.forEach(({ describe, its }) => {
     ).add(it, () => <AnnouncementModalLayout {...commonProps} {...props} />);
   });
 });
+
+storiesOf(`Layout And Spacing| AnnouncementModalLayout`, module).add(
+  'sanity',
+  () => (
+    <WixStyleReactProvider features={{ reducedSpacingAndImprovedLayout: true }}>
+      <AnnouncementModalLayout {...commonProps} />
+    </WixStyleReactProvider>
+  ),
+);

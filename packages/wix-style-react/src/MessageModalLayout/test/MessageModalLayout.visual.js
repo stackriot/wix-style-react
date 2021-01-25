@@ -6,6 +6,7 @@ import Checkbox from '../../Checkbox';
 import { BASE64_IMAGE } from './data/base64Image';
 import { messageModalLayoutPrivateDriverFactory } from './MessageModalLayout.private.driver';
 import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
+import WixStyleReactProvider from '../../WixStyleReactProvider';
 
 const SHORT_CONTENT = (
   <Text>
@@ -232,3 +233,12 @@ tests.forEach(({ describe, its }) => {
     );
   });
 });
+
+storiesOf(`Layout And Spacing| MessageModalLayout`, module).add(
+  'sanity',
+  () => (
+    <WixStyleReactProvider features={{ reducedSpacingAndImprovedLayout: true }}>
+      <MessageModalLayout {...commonProps} />
+    </WixStyleReactProvider>
+  ),
+);

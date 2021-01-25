@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import CustomModalLayout from '../CustomModalLayout';
 import Text from '../../Text/Text';
 import Checkbox from '../../Checkbox';
+import WixStyleReactProvider from '../../WixStyleReactProvider';
 
 const LONG_CONTENT = (
   <Text>
@@ -216,3 +217,9 @@ export const runTests = (
       );
     });
   });
+
+storiesOf(`Layout And Spacing| CustomModalLayout`, module).add('sanity', () => (
+  <WixStyleReactProvider features={{ reducedSpacingAndImprovedLayout: true }}>
+    <CustomModalLayout {...commonProps} />
+  </WixStyleReactProvider>
+));

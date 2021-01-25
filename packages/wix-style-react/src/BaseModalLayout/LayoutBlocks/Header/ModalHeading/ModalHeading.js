@@ -2,21 +2,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Heading from '../../../../Heading';
 import { st, classes } from './ModalHeading.st.css';
+import { WixStyleReactContext } from '../../../../WixStyleReactProvider/context';
 
-const ModalHeading = ({ className, headingAppearance, ...restProps }) => {
-  const appearance = headingAppearance === 'custom' ? 'H3' : headingAppearance;
-  return (
-    <Heading
-      {...restProps}
-      className={st(
-        classes.root,
-        { custom: headingAppearance === 'custom' },
-        className,
-      )}
-      appearance={appearance}
-    />
-  );
-};
+const ModalHeading = ({ className, headingAppearance, ...restProps }) => (
+  <WixStyleReactContext.Consumer>
+    {({ reducedSpacingAndImprovedLayout }) => {
+      const appearance =
+        headingAppearance !== 'custom'
+          ? headingAppearance
+          : reducedSpacingAndImprovedLayout
+          ? 'H2'
+          : 'H3';
+
+      return (
+        <Heading
+          {...restProps}
+          className={st(
+            classes.root,
+            {
+              custom:
+                headingAppearance === 'custom' &&
+                !reducedSpacingAndImprovedLayout,
+            },
+            className,
+          )}
+          appearance={appearance}
+        />
+      );
+    }}
+  </WixStyleReactContext.Consumer>
+);
 
 ModalHeading.propTypes = {
   ...Heading.propTypes,
