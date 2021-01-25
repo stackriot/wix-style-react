@@ -50,7 +50,7 @@ export const shape = `
   return (
     <Layout cols={1}>
       <AddressInput {...props} />
-      <AddressInput {...props} roundInput={false} />
+      <AddressInput {...props} border="standard" />
     </Layout>
   );
 }

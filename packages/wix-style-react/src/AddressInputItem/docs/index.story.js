@@ -15,7 +15,6 @@ import {
 
 import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
-import SectionHelper from '../../SectionHelper';
 
 import AddressInputItem from '..';
 import * as examples from './examples';
@@ -50,7 +49,7 @@ export default {
           description({
             title: 'Description',
             text:
-              'This component is used to display an address item mainly in `<AddressInput/>` component.',
+              'This component is used to display an address item mainly in the `<AddressInput/>` component.',
           }),
 
           importExample(`
@@ -60,14 +59,6 @@ import { AddressInputItem } from 'wix-style-react';
 import { addressInputItemBuilder } from 'wix-style-react';`),
 
           divider(),
-          description({
-            text: (
-              <SectionHelper title="WARNING">
-                This component is work in progress, please don't use this
-                component unless you were instructed to by wsr team.
-              </SectionHelper>
-            ),
-          }),
 
           title('Examples'),
 

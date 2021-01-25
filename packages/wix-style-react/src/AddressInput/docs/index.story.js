@@ -78,7 +78,7 @@ export default {
               'An address search component, requires an address provider.',
               <br />,
               'You can see how to customize options using the ',
-              <LinkTo kind={Category.WIP} story="AddressInputItem">
+              <LinkTo kind={Category.COMPONENTS} story="AddressInputItem">
                 {`<AddressInputItem/>`}
               </LinkTo>,
               ' component.',
@@ -107,7 +107,7 @@ export default {
           example({
             title: 'Shape',
             text:
-              'AddressInput can be either round or square depending on the `roundInput` prop (default: `true`).',
+              'AddressInput can be either `round` or `standard` (rectangular) depending on the `border` prop (default: `round`).',
             source: examples.shape,
           }),
 

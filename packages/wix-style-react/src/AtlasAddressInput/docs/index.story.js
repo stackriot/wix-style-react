@@ -15,19 +15,17 @@ import {
 import LinkTo from '@storybook/addon-links/react';
 
 import * as examples from './examples';
+import migrationMarkdown from './MIGRATION.md';
+import SectionHelper from '../../SectionHelper';
 import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
 import { Category } from '../../../stories/storiesHierarchy';
 
 import AtlasAddressInput from '..';
-import { SectionHelper } from '../..';
 
 const example = config =>
   baseExample({
-    components: {
-      ...allComponents,
-      AtlasAddressInput,
-    },
+    components: allComponents,
     ...config,
   });
 
@@ -92,26 +90,13 @@ export default {
             text: (
               <SectionHelper title="Dependencies" fullWidth>
                 <p>
-                  To use this component please install:
-                  <ul style={{ position: 'relative' }}>
-                    <li>@wix/ambassador</li>
-                    <li>@wix/ambassador-wix-atlas-service-web</li>
-                  </ul>
+                  To use this component you must install the following
+                  peer-dependencies:
                 </p>
-                <p>
-                  <h5>Using NPM:</h5>
-                  <code>
-                    npm install @wix/ambassador
-                    @wix/ambassador-wix-atlas-service-web
-                  </code>
-                </p>
-                <p>
-                  <h5>Using Yarn:</h5>
-                  <code>
-                    yard add @wix/ambassador
-                    @wix/ambassador-wix-atlas-service-web
-                  </code>
-                </p>
+                <code>
+                  npm install @wix/ambassador
+                  @wix/ambassador-wix-atlas-service-web
+                </code>
               </SectionHelper>
             ),
           }),
@@ -162,6 +147,11 @@ To show an error, set \`status="error"\` and \`statusMessage\` to the error expl
             source: examples.errorHandling,
           }),
         ],
+      }),
+
+      tab({
+        title: 'Migration',
+        sections: [description(migrationMarkdown)],
       }),
 
       ...[
