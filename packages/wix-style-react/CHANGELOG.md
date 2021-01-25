@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Fixed
+- `<Badge/>` and `<CounterBadge/>` - fix swedish letters get cut [#6637](https://github.com/wix/wix-style-react/pull/6637)
+
 ### Added
 - `<BaseModalLayout/>` - reduce spacing [#6621](https://github.com/wix/wix-style-react/pull/6621)
 - `<Accodrion/>` - reduce spacing [#6615](https://github.com/wix/wix-style-react/pull/6615)
