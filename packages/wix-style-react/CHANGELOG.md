@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+
 ### Fixed
 - `<Badge/>` and `<CounterBadge/>` - fix swedish letters get cut [#6637](https://github.com/wix/wix-style-react/pull/6637)
 - `<InputWithOptions/>` - fix onBlur is called when selecting an option with the cursor [#6620](https://github.com/wix/wix-style-react/pull/6620)
@@ -23,6 +24,7 @@ Types of changes:
 ### Added
 - `<BaseModalLayout/>` - reduce spacing [#6621](https://github.com/wix/wix-style-react/pull/6621)
 - `<Accodrion/>` - reduce spacing [#6615](https://github.com/wix/wix-style-react/pull/6615)
+- <Calendar/> - change the header navigation order [#6605](https://github.com/wix/wix-style-react/pull/6605)
 
 ### Docs
 - `<AddressInput/>` - improve docs [#6604](https://github.com/wix/wix-style-react/pull/6604)
