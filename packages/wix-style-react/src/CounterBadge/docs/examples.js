@@ -57,6 +57,10 @@ export const skins = `
     <CounterBadge skin="success">1</CounterBadge>
   </Cell>
   <Cell span={3}>success</Cell>
+  <Cell span={1}>
+    <CounterBadge skin="light">1</CounterBadge>
+  </Cell>
+  <Cell span={3}>light</Cell>
 </Layout>
 `;
 
@@ -73,6 +77,35 @@ export const custom = `
   </Cell>
   <Cell span={1}>
     <CounterBadge skin="success">New!</CounterBadge>
+  </Cell>
+</Layout>
+`;
+
+export const shadow = `
+<Layout cols={4}>
+  <Cell span={1}>
+    <CounterBadge skin="general" showShadow>1</CounterBadge>
+  </Cell>
+  <Cell span={1}>
+    <CounterBadge skin="standard" showShadow>1</CounterBadge>
+  </Cell>
+  <Cell span={1}>
+    <CounterBadge skin="neutralStandard" showShadow>1</CounterBadge>
+  </Cell>
+  <Cell span={1}>
+    <CounterBadge skin="danger" showShadow>1</CounterBadge>
+  </Cell>
+  <Cell span={1}>
+    <CounterBadge skin="warning" showShadow>1</CounterBadge>
+  </Cell> 
+  <Cell span={1}>
+    <CounterBadge skin="urgent" showShadow>1</CounterBadge>
+  </Cell>
+  <Cell span={1}>
+    <CounterBadge skin="success" showShadow>1</CounterBadge>
+  </Cell>
+  <Cell span={1}>
+    <CounterBadge skin="light" showShadow>1</CounterBadge>
   </Cell>
 </Layout>
 `;

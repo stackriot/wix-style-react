@@ -1,10 +1,17 @@
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
-  -st-named: B10, D20, D80, G10, O10, R10, Y10, B30;
+  -st-named: B10, D10, D20, D80, G10, O10, R10, Y10, B30;
+}
+
+:import {
+  -st-from: '../Foundation/stylable/shadows.st.css';
+  -st-named: shadow30;
 }
 
 .root {
-  -st-states: longNumber, custom, skin(enum(standard, danger, warning, urgent, success, neutralStandard)), size(enum(small,medium));
+  -st-states: longNumber, custom, showShadow,
+    skin(enum(standard, danger, warning, urgent, success, neutralStandard, light)),
+    size(enum(small,medium));
   border-radius: 18px;
   color: value(D80);
   display: flex;
@@ -58,6 +65,14 @@
   background-color: value(G10);
 }
 
+.root:skin(light) {
+  background-color: value(D80);
+}
+
+.root:skin(light) .text {
+  color: value(D10);
+}
+
 .text {
   margin: auto;
 }
@@ -99,4 +114,6 @@
   width: 16px;
 }
 
-
+.root:showShadow {
+  box-shadow: value(shadow30);
+}

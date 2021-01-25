@@ -9,13 +9,15 @@ export type CounterBadgeSkin =
   | 'warning'
   | 'urgent'
   | 'success'
-  | 'neutralStandard';
+  | 'neutralStandard'
+  | 'light';
 
 export interface CounterBadgeProps {
   dataHook?: string;
   className?: string;
   skin?: CounterBadgeSkin;
   size?: CounterBadgeSize;
+  showShadow?: boolean;
 }
 
 export default class CounterBadge extends React.PureComponent<CounterBadgeProps> {}

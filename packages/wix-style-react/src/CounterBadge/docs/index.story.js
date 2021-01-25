@@ -33,6 +33,7 @@ export default {
     size: 'small',
     children: 1,
     skin: 'general',
+    showShadow: false,
   },
 
   exampleProps: {
@@ -74,8 +75,14 @@ export default {
           example({
             title: 'Skins',
             text:
-              'Background color can be one of the following: `general`, `danger`, `urgent`, `standard`, `warning` and `success`.',
+              'Background color can be one of the following: `general`, `danger`, `urgent`, `standard`, `warning`, `success` and `light`.',
             source: examples.skins,
+          }),
+
+          example({
+            title: 'Shadow',
+            text: 'CounterBadge can add a shadow using `showShadow` prop',
+            source: examples.shadow,
           }),
 
           example({

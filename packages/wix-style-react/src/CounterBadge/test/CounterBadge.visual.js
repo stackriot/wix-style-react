@@ -11,6 +11,7 @@ const options = {
       values: [undefined, 0, 33, 1000, 'Hello World', <HeartFilled />],
     },
     'size',
+    'showShadow',
   ],
   skipUndefinedValue: true,
 };
@@ -23,6 +24,7 @@ const skins = [
   'warning',
   'urgent',
   'success',
+  'light',
 ];
 
 const Story = props => (

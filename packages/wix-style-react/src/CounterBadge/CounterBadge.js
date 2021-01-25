@@ -34,7 +34,14 @@ class CounterBadge extends React.PureComponent {
     );
 
   render() {
-    const { dataHook, size, skin, children, className } = this.props;
+    const {
+      dataHook,
+      size,
+      skin,
+      children,
+      className,
+      showShadow,
+    } = this.props;
     const custom = isNaN(children);
     const longNumber = !custom && Number(children) >= MAX_NUMBER;
 
@@ -46,7 +53,7 @@ class CounterBadge extends React.PureComponent {
       <div
         className={st(
           classes.root,
-          { skin, custom, size, longNumber },
+          { skin, custom, size, longNumber, showShadow },
           className,
         )}
         data-hook={dataHook}
@@ -78,15 +85,20 @@ CounterBadge.propTypes = {
     'warning',
     'urgent',
     'success',
+    'light',
   ]),
 
   /** The component's size. Can be small or medium */
   size: PropTypes.oneOf(['small', 'medium']),
+
+  /** Makes the card have a box-shadow style */
+  showShadow: PropTypes.bool,
 };
 
 CounterBadge.defaultProps = {
   skin: 'general',
   size: 'small',
+  showShadow: false,
 };
 
 export default CounterBadge;
