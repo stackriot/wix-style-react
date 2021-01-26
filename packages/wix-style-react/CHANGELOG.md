@@ -16,7 +16,7 @@ Types of changes:
 
 ## Next
 
-
+## 9.74.0 - 2021-01-26
 ### Fixed
 - `<Badge/>` and `<CounterBadge/>` - fix swedish letters get cut [#6637](https://github.com/wix/wix-style-react/pull/6637)
 - `<InputWithOptions/>` - fix onBlur is called when selecting an option with the cursor [#6620](https://github.com/wix/wix-style-react/pull/6620)
