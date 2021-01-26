@@ -26,6 +26,7 @@ Types of changes:
 - `<BaseModalLayout/>` - reduce spacing [#6621](https://github.com/wix/wix-style-react/pull/6621)
 - `<Accodrion/>` - reduce spacing [#6615](https://github.com/wix/wix-style-react/pull/6615)
 - `<Calendar/>` - change the header navigation order [#6605](https://github.com/wix/wix-style-react/pull/6605)
+- `<Radio/>` - add value/style props and legacy driver [#6645](https://github.com/wix/wix-style-react/pull/6645)
 
 ### Docs
 - `<AddressInput/>` - improve docs [#6604](https://github.com/wix/wix-style-react/pull/6604)
