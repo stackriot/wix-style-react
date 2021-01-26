@@ -13,20 +13,23 @@ const Radio = ({
   label,
   id,
   name,
+  value,
   onChange,
   alignItems,
   className,
+  style,
 }) => {
   const renderLabel = useMemo(() => {
-    return (
+    return label ? (
       <Text tagName="div" size="medium" weight="thin" secondary>
         {label}
       </Text>
-    );
+    ) : null;
   }, [label]);
 
   return (
     <RadioButton
+      style={style}
       className={st(classes.root, { alignItems }, className)}
       data-hook={dataHook}
       checked={checked}
@@ -35,6 +38,7 @@ const Radio = ({
       disabled={disabled}
       id={id}
       name={name}
+      value={value}
     />
   );
 };
@@ -62,6 +66,9 @@ Radio.propTypes = {
 
   /** Unique id of radio */
   id: PropTypes.string,
+
+  /** The value which the radio represents */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /** A callback when radio is selected */
   onChange: PropTypes.func,

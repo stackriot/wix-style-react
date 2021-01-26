@@ -30,6 +30,11 @@
   pointer-events: none;
 }
 
+.root:checked::label,
+.root:checked::icon {
+  cursor: default;
+}
+
 .root:disabled::icon {
   color: value(D10-30);
   border-color: value(D10-30);
@@ -81,10 +86,5 @@
 
 .root::label {
   cursor: pointer;
-  padding-left: 12px;
-}
-
-:global([dir='rtl']) .root::label {
-  padding-left: 0;
-  padding-right: 12px;
+  padding-inline-start: 12px;
 }

@@ -231,6 +231,11 @@ module.exports = {
       '../src/RadioGroup/RadioButton/RadioButton.uni.driver',
   },
 
+  Radio: {
+    vanillaLegacyTestkit: true,
+    enzymeLegacyTestkit: true,
+  },
+
   RadioGroup: {
     vanillaLegacyTestkit: true,
     enzymeLegacyTestkit: true,

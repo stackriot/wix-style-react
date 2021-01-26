@@ -13,6 +13,7 @@ export interface RadioProps {
   disabled?: boolean;
   label?: React.ReactNode;
   id?: string;
+  value?: string | number;
   name?: React.ReactNode;
   onChange?(event: RadioButtonChangeEvent | RadioButtonClickEvent): void;
   alignItems?: RadioAlignItems;
