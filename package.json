@@ -13,7 +13,15 @@
     "test5:types": "lerna run --scope wix-style-react test5:types",
     "test6:sanity": "lerna run --scope wix-style-react test6:sanity",
     "test7:performance": "lerna run --scope wix-style-react test7:performance",
-    "test8:chromatic": "#"
+    "test8:chromatic": "#",
+    "test9": "#",
+    "test10": "#",
+    "test11": "#",
+    "test12": "#",
+    "test13": "#",
+    "test14": "#",
+    "test15": "#",
+    "test16": "#"
   },
   "devDependencies": {
     "lerna": "^3.22.1"
