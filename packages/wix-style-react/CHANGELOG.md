@@ -20,6 +20,7 @@ Types of changes:
 ### Fixed
 - `<Badge/>` and `<CounterBadge/>` - fix swedish letters get cut [#6637](https://github.com/wix/wix-style-react/pull/6637)
 - `<InputWithOptions/>` - fix onBlur is called when selecting an option with the cursor [#6620](https://github.com/wix/wix-style-react/pull/6620)
+- `<Calendar/>` - Fix ReactDayPicker warning [#6643](https://github.com/wix/wix-style-react/pull/6643)
 
 ### Added
 - `<BaseModalLayout/>` - reduce spacing [#6621](https://github.com/wix/wix-style-react/pull/6621)
