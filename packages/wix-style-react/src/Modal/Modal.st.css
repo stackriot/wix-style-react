@@ -53,7 +53,7 @@
 }
 
 .childrenContainer {
-  -st-states: screen(enum(desktop, mobile, full))
+  -st-states: screen(enum(desktop, mobile, full));
   display: flex;
   justify-content: center;
   align-items: center;
