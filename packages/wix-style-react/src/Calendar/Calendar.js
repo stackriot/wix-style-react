@@ -268,15 +268,11 @@ export default class Calendar extends React.PureComponent {
   };
 
   _createWeekdayElement = localeUtils => {
-    return ({ weekday }) => {
+    return ({ className, weekday }) => {
       const weekdayShort = localeUtils.formatWeekdayShort(weekday);
       const weekdayLong = localeUtils.formatWeekdayLong(weekday);
       return (
-        <div
-          className={st(classes.weekday)}
-          aria-label={weekdayLong}
-          role="columnheader"
-        >
+        <div className={className} aria-label={weekdayLong} role="columnheader">
           <abbr data-hook="weekday-day">{weekdayShort}</abbr>
         </div>
       );
@@ -355,6 +351,7 @@ export default class Calendar extends React.PureComponent {
         month: st('DayPicker-Month', classes.month),
         weekdays: classes.weekdays,
         weekdaysRow: classes.weekdaysRow,
+        weekday: classes.weekday,
         body: classes.body,
         week: classes.week,
         weekNumber: 'DayPicker-WeekNumber',
