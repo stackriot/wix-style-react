@@ -45,7 +45,7 @@ export interface InputProps {
   size?: InputSize;
   suffix?: React.ReactNode;
   tabIndex?: number;
-  textOverflow?: string;
+  textOverflow?: 'clip' | 'ellipsis';
   tooltipPlacement?: TooltipProps['placement'];
   type?: string;
   value?: string | number;

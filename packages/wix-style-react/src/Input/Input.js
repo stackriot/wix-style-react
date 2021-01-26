@@ -397,7 +397,6 @@ Input.defaultProps = {
   roundInput: false,
   textOverflow: 'clip',
   maxLength: 524288,
-  withSelection: false,
   clearButton: false,
   hideStatusSuffix: false,
 };
@@ -418,7 +417,7 @@ Input.propTypes = {
   /** Standard React Input autoSelect (select the entire text of the element on focus) */
   autoSelect: PropTypes.bool,
 
-  /** Sets value of autocomplete attribute (consult the [HTML spec](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-autocomplete) for possible values  */
+  /** Sets value of native autocomplete attribute (consult the [HTML spec](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-autocomplete) for possible values  */
   autocomplete: PropTypes.string,
 
   /** Specifies a data-hook for tests */
@@ -533,7 +532,11 @@ Input.propTypes = {
   /** Standard component tabIndex */
   tabIndex: PropTypes.number,
 
-  /** Text overflow behaviour */
+  /**
+   * Text overflow behavior:
+   * * clip (default)
+   * * ellipsis
+   */
   textOverflow: PropTypes.string,
 
   /** Placement of status tooltips */
@@ -544,7 +547,7 @@ Input.propTypes = {
 
   /** Inputs value */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  withSelection: PropTypes.bool,
+
   required: PropTypes.bool,
 
   /** Minimum value input can have - similar to html5 min attribute */
