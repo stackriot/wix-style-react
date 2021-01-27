@@ -18,6 +18,7 @@ Types of changes:
 ### Fixed
 - `<Calendar/>` - change arrows to buttons [#6635](https://github.com/wix/wix-style-react/pull/6635)
 - `<Search/>` - fix flaky e2e test [#6654](https://github.com/wix/wix-style-react/pull/6654)
+- `<InputWithOptions/>` - don't call onFocus when re-focusing input after selecting option [#6653](https://github.com/wix/wix-style-react/pull/6653)
 
 ### Added
 - `<Card/>`- reduce spacing (feature toggle) [#6590](https://github.com/wix/wix-style-react/pull/6590)
