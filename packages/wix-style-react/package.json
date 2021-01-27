@@ -177,6 +177,8 @@
     "storybook-addon-i18n": "^5.1.13",
     "storybook-chromatic": "^3.5.5",
     "storybook-snapper": "^1.0.66",
+    "stylelint": "^13.9.0",
+    "stylelint-no-unsupported-browser-features": "^4.1.4",
     "typescript": "^3.9.7",
     "velocity": "^0.7.2",
     "webpack": "^4.44.2",
@@ -248,7 +250,8 @@
   },
   "lint-staged": {
     "linters": {
-      "*.{js,scss}": [
+      "*.{css,scss}": ["stylelint"],
+      "*.js": [
         "yoshi lint --fix",
         "git add"
       ]

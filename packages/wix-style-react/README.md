@@ -44,6 +44,12 @@ App](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react
 wix-style-react requires react version `16.13.1` and up.<br/>
 For typescript users version `^3.9.7` is required.
 
+#### Browsers support
+* Google Chrome (version 76 and above)
+* Safari for Mac (version 12 and above)
+* Microsoft Edge (version 18 and above)
+* Firefox (version 72 and above)
+
 #### How to load wix-style-react compatible fonts:
 
 Load Wix fonts from CDN:<br/>
