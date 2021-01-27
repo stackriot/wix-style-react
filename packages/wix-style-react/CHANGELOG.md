@@ -16,7 +16,8 @@ Types of changes:
 
 ## Next
 ### Fixed
-`<Calendar/>` - change arrows to buttons [#6635](https://github.com/wix/wix-style-react/pull/6635)
+- `<Calendar/>` - change arrows to buttons [#6635](https://github.com/wix/wix-style-react/pull/6635)
+- `<Search/>` - fix flaky e2e test [#6654](https://github.com/wix/wix-style-react/pull/6654)
 
 ### Added
 - `<Card/>`- reduce spacing (feature toggle) [#6590](https://github.com/wix/wix-style-react/pull/6590)
