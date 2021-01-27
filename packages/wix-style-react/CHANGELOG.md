@@ -18,6 +18,9 @@ Types of changes:
 ### Fixed
 `<Calendar/>` - change arrows to buttons [#6635](https://github.com/wix/wix-style-react/pull/6635)
 
+### Added
+- `<Card/>`- reduce spacing (feature toggle) [#6590](https://github.com/wix/wix-style-react/pull/6590)
+
 
 ## 9.74.0 - 2021-01-26
 ### Fixed
@@ -26,8 +29,8 @@ Types of changes:
 - `<Calendar/>` - Fix ReactDayPicker warning [#6643](https://github.com/wix/wix-style-react/pull/6643)
 
 ### Added
-- `<BaseModalLayout/>` - reduce spacing [#6621](https://github.com/wix/wix-style-react/pull/6621)
-- `<Accodrion/>` - reduce spacing [#6615](https://github.com/wix/wix-style-react/pull/6615)
+- `<BaseModalLayout/>` - reduce spacing (feature toggle) [#6621](https://github.com/wix/wix-style-react/pull/6621)
+- `<Accodrion/>` - reduce spacing (feature toggle) [#6615](https://github.com/wix/wix-style-react/pull/6615)
 - `<Calendar/>` - change the header navigation order [#6605](https://github.com/wix/wix-style-react/pull/6605)
 - `<Radio/>` - add value/style props and legacy driver [#6645](https://github.com/wix/wix-style-react/pull/6645)
 
