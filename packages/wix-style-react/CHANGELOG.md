@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+`<Calendar/>` - change arrows to buttons [#6635](https://github.com/wix/wix-style-react/pull/6635)
+
 
 ## 9.74.0 - 2021-01-26
 ### Fixed
