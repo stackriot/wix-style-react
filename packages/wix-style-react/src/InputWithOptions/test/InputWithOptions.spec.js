@@ -543,14 +543,50 @@ describe('InputWithOptions', () => {
     it('should not call onBlur if selected an option', async () => {
       const onBlur = jest.fn();
       const OPTION_INDEX = 0;
-      const { driver, dropdownLayoutDriver, inputDriver } = createDriver(
+      const { dropdownLayoutDriver, inputDriver } = createDriver(
         <InputWithOptions options={options} onBlur={onBlur} />,
       );
-      await driver.focus();
+      await inputDriver.focus();
       expect(await inputDriver.isFocus()).toBe(true);
       await dropdownLayoutDriver.clickAtOption(OPTION_INDEX);
-      expect(onBlur).not.toBeCalled();
+      expect(onBlur).not.toHaveBeenCalled();
       expect(await inputDriver.isFocus()).toBe(true);
+    });
+
+    it('should not call onFocus when selecting an option', async () => {
+      const onFocus = jest.fn();
+      const OPTION_INDEX = 0;
+      const dataHook = 'test';
+      const wrapper = mount(
+        <InputWithOptions
+          onFocus={onFocus}
+          options={options}
+          dataHook={dataHook}
+        />,
+      );
+      const {
+        dropdownLayoutDriver,
+        inputDriver,
+      } = inputWithOptionsEnzymeDriverFactory({
+        wrapper,
+        dataHook,
+      });
+      await inputDriver.focus();
+      expect(await inputDriver.isFocus()).toBe(true);
+      // Reset focus call counter
+      onFocus.mockClear();
+      await dropdownLayoutDriver.clickAtOption(OPTION_INDEX);
+      /** After clicking on an option, input gets re-focused by the `_onBlur` method
+       * apparently, jsdom does not fire `focus` event after input.focus() is called
+       * so we call it manually */
+      await inputDriver.focus();
+      expect(onFocus).not.toHaveBeenCalled();
+      expect(await inputDriver.isFocus()).toBe(true);
+
+      await inputDriver.blur();
+      await inputDriver.focus();
+      // After blurring, onFocus should be triggered when clicking on the input
+      expect(onFocus).toHaveBeenCalledTimes(1);
     });
 
     it('should not call onManuallyInput when composing text via external means', async () => {

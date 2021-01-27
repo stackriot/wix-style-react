@@ -382,7 +382,10 @@ class InputWithOptions extends Component {
   }
 
   _onFocus(e) {
-    if (this.props.disabled) {
+    /** Don't call onFocus if input is already focused or is disabled
+     * can occur when input is re-focused after selecting an option
+     */
+    if (this._focused || this.props.disabled) {
       return;
     }
     this._focused = true;
