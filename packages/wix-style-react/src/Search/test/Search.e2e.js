@@ -30,6 +30,7 @@ describe('Search', () => {
     await driver.enterText('z');
     await driver.clickSearchOptionAt(0);
     expect(await driver.getText()).toBe('Option z');
+    await driver.clickOutside();
   });
 
   eyes.it('should clear input after clear button click', async () => {

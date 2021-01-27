@@ -12,6 +12,12 @@ export default component => {
     element: () => component,
     exists: () => component.isPresent(),
     clickOnInput: () => dropdownDriver.getInput().click(),
+    clickOutside: () =>
+      browser
+        .actions()
+        .mouseMove(component, { x: -20, y: -20 })
+        .click()
+        .perform(),
     getInput: dropdownDriver.getInput,
     getSearchDropdown: dropdownDriver.getDropdown,
     getSearchOptionAt: dropdownDriver.getDropdownItem,
