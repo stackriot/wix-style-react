@@ -39,6 +39,10 @@ class IconButton extends PureComponent {
     disabled: PropTypes.bool,
     /** String based data hook */
     dataHook: PropTypes.string,
+    /** Defines a string value that labels the button element */
+    ariaLabel: PropTypes.string,
+    /** Identifies the element that labels the button element */
+    ariaLabelledBy: PropTypes.string,
   };
 
   static defaultProps = {
@@ -56,6 +60,8 @@ class IconButton extends PureComponent {
       size,
       children,
       dataHook,
+      ariaLabel,
+      ariaLabelledBy,
       ...rest
     } = this.props;
 
@@ -67,6 +73,8 @@ class IconButton extends PureComponent {
         className={st(classes.root, { skin, priority, size }, className)}
         {...generateDataAttr(this.props, ['skin', 'priority', 'size'])}
         data-hook={dataHook}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy}
       >
         {children &&
           React.cloneElement(children, {

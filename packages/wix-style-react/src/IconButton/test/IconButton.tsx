@@ -21,6 +21,8 @@ function IconButtonWithAllProps() {
       priority="primary"
       size="large"
       skin="inverted"
+      ariaLabel="Icon Button"
+      ariaLabelledBy="icon_button_label"
     />
   );
 }

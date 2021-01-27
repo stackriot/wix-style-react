@@ -1,5 +1,6 @@
 import { baseUniDriverFactory, ReactBase } from '../../test/utils/unidriver';
 import { dropdownLayoutDriverFactory } from '../DropdownLayout/DropdownLayout.uni.driver';
+import { iconButtonDriverFactory } from '../IconButton/IconButton.uni.driver';
 
 export const calendarUniDriverFactory = base => {
   const getCalendar = () => base.$('.DayPicker');
@@ -102,8 +103,10 @@ export const calendarUniDriverFactory = base => {
     clickOnYearDropdown: () => getYearDropdownButton().click(),
     clickOnMonthDropdown: () => getMonthDropdownButton().click(),
     clickOnNthYear: (n = 1) => getNthYear(n).mouse.press(),
-    clickOnPrevMonthButton: () => getPrevMonthButton().click(),
-    clickOnNextMonthButton: () => getNextMonthButton().click(),
+    clickOnPrevMonthButton: () =>
+      iconButtonDriverFactory(getPrevMonthButton()).click(),
+    clickOnNextMonthButton: () =>
+      iconButtonDriverFactory(getNextMonthButton()).click(),
     isHeaderVisible: () => getHeader().exists(),
     isYearDropdownExists: () => getYearDropdown().exists(),
     isYearCaptionExists: () => getYearCaption().exists(),

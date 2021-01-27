@@ -8,6 +8,8 @@ export type IconButtonProps = ButtonWithAsProp<{
   size?: IconButtonSize;
   disabled?: boolean;
   dataHook?: string;
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
 }>;
 
 export default class IconButton extends React.Component<IconButtonProps> {}

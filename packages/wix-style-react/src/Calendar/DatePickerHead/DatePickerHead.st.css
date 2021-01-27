@@ -47,24 +47,6 @@
   -st-extends: YearDropdown;
 }
 
-.arrow {
-  z-index: 1;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color value(speed-fast-1);
-  border-radius: 50%;
-}
-
-.arrow:hover:not(:active) {
-  background-color: value(THEME-COLOR-50);
-}
-.arrow:active {
-  background-color: value(THEME-COLOR-40);
-}
-
 .arrowIcon {
   display: block;
   cursor: pointer;

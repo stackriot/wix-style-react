@@ -47,11 +47,9 @@ class TextButton extends PureComponent {
     showTooltip: PropTypes.bool,
     /** Props that modify the Tooltip created from text ellipsis */
     tooltipProps: PropTypes.shape(TooltipCommonProps),
-
-    /** string to be added as aria-label to the button */
+    /** Defines a string value that labels the button element */
     ariaLabel: PropTypes.string,
-
-    /** string to be added as aria-labelby to the button */
+    /** Identifies the element that labels the button element */
     ariaLabelledBy: PropTypes.string,
   };
 

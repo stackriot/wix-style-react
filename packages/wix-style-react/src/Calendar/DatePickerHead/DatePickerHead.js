@@ -8,6 +8,7 @@ import YearDropdown from './YearDropdown';
 import MonthDropdown from './MonthDropdown';
 import { st, classes } from './DatePickerHead.st.css';
 import Text from '../../Text';
+import IconButton from '../../IconButton';
 
 const getMonthName = (months, month) => months[month] || months[0];
 
@@ -31,27 +32,27 @@ const DatePickerHead = ({
 }) => {
   return (
     <div data-hook="datepicker-head" className={st(classes.root, className)}>
-      <div
-        className={st(classes.arrow, classes.arrowLeft)}
-        data-hook="datepicker-left-arrow"
-        onClick={onLeftArrowClick}
-        role="button"
+      <IconButton
+        className={classes.arrowLeft}
+        dataHook="datepicker-left-arrow"
+        skin="light"
         aria-label={leftArrowAriaLabel}
         aria-labelledby={leftArrowAriaLabelledBy}
+        onClick={onLeftArrowClick}
       >
         <ChevronLeftLarge className={classes.arrowIcon} />
-      </div>
-      <div
-        className={st(classes.arrow, classes.arrowRight)}
-        data-hook="datepicker-right-arrow"
-        onClick={onRightArrowClick}
-        role="button"
+      </IconButton>
+      <IconButton
+        className={classes.arrowRight}
+        dataHook="datepicker-right-arrow"
+        skin="light"
         aria-label={rightArrowAriaLabel}
         aria-labelledby={rightArrowAriaLabelledBy}
+        onClick={onRightArrowClick}
       >
         <ChevronRightLarge className={classes.arrowIcon} />
-      </div>
-      <div className={st(classes.yearAndMonthWrapper)} role="alert">
+      </IconButton>
+      <div className={classes.yearAndMonthWrapper} role="alert">
         {showMonthDropdown ? (
           <MonthDropdown
             className={classes.monthDropdown}
