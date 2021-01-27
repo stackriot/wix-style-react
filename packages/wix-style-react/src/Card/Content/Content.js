@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { st, classes } from './Content.st.css';
+import { WixStyleReactContext } from '../../WixStyleReactProvider/context';
 
 class Content extends React.Component {
   static propTypes = {
@@ -16,14 +17,19 @@ class Content extends React.Component {
     const isEmptyStateContent = this._getChildName(children) === 'EmptyState';
 
     return (
-      <div
-        className={st(classes.root, {
-          size,
-          emptyStateContent: isEmptyStateContent,
-        })}
-      >
-        {children}
-      </div>
+      <WixStyleReactContext.Consumer>
+        {({ reducedSpacingAndImprovedLayout }) => (
+          <div
+            className={st(classes.root, {
+              size,
+              emptyStateContent: isEmptyStateContent,
+              reducedSpacingAndImprovedLayout,
+            })}
+          >
+            {children}
+          </div>
+        )}
+      </WixStyleReactContext.Consumer>
     );
   }
 }

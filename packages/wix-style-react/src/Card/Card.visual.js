@@ -1,12 +1,38 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
+import WixStyleReactProvider from '../WixStyleReactProvider';
 import Card from '.';
 import Button from '../Button';
 import CloseButton from '../CloseButton';
 import Text from '../Text';
 import EmptyState from '../EmptyState';
 import { Col, Container, Row } from '../Grid';
+
+const reduceSpacingTests = [
+  {
+    describe: 'content size',
+    its: [
+      {
+        it: 'none',
+        props: {
+          contentSize: undefined,
+        },
+      },
+      {
+        it: 'medium',
+        props: {
+          contentSize: 'medium',
+        },
+      },
+      {
+        it: 'large',
+        props: {
+          contentSize: 'large',
+        },
+      },
+    ],
+  },
+];
 
 const tests = [
   {
@@ -16,11 +42,7 @@ const tests = [
         it: 'ellipsis with suffix',
         props: {
           suffix: (
-            <Button
-              onClick={() => alert('Clicked')}
-              size="small"
-              theme="fullblue"
-            >
+            <Button onClick={() => alert('Clicked')} size="small">
               Click
             </Button>
           ),
@@ -110,29 +132,7 @@ const tests = [
       },
     ],
   },
-  {
-    describe: 'content size',
-    its: [
-      {
-        it: 'none',
-        props: {
-          contentSize: undefined,
-        },
-      },
-      {
-        it: 'medium',
-        props: {
-          contentSize: 'medium',
-        },
-      },
-      {
-        it: 'large',
-        props: {
-          contentSize: 'large',
-        },
-      },
-    ],
-  },
+  ...reduceSpacingTests,
   {
     describe: 'content empty state',
     its: [
@@ -158,6 +158,33 @@ const tests = [
   },
 ];
 
+const CardTest = props => (
+  <div style={{ background: '#F0F4F7', padding: 30 }}>
+    <Container>
+      <Row>
+        <Col span={6}>
+          <Card
+            controls={props.controls}
+            hideOverflow={props.hideOverflow}
+            stretchVertically={props.stretchVertically}
+            showShadow={props.showShadow}
+          >
+            <Card.Header
+              title="Card header"
+              subtitle={props.subtitle}
+              suffix={props.suffix}
+            />
+            <Card.Divider />
+            <Card.Content size={props.contentSize}>
+              {props.childrenContent ? props.childrenContent : 'sdf'}
+            </Card.Content>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+  </div>
+);
+
 export const runTests = (
   { themeName, testWithTheme } = { testWithTheme: i => i },
 ) => {
@@ -168,34 +195,19 @@ export const runTests = (
           describe ? '/' + describe : ''
         }`,
         module,
-      ).add(it, () =>
-        testWithTheme(
-          <div style={{ background: '#F0F4F7', padding: 30 }}>
-            <Container>
-              <Row>
-                <Col span={6}>
-                  <Card
-                    controls={props.controls}
-                    hideOverflow={props.hideOverflow}
-                    stretchVertically={props.stretchVertically}
-                    showShadow={props.showShadow}
-                  >
-                    <Card.Header
-                      title="Card header"
-                      subtitle={props.subtitle}
-                      suffix={props.suffix}
-                    />
-                    <Card.Divider />
-                    <Card.Content size={props.contentSize}>
-                      {props.childrenContent ? props.childrenContent : 'sdf'}
-                    </Card.Content>
-                  </Card>
-                </Col>
-              </Row>
-            </Container>
-          </div>,
-        ),
-      );
+      ).add(it, () => testWithTheme(<CardTest {...props} />));
     });
   });
 };
+
+reduceSpacingTests.forEach(({ describe, its }) => {
+  its.forEach(({ it, props }) => {
+    storiesOf(`Layout And Spacing| Card/${describe}`, module).add(it, () => (
+      <WixStyleReactProvider
+        features={{ reducedSpacingAndImprovedLayout: true }}
+      >
+        <CardTest {...props} />
+      </WixStyleReactProvider>
+    ));
+  });
+});
