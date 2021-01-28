@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<StatisticWidget/>` - reduce spacing (feature toggle) [#6661](https://github.com/wix/wix-style-react/pull/6661)
 
 ### Changed
 - `<CarouselWIP/>` - change sides gradient width [#6657](https://github.com/wix/wix-style-react/pull/6657)
