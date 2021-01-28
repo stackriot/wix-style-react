@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.74.1 - 2021-01-28
 ### Fixed
 - `<Calendar/>` - change arrows to buttons [#6635](https://github.com/wix/wix-style-react/pull/6635)
 - `<Search/>` - fix flaky e2e test [#6654](https://github.com/wix/wix-style-react/pull/6654)
