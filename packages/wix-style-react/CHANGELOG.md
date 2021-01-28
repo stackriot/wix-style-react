@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Changed
+- `<CarouselWIP/>` - change sides gradient width [#6657](https://github.com/wix/wix-style-react/pull/6657)
+
 ## 9.74.1 - 2021-01-28
 ### Fixed
 - `<Calendar/>` - change arrows to buttons [#6635](https://github.com/wix/wix-style-react/pull/6635)
