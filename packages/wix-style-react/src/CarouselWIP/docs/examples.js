@@ -1,17 +1,17 @@
 import React from 'react';
 
-export const suggestionsWidgetExample = `
+export const suggestionsWidgetCarouselWIPExample = `
 <CarouselWIP
   infinite={false}
   controlsSkin="inverted"
   controlsPosition="overlay"
   controlsStartEnd="hidden"
-  controlsSize="small"
   slidingType="reveal-one"
   showControlsShadow
   startEndOffset={24}
   gutter={6}
   sidesGradientColor="#F0F4F7"
+  hideDots
 >
   {Array(10)
     .fill(0)
@@ -31,7 +31,7 @@ export const suggestionsWidgetExample = `
 </CarouselWIP>
 `;
 
-export const suggestionsWidgetOldExample = `
+export const suggestionsWidgetCarouselExample = `
 <Carousel
   infinite={false}
   controlsSkin="inverted"
@@ -43,6 +43,7 @@ export const suggestionsWidgetOldExample = `
   startEndOffset={24}
   gutter={6}
   sidesGradientColor="#F0F4F7"
+  dots={false}
 >
   {Array(10)
     .fill(0)

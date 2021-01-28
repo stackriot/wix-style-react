@@ -154,8 +154,8 @@ class CarouselWIP extends React.PureComponent {
   // Need to wait for images to load so we know which images are visible
   // Adding onLoad and onError callbacks to all images under the component
   _setImagesOnLoadHandlers = () => {
-    [...this.carousel.children].forEach(child => {
-      const childImages = [...child.getElementsByTagName('img')];
+    Array.from(this.carousel.children).forEach(child => {
+      const childImages = Array.from(child.getElementsByTagName('img'));
       childImages.forEach(img => {
         this.setState({ isLoading: true });
         this.loadingImagesCount++;
@@ -188,13 +188,13 @@ class CarouselWIP extends React.PureComponent {
     const { props, carousel, childCount } = this;
     const { infinite } = props;
     const firstVisibleChild = Math.max(
-      [...carousel.children].findIndex(child =>
+      Array.from(carousel.children).findIndex(child =>
         isWhollyInView(carousel)(child),
       ),
       0,
     );
     const lastVisibleChild = Math.max(
-      [...carousel.children].findIndex(
+      Array.from(carousel.children).findIndex(
         (child, i, children) =>
           isWhollyInView(carousel)(child) &&
           (i === children.length - 1 ||

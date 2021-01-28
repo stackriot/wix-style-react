@@ -51,19 +51,19 @@ export default {
           title('Examples'),
 
           description({
-            title: 'Suggestions Widget',
+            title: 'Carousel WIP - Suggestions Widget',
           }),
           code({
             compact: true,
-            source: examples.suggestionsWidgetExample,
+            source: examples.suggestionsWidgetCarouselWIPExample,
           }),
 
           description({
-            title: 'OLD Carousel',
+            title: 'Old Carousel - Suggestions Widget',
           }),
           code({
             compact: true,
-            source: examples.suggestionsWidgetOldExample,
+            source: examples.suggestionsWidgetCarouselExample,
           }),
         ],
       }),
