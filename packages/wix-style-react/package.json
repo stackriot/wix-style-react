@@ -250,7 +250,9 @@
   },
   "lint-staged": {
     "linters": {
-      "*.{css,scss}": ["stylelint"],
+      "*.{css,scss}": [
+        "stylelint"
+      ],
       "*.js": [
         "yoshi lint --fix",
         "git add"

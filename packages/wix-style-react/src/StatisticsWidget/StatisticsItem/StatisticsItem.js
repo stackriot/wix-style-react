@@ -1,22 +1,16 @@
 import React from 'react';
 import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable/FocusableHOC';
 import InfoCircleSmall from 'wix-ui-icons-common/InfoCircleSmall';
-
+import { WixStyleReactContext } from '../../WixStyleReactProvider/context';
 import Heading from '../../Heading';
 import Text from '../../Text';
 import Tooltip from '../../Tooltip';
 import TrendIndicator from '../../TrendIndicator';
 import AdaptiveHeading from '../../utils/AdaptiveHeading';
-
 import DataHooks from '../dataHooks';
 
 import { st, classes } from './StatisticsItem.st.css';
 import { SIZES } from '../constants';
-
-const sizeToAppearance = {
-  [SIZES.tiny]: 'tiny',
-  [SIZES.large]: 'H1',
-};
 
 class StatisticsItem extends React.PureComponent {
   static displayName = 'StatisticsItem';
@@ -48,23 +42,43 @@ class StatisticsItem extends React.PureComponent {
     }
   };
 
-  _renderValue = (value, valueInShort, size) => (
-    <AdaptiveHeading
-      text={value || '-'}
-      appearance={sizeToAppearance[size]}
-      textInShort={valueInShort}
-      dataHook={DataHooks.value}
-    />
-  );
+  _renderValue = ({
+    value,
+    valueInShort,
+    size,
+    reducedSpacingAndImprovedLayout,
+  }) => {
+    const appearance =
+      size === SIZES.tiny
+        ? 'tiny'
+        : reducedSpacingAndImprovedLayout
+        ? 'H2'
+        : 'H1';
 
-  _renderDescription = (description, subtitleContentInfo, size, alignItems) => {
+    return (
+      <AdaptiveHeading
+        text={value || '-'}
+        appearance={appearance}
+        textInShort={valueInShort}
+        dataHook={DataHooks.value}
+      />
+    );
+  };
+
+  _renderDescription = ({
+    description,
+    descriptionInfo,
+    size,
+    alignItems,
+    reducedSpacingAndImprovedLayout,
+  }) => {
     if (!description) {
       return null;
     }
 
     return (
       <div className={st(classes.description, { alignItems })}>
-        {size === SIZES.tiny ? (
+        {size === SIZES.tiny || reducedSpacingAndImprovedLayout ? (
           <Text
             ellipsis
             size="small"
@@ -78,12 +92,12 @@ class StatisticsItem extends React.PureComponent {
             {description}
           </Heading>
         )}
-        {subtitleContentInfo && (
+        {descriptionInfo && (
           <Tooltip
             textAlign="start"
             className={classes.tooltip}
             dataHook={DataHooks.tooltip}
-            content={subtitleContentInfo}
+            content={descriptionInfo}
           >
             <InfoCircleSmall
               className={classes.info}
@@ -95,7 +109,7 @@ class StatisticsItem extends React.PureComponent {
     );
   };
 
-  _renderPercents = (percentage, invertedPercentage) => {
+  _renderPercents = ({ percentage, invertedPercentage }) => {
     if (percentage == null) {
       return null;
     }
@@ -134,25 +148,42 @@ class StatisticsItem extends React.PureComponent {
       onKeyDown: onClick ? this._getSpaceOrEnterHandler(onClick) : undefined,
       onClick,
       ...rest,
-      className: st(
-        classes.item,
-        { clickable: !!onClick, size, alignItems },
-        this.props.className,
-      ),
     };
 
     return (
-      <div {...attrs}>
-        {this._renderValue(value, valueInShort, size)}
-        {this._renderDescription(
-          description,
-          descriptionInfo,
-          size,
-          alignItems,
+      <WixStyleReactContext.Consumer>
+        {({ reducedSpacingAndImprovedLayout }) => (
+          <div
+            {...attrs}
+            className={st(
+              classes.item,
+              {
+                clickable: !!onClick,
+                size,
+                alignItems,
+                reducedSpacingAndImprovedLayout,
+              },
+              className,
+            )}
+          >
+            {this._renderValue({
+              value,
+              valueInShort,
+              size,
+              reducedSpacingAndImprovedLayout,
+            })}
+            {this._renderDescription({
+              description,
+              descriptionInfo,
+              size,
+              alignItems,
+              reducedSpacingAndImprovedLayout,
+            })}
+            {this._renderPercents({ percentage, invertedPercentage })}
+            {children}
+          </div>
         )}
-        {this._renderPercents(percentage, invertedPercentage)}
-        {children}
-      </div>
+      </WixStyleReactContext.Consumer>
     );
   }
 }
