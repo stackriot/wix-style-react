@@ -80,7 +80,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "./scripts/pre-commit.sh"
     }
   },
   "yoshi": {
@@ -157,7 +157,7 @@
     "jest": "^24.9.0",
     "jest-canvas-mock": "^2.3.0",
     "jest-yoshi-preset": "^4.87.0",
-    "lint-staged": "^7.3.0",
+    "lint-staged": "^10.5.0",
     "mkdirp": "^0.5.5",
     "node-fetch": "^2.6.1",
     "ora": "^3.4.0",
@@ -247,20 +247,6 @@
     "wix-ui-icons-common": "^2.0.301",
     "wix-ui-test-utils": "^1.0.178",
     "yoshi-stylable-dependencies": "^4.0.0"
-  },
-  "lint-staged": {
-    "linters": {
-      "*.{css,scss}": [
-        "stylelint"
-      ],
-      "*.js": [
-        "yoshi lint --fix",
-        "git add"
-      ]
-    },
-    "ignore": [
-      ".wuf/generator/templates/**"
-    ]
   },
   "eslintConfig": {
     "extends": [
