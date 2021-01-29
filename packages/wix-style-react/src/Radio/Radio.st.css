@@ -87,4 +87,5 @@
 .root::label {
   cursor: pointer;
   padding-inline-start: 12px;
+  width: 100%;
 }
