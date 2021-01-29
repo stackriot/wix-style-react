@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Added
 - `<StatisticWidget/>` - reduce spacing (feature toggle) [#6661](https://github.com/wix/wix-style-react/pull/6661)
+- `<Radio/>` - add getId() testkit method [#6662](https://github.com/wix/wix-style-react/pull/6662)
 
 ### Changed
 - `<CarouselWIP/>` - change sides gradient width [#6657](https://github.com/wix/wix-style-react/pull/6657)
