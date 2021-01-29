@@ -24,7 +24,13 @@ export const radioUniDriverFactory = (base, body) => {
      * Gets name of radio input
      * @return {Promise<string>}
      */
-    getName: () => coreRadioDriver.getName(),
+    getName: () => coreRadioDriver.name(),
+
+    /**
+     * Gets id of radio input
+     * @return {Promise<string>}
+     */
+    getId: () => coreRadioDriver.id(),
 
     /**
      * Checks if icon of radio exists

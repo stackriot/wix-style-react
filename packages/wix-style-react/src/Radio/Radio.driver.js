@@ -27,7 +27,13 @@ export const radioDriverFactory = ({ element, eventTrigger }) => {
      * Gets name of radio input
      * @return {string}
      */
-    getName: () => coreRadioDriver.getName(),
+    getName: () => coreRadioDriver.name(),
+
+    /**
+     * Gets id of radio input
+     * @return {string}
+     */
+    getId: () => coreRadioDriver.id(),
 
     /**
      * Checks if icon of radio exists

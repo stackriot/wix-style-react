@@ -5,6 +5,7 @@ export interface RadioDriver extends BaseDriver {
   click(): void;
   getValue(): string;
   getName(): string;
+  getId(): string;
   iconExists(): boolean;
   labelExists(): boolean;
   isChecked(): boolean;
