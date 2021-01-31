@@ -22,6 +22,9 @@ Types of changes:
 ### Changed
 - `<CarouselWIP/>` - change sides gradient width [#6657](https://github.com/wix/wix-style-react/pull/6657)
 
+### Fixed
+- `<SidebarBackButton/>` - Update animateArrow prop type to boolean [#6671](https://github.com/wix/wix-style-react/pull/6671)
+
 ## 9.74.1 - 2021-01-28
 ### Fixed
 - `<Calendar/>` - change arrows to buttons [#6635](https://github.com/wix/wix-style-react/pull/6635)
