@@ -3,14 +3,12 @@
 name: Monorepo PR Repo Labeler
 
 on: pull_request
-        
+
 jobs:
   labelPR:
     name: Label PR With Repo(s)
     runs-on: ubuntu-latest
     steps:
-      - name: Labeler
-        uses: actions/labeler@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BASE_DIRS: 'packages/egozi'
+    - uses: actions/labeler@main
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
