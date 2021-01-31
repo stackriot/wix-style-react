@@ -1,12 +1,11 @@
 # Monorepo tags - add a dedicated tag for each repository in the monorepo
 
-name: Monorepo PR Repo Labeler
+name: Monorepo PR Labeler
 
 on: pull_request
 
 jobs:
   labelPR:
-    name: Label PR With Repo(s)
     runs-on: ubuntu-latest
     steps:
     - uses: actions/labeler@main
