@@ -1,0 +1,18 @@
+# Monorepo tags - add a dedicated tag for each repository in the monorepo
+
+name: Monorepo PR Repo Labeler
+
+on: pull_request
+
+jobs:
+  labelPR:
+    name: Label PR With Repo(s)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label PRs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_DIRS: 'packages/egozi' # optional
+        with:
+          prefix: 'sample_prefix' # optional
+          suffix: 'sample_suffix' # optional
