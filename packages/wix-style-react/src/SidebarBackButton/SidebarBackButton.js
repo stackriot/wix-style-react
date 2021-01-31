@@ -28,7 +28,7 @@ class SidebarBackButton extends React.PureComponent {
     children: PropTypes.string,
 
     /** Whether or not to constantly animate the arrow */
-    animateArrow: PropTypes.func,
+    animateArrow: PropTypes.bool,
   };
 
   render() {
