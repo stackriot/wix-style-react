@@ -23,6 +23,7 @@ import { storySettings } from './storySettings';
 import ModalSelectorLayout from '..';
 import Button from '../../Button';
 import Text from '../../Text';
+import SectionHelper from '../../SectionHelper';
 
 const example = config => baseExample({ components: allComponents, ...config });
 
@@ -122,6 +123,16 @@ export default {
           description(
             ' Modal Selector is a modal pattern that enable the user to select one or multiple elements from a list, as well as the ability to search in the list in order to select a specific option.',
           ),
+
+          description({
+            text: (
+              <SectionHelper appearance="danger" title="WARNING">
+                This component is deprecated! Instead, we advise you to use the
+                newer &lt;SelectorList/&gt; component in combination with
+                &lt;CustomModalLayout/&gt;
+              </SectionHelper>
+            ),
+          }),
 
           importExample(),
 

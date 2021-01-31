@@ -91,7 +91,7 @@ class Carousel extends React.Component {
     /** Sets the arrows position */
     controlsPosition: PropTypes.oneOf(['sides', 'overlay', 'bottom', 'none']),
 
-    /** Sets the arrows position */
+    /** Sets the arrows size */
     controlsSize: PropTypes.oneOf(['tiny', 'small', 'medium']),
 
     /** Configure the start and end controls to be shown disabled or hidden. Relevant when infinite prop is set to false. */
