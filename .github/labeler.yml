@@ -1,3 +1,2 @@
-var minimatch = require("minimatch")
-
-minimatch("WSR", "packages/wix-style-react/**/*.*")
+WSR:
+  - packages/wix-style-react/**/*.*
