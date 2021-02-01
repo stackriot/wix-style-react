@@ -25,6 +25,7 @@ Types of changes:
 ### Fixed
 - `<SidebarBackButton/>` - Update animateArrow prop type to boolean [#6671](https://github.com/wix/wix-style-react/pull/6671)
 - `<DatePicker/>` - fix UniDriver's open method on puppeteer [#6669](https://github.com/wix/wix-style-react/pull/6669)
+- `<TableActionCell/>` - fix testkit initialization [#6678](https://github.com/wix/wix-style-react/pull/6678)
 
 ## 9.74.1 - 2021-01-28
 ### Fixed
