@@ -80,6 +80,10 @@
   padding-inline-end: 0;
 }
 
+.root:alignItems(stretch) {
+  display: flex;
+}
+
 .root:alignItems(stretch) .contentContainer {
   justify-content: space-between;
 }
