@@ -31,7 +31,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
     buttonDriverFactory(findByHook(base, dataHook));
 
   const getHiddenActionsPopoverMenuDriver = () =>
-    PopoverMenuDriver(findByHook(base, dataHooks.popoverMenu));
+    PopoverMenuDriver(findByHook(base, dataHooks.popoverMenu), body);
 
   return {
     ...baseUniDriverFactory(base, body),
