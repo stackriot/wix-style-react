@@ -19,6 +19,9 @@ Types of changes:
 ### Changed
 - `<MarketingLayout/>` - made root flex when align items stretch [#6681](https://github.com/wix/wix-style-react/pull/6681)
 
+### Fixed
+- `<InputWithOptions/>` - fix unable to focus editable option [#6670](https://github.com/wix/wix-style-react/pull/6670)
+
 ## 9.75.0 - 2021-02-01
 ### Added
 - `<StatisticWidget/>` - reduce spacing (feature toggle) [#6661](https://github.com/wix/wix-style-react/pull/6661)
