@@ -8,6 +8,7 @@ export const storySettings = {
 export const focusStorySettings = {
   ...storySettings,
   dataHook: 'input-with-options-focus',
+  listItemEditableDataHook: 'input-with-options-focus-list-item-editable',
 };
 
 export const tabSwitchesStorySettings = {

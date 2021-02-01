@@ -1,4 +1,5 @@
 export * from './ReactBase';
+import { ReactBase } from './ReactBase';
 import { baseUniDriverFactory as createBaseUniDriver } from 'wix-ui-test-utils/base-driver';
 
 /**
@@ -37,6 +38,25 @@ export const getElement = async base => ((await base.exists()) ? base : null);
  * @param {string} attr
  */
 export const getDataAttributeValue = async (base, attr) => base.attr(attr);
+
+/** Checks if given element is focused
+ * @param {UniDriver} element
+ * @returns {Promise<boolean>}
+ */
+export const isElementFocused = async element => {
+  const nativeElement = await element.getNative();
+  switch (element.type) {
+    case 'react':
+      return ReactBase(element).isFocus();
+    case 'puppeteer':
+      return page.evaluate(el => document.activeElement === el, nativeElement);
+    case 'protractor':
+      const activeElement = await browser.driver.switchTo().activeElement();
+      return nativeElement.equals(activeElement);
+    default:
+      return;
+  }
+};
 
 export const baseUniDriverFactory = base => {
   const baseUniDriver = createBaseUniDriver(base);

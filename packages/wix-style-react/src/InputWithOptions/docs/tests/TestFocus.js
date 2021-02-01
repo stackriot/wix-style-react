@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
 import { focusStorySettings as storySettings } from '../storySettings';
 import { InputWithOptions } from 'wix-style-react';
+import { listItemEditableBuilder } from '../../../ListItemEditable';
 
-const options = [{ id: '0', value: 'First Option' }];
+const options = [
+  { id: '0', value: 'First Option' },
+  listItemEditableBuilder({
+    id: 'editable',
+    dataHook: storySettings.listItemEditableDataHook,
+    onApprove: () => {},
+    onCancel: () => {},
+    cancelButtonTooltipContent: 'Cancel',
+    approveButtonTooltipContent: 'Approve',
+  }),
+];
 
 const TestFocus = () => {
   const [value, setValue] = useState('');

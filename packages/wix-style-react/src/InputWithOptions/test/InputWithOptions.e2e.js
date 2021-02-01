@@ -1,6 +1,11 @@
 import { inputWithOptionsTestkitFactory } from '../../../testkit/protractor';
 import { $, browser } from 'protractor';
-import { isFocused, waitForVisibilityOf } from 'wix-ui-test-utils/protractor';
+import {
+  isFocused,
+  waitForVisibilityOf,
+  protractorUniTestkitFactoryCreator,
+} from 'wix-ui-test-utils/protractor';
+import { listItemEditablePrivateDriverFactory } from '../../ListItemEditable/test/ListItemEditable.private.uni.driver';
 import { createTestStoryUrl } from '../../../test/utils/storybook-helpers';
 import {
   focusStorySettings,
@@ -79,6 +84,24 @@ describe('InputWithOptions', () => {
       await driver.click();
       await driver.selectOptionAt(0);
       expect(await driver.isFocused()).toBe(true);
+    });
+
+    it('should allow selecting input inside dropdown', async () => {
+      const editableOptionDriver = protractorUniTestkitFactoryCreator(
+        listItemEditablePrivateDriverFactory,
+      )({
+        dataHook: focusStorySettings.listItemEditableDataHook,
+      });
+
+      await driver.click();
+
+      expect(await driver.isFocused()).toBe(true);
+      expect(await editableOptionDriver.isInputFocused()).toBe(false);
+
+      await editableOptionDriver.clickInput();
+
+      expect(await driver.isFocused()).toBe(false);
+      expect(await editableOptionDriver.isInputFocused()).toBe(true);
     });
   });
 

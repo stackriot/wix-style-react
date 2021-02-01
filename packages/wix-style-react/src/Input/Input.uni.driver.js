@@ -1,4 +1,8 @@
-import { baseUniDriverFactory, ReactBase } from '../../test/utils/unidriver';
+import {
+  baseUniDriverFactory,
+  isElementFocused,
+  ReactBase,
+} from '../../test/utils/unidriver';
 import DATA_ATTR from './DataAttr';
 import { statusIndicatorDriverFactory } from '../StatusIndicator/StatusIndicator.uni.driver';
 import { dataHooks } from './constants';
@@ -95,7 +99,7 @@ export const testkit = (base, body) => {
         return await driver.wheel();
       }
     },
-    isFocus: async () => await reactBaseInput.isFocus(),
+    isFocus: async () => isElementFocused(input),
     clickMenuArrow: async () => await menuArrowNode.click(),
     hasMenuArrow: async () => await menuArrowNode.exists(),
     isRTL: async () => (await base.attr('dir')) === 'rtl',

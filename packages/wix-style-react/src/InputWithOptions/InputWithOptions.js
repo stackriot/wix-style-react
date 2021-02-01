@@ -395,23 +395,25 @@ class InputWithOptions extends Component {
     }
   }
 
-  /** Checks if the element is inside the options dropdown */
-  _isElementInDropdown = element => {
+  /** Checks if focus event is related to selecting an option */
+  _didSelectOption = event => {
+    const focusedElement = event && event.relatedTarget;
     const dropdownContainer =
       this.dropdownLayout && this.dropdownLayout.containerRef.current;
-    if (!element || !dropdownContainer) {
+    // Check if user has focused other input component
+    const isInput = focusedElement instanceof HTMLInputElement;
+    if (!focusedElement || !dropdownContainer || isInput) {
       return false;
     }
-    const isInDropdown = dropdownContainer.contains(element);
+    const isInDropdown = dropdownContainer.contains(focusedElement);
 
     // Returns true if element is the dropdown container or is inside of it
     return isInDropdown;
   };
 
   _onBlur(event) {
-    const focusedElement = event && event.relatedTarget;
-    // Don't blur input if focused element is in dropdown
-    const stopBlur = this._isElementInDropdown(focusedElement);
+    // Don't blur input if selected an option
+    const stopBlur = this._didSelectOption(event);
     if (stopBlur) {
       // Restore focus to input element
       this.focus();
