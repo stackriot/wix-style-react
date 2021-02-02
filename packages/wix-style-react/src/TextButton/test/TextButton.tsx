@@ -36,6 +36,8 @@ function TextButtonWithAllProps() {
       }}
       ariaLabel="label"
       ariaLabelledBy="labelledBy"
+      ariaHaspopup="listbox"
+      ariaExpanded={false}
     />
   );
 }

@@ -36,8 +36,8 @@ const DatePickerHead = ({
         className={classes.arrowLeft}
         dataHook="datepicker-left-arrow"
         skin="light"
-        aria-label={leftArrowAriaLabel}
-        aria-labelledby={leftArrowAriaLabelledBy}
+        ariaLabel={leftArrowAriaLabel}
+        ariaLabelledBy={leftArrowAriaLabelledBy}
         onClick={onLeftArrowClick}
       >
         <ChevronLeftLarge className={classes.arrowIcon} />
@@ -46,8 +46,8 @@ const DatePickerHead = ({
         className={classes.arrowRight}
         dataHook="datepicker-right-arrow"
         skin="light"
-        aria-label={rightArrowAriaLabel}
-        aria-labelledby={rightArrowAriaLabelledBy}
+        ariaLabel={rightArrowAriaLabel}
+        ariaLabelledBy={rightArrowAriaLabelledBy}
         onClick={onRightArrowClick}
       >
         <ChevronRightLarge className={classes.arrowIcon} />

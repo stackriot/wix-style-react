@@ -123,3 +123,33 @@ export const ExampleIndication = `class YearMonthsCalendarExample extends React.
       );
     }
   }`;
+
+export const ExampleA11Y = `class YearMonthsCalendarExample extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        selectedDate: new Date('2020/12/16'),
+      };
+    }
+
+    onChange(selectedDate) {
+      this.setState({ selectedDate });
+    }
+
+    render() {
+      const { selectedDate } = this.state;
+
+      return (
+        <Calendar
+          showMonthDropdown
+          showYearDropdown
+          onChange={date => this.onChange(date)}
+          value={selectedDate}
+          leftArrowAriaLabel="Previous Month"
+          rightArrowAriaLabel="Next Month"
+          monthDropdownAriaLabel="Months"
+          yearDropdownAriaLabel="Years"
+        />
+      );
+    }
+  }`;

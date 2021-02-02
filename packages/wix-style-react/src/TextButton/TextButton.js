@@ -51,6 +51,10 @@ class TextButton extends PureComponent {
     ariaLabel: PropTypes.string,
     /** Identifies the element that labels the button element */
     ariaLabelledBy: PropTypes.string,
+    /** Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element. */
+    ariaHaspopup: PropTypes.string,
+    /** Indicates to screen reader users whether the collapsable content below is in the expanded or in the collapsed state */
+    ariaExpanded: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -78,6 +82,8 @@ class TextButton extends PureComponent {
       tooltipProps,
       ariaLabel,
       ariaLabelledBy,
+      ariaHaspopup,
+      ariaExpanded,
       ...rest
     } = this.props;
 
@@ -105,6 +111,8 @@ class TextButton extends PureComponent {
             contentRef={ref}
             aria-label={ariaLabel}
             aria-labelledby={ariaLabelledBy}
+            aria-haspopup={ariaHaspopup}
+            aria-expanded={ariaExpanded}
           >
             {children}
           </ButtonNext>

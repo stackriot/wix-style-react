@@ -84,11 +84,7 @@ export default class DropdownPicker extends React.Component {
     const finalAriaLabel = ariaLabel ? `${ariaLabel} ${caption}` : undefined;
 
     return (
-      <div
-        className={st(classes.root, className)}
-        aria-haspopup="listbox"
-        aria-expanded={open}
-      >
+      <div className={st(classes.root, className)}>
         <DropdownBase
           data-hook={dataHook}
           className={classes.dropdown}
@@ -113,6 +109,8 @@ export default class DropdownPicker extends React.Component {
                 onKeyDown={e => this._onKeyDown(e, delegateKeyDown)}
                 ariaLabel={finalAriaLabel}
                 ariaLabelledBy={ariaLabelledBy}
+                ariaHaspopup="listbox"
+                ariaExpanded={open}
               >
                 {caption}
               </TextButton>

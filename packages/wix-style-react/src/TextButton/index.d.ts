@@ -19,6 +19,8 @@ export type TextButtonProps = ButtonWithAsProp<{
   tooltipProps?: TooltipCommonProps;
   ariaLabel?: string;
   ariaLabelledBy?: string;
+  ariaHaspopup?: string;
+  ariaExpanded?: boolean;
 }>;
 
 export default class TextButton extends React.Component<TextButtonProps> {}

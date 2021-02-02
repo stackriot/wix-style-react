@@ -24,6 +24,7 @@ import {
   ExampleYearMonths,
   ExampleStandard,
   ExampleIndication,
+  ExampleA11Y,
 } from './examples';
 
 const example = config => baseExample({ components: allComponents, ...config });
@@ -153,6 +154,13 @@ export default {
             description:
               'Date indication allows you to add a custom indication under a specific date. It could be an indication for event, appointment, meeting etc.',
             source: ExampleIndication,
+          }),
+
+          example({
+            title: 'A11Y',
+            description:
+              'This component adds aria attributes for the buttons elements. These values should be translated and should be passed by the props.',
+            source: ExampleA11Y,
           }),
         ],
       }),
