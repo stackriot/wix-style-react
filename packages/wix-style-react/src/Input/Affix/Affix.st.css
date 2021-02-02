@@ -17,6 +17,7 @@
   justify-content: center;
   align-items: center;
   color: value(D40);
+  flex: 1 0 auto;
 }
 
 .root:inPrefix {
