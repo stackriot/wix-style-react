@@ -58,9 +58,18 @@ const ThemeWSR = makeDecorator({
     };
 
     function storybookTheme({ mainColor, ...rest } = {}) {
+      let theme = {};
+
+      if (mainColor) {
+        theme = {
+          theme,
+          ...calcColors(mainColor)
+        };
+      }
+
       return {
-        ...calcColors(mainColor),
-        ...rest,
+        ...theme,
+        ...rest
       };
     }
 

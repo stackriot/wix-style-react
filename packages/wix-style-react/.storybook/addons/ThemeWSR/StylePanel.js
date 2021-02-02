@@ -20,7 +20,7 @@ function StylePanel({ onChange }) {
   const [page, setPage] = React.useState(null);
 
   // Global
-  const [mainColor, setMainColor] = React.useState(colors.B00);
+  const [mainColor, setMainColor] = React.useState('');
   const [textColorPrimary, setTextColorPrimary] = React.useState(colors.D10);
   const [textColorPrimaryLight, setTextColorPrimaryLight] = React.useState(
     colors.D80,
