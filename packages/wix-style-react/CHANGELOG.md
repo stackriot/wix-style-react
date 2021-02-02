@@ -21,6 +21,7 @@ Types of changes:
 
 ### Fixed
 - `<InputWithOptions/>` - fix unable to focus editable option [#6670](https://github.com/wix/wix-style-react/pull/6670)
+- `<Table/>`, `<TableListItem/>`,`<SelectableAccordion/>`- reduce spacing corrections [#6668](https://github.com/wix/wix-style-react/pull/6668)
 
 ## 9.75.0 - 2021-02-01
 ### Added
