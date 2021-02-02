@@ -20,6 +20,7 @@ Types of changes:
 - `<MarketingLayout/>` - made root flex when align items stretch [#6681](https://github.com/wix/wix-style-react/pull/6681)
 
 ### Fixed
+- `<Input/>` - fix prefix/suffix break line [#6695](https://github.com/wix/wix-style-react/pull/6695)
 - `<InputWithOptions/>` - fix unable to focus editable option [#6670](https://github.com/wix/wix-style-react/pull/6670)
 - `<Table/>`, `<TableListItem/>`,`<SelectableAccordion/>`- reduce spacing corrections [#6668](https://github.com/wix/wix-style-react/pull/6668)
 - `<Calendar/>` - Add A11Y example and make some changes according to Neil's review [#6655](https://github.com/wix/wix-style-react/pull/6655)
