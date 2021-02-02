@@ -16,6 +16,8 @@ Types of changes:
 
 ## Next
 
+## 9.76.0 - 2021-02-02
+
 ### Changed
 - `<MarketingLayout/>` - made root flex when align items stretch [#6681](https://github.com/wix/wix-style-react/pull/6681)
 
