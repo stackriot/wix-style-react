@@ -11,16 +11,21 @@
 :vars {
   horizontalPadding: 24px;
   checkedBorderWidth: 2px;
-  smallPadding: 12px;
-  mediumPadding: 18px;
-  newSmallPadding: 15px;
-  tinyPadding: 12px;
+  smallVerticalPadding: 12px;
+  mediumVerticalPadding: 18px;
+  newVerticalSmallPadding: 15px;
+  tinyVerticalPadding: 12px;
 }
 
 .root {
   -st-states: reducedSpacingAndImprovedLayout, checked, showDivider, dragging, verticalPadding(enum(tiny, small, medium)), draggable, clickable;
   background-color: value(D80);
   padding: 0 value(horizontalPadding);
+}
+
+.root:reducedSpacingAndImprovedLayout {
+  padding-inline-start: 18px;
+  padding-inline-end: 24px;
 }
 
 .root:checked {
@@ -38,23 +43,23 @@
 }
 
 .root:verticalPadding(tiny) {
-  padding-top: value(tinyPadding);
-  padding-bottom: value(tinyPadding);
+  padding-block-start: value(tinyVerticalPadding);
+  padding-block-end: value(tinyVerticalPadding);
 }
 
 .root:verticalPadding(small) {
-  padding-top: value(smallPadding);
-  padding-bottom: value(smallPadding);
+  padding-block-start: value(smallVerticalPadding);
+  padding-block-end: value(smallVerticalPadding);
 }
 
 .root:verticalPadding(small):reducedSpacingAndImprovedLayout {
-  padding-top: value(newSmallPadding);
-  padding-bottom: value(newSmallPadding);
+  padding-block-start: value(newVerticalSmallPadding);
+  padding-block-end: value(newVerticalSmallPadding);
 }
 
 .root:verticalPadding(medium) {
-  padding-top: value(mediumPadding);
-  padding-bottom: value(mediumPadding);
+  padding-block-start: value(mediumVerticalPadding);
+  padding-block-end: value(mediumVerticalPadding);
 }
 
 .root:draggable:hover {

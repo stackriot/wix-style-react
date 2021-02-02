@@ -371,6 +371,9 @@ class DataTable extends React.Component {
       [this.style.hasRowDetails]: rowDetails,
       [this.style.rowDetailsExtended]:
         !!selectedRows.get(rowData) && rowDetails(rowData),
+
+      [this.style
+        .reducedSpacingAndImprovedLayout]: reducedSpacingAndImprovedLayout,
     });
   };
 

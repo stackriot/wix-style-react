@@ -10,6 +10,7 @@ $activeColumnShadow: inset 0 -1px 0 0 $D70;
 $rowShadow: inset 0 1px 0 0 $D70;
 $cellHorizontalPadding: 12px;
 $cellHorizontalEdgePadding: 30px;
+$reducedCellHorizontalEdgePadding: 24px;
 
 :export {
   cellHorizontalPadding: $cellHorizontalPadding;
@@ -73,11 +74,19 @@ $cellHorizontalEdgePadding: 30px;
   &:last-child {
     padding-left: $cellHorizontalPadding;
     padding-right: $cellHorizontalEdgePadding;
+
+    &.reducedSpacingAndImprovedLayout {
+      padding-right: $reducedCellHorizontalEdgePadding;
+    }
   }
 
   &:first-child {
     padding-left: $cellHorizontalEdgePadding;
     padding-right: $cellHorizontalPadding;
+
+    &.reducedSpacingAndImprovedLayout {
+      padding-left: $reducedCellHorizontalEdgePadding;
+    }
   }
 }
 

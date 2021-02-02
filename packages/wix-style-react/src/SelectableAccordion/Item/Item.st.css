@@ -36,8 +36,13 @@
   justify-content: center;
   align-items: center;
 
-  padding-left: 30px;
-  padding-right: 18px;
+  padding-inline-start: 30px;
+  padding-inline-end: 18px;
+}
+
+.item:reducedSpacingAndImprovedLayout .selector{
+  padding-inline-start: 24px;
+  padding-inline-end: 18px;
 }
 
 .header {
@@ -45,28 +50,32 @@
   flex-direction: column;
   overflow: hidden;
   cursor: pointer;
-  padding-right: 30px;
-  padding-left: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 30px;
+}
+
+.item:reducedSpacingAndImprovedLayout .header {
+  padding-inline-start: 0;
+  padding-inline-end: 24px;
 }
 
 .item:verticalPadding(medium) .header {
-  padding-top: value(mediumVerticalPadding);
-  padding-bottom: value(mediumVerticalPadding);
+  padding-block-start: value(mediumVerticalPadding);
+  padding-block-end: value(mediumVerticalPadding);
 }
-
 .item:verticalPadding(medium):reducedSpacingAndImprovedLayout .header {
-  padding-top: value(newMediumVerticalPadding);
-  padding-bottom: value(newMediumVerticalPadding);
+  padding-block-start: value(newMediumVerticalPadding);
+  padding-block-end: value(newMediumVerticalPadding);
 }
 
 .item:verticalPadding(small) .header {
-  padding-top: value(smallVerticalPadding);
-  padding-bottom: value(smallVerticalPadding);
+  padding-block-start: value(smallVerticalPadding);
+  padding-block-end: value(smallVerticalPadding);
 }
 
 .item:verticalPadding(tiny) .header {
-  padding-top: value(tinyVerticalPadding);
-  padding-bottom: value(tinyVerticalPadding);
+  padding-block-start: value(tinyVerticalPadding);
+  padding-block-end: value(tinyVerticalPadding);
 }
 
 .content {
@@ -83,5 +92,5 @@
 }
 
 .item:reducedSpacingAndImprovedLayout .inner{
-  padding: 0 30px 18px 0;
+  padding: 0 24px 18px 0;
 }
