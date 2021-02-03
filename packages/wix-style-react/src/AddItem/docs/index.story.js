@@ -90,6 +90,13 @@ export default {
           }),
 
           example({
+            title: 'Title',
+            text:
+              "AddItem title can be displayed as visible always or hidden in a tooltip. It's controlled with children and tooltipContent props.",
+            source: examples.title,
+          }),
+
+          example({
             title: 'Themes',
             text: themes,
             source: examples.themes,

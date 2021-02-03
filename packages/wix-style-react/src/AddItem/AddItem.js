@@ -27,6 +27,11 @@ const AddItemButtonIcons = {
   ),
 };
 
+const tooltipPlacementByAlignment = {
+  left: 'top-start',
+  right: 'top-end',
+};
+
 class AddItem extends Component {
   static displayName = 'AddItem';
   static propTypes = {
@@ -54,10 +59,10 @@ class AddItem extends Component {
     /** A css class to be applied to the component's root element */
     className: PropTypes.string,
 
-    /** When provided, hover will display a tooltip - relevant only for theme `image` */
+    /** When provided, hover will display a tooltip */
     tooltipContent: PropTypes.node,
 
-    /** Tooltip props - relevant only for theme `image` */
+    /** Tooltip props */
     tooltipProps: PropTypes.shape(TooltipCommonProps),
 
     /** Displays the plus icon */
@@ -133,46 +138,36 @@ class AddItem extends Component {
   };
 
   _renderContent = () => {
-    const {
-      theme,
-      alignItems,
-      size,
-      disabled,
-      showIcon,
-      tooltipContent,
-      tooltipProps = {},
-    } = this.props;
+    const { theme, alignItems, size, disabled, showIcon } = this.props;
 
-    // For backwards compatibility
-    const content = tooltipProps.content || tooltipContent;
-
-    const container = (
+    return (
       <div
         className={st(classes.content, {
           theme,
           size,
           alignItems,
           disabled,
-          tooltip: !!content,
         })}
       >
         {showIcon && this._renderIcon()}
         {this._renderText()}
       </div>
     );
+  };
 
-    return theme === 'image' && !!content ? (
-      <Tooltip
-        {...tooltipProps}
-        content={content}
-        dataHook={dataHooks.itemTooltip}
-        className={classes.tooltip}
-      >
-        {container}
-      </Tooltip>
-    ) : (
-      container
-    );
+  _getTooltipProps = () => {
+    const { tooltipProps = {}, theme, tooltipContent, alignItems } = this.props;
+    const content = tooltipProps.content || tooltipContent;
+    const isImageTheme = theme === 'image';
+
+    return {
+      disabled: !content,
+      content,
+      flip: !isImageTheme,
+      moveBy: { y: isImageTheme ? -12 : 0 },
+      placement: tooltipPlacementByAlignment[alignItems] || 'top',
+      ...tooltipProps,
+    };
   };
 
   render() {
@@ -191,25 +186,32 @@ class AddItem extends Component {
     } = this.props;
 
     return (
-      <button
-        className={st(
-          classes.root,
-          { theme, removePadding, borderRadius, disabled },
-          className,
-        )}
-        style={borderRadius && { borderRadius }}
-        data-hook={dataHook}
-        disabled={disabled}
-        type="button"
-        onClick={onClick}
-        onFocus={focusableOnFocus}
-        onBlur={focusableOnBlur}
-        aria-label={ariaLabel}
-        aria-labelledby={ariaLabelledBy}
+      <Tooltip
+        className={classes.tooltip}
+        dataHook={dataHook}
+        {...this._getTooltipProps()}
       >
-        {this._renderContent()}
-      </button>
+        <button
+          className={st(
+            classes.root,
+            { theme, removePadding, borderRadius, disabled },
+            className,
+          )}
+          style={borderRadius && { borderRadius }}
+          disabled={disabled}
+          data-hook={dataHooks.addItem}
+          type="button"
+          onClick={onClick}
+          onFocus={focusableOnFocus}
+          onBlur={focusableOnBlur}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy}
+        >
+          {this._renderContent()}
+        </button>
+      </Tooltip>
     );
   }
 }
+
 export default withFocusable(AddItem);

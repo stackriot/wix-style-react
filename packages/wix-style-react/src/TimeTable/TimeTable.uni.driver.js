@@ -1,4 +1,5 @@
 import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { addItemUniDriverFactory } from '../AddItem/AddItem.uni.driver';
 import { DataAttribute, DataHook } from './constants';
 
 export const timeTableDriverFactory = base => {
@@ -23,7 +24,7 @@ export const timeTableDriverFactory = base => {
   const getAddItemButtonElementAt = async columnIndex => {
     const column = await getElementAt(DataHook.Column, columnIndex);
     await column.hover();
-    return column.$(byHook(DataHook.AddItemButton));
+    return addItemUniDriverFactory(column.$(byHook(DataHook.AddItemButton)));
   };
 
   return {

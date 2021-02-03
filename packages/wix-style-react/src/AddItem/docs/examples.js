@@ -1,5 +1,12 @@
 export const plain = `<AddItem>Add Item</AddItem>`;
 
+export const title = `
+  <Layout gap={10} cols={2}>
+      <AddItem>Add Item</AddItem>
+      <AddItem tooltipContent="Add Item"></AddItem>
+  </Layout>;
+`;
+
 export const themes = `
 <Layout gap={10} cols={1}>
   <div style={{ height: '55px'}}>

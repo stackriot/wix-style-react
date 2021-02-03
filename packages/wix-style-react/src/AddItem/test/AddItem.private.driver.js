@@ -1,12 +1,9 @@
 import addItemDriverFactory from '../AddItem.driver';
-import { tooltipTestkitFactory } from 'wix-ui-core/dist/src/testkit';
-import { dataHooks } from '../constants';
+import { tooltipDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/Tooltip.driver';
 
 export const addItemPrivateDriverFactory = ({ element, eventTrigger }) => {
-  const tooltipTestkit = tooltipTestkitFactory({
-    wrapper: element,
-    dataHook: dataHooks.itemTooltip,
-  });
+  const tooltipTestkit = tooltipDriverFactory({ element, eventTrigger });
+
   return {
     ...addItemDriverFactory({ element, eventTrigger }),
     tooltipElementExists: () => tooltipTestkit.exists(),

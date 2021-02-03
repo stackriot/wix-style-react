@@ -4,17 +4,14 @@ import { tooltipDriverFactory } from '../Tooltip/Tooltip.uni.driver';
 import { dataHooks } from './constants';
 
 export const addItemUniDriverFactory = (base, body) => {
-  const tooltipDriver = tooltipDriverFactory(
-    findByHook(base, dataHooks.itemTooltip),
-    body,
-  );
+  const tooltipDriver = tooltipDriverFactory(base, body);
   const textDriver = textUniDriverFactory(
     findByHook(base, dataHooks.itemText),
     body,
   );
 
   return {
-    ...baseUniDriverFactory(base),
+    ...baseUniDriverFactory(findByHook(base, dataHooks.addItem), body),
 
     /**
      * Gets AddItem text

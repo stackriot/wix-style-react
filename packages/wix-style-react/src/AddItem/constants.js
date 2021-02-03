@@ -1,6 +1,7 @@
 export const dataHooks = {
   itemText: 'additem-text',
   itemTooltip: 'additem-tooltip',
+  addItem: 'additem',
 };
 
 export const SIZE = {

@@ -1,22 +1,26 @@
 import textDriverFactory from '../Text/Text.driver';
-import { tooltipTestkitFactory } from 'wix-ui-core/dist/src/testkit';
+import { tooltipDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/Tooltip.driver';
 import { dataHooks } from './constants';
 
 const addItemDriverFactory = ({ element, eventTrigger }) => {
   const byHook = hook => element.querySelector(`[data-hook*="${hook}"]`);
-  const tooltipTestkit = tooltipTestkitFactory({
-    wrapper: element,
-    dataHook: dataHooks.itemTooltip,
+  const tooltipTestkit = tooltipDriverFactory({
+    element,
+    eventTrigger,
   });
   const textDriver = () =>
     textDriverFactory({ element: byHook(dataHooks.itemText) });
 
+  const baseElement = element.querySelector(
+    `[data-hook="${dataHooks.addItem}"]`,
+  );
+
   return {
     /** returns true if element in the DOM */
-    exists: () => !!element,
+    exists: () => !!baseElement,
 
     /** returns the driver element */
-    element: () => element,
+    element: () => baseElement,
 
     /** returns value of action text */
     getText: () => textDriver().getText(),
@@ -32,7 +36,7 @@ const addItemDriverFactory = ({ element, eventTrigger }) => {
       return text;
     },
     /** clicks on element */
-    click: () => eventTrigger.click(element),
+    click: () => eventTrigger.click(baseElement),
   };
 };
 
