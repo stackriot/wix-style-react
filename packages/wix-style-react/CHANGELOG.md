@@ -15,11 +15,13 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.77.0 - 2021-02-03
 ### Added
 - `<AddItem/>` - add support for tooltip [#6666](https://github.com/wix/wix-style-react/pull/6666)
 
 ### Fixed
-- `<MarketingLayout/>` - fix height and width when align items stretch [#6698]
+- `<MarketingLayout/>` - fix height and width when align items stretch [#6698](https://github.com/wix/wix-style-react/pull/6698)
 - `<RadioGroup />` - fix puppeteer testkit - `check` not working [#6649](https://github.com/wix/wix-style-react/pull/6649)
 - `<RadioGroup/>` - custom children are not stretched to full width [#6649](https://github.com/wix/wix-style-react/pull/6649)
 
