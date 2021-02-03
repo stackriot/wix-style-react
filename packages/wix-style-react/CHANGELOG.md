@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<AddItem/>` - add support for tooltip [#6666](https://github.com/wix/wix-style-react/pull/6666)
 
 ### Fixed
 - `<MarketingLayout/>` - fix height and width when align items stretch [#6698]
@@ -25,7 +27,6 @@ Types of changes:
 ## 9.76.0 - 2021-02-02
 ### Changed
 - `<MarketingLayout/>` - made root flex when align items stretch [#6681](https://github.com/wix/wix-style-react/pull/6681)
-- `<AddItem/>` - add support for tooltip [#6666](https://github.com/wix/wix-style-react/pull/6666)
 
 ### Fixed
 - `<Input/>` - fix prefix/suffix break line [#6695](https://github.com/wix/wix-style-react/pull/6695)
