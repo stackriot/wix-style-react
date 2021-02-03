@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { st, classes } from './CustomModalLayout.st.css';
-
 import BaseModalLayout from '../BaseModalLayout';
 import Button from '../Button';
+import deprecationLog from '../utils/deprecationLog';
 
 /** CustomModalLayout */
 const CustomModalLayout = ({
@@ -20,6 +19,12 @@ const CustomModalLayout = ({
   style,
   ...restProps
 }) => {
+  if (hideContentDividers) {
+    deprecationLog(
+      '<CustomModalLayout/> - hideContentDividers prop is deprecated and will be removed in next major release, please use showHeaderDivider and showFooterDivider instead',
+    );
+  }
+
   return (
     <BaseModalLayout
       {...restProps}
@@ -133,7 +138,10 @@ CustomModalLayout.propTypes = {
    * when set to false - bottom divider is never shown
    */
   showFooterDivider: PropTypes.oneOf(['auto', true, false]),
-  /** Hides dividers that shows above/below the content */
+  /**
+   * Hides dividers that shows above/below the content
+   * @deprecated
+   */
   hideContentDividers: PropTypes.bool,
 };
 

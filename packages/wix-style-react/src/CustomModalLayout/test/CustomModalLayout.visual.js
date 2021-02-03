@@ -66,13 +66,6 @@ const tests = [
     describe: 'content',
     its: [
       {
-        it: 'hideContentDividers',
-        props: {
-          children: LONG_CONTENT,
-          hideContentDividers: true,
-        },
-      },
-      {
         it: 'removeContentPadding',
         props: {
           children: LONG_CONTENT,
