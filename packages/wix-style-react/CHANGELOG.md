@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Fixed
+- `<MarketingLayout/>` - fix height and width when align items stretch [#6698]
+
 ### Deprecated
 - `<CustomModalLayout/>` - deprecate hideContentDividers prop [#6696](https://github.com/wix/wix-style-react/pull/6696)
 
