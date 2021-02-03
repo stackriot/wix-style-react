@@ -25,6 +25,7 @@ Types of changes:
 ## 9.76.0 - 2021-02-02
 ### Changed
 - `<MarketingLayout/>` - made root flex when align items stretch [#6681](https://github.com/wix/wix-style-react/pull/6681)
+- `<AddItem/>` - add support for tooltip [#6666](https://github.com/wix/wix-style-react/pull/6666)
 
 ### Fixed
 - `<Input/>` - fix prefix/suffix break line [#6695](https://github.com/wix/wix-style-react/pull/6695)
