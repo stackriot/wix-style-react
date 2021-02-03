@@ -20,6 +20,11 @@ Types of changes:
 
 ### Fixed
 - `<MarketingLayout/>` - fix height and width when align items stretch [#6698]
+- `<RadioGroup />` - fix puppeteer testkit - `check` not working [#6649](https://github.com/wix/wix-style-react/pull/6649)
+- `<RadioGroup/>` - custom children are not stretched to full width [#6649](https://github.com/wix/wix-style-react/pull/6649)
+
+## Changed
+- `<RadioGroup/>` - refactor to use <Radio/> component [#6649](https://github.com/wix/wix-style-react/pull/6649)
 
 ### Deprecated
 - `<CustomModalLayout/>` - deprecate hideContentDividers prop [#6696](https://github.com/wix/wix-style-react/pull/6696)
