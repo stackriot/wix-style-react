@@ -81,7 +81,10 @@
 }
 
 .root:alignItems(stretch) {
-  display: flex;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .root:alignItems(stretch) .contentContainer {
