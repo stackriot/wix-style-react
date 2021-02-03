@@ -16,8 +16,10 @@ Types of changes:
 
 ## Next
 
-## 9.76.0 - 2021-02-02
+### Deprecated
+- `<CustomModalLayout/>` - deprecate hideContentDividers prop [#6696](https://github.com/wix/wix-style-react/pull/6696)
 
+## 9.76.0 - 2021-02-02
 ### Changed
 - `<MarketingLayout/>` - made root flex when align items stretch [#6681](https://github.com/wix/wix-style-react/pull/6681)
 
