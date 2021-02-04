@@ -19,6 +19,7 @@ import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
 
 import CarouselWIP from '..';
+import SectionHelper from '../../SectionHelper';
 
 const code = config => baseCode({ components: allComponents, ...config });
 
@@ -47,6 +48,16 @@ export default {
           importExample(),
 
           divider(),
+
+          description({
+            text: (
+              <SectionHelper title="WARNING">
+                This component is work in progress, please don't use this
+                component unless you were instructed to by wsr team. <br />
+                Note that API is not stable and can change anytime!
+              </SectionHelper>
+            ),
+          }),
 
           title('Examples'),
 

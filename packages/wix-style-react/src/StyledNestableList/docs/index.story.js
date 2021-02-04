@@ -74,7 +74,8 @@ export default {
             text: (
               <SectionHelper title="WARNING">
                 This component is work in progress, please don't use this
-                component unless you were instructed to by wsr team.
+                component unless you were instructed to by wsr team. <br />
+                Note that API is not stable and can change anytime!
               </SectionHelper>
             ),
           }),
