@@ -544,6 +544,10 @@ export {
 export * from './WixStyleReactProvider';
 
 export { default as BounceAnimation } from './BounceAnimation';
+
+export { default as TimeInputWip } from './TimeInputWip';
+export * from './TimeInputWip';
+
 export * from './BounceAnimation';
 
 export * from './TrendIndicator';

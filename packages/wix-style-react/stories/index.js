@@ -165,6 +165,7 @@ require('../src/TextButton/docs/index.story');
 require('../src/ThemeProvider/docs/index.story');
 require('../src/Thumbnail/docs/index.story');
 require('../src/TimeInput/docs/index.story');
+require('../src/TimeInputWip/docs/index.story');
 require('../src/TimeTable/docs/index.story');
 require('../src/Timeline/docs/index.story');
 require('../src/ToggleButton/docs/index.story');

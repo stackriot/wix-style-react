@@ -161,6 +161,7 @@ const javascriptFiles = [
   ['ThemeProvider.bundle.min.js', 5],
   ['Thumbnail.bundle.min.js', 42],
   ['TimeInput.bundle.min.js', 84],
+  ['TimeInputWip.bundle.min.js', 75],
   ['TimeTable.bundle.min.js', 74],
   ['Timeline.bundle.min.js', 37],
   ['ToggleButton.bundle.min.js', 43],

@@ -527,6 +527,9 @@
   "TimeInput": {
     "path": "src/TimeInput"
   },
+  "TimeInputWip": {
+    "path": "src/TimeInputWip"
+  },
   "TimeTable": {
     "path": "src/TimeTable"
   },
