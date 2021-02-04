@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { WixStyleReactContext } from '../../WixStyleReactProvider/context';
 import Checkbox from '../../Checkbox';
 import ToggleSwitch from '../../ToggleSwitch';
-import RadioGroup from '../../RadioGroup';
+import Radio from '../../Radio';
 import Heading from '../../Heading';
 import Text from '../../Text';
 import Collapse from '../../Collapse';
@@ -71,9 +71,7 @@ export default class SelectableAccordionItem extends React.PureComponent {
         selector = <Checkbox checked={open} onChange={this._onChange} />;
         break;
       case TYPES.RADIO:
-        selector = (
-          <RadioGroup.Radio checked={open} onChange={this._onChange} />
-        );
+        selector = <Radio checked={open} onChange={this._onChange} />;
         break;
       case TYPES.TOGGLE:
         selector = (
