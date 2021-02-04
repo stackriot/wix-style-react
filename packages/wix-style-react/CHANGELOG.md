@@ -19,6 +19,9 @@ Types of changes:
 ### Fixed
 - `<Tooltip/>` - scope classnames targeting to immediate child [#6700](https://github.com/wix/wix-style-react/pull/6700)
 
+### Docs
+- `<SelectorList/>` - fix testkit docs [#6703](https://github.com/wix/wix-style-react/pull/6703)
+
 ## 9.77.0 - 2021-02-03
 ### Added
 - `<AddItem/>` - add support for tooltip [#6666](https://github.com/wix/wix-style-react/pull/6666)
