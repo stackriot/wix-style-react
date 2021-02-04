@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Changed
+- `<DatePicker/>` - implement localization fixes [#6684](https://github.com/wix/wix-style-react/pull/6684)
+
 ### Fixed
 - `<Tooltip/>` - scope classnames targeting to immediate child [#6700](https://github.com/wix/wix-style-react/pull/6700)
 
