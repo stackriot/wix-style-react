@@ -39,62 +39,62 @@ export const selectorListUniDriverFactory = (base, body) => {
      * Checks whether the main loader exists.
      * @returns {Promise<boolean>} True if main loader exists; false otherwise.
      */
-    mainLoaderExists: mainLoaderDriver.exists,
+    mainLoaderExists: () => mainLoaderDriver.exists(),
     /**
      * Checks whether the next page loader exists.
      * @returns {Promise<boolean>} True if next page loader exists; false otherwise.
      */
-    nextPageLoaderExists: nextPageLoaderDriver.exists,
+    nextPageLoaderExists: () => nextPageLoaderDriver.exists(),
     /**
      * Checks whether the search input exists.
      * @returns {Promise<boolean>} True if search input exists; false otherwise.
      */
-    searchInputExists: searchDriver.exists,
+    searchInputExists: () => searchDriver.exists(),
     /**
      * Focuses search input
      * @returns {Promise<void>} Resolves when search input is focused.
      */
-    focusSearchInput: searchDriver.inputDriver.focus,
+    focusSearchInput: () => searchDriver.inputDriver.focus(),
     /**
      * Changes search input value
      * @param {string} value
      * @returns {Promise<void>} Resolves when search input value changes.
      */
-    enterSearchValue: searchDriver.inputDriver.enterText,
+    enterSearchValue: value => searchDriver.inputDriver.enterText(value),
     /**
      * Returns search input value
      * @returns {Promise<string>} Search input string value.
      */
-    getSearchValue: searchDriver.inputDriver.getValue,
+    getSearchValue: () => searchDriver.inputDriver.getValue(),
     /**
      * Clicks on search input's clear button to clear value
      * @returns {Promise<void>} Resolves when clear button was clicked.
      */
-    clickSearchInputClear: searchDriver.inputDriver.clickClear,
+    clickSearchInputClear: () => searchDriver.inputDriver.clickClear(),
     /**
      * Checks whether the toggle-all checkbox exists.
      * @param {UniDriver<any>} checkboxContainer a unidriver of the checkbox's container
      * @returns {Promise<boolean>} True if toggle-all checkbox exists; false otherwise.
      */
-    toggleAllCheckboxExists: toggleAllCheckboxDriver.exists,
+    toggleAllCheckboxExists: () => toggleAllCheckboxDriver.exists(),
     /**
      * Checks whether the toggle-all checkbox is checked.
      * @param {UniDriver<any>} checkboxContainer a unidriver of the checkbox's container
      * @returns {Promise<boolean>} True if toggle-all checkbox is checked; false otherwise.
      */
-    isToggleAllCheckboxChecked: toggleAllCheckboxDriver.isChecked,
+    isToggleAllCheckboxChecked: () => toggleAllCheckboxDriver.isChecked(),
     /**
      * Returns toggle-all checkbox label text
      * @param {UniDriver<any>} checkboxContainer a unidriver of the checkbox's container
      * @returns {Promise<string>}
      */
-    getToggleAllCheckboxLabel: toggleAllCheckboxDriver.getLabel,
+    getToggleAllCheckboxLabel: () => toggleAllCheckboxDriver.getLabel(),
     /**
      * Clicks on toggle-all checkbox to select/deselect all non-disabled items.
      * @param {UniDriver<any>} checkboxContainer a unidriver of the checkbox's container
      * @returns {Promise<void>} Resolves when toggle-all checkbox was clicked.
      */
-    clickToggleAllCheckbox: toggleAllCheckboxDriver.click,
+    clickToggleAllCheckbox: () => toggleAllCheckboxDriver.click(),
     /**
      * Checks whether empty state is shown.
      * @returns {Promise<boolean>} True if empty state is shown; false otherwise.
