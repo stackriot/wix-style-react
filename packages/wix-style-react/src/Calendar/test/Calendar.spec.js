@@ -7,6 +7,10 @@ import {
   cleanup,
 } from '../../../test/utils/react';
 import { calendarUniDriverFactory } from '../Calendar.uni.driver';
+import { CAPITALIZED_MONTH_LANGUAGES } from '../../LocaleUtils';
+
+const isFirstLetterCapitalized = str =>
+  str && str.length && str[0] === str[0].toLocaleUpperCase();
 
 describe('Calendar', () => {
   describe('[sync]', () => {
@@ -64,6 +68,21 @@ describe('Calendar', () => {
         );
 
         expect(await driver.getMonthCaption()).toEqual(monthNames[OCTOBER]);
+      });
+
+      it('should capitalize first letter of month in certain languages', async () => {
+        for (const locale of CAPITALIZED_MONTH_LANGUAGES) {
+          const { driver } = render(
+            <Calendar
+              value={{ from: new Date(2018, OCTOBER, 5) }}
+              onChange={() => {}}
+              locale={locale}
+            />,
+          );
+
+          const monthCaption = await driver.getMonthCaption();
+          expect(isFirstLetterCapitalized(monthCaption)).toBe(true);
+        }
       });
 
       it('should display the month of the {from} Date if the provided value is {from} with a date string', async () => {

@@ -248,6 +248,7 @@ export default class Calendar extends React.PureComponent {
           date: month,
           showYearDropdown,
           showMonthDropdown,
+          locale: typeof locale === 'string' ? locale : '',
           localeUtils,
           onChange: this._setMonth,
           onLeftArrowClick: () =>
@@ -512,10 +513,16 @@ Calendar.propTypes = {
       'zh',
       'th',
       'cs',
+      'uk',
     ]),
     PropTypes.shape({
-      distanceInWords: PropTypes.object,
-      format: PropTypes.object,
+      code: PropTypes.string,
+      formatDistance: PropTypes.func,
+      formatRelative: PropTypes.func,
+      localize: PropTypes.object,
+      formatLong: PropTypes.object,
+      match: PropTypes.object,
+      options: PropTypes.object,
     }),
   ]),
 

@@ -4,6 +4,7 @@ import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 
 import Calendar from '..';
 import { calendarUniDriverFactory } from '../Calendar.uni.driver.js';
+import { REVERSE_MONTH_YEAR_LANGUAGES } from '../DatePickerHead/DatePickerHead';
 
 const dataHook = 'calendar';
 const calendarTestkitFactory = uniTestkitFactoryCreator(
@@ -140,6 +141,16 @@ const tests = [
           showYearDropdown: true,
         },
       },
+      ...REVERSE_MONTH_YEAR_LANGUAGES.map(locale => ({
+        it: `Flips months and years dropdowns in ${locale}`,
+        props: {
+          placeholderText: 'Select Date',
+          value: new Date('2020/10/10'),
+          showMonthDropdown: true,
+          showYearDropdown: true,
+          locale: locale,
+        },
+      })),
       {
         it: 'Date Indication',
         props: {
