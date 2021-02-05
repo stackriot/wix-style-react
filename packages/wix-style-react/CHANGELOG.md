@@ -14,7 +14,7 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## Next
+## 9.78.0 - 2021-02-04
 
 ### Changed
 - `<DatePicker/>` - implement localization fixes [#6684](https://github.com/wix/wix-style-react/pull/6684)
