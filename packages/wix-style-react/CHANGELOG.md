@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.78.1 - 2021-02-07
 ### Fixed
 - `<RadioGroup/>` - [testkit] - fix legacy testkit [#6712](https://github.com/wix/wix-style-react/pull/6712)
 - Readme - fix link to Storybook [#6711](https://github.com/wix/wix-style-react/pull/6711)
