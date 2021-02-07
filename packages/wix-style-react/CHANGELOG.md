@@ -14,8 +14,12 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## 9.78.0 - 2021-02-04
+## Next
+### Fixed
+- `<RadioGroup/>` - [testkit] - fix legacy testkit [#6712](https://github.com/wix/wix-style-react/pull/6712)
+- Readme - fix link to Storybook [#6711](https://github.com/wix/wix-style-react/pull/6711)
 
+## 9.78.0 - 2021-02-04
 ### Changed
 - `<DatePicker/>` - implement localization fixes [#6684](https://github.com/wix/wix-style-react/pull/6684)
 
