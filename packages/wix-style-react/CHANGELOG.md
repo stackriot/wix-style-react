@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<CounterBadge/>` - Add style for newDashboard theme [#6710](https://github.com/wix/wix-style-react/pull/6710)
+
 ## 9.78.1 - 2021-02-07
 ### Fixed
 - `<RadioGroup/>` - [testkit] - fix legacy testkit [#6712](https://github.com/wix/wix-style-react/pull/6712)
