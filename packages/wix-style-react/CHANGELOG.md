@@ -18,6 +18,7 @@ Types of changes:
 
 ### Added
 - `<CounterBadge/>` - Add style for newDashboard theme [#6710](https://github.com/wix/wix-style-react/pull/6710)
+- `<Calendar/>` - add an onMonthChange prop (register a listener to setMonth event) [#6716](https://github.com/wix/wix-style-react/pull/6716)
 
 ## 9.78.1 - 2021-02-07
 ### Fixed
