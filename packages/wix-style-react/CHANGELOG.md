@@ -14,11 +14,14 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## Next
+## 9.79.0 - 2021-02-08
 
 ### Added
 - `<CounterBadge/>` - Add style for newDashboard theme [#6710](https://github.com/wix/wix-style-react/pull/6710)
 - `<Calendar/>` - add an onMonthChange prop (register a listener to setMonth event) [#6716](https://github.com/wix/wix-style-react/pull/6716)
+
+### Fixed
+- `<RadioGroup>` - reverting changes from previous version [#6719](https://github.com/wix/wix-style-react/pull/6719)
 
 ## 9.78.1 - 2021-02-07
 ### Fixed
