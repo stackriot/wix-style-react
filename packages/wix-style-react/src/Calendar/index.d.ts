@@ -12,6 +12,7 @@ export interface CalendarProps {
   numOfMonths?: 1 | 2;
   className?: string;
   onChange: Function;
+  onMonthChange?: (monthStart: Date) => void;
   onClose?: Function;
   excludePastDates?: boolean;
   filterDate?: Function;

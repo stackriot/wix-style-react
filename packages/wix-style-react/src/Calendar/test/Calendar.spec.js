@@ -263,6 +263,30 @@ describe('Calendar', () => {
       });
     });
 
+    it('should call onMonthChange with the current month first day when changing the displayed month', async () => {
+      const currentMonth = 2;
+      const date = new Date(2021, currentMonth, 1);
+      const expectedMonth = new Date(2021, currentMonth + 1, 1);
+      const onMonthChange = jest.fn();
+      const { driver } = render(
+        <Calendar
+          value={date}
+          onMonthChange={onMonthChange}
+          onChange={() => {}}
+          selectionMode={'day'}
+        />,
+      );
+      expect(onMonthChange).toHaveBeenCalledTimes(0);
+
+      await driver.clickOnNextMonthButton();
+
+      expect(onMonthChange).toHaveBeenCalledTimes(1);
+      const onMonthChangeValue = onMonthChange.mock.calls[0][0];
+      expect(onMonthChangeValue.toLocaleDateString()).toEqual(
+        expectedMonth.toLocaleDateString(),
+      );
+    });
+
     describe('clicking on a day', () => {
       let onChange;
 

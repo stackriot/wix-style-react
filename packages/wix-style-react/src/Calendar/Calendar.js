@@ -96,6 +96,10 @@ export default class Calendar extends React.PureComponent {
 
   _setMonth = month => {
     this.setState({ month });
+    const { onMonthChange } = this.props;
+    if (onMonthChange) {
+      onMonthChange(month);
+    }
   };
 
   _handleDayClick = (value, modifiers = {}, event = null) => {
@@ -456,6 +460,9 @@ Calendar.propTypes = {
 
   /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
   onChange: PropTypes.func.isRequired,
+
+  /** Callback function called with the Date of the first day of the month whenever the user selects a month in the calendar */
+  onMonthChange: PropTypes.func,
 
   /** Callback function called whenever user press escape or click outside of the element or a date is selected and `shouldCloseOnSelect` is set. Receives an event as first argument */
   onClose: PropTypes.func,
