@@ -14,7 +14,7 @@
     "test6:sanity": "lerna run --scope wix-style-react test6:sanity",
     "test7:performance": "lerna run --scope wix-style-react test7:performance",
     "test8:chromatic": "lerna run --scope wix-style-react-test-runtime test",
-    "test9": "#",
+    "test9": "lerna run build --scope wix-ui-tpa && lerna run test --scope wix-ui-tpa",
     "test10": "#",
     "test11": "#",
     "test12": "#",
