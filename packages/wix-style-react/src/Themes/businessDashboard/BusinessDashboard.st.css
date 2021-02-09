@@ -22,6 +22,11 @@
 }
 
 :import {
+  -st-from: "../../CounterBadge/CounterBadge.st.css";
+  -st-default: CounterBadge;
+}
+
+:import {
   -st-from: "../../LinearProgressBar/LinearProgressBar.st.css";
   -st-default: LinearProgressBar;
 }
