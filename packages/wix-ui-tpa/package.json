@@ -12,13 +12,13 @@
     "email": "fed-infra@wix.com"
   },
   "bugs": {
-    "url": "https://github.com/wix/wix-ui-tpa/issues"
+    "url": "https://github.com/wix/wix-style-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wix/wix-ui-tpa.git"
+    "url": "git+https://github.com/wix/wix-style-react.git"
   },
-  "homepage": "https://github.com/wix/wix-ui-tpa#readme",
+  "homepage": "https://github.com/wix/wix-style-react/blob/master/packages/wix-ui-tpa#readme",
   "files": [
     "dist",
     "*.js",

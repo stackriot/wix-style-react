@@ -1,4 +1,4 @@
-import {addParameters, configure} from '@storybook/react';
+import { addParameters, configure } from '@storybook/react';
 import './stories.scss';
 import { init } from '../test/visual/StyleProcessorUtil';
 
@@ -6,7 +6,7 @@ function loadStories() {
   require('../mocks');
   require('../stories/utils/MobilePageStory');
   const req = require.context('../src', true, /\.visual\.tsx$/);
-  req.keys().forEach(filename => req(filename));
+  req.keys().forEach((filename) => req(filename));
 
   setTimeout(init);
 }
@@ -24,7 +24,8 @@ function alphaSort(strA, strB) {
 addParameters({
   options: {
     name: 'wix-ui-tpa',
-    url: 'https://github.com/wix/wix-ui-tpa',
+    url:
+      'https://github.com/wix/wix-style-react/tree/master/packages/wix-ui-tpa',
     storySort: (a, b) => alphaSort(a[1].id, b[1].id),
   },
 });

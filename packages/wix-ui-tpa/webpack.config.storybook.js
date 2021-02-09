@@ -26,7 +26,7 @@ function reconfigureStylable(config) {
     resolveNamespace: resolveNamespaceFactory(project.name),
     // resolveNamespace: (namespace) => namespace + 'TPA',
     transformHooks: {
-      postProcessor: stylableResult => {
+      postProcessor: (stylableResult) => {
         autoprefixProcessor.process(stylableResult.meta.outputAst).sync();
         return stylableResult;
       },
@@ -41,7 +41,7 @@ function reconfigureStylable(config) {
   return config;
 }
 
-const makeTestkitTemplate = platform =>
+const makeTestkitTemplate = (platform) =>
   `import { <%= utils.toCamel(component.displayName) %>TestkitFactory } from 'wix-ui-tpa/dist/src/testkit${platform}';`;
 
 module.exports = ({ config }) => {
@@ -66,10 +66,10 @@ module.exports = ({ config }) => {
           storyConfig: {
             moduleName: 'wix-ui-tpa',
             repoBaseURL:
-              'https://github.com/wix/wix-ui-tpa/tree/master/src/components/',
+              'https://github.com/wix/wix-style-react/tree/master/src/components/',
             importFormat:
               "import {%componentName} from '%moduleName/%componentName'",
-            issueURL: 'https://github.com/wix/wix-ui-tpa/issues/new',
+            issueURL: 'https://github.com/wix/wix-style-react/issues/new',
             testkits: {
               vanilla: {
                 template: makeTestkitTemplate(''),

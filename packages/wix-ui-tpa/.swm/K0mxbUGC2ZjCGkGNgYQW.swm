@@ -2,7 +2,7 @@
     "id": "K0mxbUGC2ZjCGkGNgYQW",
     "name": "Consuming TPAComponentsContext",
     "dod": "In this unit you consume the TPAComponentsContext correctly.",
-    "description": "We can use `TPAComponentsConsumer` when the component needs to be aware of `mobile` and `rtl` states of the containing application.\n\nFor more information check [this](https://github.com/wix/wix-ui-tpa/blob/master/docs/USAGE.md#tpacomponentsprovider) out.",
+    "description": "We can use `TPAComponentsConsumer` when the component needs to be aware of `mobile` and `rtl` states of the containing application.\n\nFor more information check [this](https://github.com/wix/wix-style-react/blob/master/packages/wix-ui-tpa/docs/USAGE.md#tpacomponentsprovider) out.",
     "summary": "",
     "hunksOrder": [
         "src/components/Dialog/Dialog.tsx_0"

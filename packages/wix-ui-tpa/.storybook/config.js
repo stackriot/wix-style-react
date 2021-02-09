@@ -21,14 +21,16 @@ function configureStorybook() {
 const theme = create({
   base: 'light',
   brandTitle: `wix-ui-tpa v${version}`,
-  brandUrl: 'https://github.com/wix/wix-ui-tpa',
+  brandUrl:
+    'https://github.com/wix/wix-style-react/tree/master/packages/wix-ui-tpa',
 });
 
 addParameters({
   options: {
     theme,
     name: 'wix-ui-tpa',
-    url: 'https://github.com/wix/wix-ui-tpa',
+    url:
+      'https://github.com/wix/wix-style-react/tree/master/packages/wix-ui-tpa',
     showRoots: true,
   },
 });

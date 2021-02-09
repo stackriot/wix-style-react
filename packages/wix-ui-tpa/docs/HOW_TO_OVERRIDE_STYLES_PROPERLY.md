@@ -10,7 +10,7 @@
 
 ### How to override a component's stylesheet?
 > Be sure to read our [Usage document](
-https://github.com/wix/wix-ui-tpa/blob/master/docs/USAGE.md#overriding-predefined-style-params)
+https://github.com/wix/wix-style-react/blob/master/packages/wix-ui-tpa/docs/USAGE.md#overriding-predefined-style-params)
 
 wix-ui-tpa components are wired to users' sites palettes and fonts out-of-the-box.  
 In addition, most of the components also allow TPA's to extend their style. We achieve this by 
@@ -31,7 +31,7 @@ These variables will be found in the `Style API` tab in the component's storyboo
 
 If the component uses the new approach for overrides (using the `overrideStyleParams` class), 
 use that to extend the component (as described in the aforementioned [guide](
-https://github.com/wix/wix-ui-tpa/blob/master/docs/USAGE.md#an-optimized-way-for-style-overriding---new))  
+https://github.com/wix/wix-style-react/blob/master/packages/wix-ui-tpa/docs/USAGE.md#an-optimized-way-for-style-overriding---new))  
 If not, then use its "default" `.root` export for overrides.
 
 In any case **DO NOT** use `-st-extends` to override styles by targeting internal elements.

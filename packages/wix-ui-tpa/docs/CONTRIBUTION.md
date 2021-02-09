@@ -19,7 +19,7 @@ This will generate all the necessary files that are required for the new compone
   * `examples.ts` - The examples that will be displayed in the storybook under the `usage` tab.
 * `perf` folder - for bundle size tests using [perfer](https://bo.wix.com/pages/perfer/)
   * `ComponentBasic.tsx` - A basic usage of our Component
-  * `ComponentExtended.tsx` - Using the Component with style overrides (using Stylable's [`-st-mixin`](https://github.com/wix/wix-ui-tpa/blob/master/docs/USAGE.md#an-optimized-way-for-style-overriding---new))
+  * `ComponentExtended.tsx` - Using the Component with style overrides (using Stylable's [`-st-mixin`](https://github.com/wix/wix-style-react/blob/master/packages/wix-ui-tpa/docs/USAGE.md#an-optimized-way-for-style-overriding---new))
   * `ComponentExtended.st.css` - Used by `ComponentExtended.tsx` ☝️
 * `index.tsx` - for exporting.
 
