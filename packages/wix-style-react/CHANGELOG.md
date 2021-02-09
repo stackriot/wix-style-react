@@ -18,6 +18,7 @@ Types of changes:
 
 ### Added
 - `Themes | Business Dashboard` - add `<CounterBadge/>` stylable rule to the theme  [#6721](https://github.com/wix/wix-style-react/pull/6721)
+- `<MarketingLayout/>` - adding `direction` prop [#6691](https://github.com/wix/wix-style-react/pull/6691)
 
 ## 9.79.0 - 2021-02-08
 
