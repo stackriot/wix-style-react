@@ -14,11 +14,25 @@ const getDelayValue = delay => {
 };
 
 const Animate = React.forwardRef(
-  ({ dataHook, className, delay, onStart, onEnd, children }, ref) => (
+  (
+    {
+      dataHook,
+      className,
+      delay,
+      onStart,
+      onEnd,
+      children,
+      animateInlineStyle,
+    },
+    ref,
+  ) => (
     <div
       data-hook={dataHook}
       className={className}
-      style={{ animationDelay: getDelayValue(delay) }}
+      style={{
+        animationDelay: getDelayValue(delay),
+        ...animateInlineStyle,
+      }}
       onAnimationStart={onStart}
       onAnimationEnd={onEnd}
       ref={ref}
@@ -46,6 +60,9 @@ Animate.propTypes = {
 
   /** set a delay before the animation execution. When provided a number- sets this as `ms`.*/
   delay: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /** Add inline styles to the animation */
+  animateInlineStyle: PropTypes.object,
 };
 
 Animate.displayName = 'Animate';

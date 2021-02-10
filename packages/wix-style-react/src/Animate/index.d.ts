@@ -7,6 +7,7 @@ export interface AnimateProps {
   onStart?(): void;
   onEnd?(): void;
   delay?: string | number;
+  animateInlineStyle?: React.CSSProperties;
 }
 
 declare const Animate: React.FC<AnimateProps>;

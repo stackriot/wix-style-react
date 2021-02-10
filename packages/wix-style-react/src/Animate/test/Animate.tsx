@@ -19,6 +19,7 @@ function animateWithAllProps() {
       onEnd={() => {}}
       delay={500}
       className='some-class'
+      animateInlineStyle={{}}
     />
   );
 }
