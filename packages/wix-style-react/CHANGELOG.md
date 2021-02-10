@@ -14,7 +14,7 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## Next
+## 9.80.0 - 2021-02-10
 
 ### Added
 - `Themes | Business Dashboard` - add `<CounterBadge/>` stylable rule to the theme  [#6721](https://github.com/wix/wix-style-react/pull/6721)
