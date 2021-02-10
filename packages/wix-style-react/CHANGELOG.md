@@ -21,6 +21,9 @@ Types of changes:
 - `<MarketingLayout/>` - adding `direction` prop [#6691](https://github.com/wix/wix-style-react/pull/6691)
 - `<PulseAnimation/>` - add new component [#6656](https://github.com/wix/wix-style-react/pull/6656)
 
+### Fixed
+- `<Animate/>` - rename prop (internal component) [#6730](https://github.com/wix/wix-style-react/pull/6730)
+
 ## 9.79.0 - 2021-02-08
 
 ### Added
