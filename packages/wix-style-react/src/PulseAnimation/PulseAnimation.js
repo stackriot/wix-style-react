@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { st, classes } from './PulseAnimation.st.css';
 import Animate from '../Animate';
 import { childSize, childWidthRange } from './constants';
-
-const isValueInRange = (x, min, max) => x >= min && x <= max;
+import { isValueInRange } from '../Animate/utils';
 
 /** PulseAnimation*/
 class PulseAnimation extends React.PureComponent {
@@ -48,17 +47,17 @@ class PulseAnimation extends React.PureComponent {
     return (
       <Animate
         dataHook={dataHook}
-        delay={delay}
-        className={st(classes.root, {
+        animateClasses={st(classes.root, {
           active,
           loop,
           size: animationSize,
           color,
         })}
+        animateInlineStyle={{ borderRadius }}
         onEnd={onEnd}
         onStart={onStart}
+        delay={delay}
         ref={this.rootRef}
-        animateInlineStyle={{ borderRadius }}
       >
         {children}
       </Animate>

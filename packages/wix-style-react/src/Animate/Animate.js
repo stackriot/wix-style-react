@@ -17,7 +17,7 @@ const Animate = React.forwardRef(
   (
     {
       dataHook,
-      className,
+      animateClasses,
       delay,
       onStart,
       onEnd,
@@ -28,7 +28,7 @@ const Animate = React.forwardRef(
   ) => (
     <div
       data-hook={dataHook}
-      className={className}
+      className={animateClasses}
       style={{
         animationDelay: getDelayValue(delay),
         ...animateInlineStyle,
@@ -44,7 +44,7 @@ const Animate = React.forwardRef(
 
 Animate.propTypes = {
   /** Classes to be applied to the root element. */
-  className: PropTypes.string,
+  animateClasses: PropTypes.string,
 
   /** Applied as data-hook HTML attribute that can be used in the tests */
   dataHook: PropTypes.string,
