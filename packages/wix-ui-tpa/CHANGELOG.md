@@ -1,3 +1,13 @@
+# 2.22.0 (2021-02-11)
+
+
+### Features
+
+* **Dropdown:** Fix style overrides affecting Dropdown button ([468dda4](https://github.com/wix/wix-style-react/commit/468dda4cfe0ed042d537f96f7e3b626bd889de39))
+* **Image:** implement `focalPoint` prop ([#6738](https://github.com/wix/wix-style-react/issues/6738)) ([65b2a4c](https://github.com/wix/wix-style-react/commit/65b2a4ce9e68cea1e7e658ec26b26b0fd0559f7a))
+
+
+
 ## [2.21.2](https://github.com/wix/wix-ui-tpa/compare/v2.21.1...v2.21.2) (2021-02-08)
 
 
