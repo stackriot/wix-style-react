@@ -14,6 +14,11 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
+
+## Next
+### Fixed
+- `<PulseAnimation/>` - fix click on children [#6742](https://github.com/wix/wix-style-react/pull/6742)
+
 ## 9.80.0 - 2021-02-10
 
 ### Added
