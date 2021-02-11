@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { delay } from '../../test/utils';
 import { snap, story, visualize } from 'storybook-snapper';
+import { delay } from '../../test/utils';
 import { Image, ImageProps } from './';
 import { classes } from './Image.visual.st.css';
 import {
   AspectRatioPresets,
+  FocalPointPresets,
   LoadingBehaviorOptions,
   ResizeOptions,
 } from './types';
@@ -137,6 +138,50 @@ visualize('Image', () => {
             resize={ResizeOptions.cover}
             onLoad={done}
           />
+        ));
+      });
+
+      story('with focalPoint', () => {
+        snap('as preset', (done) => (
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 250px)',
+              gridTemplateRows: 'repeat(3, 150px)',
+            }}
+          >
+            {Object.values(FocalPointPresets).map((focalPoint, index) => (
+              <ImageWithWrapper
+                key={`${focalPoint.x}, ${focalPoint.y}`}
+                src={src}
+                width={200}
+                height={100}
+                resize={ResizeOptions.cover}
+                focalPoint={focalPoint}
+                onLoad={done}
+              />
+            ))}
+          </div>
+        ));
+        snap('as custom', (done) => (
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <ImageWithWrapper
+              src={src}
+              width={300}
+              height={100}
+              resize={ResizeOptions.cover}
+              focalPoint={{ x: 0, y: 20 }}
+              onLoad={done}
+            />
+            <ImageWithWrapper
+              src={src}
+              width={50}
+              height={200}
+              resize={ResizeOptions.cover}
+              focalPoint={{ x: 30, y: 0 }}
+              onLoad={done}
+            />
+          </div>
         ));
       });
 

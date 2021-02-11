@@ -1,5 +1,6 @@
 import {
   AspectRatioPresets,
+  FocalPointPresets,
   HoverEffectOptions,
   LoadingBehaviorOptions,
   ResizeOptions,
@@ -17,6 +18,11 @@ export const commonExampleProps = {
     ...Object.keys(AspectRatioPresets),
     { label: 'example of custom number (2.33)', value: 2.33 },
     { label: 'none', value: null },
+  ],
+  focalPoint: [
+    ...Object.keys(FocalPointPresets),
+    { label: 'custom point (20,0)', value: { x: 20, y: 0 } },
+    { label: 'custom point (0,70)', value: { x: 0, y: 70 } },
   ],
   hoverEffect: Object.keys(HoverEffectOptions),
   loadingBehavior: Object.keys(LoadingBehaviorOptions),
@@ -98,7 +104,7 @@ export const resizingExample = `
 `;
 
 export const aspectRatioExample = `
-<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+<div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
   <Image
     src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
     width={300}
@@ -125,6 +131,38 @@ export const aspectRatioExample = `
     alt="Garfield smiles and puts his hand over chest"
     resize="${ResizeOptions.cover}"
     aspectRatio={1.333}
+  />
+</div>
+`;
+
+export const focalPointExample = `
+<div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
+  <Image
+    src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
+    width={300}
+    height={100}
+    alt="Garfield smiles and puts his hand over chest"
+    resize="${ResizeOptions.cover}"
+    focalPoint="${getKeyByValue(
+      FocalPointPresets,
+      FocalPointPresets.bottomCenter,
+    )}"
+  />
+  <Image
+    src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
+    width={300}
+    height={100}
+    alt="Garfield smiles and puts his hand over chest"
+    resize="${ResizeOptions.cover}"
+    focalPoint={{ x: 0, y: 20 }}
+  />
+  <Image
+    src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
+    width={50}
+    height={200}
+    alt="Garfield smiles and puts his hand over chest"
+    resize="${ResizeOptions.cover}"
+    focalPoint={{ x: 30, y: 0 }}
   />
 </div>
 `;
