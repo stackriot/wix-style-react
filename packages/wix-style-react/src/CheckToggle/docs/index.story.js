@@ -98,6 +98,13 @@ export default {
               'When checked prop is provided, the component becomes controlled.',
             source: examples.controlled,
           }),
+
+          example({
+            title: 'Animated',
+            text:
+              'When animated prop is provided, the component animates when it appears.',
+            source: examples.animated,
+          }),
         ],
       }),
 

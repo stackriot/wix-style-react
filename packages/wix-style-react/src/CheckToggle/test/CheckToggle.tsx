@@ -23,6 +23,7 @@ function checkToggleWithAllProps() {
       skin="standard"
       tooltipContent="hello"
       tooltipProps={{}}
+      animate
     />
   );
 }

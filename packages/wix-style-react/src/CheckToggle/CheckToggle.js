@@ -7,6 +7,7 @@ import { TooltipCommonProps } from '../common/PropTypes/TooltipCommon';
 import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable/FocusableHOC';
 import ConfirmSmall from 'wix-ui-icons-common/ConfirmSmall';
 import Confirm from 'wix-ui-icons-common/Confirm';
+import PulseAnimation from '../PulseAnimation';
 
 const icon = {
   small: <ConfirmSmall />,
@@ -96,21 +97,29 @@ class CheckToggle extends React.PureComponent {
       focusableOnFocus,
       focusableOnBlur,
       className,
+      animate,
     } = this.props;
 
     return (
-      <label
-        className={st(
-          classes.root,
-          { checked, size, skin, disabled },
-          className,
-        )}
-        data-hook={dataHook}
-        onFocus={focusableOnFocus}
-        onBlur={focusableOnBlur}
+      <PulseAnimation
+        active={animate}
+        loop={false}
+        color={skin === 'standard' ? 'B10' : 'G10'}
+        borderRadius="100%"
       >
-        {tooltipContent ? this._renderTooltip() : this._renderInput()}
-      </label>
+        <label
+          className={st(
+            classes.root,
+            { checked, size, skin, disabled },
+            className,
+          )}
+          data-hook={dataHook}
+          onFocus={focusableOnFocus}
+          onBlur={focusableOnBlur}
+        >
+          {tooltipContent ? this._renderTooltip() : this._renderInput()}
+        </label>
+      </PulseAnimation>
     );
   }
 }
@@ -144,6 +153,9 @@ CheckToggle.propTypes = {
 
   /** Tooltip props, common for all tooltips */
   tooltipProps: PropTypes.shape(TooltipCommonProps),
+
+  /** If true, the component displays a pulse animation when it is checked */
+  animate: PropTypes.bool,
 };
 
 CheckToggle.defaultProps = {
