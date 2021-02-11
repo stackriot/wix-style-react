@@ -15,7 +15,6 @@ export interface CheckToggleProps {
   skin?: CheckToggleSkin;
   tooltipContent?: React.ReactNode;
   tooltipProps?: TooltipCommonProps;
-  animate?: boolean;
 }
 
 export default class CheckToggle extends React.PureComponent<CheckToggleProps> {}

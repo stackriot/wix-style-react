@@ -78,26 +78,3 @@ export const controlled = `
   );
 };
 `;
-
-export const animated = `() => {
-  const [checked, setChecked] = React.useState(false);
-
-  return (
-    <Layout>
-      <Cell span="2">
-        <CheckToggle
-          skin="success"
-          checked={checked}
-          animate={checked}
-          onChange={() => setChecked(!checked)}
-        />
-      </Cell>
-      <Cell span="3" vertical>
-        <button onClick={() => setChecked(!checked)}>
-          {checked ? 'Reset' : 'Play Animation'}
-        </button>
-      </Cell>
-    </Layout>
-  );
-};
-`;

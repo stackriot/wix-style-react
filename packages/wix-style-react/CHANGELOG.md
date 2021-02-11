@@ -16,13 +16,11 @@ Types of changes:
 
 
 ## Next
-### Added
-- `<CheckToggle/>` - add animate prop [#6833](https://github.com/wix/wix-style-react/pull/6733)
+
 ### Fixed
 - `<PulseAnimation/>` - fix click on children [#6742](https://github.com/wix/wix-style-react/pull/6742)
 
 ## 9.80.0 - 2021-02-10
-
 ### Added
 - `Themes | Business Dashboard` - add `<CounterBadge/>` stylable rule to the theme  [#6721](https://github.com/wix/wix-style-react/pull/6721)
 - `<MarketingLayout/>` - adding `direction` prop [#6691](https://github.com/wix/wix-style-react/pull/6691)
@@ -32,7 +30,6 @@ Types of changes:
 - `<Animate/>` - rename prop (internal component) [#6730](https://github.com/wix/wix-style-react/pull/6730)
 
 ## 9.79.0 - 2021-02-08
-
 ### Added
 - `<CounterBadge/>` - Add style for newDashboard theme [#6710](https://github.com/wix/wix-style-react/pull/6710)
 - `<Calendar/>` - add an onMonthChange prop (register a listener to setMonth event) [#6716](https://github.com/wix/wix-style-react/pull/6716)
