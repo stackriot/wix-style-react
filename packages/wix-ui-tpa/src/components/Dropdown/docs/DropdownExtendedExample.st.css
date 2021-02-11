@@ -9,7 +9,7 @@
             MainButtonTextDisabledColor '"--mainButtonTextDisabledColor"',
             MainButtonBorderColor '"--mainBorderColor"',
             MainBorderDisabledColor '"--mainBorderDisabledColor"',
-            MainBorderWidth '"--mainBorderWidth"',
+            MainBorderWidth '"unit(fallback(--mainBorderWidth, 1), px)"',
             MainBackgroundColor '"--mainBackgroundColor"',
             MainPlaceholderColor '"--mainPlaceholderColor"',
             MainTextFont '"--mainTextFont"',

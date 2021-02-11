@@ -62,7 +62,7 @@
     DefaultButtonTextDisabledColor: color-3;
     DefaultButtonBorderColor: color-5;
     DefaultBorderDisabledColor: color-3;
-    DefaultBorderWidth: 1;
+    DefaultBorderWidth: 1px;
     DefaultBackgroundColor: color-1;
     DefaultPlaceholderColor: color-4;
     DefaultTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5'}";
@@ -97,7 +97,7 @@
     MainBorderDisabledColor: --overridable;
     /*
         The button's border width
-        @default color-1
+        @default 1px
     */
     MainBorderWidth: --overridable;
     /*
@@ -142,7 +142,7 @@
     CurrentButtonTextDisabledColor: color(fallback(value(MainButtonTextDisabledColor), value(DefaultButtonTextDisabledColor)));
     CurrentButtonBorderColor: color(fallback(value(MainButtonBorderColor), value(DefaultButtonBorderColor)));
     CurrentBorderDisabledColor: color(fallback(value(MainBorderDisabledColor), value(DefaultBorderDisabledColor)));
-    CurrentBorderWidth: applyUnit(fallback(zeroAsTrue(value(MainBorderWidth)), value(DefaultBorderWidth)), px);
+    CurrentBorderWidth: fallback(value(MainBorderWidth), value(DefaultBorderWidth));
     CurrentBackgroundColor: color(fallback(value(MainBackgroundColor), value(DefaultBackgroundColor)));
     CurrentPlaceholderColor: color(fallback(value(MainPlaceholderColor), value(DefaultPlaceholderColor)));
     CurrentTextFont: fallback(font(value(MainTextFont)), font(value(DefaultTextFont)));
@@ -181,8 +181,8 @@
 
 .dropdownOption{
      -st-mixin: overrideStyleParamsOptionMixin(
-         MainTitleTextFont value(DefaultItemTextFont),
          MainTitleTextColor value(DefaultItemTextColor),
+         MainTitleTextFont value(DefaultItemTextFont),
          MainItemTextDisabledColor value(DefaultItemTextDisabledColor),
     );
 }
@@ -215,19 +215,19 @@
 }
 
 .dropdown .dropdownBase {
-    color: value(DefaultButtonTextColor);
-    border-color: value(DefaultButtonBorderColor);
-    border-width: applyUnit(value(DefaultBorderWidth), px);
-    background: value(DefaultBackgroundColor);
-    font: font(value(DefaultTextFont));
+    color: value(DefaultButtonTextColor) !important;
+    border-color: value(DefaultButtonBorderColor) !important;
+    border-width: value(DefaultBorderWidth) !important;
+    background: value(DefaultBackgroundColor) !important;
+    font: font(value(DefaultTextFont)) !important;
 }
 
 .root.overrideStyleParams .dropdown .dropdownBase {
-    color: value(CurrentButtonTextColor);
-    border-color: value(CurrentButtonBorderColor);
-    border-width: value(CurrentBorderWidth);
-    background: value(CurrentBackgroundColor);
-    font: value(CurrentTextFont);
+    color: value(CurrentButtonTextColor) !important;
+    border-color: value(CurrentButtonBorderColor) !important;
+    border-width: value(CurrentBorderWidth) !important;
+    background: value(CurrentBackgroundColor) !important;
+    font: value(CurrentTextFont) !important;
 }
 
 .dropdown .dropdownBase::arrowIcon {
@@ -272,8 +272,8 @@
 .dropdown:hover .dropdownBase::arrowIcon path,
 .root:mobile .dropdown .dropdownBase::arrowIcon path,
 .root:mobile .dropdown:hover .dropdownBase::arrowIcon path {
-    fill: currentColor;
-    stroke: none;
+    fill: currentColor !important;;
+    stroke: none !important;;
 }
 
 .dropdown::popoverContent {
