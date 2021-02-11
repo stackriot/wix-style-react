@@ -16,6 +16,8 @@ Types of changes:
 
 
 ## Next
+### Added
+- `<CheckToggle/>` - add animate prop [#6833](https://github.com/wix/wix-style-react/pull/6733)
 ### Fixed
 - `<PulseAnimation/>` - fix click on children [#6742](https://github.com/wix/wix-style-react/pull/6742)
 
