@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # clean
-rm .wuf/components.json
+rm .wuf/components.json || true
 
 # create components list
 wuf update \
