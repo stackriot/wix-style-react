@@ -47,7 +47,7 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description(%description%),
+          description('{%description%}'),
 
           importExample({
             source: examples.importExample,
