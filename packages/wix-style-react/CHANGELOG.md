@@ -20,6 +20,9 @@ Types of changes:
 ### Fixed
 - `<PulseAnimation/>` - fix click on children [#6742](https://github.com/wix/wix-style-react/pull/6742)
 
+### Added
+- `<InputWithOptions/>` - add missing disabled prop to native select [#6749](https://github.com/wix/wix-style-react/pull/6749)
+
 ## 9.80.0 - 2021-02-10
 ### Added
 - `Themes | Business Dashboard` - add `<CounterBadge/>` stylable rule to the theme  [#6721](https://github.com/wix/wix-style-react/pull/6721)
