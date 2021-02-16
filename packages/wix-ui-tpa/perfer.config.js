@@ -32,7 +32,7 @@ const files = [
   ['Grid.bundle.min.js', 5],
   ['IconButton.bundle.min.js', 7],
   ['IconToggle.bundle.min.js', 6],
-  ['Image.bundle.min.js', 14],
+  ['Image.bundle.min.js', 15],
   ['HeroImage.bundle.min.js', 15],
   ['ThumbnailImage.bundle.min.js', 15],
   ['Input.bundle.min.js', 6],
