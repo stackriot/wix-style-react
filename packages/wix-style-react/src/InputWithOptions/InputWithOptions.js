@@ -191,11 +191,12 @@ class InputWithOptions extends Component {
   }
 
   _renderNativeSelect() {
-    const { options, onSelect } = this.props;
+    const { options, onSelect, disabled } = this.props;
     return (
       <div className={classes.nativeSelectWrapper}>
         {this.renderInput()}
         <select
+          disabled={disabled}
           data-hook="native-select"
           className={classes.nativeSelect}
           onChange={event => {

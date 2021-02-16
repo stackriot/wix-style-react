@@ -963,6 +963,33 @@ describe('InputWithOptions', () => {
         expect(onSelect).toHaveBeenCalledWith(sampleOptions[1]);
         expect(onSelect).toHaveBeenCalledTimes(1);
       });
+
+      it('should not invoke onSelect when an option is clicked and disabled prop is passed', async () => {
+        const render = createRendererWithUniDriver(
+          inputWithOptionsUniDriverFactory,
+        );
+        const createDriver = jsx => render(jsx).driver;
+
+        const sampleOptions = [
+          { id: 1, value: 'Option 1' },
+          { id: 2, value: 'Option 2' },
+        ];
+
+        const onSelect = jest.fn();
+
+        const { driver } = createDriver(
+          <InputWithOptions
+            options={sampleOptions}
+            onSelect={onSelect}
+            native
+            disabled
+          />,
+        );
+
+        await driver.selectOptionById(2);
+
+        expect(onSelect).toHaveBeenCalledTimes(0);
+      });
     });
   });
 });

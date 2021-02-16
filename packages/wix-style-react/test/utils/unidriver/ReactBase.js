@@ -18,10 +18,14 @@ export function ReactBase(base) {
       return document.activeElement === (await htmlElement());
     },
     paste: async () => Simulate.paste(await htmlElement()),
-    select: async selectedIndex =>
-      Simulate.change(await htmlElement(), {
-        target: { selectedIndex, value: '' },
-      }),
+    select: async selectedIndex => {
+      const element = await htmlElement();
+      if (!element.disabled) {
+        Simulate.change(element, {
+          target: { selectedIndex, value: '' },
+        });
+      }
+    }
   };
 
   const unidriverRejected = {
