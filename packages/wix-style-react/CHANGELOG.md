@@ -15,6 +15,7 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+- `<PreviewWidget/>`- Add `none` option for contentOutline [#6777](https://github.com/wix/wix-style-react/pull/6777)
 
 ## 9.82.0 - 2021-02-17
 ### Fixed
