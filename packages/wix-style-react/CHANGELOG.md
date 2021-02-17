@@ -15,8 +15,12 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 
-## 9.81.0 - 2021-02-16
+## Next
 
+### Added
+- `<PageSection/>` - new component [#6686](https://github.com/wix/wix-style-react/pull/6686)
+
+## 9.81.0 - 2021-02-16
 ### Fixed
 - `<PulseAnimation/>` - fix click on children [#6742](https://github.com/wix/wix-style-react/pull/6742)
 
