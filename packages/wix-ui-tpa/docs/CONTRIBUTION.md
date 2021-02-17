@@ -6,8 +6,20 @@ wix-ui-tpa is an open source ui library, therefore everyone is invited to contri
 
 We use [conventional commits](https://www.conventionalcommits.org) to create a readable CHANGELOG.
 
+## How to start
+Although this is a monorepo, we encourage you to use the root directory as your working directory.  
+In order to run storybook locally just run
+```shell
+npm run wut start
+```
+
+To test your code locally run:
+```shell
+npm run wut test
+```
+
 ## Adding a new component
-To add a new component start by running `npm run generate`.
+To add a new component start by running `npm run wut generate`.
 This will generate all the necessary files that are required for the new component, which includes:
 * `Component.tsx` and `Component.st.css` - The logic and design of the component.
 * `Component.driver.tsx` - a [`unidriver`](https://github.com/wix-incubator/unidriver) driver file.

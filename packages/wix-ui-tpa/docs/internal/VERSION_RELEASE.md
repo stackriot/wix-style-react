@@ -26,8 +26,8 @@ It's pretty simple actually:
 
 1. First make sure that you're on the master branch
 2. Also, make sure the branch is clean and aligned to the `origin`
-3. run `npm run release-candidate -- <option>`, where `option` is the new version type:
-`major`, `minor`, `patch`, etc. (for more see [here](https://git-scm.com/book/en/v2/Git-Basics-Tagging)).  
+3. run `npm run wut release-candidate <option>`, where `option` is the new version type:
+`patch`, `minor` or `major` (for more see [here](https://git-scm.com/book/en/v2/Git-Basics-Tagging)).  
 If `option` is not passed then `patch` is used as a default
 4. This will create a new branch `release/<version_number>`.  
 Go over the differences to see that all went well.   
