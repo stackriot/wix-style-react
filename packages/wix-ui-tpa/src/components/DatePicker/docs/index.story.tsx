@@ -204,7 +204,7 @@ export default {
                   {
                     label: 'Selected Day Border Radius',
                     wixParam: 'selectedDayBorderRadius',
-                    defaultNumber: 50,
+                    defaultNumber: 100,
                     unit: '%',
                   },
                 ],

@@ -12,7 +12,7 @@
           DayColor '"color(--customDayColor)"',
           SelectedDayColor '"color(--customSelectedDayColor)"',
           SelectedDayBGColor '"color(--customSelectedDayBGColor)"',
-          SelectedDayBorderRadius '"unit(fallback(zeroAsTrue(--selectedDayBorderRadius), 50), %)"',
+          SelectedDayBorderRadius '"unit(fallback(zeroAsTrue(--selectedDayBorderRadius), 100), %)"',
           DisabledDayColor '"color(--customDisabledDayColor)"',
 
           MonthAndYearCaptionFont '"--customMonthAndYearCaptionFont"',

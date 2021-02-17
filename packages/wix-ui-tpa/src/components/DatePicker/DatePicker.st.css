@@ -38,7 +38,7 @@
     DeafultDayColor: color-5;
     DefaultSelectedDayColor: color-1;
     DefaultSelectedDayBGColor: color-8;
-    DefaultSelectedDayBorderRadius: 50%;
+    DefaultSelectedDayBorderRadius: 100%;
     DefaultDisabledDayColor: color-3;
 }
 
@@ -99,7 +99,7 @@
     SelectedDayBGColor: --overridable;
     /*
         The border radius of the selected day. The value could be in px or %.
-        @default 50%
+        @default 100%
     */
     SelectedDayBorderRadius: --overridable;
     /*
@@ -155,6 +155,7 @@
 .calendar::header {
     padding: 28px value(sidePadding) 0;
     background-color: value(CurrentBackgroundColor);
+    border-radius: 0;
 }
 
 .calendar::header::arrowLeft:skin(light), .calendar::header::arrowRight:skin(light) {
@@ -218,8 +219,8 @@
 }
 
 .calendar::dayIndicationContainer {
-    padding: calc(4em/14) 0;
-    height: calc(12em/14);
+    padding: calc(3em/14) 0;
+    height: calc(10em/14);
 }
 
 .calendar::day:hover {
@@ -249,6 +250,21 @@
 .calendar::day:outside, .calendar::day:disabled {
     color: value(CurrentDisabledDayColor);
 }
+
+/* removing the range design of WSR */
+/* todo: remove the important after removing the WSR important (https://jira.wixpress.com/browse/DSM-1585) */
+.calendar::day:selected:not(:outside):last-of-type,
+.calendar::day:lastOfMonth:not(:outside) {
+    border-top-right-radius: value(CurrentSelectedDayBorderRadius) !important;
+    border-bottom-right-radius: value(CurrentSelectedDayBorderRadius) !important;
+}
+
+.calendar::day:selected:not(:outside):first-of-type,
+.calendar::day:firstOfMonth:not(:outside) {
+    border-top-left-radius: value(CurrentSelectedDayBorderRadius) !important;
+    border-bottom-left-radius: value(CurrentSelectedDayBorderRadius) !important;
+}
+/*********/
 
 /* todo: need to check if it's really override the viewer focus ring and if we should remove it..  */
 .calendar::day:focus::after {
