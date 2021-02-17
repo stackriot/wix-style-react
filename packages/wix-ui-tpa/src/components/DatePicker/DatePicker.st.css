@@ -157,17 +157,19 @@
     background-color: value(CurrentBackgroundColor);
 }
 
-.calendar::header::arrow {
+.calendar::header::arrowLeft:skin(light), .calendar::header::arrowRight:skin(light) {
     color: value(CurrentNavigationArrowsColor);
+    background: none;
     width: 24px;
     height: 24px;
 }
-.calendar::header::arrow:hover:not(active) {
+.calendar::header::arrowLeft:skin(light):hover, .calendar::header::arrowRight:skin(light):hover {
     background: none;
+    border: none;
     color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
 }
 
-.calendar::header::arrow:active {
+.calendar::header::arrowLeft:skin(light):active, .calendar::header::arrowRight:skin(light):active {
     background: none;
     color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
 }

@@ -36,9 +36,9 @@ export interface CalendarProps {
   rightArrowAriaLabel?: string;
   rightArrowAriaLabelledBy?: string;
   monthDropdownAriaLabel?: string;
-  monthDropdownAriaLabelBy?: string;
+  monthDropdownAriaLabelledBy?: string;
   yearDropdownAriaLabel?: string;
-  yearDropdownAriaLabelBy?: string;
+  yearDropdownAriaLabelledBy?: string;
 }
 
 export default class Calendar extends React.PureComponent<CalendarProps> {

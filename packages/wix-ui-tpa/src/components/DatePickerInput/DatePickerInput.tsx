@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TPAComponentProps } from '../../types';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
+import { Locale as DateFnsLocale } from 'date-fns';
 import WSRDatePicker from 'wix-style-react/dist/src/DatePicker';
 import { AppendTo } from 'wix-ui-core/popover';
 import { TextField } from '../TextField/TextField';
@@ -30,7 +31,7 @@ export type LanguageType =
   | 'zh'
   | 'th'
   | 'cs';
-export type Locale = LanguageType | { distanceInWords?: {}; format?: {} };
+export type Locale = LanguageType | DateFnsLocale;
 export type FirstDayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 export type popoverPlacementType = 'bottom-start' | 'bottom-end';
 
@@ -90,6 +91,22 @@ export interface DatePickerInputProps extends TPAComponentProps {
   clearButtonAriaLabel?: string;
   /** Identifies the element that labels the clear button element. Optional. */
   clearButtonAriaLabelledby?: string;
+  /** Defines a string value that labels the left arrow in calendar header */
+  leftArrowAriaLabel?: string;
+  /**  Identifies the element that labels the left arrow in calendar header */
+  leftArrowAriaLabelledBy?: string;
+  /** Defines a string value that labels the right arrow in calendar header */
+  rightArrowAriaLabel?: string;
+  /** Identifies the element that labels the right arrow in calendar header */
+  rightArrowAriaLabelledBy?: string;
+  /** Defines a string value that labels the months dropdown in calendar header */
+  monthDropdownAriaLabel?: string;
+  /** Identifies the element that labels the months dropdown in calendar header */
+  monthDropdownAriaLabelledBy?: string;
+  /** Defines a string value that labels the years dropdown in calendar header */
+  yearDropdownAriaLabel?: string;
+  /** Identifies the element that labels the years dropdown in calendar header */
+  yearDropdownAriaLabelledBy?: string;
 }
 
 interface DefaultProps {
@@ -160,6 +177,14 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
       dateInputAriaLabelledby,
       clearButtonAriaLabel,
       clearButtonAriaLabelledby,
+      leftArrowAriaLabel,
+      leftArrowAriaLabelledBy,
+      rightArrowAriaLabel,
+      rightArrowAriaLabelledBy,
+      monthDropdownAriaLabel,
+      monthDropdownAriaLabelledBy,
+      yearDropdownAriaLabel,
+      yearDropdownAriaLabelledBy,
     } = this.props;
 
     const CustomInput = (wsrProps) => {
@@ -229,6 +254,14 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
                 appendTo: popoverAppendTo,
                 dynamicWidth: popoverAppendTo === 'window' ? true : undefined,
               }}
+              leftArrowAriaLabel={leftArrowAriaLabel}
+              leftArrowAriaLabelledBy={leftArrowAriaLabelledBy}
+              rightArrowAriaLabel={rightArrowAriaLabel}
+              rightArrowAriaLabelledBy={rightArrowAriaLabelledBy}
+              monthDropdownAriaLabel={monthDropdownAriaLabel}
+              monthDropdownAriaLabelledBy={monthDropdownAriaLabelledBy}
+              yearDropdownAriaLabel={yearDropdownAriaLabel}
+              yearDropdownAriaLabelledBy={yearDropdownAriaLabelledBy}
             />
           </div>
         )}

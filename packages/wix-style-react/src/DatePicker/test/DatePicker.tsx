@@ -48,9 +48,9 @@ function datePickerWithAllProps() {
       rightArrowAriaLabel="right arrow label"
       rightArrowAriaLabelledBy="right_arrow_labelledby"
       monthDropdownAriaLabel="month label"
-      monthDropdownAriaLabelBy="month_labelledby"
+      monthDropdownAriaLabelledBy="month_labelledby"
       yearDropdownAriaLabel="year label"
-      yearDropdownAriaLabelBy="year_labelledby"
+      yearDropdownAriaLabelledBy="year_labelledby"
     />
   );
 }
