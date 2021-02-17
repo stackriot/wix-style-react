@@ -14,8 +14,9 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-
 ## Next
+
+## 9.82.0 - 2021-02-17
 ### Fixed
 - `<DatePicker/>` - fix types typo [#6740](https://github.com/wix/wix-style-react/pull/6740)
 
