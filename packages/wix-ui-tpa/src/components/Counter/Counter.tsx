@@ -118,6 +118,7 @@ export class Counter extends React.Component<CounterProps> {
         <div className={classes.inputWrapper}>
           <Input
             aria-label={inputAriaLabel}
+            aria-live="assertive"
             onChange={(ev) => onChange(ev.target.value)}
             type="number"
             disabled={disabled}
