@@ -16,6 +16,8 @@ Types of changes:
 
 
 ## Next
+### Fixed
+-`<DatePicker/>` - fix types typo [#6740](https://github.com/wix/wix-style-react/pull/6740)
 
 ### Added
 - `<PageSection/>` - new component [#6686](https://github.com/wix/wix-style-react/pull/6686)
