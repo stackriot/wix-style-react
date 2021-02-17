@@ -39,6 +39,7 @@ export const inputsComponentsNames = {
 export const layoutComponentsNames = {
   Page: 'Page',
   PageHeader: 'Page.Header',
+  PageSection: 'Page.Section',
   Grid: 'Grid',
   Layout: 'Layout',
   MarketingPageLayout: 'MarketingPageLayout',

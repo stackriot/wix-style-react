@@ -352,6 +352,8 @@ export default {
 
   Proportion: { props: { children: 'test' } },
 
+  PageSection: { props: { title: 'title' } },
+
   Box: {
     props: {
       children: <div />,

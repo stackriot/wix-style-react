@@ -552,6 +552,9 @@ export * from './PulseAnimation';
 export { default as TimeInputWip } from './TimeInputWip';
 export * from './TimeInputWip';
 
+export { default as PageSection } from './PageSection';
+export * from './PageSection';
+
 export * from './TrendIndicator';
 
 export * from './StyledNestableList';

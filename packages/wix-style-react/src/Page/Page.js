@@ -5,6 +5,7 @@ import { ResizeSensor } from 'css-element-queries';
 import { st, classes, stVars } from './Page.st.css';
 import { PageContext } from './PageContext';
 import PageHeader from '../PageHeader';
+import PageSection from '../PageSection';
 import Content from './Content';
 import Tail from './Tail';
 import { PageSticky } from './PageSticky';
@@ -20,20 +21,21 @@ import { ScrollableContainerCommonProps } from '../common/PropTypes/ScrollableCo
  * | | +--  ScrollableContainer (Vertical Scroll)
  * | | | +--  MinimizationPlaceholder
  * | | | |
- * | | | +---------------------------
+ * | | | +-----------------------------
  * | | | +-- HeaderContainer ------ (position: fixed - when minimized)
  * | | | | +-- Page.Header ------------
  * | | | | |
  * | | | | +---------------------------
- * | | | | +-- Page.Tail ----------------
+ * | | | | +-- Page.Tail --------------
  * | | | | |
- * | | | | +-----------------------------
+ * | | | | +---------------------------
  * | | | +-----------------------------
  * | | | +-- ContentWrapper------------
  * | | | | +-- Page.FixedContent (Deprecated)
  * | | | | |
  * | | | | +---------------------------
  * | | | | +-- Page.Content -----------
+ * | | | | | +-- Page.Section ---------
  * | | | | |
  * | | | | +---------------------------
  * | | | +-----------------------------
@@ -546,6 +548,7 @@ FixedContent.propTypes = {
 
 Page.displayName = 'Page';
 Page.Header = PageHeader;
+Page.Section = PageSection;
 Page.Content = Content;
 Page.FixedContent = FixedContent; // TODO: deprecate, use Page.Sticky instead
 Page.Tail = Tail;
@@ -554,6 +557,7 @@ Page.Sticky = PageSticky;
 
 const allowedChildren = [
   Page.Header,
+  Page.Section,
   Page.Content,
   Page.FixedContent,
   Page.Tail,
@@ -626,6 +630,10 @@ function getChildrenObject(children) {
     switch (child.type.displayName) {
       case 'Page.Header': {
         acc.PageHeader = child;
+        break;
+      }
+      case 'Page.Section': {
+        acc.Section = child;
         break;
       }
       case 'Page.Content': {

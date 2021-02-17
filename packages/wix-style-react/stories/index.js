@@ -116,6 +116,7 @@ require('../src/NumberInput/docs/index.story');
 require('../src/PageFooter/docs/index.story');
 require('../src/Page/docs/index.story');
 require('../src/PageHeader/docs/index.story');
+require('../src/PageSection/docs/index.story');
 require('../src/Pagination/docs/index.story');
 require('../src/Palette/docs/index.story');
 require('../src/Popover/docs/index.story');

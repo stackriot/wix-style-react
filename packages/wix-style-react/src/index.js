@@ -217,3 +217,4 @@ export { default as SkeletonCircle } from './SkeletonCircle';
 export { default as SkeletonLine } from './SkeletonLine';
 export { default as PulseAnimation } from './PulseAnimation';
 export { default as TimeInputWip } from './TimeInputWip';
+export { default as PageSection } from './PageSection';

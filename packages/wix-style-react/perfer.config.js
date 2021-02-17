@@ -174,6 +174,7 @@ const javascriptFiles = [
   ['WarningIndicator.bundle.min.js', 40],
   ['WixStyleReactProvider.bundle.min.js', 10],
   ['PulseAnimation.bundle.min.js', 10],
+  ['PageSection.bundle.min.js', 36],
 ];
 
 const cssFiles = [

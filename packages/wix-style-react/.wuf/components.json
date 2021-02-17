@@ -350,6 +350,9 @@
   "PageHeader": {
     "path": "src/PageHeader"
   },
+  "PageSection": {
+    "path": "src/PageSection"
+  },
   "Pagination": {
     "path": "src/Pagination"
   },

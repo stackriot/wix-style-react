@@ -39,6 +39,10 @@ const componentActualUrl = {
   ),
 
   [layoutComponentsNames.PageHeader]: linkTo(Category.COMPONENTS, 'PageHeader'),
+  [layoutComponentsNames.PageSection]: linkTo(
+    Category.COMPONENTS,
+    'PageSection',
+  ),
   [layoutComponentsNames.Layout]: linkTo(
     `${Category.COMPONENTS}/Layout`,
     'Usage',
