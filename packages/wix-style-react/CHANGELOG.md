@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<AddItem />`- add `subtitle` prop [#6699](https://github.com/wix/wix-style-react/pull/6699)
 
 ## 9.83.0 - 2021-02-18
 ### Added
