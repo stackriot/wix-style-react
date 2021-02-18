@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.83.0 - 2021-02-18
 ### Added
 - `<PreviewWidget/>`- add `none` option for contentOutline [#6777](https://github.com/wix/wix-style-react/pull/6777)
 - `<Timeline/>` - add `gap` prop [#6739](https://github.com/wix/wix-style-react/pull/6739)
