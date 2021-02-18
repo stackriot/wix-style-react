@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 - `<PreviewWidget/>`- Add `none` option for contentOutline [#6777](https://github.com/wix/wix-style-react/pull/6777)
+- `<VariableInput />` - Fix emoji utf splitting issue [#6768](https://github.com/wix/wix-style-react/pull/6768)
 
 ## 9.82.0 - 2021-02-17
 ### Fixed
