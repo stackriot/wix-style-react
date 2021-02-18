@@ -20,7 +20,8 @@ Types of changes:
 
 ### Fixed
 - `<VariableInput />` - Fix emoji utf splitting issue [#6768](https://github.com/wix/wix-style-react/pull/6768)
-- `<Modal />` - Added screen prop typings [#6775](https://github.com/wix/wix-style-react/pull/6775)
+- `<Modal/>` - Added screen prop typings [#6775](https://github.com/wix/wix-style-react/pull/6775)
+- `<ListItemSelect/>` - fix type [#6778](https://github.com/wix/wix-style-react/pull/6778)
 
 ## 9.82.0 - 2021-02-17
 ### Fixed
