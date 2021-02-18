@@ -81,6 +81,24 @@ describe('VariableInput', () => {
       myRef.insertVariable(text);
       expect(await driver.getContent()).toBe(` ${text}  `);
     });
+
+    it('should have same displayed content as the state', async () => {
+      let stateValue;
+      const expectedHtmlValue = `/🤔{{${variableEntity.value}}}/🤔{{${variableEntity.value}}}`;
+      const driver = createDriver(
+        <VariableInput
+          variableParser={variableParser}
+          onChange={value => (stateValue = value)}
+        />,
+      );
+
+      await driver.click();
+      await driver.enterText(expectedHtmlValue);
+      await driver.blur();
+
+      expect(await driver.getContent()).toBe('/🤔 Page name /🤔 Page name ');
+      expect(stateValue).toEqual('/🤔{{page.name}}/🤔{{page.name}}');
+    });
   });
   describe('setValue', () => {
     it('should update text while using `setValue`', async () => {
