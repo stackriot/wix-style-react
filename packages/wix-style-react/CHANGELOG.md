@@ -16,7 +16,8 @@ Types of changes:
 
 ## Next
 ### Added
-- `<PreviewWidget/>`- Add `none` option for contentOutline [#6777](https://github.com/wix/wix-style-react/pull/6777)
+- `<PreviewWidget/>`- add `none` option for contentOutline [#6777](https://github.com/wix/wix-style-react/pull/6777)
+- `<Timeline/>` - add `gap` prop [#6739](https://github.com/wix/wix-style-react/pull/6739)
 
 ### Fixed
 - `<VariableInput />` - Fix emoji utf splitting issue [#6768](https://github.com/wix/wix-style-react/pull/6768)
