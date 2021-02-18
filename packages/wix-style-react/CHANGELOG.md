@@ -24,6 +24,9 @@ Types of changes:
 - `<Modal/>` - Added screen prop typings [#6775](https://github.com/wix/wix-style-react/pull/6775)
 - `<ListItemSelect/>` - fix type [#6778](https://github.com/wix/wix-style-react/pull/6778)
 
+### Changed
+- `Themes | Business Dashboard` -`<CounterBadge />` - revert newDashboard theme changes [#6743](https://github.com/wix/wix-style-react/pull/6743)
+
 ## 9.82.0 - 2021-02-17
 ### Fixed
 - `<DatePicker/>` - fix types typo [#6740](https://github.com/wix/wix-style-react/pull/6740)
