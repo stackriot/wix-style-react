@@ -15,8 +15,12 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
 - `<PreviewWidget/>`- Add `none` option for contentOutline [#6777](https://github.com/wix/wix-style-react/pull/6777)
+
+### Fixed
 - `<VariableInput />` - Fix emoji utf splitting issue [#6768](https://github.com/wix/wix-style-react/pull/6768)
+- `<Modal />` - Added screen prop typings [#6775](https://github.com/wix/wix-style-react/pull/6775)
 
 ## 9.82.0 - 2021-02-17
 ### Fixed
