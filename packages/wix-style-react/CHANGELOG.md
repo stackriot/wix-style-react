@@ -18,6 +18,9 @@ Types of changes:
 ### Added
 - `<AddItem />`- add `subtitle` prop [#6699](https://github.com/wix/wix-style-react/pull/6699)
 
+### Fixed
+- `<AddItem />` - fixed `disabled` button background colour for `plain` theme [#6792](https://github.com/wix/wix-style-react/pull/6792)
+
 ## 9.83.0 - 2021-02-18
 ### Added
 - `<PreviewWidget/>`- add `none` option for contentOutline [#6777](https://github.com/wix/wix-style-react/pull/6777)
