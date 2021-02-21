@@ -18,7 +18,7 @@ Types of changes:
 
 ## 9.84.2 - 2021-02-21
 ### Added
-`Themes | Business Dashboard` - Updating list actions item disabled state [#6803](https://github.com/wix/wix-style-react/pull/6803)
+- `Themes | Business Dashboard` - Updating list actions item disabled state [#6803](https://github.com/wix/wix-style-react/pull/6803)
 
 ### Fixed
 - `DraftJsUtils` - FocusOnRichEditor extract element from unidriver [#6799](https://github.com/wix/wix-style-react/pull/6799), [#6804](https://github.com/wix/wix-style-react/pull/6804)
