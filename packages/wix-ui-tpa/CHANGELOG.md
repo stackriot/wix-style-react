@@ -1,3 +1,12 @@
+# 2.24.0 (2021-02-18)
+
+
+### Bug Fixes
+
+* **Card & Grid:** Fix stylable issues ([a3ac0aa](https://github.com/wix/wix-style-react/commit/a3ac0aad1447e0793cdfff474454134c571670a5))
+
+
+
 # 2.23.0 (2021-02-18)
 
 
