@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.84.0 - 2021-02-21
 ### Added
 - `<AddItem/>`- add `subtitle` prop [#6699](https://github.com/wix/wix-style-react/pull/6699)
 - `<VariableInput/>` - add onFocus callback and focus to driver [#6797](https://github.com/wix/wix-style-react/pull/6797)
