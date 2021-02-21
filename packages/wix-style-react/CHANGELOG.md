@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Added
 - `<AddItem/>`- add `subtitle` prop [#6699](https://github.com/wix/wix-style-react/pull/6699)
+- `<VariableInput/>` - add onFocus callback and focus to driver [#6797](https://github.com/wix/wix-style-react/pull/6797)
 
 ### Fixed
 - `<AddItem/>` - fixed `disabled` button background colour for `plain` theme [#6792](https://github.com/wix/wix-style-react/pull/6792)
