@@ -68,9 +68,14 @@ const getMatchesInString = (str, prefix, suffix) => {
   const escSuffix = _escapeRegExp(suffix);
   const pattern = `(?:${escPrefixFirstChar})*(${escPrefix}(.*?)${escSuffix})`;
   const regex = new RegExp(pattern, 'g');
-  const regexMatches = [...Array.from(str).join('').matchAll(regex)];
 
-  return regexMatches;
+  let part;
+  const parts = [];
+  while ((part = regex.exec(str)) !== null) {
+    parts.push(part);
+  }
+
+  return parts;
 };
 /** Check if editor has unparsed entities */
 const hasUnparsedEntity = (editorState, prefix, suffix) => {
