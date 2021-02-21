@@ -15,8 +15,11 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+`Themes | Business Dashboard` - Updating list actions item disabled state [#6803](https://github.com/wix/wix-style-react/pull/6803)
+
 ### Fixed
-- `DraftJsUtils` - FocusOnRichEditor extract page from unidriver [#6799](https://github.com/wix/wix-style-react/pull/6799)
+- `DraftJsUtils` - FocusOnRichEditor extract element from unidriver [#6799](https://github.com/wix/wix-style-react/pull/6799), [#6804](https://github.com/wix/wix-style-react/pull/6804)
 
 ## 9.84.0 - 2021-02-21
 ### Added
