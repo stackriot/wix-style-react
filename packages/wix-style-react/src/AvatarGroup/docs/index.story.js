@@ -113,7 +113,7 @@ Don’t use it:\n
           example({
             title: 'Size',
             text:
-              'Use to adjust dimensions of a component. Supports 2 sizes:' +
+              'Controls size of a component. It supports 2 sizes:' +
               '\n' +
               ' - medium (default)- use in all common cases\n' +
               ' - small -  use to de-emphasise the group, also in more dense and narrow layouts',
