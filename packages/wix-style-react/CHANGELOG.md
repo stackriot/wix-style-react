@@ -16,6 +16,8 @@ Types of changes:
 
 ## Next
 
+
+## 9.85.0 - 2021-02-23
 ### Added
 - `<Table/>`-  introduce predicate function for selectionDisabled for disabling certain rows from selecting [#6753](https://github.com/wix/wix-style-react/pull/6753)
 - `<AvatarGroup/>`- new component [#6584](https://github.com/wix/wix-style-react/pull/6584)
