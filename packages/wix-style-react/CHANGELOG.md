@@ -18,6 +18,7 @@ Types of changes:
 
 ### Added
 - `<Table/>`-  introduce predicate function for selectionDisabled for disabling certain rows from selecting [#6753](https://github.com/wix/wix-style-react/pull/6753)
+- `<AvatarGroup/>`- new component [#6584](https://github.com/wix/wix-style-react/pull/6584)
 
 ### Changed
 - `<Thumbnail/>` - change tiny text to bold [#6807](https://github.com/wix/wix-style-react/pull/6807)
