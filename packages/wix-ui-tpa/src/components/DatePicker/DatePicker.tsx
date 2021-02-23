@@ -40,6 +40,8 @@ export interface DatePickerProps extends TPAComponentProps {
   value?: Date | string;
   /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
   onChange(selectedDays: string | Date): void;
+  /** Callback function called with the Date of the first day of the month whenever the user selects a month in the calendar */
+  onMonthChange?(monthStart: Date): void;
   /** DatePicker instance locale */
   locale?: Locale;
   /** When true, past dates would be unselectable */
@@ -113,6 +115,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
       className,
       value,
       onChange,
+      onMonthChange,
       locale,
       excludePastDates,
       filterDate,
@@ -147,6 +150,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
               dataHook={DATA_HOOKS.WSR_CALENDAR}
               value={value}
               onChange={onChange}
+              onMonthChange={onMonthChange}
               locale={locale}
               excludePastDates={excludePastDates}
               filterDate={filterDate}
