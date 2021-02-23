@@ -59,7 +59,7 @@
     "storybook": "start-storybook -p 6006 -s ./src/assets,./.storybook/public",
     "eyes-storybook-debug": "start-storybook --ci -c ./.storybook-test -p 6007 -s ./src/assets,./.storybook-test/public",
     "-----publish": "",
-    "postpublish": "npm run git:tag && npm run storybook:release",
+    "postpublish": "npm run git:tag && npm run install && npm run build && npm run storybook:release",
     "git:tag": "node scripts/tag.js",
     "-----generator": "",
     "generate": "wuf generate --codemods .wuf/generator/codemods --templates .wuf/generator/templates --output src/components",
