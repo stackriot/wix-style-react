@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-
-import { RadioButton } from 'wix-ui-core/dist/src/components/radio-button';
-import Text from '../Text';
-
 import { st, classes } from './Radio.st.css';
+import Text from '../Text';
+import { generateDataAttr } from '../utils/generateDataAttr';
+import { dataHooks } from './constants';
+import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable/FocusableHOC';
 
 const Radio = ({
   dataHook,
@@ -14,32 +14,64 @@ const Radio = ({
   id,
   name,
   value,
+  focusableOnFocus,
+  focusableOnBlur,
   onChange,
   alignItems,
   className,
   style,
 }) => {
+  const _onClick = event => {
+    if (!disabled) {
+      onChange({ value, ...event });
+    }
+  };
+
   const renderLabel = useMemo(() => {
-    return label ? (
+    return (
       <Text tagName="div" size="medium" weight="thin" secondary>
         {label}
       </Text>
-    ) : null;
+    );
   }, [label]);
 
   return (
-    <RadioButton
+    <div
+      className={st(
+        classes.root,
+        {
+          checked,
+          disabled,
+          alignItems,
+        },
+        className,
+      )}
+      {...generateDataAttr({ checked, disabled }, ['checked', 'disabled'])}
       style={style}
-      className={st(classes.root, { alignItems }, className)}
       data-hook={dataHook}
-      checked={checked}
-      label={renderLabel}
-      onChange={onChange}
-      disabled={disabled}
-      id={id}
-      name={name}
-      value={value}
-    />
+      onClick={_onClick}
+      aria-checked={!!checked}
+      onFocus={focusableOnFocus}
+      onBlur={focusableOnBlur}
+    >
+      <input
+        type="radio"
+        className={classes.input}
+        data-hook={dataHooks.input}
+        disabled={disabled}
+        checked={checked}
+        value={value}
+        name={name}
+        id={id}
+        onChange={() => null}
+      />
+      <span className={classes.icon} data-hook={dataHooks.icon}></span>
+      {label && (
+        <span className={classes.label} data-hook={dataHooks.label}>
+          {renderLabel}
+        </span>
+      )}
+    </div>
   );
 };
 
@@ -81,6 +113,7 @@ Radio.defaultProps = {
   checked: false,
   disabled: false,
   alignItems: 'center',
+  onChange: () => null,
 };
 
-export default Radio;
+export default withFocusable(Radio);

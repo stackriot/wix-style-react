@@ -1,63 +1,68 @@
-import { radioButtonDriverFactory } from 'wix-ui-core/dist/src/components/radio-button/RadioButton.driver';
+import { dataHooks } from './constants';
 
 export const radioDriverFactory = ({ element, eventTrigger }) => {
-  const coreRadioDriver = radioButtonDriverFactory({ element, eventTrigger });
+  const byHook = hook => element.querySelector(`[data-hook*="${hook}"]`);
+  const getInput = () => byHook(dataHooks.input);
+  const getIcon = () => byHook(dataHooks.icon);
+  const getLabel = () => byHook(dataHooks.label);
 
   return {
+    exists: () => !!element,
+
     /**
     /* Triggers a keyDown event on the radio input 
      * @param {string} key
      * @return {void}
      */
-    keyDown: key => coreRadioDriver.keyDown(key),
+    keyDown: key => eventTrigger.keyDown(getInput(), { key }),
 
     /**
     /* Triggers click event on radio
      * @return {void}
      */
-    click: () => coreRadioDriver.click(),
+    click: () => eventTrigger.click(element),
 
     /**
      * Gets value of radio input
      * @return {string}
      */
-    getValue: () => coreRadioDriver.value(),
+    getValue: () => getInput().getAttribute('value'),
 
     /**
      * Gets name of radio input
      * @return {string}
      */
-    getName: () => coreRadioDriver.name(),
+    getName: () => getInput().getAttribute('name'),
 
     /**
      * Gets id of radio input
      * @return {string}
      */
-    getId: () => coreRadioDriver.id(),
+    getId: () => getInput().getAttribute('id'),
 
     /**
      * Checks if icon of radio exists
      * @return {boolean}
      */
-    iconExists: () => coreRadioDriver.iconExists(),
+    iconExists: () => !!getIcon(),
 
     /**
      * Checks if label of radio exists
      * @return {boolean}
      */
-    labelExists: () => coreRadioDriver.labelExists(),
+    labelExists: () => !!getLabel(),
 
     /**
      * Checks if radio is checked
      * @return {boolean}
      */
-    isChecked: () => coreRadioDriver.isChecked(),
+    isChecked: () => element.getAttribute('data-checked') === 'true',
 
     /**
      * Checks if radio is disabled
      * @return {boolean}
      */
-    isDisabled: () => coreRadioDriver.isDisabled(),
+    isDisabled: () => element.getAttribute('data-disabled') === 'true',
   };
 };
 

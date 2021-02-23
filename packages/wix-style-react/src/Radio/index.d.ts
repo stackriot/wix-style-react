@@ -1,9 +1,4 @@
 import * as React from 'react';
-import {
-  RadioButtonChangeEvent,
-  RadioButtonClickEvent,
-} from 'wix-ui-core/dist/src/components/radio-button';
-
 export type RadioAlignItems = 'top' | 'center';
 
 export interface RadioProps {
@@ -15,7 +10,7 @@ export interface RadioProps {
   id?: string;
   value?: string | number;
   name?: React.ReactNode;
-  onChange?(event: RadioButtonChangeEvent | RadioButtonClickEvent): void;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   alignItems?: RadioAlignItems;
 }
 

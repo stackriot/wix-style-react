@@ -1,9 +1,12 @@
 import { baseUniDriverFactory } from '../../test/utils/unidriver';
-import { radioButtonUniDriverFactory } from 'wix-ui-core/dist/src/components/radio-button/RadioButton.uni.driver';
+import { dataHooks } from './constants';
 
 export const radioUniDriverFactory = (base, body) => {
-  const coreRadioDriver = radioButtonUniDriverFactory(base, body);
+  const byHook = hook => base.$(`[data-hook="${hook}"]`);
 
+  const getInput = () => byHook(dataHooks.input);
+  const getIcon = () => byHook(dataHooks.icon);
+  const getLabel = () => byHook(dataHooks.label);
   return {
     ...baseUniDriverFactory(base, body),
 
@@ -12,48 +15,48 @@ export const radioUniDriverFactory = (base, body) => {
      * @param {string} key
      * @return {Promise<void>}
      */
-    keyDown: key => coreRadioDriver.keyDown(key),
+    keyDown: key => getInput().pressKey(key),
 
     /**
      * Gets value of radio input
      * @return {Promise<string>}
      */
-    getValue: () => coreRadioDriver.value(),
+    getValue: () => getInput().attr('value'),
 
     /**
      * Gets name of radio input
      * @return {Promise<string>}
      */
-    getName: () => coreRadioDriver.name(),
+    getName: () => getInput().attr('name'),
 
     /**
      * Gets id of radio input
      * @return {Promise<string>}
      */
-    getId: () => coreRadioDriver.id(),
+    getId: () => getInput().attr('id'),
 
     /**
      * Checks if icon of radio exists
      * @return {Promise<boolean>}
      */
-    iconExists: () => coreRadioDriver.iconExists(),
+    iconExists: () => getIcon().exists(),
 
     /**
      * Checks if label of radio exists
      * @return {Promise<boolean>}
      */
-    labelExists: () => coreRadioDriver.labelExists(),
+    labelExists: () => getLabel().exists(),
 
     /**
      * Checks if radio is checked
      * @return {Promise<boolean>}
      */
-    isChecked: () => coreRadioDriver.isChecked(),
+    isChecked: async () => (await base.attr('data-checked')) === 'true',
 
     /**
      * Checks if radio is disabled
      * @return {Promise<boolean>}
      */
-    isDisabled: () => coreRadioDriver.isDisabled(),
+    isDisabled: async () => (await base.attr('data-disabled')) === 'true',
   };
 };
