@@ -25,7 +25,7 @@ export function ReactBase(base) {
           target: { selectedIndex, value: '' },
         });
       }
-    }
+    },
   };
 
   const unidriverRejected = {

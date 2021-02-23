@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {st, classes} from './AvatarGroup.st.css';
+import { st, classes } from './AvatarGroup.st.css';
 import Avatar from '../Avatar';
 import Divider from '../Divider';
 import MoreIndicator from './moreIndicator/MoreIndicator';
-import {dataHooks} from './constants';
+import { dataHooks } from './constants';
 
 const getRandomColorPattern = () => {
   const patternColor = [
@@ -26,7 +26,7 @@ const getRandomColorPattern = () => {
   return patternColor.slice(firstIndex, lastIndex);
 };
 const myPatternColors = getRandomColorPattern();
-const getAvatarColor = ({index, color}) => {
+const getAvatarColor = ({ index, color }) => {
   let colorIndex = index;
   if (color) {
     return color;
@@ -37,21 +37,14 @@ const getAvatarColor = ({index, color}) => {
   }
   return myPatternColors[colorIndex];
 };
-const setAvatarCompPropsArr = (items, avatarSize, itemsMaxLength) => { // gets the items prop from avatarGroup component and set it with the proper prop for avatar component such as size, shape etc.
+const setAvatarCompPropsArr = (items, avatarSize, itemsMaxLength) => {
+  // gets the items prop from avatarGroup component and set it with the proper prop for avatar component such as size, shape etc.
   const avatarItems = items.map((item, index) => {
-    const {
-      ariaLabel,
-      color,
-      imgProps,
-      name,
-      text,
-      placeholder,
-      title,
-    } = item;
+    const { ariaLabel, color, imgProps, name, text, placeholder, title } = item;
 
     const size = avatarSize === 'small' ? 'size24' : 'size30';
     const shape = 'circle';
-    const avatarColor = getAvatarColor({index, color});
+    const avatarColor = getAvatarColor({ index, color });
     return {
       size,
       shape,
@@ -68,16 +61,11 @@ const setAvatarCompPropsArr = (items, avatarSize, itemsMaxLength) => { // gets t
     avatarItems,
     avatarItems.length,
     itemsMaxLength,
-    avatarSize
+    avatarSize,
   );
-  return avatars
-}
-const avatarItemsLenghtHandler = (
-  items,
-  itemsLength,
-  maxItems,
-  avatarSize,
-) => {
+  return avatars;
+};
+const avatarItemsLenghtHandler = (items, itemsLength, maxItems, avatarSize) => {
   const moreItemAvatar = {
     text: `${itemsLength - maxItems + 1}+`,
     size: avatarSize === 'small' ? 'size24' : 'size30',
@@ -91,16 +79,27 @@ const avatarItemsLenghtHandler = (
   return items;
 };
 
-
 /** AvatarGroup */
-const AvatarGroup = ({dataHook, className, type, items, maxItems, size, showDivider}) => {
+const AvatarGroup = ({
+  dataHook,
+  className,
+  type,
+  items,
+  maxItems,
+  size,
+  showDivider,
+}) => {
   if (items === undefined) return null;
   const avatarSize = size === 'small' ? 'small' : 'medium';
   const itemsMaxLength = maxItems < 2 ? 2 : maxItems;
-  const avatarCompArr = setAvatarCompPropsArr(items, avatarSize, itemsMaxLength);
+  const avatarCompArr = setAvatarCompPropsArr(
+    items,
+    avatarSize,
+    itemsMaxLength,
+  );
   return (
     <div
-      className={st(classes.root, {size: avatarSize, type}, className)}
+      className={st(classes.root, { size: avatarSize, type }, className)}
       data-hook={dataHook}
     >
       {avatarCompArr.map((item, index) => {
@@ -112,27 +111,31 @@ const AvatarGroup = ({dataHook, className, type, items, maxItems, size, showDivi
                 {...item}
                 size={avatarSize}
                 key={key}
-                className={st(classes.moreItemContainer, {type, size: avatarSize})}
+                className={st(classes.moreItemContainer, {
+                  type,
+                  size: avatarSize,
+                })}
               />
             </div>
           );
         }
-        return <React.Fragment key={key}>
-          <div className={classes.avatarContainer}>
-            <Avatar
-              {...item}
-              dataHook={dataHooks.avatarGroupItem}
-            />
-          </div>
-          {index === 0 && showDivider && <Divider
-            direction={'vertical'}
-            className={st(classes.divider, {size: avatarSize, type})}
-          />}
-        </React.Fragment>
+        return (
+          <React.Fragment key={key}>
+            <div className={classes.avatarContainer}>
+              <Avatar {...item} dataHook={dataHooks.avatarGroupItem} />
+            </div>
+            {index === 0 && showDivider && (
+              <Divider
+                direction={'vertical'}
+                className={st(classes.divider, { size: avatarSize, type })}
+              />
+            )}
+          </React.Fragment>
+        );
       })}
     </div>
   );
-}
+};
 
 AvatarGroup.displayName = 'AvatarGroup';
 
@@ -170,15 +173,17 @@ AvatarGroup.propTypes = {
   /**
    * Use to pass an array of avatars
    */
-  items: PropTypes.arrayOf(PropTypes.shape({
-    ariaLabel: PropTypes.string,
-    color: PropTypes.oneOf(['A1', 'A2', 'A3', 'A4', 'A5', 'A6']),
-    imgProp: PropTypes.object,
-    name: PropTypes.string,
-    text: PropTypes.string,
-    placeholder: PropTypes.node,
-    title: PropTypes.string,
-  })).isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      ariaLabel: PropTypes.string,
+      color: PropTypes.oneOf(['A1', 'A2', 'A3', 'A4', 'A5', 'A6']),
+      imgProp: PropTypes.object,
+      name: PropTypes.string,
+      text: PropTypes.string,
+      placeholder: PropTypes.node,
+      title: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 AvatarGroup.defaultProps = {

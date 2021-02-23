@@ -2,9 +2,9 @@ import {
   baseUniDriverFactory,
   countByHook,
   findByHook,
-  findByHookAtIndex
+  findByHookAtIndex,
 } from '../../test/utils/unidriver';
-import {dataHooks} from './constants';
+import { dataHooks } from './constants';
 
 export const avatarGroupDriverFactory = (base, body) => {
   return {
@@ -16,9 +16,11 @@ export const avatarGroupDriverFactory = (base, body) => {
      */
     getVisibleAvatarsCount: async () => {
       let numberOfAvatars = await countByHook(base, dataHooks.avatarGroupItem);
-      const isMoreIndicatorExist = await (await findByHook(base, dataHooks.avatarGroupMoreItem)).exists();
+      const isMoreIndicatorExist = await (
+        await findByHook(base, dataHooks.avatarGroupMoreItem)
+      ).exists();
       if (isMoreIndicatorExist) {
-        numberOfAvatars++
+        numberOfAvatars++;
       }
       return numberOfAvatars;
     },
@@ -43,6 +45,6 @@ export const avatarGroupDriverFactory = (base, body) => {
      * @returns {Promise<boolean>}
      */
     isMoreIndicatorExist: async () =>
-      await (await findByHook(base, dataHooks.avatarGroupMoreItem)).exists()
+      await (await findByHook(base, dataHooks.avatarGroupMoreItem)).exists(),
   };
 };

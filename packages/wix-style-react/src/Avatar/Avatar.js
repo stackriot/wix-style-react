@@ -188,7 +188,7 @@ const CoreAvatarPropTypes = {
    * Click event handler (when this property is provided the component will be clickable
    * on hover and will have a pointer cursor).
    */
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 Avatar.displayName = 'Avatar';

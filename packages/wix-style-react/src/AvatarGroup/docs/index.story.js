@@ -33,7 +33,8 @@ const avatarItems = [
   {
     ariaLabel: 'Avatar for Sia Kate',
     imgProps: {
-      src: 'https://lh3.googleusercontent.com/proxy/EI3faU3-0hCPyjBKktiVuPKfZTMXx6BsDFE0f7UBr_8CKSMRWL28dLZJrWGWExcTRgWI2v3pcuBT19YpJ-xdmxla4mmqWw'
+      src:
+        'https://lh3.googleusercontent.com/proxy/EI3faU3-0hCPyjBKktiVuPKfZTMXx6BsDFE0f7UBr_8CKSMRWL28dLZJrWGWExcTRgWI2v3pcuBT19YpJ-xdmxla4mmqWw',
     },
     name: 'Sia Kate',
   },
@@ -77,9 +78,7 @@ export default {
     items: [...avatarItems],
   },
 
-  exampleProps: {
-  },
-
+  exampleProps: {},
 
   sections: [
     header({
@@ -144,7 +143,7 @@ Don’t use it:\n
               '\n' +
               'By default component displays up to 5 items. The ‘N+’ indication will replace the last avatar, in case the number exceeds this limit.\n',
             source: examples.maxItems,
-          })
+          }),
         ],
       }),
 
