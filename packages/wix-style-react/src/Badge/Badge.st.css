@@ -400,6 +400,10 @@
   );
 }
 
+.BadgeStyle .text {
+  color: value(color);
+}
+
 /* size = medium */
 .root:size(medium) {
   padding: value(medium);
