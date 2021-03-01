@@ -17,7 +17,8 @@ Types of changes:
 ## Next
 ### Added
 - `<Calendar/>` - add the missing locales [#6824](https://github.com/wix/wix-style-react/pull/6824)
-- 
+- `<AddItem />` - added `icon` prop for illustrations [#6786](https://github.com/wix/wix-style-react/pull/6786)
+
 ### Changed
 - `<RadioGroup/>` - refactor to use Radio component [#6767](https://github.com/wix/wix-style-react/pull/6767)
 
