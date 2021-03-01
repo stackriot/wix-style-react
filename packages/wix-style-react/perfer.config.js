@@ -1,6 +1,6 @@
 const javascriptFiles = [
   ['Accordion.bundle.min.js', 51],
-  ['AddItem.bundle.min.js', 44],
+  ['AddItem.bundle.min.js', 34],
   ['AddressInput.bundle.min.js', 73],
   ['AnalyticsSummaryCard.bundle.min.js', 70],
   ['Animate.bundle.min.js', 5],
