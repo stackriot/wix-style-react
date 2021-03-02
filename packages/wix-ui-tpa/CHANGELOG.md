@@ -1,3 +1,23 @@
+# 2.26.0 (2021-03-01)
+
+
+### Bug Fixes
+
+* **ColorPicker:** fix a11y focus ring ([b63cfc3](https://github.com/wix/wix-style-react/commit/b63cfc34526ca3033072d12e32ade6ef414633b9))
+* **Dropdown:** error state not working with style overrides ([d46d9f0](https://github.com/wix/wix-style-react/commit/d46d9f0e68a9c8d4118e0600e74cb32db83f68eb))
+* **Image:** update state when native image is completed ([#6802](https://github.com/wix/wix-style-react/issues/6802)) ([5a1cba8](https://github.com/wix/wix-style-react/commit/5a1cba8a8b90ef85127648cf3ffa77b5e7df818f))
+* **TextField:** Remove tooltip appendTo scrollParent ([f085a7d](https://github.com/wix/wix-style-react/commit/f085a7da6f2ab96fd3f81af378b74a878541ee86))
+* **TextArea:** Fix a11y focus-ring placement ([74f748e](https://github.com/wix/wix-style-react/commit/74f748e4ac3001eb7640cdbbbd71bd1a2e96463b))
+
+
+### Features
+
+* **Calendar:** Add the missing locales ([#6824](https://github.com/wix/wix-style-react/issues/6824)) ([d763800](https://github.com/wix/wix-style-react/commit/d76380030a29abec1f7b9e583a1aec35c761685d))
+* **Checkbox:** add custom node suffix ([1acbbc0](https://github.com/wix/wix-style-react/commit/1acbbc0968ce890210a132166252acab0ce98cf0))
+* **Checkbox:** support focus-ring ([#6769](https://github.com/wix/wix-style-react/issues/6769)) ([3e7ae9c](https://github.com/wix/wix-style-react/commit/3e7ae9ccaec8e6d2e9f1061b1d1fbee00975e6dd))
+* **DatePicker:** Add onMonthChange prop ([#6821](https://github.com/wix/wix-style-react/issues/6821)) ([fa5c36b](https://github.com/wix/wix-style-react/commit/fa5c36b3a1a2307d594b2d2c5231530e22e2ef86))
+
+
 # 2.25.0 (2021-02-22)
 
 
@@ -29,8 +49,6 @@
 
 ### Features
 
-* **Dropdown:** Fix style overrides affecting Dropdown button ([468dda4](https://github.com/wix/wix-style-react/commit/468dda4cfe0ed042d537f96f7e3b626bd889de39))
-* **Image:** implement `focalPoint` prop ([#6738](https://github.com/wix/wix-style-react/issues/6738)) ([65b2a4c](https://github.com/wix/wix-style-react/commit/65b2a4ce9e68cea1e7e658ec26b26b0fd0559f7a))
 * **Checkbox:** add custom node suffix ([1acbbc0](https://github.com/wix/wix-style-react/commit/1acbbc0968ce890210a132166252acab0ce98cf0))
 * **Counter:** add backgorund and font style params ([43b81de](https://github.com/wix/wix-style-react/commit/43b81de75ff4bf37221c7440540ce940eb4101b7))
 

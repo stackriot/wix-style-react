@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.86.0 - 2021-03-01
 ### Added
 - `<Calendar/>` - add the missing locales [#6824](https://github.com/wix/wix-style-react/pull/6824)
 - `<AddItem />` - added `icon` prop for illustrations [#6786](https://github.com/wix/wix-style-react/pull/6786)
