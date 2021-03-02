@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+- `<Table>`  - stop propogation for disabled checkbox[#6845](https://github.com/wix/wix-style-react/pull/6845)
 
 ## 9.86.0 - 2021-03-01
 ### Added
