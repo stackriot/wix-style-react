@@ -40,14 +40,19 @@ export function createColumns({ tableProps, bulkSelectionContext }) {
         <TableBulkSelectionCheckbox dataHook="table-select" />
       ),
       onCellClick: (column, row, rowNum, event) => {
-        if (row.unselectable || isRowSelectionDisabled(row)) {
+        if (row.unselectable) {
+          return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (isRowSelectionDisabled(row)) {
           return;
         }
 
         const id = defaultTo(row.id, rowNum);
         toggleSelectionById(id, 'Checkbox');
-        event.preventDefault();
-        event.stopPropagation();
       },
       render: (row, rowNum) => {
         const id = defaultTo(row.id, rowNum);
