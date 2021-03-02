@@ -1,5 +1,9 @@
 import { internalComponentsSymbols } from '../symbols';
-import { internalComponentsNames } from '../components';
+import {
+  internalComponentsNames,
+  layoutComponentsNames,
+  sharedComponentsNames,
+} from '../components';
 
 /**
  * Symbol => Component IC
@@ -22,4 +26,19 @@ export const internalComponentsSymbolsToComponents = {
   [internalComponentsSymbols.listItemSelect]: [
     internalComponentsNames.ListItemSelect,
   ],
+
+  [internalComponentsSymbols.cardFolderTabs]: [
+    internalComponentsNames.CardFolderTabs,
+    layoutComponentsNames.Card,
+    layoutComponentsNames.CardContent,
+    sharedComponentsNames.EmptyState,
+  ],
+
+  [internalComponentsSymbols.fillButton]: [internalComponentsNames.FillButton],
+
+  [internalComponentsSymbols.fillPreview]: [
+    internalComponentsNames.FillPreview,
+  ],
+
+  [internalComponentsSymbols.radio]: [internalComponentsNames.Radio],
 };

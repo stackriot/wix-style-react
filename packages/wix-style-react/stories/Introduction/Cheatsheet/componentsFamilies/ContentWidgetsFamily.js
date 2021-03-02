@@ -23,6 +23,7 @@ import ChevronDown from 'wix-ui-icons-common/ChevronDown';
 
 import {
   Layout,
+  AnalyticsLayout,
   Input,
   FormField,
   Dropdown,
@@ -52,6 +53,14 @@ import {
   SelectableAccordion,
   StackedBarChart,
   SparklineChart,
+  AudioPlayer,
+  HorizontalTimeline,
+  TestimonialList,
+  Avatar,
+  FeatureList,
+  Image,
+  AnalyticsSummaryCard,
+  GooglePreview,
 } from 'wix-style-react';
 
 const groupSymbol = symbolsGroup.contentWidgets;
@@ -826,6 +835,339 @@ const StackedBarChartExample = () => {
   );
 };
 
+const VoicePlayerExample = () => {
+  const symbol = contentWidgetsSymbols.voicePlayer;
+  const components = contentWidgetsSymbolsToComponents[symbol];
+
+  const singleComponentProps = {
+    name: symbol,
+    componentsNames: createLinkedComponentsNames(components),
+    size: singleComponentSizes.compact,
+  };
+
+  return (
+    <SingleComponentStacked {...singleComponentProps}>
+      <AudioPlayer src="https://music.wixstatic.com/preview/84770f_29a80480c24f4946a477c8ad03b92cbc-128.mp3" />
+    </SingleComponentStacked>
+  );
+};
+
+const HorizontalTimelineExample = () => {
+  const symbol = contentWidgetsSymbols.horizontalTimeline;
+  const components = contentWidgetsSymbolsToComponents[symbol];
+
+  const singleComponentProps = {
+    name: symbol,
+    componentsNames: createLinkedComponentsNames(components),
+    size: singleComponentSizes.compact,
+  };
+
+  return (
+    <SingleComponentStacked {...singleComponentProps}>
+      <Preview wrapWithCardContent>
+        <HorizontalTimeline
+          items={[
+            {
+              label: 'Complete',
+              skin: 'dark',
+              icon: <HorizontalTimeline.CompleteIcon />,
+            },
+            {
+              label: 'Active',
+              skin: 'dark',
+              icon: <HorizontalTimeline.ActiveIcon />,
+            },
+            {
+              label: 'Blank',
+              icon: <HorizontalTimeline.DefaultIcon />,
+            },
+            {
+              label: 'Destructive',
+              icon: <HorizontalTimeline.DestructiveIcon />,
+            },
+          ]}
+        />
+      </Preview>
+    </SingleComponentStacked>
+  );
+};
+
+const TestimonialListExample = () => {
+  const symbol = contentWidgetsSymbols.testimonialList;
+  const components = contentWidgetsSymbolsToComponents[symbol];
+
+  const singleComponentProps = {
+    name: symbol,
+    componentsNames: createLinkedComponentsNames(components),
+  };
+
+  return (
+    <SingleComponentStacked {...singleComponentProps}>
+      <Preview wrapWithCardContent>
+        <TestimonialList
+          testimonials={[
+            {
+              avatar: <Avatar name="Guy in glasses" size="size60" />,
+              text: 'I love it! This product is exactly what I needed.',
+              authorName: 'Guy in glasses',
+            },
+            {
+              avatar: <Avatar name="Person with a hat" size="size60" />,
+              text: 'Amazing! It helped me to solve my problems.',
+              authorName: 'Person with a hat',
+            },
+            {
+              avatar: <Avatar name="Smiling lady" size="size60" />,
+              text: 'A perfect tool for my every day tasks.',
+              authorName: 'Smiling lady',
+            },
+          ]}
+        />
+      </Preview>
+    </SingleComponentStacked>
+  );
+};
+
+const FeatureListExample = () => {
+  const symbol = contentWidgetsSymbols.featureList;
+  const components = contentWidgetsSymbolsToComponents[symbol];
+
+  const singleComponentProps = {
+    name: symbol,
+    componentsNames: createLinkedComponentsNames(components),
+  };
+
+  return (
+    <SingleComponentStacked {...singleComponentProps}>
+      <Preview wrapWithCardContent>
+        <FeatureList
+          features={[
+            {
+              image: <Image width={60} height={60} />,
+              title: 'Remove Wix Ads',
+              text:
+                "Enjoy a website that's completely your own brand by removing Wix ads.",
+            },
+            {
+              image: <Image width={60} height={60} />,
+              title: 'Connect a Custom Domain',
+              text: 'Get your business found with a custom domain.',
+            },
+            {
+              image: <Image width={60} height={60} />,
+              title: 'Accept Online Payment',
+              text:
+                'Let your customers and clients pay you online at checkout.',
+            },
+          ]}
+        />
+      </Preview>
+    </SingleComponentStacked>
+  );
+};
+
+const AnalyticsSummaryCardExample = () => {
+  const symbol = contentWidgetsSymbols.analyticsSummaryCard;
+  const components = contentWidgetsSymbolsToComponents[symbol];
+
+  const singleComponentProps = {
+    name: symbol,
+    componentsNames: createLinkedComponentsNames(components),
+  };
+
+  return (
+    <SingleComponentStacked {...singleComponentProps}>
+      <Preview>
+        <AnalyticsSummaryCard
+          chartColorHex="#3899ec"
+          chartData={[
+            {
+              label: new Date('2020-09-03T21:00:00.000Z'),
+              value: 100,
+            },
+            {
+              label: new Date('2020-09-04T21:00:00.000Z'),
+              value: 17,
+            },
+            {
+              label: new Date('2020-09-05T21:00:00.000Z'),
+              value: 18,
+            },
+          ]}
+          chartWidth={169}
+          onChartHover={() => {}}
+          trend={12}
+          isTrendVisible
+          valueTooltip="1,951"
+          title="Sessions"
+          getChartTooltipContent={index => (
+            <span style={{ color: '#ffffff' }}>{index}</span>
+          )}
+          value="1,9K"
+        />
+      </Preview>
+    </SingleComponentStacked>
+  );
+};
+
+const AnalyticsLayoutExample = () => {
+  const symbol = contentWidgetsSymbols.analyticsLayouter;
+  const components = contentWidgetsSymbolsToComponents[symbol];
+
+  const singleComponentProps = {
+    name: symbol,
+    componentsNames: createLinkedComponentsNames(components),
+  };
+
+  const analyticsLayoutChildren = [
+    <AnalyticsSummaryCard
+      chartColorHex="#3899ec"
+      chartData={[
+        {
+          label: new Date('2020-09-03T21:00:00.000Z'),
+          value: 100,
+        },
+        {
+          label: new Date('2020-09-04T21:00:00.000Z'),
+          value: 17,
+        },
+        {
+          label: new Date('2020-09-05T21:00:00.000Z'),
+          value: 18,
+        },
+      ]}
+      chartWidth={169}
+      onChartHover={() => {}}
+      trend={-5}
+      isTrendVisible
+      title="Total Sales"
+      getChartTooltipContent={index => (
+        <span style={{ color: '#ffffff' }}>{index}</span>
+      )}
+      value="$943"
+      footer={<TextButton>Increase your Sales</TextButton>}
+    />,
+    <AnalyticsSummaryCard
+      chartColorHex="#FC8E53"
+      chartData={[
+        {
+          label: new Date('2020-09-03T21:00:00.000Z'),
+          value: 3,
+        },
+        {
+          label: new Date('2020-09-04T21:00:00.000Z'),
+          value: 17,
+        },
+        {
+          label: new Date('2020-09-05T21:00:00.000Z'),
+          value: 18,
+        },
+      ]}
+      chartWidth={169}
+      onChartHover={() => {}}
+      trend={12}
+      isTrendVisible
+      title="Sessions"
+      getChartTooltipContent={index => (
+        <span style={{ color: '#ffffff' }}>{index}</span>
+      )}
+      value="1,943"
+      footer={<TextButton>Boost Your Traffic</TextButton>}
+    />,
+    <AnalyticsSummaryCard
+      chartColorHex="#46C6C3"
+      chartData={[
+        {
+          label: new Date('2020-09-03T21:00:00.000Z'),
+          value: 100,
+        },
+        {
+          label: new Date('2020-09-04T21:00:00.000Z'),
+          value: 17,
+        },
+        {
+          label: new Date('2020-09-05T21:00:00.000Z'),
+          value: 18,
+        },
+      ]}
+      chartWidth={169}
+      onChartHover={() => {}}
+      trend={-15}
+      isTrendVisible
+      title="Active Leads"
+      getChartTooltipContent={index => (
+        <span style={{ color: '#ffffff' }}>{index}</span>
+      )}
+      value="35"
+      footer={<TextButton>Get More Leads</TextButton>}
+    />,
+    <AnalyticsSummaryCard
+      chartColorHex="#3899ec"
+      chartData={[
+        {
+          label: new Date('2020-09-03T21:00:00.000Z'),
+          value: 100,
+        },
+        {
+          label: new Date('2020-09-04T21:00:00.000Z'),
+          value: 17,
+        },
+        {
+          label: new Date('2020-09-05T21:00:00.000Z'),
+          value: 18,
+        },
+      ]}
+      chartWidth={169}
+      onChartHover={() => {}}
+      trend={-12}
+      isTrendVisible
+      title="Sessions"
+      getChartTooltipContent={index => (
+        <span style={{ color: '#ffffff' }}>{index}</span>
+      )}
+      value="$1000"
+      footer={<TextButton>Increase your Sales</TextButton>}
+    />,
+  ];
+
+  return (
+    <SingleComponentStacked {...singleComponentProps}>
+      <Preview>
+        <AnalyticsLayout items={[1, 2, 3, 4, 5]}>
+          {(item, index) => (
+            <AnalyticsLayout.Cell key={index}>
+              {analyticsLayoutChildren[index]}
+            </AnalyticsLayout.Cell>
+          )}
+        </AnalyticsLayout>
+      </Preview>
+    </SingleComponentStacked>
+  );
+};
+
+const GooglePreviewExample = () => {
+  const symbol = contentWidgetsSymbols.googlePreview;
+  const components = contentWidgetsSymbolsToComponents[symbol];
+
+  const singleComponentProps = {
+    name: symbol,
+    componentsNames: createLinkedComponentsNames(components),
+    size: singleComponentSizes.compact,
+  };
+
+  return (
+    <SingleComponentStacked {...singleComponentProps}>
+      <Preview>
+        <GooglePreview
+          title="Site Name | a title of your site Site Name | a title of your site "
+          previewUrl="www.site-name.com"
+          description="a short description for a site a short description for a site a short description for a site a short description for a site a short description for a site a short description for a site a short description for a site a short description for a site"
+        />
+      </Preview>
+    </SingleComponentStacked>
+  );
+};
+
 const ContentWidgetsFamily = () => (
   <FamilyStructure title={groupSymbol}>
     <ImageWidgetExample />
@@ -844,6 +1186,13 @@ const ContentWidgetsFamily = () => (
     <FunnelChartExample />
     <SelectableAccordionExample />
     <StackedBarChartExample />
+    <VoicePlayerExample />
+    <HorizontalTimelineExample />
+    <TestimonialListExample />
+    <FeatureListExample />
+    <AnalyticsSummaryCardExample />
+    <AnalyticsLayoutExample />
+    <GooglePreviewExample />
   </FamilyStructure>
 );
 

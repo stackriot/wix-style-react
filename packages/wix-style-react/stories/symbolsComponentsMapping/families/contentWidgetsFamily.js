@@ -63,4 +63,32 @@ export const contentWidgetsSymbolsToComponents = {
   [contentWidgetsSymbols.funnelChart]: [
     contentWidgetsComponentsNames.FunnelChart,
   ],
+
+  [contentWidgetsSymbols.voicePlayer]: [
+    contentWidgetsComponentsNames.AudioPlayer,
+  ],
+
+  [contentWidgetsSymbols.horizontalTimeline]: [
+    contentWidgetsComponentsNames.HorizontalTimeline,
+  ],
+
+  [contentWidgetsSymbols.testimonialList]: [
+    contentWidgetsComponentsNames.TestimonialList,
+  ],
+
+  [contentWidgetsSymbols.featureList]: [
+    contentWidgetsComponentsNames.FeatureList,
+  ],
+
+  [contentWidgetsSymbols.analyticsSummaryCard]: [
+    contentWidgetsComponentsNames.AnalyticsSummaryCard,
+  ],
+
+  [contentWidgetsSymbols.analyticsLayouter]: [
+    contentWidgetsComponentsNames.AnalyticsLayout,
+  ],
+
+  [contentWidgetsSymbols.googlePreview]: [
+    contentWidgetsComponentsNames.GooglePreview,
+  ],
 };

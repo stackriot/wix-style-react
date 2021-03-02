@@ -98,6 +98,7 @@ export const navigationSymbols = {
   stepper: '6.6 Stepper',
   composerHeader: '6.7 Composer Header',
   composerSidebar: '6.8 Composer Sidebar',
+  pagination: '6.9 Pagination',
 };
 
 /**
@@ -123,10 +124,10 @@ export const notificationsSymbols = {
  * Symbols Family 9
  */
 export const modalsSymbols = {
-  alert: '9.1 Alert',
-  announcement: '9.2 Announcement',
+  messageModal: '9.1 Message Modal',
+  announcement: '9.2 Announcement Modal',
   custom: '9.3 Custom Modal',
-  preview: '9.4 Preview',
+  preview: '9.4 Preview Modal',
   mobile: '9.5 Mobile Modal',
 };
 
@@ -175,11 +176,18 @@ export const contentWidgetsSymbols = {
   marketingCardLayout: '12.9 Marketing Card Layout',
   barChart: '12.10 Bar Chart',
   areaChart: '12.11 Area Chart',
-  timeline: '12.12 Timeline',
-  sparklineChart: '12.17 Sparkline Chart',
-  funnelChart: '12.18 Funnel Chart',
-  stackedBarChart: '12.x Stacked Bar Chart',
-  selectableAccordion: '12.x Selectable Accordion',
+  voicePlayer: '12.13 Voice Player',
+  timeline: '12.14 Timeline',
+  horizontalTimeline: '12.15 Horizontal Timeline',
+  testimonialList: '12.16 Testimonial List',
+  featureList: '12.17 Feature List',
+  sparklineChart: '12.18 Sparkline Chart',
+  funnelChart: '12.19 Funnel Chart',
+  stackedBarChart: '12.20 Stacked Bar Chart',
+  selectableAccordion: '12.21 Selectable Accordion',
+  analyticsSummaryCard: '12.22 Analytics Summary Card',
+  analyticsLayouter: '12.23 Analytics Layouter',
+  googlePreview: '12.24 Google Preview',
 };
 
 /**
@@ -192,4 +200,8 @@ export const internalComponentsSymbols = {
   listItemSelect: 'IC. ListItemSelect',
   listItemAction: 'IC. ListItemAction',
   listItemEditable: 'IC. ListItemEditable',
+  cardFolderTabs: 'IC. Card Folder Tabs',
+  fillPreview: 'IC. FillPreview',
+  fillButton: 'IC. FillButton',
+  radio: 'IC. Radio',
 };

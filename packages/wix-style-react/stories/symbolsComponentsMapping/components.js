@@ -40,6 +40,7 @@ export const layoutComponentsNames = {
   Page: 'Page',
   PageHeader: 'Page.Header',
   PageSection: 'Page.Section',
+  PageFooter: 'PageFooter',
   Grid: 'Grid',
   Layout: 'Layout',
   MarketingPageLayout: 'MarketingPageLayout',
@@ -102,6 +103,8 @@ export const navigationComponentsNames = {
   VerticalTabs: 'VerticalTabs',
   VerticalTabsItem: 'VerticalTabsItem',
   ComposerHeader: 'ComposerHeader',
+  ComposerSidebar: 'ComposerSidebar',
+  Pagination: 'Pagination',
 };
 
 /**
@@ -128,7 +131,7 @@ export const notificationsComponentsNames = {
  * Components Family 9
  */
 export const modalsComponentsNames = {
-  MessageBoxFunctionalLayout: 'MessageBoxFunctionalLayout',
+  MessageModalLayout: 'MessageModalLayout',
   Modal: 'Modal',
   CustomModalLayout: 'CustomModalLayout',
   AnnouncementModalLayout: 'AnnouncementModalLayout',
@@ -182,11 +185,18 @@ export const contentWidgetsComponentsNames = {
   MarketingLayout: 'MarketingLayout',
   BarChart: 'BarChart',
   Timeline: 'Timeline',
+  HorizontalTimeline: 'HorizontalTimeline',
   SparklineChart: 'SparklineChart',
   SelectableAccordion: 'SelectableAccordion',
   StackedBarChart: 'StackedBarChart',
   FunnelChart: 'FunnelChart',
   AreaChart: 'AreaChart',
+  AudioPlayer: 'AudioPlayer',
+  FeatureList: 'FeatureList',
+  TestimonialList: 'TestimonialList',
+  AnalyticsSummaryCard: 'AnalyticsSummaryCard',
+  AnalyticsLayout: 'AnalyticsLayout',
+  GooglePreview: 'GooglePreview',
 };
 
 /**
@@ -199,4 +209,8 @@ export const internalComponentsNames = {
   ListItemEditable: 'ListItemEditable',
   ListItemSection: 'ListItemSection',
   ListItemSelect: 'ListItemSelect',
+  CardFolderTabs: 'CardFolderTabs',
+  FillPreview: 'FillPreview',
+  FillButton: 'FillButton',
+  Radio: 'Radio',
 };
