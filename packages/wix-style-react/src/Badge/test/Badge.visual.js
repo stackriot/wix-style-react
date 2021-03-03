@@ -1,9 +1,10 @@
 import React from 'react';
-import Badge, { SIZE, SKIN, TYPE } from '../index';
-import Box from '../../Box';
+import Badge, { SKIN, TYPE } from '../index';
 import { visualize, snap } from 'storybook-snapper';
 import ChevronDown from 'wix-ui-icons-common/ChevronDown';
 import CalendarIcon from 'wix-ui-icons-common/Date';
+import ChevronDownSmall from 'wix-ui-icons-common/ChevronDownSmall';
+import CalendarIconSmall from 'wix-ui-icons-common/DateSmall';
 
 export const runTests = (
   { themeName, testWithTheme } = { testWithTheme: i => i },
@@ -18,34 +19,27 @@ export const runTests = (
       ),
     );
     snap('Affixes', () =>
-      testWithTheme(
-        <BadgesVariations
-          prefixIcon={<CalendarIcon />}
-          suffixIcon={<ChevronDown />}
-          children="Some Badge"
-        />,
-      ),
+      testWithTheme(<BadgesVariations withAffixes children="Some Badge" />),
     );
     snap('focus', () => testWithTheme(<FocusBadgeTest />));
   });
 
   const skins = Object.keys(SKIN);
-  const sizes = Object.keys(SIZE);
   const types = Object.keys(TYPE);
 
   const renderBadge = props => (
     <span style={{ padding: '5px', maxWidth: '180px' }}>
-      <Badge {...props}></Badge>
+      <Badge {...props} />
     </span>
   );
 
   const renderTypes = props =>
     types.map(type => renderBadge({ type, ...props }));
-  const renderSizes = props =>
-    sizes.map(size => renderTypes({ size, ...props }));
 
   class BadgesVariations extends React.Component {
     render() {
+      const { withAffixes, ...rest } = this.props;
+
       return (
         <div>
           {skins.map(skin => (
@@ -58,8 +52,21 @@ export const runTests = (
                 }}
                 key={skin}
               >
-                {renderSizes({ skin, ...this.props })}
-                {renderBadge({ uppercase: false, skin, ...this.props })}
+                {renderTypes({
+                  size: 'medium',
+                  prefixIcon: withAffixes ? <CalendarIcon /> : null,
+                  suffixIcon: withAffixes ? <ChevronDown /> : null,
+                  skin,
+                  ...rest,
+                })}
+                {renderTypes({
+                  size: 'small',
+                  prefixIcon: withAffixes ? <CalendarIconSmall /> : null,
+                  suffixIcon: withAffixes ? <ChevronDownSmall /> : null,
+                  skin,
+                  ...rest,
+                })}
+                {renderBadge({ uppercase: false, skin, ...rest })}
               </div>
             </div>
           ))}
