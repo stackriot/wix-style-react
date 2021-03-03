@@ -92,6 +92,9 @@ const radioGroupDriverFactory = ({ element, eventTrigger }) => {
 
     /** Get the value of radio button name at the provided index */
     getRadioName: () => getRadioByIndex(0).getName(),
+
+    /** Checks if the radio with the provided index is checked */
+    isRadioChecked: index => getRadioByIndex(index).isChecked(),
   };
 };
 

@@ -65,6 +65,9 @@ export const radioGroupUniDriverFactory = (base, body) => {
 
     /** Get the value of radio button name at the provided index */
     getRadioName: async () => (await getRadioByIndex(0)).getName(),
+
+    /** Checks if the radio with the provided index is checked */
+    isRadioChecked: async index => (await getRadioByIndex(index)).isChecked(),
   };
 };
 

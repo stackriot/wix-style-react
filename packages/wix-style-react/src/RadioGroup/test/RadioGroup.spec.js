@@ -73,6 +73,15 @@ describe(RadioGroup.displayName, () => {
       expect(await driver.getSelectedValue()).toBe(null);
     });
 
+    it('should return true if a radio button is checked and false otherwise', async () => {
+      const { driver } = createDriver(<DefaultRadioGroup value={'3'} />);
+
+      expect(await driver.isRadioChecked(0)).toBe(false);
+      expect(await driver.isRadioChecked(1)).toBe(false);
+      expect(await driver.isRadioChecked(2)).toBe(true);
+      expect(await driver.isRadioChecked(3)).toBe(false);
+    });
+
     describe('onChange attribute', () => {
       it('should be called with the correct option value', async () => {
         const onChange = jest.fn();

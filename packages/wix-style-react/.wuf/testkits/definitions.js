@@ -239,7 +239,6 @@ module.exports = {
   RadioGroup: {
     vanillaLegacyTestkit: true,
     enzymeLegacyTestkit: true,
-    protractorLegacyTestkit: true,
   },
 
   MessageBoxMarketerialLayout: {
