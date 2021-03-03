@@ -27,7 +27,8 @@
     "wsr": "./scripts/run-package-command.sh wix-style-react",
     "postpublish": "lerna run postpublish",
     "pr-postbuild": "lerna run pr-postbuild",
-    "pr-release": "lerna run pr-release"
+    "pr-release": "lerna run pr-release",
+    "unified-release": "node scripts/unified-release.js"
   },
   "devDependencies": {
     "is-ci": "^2.0.0",
