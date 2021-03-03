@@ -14,3 +14,9 @@
        SelectedDayBorderRadius 0,
     );
 }
+
+.weeksVerticalSpacing{
+    -st-mixin: DatePicker(
+       WeeksVerticalSpacing 8,
+    );
+}

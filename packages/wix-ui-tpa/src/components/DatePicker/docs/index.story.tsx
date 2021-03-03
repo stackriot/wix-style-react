@@ -61,6 +61,16 @@ export default {
       { label: 'Monday', value: 1 },
       { label: 'Sunday', value: 0 },
     ],
+    removeOuterPadding: [
+      {
+        label: 'With Outer Padding',
+        value: false,
+      },
+      {
+        label: 'Without Outer Padding',
+        value: true,
+      },
+    ],
   },
   dataHook: 'storybook-DatePicker',
   sections: [
@@ -206,6 +216,12 @@ export default {
                     wixParam: 'selectedDayBorderRadius',
                     defaultNumber: 100,
                     unit: '%',
+                  },
+                  {
+                    label: 'Vertical Spacing Between Weeks',
+                    wixParam: 'customWeeksVerticalSpacing',
+                    defaultNumber: 0,
+                    unit: 'px',
                   },
                 ],
               },

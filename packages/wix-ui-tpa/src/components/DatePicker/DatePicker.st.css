@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, applyOpacity, fallback, font, zeroAsTrue;
+    -st-named: color, applyOpacity, fallback, font, zeroAsTrue, applyUnit;
 }
 
 :import {
@@ -40,6 +40,8 @@
     DefaultSelectedDayBGColor: color-8;
     DefaultSelectedDayBorderRadius: 100%;
     DefaultDisabledDayColor: color-3;
+
+    DefaultWeeksVerticalSpacing: 0;
 }
 
 /*Overrides*/
@@ -107,6 +109,11 @@
         @default color-3
     */
     DisabledDayColor: --overridable;
+    /*
+        The vertical space between weeks.
+        @default 0
+    */
+    WeeksVerticalSpacing: --overridable;
 }
 
 /* Overrides - deceleration of overridable parameters by the consumer */
@@ -128,6 +135,8 @@
     CurrentSelectedDayBGColor: color(fallback(value(SelectedDayBGColor), value(DefaultSelectedDayBGColor)));
     CurrentSelectedDayBorderRadius: fallback(value(SelectedDayBorderRadius),value(DefaultSelectedDayBorderRadius));
     CurrentDisabledDayColor: color(fallback(value(DisabledDayColor), value(DefaultDisabledDayColor)));
+
+    CurrentWeeksVerticalSpacing: applyUnit(fallback(value(WeeksVerticalSpacing),value(DefaultWeeksVerticalSpacing)), px);
 }
 
 /* The component's css without the overrideStyleParams */
@@ -141,6 +150,7 @@
 
 .calendar {
     -st-extends: WSRCalendar;
+    -st-states: removeOuterPadding;
 }
 
 .calendar::month {
@@ -204,6 +214,27 @@
 .calendar::body {
     padding: 0 value(sidePadding) 20px;
     background-color: value(CurrentBackgroundColor);
+}
+
+.calendar:removeOuterPadding::header {
+    padding: 0;
+}
+
+.calendar:removeOuterPadding::body {
+    padding: 0;
+}
+
+.calendar:removeOuterPadding::weekdays {
+    padding: 0;
+}
+
+.calendar:removeOuterPadding::month {
+    min-width: 240px;
+    min-height: 284px;
+}
+
+.calendar::week:not(:last-child) {
+    margin-bottom: value(CurrentWeeksVerticalSpacing);
 }
 
 .calendar::day {

@@ -69,6 +69,8 @@ export interface DatePickerProps extends TPAComponentProps {
   yearDropdownAriaLabel?: string;
   /** Identifies the element that labels the years dropdown in calendar header */
   yearDropdownAriaLabelledBy?: string;
+  /** If true, renders date picker without outer padding */
+  removeOuterPadding?: boolean;
 }
 
 interface DefaultProps {
@@ -117,6 +119,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
       monthDropdownAriaLabelledBy,
       yearDropdownAriaLabel,
       yearDropdownAriaLabelledBy,
+      removeOuterPadding,
     } = this.props;
 
     return (
@@ -130,7 +133,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
             role="region"
           >
             <WSRCalendar
-              className={classes.calendar}
+              className={st(classes.calendar, { removeOuterPadding })}
               dataHook={DATA_HOOKS.WSR_CALENDAR}
               value={value}
               onChange={onChange}

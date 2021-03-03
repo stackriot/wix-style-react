@@ -18,6 +18,8 @@
           MonthAndYearCaptionFont '"--customMonthAndYearCaptionFont"',
           WeekdayFont '"--customWeekdayFont"',
           DayFont '"--customDayFont"',
+
+          WeeksVerticalSpacing '"--customWeeksVerticalSpacing"',
   );
 }
 

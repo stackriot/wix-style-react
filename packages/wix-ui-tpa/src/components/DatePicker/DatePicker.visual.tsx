@@ -127,5 +127,23 @@ visualize('DatePicker', () => {
         onChange={() => {}}
       />,
     );
+    snap(
+      'No outer padding',
+      <VisualTestDatePicker
+        width="280px"
+        value={new Date('2019/12/15')}
+        onChange={() => {}}
+        removeOuterPadding
+      />,
+    );
+    snap(
+      'Weeks Vertical Spacing',
+      <VisualTestDatePicker
+        className={classes.weeksVerticalSpacing}
+        width="280px"
+        value={new Date('2019/12/15')}
+        onChange={() => {}}
+      />,
+    );
   });
 });
