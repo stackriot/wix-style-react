@@ -21,32 +21,37 @@ class Modal extends React.PureComponent {
   static propTypes = {
     /** Applied as data-hook HTML attribute that can be used to create driver in testing */
     dataHook: PropTypes.string,
-    /** Is modal open or not*/
+    /** Controls if modal is open or closed */
     isOpen: PropTypes.bool.isRequired,
-    /** Border radius of modal*/
+    /** Border radius of modal */
     borderRadius: PropTypes.number,
     /** a11y: The value of contentLabel is set as an aria-label on the modal element. This helps assistive technology, like screen readers, to add a label to an element that would otherwise be anonymous */
     contentLabel: PropTypes.string,
+    /** Renders modal content */
     children: PropTypes.any,
-    /** z-index of the modal overlay */
+    /** Controls z-index of the modal overlay */
     zIndex: PropTypes.number,
+    /** Enables to close modal when mouse clicked on overlay area */
     shouldCloseOnOverlayClick: PropTypes.bool,
-    /** Displays a close button on the top right corner of the overlay  */
+    /** Displays a close button on the top right corner of the overlay */
     shouldDisplayCloseButton: PropTypes.bool,
+    /** Callback that will be executed when the modal is requested to be closed, prior to actually closing */
     onRequestClose: PropTypes.func,
+    /** Callback that will be executed after the modal has been opened */
     onAfterOpen: PropTypes.func,
-    /** horizontal position of the modal*/
+    /** Horizontal position of the modal */
     horizontalPosition: PropTypes.oneOf(['start', 'center', 'end']),
-    /** vertical position of the modal*/
+    /** Vertical position of the modal */
     verticalPosition: PropTypes.oneOf(['start', 'center', 'end']),
-    /** Number indicating the milliseconds to wait before closing the modal*/
+    /** Number indicating the milliseconds to wait before closing the modal */
     closeTimeoutMS: PropTypes.number,
-    /** Specifies if modal portal supports scroll*/
+    /** Specifies if modal portal supports scroll */
     scrollable: PropTypes.bool,
     /** Specifies if modal content should become scrollable when modal size will fit the window */
     scrollableContent: PropTypes.bool,
-    /** maxHeight of modal(when it has scrollableContent)*/
+    /** Sets the maximum height for a scrollable content */
     maxHeight: PropTypes.string,
+    /** Sets the height for modal's content container */
     height: PropTypes.string,
     /** css position of the modal overlay */
     overlayPosition: PropTypes.oneOf([
@@ -58,9 +63,9 @@ class Modal extends React.PureComponent {
     ]),
     /** A function that returns a DOM element on which the modal should be appended to */
     parentSelector: PropTypes.func,
-    /** selector specifying where to apply the aria-hidden attribute */
+    /** Selector specifying where to apply the aria-hidden attribute */
     appElement: PropTypes.string,
-    /** specifies minimum spacing between full viewport and modal content */
+    /** Specifies minimum spacing between full viewport and modal content */
     screen: PropTypes.oneOf(['full', 'desktop', 'mobile']),
   };
 
