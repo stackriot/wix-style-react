@@ -5,7 +5,7 @@ import {
   SortableList,
   DragDropContextProvider,
 } from 'wix-style-react';
-import styles from './MultiAreaListWithSortableColumnsWithAnimations.scss';
+import { classes } from './MultiAreaListWithSortableColumnsWithAnimations.st.css';
 import { stVars } from '../../../../Foundation/stylable/easing.st.css';
 
 const generateStateForContainer = (length, startIndex) => {
@@ -67,53 +67,50 @@ export default class MultiAreaListWithSortableColumnsWithAnimations extends Reac
   };
 
   renderCell = ({ isPlaceholder, isPreview, id, item, previewStyles }) => {
-    const classes = classNames(
+    const _classes = classNames(
       {
         [classNames(
           defaultDndStyles.itemPlaceholder,
-          styles.itemPlaceholder,
+          classes.itemPlaceholder,
         )]: isPlaceholder,
         [classNames(
           defaultDndStyles.itemPreview,
-          styles.itemPreview,
+          classes.itemPreview,
         )]: isPreview,
       },
-      classNames(defaultDndStyles.item, styles.item),
+      classNames(defaultDndStyles.item, classes.item),
     );
 
     return (
-      <div className={classes} style={previewStyles} data-hook={`item-${id}`}>
+      <div className={_classes} style={previewStyles} data-hook={`item-${id}`}>
         {item.text}
       </div>
     );
   };
 
   renderColumn = ({ isPlaceholder, isPreview, item, id, previewStyles }) => {
-    const classes = classNames(
+    const _classes = classNames(
       {
         [classNames(
           defaultDndStyles.itemPlaceholder,
-          styles.columnPlaceholder,
+          classes.columnPlaceholder,
         )]: isPlaceholder,
-        [classNames(
-          defaultDndStyles.itemPreview,
-          styles.columnItemPreview,
-        )]: isPreview,
+        [classNames(defaultDndStyles.itemPreview)]: isPreview,
       },
-      classNames(defaultDndStyles.item, styles.columnItem),
+      classNames(defaultDndStyles.item),
     );
 
     const { width, items } = item;
 
     return (
       <div
-        className={classes}
+        className={_classes}
         style={{ ...previewStyles, width }}
         data-hook={`column-${id}`}
       >
         <SortableList
           dragPreview={isPreview}
-          className={classNames(defaultDndStyles.list, styles.column)}
+          className={classNames(defaultDndStyles.list, classes.column)}
           dataHook={`column-${id}`}
           groupName="multi-area"
           containerId={id}
@@ -130,10 +127,10 @@ export default class MultiAreaListWithSortableColumnsWithAnimations extends Reac
   render() {
     return (
       <DragDropContextProvider>
-        <div className={styles.root}>
+        <div className={classes.root}>
           <SortableList
-            className={classNames(defaultDndStyles.list, styles.table)}
-            contentClassName={styles.content}
+            className={classNames(defaultDndStyles.list, classes.table)}
+            contentClassName={classes.content}
             dataHook="draggable-column-multi-area"
             containerId="multiArea"
             items={this.state.columns}

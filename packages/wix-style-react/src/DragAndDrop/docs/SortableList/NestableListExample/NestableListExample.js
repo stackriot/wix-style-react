@@ -6,7 +6,7 @@ import {
   NestableList,
   DragDropContextProvider,
 } from 'wix-style-react';
-import styles from './NestableList.scss';
+import { classes } from './NestableList.st.css';
 
 export default class NestableListExample extends React.Component {
   state = {
@@ -42,7 +42,7 @@ export default class NestableListExample extends React.Component {
   renderHandle({ id, isPlaceholder }) {
     return (
       <div
-        className={styles.handle}
+        className={classes.handle}
         style={{ opacity: isPlaceholder ? 0 : 1 }}
         data-hook={`card-${id}-handle`}
       >
@@ -58,19 +58,19 @@ export default class NestableListExample extends React.Component {
     connectDragSource,
     item,
   }) => {
-    const classes = classNames(
-      classNames(defaultDndStyles.item, styles.itemCss),
+    const _classes = classNames(
+      classNames(defaultDndStyles.item, classes.itemCss),
       {
         [classNames(
           defaultDndStyles.itemPlaceholder,
-          styles.placeholder,
+          classes.placeholder,
         )]: isPlaceholder,
-        [classNames(defaultDndStyles.itemPreview, styles.preview)]: isPreview,
+        [classNames(defaultDndStyles.itemPreview, classes.preview)]: isPreview,
       },
     );
 
     return (
-      <div className={classes} data-hook={`item-${item.id}-${depth}`}>
+      <div className={_classes} data-hook={`item-${item.id}-${depth}`}>
         {item.text}
         {connectDragSource(this.renderHandle({ id: item.id, isPlaceholder }))}
       </div>
@@ -80,10 +80,10 @@ export default class NestableListExample extends React.Component {
   render() {
     return (
       <DragDropContextProvider>
-        <div className={styles.root}>
-          <h3 className={styles.title}>Draggable Area</h3>
+        <div className={classes.root}>
+          <h3 className={classes.title}>Draggable Area</h3>
           <NestableList
-            theme={styles}
+            theme={classes}
             useDragHandle
             items={this.state.items}
             renderItem={this.renderItem}

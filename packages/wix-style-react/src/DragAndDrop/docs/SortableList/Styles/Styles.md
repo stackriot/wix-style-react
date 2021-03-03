@@ -28,36 +28,3 @@ renderItem={({previewStyles}) => (
 ## Conditional styles
 As the `renderItem` callback function returns is a renderer to all items scenarios, it is also responsible to render the preview and placeholder of the item.
 The provided parameters `isPlaceholder`, `isPreview` will help you understand which style is required.
-
-## Customized styles
-we suggest using the [`classnames`](https://github.com/JedWatson/classnames) package to combine both mandatory and additional styles
-
-### Example
-```js
-...
-import { dndStyles } from 'wix-style-react';
-import styles from './custom-styles.scss'
-import classNames from 'classnames';
-...
-export default () =>
-  <SortableList
-    className={classNames(dndStyles.list, styles.list)}
-    contentClassName={styles.content}
-    renderItem={({isPlaceholder, isPreview, previewStyles}) => (
-      const classes = classNames(
-        dndStyles.item,
-        styles.item,
-        {
-          [classNames(dndStyles.itemPlaceholder, styles.itemPlaceholder)]: isPlaceholder,
-          [classNames(dndStyles.itemPreview, styles.itemPreview)]: isPreview
-        }
-      );
-      return (
-        <div className={classes} style={previewStyles}>
-          your item
-        </div>
-      )
-    )}
-    {...otherProps}
-  />
-```

@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 import { dndStyles as defaultDndStyles, SortableList } from 'wix-style-react';
-
-import styles from './ListWithDelay.scss';
+import { classes } from './ListWithDelay.st.css';
 
 const generateId = () => Math.floor(Math.random() * 100000);
 
@@ -47,16 +45,19 @@ export default class ListWithDelay extends React.Component {
   };
 
   renderItem = ({ isPlaceholder, isPreview, id, connectHandle, item }) => {
-    const classes = classNames(classNames(defaultDndStyles.item, styles.item), {
-      [classNames(
-        defaultDndStyles.itemPlaceholder,
-        styles.placeholder,
-      )]: isPlaceholder,
-      [classNames(defaultDndStyles.itemPreview, styles.preview)]: isPreview,
-    });
+    const _classes = classNames(
+      classNames(defaultDndStyles.item, classes.item),
+      {
+        [classNames(
+          defaultDndStyles.itemPlaceholder,
+          classes.placeholder,
+        )]: isPlaceholder,
+        [classNames(defaultDndStyles.itemPreview, classes.preview)]: isPreview,
+      },
+    );
 
     return (
-      <div className={classes} data-hook={`item-${id}`}>
+      <div className={_classes} data-hook={`item-${id}`}>
         {item.text}
         {this.props.withHandle
           ? this.renderHandle({ connectHandle, id, isPlaceholder })
@@ -67,11 +68,11 @@ export default class ListWithDelay extends React.Component {
 
   render() {
     return (
-      <div className={styles.root}>
-        <h3 className={styles.title}>Draggable Area</h3>
+      <div className={classes.root}>
+        <h3 className={classes.title}>Draggable Area</h3>
         <SortableList
           withHandle={this.props.withHandle}
-          className={styles.sortableList}
+          className={classes.sortableList}
           containerId="single-area-1"
           dataHook="list-single-area"
           items={this.state.items}

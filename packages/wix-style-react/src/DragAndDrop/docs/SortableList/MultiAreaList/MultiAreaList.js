@@ -5,7 +5,7 @@ import {
   SortableList,
   DragDropContextProvider,
 } from 'wix-style-react';
-import styles from './MultiAreaList.scss';
+import { classes } from './MultiAreaList.st.css';
 
 const generateStateForContainer = (length, startIndex) => {
   const res = [];
@@ -44,22 +44,22 @@ export default class MultiAreaList extends React.Component {
   };
 
   renderItem = ({ isPlaceholder, isPreview, id, item, previewStyles }) => {
-    const classes = classNames(
+    const _classes = classNames(
       {
         [classNames(
           defaultDndStyles.itemPlaceholder,
-          styles.itemPlaceholder,
+          classes.itemPlaceholder,
         )]: isPlaceholder,
         [classNames(
           defaultDndStyles.itemPreview,
-          styles.itemPreview,
+          classes.itemPreview,
         )]: isPreview,
       },
-      classNames(defaultDndStyles.item, styles.item),
+      classNames(defaultDndStyles.item, classes.item),
     );
 
     return (
-      <div className={classes} style={previewStyles} data-hook={`item-${id}`}>
+      <div className={_classes} style={previewStyles} data-hook={`item-${id}`}>
         {item.text}
       </div>
     );
@@ -68,9 +68,9 @@ export default class MultiAreaList extends React.Component {
   render() {
     return (
       <DragDropContextProvider>
-        <div className={styles.root}>
+        <div className={classes.root}>
           <SortableList
-            className={classNames(defaultDndStyles.list, styles.list)}
+            className={classNames(defaultDndStyles.list, classes.list)}
             dataHook="list-multi-area"
             groupName="multi-area"
             containerId="multiArea1"
@@ -79,7 +79,7 @@ export default class MultiAreaList extends React.Component {
             onDrop={this.handleDrop}
           />
           <SortableList
-            className={classNames(defaultDndStyles.list, styles.list)}
+            className={classNames(defaultDndStyles.list, classes.list)}
             dataHook="list-multi-area"
             groupName="multi-area"
             containerId="multiArea2"

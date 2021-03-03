@@ -32,19 +32,18 @@
   margin: 8px;
   user-select: none;
   box-sizing: border-box;
-
-  .handle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 94px;
-    height: 36px;
-    background-color: #eaf7ff;
-    border: solid 1px #b6c1cd;
-    border-radius: 4px;
-    color: #32536a;
-    font-size: 14px;
-    cursor: -webkit-grab;
-  }
 }
 
+.handle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 94px;
+  height: 36px;
+  background-color: #eaf7ff;
+  border: solid 1px #b6c1cd;
+  border-radius: 4px;
+  color: #32536a;
+  font-size: 14px;
+  cursor: grab;
+}
