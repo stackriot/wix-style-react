@@ -17,6 +17,7 @@ import {
 } from 'wix-storybook-utils/dist/src/Sections';
 import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
+import SectionHelper from '../../SectionHelper';
 
 const example = config => baseExample({ components: allComponents, ...config });
 
@@ -49,7 +50,17 @@ export default {
             `Displays an input with no borders, useful for editing inline text content`,
           ),
 
-          importExample("import { NoBorderInput } from 'wix-style-react';"),
+          description({
+            text: (
+              <SectionHelper appearance="danger" title="WARNING">
+                This component is deprecated! Instead, we advise you to use
+                <br />
+                &lt;Input border="bottomLine"/&gt; instead.
+              </SectionHelper>
+            ),
+          }),
+
+          importExample(),
 
           divider(),
 

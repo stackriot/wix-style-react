@@ -6,6 +6,7 @@ import { st, classes } from './NoBorderInput.st.css';
 import Text from '../Text';
 import dataHooks from './dataHooks';
 import { FontUpgradeContext } from '../FontUpgrade/context';
+import deprecationLog from '../utils/deprecationLog';
 
 class NoBorderInput extends React.Component {
   static StatusError = Input.StatusError;
@@ -15,6 +16,10 @@ class NoBorderInput extends React.Component {
     this.state = {
       focus: !!props.autoFocus,
     };
+
+    deprecationLog(
+      '<NoBorderInput/> is deprecated and will be removed next version. Please use <Input border="bottomLine"/> instead',
+    );
   }
 
   render() {
