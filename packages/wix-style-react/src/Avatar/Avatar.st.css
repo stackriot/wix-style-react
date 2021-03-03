@@ -22,7 +22,7 @@
 
 :import {
   -st-from: '../Foundation/stylable/typography.st.css';
-  -st-named: text-small-bold, text-tiny-normal, text-medium-normal, text-medium-bold, text-tiny-bold;
+  -st-named: text-small-bold, text-tiny-normal, text-medium-normal, text-medium-bold, text-tiny-bold, heading-h6;
 }
 
 :import {
@@ -332,16 +332,8 @@
 .avatarContainer:size(size30) .avatar:contentType(text)::content,
 .avatarContainer:size(size24) .avatar:contentType(text)::content,
 .avatarContainer:size(size18) .avatar:contentType(text)::content  {
-  -st-mixin: text-tiny-normal;
+  -st-mixin: heading-h6;
   line-height: 18px;
-}
-
-.avatarContainer:size(size36)[data-madefor="true"] .avatar:contentType(text)::content,
-.avatarContainer:size(size30)[data-madefor="true"] .avatar:contentType(text)::content,
-.avatarContainer:size(size24)[data-madefor="true"] .avatar:contentType(text)::content,
-.avatarContainer:size(size18)[data-madefor="true"] .avatar:contentType(text)::content
-{
-  -st-mixin: text-tiny-bold
 }
 
 .avatarContainer:size(size24):hasText .avatar:contentType(text)::content,

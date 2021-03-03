@@ -124,7 +124,7 @@ const AvatarGroup = ({
             <div className={classes.avatarContainer}>
               <Avatar {...item} dataHook={dataHooks.avatarGroupItem} />
             </div>
-            {index === 0 && showDivider && (
+            {index === 0 && showDivider && avatarCompArr.length > 1 && (
               <Divider
                 direction={'vertical'}
                 className={st(classes.divider, { size: avatarSize, type })}
