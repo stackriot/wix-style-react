@@ -104,7 +104,7 @@ export default {
     example({
       title: 'Disabled Elements',
       text:
-        'By default disabled elements like `<button>` do not trigger user interactions so a Tooltip will not activate on normal events like hover. To accommodate disabled elements, add a simple wrapper element like a `span`.',
+        'By default disabled elements like `<button>` do not trigger user interactions so a Tooltip will not activate on normal events like hover. To accommodate disabled elements, set `disabled={false}` to the `<Tooltip>`.',
       source: examples.disabled,
     }),
   ],

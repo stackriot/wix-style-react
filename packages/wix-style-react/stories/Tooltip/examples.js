@@ -64,12 +64,10 @@ export const size = `
 export const disabled = `
 <Layout cols={2} justifyItems="center">
   <Tooltip  appendTo="window" content="You don't have permission to do this">
-    <TextButton disabled>Native Element</TextButton>
+    <TextButton disabled>Disabled</TextButton>
   </Tooltip>
-  <Tooltip appendTo="window" content="You don't have permission to do this">
-    <span>
-      <TextButton disabled>With span</TextButton>
-    </span>
+  <Tooltip appendTo="window" disabled={false} content="You don't have permission to do this">
+      <TextButton disabled>Enabled</TextButton>
   </Tooltip>
 </Layout>
 `;
