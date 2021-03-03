@@ -756,6 +756,32 @@ describe('DatePicker', () => {
       });
     });
 
+    describe('`size` prop', () => {
+      it('should have size medium by default', async () => {
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} />);
+
+        expect(await inputDriver.getSize()).toBe('medium');
+      });
+
+      it('should have size large', async () => {
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} size="large" />);
+
+        expect(await inputDriver.getSize()).toBe('large');
+      });
+
+      it('should have size small', async () => {
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={noop} size="small" />);
+
+        expect(await inputDriver.getSize()).toBe('small');
+      });
+    });
+
     describe('`locale` prop', () => {
       const setup = async (props = {}) => {
         const {

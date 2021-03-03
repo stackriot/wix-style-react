@@ -139,6 +139,13 @@ export default {
             source: examples.status,
           }),
 
+          example({
+            title: 'Sizes',
+            text:
+              '`<DatePicker />` supports three sizes: `small`, `medium` (default) and `large`.',
+            source: examples.sizes,
+          }),
+
           // TODO - disabled until https://github.com/wix/wix-style-react/issues/4157 is fixed
           // example({
           //   title: 'Range Selection',

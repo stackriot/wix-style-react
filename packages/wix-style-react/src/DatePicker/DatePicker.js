@@ -149,6 +149,7 @@ export default class DatePicker extends React.PureComponent {
       dateFormat,
       inputProps = {},
       locale,
+      size,
     } = this.props;
     const { onFocus, ...inputPropsRest } = inputProps;
     return (
@@ -176,6 +177,7 @@ export default class DatePicker extends React.PureComponent {
         dateFormatV2={dateFormatV2}
         customInput={customInput}
         locale={locale}
+        size={size}
         {...(customInput ? customInput.props : {})}
         {...inputPropsRest}
       />
@@ -373,4 +375,7 @@ DatePicker.propTypes = {
 
   /** First day of the week, allowing only from 0 to 6 (Sunday to Saturday) */
   firstDayOfWeek: PropTypes.oneOf([0, 1, 2, 3, 4, 5, 6]),
+
+  /** Specifies the size of the input */
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
 };

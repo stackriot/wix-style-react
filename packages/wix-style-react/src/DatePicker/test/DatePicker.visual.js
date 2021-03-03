@@ -65,6 +65,23 @@ const testGroups = [
           },
         ],
       },
+      {
+        describe: 'Sizes',
+        its: [
+          {
+            placeholderText: 'Select Date',
+            size: 'small',
+          },
+          {
+            placeholderText: 'Select Date',
+            size: 'medium',
+          },
+          {
+            placeholderText: 'Select Date',
+            size: 'large',
+          },
+        ],
+      },
     ],
   },
   {

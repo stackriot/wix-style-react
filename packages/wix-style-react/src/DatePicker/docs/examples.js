@@ -81,3 +81,35 @@ export const rangeSelection = `
   shouldCloseOnSelect={false}
 />
 `;
+
+export const sizes = `
+<Layout cols={1}>
+  <Cell>
+    <DatePicker
+      value={new Date()}
+      placeholderText="Select Date"
+      onChange={event => console.log(event)}
+      filterDate={date => date < new Date()}
+      size="small"
+    />
+  </Cell>
+  <Cell>
+    <DatePicker
+      value={new Date()}
+      placeholderText="Select Date"
+      onChange={event => console.log(event)}
+      filterDate={date => date < new Date()}
+      size="medium"
+    />
+  </Cell>
+  <Cell>
+    <DatePicker
+      value={new Date()}
+      placeholderText="Select Date"
+      onChange={event => console.log(event)}
+      filterDate={date => date < new Date()}
+      size="large"
+    />
+  </Cell>
+</Layout>
+`;

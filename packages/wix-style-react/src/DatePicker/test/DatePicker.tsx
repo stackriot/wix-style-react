@@ -51,6 +51,7 @@ function datePickerWithAllProps() {
       monthDropdownAriaLabelledBy="month_labelledby"
       yearDropdownAriaLabel="year label"
       yearDropdownAriaLabelledBy="year_labelledby"
+      size="medium"
     />
   );
 }
