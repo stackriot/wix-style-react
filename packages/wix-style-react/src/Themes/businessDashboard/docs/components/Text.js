@@ -6,6 +6,16 @@ export const playground = `
     </Box>
     <hr />
     <Box padding="3px">
+      <Text size="tiny" skin="error" weight="normal">skin="error" size="tiny" weight="normal"</Text>
+    </Box>
+    <Box padding="3px">
+      <Text size="tiny" skin="success" weight="normal">skin="success" size="tiny" weight="normal"</Text>
+    </Box>
+    <Box padding="3px">
+      <Text size="tiny" skin="standard" weight="normal">skin="standard" size="tiny" weight="normal"</Text>
+    </Box>
+    <hr />
+    <Box padding="3px">
       <Text>skin="standard" size="medium"</Text>
     </Box>
     <Box padding="3px">
