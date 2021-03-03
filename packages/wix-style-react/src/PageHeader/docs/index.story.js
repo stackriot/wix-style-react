@@ -1,9 +1,6 @@
 import React from 'react';
-
 import PageHeader from '..';
 import Breadcrumbs from '../../Page/test/examples/Breadcrumbs';
-
-import './PageHeader.scss';
 import { storySettings } from './storySettings';
 import {
   api,
