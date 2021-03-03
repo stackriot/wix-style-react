@@ -20,6 +20,9 @@ Types of changes:
 - `<Tooltip/>` - fix pupeeteer testkit [#6859](https://github.com/wix/wix-style-react/pull/6859)
 - `<Avatar/>` - fix incorrect text style [#6848](https://github.com/wix/wix-style-react/pull/6848)
 
+### Added
+- `<DatePicker />` - add size prop [#6861](https://github.com/wix/wix-style-react/pull/6861)
+
 ### Deprecated
 - `<NoBorderInput/>` - deprecate component [#6862](https://github.com/wix/wix-style-react/pull/6862)
 
