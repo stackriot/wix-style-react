@@ -21,10 +21,13 @@ const multiSelectDriverFactory = ({ element, wrapper, eventTrigger }) => {
     clickOnInputWrapper: () => ReactTestUtils.Simulate.click(inputWrapper),
 
     /** returns true if the input is focused */
-    inputWrapperHasFocus: () => inputWrapper.classList.contains('hasFocus'),
+    inputWrapperHasFocus: () => inputDriver.isFocusedStyle(),
 
     /** returns true if the input is disabled */
-    inputWrapperIsDisabled: () => inputWrapper.classList.contains('disabled'),
+    inputWrapperIsDisabled: () =>
+      inputWrapper
+        .querySelector('[data-hook="wsr-custom-input"]')
+        .hasAttribute('disabled'),
 
     /** returns the number of tags selected in the input */
     numberOfTags: () => tags.length,

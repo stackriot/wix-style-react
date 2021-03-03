@@ -27,12 +27,11 @@ export const multiselectUniDriverFactory = (base, body) => {
       ReactTestUtils.Simulate.click(await getInputWrapper()),
 
     /** returns true if the input is focused */
-    inputWrapperHasFocus: async () =>
-      (await getInputWrapper()).classList.contains('hasFocus'),
+    inputWrapperHasFocus: () => inputDriver.isFocusedStyle(),
 
     /** returns true if the input is disabled */
     inputWrapperIsDisabled: async () =>
-      (await getInputWrapper()).classList.contains('disabled'),
+      !!(await base.$('[data-hook="wsr-custom-input"]')).attr('disabled'),
 
     /** returns the number of tags selected in the input */
     numberOfTags: () => tags.count(),

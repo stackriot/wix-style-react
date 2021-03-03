@@ -247,6 +247,8 @@ describe('MultiSelect', () => {
         const { driver, inputDriver } = createDriver(
           <MultiSelect options={options} />,
         );
+        expect(await driver.inputWrapperHasFocus()).toBe(false);
+
         await driver.clickOnInputWrapper();
         expect(await inputDriver.isFocus()).toBe(true);
         expect(await driver.inputWrapperHasFocus()).toBe(true);
