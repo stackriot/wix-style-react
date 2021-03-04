@@ -202,16 +202,19 @@ export default {
                     label: 'Month And Year Caption Font',
                     wixParam: 'customMonthAndYearCaptionFont',
                     defaultFont: 'arial',
+                    fixedSize: true,
                   },
                   {
                     label: 'Weekday Font',
                     wixParam: 'customWeekdayFont',
                     defaultFont: 'arial',
+                    fixedSize: true,
                   },
                   {
                     label: 'Day Font',
                     wixParam: 'customDayFont',
                     defaultFont: 'arial',
+                    fixedSize: true,
                   },
                   {
                     label: 'Date Input Font',

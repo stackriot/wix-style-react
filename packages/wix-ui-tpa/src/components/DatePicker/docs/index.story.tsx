@@ -13,7 +13,6 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { OptimizedStylesBanner } from '../../../../stories/OptimizedStylesBanner';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
@@ -75,10 +74,6 @@ export default {
   dataHook: 'storybook-DatePicker',
   sections: [
     header(),
-    // todo: Add it after fixing the overrideStyleParams
-    // header({
-    //   component: <OptimizedStylesBanner />,
-    // }),
     tabs([
       tab({
         title: 'Usage',
@@ -132,13 +127,13 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground()] },
         { title: 'API', sections: [api()] },
         {
           title: 'Style API',
           sections: [settingsApi()],
         },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [
@@ -195,13 +190,13 @@ export default {
                     label: 'Month And Year Caption Font',
                     wixParam: 'customMonthAndYearCaptionFont',
                     defaultFont: 'arial',
-                    fixedSize: true,
+                    size: 16,
                   },
                   {
                     label: 'Weekday Font',
                     wixParam: 'customWeekdayFont',
                     defaultFont: 'arial',
-                    fixedSize: true,
+                    size: 14,
                   },
                   {
                     label: 'Day Font',
