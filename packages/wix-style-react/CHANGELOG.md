@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Fixed
 - `<Table/>`  - stop propogation for disabled checkbox [#6845](https://github.com/wix/wix-style-react/pull/6845)
+- `<TableListItem/>` - enable ellipsis support for value property [#6868](https://github.com/wix/wix-style-react/pull/6868)
 - `<Tooltip/>` - fix pupeeteer testkit [#6859](https://github.com/wix/wix-style-react/pull/6859)
 - `<Avatar/>` - fix incorrect text style [#6848](https://github.com/wix/wix-style-react/pull/6848)
 - `<PopoverMenu` - fix incorrect padding [#6860](https://github.com/wix/wix-style-react/pull/6860)
