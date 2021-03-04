@@ -92,6 +92,7 @@
 
 .align {
   -st-states: position(enum(left, center, right));
+  display: grid;
   margin-left: 6px;
 }
 

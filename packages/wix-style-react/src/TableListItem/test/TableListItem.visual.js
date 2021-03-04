@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import TableListItem, { VERTICAL_PADDING } from '../TableListItem';
+import Text from '../../Text';
 import WixStyleReactProvider from '../../WixStyleReactProvider';
 
 const sizes = Object.values(VERTICAL_PADDING);
@@ -50,6 +51,28 @@ const tests = [
         options: [{ value: 'Personal Finance' }],
       },
     })),
+  },
+  {
+    describe: 'ellipsis',
+    its: [
+      {
+        it: 'should work with Text ellipsis properly',
+        props: {
+          options: [
+            {
+              value: (
+                <Text ellipsis>
+                  Very very very very long messagenVery very very very long
+                  message Very very very very long message Very very very very
+                  long message Very very very very long message Very very very
+                  very long message Very very very very long message
+                </Text>
+              ),
+            },
+          ],
+        },
+      },
+    ],
   },
 ];
 
