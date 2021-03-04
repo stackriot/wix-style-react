@@ -1,5 +1,5 @@
 const path = require('path');
-const { decorateStorybookConfig } = require('yoshi-flow-library/storybook');
+const { decorateStorybookConfig } = require('@wix/yoshi-flow-library/storybook');
 
 module.exports = decorateStorybookConfig({
   context: path.resolve(__dirname, '..'),

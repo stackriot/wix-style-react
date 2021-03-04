@@ -1,14 +1,13 @@
 const { resolveNamespaceFactory } = require('@stylable/node');
-const project = require('yoshi-config');
 require('yoshi-common/build/require-hooks').setupRequireHooks();
 require('yoshi-runtime').wixCssModulesRequireHook('./src');
 require('@babel/register')({
-  presets: [[require.resolve('babel-preset-yoshi')]],
+  presets: [[require.resolve('@wix/babel-preset-yoshi')]],
 });
 
 require('@stylable/node').attachHook({
   stylableConfig: {
-    resolveNamespace: resolveNamespaceFactory(project.name),
+    resolveNamespace: resolveNamespaceFactory('wix-ui-tpa'),
   },
 });
 const path = require('path');

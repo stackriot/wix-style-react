@@ -73,7 +73,9 @@
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^3.11.14",
+    "@wix/babel-preset-yoshi": "^4.286.0",
     "classnames": "^2.2.6",
+    "date-fns": "^2.16.1",
     "focus-trap": "^5.1.0",
     "lodash": "^4.17.11",
     "normalize-scroll-left": "^0.2.1",
@@ -81,8 +83,7 @@
     "wix-style-react": "^9.79.0",
     "wix-ui-core": "^3.0.183",
     "wix-ui-icons-common": "^2.0.308",
-    "yoshi-stylable-dependencies": "^4.86.0",
-    "date-fns": "^2.16.1"
+    "yoshi-stylable-dependencies": "^4.86.0"
   },
   "devDependencies": {
     "@applitools/eyes-storybook": "^3.16.5",
@@ -105,9 +106,11 @@
     "@ui-autotools/a11y": "^5.0.1",
     "@ui-autotools/registry": "^5.0.0",
     "@ui-autotools/sanity": "^5.0.1",
+    "@wix/babel-preset-yoshi": "^4.286.0",
     "@wix/npm-blame": "^1.0.509",
     "@wix/perfer": "^1.0.168",
     "@wix/wix-base-ui": "^3.949.0",
+    "@wix/yoshi": "^4.9.0",
     "autoprefixer": "^9.5.1",
     "chalk": "^2.4.2",
     "color": "^3.1.3",
@@ -141,7 +144,6 @@
     "wix-ui-framework": "^3.5.2",
     "wix-ui-test-utils": "^1.0.0",
     "yargs": "^16.2.0",
-    "yoshi": "^4.9.0",
     "yoshi-style-dependencies": "^4.228.0"
   },
   "husky": {

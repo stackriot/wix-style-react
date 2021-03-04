@@ -2,8 +2,8 @@
 
 const path = require('path');
 
-const { tryRequire } = require('yoshi-helpers/utils');
-const { createClientWebpackConfig } = require('yoshi/config/webpack.config');
+const { tryRequire } = require('@wix/yoshi-helpers/utils');
+const { createClientWebpackConfig } = require('@wix/yoshi/config/webpack.config');
 
 const config = createClientWebpackConfig({ isDebug: false });
 

@@ -1,6 +1,6 @@
 const merge = require('lodash/merge');
 const path = require('path');
-const { decorateStorybookConfig } = require('yoshi-flow-library/storybook');
+const { decorateStorybookConfig } = require('@wix/yoshi-flow-library/storybook');
 const StylableWebpackPlugin = require('yoshi-common/build/@stylable/webpack-plugin')
   .default;
 

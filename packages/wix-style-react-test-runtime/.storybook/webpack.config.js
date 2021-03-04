@@ -1,4 +1,4 @@
-const wixStorybookConfig = require('yoshi/config/webpack.config.storybook');
+const wixStorybookConfig = require('@wix/yoshi/config/webpack.config.storybook');
 
 module.exports = ({ config }) => {
   config.module.rules[0].use[0].loader = require.resolve('babel-loader');

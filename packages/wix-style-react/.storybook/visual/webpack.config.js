@@ -1,7 +1,7 @@
 const merge = require('lodash/merge');
 const path = require('path');
 
-const { decorateStorybookConfig } = require('yoshi-flow-library/storybook');
+const { decorateStorybookConfig } = require('@wix/yoshi-flow-library/storybook');
 
 module.exports = ({ config }) => {
   const srcPath = path.resolve(__dirname, '../..', 'src');
