@@ -5,6 +5,8 @@
 
 .textArea {
     -st-mixin: TPATextArea(
+        ContainerWidth '"unit(--containerWidth, px)"',
+        ContainerHeight '"unit(--containerHeight", px)"',
         BackgroundColor '"--backgroundColor"',
         BorderColor '"--borderColor"',
         TextColor '"--textColor"',

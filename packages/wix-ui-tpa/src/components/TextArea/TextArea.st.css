@@ -10,6 +10,8 @@
 
 /*Defaults*/
 :vars {
+    DefaultContainerWidth: 280px;
+    DefaultContainerHeight: 92px;
     DefaultBorderColor: color-5;
     DefaultBackgroundColor: color-1;
     DefaultTextColor: color-5;
@@ -22,6 +24,12 @@
 
 /*Overrides*/
 :vars {
+    /* Container width */
+    ContainerWidth: --overridable;
+
+    /* Container height */
+    ContainerHeight: --overridable;
+
     /* Border color */
     BorderColor: --overridable;
 
@@ -57,6 +65,8 @@
 }
 
 :vars {
+    containerWidth: fallback(value(ContainerWidth), value(DefaultContainerWidth));
+    containerHeight: fallback(value(ContainerHeight), value(DefaultContainerHeight));
     borderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
     backgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
     textColor: color(fallback(value(TextColor), value(DefaultTextColor)));
@@ -74,8 +84,8 @@
     display: flex;
     position: relative;
     padding: 8px 0;
-    width: 280px;
-    height: 92px;
+    width: value(containerWidth);
+    height: value(containerHeight);
 }
 
 .root:active,

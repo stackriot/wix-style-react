@@ -14,12 +14,15 @@ import {
   description,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { autoSettingsPanel } from '../../../../stories/utils/SettingsPanel';
-import { TextAreaConnected as TextArea } from './connected';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { TextAreaTheme } from '../TextAreaEnums';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
+import { TextAreaExtendedExample } from './TextAreaExtendedExample';
+import * as TextAreaExtendedExampleRaw from '!raw-loader!./TextAreaExtendedExample.tsx';
+import * as TextAreaExtendedExampleCSSRaw from '!raw-loader!./TextAreaExtendedExample.st.css';
+import { TextArea } from '..';
 
 const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -101,7 +104,7 @@ export default {
       ...[
         {
           title: 'Playground',
-          sections: [playground(), autoSettingsPanel()],
+          sections: [playground()],
         },
         { title: 'API', sections: [api()] },
         {
@@ -109,6 +112,86 @@ export default {
           sections: [settingsApi()],
         },
         { title: 'TestKit', sections: [testkit()] },
+        {
+          title: 'SettingsPanel',
+          sections: [
+            settingsPanel({
+              title: 'TextArea Settings Panel',
+              example: <TextAreaExtendedExample />,
+              rawSource: TextAreaExtendedExampleRaw,
+              rawCSSSource: TextAreaExtendedExampleCSSRaw,
+              params: {
+                numbers: [
+                  {
+                    label: 'Container Width',
+                    wixParam: 'containerWidth',
+                    defaultNumber: 280,
+                    min: 200,
+                    max: 400,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Container Height',
+                    wixParam: 'containerHeight',
+                    defaultNumber: 92,
+                    min: 60,
+                    max: 180,
+                    unit: 'px',
+                  },
+                ],
+                colors: [
+                  {
+                    label: 'Border Color',
+                    wixParam: 'borderColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Error Border Color',
+                    wixParam: 'errorBorderColor',
+                    defaultColor: 'color-5', // '#DF3131' fixed color doesn't work at the moment
+                  },
+                  {
+                    label: 'Success Border Color',
+                    wixParam: 'successBorderColor',
+                    defaultColor: 'color-5', // '#008250' fixed color doesn't work at the moment,
+                  },
+                  {
+                    label: 'Disabled Border Color',
+                    wixParam: 'disabledBorderColor',
+                    defaultColor: 'color-3',
+                  },
+                  {
+                    label: 'Background Color',
+                    wixParam: 'backgroundColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Text Color',
+                    wixParam: 'textColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Disabled Text Color',
+                    wixParam: 'disabledTextColor',
+                    defaultColor: 'color-3',
+                  },
+                  {
+                    label: 'Placeholder Text Color',
+                    wixParam: 'placeholderColor',
+                    defaultColor: 'color-3',
+                  },
+                ],
+                fonts: [
+                  {
+                    label: 'Text Font',
+                    wixParam: 'textFont',
+                    defaultFont: 'arial',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],
