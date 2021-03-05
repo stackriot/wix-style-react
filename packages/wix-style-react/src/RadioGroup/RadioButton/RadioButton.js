@@ -6,6 +6,7 @@ import { st, classes } from './RadioButton.st.css';
 import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable/FocusableHOC';
 import Text from '../../Text';
 import { dataHooks } from './constants';
+import deprecationLog from '../../utils/deprecationLog';
 
 class RadioButton extends React.PureComponent {
   static displayName = 'RadioGroup.Radio';
@@ -49,6 +50,10 @@ class RadioButton extends React.PureComponent {
 
     const prefix = props.name && `${props.name}_`;
     this.id = uniqueId(prefix);
+
+    deprecationLog(
+      `Using "<RadioButton/>" is deprecated. Instead, we advise you to use the newer "<Radio/>" component. Please refer to it's documentation.`,
+    );
   }
 
   render() {
