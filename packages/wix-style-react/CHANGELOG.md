@@ -29,7 +29,8 @@ Types of changes:
 - `<NoBorderInput/>` - deprecate component [#6862](https://github.com/wix/wix-style-react/pull/6862)
 
 ### Changed
-- Themes | Business Dashboard - Text - update colors [#6854](https://github.com/wix/wix-style-react/pull/6854)
+- `Themes | Business Dashboard` - Text - update colors [#6854](https://github.com/wix/wix-style-react/pull/6854)
+- `<Table/>` - migrate to stylable [#6874](https://github.com/wix/wix-style-react/pull/6874)
 
 ## 9.86.0 - 2021-03-01
 ### Added
