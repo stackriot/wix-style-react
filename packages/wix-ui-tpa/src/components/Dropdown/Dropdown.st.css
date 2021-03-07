@@ -227,7 +227,12 @@
 }
 
 .dropdown .dropdownBase:not(:error) {
-    border-color: value(DefaultButtonBorderColor) !important;
+    border-color: applyOpacity(color(value(DefaultButtonBorderColor)), 0.6) !important;
+}
+
+.dropdown .dropdownBase:not(:error):focus-within,
+.dropdown .dropdownBase:not(:error):hover {
+    border-color: applyOpacity(color(value(DefaultButtonBorderColor)), 1) !important;
 }
 
 .root.overrideStyleParams .dropdown .dropdownBase {
@@ -238,7 +243,12 @@
 }
 
 .root.overrideStyleParams .dropdown .dropdownBase:not(:error) {
-    border-color: value(CurrentButtonBorderColor) !important;
+    border-color: applyOpacity(color(value(CurrentButtonBorderColor)), 0.6) !important;
+}
+
+.root.overrideStyleParams .dropdown .dropdownBase:not(:error):focus-within,
+.root.overrideStyleParams .dropdown .dropdownBase:not(:error):hover {
+    border-color: applyOpacity(color(value(CurrentButtonBorderColor)), 1) !important;
 }
 
 .dropdown .dropdownBase::arrowIcon {
@@ -272,7 +282,12 @@
 }
 
 .dropdown:content-visible .dropdownBase::root:error {
-    border-color: value(errorColor);
+    border-color: applyOpacity(color(value(errorColor)), 0.6) important!;
+}
+
+.dropdown:content-visible .dropdownBase::root:error:focus-within,
+.dropdown:content-visible .dropdownBase::root:error:hover {
+    border-color: applyOpacity(color(value(errorColor)), 1) important!;
 }
 
 .dropdown:content-visible .dropdownBase::arrowIcon {
