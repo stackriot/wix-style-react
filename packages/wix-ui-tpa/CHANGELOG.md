@@ -1,3 +1,20 @@
+# 2.27.0 (2021-03-07)
+
+
+### Bug Fixes
+
+* **Checkbox:** fixed fontFamily to avoid different alignment ([#6875](https://github.com/wix/wix-style-react/issues/6875)) ([970d2bf](https://github.com/wix/wix-style-react/commit/970d2bf3bbe5568a95265ded79cd415fc0bc36f3))
+* **DatePicker:** align the arrows & allow changing font-size from the DatePicker ([#6872](https://github.com/wix/wix-style-react/issues/6872)) ([93071be](https://github.com/wix/wix-style-react/commit/93071be4196bfac6eb3ea81c5c5624968e0fd6b8))
+
+
+### Features
+
+* **DatePicker:** vertical spacing & no outer padding props ([#6856](https://github.com/wix/wix-style-react/issues/6856)) ([179202e](https://github.com/wix/wix-style-react/commit/179202ee89ca70674d0f353c57690f7f844e1652))
+* **Dialog:** Add childrenWrapperClassName prop ([47d88fc](https://github.com/wix/wix-style-react/commit/47d88fc429377e3217b152e285bef0c94bd554b1))
+* **TextArea:** Add width and height styable api ([b8c5f7e](https://github.com/wix/wix-style-react/commit/b8c5f7ea24e2a1b110931600d3fdccc3e8323113))
+
+
+
 # 2.26.0 (2021-03-01)
 
 
