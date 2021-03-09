@@ -31,5 +31,18 @@ export const buttonDriverFactory = base => {
      * @return {Promise<boolean>}
      */
     hasSkin: async skinName => (await base.attr(`data-skin`)) === skinName,
+
+    /**
+     * Checks whether button has an icon prefix
+     * @return {Promise<boolean>}
+     */
+    isPrefixIconExists: buttonNextDriver.isPrefixIconExists,
+
+  /**
+     * Checks whether button has an icon suffix
+     * @return {Promise<boolean>}
+     */
+    isSuffixIconExists: buttonNextDriver.isSuffixIconExists,
+
   };
 };
