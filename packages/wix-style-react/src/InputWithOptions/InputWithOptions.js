@@ -154,8 +154,7 @@ class InputWithOptions extends Component {
     (this.props.showOptionsIfEmptyInput || this.state.inputValue.length > 0);
 
   _renderDropdownLayout() {
-    const { highlight } = this.props;
-    const { inputValue } = this.state;
+    const { highlight, value } = this.props;
     const inputOnlyProps = omit(['tabIndex'], Input.propTypes);
     const dropdownProps = Object.assign(
       omit(
@@ -173,7 +172,7 @@ class InputWithOptions extends Component {
         style={customStyle}
         data-hook="dropdown-layout-wrapper"
       >
-        <HighlightContext.Provider value={{ highlight, match: inputValue }}>
+        <HighlightContext.Provider value={{ highlight, match: value }}>
           <DropdownLayout
             ref={dropdownLayout => (this.dropdownLayout = dropdownLayout)}
             {...dropdownProps}
