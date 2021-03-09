@@ -161,6 +161,9 @@
     "wix-ui-test-utils": "^1.0.178",
     "yoshi-stylable-dependencies": "^4.86.0"
   },
+  "devDependencies": {
+    "wix-storybook-utils": "^4.0.0"
+  },
   "eslintConfig": {
     "extends": [
       "yoshi",

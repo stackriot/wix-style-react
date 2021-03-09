@@ -141,7 +141,6 @@
     "velocity": "^0.7.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
-    "wix-storybook-utils": "^3.0.139",
     "wix-style-processor": "^3.1.14",
     "wix-style-react": "^9.65.0",
     "wix-ui-framework": "^3.5.2",

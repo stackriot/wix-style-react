@@ -85,7 +85,8 @@
     "yoshi-stylable-dependencies": "^4.86.0"
   },
   "devDependencies": {
-    "@wix/wix-base-ui": "^3.949.0"
+    "@wix/wix-base-ui": "^3.949.0",
+    "wix-storybook-utils": "^3.0.139"
   },
   "husky": {
     "hooks": {
