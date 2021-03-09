@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Fixed
 - `<SectionHelper` - fix close button position [#6845](https://github.com/wix/wix-style-react/pull/6865)
+- `<InputWithOptions/>` - use props.value for highlighting [#6895](https://github.com/wix/wix-style-react/pull/6895)
 
 ## 9.87.0 - 2021-03-07
 ### Fixed
