@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+- `<SectionHelper` - fix close button position [#6845](https://github.com/wix/wix-style-react/pull/6865)
 
 ## 9.87.0 - 2021-03-07
 ### Fixed
