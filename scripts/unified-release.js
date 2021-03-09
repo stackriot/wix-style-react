@@ -51,7 +51,7 @@ function throwIfNotCleanMaster() {
   }
 
   try {
-    execute('git fetch');
+    execute('git fetch --tags');
   } catch (e) {
     eject(`Couldn't fetch master.`);
   }
