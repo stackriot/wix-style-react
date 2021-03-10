@@ -12,16 +12,12 @@ import {
   tabs,
   testkit,
   title,
-  code as baseCode,
+  example as baseExample,
 } from 'wix-storybook-utils/dist/src/Sections';
 import * as examples from './examples';
 import allComponents from '../../../stories/utils/allComponents';
 
-const code = config =>
-  baseCode({
-    components: allComponents,
-    ...config,
-  });
+const example = config => baseExample({ components: allComponents, ...config });
 
 import { storySettings } from './storySettings';
 
@@ -125,14 +121,19 @@ export default {
 
           title('Examples'),
 
-          code({
+          example({
             title: 'Simple generic use',
             source: examples.simple,
           }),
 
-          code({
+          example({
             title: 'Disabled option',
             source: examples.disabledRadios,
+          }),
+
+          example({
+            title: 'Controlled radio group',
+            source: examples.controlledRadioGroup,
           }),
 
           description({
@@ -141,23 +142,23 @@ export default {
               'A selection area makes is easier to select a radio option, with a background or a border as an indicator to the click area',
           }),
 
-          code({
+          example({
             source: examples.selectionAreaAlwaysFilled,
           }),
 
-          code({
+          example({
             source: examples.selectionAreaHoverFilled,
           }),
 
-          code({
+          example({
             source: examples.selectionAreaAlwaysOutlined,
           }),
 
-          code({
+          example({
             source: examples.selectionAreaHoverOutlined,
           }),
 
-          code({
+          example({
             title: 'Using with content',
             source: examples.withContent,
           }),

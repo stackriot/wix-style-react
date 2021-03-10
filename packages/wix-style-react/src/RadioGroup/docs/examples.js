@@ -59,3 +59,25 @@ export const withContent = `
     </RadioGroup.Radio>
   </RadioGroup>
 `;
+
+export const controlledRadioGroup = `
+() => {
+  const [value, setValue] = React.useState(null);
+  return (<RadioGroup
+    onChange={value => setValue(value)}
+    value={value}
+  >
+    <RadioGroup.Radio value={1}>
+      Option 1
+    </RadioGroup.Radio>
+    <RadioGroup.Radio value={2}>
+      Option 2
+    </RadioGroup.Radio>
+    <RadioGroup.Radio value={3}>
+      Option 3
+    </RadioGroup.Radio>
+    <RadioGroup.Radio value={4}>
+      Option 4
+    </RadioGroup.Radio>
+  </RadioGroup>)
+}`;
