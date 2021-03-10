@@ -6,7 +6,7 @@
 :import{
   -st-from: "../Tooltip/Tooltip.st.css";
   -st-default: Tooltip;
-  -st-named: arrow;
+  -st-named: arrow, popoverContent, popover;
 }
 
 :vars {
@@ -95,7 +95,7 @@
   -st-extends: Tooltip;
 }
 
-.modalTooltip::popoverContent{
+.modalTooltip  > .popover > .popoverContent {
   background: value(D80);
 }
 
