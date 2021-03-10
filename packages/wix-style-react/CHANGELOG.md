@@ -20,6 +20,7 @@ Types of changes:
 - `<InputWithOptions/>` - use props.value for highlighting [#6895](https://github.com/wix/wix-style-react/pull/6895)
 - `<Accordion/>` - fix item header on hover [#6883](https://github.com/wix/wix-style-react/pull/6883)
 - `<Checkbox/>` - fix label when disabled [#6882](https://github.com/wix/wix-style-react/pull/6882)
+- `<inputWithOptions/>` - fix onfocus triggered twice when suffix icon is clicked [#6873](https://github.com/wix/wix-style-react/pull/6873) 
 
 ### Added
 - `<Button />` - testkit -  expose `isPrefixIconExists` and `isSuffixIconExists` [6898](https://github.com/wix/wix-style-react/pull/6898)
