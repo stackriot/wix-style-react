@@ -15,15 +15,17 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+### Added
+- `<Button />` - testkit -  expose `isPrefixIconExists` and `isSuffixIconExists` [6898](https://github.com/wix/wix-style-react/pull/6898)
+
 ### Fixed
 - `<SectionHelper` - fix close button position [#6845](https://github.com/wix/wix-style-react/pull/6865)
 - `<InputWithOptions/>` - use props.value for highlighting [#6895](https://github.com/wix/wix-style-react/pull/6895)
 - `<Accordion/>` - fix item header on hover [#6883](https://github.com/wix/wix-style-react/pull/6883)
 - `<Checkbox/>` - fix label when disabled [#6882](https://github.com/wix/wix-style-react/pull/6882)
-- `<inputWithOptions/>` - fix onfocus triggered twice when suffix icon is clicked [#6873](https://github.com/wix/wix-style-react/pull/6873) 
-
-### Added
-- `<Button />` - testkit -  expose `isPrefixIconExists` and `isSuffixIconExists` [6898](https://github.com/wix/wix-style-react/pull/6898)
+- `<inputWithOptions/>` - fix onfocus triggered twice when suffix icon is clicked [#6873](https://github.com/wix/wix-style-react/pull/6873)
+- Fix Stylable warnings [#6901](https://github.com/wix/wix-style-react/pull/6901)
 
 ## 9.87.0 - 2021-03-07
 ### Fixed
