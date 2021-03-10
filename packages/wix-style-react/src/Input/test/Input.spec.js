@@ -323,6 +323,19 @@ describe('Input', () => {
 
         expect(onFocus).toBeCalled();
       });
+
+      it('should be called once when menu arrow is clicked', async () => {
+        const onFocus = jest.fn();
+        const onInputClicked = jest.fn();
+        const { driver } = render(
+          <Input menuArrow onFocus={onFocus} onInputClicked={onInputClicked} />,
+        );
+        expect(onFocus).not.toBeCalled();
+        expect(onInputClicked).not.toBeCalled();
+        await driver.clickMenuArrow();
+        expect(onFocus).toBeCalledTimes(1);
+        expect(onInputClicked).toBeCalledTimes(1);
+      });
     });
 
     describe('onBlur attribute', () => {
