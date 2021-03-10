@@ -1,3 +1,9 @@
+## 2.27.1 (2021-03-10)
+
+### Bug Fixes
+
+* **Dropdown:** Fix default and hover border color  ([1d22f69](https://github.com/wix/wix-style-react/commit/1d22f69602b662b756c5b21ce16f8fe8ffa7716d))
+
 # 2.27.0 (2021-03-07)
 
 
