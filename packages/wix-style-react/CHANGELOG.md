@@ -14,6 +14,11 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
+
+## Next
+### Fixed
+- `<ModalPreviewLayout/>` - fix white tooltip [#6908](https://github.com/wix/wix-style-react/pull/6908)
+
 ## 9.88.0 - 2021-03-10
 ### Added
 - `<Button />` - testkit -  expose `isPrefixIconExists` and `isSuffixIconExists` [6898](https://github.com/wix/wix-style-react/pull/6898)
