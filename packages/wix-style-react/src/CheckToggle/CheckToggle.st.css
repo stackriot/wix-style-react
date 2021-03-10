@@ -39,7 +39,7 @@
   box-sizing: content-box;
 }
 
-.toggle svg {
+.root .toggle svg {
   color: value(D80);
   transform: translate(-1px, -1px);
 }
