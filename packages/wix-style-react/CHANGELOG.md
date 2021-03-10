@@ -19,6 +19,7 @@ Types of changes:
 - `<SectionHelper` - fix close button position [#6845](https://github.com/wix/wix-style-react/pull/6865)
 - `<InputWithOptions/>` - use props.value for highlighting [#6895](https://github.com/wix/wix-style-react/pull/6895)
 - `<Accordion/>` - fix item header on hover [#6883](https://github.com/wix/wix-style-react/pull/6883)
+- `<Checkbox/>` - fix label when disabled [#6882](https://github.com/wix/wix-style-react/pull/6882)
 
 ### Added
 - `<Button />` - testkit -  expose `isPrefixIconExists` and `isSuffixIconExists` [6898](https://github.com/wix/wix-style-react/pull/6898)
