@@ -18,6 +18,7 @@ Types of changes:
 ## Next
 ### Fixed
 - `<ModalPreviewLayout/>` - fix white tooltip [#6908](https://github.com/wix/wix-style-react/pull/6908)
+- Themes | Business Dashboard - Update thumbnail theme  [#6903](https://github.com/wix/wix-style-react/pull/6903)
 
 ## 9.88.0 - 2021-03-10
 ### Added
