@@ -5,7 +5,7 @@
 
 :import {
   -st-from: '../foundations/colors.st.css';
-  -st-named: D55, B30, B10;
+  -st-named: D60, B30, B10;
 }
 
 .root {
@@ -18,7 +18,7 @@
 }
 
 .root::thumbnail:size(small)::after {
-  box-shadow: 0 0 0 1px value(D55) inset;
+  box-shadow: 0 0 0 1px value(D60) inset;
   border-radius: 4px;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .root::thumbnail:size(small):disabled::after {
-  box-shadow: 0 0 0 1px value(D55) inset;
+  box-shadow: 0 0 0 1px value(D60) inset;
 }
 
 /* Selected */
