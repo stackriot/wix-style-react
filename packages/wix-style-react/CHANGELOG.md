@@ -26,6 +26,7 @@ Types of changes:
 - `<Checkbox/>` - fix label when disabled [#6882](https://github.com/wix/wix-style-react/pull/6882)
 - `<inputWithOptions/>` - fix onfocus triggered twice when suffix icon is clicked [#6873](https://github.com/wix/wix-style-react/pull/6873)
 - Fix Stylable warnings [#6901](https://github.com/wix/wix-style-react/pull/6901)
+- `<RadioGroup/>` - make arrows navigate between radio items [#6881](https://github.com/wix/wix-style-react/pull/6881)
 
 ## 9.87.0 - 2021-03-07
 ### Fixed
