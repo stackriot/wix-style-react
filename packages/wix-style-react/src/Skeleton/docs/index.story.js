@@ -17,6 +17,7 @@ import {
 import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
 import React from 'react';
+import SectionHelper from '../../SectionHelper';
 
 const example = config => baseExample({ components: allComponents, ...config });
 
@@ -58,7 +59,7 @@ const exampleContent = [
 ];
 
 export default {
-  category: Category.COMPONENTS,
+  category: Category.DEPRECATED,
   storyName: 'Skeleton',
   component: Skeleton,
   componentPath: '..',
@@ -87,8 +88,17 @@ export default {
           description(
             `Placeholder for filling up screen, usually for when some async operation is ongoing.`,
           ),
+          description({
+            text: (
+              <SectionHelper appearance="danger" title="WARNING">
+                This component is deprecated! Instead, we advise you to use
+                <br />
+                &lt;SkeletonLine/&gt; instead.
+              </SectionHelper>
+            ),
+          }),
 
-          importExample("import { Skeleton } from 'wix-style-react';"),
+          importExample(),
 
           divider(),
 

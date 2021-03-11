@@ -2,12 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { st, classes } from './Skeleton.st.css';
 import { dataHooks } from './constants';
+import deprecationLog from '../utils/deprecationLog';
 
 /**
  * Skeleton is a “placeholder” component.
  * Used for filling up screen usually for when some async operation is ongoing.
  */
 class Skeleton extends React.PureComponent {
+  componentDidMount() {
+    deprecationLog(
+      `Using "<Skeleton/>" is deprecated. we advise you use <SkeletonGroup/> instead.`,
+    );
+  }
+
   render() {
     const { dataHook, content, alignment, spacing, className } = this.props;
     return (
