@@ -2,6 +2,8 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Download from 'wix-ui-icons-common/Download';
 import Star from 'wix-ui-icons-common/Star';
+import Add from 'wix-ui-icons-common/Add';
+import ChevronDownSmall from 'wix-ui-icons-common/ChevronDownSmall';
 import Duplicate from 'wix-ui-icons-common/Duplicate';
 import Print from 'wix-ui-icons-common/Print';
 import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
@@ -76,6 +78,112 @@ const interactiveTests = [
             onClick: () => {},
             text: 'text',
             skin: 'standard',
+            prefixIcon: <Add />,
+            suffixIcon: <ChevronDownSmall />,
+          },
+          secondaryActions: [
+            {
+              text: 'Star',
+              icon: <Star />,
+              onClick: () => window.alert('Star action was triggered.'),
+            },
+            {
+              text: 'Download',
+              icon: <Download />,
+              onClick: () => window.alert('Download action was triggered.'),
+            },
+            {
+              text: 'Duplicate',
+              icon: <Duplicate />,
+              onClick: () => window.alert('Duplicate action was triggered.'),
+            },
+            {
+              text: 'Print',
+              icon: <Print />,
+              onClick: () => window.alert('Print action was triggered.'),
+            },
+          ],
+        },
+      },
+      {
+        it: 'Should display small actions',
+        props: {
+          alwaysShowSecondaryActions: true,
+          size: 'small',
+          primaryAction: {
+            onClick: () => {},
+            text: 'text',
+            skin: 'standard',
+          },
+          secondaryActions: [
+            {
+              text: 'Star',
+              icon: <Star />,
+              onClick: () => window.alert('Star action was triggered.'),
+            },
+            {
+              text: 'Download',
+              icon: <Download />,
+              onClick: () => window.alert('Download action was triggered.'),
+            },
+            {
+              text: 'Duplicate',
+              icon: <Duplicate />,
+              onClick: () => window.alert('Duplicate action was triggered.'),
+            },
+            {
+              text: 'Print',
+              icon: <Print />,
+              onClick: () => window.alert('Print action was triggered.'),
+            },
+          ],
+        },
+      },
+      {
+        it: 'Should display icon prefix in small actions',
+        props: {
+          alwaysShowSecondaryActions: true,
+          size: 'small',
+          primaryAction: {
+            onClick: () => {},
+            text: 'text',
+            skin: 'standard',
+            prefixIcon: <Add />,
+          },
+          secondaryActions: [
+            {
+              text: 'Star',
+              icon: <Star />,
+              onClick: () => window.alert('Star action was triggered.'),
+            },
+            {
+              text: 'Download',
+              icon: <Download />,
+              onClick: () => window.alert('Download action was triggered.'),
+            },
+            {
+              text: 'Duplicate',
+              icon: <Duplicate />,
+              onClick: () => window.alert('Duplicate action was triggered.'),
+            },
+            {
+              text: 'Print',
+              icon: <Print />,
+              onClick: () => window.alert('Print action was triggered.'),
+            },
+          ],
+        },
+      },
+      {
+        it: 'Should display icon suffix in small actions',
+        props: {
+          alwaysShowSecondaryActions: true,
+          size: 'small',
+          primaryAction: {
+            onClick: () => {},
+            text: 'text',
+            skin: 'standard',
+            suffixIcon: <ChevronDownSmall />,
           },
           secondaryActions: [
             {

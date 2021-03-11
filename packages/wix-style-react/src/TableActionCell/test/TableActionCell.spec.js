@@ -8,13 +8,16 @@ import {
 import TableActionCell from '../TableActionCell';
 import { tableActionCellPrivateDriverFactory } from './TableActionCell.private.driver';
 import { tableActionCellPrivateUniDriverFactory } from './TableActionCell.private.uni.driver';
+import { Edit } from 'wix-ui-icons-common/dist/src';
 
-const primaryActionProps = (actionTrigger = () => {}, disabled = false) => ({
+const primaryActionProps = (actionTrigger = () => {}, {disabled = false, prefixIcon, suffixIcon} = {}) => ({
   primaryAction: {
     text: 'primary action',
     skin: 'standard',
     onClick: actionTrigger,
     disabled,
+    prefixIcon,
+    suffixIcon,
   },
 });
 
@@ -267,10 +270,42 @@ describe('Table Action Cell', () => {
 
     it('should mark the primary action as disabled', async () => {
       const { driver } = render(
-        <TableActionCell {...primaryActionProps(() => {}, true)} />,
+        <TableActionCell {...primaryActionProps(() => {}, { disabled: true })} />,
       );
 
       expect(await driver.getIsPrimaryActionButtonDisabled()).toBe(true);
+    });
+
+    it('should not add prefix icon to primary action', async () => {
+      const { driver } = render(
+        <TableActionCell {...primaryActionProps(() => {})} />,
+      );
+
+      expect(await driver.primaryActionButtonPrefixIconExists()).toBe(false);
+    });
+
+    it('should add prefix icon to primary action', async () => {
+      const { driver } = render(
+        <TableActionCell {...primaryActionProps(() => {}, { prefixIcon: <Edit /> })} />,
+      );
+
+      expect(await driver.primaryActionButtonPrefixIconExists()).toBe(true);
+    });
+
+    it('should not add suffix icon to primary action', async () => {
+      const { driver } = render(
+        <TableActionCell {...primaryActionProps(() => {})} />,
+      );
+
+      expect(await driver.primaryActionButtonSuffixIconExists()).toBe(false);
+    });
+
+    it('should add suffix icon to primary action', async () => {
+      const { driver } = render(
+        <TableActionCell {...primaryActionProps(() => {}, { suffixIcon: <Edit /> })} />,
+      );
+
+      expect(await driver.primaryActionButtonSuffixIconExists()).toBe(true);
     });
 
     describe('when a secondary action is disabled', () => {
