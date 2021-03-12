@@ -18,10 +18,11 @@ Types of changes:
 ## Next
 ### Fixed
 - `<ModalPreviewLayout/>` - fix white tooltip [#6908](https://github.com/wix/wix-style-react/pull/6908)
-- Themes | Business Dashboard - Update thumbnail theme  [#6903](https://github.com/wix/wix-style-react/pull/6903)
 
 ### Added
 - `<TableActionCell/>`- add primaryAction icon affixes [#2056](https://github.com/wix/wix-ui/pull/2056)
+- Themes | Business Dashboard - Update thumbnail theme  [#6903](https://github.com/wix/wix-style-react/pull/6903)
+- Themes | Business Dashboard - TableListItem - add theme [#6827](https://github.com/wix/wix-style-react/pull/6827)
 
 ### Deprecated
 - `<Skeleton/>` - deprecate component
