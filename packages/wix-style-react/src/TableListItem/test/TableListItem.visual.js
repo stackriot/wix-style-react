@@ -76,26 +76,37 @@ const tests = [
   },
 ];
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(
-      `${TableListItem.displayName}${describe ? '/' + describe : ''}`,
-      module,
-    ).add(it, () => <TableListItem {...commonProps} {...props} />);
+export const runTests = (
+  { themeName, testWithTheme } = { testWithTheme: i => i },
+) => {
+  tests.forEach(({ describe, its }) => {
+    its.forEach(({ it, props }) => {
+      storiesOf(
+        `${themeName ? `${themeName}|${TableListItem.displayName}/` : ''}${
+          describe ? '/' + describe : ''
+        }`,
+        module,
+      ).add(it, () =>
+        testWithTheme(<TableListItem {...commonProps} {...props} />),
+      );
+    });
   });
-});
-
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(
-      `Layout And Spacing| ${TableListItem.displayName}/${describe}`,
-      module,
-    ).add(it, () => (
-      <WixStyleReactProvider
-        features={{ reducedSpacingAndImprovedLayout: true }}
-      >
-        <TableListItem {...commonProps} {...props} />
-      </WixStyleReactProvider>
-    ));
+  tests.forEach(({ describe, its }) => {
+    its.forEach(({ it, props }) => {
+      storiesOf(
+        `${
+          themeName ? `${themeName}|${TableListItem.displayName}/` : ''
+        }Layout And Spacing| ${TableListItem.displayName}/${describe}`,
+        module,
+      ).add(it, () =>
+        testWithTheme(
+          <WixStyleReactProvider
+            features={{ reducedSpacingAndImprovedLayout: true }}
+          >
+            <TableListItem {...commonProps} {...props} />
+          </WixStyleReactProvider>,
+        ),
+      );
+    });
   });
-});
+};
