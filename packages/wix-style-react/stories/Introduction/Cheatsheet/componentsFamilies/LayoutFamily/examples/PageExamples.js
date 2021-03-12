@@ -20,9 +20,6 @@ import {
   Card,
   Page,
   Box,
-  Row,
-  Col,
-  Container,
   Button,
   TextButton,
   Breadcrumbs,
@@ -86,18 +83,12 @@ class ExamplePageWithCard extends Component {
       <Page>
         {this.renderHeader()}
         <Page.Content>
-          <Container>
-            <Row>
-              <Col>
-                <Card>
-                  <Card.Header title="Card Title" />
-                  <Card.Content>
-                    <Box height="150px" />
-                  </Card.Content>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
+          <Card>
+            <Card.Header title="Card Title" />
+            <Card.Content>
+              <Box height="150px" />
+            </Card.Content>
+          </Card>
         </Page.Content>
       </Page>
     );
@@ -130,27 +121,21 @@ class ExamplePageEmptyState extends Component {
       <Page>
         {this.renderHeader()}
         <Page.Content>
-          <Container>
-            <Row>
-              <Col>
-                <EmptyState
-                  image={
-                    <Box
-                      height="120px"
-                      width="120px"
-                      backgroundColor="D60"
-                      borderRadius="50%"
-                    />
-                  }
-                  subtitle="Create your product item in an easy & fast way to display it on your site"
-                  theme="page"
-                  title="You don't have any items yet"
-                >
-                  <TextButton prefixIcon={<Add />}>New Item</TextButton>
-                </EmptyState>
-              </Col>
-            </Row>
-          </Container>
+          <EmptyState
+            image={
+              <Box
+                height="120px"
+                width="120px"
+                backgroundColor="D60"
+                borderRadius="50%"
+              />
+            }
+            subtitle="Create your product item in an easy & fast way to display it on your site"
+            theme="page"
+            title="You don't have any items yet"
+          >
+            <TextButton prefixIcon={<Add />}>New Item</TextButton>
+          </EmptyState>
         </Page.Content>
       </Page>
     );

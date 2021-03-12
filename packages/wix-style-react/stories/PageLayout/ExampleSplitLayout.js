@@ -51,25 +51,23 @@ class ExampleSplitLayout extends React.Component {
       <Page height="372px">
         {this.renderHeader()}
         <Page.Content>
-          <Container>
-            <Row stretchViewsVertically>
-              <Col span={8}>
-                <Card>
-                  <Card.Header title="Card Title" />
-                  <Card.Content>
-                    <ExampleLongContent />
-                  </Card.Content>
-                </Card>
-              </Col>
-              <Col span={4}>
-                <Card stretchVertically>
-                  <Card.Content>
-                    <ExampleShortContent />
-                  </Card.Content>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
+          <Layout>
+            <Cell span={8}>
+              <Card>
+                <Card.Header title="Card Title" />
+                <Card.Content>
+                  <ExampleLongContent />
+                </Card.Content>
+              </Card>
+            </Cell>
+            <Cell span={4}>
+              <Card stretchVertically>
+                <Card.Content>
+                  <ExampleShortContent />
+                </Card.Content>
+              </Card>
+            </Cell>
+          </Layout>
         </Page.Content>
       </Page>
     );

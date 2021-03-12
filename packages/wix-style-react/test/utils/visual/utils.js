@@ -1,7 +1,7 @@
 import allComponents from '../../../autodocs-registry/autodocs-registry.json';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { Col, Container, Row } from '../../../src/Grid';
+import { Layout, Cell } from '../../../src/Layout';
 import Tooltip from '../../../src/Tooltip';
 
 function getTestValues(
@@ -103,20 +103,22 @@ export const storyOfAllPermutations = (Story, Component, options = {}) => {
     module,
   ).add(storyName, () =>
     testWithTheme(
-      <Container>
+      <Layout>
         {permutations.map((props, key) => (
-          <Row key={key}>
-            <Col span={1}>
-              <Tooltip content={JSON.stringify(props)}>
-                <span>{key}</span>
-              </Tooltip>
-            </Col>
-            <Col span={11}>
-              <Story {...props} />
-            </Col>
-          </Row>
+          <Cell key={key}>
+            <Layout>
+              <Cell span={1}>
+                <Tooltip content={JSON.stringify(props)}>
+                  <span>{key}</span>
+                </Tooltip>
+              </Cell>
+              <Cell span={11}>
+                <Story {...props} />
+              </Cell>
+            </Layout>
+          </Cell>
         ))}
-      </Container>,
+      </Layout>,
     ),
   );
 };

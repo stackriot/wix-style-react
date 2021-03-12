@@ -53,27 +53,25 @@ class CardWithEditableSelector extends React.Component {
 
   render() {
     return (
-      <Container>
-        <Row>
-          <Col span={6}>
-            <Card>
-              <Card.Header title="Editable Selector Inside Card" />
-              <Card.Divider />
-              <Card.Content>
-                <EditableSelector
-                  onOptionAdded={params => this.onOptionAdded(params)}
-                  onOptionEdit={params => this.onOptionEdit(params)}
-                  onOptionDelete={params => this.onOptionDelete(params)}
-                  onOptionToggle={params => this.onOptionToggle(params)}
-                  toggleType={'radio'}
-                  title="Type of Seeds"
-                  options={this.state.options}
-                />
-              </Card.Content>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+      <Layout>
+        <Cell span={6}>
+          <Card>
+            <Card.Header title="Editable Selector Inside Card" />
+            <Card.Divider />
+            <Card.Content>
+              <EditableSelector
+                onOptionAdded={params => this.onOptionAdded(params)}
+                onOptionEdit={params => this.onOptionEdit(params)}
+                onOptionDelete={params => this.onOptionDelete(params)}
+                onOptionToggle={params => this.onOptionToggle(params)}
+                toggleType={'radio'}
+                title="Type of Seeds"
+                options={this.state.options}
+              />
+            </Card.Content>
+          </Card>
+        </Cell>
+      </Layout>
     );
   }
 }

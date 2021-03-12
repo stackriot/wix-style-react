@@ -6,7 +6,7 @@ import Button from '../Button';
 import CloseButton from '../CloseButton';
 import Text from '../Text';
 import EmptyState from '../EmptyState';
-import { Col, Container, Row } from '../Grid';
+import { Layout, Cell } from '../Layout';
 
 const reduceSpacingTests = [
   {
@@ -160,28 +160,26 @@ const tests = [
 
 const CardTest = props => (
   <div style={{ background: '#F0F4F7', padding: 30 }}>
-    <Container>
-      <Row>
-        <Col span={6}>
-          <Card
-            controls={props.controls}
-            hideOverflow={props.hideOverflow}
-            stretchVertically={props.stretchVertically}
-            showShadow={props.showShadow}
-          >
-            <Card.Header
-              title="Card header"
-              subtitle={props.subtitle}
-              suffix={props.suffix}
-            />
-            <Card.Divider />
-            <Card.Content size={props.contentSize}>
-              {props.childrenContent ? props.childrenContent : 'sdf'}
-            </Card.Content>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Layout>
+      <Cell span={6}>
+        <Card
+          controls={props.controls}
+          hideOverflow={props.hideOverflow}
+          stretchVertically={props.stretchVertically}
+          showShadow={props.showShadow}
+        >
+          <Card.Header
+            title="Card header"
+            subtitle={props.subtitle}
+            suffix={props.suffix}
+          />
+          <Card.Divider />
+          <Card.Content size={props.contentSize}>
+            {props.childrenContent ? props.childrenContent : 'sdf'}
+          </Card.Content>
+        </Card>
+      </Cell>
+    </Layout>
   </div>
 );
 

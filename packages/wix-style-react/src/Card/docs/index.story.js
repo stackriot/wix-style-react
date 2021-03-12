@@ -110,20 +110,18 @@ const { Header, Subheader, Content, Divider} = Card;
               source: `
                 <Card>
                   <Card.Content>
-                    <Container fluid>
-                      <Row>
-                        <Col span={6}>
-                          <FormField label="form field">
-                            <Input/>
-                          </FormField>
-                        </Col>
-                        <Col span={6}>
-                          <FormField label="form field">
-                            <Input/>
-                          </FormField>
-                        </Col>
-                      </Row>
-                    </Container>
+                    <Layout>
+                      <Cell span={6}>
+                        <FormField label="form field">
+                          <Input />
+                        </FormField>
+                      </Cell>
+                      <Cell span={6}>
+                        <FormField label="form field">
+                          <Input />
+                        </FormField>
+                      </Cell>
+                    </Layout>
                   </Card.Content>
                 </Card>
                 `,
@@ -181,36 +179,34 @@ const { Header, Subheader, Content, Divider} = Card;
               description:
                 'In most cases a card will be placed on top of a Grid',
               source: `
-                <Container>
-                  <Row>
-                    <Col span={8}>
-                      <Card>
-                        <Card.Header title="First Card"/>
-                        <Card.Divider />
-                        <Card.Content>
-                          <EmptyState
-                            title="You don't have any items yet"
-                            subtitle="Create your product item in an easy & fast way to display it on your site"
-                            theme="section"
-                          >
-                            <TextButton prefixIcon={<Icons.Add />}>New Item</TextButton>
-                          </EmptyState>
-                        </Card.Content>
-                      </Card>
-                    </Col>
-                    <Col span={4}>
-                      <Card>
-                        <Card.Header title="Second Card"/>
-                        <Card.Divider />
-                        <Card.Content>
-                          <Box align="center">
-                            <Avatar size="size72"/>
-                          </Box>
-                        </Card.Content>
-                      </Card>
-                    </Col>
-                  </Row>
-                </Container>
+                <Layout>
+                  <Cell span={8}>
+                    <Card>
+                      <Card.Header title="First Card" />
+                      <Card.Divider />
+                      <Card.Content>
+                        <EmptyState
+                          title="You don't have any items yet"
+                          subtitle="Create your product item in an easy & fast way to display it on your site"
+                          theme="section"
+                        >
+                          <TextButton prefixIcon={<Icons.Add />}>New Item</TextButton>
+                        </EmptyState>
+                      </Card.Content>
+                    </Card>
+                  </Cell>
+                  <Cell span={4}>
+                    <Card>
+                      <Card.Header title="Second Card" />
+                      <Card.Divider />
+                      <Card.Content>
+                        <Box align="center">
+                          <Avatar size="size72" />
+                        </Box>
+                      </Card.Content>
+                    </Card>
+                  </Cell>
+                </Layout>
                 `,
               compact: true,
             },

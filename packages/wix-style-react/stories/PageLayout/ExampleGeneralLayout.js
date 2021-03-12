@@ -50,18 +50,12 @@ class ExampleGeneralLayout extends React.Component {
       <Page height="372px">
         {this.renderHeader()}
         <Page.Content>
-          <Container>
-            <Row>
-              <Col>
-                <Card>
-                  <Card.Header title="Card Title" />
-                  <Card.Content>
-                    <ExampleContent />
-                  </Card.Content>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
+          <Card>
+            <Card.Header title="Card Title" />
+            <Card.Content>
+              <ExampleContent />
+            </Card.Content>
+          </Card>
         </Page.Content>
       </Page>
     );

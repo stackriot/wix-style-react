@@ -202,27 +202,23 @@ class CustomModalLayoutExample extends PureComponent {
             sideActions={<Checkbox>Don't show this again</Checkbox>}
             width="600px"
           >
-            <Container fluid>
-              <Row stretchViewsVertically>
-                <Col span={9}>
-                  <FormField label="Title">
-                    <Input size="medium" placeholder="Value" />
-                  </FormField>
-                </Col>
-                <Col span={3}>
-                  <FormField label="Quantity">
-                    <NumberInput value={500} />
-                  </FormField>
-                </Col>
-              </Row>
-              <Row stretchViewsVertically>
-                <Col>
-                  <FormField label="Description">
-                    <RichTextInputArea placeholder="Tell your customers what they will get" />
-                  </FormField>
-                </Col>
-              </Row>
-            </Container>
+            <Layout>
+              <Cell span={9}>
+                <FormField label="Title">
+                  <Input size="medium" placeholder="Value" />
+                </FormField>
+              </Cell>
+              <Cell span={3}>
+                <FormField label="Quantity">
+                  <NumberInput value={500} />
+                </FormField>
+              </Cell>
+              <Cell>
+                <FormField label="Description">
+                  <RichTextInputArea placeholder="Tell your customers what they will get" />
+                </FormField>
+              </Cell>
+            </Layout>
           </CustomModalLayout>
         </Box>
       </SingleComponentSideBySide>

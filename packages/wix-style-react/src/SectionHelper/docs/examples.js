@@ -150,31 +150,27 @@ export const pageExample = `
     subtitle="Choose how your customers can pay at checkout"
   />
   <Page.Content>
-    <Container>
-      <Row>
-        <Col span={12}>
-          <SectionHelper
-            actionText="Upgrade"
-            appearance="premium"
-            onAction={() => 'onAction'}
-            onClose={() => 'onClose'}
-            title="Want to start selling online?"
-          >
-            Upgrade your site with Business & eCommerce Premium Plan so your
-            customers can pay at checkout.
-          </SectionHelper>
-        </Col>
-      </Row>
-      <Row stretchViewsVertically>
-        <Col span={12}>
-          <Card>
-            <Card.Header title="Payment Options" />
-            <Card.Divider />
-            <Box height="120px" />
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Layout>
+      <Cell>
+        <SectionHelper
+          actionText="Upgrade"
+          appearance="premium"
+          onAction={() => 'onAction'}
+          onClose={() => 'onClose'}
+          title="Want to start selling online?"
+        >
+          Upgrade your site with Business & eCommerce Premium Plan so your
+          customers can pay at checkout.
+        </SectionHelper>
+      </Cell>
+      <Cell>
+        <Card>
+          <Card.Header title="Payment Options" />
+          <Card.Divider />
+          <Box height="120px" />
+        </Card>
+      </Cell>
+    </Layout>
   </Page.Content>
 </Page>;
 `;

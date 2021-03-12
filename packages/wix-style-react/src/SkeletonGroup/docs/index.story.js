@@ -30,10 +30,10 @@ const exampleLayout = [
   <Layout>
     <Cell>
       <Layout>
-        <Cell span="2">
+        <Cell span={2}>
           <SkeletonCircle diameter="40px" margin="10px 5px 0 5px" />
         </Cell>
-        <Cell span="5">
+        <Cell span={5}>
           <SkeletonLine margin="10px 5px 5px 0" />
           <SkeletonLine />
         </Cell>

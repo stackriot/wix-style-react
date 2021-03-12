@@ -3,7 +3,7 @@ import React from 'react';
 import ComponentNaming from './ComponentNaming';
 import singleComponentSizes from './constants';
 
-import { Row, Col } from 'wix-style-react';
+import { Layout, Cell } from 'wix-style-react';
 
 const SingleComponentSideBySide = ({
   name,
@@ -11,16 +11,18 @@ const SingleComponentSideBySide = ({
   children,
   size = singleComponentSizes.fullWidth,
 }) => (
-  <Row>
-    <Col span={4}>
-      <ComponentNaming name={name} componentsNames={componentsNames} />
-    </Col>
-    <Col span={8}>
-      <Row>
-        <Col span={size}>{children}</Col>
-      </Row>
-    </Col>
-  </Row>
+  <Cell>
+    <Layout>
+      <Cell span={4}>
+        <ComponentNaming name={name} componentsNames={componentsNames} />
+      </Cell>
+      <Cell span={8}>
+        <Layout>
+          <Cell span={size}>{children}</Cell>
+        </Layout>
+      </Cell>
+    </Layout>
+  </Cell>
 );
 
 export default SingleComponentSideBySide;

@@ -53,34 +53,33 @@ export const inlineLabelWithLength = `
   </FormField>
 `;
 
-export const ExampleWithinGrid = `
-<MessageBoxFunctionalLayout title="User Details" confirmText="Save" width="400px" cancelText="Cancel">
-  <Container fluid>
-    <Row stretchViewsVertically>
-      <Col span={3}>
-        <FormField dataHook="storybook-formfield-grid" label="User" required />
-      </Col>
-      <Col span={9}>
-        <Input />
-      </Col>
-    </Row>
-    <Row stretchViewsVertically>
-      <Col span={3}>
-        <FormField label="Email" />
-      </Col>
-      <Col span={9}>
-        <Input />
-      </Col>
-    </Row>
-    <Row stretchViewsVertically>
-      <Col span={3}>
-        <FormField label="Address" infoContent="I help you to fill info" />
-      </Col>
-      <Col span={9}>
-        <Input />
-      </Col>
-    </Row>
-  </Container>
+export const ExampleWithinLayout = `
+<MessageBoxFunctionalLayout
+  title="User Details"
+  confirmText="Save"
+  width="400px"
+  cancelText="Cancel"
+>
+  <Layout>
+    <Cell span={3}>
+      <FormField dataHook="storybook-formfield-grid" label="User" required />
+    </Cell>
+    <Cell span={9}>
+      <Input />
+    </Cell>
+    <Cell span={3}>
+      <FormField label="Email" />
+    </Cell>
+    <Cell span={9}>
+      <Input />
+    </Cell>
+    <Cell span={3}>
+      <FormField label="Address" infoContent="I help you to fill info" />
+    </Cell>
+    <Cell span={9}>
+      <Input />
+    </Cell>
+  </Layout>
 </MessageBoxFunctionalLayout>;
 `;
 

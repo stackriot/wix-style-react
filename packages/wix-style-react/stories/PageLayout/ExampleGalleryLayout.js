@@ -52,25 +52,19 @@ class ExampleGalleryLayout extends React.Component {
       <Page height="372px">
         {this.renderHeader()}
         <Page.Content>
-          <Container>
-            {Array.from(Array(2).keys()).map(rowKey => (
-              <Row key={rowKey}>
-                {Array.from(Array(3).keys()).map(colKey => (
-                  <Col key={colKey} span={4}>
-                    {this.renderCardGalleryItem()}
-                  </Col>
-                ))}
-              </Row>
+          <Layout>
+            {Array.from(Array(6).keys()).map(cellKey => (
+              <Cell key={cellKey} span={4}>
+                {this.renderCardGalleryItem()}
+              </Cell>
             ))}
-            <Row>
-              <Col span={4}>
-                {/* We use <Proportion/> to stretch <AddItem/> vertically (it doesn't stretch automatically because its height is 100%, whereas the row doesn't have a defined height) */}
-                <Proportion>
-                  <AddItem>Add Item</AddItem>
-                </Proportion>
-              </Col>
-            </Row>
-          </Container>
+            <Cell span={4}>
+              {/* We use <Proportion/> to stretch <AddItem/> vertically (it doesn't stretch automatically because its height is 100%, whereas the row doesn't have a defined height) */}
+              <Proportion>
+                <AddItem>Add Item</AddItem>
+              </Proportion>
+            </Cell>
+          </Layout>
         </Page.Content>
       </Page>
     );

@@ -176,8 +176,8 @@ export default {
             source: examples.customSuffix,
           }),
           example({
-            title: 'Within Grid',
-            source: examples.ExampleWithinGrid,
+            title: 'Within Layout',
+            source: examples.ExampleWithinLayout,
           }),
         ],
       }),

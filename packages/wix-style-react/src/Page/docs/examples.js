@@ -18,21 +18,17 @@ export const fullSize = `
 
 export const gridOfCards = `
 <Page height="40vh">
-  <Page.Header title="Page Header"/>
+  <Page.Header title="Page Header" />
   <Page.Content>
-    <Container>
-      <Row>
-        <Col span={6}>
-          <Card>
-            <Card.Header title="Card"/>
-            <Card.Divider />
-            <Card.Content>
-              Some content
-            </Card.Content>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Layout>
+      <Cell span={6}>
+        <Card>
+          <Card.Header title="Card" />
+          <Card.Divider />
+          <Card.Content>Some content</Card.Content>
+        </Card>
+      </Cell>
+    </Layout>
   </Page.Content>
 </Page>
 `;
@@ -50,25 +46,25 @@ export const minimizedHeader = `
 <Page height="40vh">
   <Page.Header title="Page Header" />
   <Page.Content>
-    <Container>
-      <Row>
-        <Col span={8}>
-          <Card>
-            <Card.Content>
-              <h3>Scroll Down</h3>
-              {Array(20).fill(' ').map((item, i) =>
-                (<div key={"minimized-header-example-item-"+ i}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                  facilisis molestie magna vitae pellentesque. Ut elementum
-                  accumsan nibh, ut faucibus velit. Vestibulum at mollis justo.
-                </div>)
-                )
-              }
-            </Card.Content>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Layout>
+      <Cell span={8}>
+        <Card>
+          <Card.Content>
+            <h3>Scroll Down</h3>
+            {Array(20)
+              .fill(' ')
+              .map((item, i) => (
+                <div key={'minimized-header-example-item-' + i}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Etiam facilisis molestie magna vitae pellentesque. Ut
+                  elementum accumsan nibh, ut faucibus velit. Vestibulum at
+                  mollis justo.
+                </div>
+              ))}
+          </Card.Content>
+        </Card>
+      </Cell>
+    </Layout>
   </Page.Content>
 </Page>
 `;
@@ -155,24 +151,22 @@ export const headerTailElements = `
     />
   </Page.Tail>
   <Page.Content>
-    <Container>
-      <Row>
-        <Col span={8}>
-          <Card>
-            <Card.Content>
-              {Array(20).fill(' ').map((item,i) =>
-                (<div key={"header-tail-elements-example-item-"+ i}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                  facilisis molestie magna vitae pellentesque. Ut elementum
-                  accumsan nibh, ut faucibus velit. Vestibulum at mollis justo.
-                </div>)
-                )
-              }
-            </Card.Content>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Layout>
+      <Cell span={8}>
+        <Card>
+          <Card.Content>
+            {Array(20).fill(' ').map((item,i) =>
+              (<div key={"header-tail-elements-example-item-"+ i}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+                facilisis molestie magna vitae pellentesque. Ut elementum
+                accumsan nibh, ut faucibus velit. Vestibulum at mollis justo.
+              </div>)
+              )
+            }
+          </Card.Content>
+        </Card>
+      </Cell>
+    </Layout>
   </Page.Content>
 </Page>
 `;
@@ -181,33 +175,31 @@ export const stickyElements = `
 <Page height="40vh">
   <Page.Header title="Page Header" />
   <Page.Content>
-    <Container>
-      <Row stretchViewsVertically>
-        <Col span={8}>
+    <Layout>
+      <Cell span={8}>
+        <Card>
+          <Card.Content>
+            {Array(20).fill(' ').map((item,i) =>
+              (<div key={"sticky-elements-example-item-"+i}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+                facilisis molestie magna vitae pellentesque. Ut elementum
+                accumsan nibh, ut faucibus velit. Vestibulum at mollis justo.
+              </div>)
+              )
+            }
+          </Card.Content>
+        </Card>
+      </Cell>
+      <Cell span={4}>
+        <Page.Sticky>
           <Card>
-            <Card.Content>
-              {Array(20).fill(' ').map((item,i) =>
-                (<div key={"sticky-elements-example-item-"+i}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                  facilisis molestie magna vitae pellentesque. Ut elementum
-                  accumsan nibh, ut faucibus velit. Vestibulum at mollis justo.
-                </div>)
-                )
-              }
-            </Card.Content>
+            <Card.Header title="Sticky" />
+            <Card.Divider />
+            <Card.Content>Some menu or other content</Card.Content>
           </Card>
-        </Col>
-        <Col span={4}>
-          <Page.Sticky>
-            <Card>
-              <Card.Header title="Sticky" />
-              <Card.Divider />
-              <Card.Content>Some menu or other content</Card.Content>
-            </Card>
-          </Page.Sticky>
-        </Col>
-      </Row>
-    </Container>
+        </Page.Sticky>
+      </Cell>
+    </Layout>
   </Page.Content>
 </Page>
 `;
@@ -219,21 +211,21 @@ class Example extends React.Component {
       <Page height="372px">
         {renderPageHeader()}
         <Page.Content>
-          <Container>
-            <Row>
+          <Layout>
+            <Cell>
               <Card>
                 <Card.Content>Some Content 1</Card.Content>
               </Card>
-            </Row>
-            <Row>{<ProductTable />}</Row>
+            </Cell>
+            <Cell>{<ProductTable />}</Cell>
 
-            <Row>
+            <Cell>
               <Card>
                 <Card.Content>Some Content 2</Card.Content>
               </Card>
-            </Row>
-            <Row>{<ProductTable />}</Row>
-          </Container>
+            </Cell>
+            <Cell>{<ProductTable />}</Cell>
+          </Layout>
         </Page.Content>
       </Page>
     );

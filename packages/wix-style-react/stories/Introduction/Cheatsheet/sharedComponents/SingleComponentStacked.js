@@ -5,7 +5,7 @@ import ComponentNaming from './ComponentNaming';
 import Preview from './Preview';
 import singleComponentSizes from './constants';
 
-import { Row, Col } from 'wix-style-react';
+import { Layout, Cell } from 'wix-style-react';
 
 const SingleComponentStacked = ({
   name,
@@ -13,18 +13,14 @@ const SingleComponentStacked = ({
   children,
   size = singleComponentSizes.fullWidth,
 }) => (
-  <Row>
-    <Col>
-      <Row>
-        <Col>
-          <ComponentNaming name={name} componentsNames={componentsNames} />
-        </Col>
-      </Row>
-      <Row>
-        <Col span={size}>{children}</Col>
-      </Row>
-    </Col>
-  </Row>
+  <Cell>
+    <Layout>
+      <Cell>
+        <ComponentNaming name={name} componentsNames={componentsNames} />
+      </Cell>
+      <Cell span={size}>{children}</Cell>
+    </Layout>
+  </Cell>
 );
 
 SingleComponentStacked.displayName = 'SingleComponentStacked';

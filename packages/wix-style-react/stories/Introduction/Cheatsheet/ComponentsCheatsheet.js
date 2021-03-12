@@ -15,7 +15,7 @@ import OtherFamily from './componentsFamilies/OtherFamily';
 import ContentWidgetsFamily from './componentsFamilies/ContentWidgetsFamily';
 import InternalFamily from './componentsFamilies/InternalFamily';
 
-import { Container, Row, Page } from 'wix-style-react';
+import { Layout, Cell, Page } from 'wix-style-react';
 
 class ComponentsCheatsheet extends React.Component {
   render() {
@@ -42,13 +42,13 @@ class ComponentsCheatsheet extends React.Component {
           subtitle="Common components index"
         />
         <Page.Content>
-          <Container>
+          <Layout>
             {componentsFamiliesArr.map((Family, i) => (
-              <Row key={`family-row-${i}`}>
+              <Cell key={`family-Cell-${i}`}>
                 <Family key={`family-${i}`} />
-              </Row>
+              </Cell>
             ))}
-          </Container>
+          </Layout>
         </Page.Content>
       </Page>
     );

@@ -204,10 +204,10 @@ export const sizes = `() => {
 
   return (
     <Layout cols={2} gap={0} justifyItems="center" alignItems="center">
-    <Cell span="1">
+    <Cell span={1}>
       <ComposerSidebar size="medium" items={items} selectedId={1} />
     </Cell>
-    <Cell span="1">
+    <Cell span={1}>
       <ComposerSidebar size="large" items={items} selectedId={1} />
     </Cell>
   </Layout>
@@ -246,10 +246,10 @@ export const labelPlacement = `() => {
 
   return (
     <Layout cols={2} gap={0} justifyItems="center" alignItems="center">
-    <Cell span="1">
+    <Cell span={1}>
       <ComposerSidebar labelPlacement="end" items={items} selectedId={1} />
     </Cell>
-    <Cell span="1">
+    <Cell span={1}>
       <ComposerSidebar labelPlacement="bottom" items={items} selectedId={1} />
     </Cell>
   </Layout>

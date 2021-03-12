@@ -23,6 +23,7 @@ import ChevronDown from 'wix-ui-icons-common/ChevronDown';
 
 import {
   Layout,
+  Cell,
   AnalyticsLayout,
   Input,
   FormField,
@@ -31,9 +32,6 @@ import {
   Box,
   CardGalleryItem,
   Badge,
-  Container,
-  Row,
-  Col,
   Card,
   DropdownBase,
   TextButton,
@@ -414,35 +412,32 @@ const CardGalleryItemExample = () => {
   const singleComponentProps = {
     name: symbol,
     componentsNames: createLinkedComponentsNames(components),
-    size: singleComponentSizes.compact,
   };
 
   return (
     <SingleComponentStacked {...singleComponentProps}>
-      <Container>
-        <Row>
-          <Col span={5}>
-            <Preview stretch>
-              <CardGalleryItem
-                title="Scheduled on Facebook"
-                badge={
-                  <Badge size="medium" skin="standard" type="solid" uppercase>
-                    scheduled
-                  </Badge>
-                }
-                subtitle="For Jan 30, 2019 (05:06 PM)"
-                primaryActionProps={{
-                  label: 'Edit Post',
-                  onClick: () => {
-                    alert('Primary action clicked');
-                  },
-                }}
-                backgroundImageUrl={backgroundImageUrl}
-              />
-            </Preview>
-          </Col>
-        </Row>
-      </Container>
+      <Layout>
+        <Cell span={4}>
+          <Preview stretch>
+            <CardGalleryItem
+              title="Scheduled on Facebook"
+              badge={
+                <Badge size="medium" skin="standard" type="solid" uppercase>
+                  scheduled
+                </Badge>
+              }
+              subtitle="For Jan 30, 2019 (05:06 PM)"
+              primaryActionProps={{
+                label: 'Edit Post',
+                onClick: () => {
+                  alert('Primary action clicked');
+                },
+              }}
+              backgroundImageUrl={backgroundImageUrl}
+            />
+          </Preview>
+        </Cell>
+      </Layout>
     </SingleComponentStacked>
   );
 };
@@ -458,40 +453,46 @@ const PreviewExample = () => {
 
   return (
     <SingleComponentStacked {...singleComponentProps}>
-      <Container>
-        <Row>
-          <Col span={5}>
-            <PreviewWidget>
-              <Box padding="20px" backgroundColor="Y30">
-                <Text>Content goes here</Text>
-              </Box>
-            </PreviewWidget>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={5}>
-            <BrowserPreviewWidget browserBarSize="size9">
-              <Box padding="20px" backgroundColor="Y30">
-                <Text>Content goes here</Text>
-              </Box>
-            </BrowserPreviewWidget>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={5}>
-            <MobilePreviewWidget>
-              <Box
-                align="center"
-                verticalAlign="middle"
-                height="100%"
-                backgroundColor="Y30"
-              >
-                <Text>Content goes here</Text>
-              </Box>
-            </MobilePreviewWidget>
-          </Col>
-        </Row>
-      </Container>
+      <Layout>
+        <Cell>
+          <Layout>
+            <Cell span={5}>
+              <PreviewWidget>
+                <Box padding="20px" backgroundColor="Y30">
+                  <Text>Content goes here</Text>
+                </Box>
+              </PreviewWidget>
+            </Cell>
+          </Layout>
+        </Cell>
+        <Cell>
+          <Layout>
+            <Cell span={5}>
+              <BrowserPreviewWidget browserBarSize="size9">
+                <Box padding="20px" backgroundColor="Y30">
+                  <Text>Content goes here</Text>
+                </Box>
+              </BrowserPreviewWidget>
+            </Cell>
+          </Layout>
+        </Cell>
+        <Cell>
+          <Layout>
+            <Cell span={5}>
+              <MobilePreviewWidget>
+                <Box
+                  align="center"
+                  verticalAlign="middle"
+                  height="100%"
+                  backgroundColor="Y30"
+                >
+                  <Text>Content goes here</Text>
+                </Box>
+              </MobilePreviewWidget>
+            </Cell>
+          </Layout>
+        </Cell>
+      </Layout>
     </SingleComponentStacked>
   );
 };

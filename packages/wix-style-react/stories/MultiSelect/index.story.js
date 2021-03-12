@@ -18,7 +18,7 @@ import { storySettings } from './storySettings';
 import { Category } from '../storiesHierarchy';
 import allComponents from '../utils/allComponents';
 
-import { Container, Row, Col, FormField } from 'wix-style-react';
+import { Layout, Cell, FormField } from 'wix-style-react';
 
 const example = config => baseExample({ components: allComponents, ...config });
 
@@ -29,20 +29,18 @@ export default {
   sections: [
     header({
       component: (
-        <Container>
-          <Row>
-            <Col span={6}>
-              <FormField label="Tag Input">
-                <MultiSelect
-                  tags={[
-                    { id: '1', label: 'tag 1' },
-                    { id: '2', label: 'tag 2' },
-                  ]}
-                />
-              </FormField>
-            </Col>
-          </Row>
-        </Container>
+        <Layout>
+          <Cell span={6}>
+            <FormField label="Tag Input">
+              <MultiSelect
+                tags={[
+                  { id: '1', label: 'tag 1' },
+                  { id: '2', label: 'tag 2' },
+                ]}
+              />
+            </FormField>
+          </Cell>
+        </Layout>
       ),
     }),
 
