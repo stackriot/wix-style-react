@@ -24,6 +24,7 @@ Types of changes:
 - Themes | Business Dashboard - Update thumbnail theme  [#6903](https://github.com/wix/wix-style-react/pull/6903)
 - Themes | Business Dashboard - TableListItem - add theme [#6827](https://github.com/wix/wix-style-react/pull/6827)
 - `<Calendar/>`- add `today` prop [#6911](https://github.com/wix/wix-style-react/pull/6911)
+- `<DatePicker />`-  add readOnly prop and add examples to width prop [#6871](https://github.com/wix/wix-style-react/pull/6871)
 
 ### Deprecated
 - `<Skeleton/>` - deprecate component
