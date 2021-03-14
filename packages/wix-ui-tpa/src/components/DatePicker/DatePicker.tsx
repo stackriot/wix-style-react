@@ -71,6 +71,8 @@ export interface DatePickerProps extends TPAComponentProps {
   yearDropdownAriaLabelledBy?: string;
   /** If true, renders date picker without outer padding */
   removeOuterPadding?: boolean;
+  /** Define today's date. The today indication is added automatically according to the user timezone but in some cases, we need the ability to add the today indication based on the business timezone. */
+  today?: Date | string;
 }
 
 interface DefaultProps {
@@ -109,6 +111,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
       showMonthDropdown,
       showYearDropdown,
       dateIndication,
+      today,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
       leftArrowAriaLabel,
@@ -157,6 +160,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
               monthDropdownAriaLabelledBy={monthDropdownAriaLabelledBy}
               yearDropdownAriaLabel={yearDropdownAriaLabel}
               yearDropdownAriaLabelledBy={yearDropdownAriaLabelledBy}
+              today={today}
             />
           </div>
         )}

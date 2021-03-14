@@ -145,5 +145,14 @@ visualize('DatePicker', () => {
         onChange={() => {}}
       />,
     );
+    snap(
+      'Today as a prop',
+      <VisualTestDatePicker
+        width="280px"
+        value={new Date('2019/12/15')}
+        onChange={() => {}}
+        today={new Date('2019/12/17')}
+      />,
+    );
   });
 });

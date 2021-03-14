@@ -64,6 +64,7 @@ export interface CalendarProps {
   firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   rtl?: boolean;
   dateIndication?: React.FC<dateIndicationProps>;
+  today?: string | Date;
   leftArrowAriaLabel?: string;
   leftArrowAriaLabelledBy?: string;
   rightArrowAriaLabel?: string;

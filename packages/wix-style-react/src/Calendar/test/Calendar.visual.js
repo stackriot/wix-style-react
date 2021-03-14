@@ -182,6 +182,13 @@ const tests = [
             ) : null,
         },
       },
+      {
+        it: 'Should indicate custom today',
+        props: {
+          value: new Date('2020/10/10'),
+          today: new Date('2020/10/12'),
+        },
+      },
     ],
   },
 ];

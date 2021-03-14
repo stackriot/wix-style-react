@@ -292,6 +292,7 @@ export default class Calendar extends React.PureComponent {
       numOfMonths,
       firstDayOfWeek,
       rtl,
+      today,
     } = this.props;
 
     const value = Calendar.parseValue(this.props.value);
@@ -314,6 +315,18 @@ export default class Calendar extends React.PureComponent {
     const selectedDays = this._getSelectedDays(value);
     const weekdayElement = this._createWeekdayElement(localeUtils);
 
+    const modifiers = {
+      [cssStates({ start: true })]: from,
+      [cssStates({ end: true })]: to,
+      [cssStates({ firstOfMonth: true })]: firstOfMonth,
+      [cssStates({ lastOfMonth: true })]: lastOfMonth,
+      [cssStates({ singleDay: true })]: singleDay,
+    };
+
+    if (today) {
+      modifiers[cssStates({ today: true })] = Calendar.parseValue(today);
+    }
+
     return {
       disabledDays: excludePastDates
         ? { before: new Date() }
@@ -334,13 +347,7 @@ export default class Calendar extends React.PureComponent {
       onCaptionClick: this._preventActionEventDefault,
       onDayKeyDown: this._handleDayKeyDown,
       numberOfMonths: numOfMonths,
-      modifiers: {
-        [cssStates({ start: true })]: from,
-        [cssStates({ end: true })]: to,
-        [cssStates({ firstOfMonth: true })]: firstOfMonth,
-        [cssStates({ lastOfMonth: true })]: lastOfMonth,
-        [cssStates({ singleDay: true })]: singleDay,
-      },
+      modifiers,
       renderDay: this._renderDay,
       dir: rtl ? 'rtl' : 'ltr',
       weekdayElement,
@@ -363,7 +370,7 @@ export default class Calendar extends React.PureComponent {
         day: st('DayPicker-Day', classes.day),
 
         // default modifiers
-        today: cssStates({ today: true }),
+        today: cssStates({ today: !today }),
         selected: cssStates({ selected: true }),
         disabled: st('disabled', cssStates({ disabled: true })),
         outside: cssStates({ outside: true }),
@@ -555,6 +562,9 @@ Calendar.propTypes = {
    * `return` {React.node} - the indication node of a specific date or null if this day doesn't have an indication.
   */
   dateIndication: PropTypes.func,
+
+  /** Define today's date. The today indication is added automatically according to the user timezone but in some cases, we need the ability to add the today indication based on the business timezone. */
+  today: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
 
   /** Defines a string value that labels the left arrow in calendar header */
   leftArrowAriaLabel: PropTypes.string,

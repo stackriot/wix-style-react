@@ -70,6 +70,16 @@ export default {
         value: true,
       },
     ],
+    today: [
+      {
+        label: 'First day of month',
+        value: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+      },
+      {
+        label: 'Middle day of month',
+        value: new Date(new Date().getFullYear(), new Date().getMonth(), 15),
+      },
+    ],
   },
   dataHook: 'storybook-DatePicker',
   sections: [
