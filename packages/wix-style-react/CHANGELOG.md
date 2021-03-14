@@ -23,6 +23,7 @@ Types of changes:
 - `<TableActionCell/>`- add primaryAction icon affixes [#2056](https://github.com/wix/wix-ui/pull/2056)
 - Themes | Business Dashboard - Update thumbnail theme  [#6903](https://github.com/wix/wix-style-react/pull/6903)
 - Themes | Business Dashboard - TableListItem - add theme [#6827](https://github.com/wix/wix-style-react/pull/6827)
+- `<Calendar/>`- add `today` prop [#6911](https://github.com/wix/wix-style-react/pull/6911)
 
 ### Deprecated
 - `<Skeleton/>` - deprecate component
