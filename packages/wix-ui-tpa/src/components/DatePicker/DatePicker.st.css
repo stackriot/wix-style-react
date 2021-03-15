@@ -174,11 +174,11 @@
 }
 
 .calendar::header::arrowLeft:skin(light) {
-    margin-right: 12px;
+    margin-right: 0;
 }
 
 .calendar::header::arrowRight:skin(light) {
-    margin-left: 12px;
+    margin-left: 0;
 }
 
 .calendar::header::arrowLeft:skin(light):hover, .calendar::header::arrowRight:skin(light):hover {
@@ -190,6 +190,12 @@
 .calendar::header::arrowLeft:skin(light):active, .calendar::header::arrowRight:skin(light):active {
     background: none;
     color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
+}
+
+.calendar::header::yearAndMonthWrapper {
+    width: 12.6em;
+    min-width: 192px;
+    font: value(CurrentMonthAndYearCaptionFont);
 }
 
 .calendar::header::caption {
@@ -327,7 +333,6 @@
 .calendar::header::monthDropdown::caption ,
 .calendar::header::yearDropdown::caption {
     font: value(CurrentMonthAndYearCaptionFont);
-    font-size: 16px;
     color: value(CurrentMonthAndYearCaptionColor);
     height: 24px;
 }

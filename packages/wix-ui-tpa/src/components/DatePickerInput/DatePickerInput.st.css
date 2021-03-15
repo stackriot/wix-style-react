@@ -160,3 +160,8 @@
 .wsrDatePicker::calendar::weekday, .wsrDatePicker::calendar::day {
     font-size: 14px;
 }
+
+.wsrDatePicker::calendar::header::monthDropdown::caption ,
+.wsrDatePicker::calendar::header::yearDropdown::caption {
+    font-size: 16px;
+}
