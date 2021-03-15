@@ -223,9 +223,9 @@ describe(RadioGroup.displayName, () => {
         const { driver } = render(<RenderRadioGroup label={label} />);
 
         const radio = await driver.getRadioAtIndex(0);
-        expect((await radio.getLabelElement()) instanceof HTMLSpanElement).toBe(
-          true,
-        );
+        expect(
+          (await radio.getLabelElement()) instanceof HTMLLabelElement,
+        ).toBe(true);
       });
 
       it('should be checked', async () => {

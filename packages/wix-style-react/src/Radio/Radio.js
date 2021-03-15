@@ -67,9 +67,13 @@ const Radio = ({
       />
       <span className={classes.icon} data-hook={dataHooks.icon}></span>
       {label && (
-        <span className={classes.label} data-hook={dataHooks.label}>
+        <label
+          className={classes.label}
+          data-hook={dataHooks.label}
+          htmlFor={id}
+        >
           {renderLabel}
-        </span>
+        </label>
       )}
     </div>
   );
