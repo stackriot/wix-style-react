@@ -14,6 +14,9 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
+## Next
+### Added
+- `<DatePicker />`-  add clear button prop [#6890](https://github.com/wix/wix-style-react/pull/6890)
 
 ## 9.89.0 - 2021-03-15
 ### Fixed
