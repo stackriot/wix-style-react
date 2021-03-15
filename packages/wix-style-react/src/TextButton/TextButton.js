@@ -20,7 +20,13 @@ class TextButton extends PureComponent {
     /** Additional classes */
     className: PropTypes.string,
     /** Skins of TextButton content */
-    skin: PropTypes.oneOf(['standard', 'light', 'premium', 'dark']),
+    skin: PropTypes.oneOf([
+      'standard',
+      'light',
+      'premium',
+      'dark',
+      'destructive',
+    ]),
     /** Underline of TextButton content */
     underline: PropTypes.oneOf(['none', 'onHover', 'always']),
     /** Weight of TextButton content */
