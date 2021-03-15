@@ -29,6 +29,7 @@ Types of changes:
 - `<Calendar/>`- add `today` prop [#6911](https://github.com/wix/wix-style-react/pull/6911)
 - `<DatePicker />`-  add readOnly prop and add examples to width prop [#6871](https://github.com/wix/wix-style-react/pull/6871)
 - `<SelectorList />` - add method to reload data from dataSource [#6913](https://github.com/wix/wix-style-react/pull/6913)
+- `<HorizontalTimeline/>`  - testkit - getLabel() method [#6826](https://github.com/wix/wix-style-react/pull/6826)
 
 ### Deprecated
 - `<Skeleton/>` - deprecate component
