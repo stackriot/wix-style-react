@@ -1,3 +1,16 @@
+# 2.28.0 (2021-03-15)
+
+
+### Bug Fixes
+
+* **DatePicker:** fix the arrows bug ([#6917](https://github.com/wix/wix-style-react/issues/6917)) ([3982ab0](https://github.com/wix/wix-style-react/commit/3982ab007730607c90e7fa967e6b0b772f3015a6))
+
+
+### Features
+
+* **Dropdown:** Add errorTooltipPlacement prop ([443684e](https://github.com/wix/wix-style-react/commit/443684e8f7d819396b80e6f318647a55b7abf3f5))
+* **DatePicker:** add `today` prop ([e970604](https://github.com/wix/wix-style-react/commit/e9706049a61c73ccc84a15cc50e40fda39457317))
+
 ## 2.27.1 (2021-03-10)
 
 ### Bug Fixes

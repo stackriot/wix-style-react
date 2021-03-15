@@ -15,7 +15,7 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 
-## Next
+## 9.89.0 - 2021-03-15
 ### Fixed
 - `<ModalPreviewLayout/>` - fix white tooltip [#6908](https://github.com/wix/wix-style-react/pull/6908)
 - `<Radio/>` - a11y fixed in order for screen reader to be able to read label [#6904](https://github.com/wix/wix-style-react/pull/6904)
