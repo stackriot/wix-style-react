@@ -5,19 +5,25 @@ import { Tooltip } from '../Tooltip';
 import { TPAComponentProps } from '../../types';
 import { DATA_HOOKS, ICON_SIZE } from './constants';
 import { st, classes } from './DropdownError.st.css';
+import { Placement } from 'wix-ui-core/popover';
 
 interface DropdownErrorProps extends TPAComponentProps {
   errorMessage: string;
+  placement?: Placement;
 }
 
-export const DropdownError: React.FC<DropdownErrorProps> = (props) => {
+export const DropdownError: React.FC<DropdownErrorProps> = ({
+  className,
+  errorMessage,
+  placement = 'top-end',
+}) => {
   return (
     <Tooltip
-      className={st(classes.root, props.className)}
+      className={st(classes.root, className)}
       data-hook={DATA_HOOKS.errorTooltip}
-      placement="top-end"
+      placement={placement}
       skin={TooltipSkin.Error}
-      content={props.errorMessage}
+      content={errorMessage}
     >
       <ErrorIcon width={ICON_SIZE} height={ICON_SIZE} />
     </Tooltip>

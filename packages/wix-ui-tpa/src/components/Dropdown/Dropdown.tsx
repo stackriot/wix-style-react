@@ -30,6 +30,8 @@ export interface DropdownProps extends TPAComponentProps {
   disabled?: boolean;
   error?: boolean;
   errorMessage?: string;
+  /** Placement for Popover. Optional. */
+  errorTooltipPlacement?: Placement;
   label?: string;
   alignment?: DROPDOWN_ALIGNMENT;
   placement?: Placement;
@@ -201,6 +203,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       disabled,
       error,
       errorMessage,
+      errorTooltipPlacement,
       options,
       forceContentElementVisibility,
       placement,
@@ -266,6 +269,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
           <DropdownError
             className={classes.dropdownError}
             errorMessage={errorMessage}
+            placement={errorTooltipPlacement}
           />
         )}
       </CoreDropdown>
