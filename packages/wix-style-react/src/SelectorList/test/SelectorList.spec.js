@@ -673,5 +673,26 @@ describe('SelectorList', () => {
         expect(await driver.isSelectorImageRectangularAt(0)).toBe(true);
       });
     });
+
+    describe('public methods', () => {
+      describe('reloadInitialItems', () => {
+        it('should load items from new dataSource', async () => {
+          const changesDataSource = paginatedDataSourceFactory(
+            times(8, i => ({ id: i, title: `title-${i}`, image: <img /> })),
+          );
+          const { driver, rerender } = render(
+            <SelectorList dataSource={paginatedDataSource} />,
+          );
+
+          expect(await driver.numberOfItemsInList()).toBe(7);
+
+          const ref = React.createRef();
+          rerender(<SelectorList ref={ref} dataSource={changesDataSource} />);
+
+          ref.current.reloadInitialItems();
+          expect(await driver.numberOfItemsInList()).toBe(8);
+        });
+      });
+    });
   }
 });

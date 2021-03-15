@@ -144,6 +144,19 @@ export default class SelectorList extends React.PureComponent {
     this._loadInitialItems();
   }
 
+  /** Resets list items and loads first page from dataSource while persisting searchValue */
+  reloadInitialItems() {
+    const searchValue = this.state.searchValue;
+
+    this.setState({
+      items: [],
+      searchValue,
+      isSearching: Boolean(searchValue),
+    });
+
+    this._loadInitialItems(searchValue);
+  }
+
   _renderList = () => {
     const {
       dataHook,
