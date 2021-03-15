@@ -29,7 +29,7 @@ Types of changes:
 
 ### Deprecated
 - `<Skeleton/>` - deprecate component
-- 
+
 ## 9.88.0 - 2021-03-10
 ### Added
 - `<Button />` - testkit -  expose `isPrefixIconExists` and `isSuffixIconExists` [6898](https://github.com/wix/wix-style-react/pull/6898)
