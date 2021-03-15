@@ -19,6 +19,7 @@ Types of changes:
 ### Fixed
 - `<ModalPreviewLayout/>` - fix white tooltip [#6908](https://github.com/wix/wix-style-react/pull/6908)
 - `<Radio/>` - a11y fixed in order for screen reader to be able to read label [#6904](https://github.com/wix/wix-style-react/pull/6904)
+- `<TextButton/>` - add missing proptype value for "destructive" skin [#6915](https://github.com/wix/wix-style-react/pull/6915)
 
 ### Added
 - `<TableActionCell/>`- add primaryAction icon affixes [#2056](https://github.com/wix/wix-ui/pull/2056)
