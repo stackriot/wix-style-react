@@ -97,6 +97,20 @@ const testGroups = [
           },
         ],
       },
+      {
+        describe: 'ClearButton',
+        its: [
+          {
+            placeholderText: 'Select Date',
+            clearButton: true,
+          },
+          {
+            placeholderText: 'Select Date',
+            value: new Date('03/07/2021'),
+            clearButton: true,
+          },
+        ],
+      },
     ],
   },
   {

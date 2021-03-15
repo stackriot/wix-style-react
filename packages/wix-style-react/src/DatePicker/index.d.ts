@@ -28,6 +28,8 @@ export interface DatePickerProps extends CalendarProps {
   firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   size?: 'small' | 'medium' | 'large';
   readOnly?: boolean;
+  clearButton?: boolean;
+  onClear?: React.MouseEventHandler<HTMLInputElement>;
 }
 
 export default class DatePicker extends React.PureComponent<DatePickerProps> {

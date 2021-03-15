@@ -788,6 +788,67 @@ describe('DatePicker', () => {
       });
     });
 
+    describe('`clearButton` and `onClear` prop', () => {
+      it('should not have clearButton by default', async () => {
+        const onChange = jest.fn();
+        const {
+          driver: { inputDriver },
+        } = render(<DatePicker onChange={onChange} />);
+
+        expect(await inputDriver.hasClearButton()).toBe(false);
+      });
+
+      it('should not have clearButton when value is not selected', async () => {
+        const onChange = jest.fn();
+        const onClear = jest.fn();
+        const {
+          driver: { inputDriver },
+        } = render(
+          <DatePicker onChange={onChange} clearButton onClear={onClear} />,
+        );
+
+        expect(await inputDriver.hasClearButton()).toBe(false);
+      });
+
+      it('should have clearButton when value is selected', async () => {
+        const onChange = jest.fn();
+        const onClear = jest.fn();
+        const value = new Date(2017, 5, 2);
+        const {
+          driver: { inputDriver },
+        } = render(
+          <DatePicker
+            value={value}
+            onChange={onChange}
+            clearButton
+            onClear={onClear}
+          />,
+        );
+
+        expect(await inputDriver.hasClearButton()).toBe(true);
+      });
+
+      it('onClear should be called when clicking clearButton', async () => {
+        const onChange = jest.fn();
+        const onClear = jest.fn();
+        const value = new Date(2017, 5, 2);
+        const {
+          driver: { inputDriver },
+        } = render(
+          <DatePicker
+            value={value}
+            onChange={onChange}
+            clearButton
+            onClear={onClear}
+          />,
+        );
+
+        await inputDriver.clickClear();
+
+        expect(onClear).toHaveBeenCalled();
+      });
+    });
+
     describe('`locale` prop', () => {
       const setup = async (props = {}) => {
         const {

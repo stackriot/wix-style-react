@@ -150,6 +150,8 @@ export default class DatePicker extends React.PureComponent {
       inputProps = {},
       locale,
       size,
+      clearButton,
+      onClear,
     } = this.props;
     const { onFocus, ...inputPropsRest } = inputProps;
     return (
@@ -178,6 +180,8 @@ export default class DatePicker extends React.PureComponent {
         customInput={customInput}
         locale={locale}
         size={size}
+        clearButton={clearButton}
+        onClear={onClear}
         {...(customInput ? customInput.props : {})}
         {...inputPropsRest}
       />
@@ -381,4 +385,10 @@ DatePicker.propTypes = {
 
   /** Sets the DatePicker input to be readOnly */
   readOnly: PropTypes.bool,
+
+  /** Displays clear button (X) on a non-empty DatePicker */
+  clearButton: PropTypes.bool,
+
+  /** Displays clear button (X) on a non-empty input and calls callback with no arguments */
+  onClear: PropTypes.func,
 };

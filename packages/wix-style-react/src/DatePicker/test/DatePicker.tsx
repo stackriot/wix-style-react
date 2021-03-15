@@ -53,6 +53,8 @@ function datePickerWithAllProps() {
       yearDropdownAriaLabelledBy="year_labelledby"
       size="medium"
       readOnly
+      clearButton
+      onClear={()=>{}}
     />
   );
 }

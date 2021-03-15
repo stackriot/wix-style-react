@@ -159,6 +159,13 @@ export default {
             source: examples.width,
           }),
 
+          example({
+            title: 'clearButton',
+            text:
+              '`<DatePicker />` supports displaying a clear button to a non empty `<DatePicker />`.',
+            source: examples.clearButton,
+          }),
+
           // TODO - disabled until https://github.com/wix/wix-style-react/issues/4157 is fixed
           // example({
           //   title: 'Range Selection',

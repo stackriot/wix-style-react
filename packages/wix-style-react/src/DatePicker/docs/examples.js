@@ -140,3 +140,23 @@ export const width = `
   </Cell>
 </Layout>
 `;
+
+export const clearButton = `
+class ClearButtonExample extends React.PureComponent {
+  state = { value: new Date() };
+
+  render() {
+    const { value } = this.state;
+    return (
+      <DatePicker
+        placeholderText="Select Date"
+        value={value}
+        clearButton
+        width="250px"
+        onClear={() => this.setState({value: ''})}
+        onChange={value => this.setState({ value })}
+      />
+    );
+  }
+}
+`;
