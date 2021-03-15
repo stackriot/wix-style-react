@@ -12,6 +12,7 @@ import {
   playground,
   description,
   example as baseExample,
+  doDont,
 } from 'wix-storybook-utils/Sections';
 import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
@@ -64,13 +65,24 @@ export default {
             title: 'Description',
             text: `
             Input allows to insert short text values. This component is used in submit forms or to build other form components like \`<Autocomplete/>\` or \`<NumberInput/>\`.<br/>
-            Use it:<br/>
-            &emsp;- To insert names, titles and other short textual information.<br/>
-            &emsp;- To build custom inputs like Credit Card input.<br/>
-            Don’t use it:<br/>
-            &emsp;- To insert long paragraphs, instead use the <InputArea/> component.<br/>
-            &emsp;- As a search input, instead use the <Search/> component.<br/>
             `,
+          }),
+
+          doDont({
+            do: {
+              title: 'Use it',
+              list: [
+                'To insert names, titles and other short textual information.',
+                'To build custom inputs like Credit Card input.',
+              ],
+            },
+            dont: {
+              title: `Dont't use it`,
+              list: [
+                'To insert long paragraphs, instead use the <InputArea/> component.',
+                'As a search input, instead use the <Search/> component.',
+              ],
+            },
           }),
 
           importExample("import { Input } from 'wix-style-react';"),

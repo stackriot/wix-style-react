@@ -12,6 +12,7 @@ import {
   description,
   importExample,
   testkit,
+  doDont,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
@@ -65,13 +66,18 @@ export default {
             description({
               title: 'Description',
               text: `
-              Modal controls the overlay layout that appears on call functions. It’s a container for components like \`CustomModalLayout\`, \`ModalPreviewLayout\` and others.<br/>
-              Use it:<br/>
-              &emsp;- To reveal all types of modal layouts<br/>
-              &emsp;- To display a full page loading state<br/>
-              `,
+              Modal controls the overlay layout that appears on call functions. It’s a container for components like \`CustomModalLayout\`, \`ModalPreviewLayout\` and others.`,
             }),
           ]),
+
+          doDont({
+            do: {
+              list: [
+                'To reveal all types of modal layouts',
+                'To display a full page loading state',
+              ],
+            },
+          }),
 
           importExample("import { Modal } from 'wix-style-react';"),
 

@@ -24,7 +24,7 @@ export const subtitle = `
 export const structure = `
 <PageSection
   title="Section Title"
-  actionsBar={<Box width='300px' align='center' border="dashed 1px">Actions Bar</Box>}
+  actionsBar={<StorybookComponents.Placeholder width='300px'>Actions Bar</StorybookComponents.Placeholder>}
 />
 
 `;

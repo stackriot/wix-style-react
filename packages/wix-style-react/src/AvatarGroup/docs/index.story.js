@@ -11,6 +11,7 @@ import {
   playground,
   api,
   testkit,
+  doDont,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
@@ -91,16 +92,22 @@ export default {
         sections: [
           description({
             title: 'Description',
-            text: `AvatarGroup allows to display a number of avatars (digital representation of a user) as a single entity. It’s a building block grouping number of standalone <Avatar/> components.
+            text: `AvatarGroup allows to display a number of avatars (digital representation of a user) as a single entity. It’s a building block grouping number of standalone <Avatar/> components.`,
+          }),
 
-Use it:\n
- - To display a group of 2+ users\n
- - To display users that have something in common (i.e. belong to a project, are in the same team, attend the same event, etc.)\n
-
-Don’t use it:\n
- - To display single avatar\n
- - To display visual content other than users (i.e. images - use <Image/>)\n
-`,
+          doDont({
+            do: {
+              list: [
+                'To display a group of 2+ users',
+                'To display users that have something in common (i.e. belong to a project, are in the same team, attend the same event, etc.)',
+              ],
+            },
+            dont: {
+              list: [
+                'To display single avatar',
+                'To display visual content other than users (i.e. images - use <Image/>)',
+              ],
+            },
           }),
 
           importExample("import { AvatarGroup } from 'wix-style-react'"),

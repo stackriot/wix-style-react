@@ -12,6 +12,7 @@ import {
   playground,
   api,
   testkit,
+  doDont,
 } from 'wix-storybook-utils/Sections';
 import * as examples from './examples';
 import { storySettings } from '../test/storySettings';
@@ -59,18 +60,16 @@ export default {
             text:
               'PageSection is a standalone element that divides content of a page into multiple sections.',
           }),
-
-          description({
-            text:
-              'Use it to:\n' +
-              '- Divide content into sections on a page.\n' +
-              '- Group grid layouts visually.',
-          }),
-
-          description({
-            text:
-              'Don’t use it to:\n' +
-              '- Divide content into sections inside of a card.',
+          doDont({
+            do: {
+              list: [
+                'Divide content into sections on a page.',
+                'Group grid layouts visually.',
+              ],
+            },
+            dont: {
+              list: ['Divide content into sections inside of a card.'],
+            },
           }),
 
           importExample(),

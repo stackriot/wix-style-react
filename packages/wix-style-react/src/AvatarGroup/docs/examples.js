@@ -1,8 +1,8 @@
 export const groupType = `
-<Layout cols={1}>
-<AvatarGroup type="stretched" items={[{name: 'first user'}, {name: 'second user'}, {name: 'third avatar'}]}/>
-<AvatarGroup type="condensed" items={[{name: 'first user'}, {name: 'second user'}, {name: 'third avatar'}]}/>
-</Layout>
+<StorybookComponents.Stack flexDirection="column">
+  <AvatarGroup type="stretched" items={[{name: 'first user'}, {name: 'second user'}, {name: 'third avatar'}]}/>
+  <AvatarGroup type="condensed" items={[{name: 'first user'}, {name: 'second user'}, {name: 'third avatar'}]}/>
+</StorybookComponents.Stack>
 `;
 
 export const maxItems = `
@@ -20,10 +20,10 @@ export const maxItems = `
 
 `;
 export const size = `
-<Layout cols={1}>
-<AvatarGroup size="small" items={[{name: 'first user'}, {name: 'second user'}, {name: 'third avatar'}]}/>
-<AvatarGroup size="medium" items={[{name: 'first user'}, {name: 'second user'}, {name: 'third avatar'}]}/>
-</Layout>
+<StorybookComponents.Stack flexDirection="column">
+  <AvatarGroup size="small" items={[{name: 'first user'}, {name: 'second user'}, {name: 'third avatar'}]}/>
+  <AvatarGroup size="medium" items={[{name: 'first user'}, {name: 'second user'}, {name: 'third avatar'}]}/>
+</StorybookComponents.Stack>
 `;
 
 export const divider = `

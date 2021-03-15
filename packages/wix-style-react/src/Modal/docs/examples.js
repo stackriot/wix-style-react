@@ -6,29 +6,29 @@ export const structure = `
   const closeModal = () => setModalOpened(false);
   
   const renderModalContent = () => (
-    <Box
-      direction="vertical"
-      padding="30px"
-      border="dashed 2px white"
+    <StorybookComponents.Placeholder
+      skin="light"
       width="600px"
       height="600px"
     >
-      <Text light>Modal Content goes here</Text>
-      <TextButton onClick={closeModal} underline="always" skin="light">
-        Close Modal
-      </TextButton>
-    </Box>
+      <StorybookComponents.Stack flexDirection="column" alignItems="center" padding="30px">
+        <Text light>Modal Content goes here</Text>
+        <TextButton onClick={closeModal} underline="always" skin="light">
+          Close Modal
+        </TextButton>
+      </StorybookComponents.Stack>
+    </StorybookComponents.Placeholder>
   );
 
   return (
-    <Box>
+    <StorybookComponents.Stack>
       <Button onClick={openModal} prefixIcon={<Icons.OpenModal />}>
         Open Modal
       </Button>
       <Modal isOpen={isModalOpened} onRequestClose={closeModal}>
         {renderModalContent()}
       </Modal>
-    </Box>
+    </StorybookComponents.Stack>
   );
 };
 `;
@@ -45,48 +45,37 @@ export const sideMargins = `
   const closeModal = () => setModalOpened(false);
 
   const renderModalContent = () => (
-    <Box
-      padding="30px"
-      border="dashed 2px white"
-      width="100%"
-      height="100%"
-      align="left"
-      verticalAlign="top"
-    >
-      <TextButton onClick={closeModal} underline="always" skin="light">
-        Close Modal
-      </TextButton>
-    </Box>
+    <StorybookComponents.Placeholder skin="light">
+      <StorybookComponents.Stack padding="30px">
+        <TextButton onClick={closeModal} underline="always" skin="light">
+          Close Modal
+        </TextButton>
+      </StorybookComponents.Stack>
+    </StorybookComponents.Placeholder>
   );
 
   return (
-    <Box direction="vertical">
-      <Layout justifyItems="center">
-        <Cell span={4}>
-          <Button
-            prefixIcon={<Icons.FullScreen />}
-            onClick={() => openModal('full')}
-          >
-            Full
-          </Button>
-        </Cell>
-        <Cell span={4}>
-          <Button
-            prefixIcon={<Icons.Desktop />}
-            onClick={() => openModal('desktop')}
-          >
-            Desktop
-          </Button>
-        </Cell>
-        <Cell span={4}>
-          <Button
-            prefixIcon={<Icons.Mobile />}
-            onClick={() => openModal('mobile')}
-          >
-            Mobile
-          </Button>
-        </Cell>
-      </Layout>
+    <StorybookComponents.Stack>
+      <Button
+        prefixIcon={<Icons.FullScreen />}
+        onClick={() => openModal('full')}
+      >
+        Full
+      </Button>
+    
+      <Button
+        prefixIcon={<Icons.Desktop />}
+        onClick={() => openModal('desktop')}
+      >
+        Desktop
+      </Button>
+    
+      <Button
+        prefixIcon={<Icons.Mobile />}
+        onClick={() => openModal('mobile')}
+      >
+        Mobile
+      </Button>
       <Modal
         screen={currentScreen}
         isOpen={isModalOpened}
@@ -94,7 +83,7 @@ export const sideMargins = `
       >
         {renderModalContent()}
       </Modal>
-    </Box>
+   </StorybookComponents.Stack>
   );
 };
 `;

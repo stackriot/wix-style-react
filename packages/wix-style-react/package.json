@@ -162,7 +162,7 @@
     "yoshi-stylable-dependencies": "^4.86.0"
   },
   "devDependencies": {
-    "wix-storybook-utils": "^4.0.0"
+    "wix-storybook-utils": "^4.0.5"
   },
   "eslintConfig": {
     "extends": [

@@ -5,6 +5,7 @@ import * as editorX from '../../src/Themes/editorX';
 import * as businessDashboard from '../../src/Themes/businessDashboard';
 import * as floatingPanels from '../../src/Themes/floatingPanels';
 import AtlasAddressInput from '../../src/AtlasAddressInput';
+import { StorybookComponents } from 'wix-storybook-utils/StorybookComponents';
 
 // Internal Wix components which depend on private Wix dependencies
 const privateComponents = {
@@ -18,6 +19,7 @@ const privateComponents = {
 const defaultComponents = {
   ...wsr,
   ...privateComponents,
+  StorybookComponents,
   Icons,
   SystemIcons,
 };

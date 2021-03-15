@@ -1,25 +1,25 @@
 export const size = `
-<Layout cols={1}>
+<StorybookComponents.Stack flexDirection="column">
   <Input size="large" placeholder="Large" />
   <Input size="medium" placeholder="Medium" />
   <Input size="small" placeholder="Small" />
-</Layout>;
+</StorybookComponents.Stack>;
 `;
 
 export const border = `
-<Layout cols={1}>
+<StorybookComponents.Stack flexDirection="column">
   <Input border="default" placeholder="Default" />
   <Input border="round" placeholder="Round" />
   <Input border="bottomLine" placeholder="Bottom line" />
-</Layout>;
+</StorybookComponents.Stack>;
 `;
 
 export const status = `
-<Layout cols={1}>
+<StorybookComponents.Stack flexDirection="column">
   <Input status="error" placeholder="Error" />
   <Input status="warning" placeholder="Warning" />
   <Input status="loading" placeholder="Loading" />
-</Layout>;
+</StorybookComponents.Stack>;
 `;
 
 export const statusMessage = `
@@ -32,14 +32,14 @@ tooltipPlacement="top-end"
 `;
 
 export const readOnlyAndDisabled = `
-<Layout cols={1}>
+<StorybookComponents.Stack flexDirection="column">
   <Input readOnly defaultValue="Read Only" />
   <Input disabled defaultValue="Disabled" />
-</Layout>;
+</StorybookComponents.Stack>;
 `;
 
 export const affix = `
-<Layout cols={1}>
+<StorybookComponents.Stack flexDirection="column">
   <Input
     prefix={<Input.Affix>Prefix</Input.Affix>}
     suffix={<Input.Affix>Suffix</Input.Affix>}
@@ -60,7 +60,7 @@ export const affix = `
     }
     defaultValue="Value"
   />
-</Layout>;
+</StorybookComponents.Stack>;
 `;
 
 export const clearButton = `
