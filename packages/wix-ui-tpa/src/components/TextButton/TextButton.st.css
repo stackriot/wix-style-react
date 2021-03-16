@@ -103,3 +103,21 @@
 .root:priority(secondary):disabled {
     color: color(value(DisabledColor))
 }
+
+.affixIcon svg {
+    height: 1.5em;
+    width: 1.5em;
+    margin: calc(-1 * (1.5em / 4)) 0;
+}
+
+.affixIcon path {
+    stroke: currentColor;
+    fill: none;
+}
+
+.prefix-icon::after, .suffix-icon::before {
+    content: '';
+    width: 4px;
+    height: 1px;
+    display: inline-block;
+}

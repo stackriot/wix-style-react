@@ -24,9 +24,22 @@ import {
 import * as examples from './examples';
 import { TextButtonWiringExample } from './TextButtonWiringExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
+import { ReactComponent as Heart } from '../../../assets/icons/Heart.svg';
+import { ReactComponent as Share } from '../../../assets/icons/Share.svg';
 
 const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
+
+const prefixIcons = [
+  { value: undefined, label: 'None' },
+  { value: <Heart />, label: 'Heart' },
+  { value: 'Prefix', label: 'Text' },
+];
+const suffixIcons = [
+  { value: undefined, label: 'None' },
+  { value: <Share />, label: 'Share' },
+  { value: 'Suffix', label: 'Text' },
+];
 
 export default {
   category: StoryCategory.COMPONENTS,
@@ -37,9 +50,13 @@ export default {
     'data-hook': 'storybook-TextButton',
     children: 'Text Button',
     priority: TEXT_BUTTON_PRIORITY.link,
+    prefixIcon: prefixIcons[0].value,
+    suffixIcon: suffixIcons[0].value,
   }),
   exampleProps: {
     priority: Object.values(TEXT_BUTTON_PRIORITY),
+    prefixIcon: prefixIcons,
+    suffixIcon: suffixIcons,
   },
   dataHook: 'storybook-TextButton',
   sections: [
