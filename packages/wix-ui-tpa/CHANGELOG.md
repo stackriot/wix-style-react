@@ -1,3 +1,21 @@
+# 2.29.0 (2021-03-16)
+
+
+### Bug Fixes
+
+* **DatePicker:** fix the arrows bug ([#6917](https://github.com/wix/wix-style-react/issues/6917)) ([3982ab0](https://github.com/wix/wix-style-react/commit/3982ab007730607c90e7fa967e6b0b772f3015a6))
+* **Dropdown:** Fix default and hover border color  ([1d22f69](https://github.com/wix/wix-style-react/commit/1d22f69602b662b756c5b21ce16f8fe8ffa7716d))
+* **SectionNotification:** Added missing margin in RTL ([8973026](https://github.com/wix/wix-style-react/commit/89730265f3aad7d835aa3449bbcd802e89b2bc61))
+* **TextButton:** Connect the suffix and prefix icons to color and font size ([61876e8](https://github.com/wix/wix-style-react/commit/61876e807c7da69333214cd1dad6f706eae05667))
+* **TextField:** remove Safari extra margin ([#6924](https://github.com/wix/wix-style-react/issues/6924)) ([61b76e8](https://github.com/wix/wix-style-react/commit/61b76e8f91389ca4118cdd195ed2496601fd9ec3))
+
+
+### Features
+
+* **Dropdown:** Add errorTooltipPlacement prop ([443684e](https://github.com/wix/wix-style-react/commit/443684e8f7d819396b80e6f318647a55b7abf3f5))
+
+
+
 # 2.28.0 (2021-03-15)
 
 
