@@ -33,7 +33,15 @@ export const playground = `
     >
       {<Button priority="secondary" prefixIcon={<Icons.Add />}>New Item</Button>}
     </EmptyState>
-
+  </Box>
+  <Divider/>
+  <Box padding="10px" align="center">
+    <EmptyState
+      theme={'section'}
+      subtitle="You don't have any items yet"
+    >
+      {<TextButton size="tiny" weight="normal" priority="secondary" prefixIcon={<Icons.Add />}>Add New Item</TextButton>}
+    </EmptyState>
   </Box>
   </ThemeProvider>
 </div>

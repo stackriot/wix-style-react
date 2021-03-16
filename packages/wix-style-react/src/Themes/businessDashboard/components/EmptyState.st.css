@@ -37,6 +37,10 @@
   margin-top: value(SP4);
 }
 
+.root:theme(section)::childrenContainer {
+  margin-top: value(SP1);
+}
+
 .root::imageContainer {
   min-height: 0px;
   margin-bottom: value(SP2);
