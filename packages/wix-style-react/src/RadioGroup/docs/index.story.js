@@ -1,6 +1,5 @@
 import React from 'react';
 import RadioGroup from '..';
-import { createAutoExampleWrapper } from '../../../stories/utils/AutoExampleWrapper';
 import {
   api,
   description,
@@ -13,7 +12,7 @@ import {
   testkit,
   title,
   example as baseExample,
-} from 'wix-storybook-utils/dist/src/Sections';
+} from 'wix-storybook-utils/Sections';
 import * as examples from './examples';
 import allComponents from '../../../stories/utils/allComponents';
 
@@ -82,7 +81,7 @@ const exampleOptions = [
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
-  component: createAutoExampleWrapper(RadioGroup),
+  component: RadioGroup,
   componentPath: '..',
 
   componentProps: setState => ({
@@ -162,6 +161,14 @@ export default {
             title: 'Using with content',
             source: examples.withContent,
           }),
+
+          divider(),
+
+          title('Feedback'),
+
+          description(
+            'You can help us improve this component by providing feedback, asking questions or leaving any  other comments via `#wix-style-ux` or `#wix-style-react` Slack channels or GitHub. Found a bug? Please report it to: <a href="https://goo.gl/forms/wrVuHnyBrEISXUPF2" target="_blank">goo.gl/forms/wrVuHnyBrEISXUPF2</a>',
+          ),
         ],
       }),
       ...[
