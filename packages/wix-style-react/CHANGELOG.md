@@ -20,6 +20,7 @@ Types of changes:
 
 ### Changed
 - Themes | Business Dashboard - Empty State children top margin [#6918](https://github.com/wix/wix-style-react/pull/6918)
+- `<Radio/>` - change onChange type [#6921](https://github.com/wix/wix-style-react/pull/6921)
 
 ## 9.89.0 - 2021-03-15
 ### Fixed
