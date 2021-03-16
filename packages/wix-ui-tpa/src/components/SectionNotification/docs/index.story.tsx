@@ -17,6 +17,7 @@ import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { ReactComponent as ErrorIcon } from '../../../assets/icons/Error.svg';
 import * as examples from './examples';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -67,7 +68,7 @@ const children = [
 export default {
   category: StoryCategory.COMPONENTS,
   storyName: 'SectionNotification',
-  component: SectionNotification,
+  component: storyComponent(SectionNotification),
   componentPath: '../SectionNotification.tsx',
   // tslint:disable:jsx-wrap-multiline
   componentProps: () => ({

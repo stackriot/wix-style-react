@@ -8,6 +8,7 @@ import { SectionNotificationButton } from './Button/SectionNotificationButton';
 import { SectionNotificationText } from './Text/SectionNotificationText';
 import { SectionNotificationIcon } from './Icon/SectionNotificationIcon';
 import { st, classes } from './SectionNotification.st.css';
+import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 /** Section notification displays an important, succinct message, and provides actions for users to address and can not be dismissed.  */
 export class SectionNotification extends React.Component<SectionNotificationProps> {
@@ -37,23 +38,29 @@ export class SectionNotification extends React.Component<SectionNotificationProp
     });
 
     return (
-      <div
-        className={st(
-          classes.root,
-          { error: isError, alert: isAlert },
-          className,
-        )}
-        role="alert"
-        data-error={isError}
-        data-alert={isAlert}
-        aria-live="assertive"
-        data-hook={this.props['data-hook']}
-      >
-        <div className={classes.main}>
-          <div className={classes.contentsWrapper}>{contents}</div>
-          <div className={classes.buttonsWrapper}>{buttons}</div>
-        </div>
-      </div>
+      <TPAComponentsConsumer>
+        {({ rtl }) => {
+          return (
+            <div
+              className={st(
+                classes.root,
+                { error: isError, alert: isAlert, rtl },
+                className,
+              )}
+              role="alert"
+              data-error={isError}
+              data-alert={isAlert}
+              aria-live="assertive"
+              data-hook={this.props['data-hook']}
+            >
+              <div className={classes.main}>
+                <div className={classes.contentsWrapper}>{contents}</div>
+                <div className={classes.buttonsWrapper}>{buttons}</div>
+              </div>
+            </div>
+          );
+        }}
+      </TPAComponentsConsumer>
     );
   }
 }
