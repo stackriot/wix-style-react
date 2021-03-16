@@ -1,11 +1,11 @@
 import React from 'react';
-import { header, description } from 'wix-storybook-utils/Sections';
+import { header, description, code } from 'wix-storybook-utils/Sections';
 
 import Playground from 'wix-storybook-utils/Playground';
 import LayoutList from 'wix-ui-icons-common/LayoutList';
 import LayoutListWithPanel from 'wix-ui-icons-common/LayoutListWithPanel';
 
-import allComponents from '../utils/allComponents';
+import allComponents, { themes } from '../utils/allComponents';
 import exampleCode from '!raw-loader!./example';
 
 import { Category } from '../storiesHierarchy';
@@ -67,6 +67,13 @@ export default {
 
 This playground is a great way to play with the \`wix-style-react\` components and create prototypes.
 `),
+
+    description({
+      title: 'Instructions',
+      text: `To apply theme for playground components - wrap your snippet with \`ThemeProvider\` and apply one of the following themes: ${Object.keys(
+        themes,
+      ).map(theme => ` \`${theme}\``)}.`,
+    }),
 
     description(<PlaygroundWrapper />),
   ],
