@@ -1,5 +1,6 @@
 import * as React from 'react';
 export type RadioAlignItems = 'top' | 'center';
+export type OnChangeEvent = RadioProps['value'] & React.ChangeEvent;
 
 export interface RadioProps {
   dataHook?: string;
@@ -10,7 +11,7 @@ export interface RadioProps {
   id?: string;
   value?: string | number;
   name?: React.ReactNode;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?(event: OnChangeEvent): void;
   alignItems?: RadioAlignItems;
 }
 
