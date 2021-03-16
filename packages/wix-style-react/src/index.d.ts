@@ -143,6 +143,9 @@ export * from './EmptyState';
 export { default as EndorseContentLayout } from './EndorseContentLayout';
 export * from './EndorseContentLayout';
 
+export { default as FailWhale } from './FailWhale';
+export * from './FailWhale';
+
 export { default as FilePicker } from './FilePicker';
 export * from './FilePicker';
 
@@ -306,6 +309,9 @@ export * from './PreviewWidget';
 
 export { default as Proportion } from './Proportion';
 export * from './Proportion';
+
+export { default as RadioButton } from './RadioGroup/RadioButton';
+export * from './RadioGroup/RadioButton';
 
 export { default as RadioGroup } from './RadioGroup';
 export * from './RadioGroup';
