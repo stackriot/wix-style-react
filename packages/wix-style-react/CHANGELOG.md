@@ -19,6 +19,9 @@ Types of changes:
 ### Added
 - `<SelectableAccordion />` -  add disabled property to items list [#6928](https://github.com/wix/wix-style-react/pull/6928)
 
+### Changed
+- `<Page/>` - change default min and max width according to new spec [#6794](https://github.com/wix/wix-style-react/pull/6794)
+
 ## 9.90.0 - 2021-03-16
 ### Added
 - `<DatePicker />`-  add clear button prop [#6890](https://github.com/wix/wix-style-react/pull/6890)
