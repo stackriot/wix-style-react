@@ -13,6 +13,7 @@ export const TYPES = {
 
 export const dataAttr = {
   STATE: 'data-state',
+  DISABLED: 'data-disabled',
 };
 
 export const VERTICAL_PADDING = {

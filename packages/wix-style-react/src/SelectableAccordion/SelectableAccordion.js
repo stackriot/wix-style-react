@@ -22,6 +22,7 @@ class SelectableAccordion extends React.PureComponent {
      * - `subtitle`: An optional second row of the header
      * - `content`: A content of the item
      * - `initiallyOpen`: Whether the item is initially open
+     * - `disabled`: Whether the item is disabled
      * */
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -29,6 +30,7 @@ class SelectableAccordion extends React.PureComponent {
         subtitle: PropTypes.node,
         content: PropTypes.node,
         initiallyOpen: PropTypes.bool,
+        disabled: PropTypes.bool,
       }),
     ),
 

@@ -11,14 +11,19 @@
 }
 
 .item {
-  -st-states: reducedSpacingAndImprovedLayout, hovered, verticalPadding(enum(medium, small, tiny));
+  -st-states: reducedSpacingAndImprovedLayout, hovered, verticalPadding(enum(medium, small, tiny)), disabled;
   display: grid;
   grid-template-columns: auto 1fr;
 }
 
-.item:hovered .selector,
-.item:hovered .header {
+.item:hovered:not(:disabled) .selector,
+.item:hovered:not(:disabled) .header {
   background-color: value(B60);
+}
+
+.item:disabled .selector,
+.item:disabled .header {
+  cursor: default;
 }
 
 .item:last-child .divider {

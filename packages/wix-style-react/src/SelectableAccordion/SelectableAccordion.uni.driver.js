@@ -31,5 +31,17 @@ export const selectableAccordionDriverFactory = (base, body) => {
 
       return itemState === 'open';
     },
+
+    /**
+     * Checks whether the item is disabled by item index
+     * @param {number} idx Item index
+     * @returns {Promise<boolean>}
+     */
+    isItemDisabledAt: async idx => {
+      const item = await getItemAt(base, idx);
+      const itemState = await getDataAttributeValue(item, dataAttr.DISABLED);
+
+      return itemState === 'true';
+    },
   };
 };

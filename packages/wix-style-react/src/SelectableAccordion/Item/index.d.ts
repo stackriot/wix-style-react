@@ -4,6 +4,7 @@ export interface SelectableAccordionItemCommonProps {
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
   content?: React.ReactNode;
+  disabled?: boolean;
 }
 
 export interface SelectableAccordionItemProps

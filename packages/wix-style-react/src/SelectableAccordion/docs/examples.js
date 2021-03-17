@@ -89,6 +89,25 @@ export const initiallyOpen = `<SelectableAccordion
 />
 `;
 
+export const disabledState = `<SelectableAccordion
+  items={[
+    {
+      title: 'Option 1',
+      subtitle: 'Description of the first group',
+      content: 'Enabled content is here.',
+      disabled: true,
+    },
+    {
+      title: 'Option 2',
+      subtitle: 'Description of the second group',
+      content: 'Enabled content is here.',
+      initiallyOpen: true,
+      disabled: true,
+    },
+  ]}
+/>
+`;
+
 export const advancedExample = `<SelectableAccordion
   type="radio"
   items={[

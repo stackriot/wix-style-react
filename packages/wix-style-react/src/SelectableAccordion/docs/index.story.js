@@ -130,6 +130,13 @@ export default {
           }),
 
           example({
+            title: 'Disabled',
+            text:
+              '`<SelectableAccordion/>` items can be disabled by setting `disabled` to `true`.',
+            source: examples.disabledState,
+          }),
+
+          example({
             title: 'Advanced Example',
             text:
               'This example shows how it can be applied to a real case scenario while using it with other components.',

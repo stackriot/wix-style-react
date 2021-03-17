@@ -37,6 +37,9 @@ export default class SelectableAccordionItem extends React.PureComponent {
 
     /** Extra space on top and bottom of selectable accordion item */
     verticalPadding: PropTypes.oneOf(['medium', 'small', 'tiny']),
+
+    /** Is item disabled */
+    disabled: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -49,7 +52,11 @@ export default class SelectableAccordionItem extends React.PureComponent {
   state = { hovered: false };
 
   _onChange = () => {
-    const { idx, type, open, onChange } = this.props;
+    const { idx, type, open, onChange, disabled } = this.props;
+
+    if (disabled) {
+      return;
+    }
 
     if (type === 'radio' && open) {
       return;
@@ -63,19 +70,32 @@ export default class SelectableAccordionItem extends React.PureComponent {
   _onMouseLeave = () => this.setState({ hovered: false });
 
   _renderSelector() {
-    const { type, open } = this.props;
+    const { type, open, disabled } = this.props;
     let selector = null;
 
     switch (type) {
       case TYPES.CHECKBOX:
-        selector = <Checkbox checked={open} onChange={this._onChange} />;
+        selector = (
+          <Checkbox
+            checked={open}
+            onChange={this._onChange}
+            disabled={disabled}
+          />
+        );
         break;
       case TYPES.RADIO:
-        selector = <Radio checked={open} onChange={this._onChange} />;
+        selector = (
+          <Radio checked={open} onChange={this._onChange} disabled={disabled} />
+        );
         break;
       case TYPES.TOGGLE:
         selector = (
-          <ToggleSwitch checked={open} onChange={this._onChange} size="small" />
+          <ToggleSwitch
+            checked={open}
+            onChange={this._onChange}
+            size="small"
+            disabled={disabled}
+          />
         );
         break;
     }
@@ -131,7 +151,7 @@ export default class SelectableAccordionItem extends React.PureComponent {
 
   render() {
     const { hovered } = this.state;
-    const { open, verticalPadding } = this.props;
+    const { open, verticalPadding, disabled } = this.props;
 
     return (
       <WixStyleReactContext.Consumer>
@@ -139,10 +159,12 @@ export default class SelectableAccordionItem extends React.PureComponent {
           <div
             data-hook={dataHooks.item}
             data-state={open ? 'open' : 'collapsed'}
+            data-disabled={disabled}
             className={st(classes.item, {
               hovered: !open && hovered,
               verticalPadding,
               reducedSpacingAndImprovedLayout,
+              disabled,
             })}
           >
             <div

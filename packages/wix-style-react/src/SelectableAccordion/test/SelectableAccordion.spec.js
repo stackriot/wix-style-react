@@ -69,6 +69,49 @@ describe(SelectableAccordion.displayName, () => {
     });
   });
 
+  describe('disabled items', () => {
+    it('should render items as disabled', async () => {
+      const { driver } = render(
+        <SelectableAccordion
+          items={[
+            { title: 'Title1', content: 'Content1', disabled: true },
+            {
+              title: 'Title2',
+              content: 'Content2',
+              initiallyOpen: true,
+              disabled: true,
+            },
+          ]}
+        />,
+      );
+
+      expect(await driver.isItemDisabledAt(0)).toBe(true);
+      expect(await driver.isItemDisabledAt(1)).toBe(true);
+    });
+
+    it('should not call change callback', async () => {
+      const onChange = jest.fn();
+      const { driver } = render(
+        <SelectableAccordion
+          onSelectionChanged={onChange}
+          items={[
+            { title: 'Title1', content: 'Content1', disabled: true },
+            {
+              title: 'Title2',
+              content: 'Content2',
+              initiallyOpen: true,
+              disabled: true,
+            },
+          ]}
+        />,
+      );
+
+      await driver.clickItemAt(0);
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+  });
+
   describe('Type Radio', () => {
     const props = {
       type: TYPES.RADIO,
