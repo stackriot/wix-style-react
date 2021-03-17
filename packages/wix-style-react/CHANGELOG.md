@@ -14,6 +14,11 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
+## Next
+
+### Added
+- `<SelectableAccordion />` -  add disabled property to items list [#6928](https://github.com/wix/wix-style-react/pull/6928)
+
 ## 9.90.0 - 2021-03-16
 ### Added
 - `<DatePicker />`-  add clear button prop [#6890](https://github.com/wix/wix-style-react/pull/6890)
