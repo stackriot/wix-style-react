@@ -163,7 +163,7 @@ const files = {
 module.exports = {
   bundleSize: {
     files: Object.entries(files).map(([name, size]) => ({
-      glob: `.perfer/dist/statics/${name}`,
+      glob: `../wix-ui-tpa-test-perfer/dist/statics/${name}`,
       maxSize: `${size + DELTA_LIMIT}kb`,
     })),
   },

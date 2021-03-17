@@ -4,13 +4,13 @@ const fs = require('fs');
 const ROOT_DIR = process.cwd();
 const resolvePath = (...args) => path.resolve(ROOT_DIR, ...args);
 
-const componentsToBundle = require(resolvePath('../.wuf/components.json'));
+const componentsToBundle = require('wix-ui-tpa/.wuf/components.json');
 
 const components = Object.keys(componentsToBundle).reduce(
   (accu, component) => {
       const filePath = componentsToBundle[component].path.replace(
           'src/',
-          '../dist/src/'
+          '../wix-ui-tpa/dist/src/'
       );
       const perfFolder = resolvePath(filePath, 'perf');
       const hasExtendedTests = fs.existsSync(perfFolder);
