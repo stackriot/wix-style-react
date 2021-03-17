@@ -86,7 +86,8 @@
   },
   "devDependencies": {
     "@wix/wix-base-ui": "^3.949.0",
-    "wix-storybook-utils": "^3.0.139"
+    "wix-storybook-utils": "^3.0.139",
+    "wix-ui-framework": "^3.5.2"
   },
   "husky": {
     "hooks": {
