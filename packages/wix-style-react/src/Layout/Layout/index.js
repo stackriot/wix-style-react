@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { classes } from './styles.st.css';
+import { WixStyleReactContext } from '../../WixStyleReactProvider/context';
+
+const DEFAULT_GAP = '30px';
+const REDUCED_SPACING_GAP = '24px';
 
 const Layout = ({
   children,
@@ -11,18 +15,27 @@ const Layout = ({
   rowHeight,
   dataHook,
 }) => (
-  <div
-    data-hook={dataHook}
-    style={{
-      gap,
-      justifyItems,
-      alignItems,
-      gridAutoRows: rowHeight,
-      gridTemplateColumns: cols ? `repeat(${cols}, minmax(0, 1fr))` : undefined,
-    }}
-    className={classes.root}
-    children={children}
-  />
+  <WixStyleReactContext.Consumer>
+    {({ reducedSpacingAndImprovedLayout }) => (
+      <div
+        data-hook={dataHook}
+        style={{
+          gap:
+            gap === DEFAULT_GAP && reducedSpacingAndImprovedLayout
+              ? REDUCED_SPACING_GAP
+              : gap,
+          justifyItems,
+          alignItems,
+          gridAutoRows: rowHeight,
+          gridTemplateColumns: cols
+            ? `repeat(${cols}, minmax(0, 1fr))`
+            : undefined,
+        }}
+        className={classes.root}
+        children={children}
+      />
+    )}
+  </WixStyleReactContext.Consumer>
 );
 
 Layout.displayName = 'Layout';
@@ -51,7 +64,7 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
-  gap: '30px',
+  gap: DEFAULT_GAP,
   rowHeight: 'auto',
 };
 
