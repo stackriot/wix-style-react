@@ -20,6 +20,7 @@ Types of changes:
 
 ### Fixed
 - `<DropdownLayout />` - fix uni driver when using infinite scroll [#6937](https://github.com/wix/wix-style-react/pull/6937)
+- Themes | Business Dashboard - Fix theme margin rule [#6934](https://github.com/wix/wix-style-react/pull/6934)
 
 ### Changed
 - `<SidePanel.Header/>` - Changed tooltip content from string to node [#6938](https://github.com/wix/wix-style-react/pull/6938)
