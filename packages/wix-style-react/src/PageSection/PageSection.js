@@ -61,8 +61,8 @@ PageSection.propTypes = {
   dataHook: PropTypes.string,
   /** A css class to be applied to the component's root element */
   className: PropTypes.string,
-  /** The main title text */
-  title: PropTypes.string.isRequired,
+  /** The main title content */
+  title: PropTypes.node,
   /** The subtitle text */
   subtitle: PropTypes.string,
   /** A placeholder for a component that can contain actions.*/
