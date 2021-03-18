@@ -9,6 +9,7 @@ export interface BoxProps
   align?: BoxHorizontalAlignment;
   verticalAlign?: BoxVerticalAlignment;
   dataHook?: string;
+  gap?: BoxCssSizingProperty;
   padding?: BoxCssSizingProperty;
   paddingTop?: BoxCssSizingProperty;
   paddingRight?: BoxCssSizingProperty;

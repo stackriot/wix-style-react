@@ -175,6 +175,14 @@ const tests = [
           children: multipleBoxes,
         },
       },
+      {
+        it: 'Should render a box that contains multiple boxes with gap',
+        props: {
+          ...baseProps,
+          gap: 'SP10',
+          children: multipleBoxes,
+        },
+      },
     ],
   },
 ];

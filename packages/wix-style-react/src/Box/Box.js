@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { st, classes } from './Box.st.css';
+import { st, classes, vars } from './Box.st.css';
 import { stVars as spacingStVars } from '../Foundation/stylable/spacing.st.css';
 import { stVars as colorsStVars } from '../Foundation/stylable/colors.st.css';
 import { filterObject } from '../utils/filterObject';
@@ -49,6 +49,7 @@ const formatSizeValue = value => {
 
 const Box = ({
   dataHook,
+  gap,
   children,
   className,
   style,
@@ -193,6 +194,7 @@ const Box = ({
 
     // All other props which are passed (without those that are specified above)
     ...nativeStyles,
+    [vars['gap']]: formatSingleSpacingValue(gap),
   };
 
   // Filter undefined values
@@ -227,6 +229,10 @@ Box.propTypes = {
   align: PropTypes.oneOf(Object.keys(horizontalAlignmentValues)),
   /** Defines how the children are aligned according to the Y axis */
   verticalAlign: PropTypes.oneOf(Object.keys(verticalAlignmentValues)),
+  /** Sets the gaps/gutters between flex items.
+   * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
+   * a spacing token (SP1, SP2, etc.) */
+  gap: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets padding on all sides.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
    * a spacing token (SP1, SP2, etc.) or a string of space-separated values ("3px 3px") */
