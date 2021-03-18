@@ -21,7 +21,7 @@
   padding: value(SP3) value(SP6);
 }
 
-.root:verticalPadding(small).align {
+.root:verticalPadding(small)::align {
   margin: 0;
 }
 
