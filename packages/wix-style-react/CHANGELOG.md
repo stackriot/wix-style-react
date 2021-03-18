@@ -23,6 +23,7 @@ Types of changes:
 
 ### Changed
 - `<SidePanel.Header/>` - Changed tooltip content from string to node [#6938](https://github.com/wix/wix-style-react/pull/6938)
+- `<PageSection />` - changed title from string to node [#6942](https://github.com/wix/wix-style-react/pull/6942)
 
 ## 9.91.0 - 2021-03-17
 ### Added
