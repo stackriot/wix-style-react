@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<Box />` -  add gap prop [#6929](https://github.com/wix/wix-style-react/pull/6929)
+
 ## 9.91.0 - 2021-03-17
 ### Added
 - `<SelectableAccordion />` -  add disabled property to items list [#6928](https://github.com/wix/wix-style-react/pull/6928)
