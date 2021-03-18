@@ -18,6 +18,9 @@ Types of changes:
 ### Added
 - `<Box />` -  add gap prop [#6929](https://github.com/wix/wix-style-react/pull/6929)
 
+### Fixed
+- `<DropdownLayout />` - fix uni driver when using infinite scroll [#6937](https://github.com/wix/wix-style-react/pull/6937)
+
 ## 9.91.0 - 2021-03-17
 ### Added
 - `<SelectableAccordion />` -  add disabled property to items list [#6928](https://github.com/wix/wix-style-react/pull/6928)
