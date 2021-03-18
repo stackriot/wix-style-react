@@ -18,10 +18,10 @@ class Header extends React.PureComponent {
     className: PropTypes.string,
 
     /** Title */
-    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    title: PropTypes.node,
 
-    /** Tooltip text */
-    infoTooltipContent: PropTypes.string,
+    /** Tooltip content */
+    infoTooltipContent: PropTypes.node,
 
     /** Tooltip props */
     infoTooltipProps: PropTypes.shape(TooltipCommonProps),
