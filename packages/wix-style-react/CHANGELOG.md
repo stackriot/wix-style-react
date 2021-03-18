@@ -21,6 +21,9 @@ Types of changes:
 ### Fixed
 - `<DropdownLayout />` - fix uni driver when using infinite scroll [#6937](https://github.com/wix/wix-style-react/pull/6937)
 
+### Changed
+- `<SidePanel.Header/>` - Changed tooltip content from string to node [#6938](https://github.com/wix/wix-style-react/pull/6938)
+
 ## 9.91.0 - 2021-03-17
 ### Added
 - `<SelectableAccordion />` -  add disabled property to items list [#6928](https://github.com/wix/wix-style-react/pull/6928)
