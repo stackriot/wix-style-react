@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Added
 - `<SocialPreview/>` - add support for twitter preview [#6922](https://github.com/wix/wix-style-react/pull/6922)
+- BusinessDashboard Theme | Override Divider dark skin - [#6946](https://github.com/wix/wix-style-react/pull/6946)
 
 ## 9.92.0 - 2021-03-18
 ### Added
