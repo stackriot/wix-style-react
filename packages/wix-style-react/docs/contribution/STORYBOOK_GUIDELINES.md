@@ -13,7 +13,7 @@ Storybook documentation provides information about components for UX designers a
 
 Each component story consists of following sections:
 
-![](../../assets/PageStructure.png)
+![](../assets/PageStructure.png)
 
 <br>
 
@@ -71,17 +71,17 @@ Use schematic drawing to visualise content areas, when containers do not have a 
 
 <table>
 <tr>
-    <td><img src='../../assets/FooterDO.png'/></td>
-    <td><img src='../../assets/FooterDONT.png'/></td>
+    <td><img src='../assets/FooterDO.png'/></td>
+    <td><img src='../assets/FooterDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Use schematic drawings to communicate structural areas that accept node content type.
     </td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t use sample content as it doesn’t visually explain multiple content areas.
     </td>
@@ -93,17 +93,17 @@ Showcase the effect of different values passed to the same prop if it helps to c
 
 <table>
 <tr>
-    <td><img src='../../assets/LayoutDO.png'/></td>
-    <td><img src='../../assets/LayoutDONT.png'/></td>
+    <td><img src='../assets/LayoutDO.png'/></td>
+    <td><img src='../assets/LayoutDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Use content to communicate available options and difference it makes.
     </td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t leave blank space and force user to check code to figure out difference in code.
     </td>
@@ -117,17 +117,17 @@ If i.e. ‘title’ also accepts node content, it should be mentioned in a descr
 
 <table>
 <tr>
-    <td><img src='../../assets/MarketingContentDO.png'/></td>
-    <td><img src='../../assets/MarketingContentDONT.png'/></td>
+    <td><img src='../assets/MarketingContentDO.png'/></td>
+    <td><img src='../assets/MarketingContentDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Use default styling for areas with predefined content types to set right patterns.
     </td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t override predefined styling with placeholder content.
     </td>
@@ -139,17 +139,17 @@ Use other components from the library to explain mechanism containers behaviour,
 
 <table>
 <tr>
-    <td><img src='../../assets/ModalStructureDO.png'/></td>
-    <td><img src='../../assets/ModalStructureDONT.png'/></td>
+    <td><img src='../assets/ModalStructureDO.png'/></td>
+    <td><img src='../assets/ModalStructureDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Use components from the library to explain behaviour, that is not visual.
     </td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t use native HTML elements if library components are available.
     </td>
@@ -184,12 +184,12 @@ Structure example description should state:
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Give a meaningful description.
     </td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t write a generic message that gives no value.
     </td>
@@ -250,17 +250,17 @@ In cases where example lists down available value options use predefined compone
 
 <table>
 <tr>
-    <td><img src='../../assets/InputDO.png'/></td>
-    <td><img src='../../assets/InputDONT.png'/></td>
+    <td><img src='../assets/InputDO.png'/></td>
+    <td><img src='../assets/InputDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Utilize component elements to communicate available prop values.
     </td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t use meaningless placeholder titles which force you to look for information somewhere else.
     </td>
@@ -272,17 +272,17 @@ Merge statuses into a single snippet for interactive components. Use labels to c
 
 <table>
 <tr>
-    <td><img src='../../assets/StatesDO.png'/></td>
-    <td><img src='../../assets/StatesDONT.png'/></td>
+    <td><img src='../assets/StatesDO.png'/></td>
+    <td><img src='../assets/StatesDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Display all different states in a single snippet and use labels to display state name.
     </td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t use placeholder labels when your intention is to communicate different states.
     </td>
@@ -294,17 +294,17 @@ Display single feature at the time. If example purpose is to list down the optio
 
 <table>
 <tr>
-    <td><img src='../../assets/ListItemSelectDO.png'/></td>
-    <td><img src='../../assets/ListItemSelectDONT.png'/></td>
+    <td><img src='../assets/ListItemSelectDO.png'/></td>
+    <td><img src='../assets/ListItemSelectDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Display content which is necessary to communicate example purpose only, i.e. existing states.
     </td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t add content which is irrelevant in scenario you're showcasing (i.e. prefix icon in states example).
     </td>
@@ -316,17 +316,17 @@ In cases where property value affects the content which is allowed to be display
 
 <table>
 <tr>
-    <td><img src='../../assets/NotificationsDO.png'/></td>
-    <td><img src='../../assets/NotificationsDONT.png'/></td>
+    <td><img src='../assets/NotificationsDO.png'/></td>
+    <td><img src='../assets/NotificationsDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Use real case content which both explains when skin could be used and sets correct content patterns
     </td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t communicate value names only when there’s a direct dependency between accepted messaging and selected theme.
     </td>
@@ -338,17 +338,17 @@ Use real content to demonstrate edge cases handling. It showcases the behaviour 
 
 <table>
 <tr>
-    <td><img src='../../assets/TextOverflowDO.png'/></td>
-    <td><img src='../../assets/TextOverflowDONT.png'/></td>
+    <td><img src='../assets/TextOverflowDO.png'/></td>
+    <td><img src='../assets/TextOverflowDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Use real content for text overflow demonstration to set right content patterns.
     </td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t use gibberish text which don’t bring benefit for a user.
     </td>
@@ -360,17 +360,17 @@ Merge directly dependent or same purpose properties into a single example (i.e. 
 
 <table>
 <tr>
-    <td><img src='../../assets/FixedAreasDO.png'/></td>
-    <td><img src='../../assets/FixedAreasDONT.png'/></td>
+    <td><img src='../assets/FixedAreasDO.png'/></td>
+    <td><img src='../assets/FixedAreasDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Display similar purpose properties in a single example.
     </td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t create separate examples for similar purpose props. It increases story length unnecessarily.
     </td>
@@ -399,17 +399,17 @@ Don't merge property values which serve different purposes. Provide each of them
 
 <table>
 <tr>
-    <td><img src='../../assets/DropdownLayoutDO.png'/></td>
-    <td><img src='../../assets/DropdownLayoutDONT.png'/></td>
+    <td><img src='../assets/DropdownLayoutDO.png'/></td>
+    <td><img src='../assets/DropdownLayoutDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Have separate examples for different purpose prop values. Use real content to communicate purpose clearly.
 	</td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t merge prop variations with different intentions in a single layout. It doesn't explain clearly how they differ.
     </td>
@@ -421,17 +421,17 @@ Use content to communicate hard to notice functionality for the end user:
 
 <table>
 <tr>
-    <td><img src='../../assets/LetterCountingDO.png'/></td>
-    <td><img src='../../assets/LetterCountingDONT.png'/></td>
+    <td><img src='../assets/LetterCountingDO.png'/></td>
+    <td><img src='../assets/LetterCountingDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Use content to visualise behaviour of not so obvious features.
 	</td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t use meaningless placeholder copy that leaves user to figure out what needs to be done by himself.    </td>
   </tr>
@@ -442,17 +442,17 @@ Guide users with content if they are required to make an action to see a feature
 
 <table>
 <tr>
-    <td><img src='../../assets/ErrorMessageDO.png'/></td>
-    <td><img src='../../assets/ErrorMessageDONT.png'/></td>
+    <td><img src='../assets/ErrorMessageDO.png'/></td>
+    <td><img src='../assets/ErrorMessageDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Provide guidance for the hidden features (i.e. error message will be displayed in a tooltip on hover).
 	</td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t leave features partially explained. It’s easy to miss functionality which is explained only in API or longer descriptions.</td>
   </tr>
@@ -463,17 +463,17 @@ Add external labels to communicate changes that happen in code for non visual fe
 
 <table>
 <tr>
-    <td><img src='../../assets/ToggleButtonDO.png'/></td>
-    <td><img src='../../assets/ToggleButtonDONT.png'/></td>
+    <td><img src='../assets/ToggleButtonDO.png'/></td>
+    <td><img src='../assets/ToggleButtonDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	 Add labels if component change is not visual to help user figure out the difference instantly.
 	</td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	Don’t leave visual examples unexplained. This will require user to check the code to see a difference.</td>
   </tr>
@@ -511,12 +511,12 @@ Selection of examples how to write example descriptions:
   </tr>
 	<tr>
 		<td>
-			<img src='../../assets/DO.png'/><br>
+			<img src='../assets/DO.png'/><br>
 			<strong>DO.</strong>
 			Define the purpose of a feature.
 		</td>
 		<td>
-			<img src='../../assets/DONT.png'/><br>
+			<img src='../assets/DONT.png'/><br>
 			<strong>DON'T.</strong>
 			Don't write generic descriptions that don't bring value.
 		</td>
@@ -545,12 +545,12 @@ Selection of examples how to write example descriptions:
   </tr>
 	<tr>
 		<td>
-			<img src='../../assets/DO.png'/><br>
+			<img src='../assets/DO.png'/><br>
 			<strong>DO.</strong>
 			Explain when to use each property option.
 		</td>
 		<td>
-			<img src='../../assets/DONT.png'/><br>
+			<img src='../assets/DONT.png'/><br>
 			<strong>DON'T.</strong>
 			Don’t list options without explaining when to use each one of them.
 		</td>
@@ -574,12 +574,12 @@ Selection of examples how to write example descriptions:
   </tr>
 	<tr>
 		<td>
-			<img src='../../assets/DO.png'/><br>
+			<img src='../assets/DO.png'/><br>
 			<strong>DO.</strong>
 			Define accepted content types.
 		</td>
 		<td>
-			<img src='../../assets/DONT.png'/><br>
+			<img src='../assets/DONT.png'/><br>
 			<strong>DON'T.</strong>
 			Don’t be too specific about the use case if feature is flexible.
 		</td>
@@ -603,12 +603,12 @@ Selection of examples how to write example descriptions:
   </tr>
 	<tr>
 		<td>
-			<img src='../../assets/DO.png'/><br>
+			<img src='../assets/DO.png'/><br>
 			<strong>DO.</strong>
 			Highlight the required conditions for feature to work as expected.
 		</td>
 		<td>
-			<img src='../../assets/DONT.png'/><br>
+			<img src='../assets/DONT.png'/><br>
 			<strong>DON'T.</strong>
 			Don’t leave mandatory conditions unmentioned.
 		</td>
@@ -629,17 +629,17 @@ Common use cases is a list of examples which showcase recommended layouts and of
 
 <table>
 <tr>
-    <td><img src='../../assets/CommonUseDO.png'/></td>
-    <td><img src='../../assets/CommonUseDONT.png'/></td>
+    <td><img src='../assets/CommonUseDO.png'/></td>
+    <td><img src='../assets/CommonUseDONT.png'/></td>
   </tr>
   <tr>
     <td>
-    	<img src='../../assets/DO.png'/><br>
+    	<img src='../assets/DO.png'/><br>
     	<strong>DO.</strong>
     	Use real case content to communicate recommended usage better
 	</td>
     <td>
-    	<img src='../../assets/DONT.png'/><br>
+    	<img src='../assets/DONT.png'/><br>
     	<strong>DON'T.</strong>
     	 Don’t use placeholder copy just to illustrate areas that was introduced in property examples already
     </td>
@@ -942,14 +942,14 @@ Each property listed in this sections should have:
 
 <table>
 	<tr>
-	<td><img src='../../assets/DO.png'/><br></td>
+	<td><img src='../assets/DO.png'/><br></td>
     	<td>
       		<strong>fixed</strong><br>
       		Makes tooltip's position fixed to its original placement even if it's outside the boundary.
     	</td>
   </tr>
   <tr>
-	<td><img src='../../assets/DONT.png'/><br></td>
+	<td><img src='../assets/DONT.png'/><br></td>
     	<td>
       		<strong> fixed </strong><br>
       		whether to enable the fixed behaviour.
@@ -959,14 +959,14 @@ Each property listed in this sections should have:
 
 <table>
 	<tr>
-	<td><img src='../../assets/DO.png'/><br></td>
+	<td><img src='../assets/DO.png'/><br></td>
     	<td>
       		<strong> maxWidth </strong><br>
       		Defines maximum width of tooltip content container in pixels.
     	</td>
   </tr>
   <tr>
-	<td><img src='../../assets/DONT.png'/><br></td>
+	<td><img src='../assets/DONT.png'/><br></td>
     	<td>
       		<strong> maxWidth </strong><br>
       		tooltip content container width in pixels
@@ -976,14 +976,14 @@ Each property listed in this sections should have:
 
 <table>
 	<tr>
-	<td><img src='../../assets/DO.png'/><br></td>
+	<td><img src='../assets/DO.png'/><br></td>
     	<td>
       		<strong> secondary </strong><br>
 		Sets text style to secondary. It affects font color only.
     	</td>
   </tr>
   <tr>
-	<td><img src='../../assets/DONT.png'/><br></td>
+	<td><img src='../assets/DONT.png'/><br></td>
     	<td>
       		<strong> secondary </strong><br>
       		is the text type is secondary. Affects the font color
@@ -993,14 +993,14 @@ Each property listed in this sections should have:
 
 <table>
 	<tr>
-	<td><img src='../../assets/DO.png'/><br></td>
+	<td><img src='../assets/DO.png'/><br></td>
     	<td>
       		<strong> tooltipProps </strong><br>
 		Allows to pass all available tooltip properties. Check <Tooltip/> API for the full list.
     	</td>
   </tr>
   <tr>
-	<td><img src='../../assets/DONT.png'/><br></td>
+	<td><img src='../assets/DONT.png'/><br></td>
     	<td>
       		<strong> tooltipProps </strong><br>
       		Properties for tooltip
@@ -1010,14 +1010,14 @@ Each property listed in this sections should have:
 
 <table>
 	<tr>
-	<td><img src='../../assets/DO.png'/><br></td>
+	<td><img src='../assets/DO.png'/><br></td>
     	<td>
       		<strong> children </strong><br>
 		Accepts any component as a child item. Common cases for this component are headings, text strings, badges or icons.
     	</td>
   </tr>
   <tr>
-	<td><img src='../../assets/DONT.png'/><br></td>
+	<td><img src='../assets/DONT.png'/><br></td>
     	<td>
       		<strong> children </strong><br>
       		any nodes to be rendered
