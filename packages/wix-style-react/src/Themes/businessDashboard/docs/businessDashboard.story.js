@@ -6,7 +6,7 @@ import {
   description,
   importExample,
   title,
-  divider,
+  divider as sectionDivider,
   example as baseExample,
 } from 'wix-storybook-utils/Sections';
 import LinkTo from '@storybook/addon-links/react';
@@ -23,6 +23,7 @@ import * as tooltips from './components/Tooltip';
 import * as card from './components/Card';
 import * as badge from './components/Badge';
 import * as loader from './components/Loader';
+import * as divider from './components/Divider';
 import * as circularProgressBar from './components/CircularProgressBar';
 import * as linearProgressBar from './components/LinearProgressBar';
 import * as listItemSelect from './components/ListItemSelect';
@@ -89,7 +90,7 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
   </ThemeProvider>
 );
           `),
-          divider(),
+          sectionDivider(),
           title('Playground'),
           example({
             text: TextComponent('Button'),
@@ -102,6 +103,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('CircularProgressBar'),
             source: circularProgressBar.playground,
+          }),
+          example({
+            text: TextComponent('Divider'),
+            source: divider.playground,
           }),
           example({
             text: TextComponent('LinearProgressBar'),

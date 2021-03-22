@@ -27,6 +27,11 @@
 }
 
 :import {
+  -st-from: "../../Divider/Divider.st.css";
+  -st-default: Divider;
+}
+
+:import {
   -st-from: "../../LinearProgressBar/LinearProgressBar.st.css";
   -st-default: LinearProgressBar;
 }
@@ -208,6 +213,11 @@
 }
 
 :import {
+  -st-from: "./components/Divider.st.css";
+  -st-default: DividerOverrides;
+}
+
+:import {
   -st-from: "./components/LinearProgressBar.st.css";
   -st-default: LinearProgressBarOverrides;
 }
@@ -379,11 +389,12 @@
   CircularProgressBar {
     -st-mixin: CircularProgressBarOverrides();
   }
-
   Checkbox {
     -st-mixin: CheckboxOverrides();
   }
-
+  Divider {
+    -st-mixin: DividerOverrides();
+  }
   LinearProgressBar {
     -st-mixin: LinearProgressBarOverrides();
   }

@@ -25,29 +25,37 @@ const tests = [
   },
 ];
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props, hasFlexboxContainer }) => {
-    storiesOf(`Divider${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <React.Fragment>
-          <div style={{ height: '50px' }}>
-            <Divider {...props} />
-          </div>
+export const runTests = (
+  { themeName, testWithTheme } = { testWithTheme: i => i },
+) => {
+  tests.forEach(({ describe, its }) => {
+    its.forEach(({ it, props, hasFlexboxContainer }) => {
+      storiesOf(
+        `${themeName ? `${themeName}|` : ''}Divider${
+          describe ? '/' + describe : ''
+        }`,
+        module,
+      ).add(it, () =>
+        testWithTheme(
+          <React.Fragment>
+            <div style={{ height: '50px' }}>
+              <Divider skin="dark" {...props} />
+            </div>
 
-          {
-            /* Checks the case of a flexbox container */
-            hasFlexboxContainer && (
-              <Box verticalAlign="middle" height="50px" marginTop={3}>
-                <Divider {...props} />
-              </Box>
-            )
-          }
-        </React.Fragment>
-      ),
-    );
+            {
+              /* Checks the case of a flexbox container */
+              hasFlexboxContainer && (
+                <Box verticalAlign="middle" height="50px" marginTop={3}>
+                  <Divider {...props} />
+                </Box>
+              )
+            }
+          </React.Fragment>,
+        ),
+      );
+    });
   });
-});
+};
 
 storiesOf('Divider', module).add('skins', () => (
   <>
