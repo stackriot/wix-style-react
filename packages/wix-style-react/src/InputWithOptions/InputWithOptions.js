@@ -513,7 +513,7 @@ InputWithOptions.propTypes = {
   ...Input.propTypes,
   ...DropdownLayout.propTypes,
 
-  /** Use a customized input component instead of the default wix-style-react <Input/> component */
+  /** Use a customized input component instead of the default wix-style-react `<Input/>` component */
   inputElement: PropTypes.element,
 
   /** Closes DropdownLayout on option selection */
