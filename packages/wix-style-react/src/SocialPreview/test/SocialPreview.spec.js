@@ -14,6 +14,8 @@ describe('SocialPreview', () => {
       title: 'social-preview',
       previewUrl: 'SOCIAL-PREVIEW.COM',
       description: 'a social preview test',
+      skin: 'twitter',
+      size: 'small',
     };
     const driver = createDriver(<SocialPreview {...props} />);
 
@@ -21,5 +23,7 @@ describe('SocialPreview', () => {
     expect(await driver.getTitle()).toEqual('social-preview');
     expect(await driver.getPreviewUrl()).toEqual('SOCIAL-PREVIEW.COM');
     expect(await driver.getDescription()).toEqual('a social preview test');
+    expect(await driver.getSkin()).toEqual('twitter');
+    expect(await driver.getSize()).toEqual('small');
   });
 });

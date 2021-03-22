@@ -14,6 +14,8 @@ function SocialPreviewWithAllProps() {
   return (
     <SocialPreview
       dataHook="hook"
+      skin="social"
+      size="large"
       description="description"
       media={<div />}
       previewUrl="url"
