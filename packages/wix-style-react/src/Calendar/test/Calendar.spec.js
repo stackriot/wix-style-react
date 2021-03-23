@@ -33,6 +33,12 @@ describe('Calendar', () => {
       ' ',
     );
 
+    const today = new Date();
+    const yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+
     describe('rendering the Calendar', () => {
       it('should display the month of the {from} Date if the provided value is {from, to}', async () => {
         const { driver } = render(
@@ -517,6 +523,20 @@ describe('Calendar', () => {
         );
 
         expect(await driver.isDayActive(new Date())).toBe(true);
+      });
+
+      it('when combined with filterDate prop disable more than one range of date', async () => {
+        const { driver } = render(
+          <Calendar
+            {...defaultProps}
+            value={new Date()}
+            filterDate={date => date < new Date()}
+            excludePastDates
+          />,
+        );
+
+        expect(await driver.isDayActive(yesterday)).toBe(false);
+        expect(await driver.isDayActive(tomorrow)).toBe(false);
       });
     });
 

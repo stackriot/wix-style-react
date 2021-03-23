@@ -328,9 +328,10 @@ export default class Calendar extends React.PureComponent {
     }
 
     return {
-      disabledDays: excludePastDates
-        ? { before: new Date() }
-        : date => !filterDate(new Date(date)),
+      disabledDays: [
+        date => !filterDate(new Date(date)),
+        excludePastDates ? { before: new Date() } : {},
+      ],
       initialMonth: month,
       initialYear: month,
       selectedDays,
