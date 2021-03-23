@@ -7,7 +7,18 @@ Storybook documentation provides information about components for UX designers a
 - It shows if a component is developed, in development or deprecated.
 - It explains what's still in development or why it's deprecated and what to use instead.
 
-<br>
+Guidelines Structure
+
+- [Page Structure](#page-structure)
+- [Description Section](#description-section)
+- [Import Section](#import-section)
+- [Examples Section](#examples-section)
+  - [1. Core Structure](#1-core-structure)
+  - [2. Properties](#2-properties)
+  - [3. Common Use Cases](#3-common-use-cases)
+- [Code Snippets](#code-snippets)
+- [API Section](#api-section)
+- [Template](#templates)
 
 ## Page Structure
 
@@ -15,7 +26,6 @@ Each component story consists of following sections:
 
 ![](../assets/PageStructure.png)
 
-<br>
 
 ## Description Section
 
@@ -25,25 +35,28 @@ Description should provide enough information to make a decision if it’s a rig
 - If it’s a building part for a larger component (i.e. ListItemSelect)
 - Do and don't examples — when component should be used or should not (optional link to correct solutions per case)
 
-Example:
+```
+Modal controls the overlay layout that appears on call functions. It’s a container for components
+like CustomModalLayout, ModalPreviewLayout and others.
 
-> Modal controls the overlay layout that appears on call functions. It’s a container for components > like CustomModalLayout, ModalPreviewLayout and others.
-> Use it:
->
-> - To reveal all types of modal layouts
-> - To display a full page loading state
+Use it:
+- To reveal all types of modal layouts
+- To display a full page loading state
 
-<br>
+Don't use it:
+- Example Don't use it
+- Example Don't use it
+```
 
 ## Import Section
 
 This section should provide a line of code which can be copied and pasted to the developer's project, so component can be used right away.
 
-Example:
 
-`import { AddItem } from 'wix-style-react';`
+```js
+import { AddItem } from 'wix-style-react';
+```
 
-<br>
 
 ## Examples Section
 
@@ -53,8 +66,6 @@ Examples should demonstrate how component behaves and when to use it. In order t
 1. Properties
 1. Common use cases
 
-<br>
-
 ### 1. Core Structure
 
 Container box components should give an example how it is constructed. The example should list all available areas. This example should:
@@ -62,8 +73,6 @@ Container box components should give an example how it is constructed. The examp
 - Visually display existing content areas and design possibilities it provides
 - Explain each content area purpose and accepted content types in the description (e.g. node, string, image)
 - Use default properties or placeholder content without additional styling
-
-<br>
 
 #### Visuals
 
