@@ -49,6 +49,7 @@
     "@storybook/addon-google-analytics": "^5.3.21",
     "@storybook/addon-links": "^5.3.21",
     "@storybook/addon-options": "^5.3.21",
+    "@storybook/addons": "^5.0.0",
     "@storybook/react": "^5.3.21",
     "@storybook/theming": "^6.1.6",
     "@stylable/cli": "^3.11.14",
