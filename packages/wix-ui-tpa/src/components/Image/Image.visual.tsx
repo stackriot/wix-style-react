@@ -9,6 +9,7 @@ import {
   LoadingBehaviorOptions,
   ResizeOptions,
 } from './types';
+import { TPAComponentsProvider } from '../TPAComponentsConfig';
 
 const stories: { name: string; src: string; invalidSrc: string }[] = [
   {
@@ -243,5 +244,18 @@ visualize('Image', () => {
         ));
       });
     });
+  });
+
+  story(stories[1].name, () => {
+    snap('with seo', (done) => (
+      <TPAComponentsProvider value={{ seo: true }}>
+        <ImageWithWrapper
+          src={stories[1].src}
+          width={480}
+          height={360}
+          onLoad={done}
+        />
+      </TPAComponentsProvider>
+    ));
   });
 });
