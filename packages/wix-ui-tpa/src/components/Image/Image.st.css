@@ -3,11 +3,19 @@
   -st-named: color, fallback;
 }
 
+:import {
+  -st-from: "../Text/Text.st.css";
+  -st-default: TPAText;
+}
+
 /*Defaults*/
 :vars {
   defaultBorderWidth: 0px;
   defaultBorderRadius: 0px;
   defaultImageOpacity: 100%;
+  errorBackgroundColor: color(color-2);
+  errorTextColor: color(color-1);
+  errorFontStyle: "{theme: 'Body-M', size:'14px', lineHeight: '1.5em'}";
 }
 
 /* Overrides */
@@ -100,7 +108,7 @@
   animation-timing-function: ease-out;
 }
 
-.root.overrideStyleParams {
+.root.overrideStyleParams:not(.isError) {
   background-color: value(backgroundColor);
   border: value(borderWidth) solid value(borderColor);
   border-radius: value(borderRadius);
@@ -109,4 +117,31 @@
 
 .root.overrideStyleParams .image {
   opacity: value(imageOpacity);
+}
+
+.root.isError {
+  background-color: value(errorBackgroundColor);
+  position: relative;
+}
+
+.root .errorWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.errorMessage {
+  -st-extends: TPAText;
+  -st-mixin: TPAText(MainTextColor value(errorTextColor), MainTextFont value(errorFontStyle));
+}
+
+/* temp workaround for icon color override */
+.root .errorWrapper svg g {
+  stroke: value(errorTextColor) !important;
 }

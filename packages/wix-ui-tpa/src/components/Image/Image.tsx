@@ -2,11 +2,13 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Image as CoreImage } from 'wix-ui-core/image';
 import { classes, st } from './Image.st.css';
+import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import {
   calculateDimensions,
   resolveFocalPointCoordinates,
 } from './ImageUtils';
 import { RelativeMediaImage } from './RelativeMediaImage';
+import { Text } from '../Text';
 import {
   ImageProps,
   ResizeOptions,
@@ -16,16 +18,17 @@ import {
   FocalPointPresets,
 } from './types';
 
-type DefaultProps = Pick<ImageProps, 'resize'>;
+type DefaultProps = Pick<ImageProps, 'resize' | 'errorMessage'>;
 
 /** Image is a component to literally display an image - whether an absolute with full URL or a media platform item with relative URI */
 export class Image extends React.Component<ImageProps> {
   static displayName = 'Image';
   static defaultProps: DefaultProps = {
     resize: ResizeOptions.contain,
+    errorMessage: 'Image not found',
   };
 
-  state = { isLoaded: false, boundingRectDimensions: null };
+  state = { isLoaded: false, boundingRectDimensions: null, isError: false };
 
   containerRef = React.createRef<HTMLDivElement>();
   imageRef = React.createRef<HTMLImageElement>();
@@ -38,6 +41,16 @@ export class Image extends React.Component<ImageProps> {
     }
 
     onLoad && onLoad(event);
+  };
+
+  _onError = (event) => {
+    const { onError } = this.props;
+
+    if (!this.state.isError) {
+      this.setState({ isError: true });
+    }
+
+    onError && onError(event);
   };
 
   componentDidMount() {
@@ -72,15 +85,17 @@ export class Image extends React.Component<ImageProps> {
       width,
       height,
       onLoad,
+      onError,
       aspectRatio,
       resize,
       focalPoint,
       fluid,
       hoverEffect,
       loadingBehavior,
+      errorMessage,
       ...imageProps
     } = this.props;
-    const { isLoaded, boundingRectDimensions } = this.state;
+    const { isLoaded, boundingRectDimensions, isError } = this.state;
 
     const isAbsoluteUrl = src && src.match('^https?://');
 
@@ -118,6 +133,7 @@ export class Image extends React.Component<ImageProps> {
             [classes.darken]: hoverEffect === HoverEffectOptions.darken,
             [classes.preload]: hasLoadingBehavior && !isLoaded,
             [classes.loaded]: hasLoadingBehavior && isLoaded,
+            [classes.isError]: isError,
           }),
         )}
         {...(!fluid && {
@@ -145,6 +161,7 @@ export class Image extends React.Component<ImageProps> {
             })}
             nativeRef={this.imageRef}
             onLoad={this._onLoad}
+            onError={this._onError}
             {...imageProps}
           />
         ) : (
@@ -157,8 +174,15 @@ export class Image extends React.Component<ImageProps> {
             isPlaceholderDisplayed={hasLoadingBehavior && !isLoaded}
             nativeRef={this.imageRef}
             onLoad={this._onLoad}
+            onError={this._onError}
             {...imageProps}
           />
+        )}
+        {isError && (
+          <div className={classes.errorWrapper} aria-hidden="true">
+            <ErrorIcon className={classes.errorIcon} />
+            <Text className={classes.errorMessage}>{errorMessage}</Text>
+          </div>
         )}
       </div>
     );
