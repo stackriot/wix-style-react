@@ -15,8 +15,11 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+### Fixed
 - `<DatePicker/>` - props excludePastDates and filterDate collide bugfix [#6956](https://github.com/wix/wix-style-react/pull/6956)
 -  Themes | Business Dashboard - Button - update inverted button hover [#6957](https://github.com/wix/wix-style-react/pull/6957)
+- `<TableListItem />` - Fix TableActionCell visibility on hover [#6972](https://github.com/wix/wix-style-react/pull/6972)
 
 ## 9.93.0 - 2021-03-22
 ### Added
