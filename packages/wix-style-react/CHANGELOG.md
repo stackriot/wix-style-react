@@ -14,7 +14,7 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## Next
+## 9.94.0 - 2021-03-26
 
 ### Fixed
 - `<DatePicker/>` - props excludePastDates and filterDate collide bugfix [#6956](https://github.com/wix/wix-style-react/pull/6956)
