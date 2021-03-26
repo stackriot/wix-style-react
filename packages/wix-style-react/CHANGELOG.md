@@ -16,7 +16,7 @@ Types of changes:
 
 ## Next
 - `<DatePicker/>` - props excludePastDates and filterDate collide bugfix [#6956](https://github.com/wix/wix-style-react/pull/6956)
-- - Themes | Business Dashboard - Button - update inverted button hover [#6957](https://github.com/wix/wix-style-react/pull/6957)
+-  Themes | Business Dashboard - Button - update inverted button hover [#6957](https://github.com/wix/wix-style-react/pull/6957)
 
 ## 9.93.0 - 2021-03-22
 ### Added
