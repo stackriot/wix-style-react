@@ -88,9 +88,9 @@
 }
 
 .root:skin(inverted):hover {
-  color: value(B05);
+  color: value(D80);
   border-color: transparent;
-  background-color: value(B50);
+  background-color: value(B05);
 }
 
 .root:skin(inverted):active {
