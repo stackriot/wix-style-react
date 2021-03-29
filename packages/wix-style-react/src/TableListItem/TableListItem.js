@@ -111,7 +111,7 @@ const TableListItem = ({
               {options.map(({ value, align }, index) => (
                 <div
                   className={st(classes.align, {
-                    position: ALIGN[align] || ALIGN.left,
+                    position: ALIGN[align],
                   })}
                   key={index}
                   data-hook={dataHooks.tableListItemValue}

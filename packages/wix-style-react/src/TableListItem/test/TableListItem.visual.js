@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import TableListItem, { VERTICAL_PADDING } from '../TableListItem';
 import Text from '../../Text';
 import WixStyleReactProvider from '../../WixStyleReactProvider';
+import Input from '../../Input';
 
 const sizes = Object.values(VERTICAL_PADDING);
 
@@ -70,6 +71,18 @@ const tests = [
               ),
             },
           ],
+        },
+      },
+    ],
+  },
+  {
+    describe: 'children',
+    its: [
+      {
+        it: 'children that are not aligned should stretch to 100%',
+        props: {
+          draggable: true,
+          options: [{ value: <Input /> }],
         },
       },
     ],
