@@ -85,7 +85,8 @@
   "devDependencies": {
     "@wix/wix-base-ui": "^3.949.0",
     "wix-storybook-utils": "^3.0.139",
-    "wix-ui-framework": "^3.5.2"
+    "wix-ui-framework": "^3.5.2",
+    "@babel/core": "7.11.6"
   },
   "husky": {
     "hooks": {
