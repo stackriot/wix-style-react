@@ -14,6 +14,11 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
+## Next
+### Fixed
+- `<ListItemAction/>` - remove unexpected title attribute tooltip [#6974](https://github.com/wix/wix-style-react/pull/6974)
+- `<TableListItem/>` - cannot stretch value to 100% [#6960](https://github.com/wix/wix-style-react/pull/6960)
+
 ## 9.94.0 - 2021-03-26
 
 ### Fixed
