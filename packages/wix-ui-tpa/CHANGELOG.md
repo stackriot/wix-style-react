@@ -1,3 +1,10 @@
+# 2.30.0 (2021-03-30)
+
+
+### Bug Fixes
+
+* **DatePicker:** Change the min-width according to the font-size ([#6948](https://github.com/wix/wix-style-react/issues/6948)) ([8d27f58](https://github.com/wix/wix-style-react/commit/8d27f58c2e281f8ca803b4d995428c13783dc7e5))
+
 # 2.29.0 (2021-03-16)
 
 

@@ -15,18 +15,22 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.95.0 - 2021-03-30
+### Changed
+- Typography - [Temporary] Use Arial for vietnamese (instead of Madefor)
+
 ### Fixed
 - `<ListItemAction/>` - remove unexpected title attribute tooltip [#6974](https://github.com/wix/wix-style-react/pull/6974)
 - `<TableListItem/>` - cannot stretch value to 100% [#6960](https://github.com/wix/wix-style-react/pull/6960)
 
 ### Added
-- `<DropdownBase />` - add onShow, onHide props [#6978](https://github.com/wix/wix-style-react/pull/6978)
+- `<DropdownBase/>` - add onShow, onHide props [#6978](https://github.com/wix/wix-style-react/pull/6978)
 
 ## 9.94.0 - 2021-03-26
-
 ### Fixed
 - `<DatePicker/>` - props excludePastDates and filterDate collide bugfix [#6956](https://github.com/wix/wix-style-react/pull/6956)
-- `<TableListItem />` - Fix TableActionCell visibility on hover [#6972](https://github.com/wix/wix-style-react/pull/6972)
+- `<TableListItem/>` - Fix TableActionCell visibility on hover [#6972](https://github.com/wix/wix-style-react/pull/6972)
 
 ### Changed
 -  Themes | Business Dashboard - Button - update inverted button hover [#6957](https://github.com/wix/wix-style-react/pull/6957)
@@ -38,7 +42,7 @@ Types of changes:
 
 ## 9.92.0 - 2021-03-18
 ### Added
-- `<Box />` -  add gap prop [#6929](https://github.com/wix/wix-style-react/pull/6929)
+- `<Box/>` -  add gap prop [#6929](https://github.com/wix/wix-style-react/pull/6929)
 
 ### Fixed
 - `<DropdownLayout />` - fix uni driver when using infinite scroll [#6937](https://github.com/wix/wix-style-react/pull/6937)
