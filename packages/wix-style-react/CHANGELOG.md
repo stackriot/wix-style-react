@@ -19,6 +19,9 @@ Types of changes:
 - `<ListItemAction/>` - remove unexpected title attribute tooltip [#6974](https://github.com/wix/wix-style-react/pull/6974)
 - `<TableListItem/>` - cannot stretch value to 100% [#6960](https://github.com/wix/wix-style-react/pull/6960)
 
+### Added
+- `<DropdownBase />` - add onShow, onHide props [#6978](https://github.com/wix/wix-style-react/pull/6978)
+
 ## 9.94.0 - 2021-03-26
 
 ### Fixed
