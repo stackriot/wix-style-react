@@ -7,6 +7,12 @@ class FontUpgrade extends React.PureComponent {
   render() {
     const { dataHook, className, active, as, children } = this.props;
 
+    // TODO - remove this code when Madefor supports Vietnamese
+    const vietnamese =
+      document &&
+      typeof document.cookie === 'string' &&
+      document.cookie.includes('wixLanguage=vi;');
+
     return (
       <FontUpgradeContext.Provider value={{ active }}>
         {React.createElement(
@@ -14,7 +20,11 @@ class FontUpgrade extends React.PureComponent {
           {
             'data-hook': dataHook,
             'data-active': active,
-            className: st(active ? classes.root : null, className),
+            className: st(
+              active ? classes.root : null,
+              { vietnamese },
+              className,
+            ),
           },
           children,
         )}

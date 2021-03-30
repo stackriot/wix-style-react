@@ -62,7 +62,7 @@ const javascriptFiles = [
   ['FillPreview.bundle.min.js', 18],
   ['FloatingHelper.bundle.min.js', 49],
   ['FloatingNotification.bundle.min.js', 47],
-  ['FontUpgrade.bundle.min.js', 3],
+  ['FontUpgrade.bundle.min.js', 4],
   ['FormField.bundle.min.js', 44],
   ['FunnelChart.bundle.min.js', 44],
   ['GenericModalLayout.bundle.min.js', 4],
