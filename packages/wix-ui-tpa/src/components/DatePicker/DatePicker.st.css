@@ -23,7 +23,8 @@
 :vars {
     calendarWidth: 100%;
     calendarHeight: 100%;
-    sidePadding: 20px;
+    sidePadding: 21px;
+    minFontSize: 14;
 
     DefaultBackgroundColor: color-1;
 
@@ -31,7 +32,6 @@
     DefaultMonthAndYearCaptionFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
     DefaultMonthAndYearCaptionColor: color-5;
 
-    DefaultWeekdayFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
     DefaultWeekdayTextColor: color-8;
 
     DefaultDayFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
@@ -67,17 +67,12 @@
     */
     MonthAndYearCaptionColor: --overridable;
     /*
-        The font of the calendar's weekdays section.
-        @default {theme: 'Body-M', size: '14px' lineHeight: '20px'}
-    */
-    WeekdayFont:  --overridable;
-    /*
         The font color of the calendar's weekdays.
         @default color-8
     */
     WeekdayTextColor: --overridable;
     /*
-        The font of a specific date.
+        The font of a specific date and the weekday texts. The minimum font size is 14px and the maximum is 24px.
         @default {theme: 'Body-M', size: '14px', lineHeight: 1 }
         @fixed The line height is 1 and could not be overridden.
     */
@@ -123,7 +118,6 @@
     CurrentMonthAndYearCaptionColor: color(fallback(value(MonthAndYearCaptionColor), value(DefaultMonthAndYearCaptionColor)));
     DropdownOptionSelectedAndHoverBGColor: applyOpacity(value(CurrentDayColor), 0.06);
 
-    CurrentWeekdayFont: fallback(font(value(WeekdayFont)), font(value(DefaultWeekdayFont)));
     CurrentWeekdayTextColor: color(fallback(value(WeekdayTextColor), value(DefaultWeekdayTextColor)));
 
     CurrentDayFont: fallback(font(value(DayFont)), font(value(DefaultDayFont)));
@@ -154,8 +148,13 @@
 .calendar::month {
     width: value(calendarWidth);
     height: value(calendarHeight);
-    min-width: 280px;
+    font: value(CurrentDayFont);
     min-height: 332px;
+
+    /* The minimum width should be 280px in order to support mobile.
+       Since the minimum font size is 14px the expression `280em/value(minFontSize)` will be reduced to 280px in this case.
+    */
+    min-width: calc(280em/value(minFontSize));
 }
 
 /* calendar header */
@@ -214,8 +213,12 @@
 
 .calendar::weekday {
     padding: 20px 0 16px;
-    font: value(CurrentWeekdayFont);
+    font: value(CurrentDayFont);
     color: value(CurrentWeekdayTextColor);
+    width: calc(34em/value(minFontSize));
+    justify-content: center;
+    display: flex;
+    flex-shrink: 0;
 }
 
 /******************************************************/
@@ -240,7 +243,7 @@
 }
 
 .calendar:removeOuterPadding::month {
-    min-width: 240px;
+    min-width: calc(240em/value(minFontSize));
     min-height: 284px;
 }
 
@@ -251,9 +254,10 @@
 .calendar::day {
     font: value(CurrentDayFont);
     color: value(CurrentDayColor);
-    width: calc(34em/14);
-    height: calc(34em/14);
+    width: calc(34em/value(minFontSize));
+    height: calc(34em/value(minFontSize));
     border-radius: value(CurrentSelectedDayBorderRadius);
+    flex-shrink: 0;
 }
 
 .calendar::dayText {
@@ -261,8 +265,8 @@
 }
 
 .calendar::dayIndicationContainer {
-    padding: calc(3em/14) 0;
-    height: calc(10em/14);
+    padding: calc(3em/value(minFontSize)) 0;
+    height: calc(10em/value(minFontSize));
 }
 
 .calendar::day:hover {
