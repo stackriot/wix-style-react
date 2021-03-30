@@ -26,6 +26,10 @@ class DropdownBase extends React.PureComponent {
     onMouseEnter: PropTypes.func,
     /** Callback function to be called on mouseEnter onMouseLeave the entire component */
     onMouseLeave: PropTypes.func,
+    /** Callback function to be called when dropdown is opened */
+    onShow: PropTypes.func,
+    /** Callback function to be called when dropdown is closed */
+    onHide: PropTypes.func,
     /** Callback function to be called when selecting an option. It's signature is `onSelect(selectedOption)` */
     onSelect: PropTypes.func,
     /**
@@ -147,6 +151,8 @@ class DropdownBase extends React.PureComponent {
     maxHeight: '260px',
     fluid: false,
     animate: false,
+    onShow: () => {},
+    onHide: () => {},
   };
 
   _dropdownLayoutRef = null;
@@ -175,7 +181,10 @@ class DropdownBase extends React.PureComponent {
   };
 
   _open = () => {
-    !this._isControllingOpen() && this.setState({ open: true });
+    if (!this._isControllingOpen()) {
+      this.setState({ open: true });
+      this.props.onShow();
+    }
   };
 
   _close = e => {
@@ -191,13 +200,22 @@ class DropdownBase extends React.PureComponent {
     } else {
       this.setState({ open: false });
     }
+    this.props.onHide();
   };
 
   _toggle = () => {
     !this._isControllingOpen() &&
-      this.setState(({ open }) => ({
-        open: !open,
-      }));
+      this.setState(({ open }) => {
+        if (open) {
+          this.props.onHide();
+        } else {
+          this.props.onShow();
+        }
+
+        return {
+          open: !open,
+        };
+      });
   };
 
   _handleClickOutside = () => {
