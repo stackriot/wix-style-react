@@ -34,10 +34,6 @@ describe('Calendar', () => {
     );
 
     const today = new Date();
-    const yesterday = new Date();
-    yesterday.setDate(today.getDate() - 1);
-    const tomorrow = new Date();
-    tomorrow.setDate(today.getDate() + 1);
 
     describe('rendering the Calendar', () => {
       it('should display the month of the {from} Date if the provided value is {from, to}', async () => {
@@ -526,10 +522,15 @@ describe('Calendar', () => {
       });
 
       it('when combined with filterDate prop disable more than one range of date', async () => {
+        const value = new Date(2021, 2, 17);
+        const yesterday = new Date();
+        yesterday.setDate(value.getDate() - 1);
+        const tomorrow = new Date();
+        tomorrow.setDate(value.getDate() + 1);
         const { driver } = render(
           <Calendar
             {...defaultProps}
-            value={new Date()}
+            value={value}
             filterDate={date => date < new Date()}
             excludePastDates
           />,
@@ -804,6 +805,32 @@ describe('Calendar', () => {
         );
 
         expect(await driver.getNthWeekDayName(0)).toEqual('Su');
+      });
+
+      it('should set sunday as first day of the week for vi locale', async () => {
+        const { driver } = render(
+          <Calendar value={{}} onChange={() => {}} locale="vi" />,
+        );
+
+        expect(await driver.getNthWeekDayName(0)).toEqual('CN');
+      });
+    });
+
+    describe('formatWeekdayShort', () => {
+      it('should set iiiiii as short weekday format by default', async () => {
+        const { driver } = render(
+          <Calendar value={{}} onChange={() => {}} locale="lt" />,
+        );
+
+        expect(await driver.getNthWeekDayName(0)).toEqual('Pr');
+      });
+
+      it('should set iiiii as short weekday format for vi locale', async () => {
+        const { driver } = render(
+          <Calendar value={{}} onChange={() => {}} locale="vi" />,
+        );
+
+        expect(await driver.getNthWeekDayName(1)).toEqual('T2');
       });
     });
 
