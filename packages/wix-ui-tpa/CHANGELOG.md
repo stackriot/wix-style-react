@@ -1,3 +1,11 @@
+# 2.31.0 (2021-03-31)
+
+
+### Bug Fixes
+
+* **Dropdown:** fix disabled border color ([4815b3a](https://github.com/wix/wix-style-react/commit/4815b3a97ce750f344938012ca6ed3655d046d1d))
+
+
 # 2.30.0 (2021-03-30)
 
 
