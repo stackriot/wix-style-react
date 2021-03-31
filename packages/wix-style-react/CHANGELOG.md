@@ -15,6 +15,7 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+- <Calendar/> - vietnamese localization [#6990](https://github.com/wix/wix-style-react/pull/6990)
 
 ## 9.95.0 - 2021-03-30
 ### Changed
