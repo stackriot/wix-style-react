@@ -116,9 +116,9 @@ export default {
           }),
 
           example({
-            title: 'Page containing a grid of cards',
+            title: 'Page containing a layout of cards',
             text:
-              'A common use case will be a Page containing Card components arranged by Grid components',
+              'A common use case will be a Page containing Card components arranged by Layout components',
             source: examples.gridOfCards,
           }),
 

@@ -30,7 +30,7 @@ export default {
 
     columns([
       table({
-        title: 'Realted Components',
+        title: 'Related Components',
         rows: [
           [
             <LinkTo
@@ -44,10 +44,10 @@ export default {
           [
             <LinkTo
               kind={Category.COMPONENTS}
-              story="Grid"
-              children="<Grid/>"
+              story="Layout"
+              children="<Layout/>"
             />,
-            'Component that constructs a grid',
+            'Component that constructs a layout',
           ],
           [
             <LinkTo
@@ -71,7 +71,7 @@ const { Header, Subheader, Content, Divider} = Card;
     ...[
       {
         title: 'Form',
-        description: 'Card uses Grid components to align form elements.',
+        description: 'Card uses Layout component to align form elements.',
         source: FormExampleRaw,
       },
       {

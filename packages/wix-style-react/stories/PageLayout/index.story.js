@@ -58,10 +58,10 @@ export default {
           [
             <LinkTo
               kind={Category.COMPONENTS}
-              story="Grid"
-              children="<Grid/>"
+              story="Layout"
+              children="<Layout/>"
             />,
-            'Component that constructs a grid',
+            'Component that constructs a layout',
           ],
 
           [

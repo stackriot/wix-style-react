@@ -13,7 +13,7 @@ export const layoutSymbolsToComponents = {
     componentsNames.PageHeader,
     componentsNames.PageFooter,
     componentsNames.PageSection,
-    componentsNames.Grid,
+    componentsNames.Layout,
     componentsNames.Card,
     sharedComponentsNames.EmptyState,
   ],
@@ -27,7 +27,7 @@ export const layoutSymbolsToComponents = {
     componentsNames.Card,
     componentsNames.CardHeader,
     componentsNames.CardSubheader,
-    componentsNames.Grid,
+    componentsNames.Layout,
     sharedComponentsNames.EmptyState,
   ],
   [layoutSymbols.tableLayout]: [

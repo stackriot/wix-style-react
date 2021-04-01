@@ -41,7 +41,7 @@ export default {
           description({
             title: 'Description',
             description:
-              'Card is a compound component for any content to be displayed in a styled block. This is one of the basic building blocks and combined well with Grid component',
+              'Card is a compound component for any content to be displayed in a styled block. This is one of the basic building blocks and combined well with Layout component',
           }),
 
           importExample(`
@@ -177,7 +177,7 @@ const { Header, Subheader, Content, Divider} = Card;
             {
               title: 'Card Layout',
               description:
-                'In most cases a card will be placed on top of a Grid',
+                'In most cases a card will be placed on top of a Layout',
               source: `
                 <Layout>
                   <Cell span={8}>

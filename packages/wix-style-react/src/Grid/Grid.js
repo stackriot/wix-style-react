@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import styles from './Grid.scss';
+import deprecationLog from '../utils/deprecationLog';
 
 const containerProps = {
   children: PropTypes.node,
@@ -12,31 +13,52 @@ const containerProps = {
   stretchVertically: PropTypes.bool,
 };
 
-const RawContainer = ({ children, fluid, className, stretchVertically }) => (
-  <div
-    className={classNames(styles.rawContainer, className, {
-      [styles.fluidContainer]: fluid,
-      [styles.stretchVertically]: stretchVertically,
-    })}
-    children={children}
-  />
-);
+const DEPRECATION_MESSAGE =
+  'Grid is deprecated and will be removed in next major release, please use <Layout /> instead.';
+
+const RawContainer = ({ children, fluid, className, stretchVertically }) => {
+  useEffect(() => {
+    deprecationLog(DEPRECATION_MESSAGE);
+  }, []);
+
+  return (
+    <div
+      className={classNames(styles.rawContainer, className, {
+        [styles.fluidContainer]: fluid,
+        [styles.stretchVertically]: stretchVertically,
+      })}
+      children={children}
+    />
+  );
+};
 
 RawContainer.propTypes = containerProps;
 
-const Container = ({ children, fluid, className, stretchVertically }) => (
-  <div
-    className={classNames(styles.wixContainer, className, {
-      [styles.fluidContainer]: fluid,
-      [styles.stretchVertically]: stretchVertically,
-    })}
-    children={children}
-  />
-);
+const Container = ({ children, fluid, className, stretchVertically }) => {
+  useEffect(() => {
+    deprecationLog(DEPRECATION_MESSAGE);
+  }, []);
+
+  return (
+    <div
+      className={classNames(styles.wixContainer, className, {
+        [styles.fluidContainer]: fluid,
+        [styles.stretchVertically]: stretchVertically,
+      })}
+      children={children}
+    />
+  );
+};
 
 Container.propTypes = containerProps;
 
 class Columns extends Component {
+  constructor(props) {
+    super(props);
+
+    deprecationLog(DEPRECATION_MESSAGE);
+  }
+
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
@@ -70,6 +92,12 @@ class Columns extends Component {
 }
 
 class AutoAdjustedColumns extends Component {
+  constructor(props) {
+    super(props);
+
+    deprecationLog(DEPRECATION_MESSAGE);
+  }
+
   DEFAULT_MAX_SPAN = 12;
 
   static propTypes = {
@@ -94,6 +122,12 @@ class AutoAdjustedColumns extends Component {
 }
 
 class Col extends Component {
+  constructor(props) {
+    super(props);
+
+    deprecationLog(DEPRECATION_MESSAGE);
+  }
+
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
