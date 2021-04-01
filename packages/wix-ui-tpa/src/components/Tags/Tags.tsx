@@ -3,7 +3,7 @@ import { ALIGNMENT, SIZE, SKIN } from './constants';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Tag as CoreTag, TagsList as CoreTagList } from 'wix-ui-core/tags-list';
 import { st, classes } from './Tags.st.css';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import { TAGS_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
 

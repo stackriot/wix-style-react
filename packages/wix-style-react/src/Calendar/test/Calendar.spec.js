@@ -33,8 +33,6 @@ describe('Calendar', () => {
       ' ',
     );
 
-    const today = new Date();
-
     describe('rendering the Calendar', () => {
       it('should display the month of the {from} Date if the provided value is {from, to}', async () => {
         const { driver } = render(
@@ -522,15 +520,13 @@ describe('Calendar', () => {
       });
 
       it('when combined with filterDate prop disable more than one range of date', async () => {
-        const value = new Date(2021, 2, 17);
-        const yesterday = new Date();
-        yesterday.setDate(value.getDate() - 1);
-        const tomorrow = new Date();
-        tomorrow.setDate(value.getDate() + 1);
+        const today = new Date(2021, 2, 17);
+        const yesterday = new Date(2021, 2, 16);
+        const tomorrow = new Date(2021, 2, 18);
         const { driver } = render(
           <Calendar
             {...defaultProps}
-            value={value}
+            value={today}
             filterDate={date => date < new Date()}
             excludePastDates
           />,

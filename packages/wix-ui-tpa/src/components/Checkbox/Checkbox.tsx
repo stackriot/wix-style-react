@@ -161,7 +161,7 @@ export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
           <div
             data-hook={CHECKBOX_DATA_HOOKS.LabelWrapper}
             className={classnames(classes.label, {
-              [classes.suffixed]: suffix,
+              [classes.suffixed]: !!suffix,
             })}
           >
             {label}
