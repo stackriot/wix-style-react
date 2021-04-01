@@ -16,6 +16,7 @@
   "include": [
     "../../node_modules/wix-ui-core/dist/src/globals.d.ts",
     "./src/**/*.tsx",
+    "./src/testkit/**/*.ts",
     "./src/components/**/*.ts",
     "./test/**/*.tsx",
     "./src/external-types.d.ts", "src/common/utils.ts", "src/common/animations.ts",
