@@ -16,7 +16,7 @@ Types of changes:
 
 ## Next
 ### Deprecated
-<Grid/> - deprecate component
+- `<Grid/>` - deprecate component
 
 ## 9.96.0 - 2021-03-31
 ### Added
