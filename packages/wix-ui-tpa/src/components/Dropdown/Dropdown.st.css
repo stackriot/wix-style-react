@@ -48,6 +48,7 @@
 :import {
     -st-from: "./DropdownNativeSelect.st.css";
     -st-default: DropdownNativeSelect;
+    -st-named: overrideStyleParams as overrideStyleParamsDropdownNativeSelectMixin
 }
 
 :import {
@@ -202,6 +203,23 @@
 
 .dropdownNativeSelect {
     -st-extends: DropdownNativeSelect;
+    -st-mixin: overrideStyleParamsDropdownNativeSelectMixin(
+        MainButtonTextColor value(DefaultButtonTextColor),
+        MainButtonTextDisabledColor value(DefaultButtonTextDisabledColor),
+        MainButtonBorderColor value(DefaultButtonBorderColor),
+        MainBorderDisabledColor value(DefaultBorderDisabledColor),
+        MainBackgroundColor value(DefaultBackgroundColor),
+    );
+}
+
+.root.overrideStyleParams .dropdownNativeSelect {
+    -st-mixin: overrideStyleParamsDropdownNativeSelectMixin(
+        MainButtonTextColor value(CurrentButtonTextColor),
+        MainButtonTextDisabledColor value(CurrentButtonTextDisabledColor),
+        MainButtonBorderColor value(CurrentButtonBorderColor),
+        MainBorderDisabledColor value(CurrentBorderDisabledColor),
+        MainBackgroundColor value(CurrentBackgroundColor),
+    );
 }
 
 .dropdownError {
@@ -220,7 +238,7 @@
 }
 
 .dropdown .dropdownBase {
-    color: value(DefaultButtonTextColor) !important;
+     color: value(DefaultButtonTextColor) !important;
     border-width: value(DefaultBorderWidth) !important;
     background: value(DefaultBackgroundColor) !important;
     font: font(value(DefaultTextFont)) !important;
@@ -235,14 +253,16 @@
     border-color: applyOpacity(color(value(DefaultButtonBorderColor)), 1) !important;
 }
 
-.root.overrideStyleParams .dropdown .dropdownBase {
+.root.overrideStyleParams .dropdown .dropdownBase
+{
     color: value(CurrentButtonTextColor) !important;
     border-width: value(CurrentBorderWidth) !important;
     background: value(CurrentBackgroundColor) !important;
     font: value(CurrentTextFont) !important;
 }
 
-.root.overrideStyleParams .dropdown .dropdownBase:not(:error) {
+.root.overrideStyleParams .dropdown .dropdownBase:not(:error)
+{
     border-color: applyOpacity(color(value(CurrentButtonBorderColor)), 0.6) !important;
 }
 

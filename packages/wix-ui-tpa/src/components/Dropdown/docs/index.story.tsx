@@ -15,7 +15,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import { Dropdown } from '../';
+import { Dropdown } from '..';
 import { DROPDOWN_ALIGNMENT } from '../Dropdown';
 import {
   simpleOptions,

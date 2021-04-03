@@ -93,8 +93,8 @@ export class DropdownNativeSelect extends React.Component<DropdownNativeSelectPr
       selectedOption,
       error,
       errorMessage,
-      ['aria-label']: ariaLabel,
-      ['aria-labelledby']: ariaLabelledBy,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledBy,
       className,
       name,
     } = this.props;
