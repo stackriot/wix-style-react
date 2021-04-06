@@ -9,7 +9,7 @@ export interface AnalyticsSummaryCardProps {
   value: string;
   valueTooltip?: string;
 
-  isTrendVisibile?: boolean;
+  isTrendVisible?: boolean;
   trend?: number;
   invertedTrend?: boolean;
 
