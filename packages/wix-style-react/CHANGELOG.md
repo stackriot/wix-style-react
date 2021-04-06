@@ -15,7 +15,7 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
-## 9.97.0 - 2021-03-31
+## 9.97.0 - 2021-04-05
 ### Deprecated
 - `<Grid/>` - deprecate component
 
