@@ -40,7 +40,7 @@ module.exports = ({ config }) => {
           storyConfig: {
             moduleName: 'wix-style-react',
             repoBaseURL:
-              'https://github.com/wix/wix-style-react/tree/master/src/',
+              'https://github.com/wix/wix-style-react/tree/master/packages/wix-style-react/src/',
             issueURL:
               'https://github.com/wix/wix-style-react/issues/new/choose',
             testkitsWarning,
