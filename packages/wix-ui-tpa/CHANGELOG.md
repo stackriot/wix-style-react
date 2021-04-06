@@ -1,3 +1,11 @@
+## 2.33.0 (2021-04-06)
+
+
+### Bug Fixes
+
+* **Dropdown:** Mobile Native Dropdown - fix style override support ([87b2784](https://github.com/wix/wix-style-react/commit/87b278493796742b1c82a3ac6ab67cd2b3a54fe3))
+
+
 # 2.32.0 (2021-04-05)
 
 
