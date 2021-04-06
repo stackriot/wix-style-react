@@ -21,6 +21,7 @@ Types of changes:
 
 ### Fixed
 - `<Page.Sticky/>` - fix `style` prop proptype [#7007](https://github.com/wix/wix-style-react/pull/7007)
+-`<AnalyticsSummaryCard />` - fix typo in isTrendVisible types [#7001](https://github.com/wix/wix-style-react/pull/7001)
 
 ## 9.97.0 - 2021-04-05
 ### Deprecated
