@@ -59,25 +59,21 @@ export default {
 
     tabs([
       tab({
-        title: 'Description',
+        title: 'Design',
         sections: [
           description({
-            title: 'Description',
-            text: `
-            Input allows to insert short text values. This component is used in submit forms or to build other form components like \`<Autocomplete/>\` or \`<NumberInput/>\`.<br/>
-            `,
+            title: 'Usage',
+            text: 'Input allows to insert short text values. This component is used in submit forms or to build other form components like \`<Autocomplete/>\` or \`<NumberInput/>\`.<br/>',
           }),
 
           doDont({
             do: {
-              title: 'Use it',
               list: [
                 'To insert names, titles and other short textual information.',
                 'To build custom inputs like Credit Card input.',
               ],
             },
             dont: {
-              title: `Dont't use it`,
               list: [
                 'To insert long paragraphs, instead use the <InputArea/> component.',
                 'As a search input, instead use the <Search/> component.',
@@ -89,7 +85,7 @@ export default {
 
           divider(),
 
-          title('Examples'),
+          title('Variations'),
 
           example({
             title: 'Size',

@@ -60,13 +60,12 @@ export default {
 
     tabs([
       tab({
-        title: 'Description',
+        title: 'Design',
         sections: [
           columns([
             description({
-              title: 'Description',
-              text: `
-              Modal controls the overlay layout that appears on call functions. It’s a container for components like \`CustomModalLayout\`, \`ModalPreviewLayout\` and others.`,
+              title: 'Usage',
+              text: 'Modal controls the overlay layout that appears on call functions. It’s a container for components like \`CustomModalLayout\`, \`ModalPreviewLayout\` and others.',
             }),
           ]),
 
@@ -83,7 +82,7 @@ export default {
 
           divider(),
 
-          title('Examples'),
+          title('Variations'),
 
           example({
             title: 'Structure',

@@ -10,9 +10,10 @@ Storybook documentation provides information about components for UX designers a
 Guidelines Structure
 
 - [Page Structure](#page-structure)
-- [Description Section](#description-section)
+- [Demo Section](#demo-section)
+- [Usage Section](#usage-section)
 - [Import Section](#import-section)
-- [Examples Section](#examples-section)
+- [Variations Section](#variations-section)
   - [1. Core Structure](#1-core-structure)
   - [2. Properties](#2-properties)
   - [3. Common Use Cases](#3-common-use-cases)
@@ -26,10 +27,31 @@ Each component story consists of following sections:
 
 ![](../assets/PageStructure.png)
 
+## Demo Section
 
-## Description Section
+This section should contain a single interactive example that showcase default component usage: 
+<table>
+<tr>
+    <td><img src='../assets/DemoDO.png'/></td>
+    <td><img src='../assets/DemoDONT.png'/></td>
+  </tr>
+  <tr>
+    <td>
+      <img src='../assets/DO.png'/><br>
+      <strong>DO.</strong>
+      Use content to display common use case, that component is designed for.
+    </td>
+    <td>
+      <img src='../assets/DONT.png'/><br>
+      <strong>DON'T.</strong>
+      Don’t display empty version that might raise more questions than answers.
+    </td>
+  </tr>
+</table>
 
-Description should provide enough information to make a decision if it’s a right component for a user case or an alternative solution should be selected instead. It should explain:
+## Usage Section
+
+This section should provide enough information for a user to make a decision if it’s a right component for a case or an alternative solution should be selected instead. Component description should explain:
 
 - The primary purpose of the component
 - If it’s a building part for a larger component (i.e. ListItemSelect)
@@ -58,13 +80,13 @@ import { AddItem } from 'wix-style-react';
 ```
 
 
-## Examples Section
+## Variations Section
 
-Examples should demonstrate how component behaves and when to use it. In order to maintain consistency between stories, examples should go in this order:
+This section should demonstrate how component behaves and when to use it. In order to maintain consistency between stories, examples should go in this order:
 
 1. Core structure
-1. Properties
-1. Common use cases
+2. Properties
+3. Common use cases
 
 ### 1. Core Structure
 

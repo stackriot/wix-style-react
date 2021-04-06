@@ -103,17 +103,15 @@ export default {
 
     tabs([
       tab({
-        title: 'Description',
+        title: 'Design',
         sections: [
-          description(
-            `
-            Box allows to layout, align, space and style its children elements. It’s a container that can wrap and apply CSS styles to one or more elements inside of it. 
-            `,
-          ),
+          description({
+            title: 'Usage',
+            text: 'Box allows to layout, align, space and style its children elements. It’s a container that can wrap and apply CSS styles to one or more elements inside of it.',
+          }),
 
           doDont({
             do: {
-              title: 'Use it',
               list: [
                 'To arrange elements in vertical or horizontal direction.',
                 'To apply custom spacing and styles.',
@@ -121,7 +119,6 @@ export default {
               ],
             },
             dont: {
-              title: `Dont't use it`,
               list: [
                 'To build page layouts, instead use <Page/> component.',
                 'To structure content inside of a page, instead use a combination of <Layout/> and <Card/> components.',
@@ -133,7 +130,7 @@ export default {
 
           divider(),
 
-          title('Examples'),
+          title('Variations'),
 
           example({
             title: 'Structure',

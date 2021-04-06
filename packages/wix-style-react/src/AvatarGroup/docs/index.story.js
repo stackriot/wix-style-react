@@ -88,10 +88,10 @@ export default {
 
     tabs([
       tab({
-        title: 'Description',
+        title: 'Design',
         sections: [
           description({
-            title: 'Description',
+            title: 'Usage',
             text: `AvatarGroup allows to display a number of avatars (digital representation of a user) as a single entity. It’s a building block grouping number of standalone <Avatar/> components.`,
           }),
 
@@ -114,7 +114,7 @@ export default {
 
           divider(),
 
-          title('Examples'),
+          title('Variations'),
 
           example({
             title: 'Size',

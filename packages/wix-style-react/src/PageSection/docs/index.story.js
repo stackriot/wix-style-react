@@ -53,10 +53,10 @@ export default {
 
     tabs([
       tab({
-        title: 'Description',
+        title: 'Design',
         sections: [
           description({
-            title: 'Description',
+            title: 'Usage',
             text:
               'PageSection is a standalone element that divides content of a page into multiple sections.',
           }),
@@ -76,7 +76,7 @@ export default {
 
           divider(),
 
-          title('Examples'),
+          title('Variations'),
 
           example({
             title: 'Structure',
