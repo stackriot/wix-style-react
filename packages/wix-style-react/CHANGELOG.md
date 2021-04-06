@@ -20,7 +20,7 @@ Types of changes:
 - BusinessDashboard Theme | < IconButton /> - Changed inverted hover color [#7006](https://github.com/wix/wix-style-react/pull/7006)
 
 ### Fixed
-`<Page.Sticky/>` - fix `style` prop proptype [#7007](https://github.com/wix/wix-style-react/pull/7007)
+- `<Page.Sticky/>` - fix `style` prop proptype [#7007](https://github.com/wix/wix-style-react/pull/7007)
 
 ## 9.97.0 - 2021-04-05
 ### Deprecated
