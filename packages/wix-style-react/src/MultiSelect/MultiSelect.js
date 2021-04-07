@@ -194,9 +194,8 @@ class MultiSelect extends InputWithOptions {
 MultiSelect.displayName = 'MultiSelect';
 
 MultiSelect.propTypes = {
-  selectedId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /** Closes list once list item is selected */
   closeOnSelect: PropTypes.bool,
-  selectedHighlight: PropTypes.bool,
 
   /** Callback predicate for the filtering options function */
   predicate: PropTypes.func,
@@ -207,11 +206,10 @@ MultiSelect.propTypes = {
   /** Max number of visible lines */
   maxNumRows: PropTypes.number,
 
-  /** Delimiters that will trigger a Submit action (call to `onTagsAdded`). By default it is `[,]` but also
-   * <kbd>enter</kbd> and <kbd>tab</kbd> keys work. */
+  /** Delimiters that will trigger a Submit action (call to onTagsAdded). By default it is [,] but also enter and tab keys work. */
   delimiters: PropTypes.array,
 
-  /** passing `'select'`  will render a readOnly input with menuArrow suffix */
+  /** Passing 'select' will render a readOnly input with menuArrow suffix **/
   mode: PropTypes.string,
 
   /** The status of the Multiselect */
@@ -220,14 +218,10 @@ MultiSelect.propTypes = {
   /** Text to be shown in the status icon tooltip */
   statusMessage: PropTypes.string,
 
-  /** When this callback function is set, tags can be reordered.
-   * The expected callback signature is `onReorder({addedIndex: number, removedIndex: number}) => void`
-   */
+  /** When this callback function is set, tags can be reordered. The expected callback signature is `onReorder({addedIndex: number, removedIndex: number}) => void` **/
   onReorder: PropTypes.func,
 
-  /** A callback which is called when the user performs a Submit-Action.
-   * Submit-Action triggers are: "Enter", "Tab", [typing any defined delimiters], Paste action.
-   * `onManuallyInput(values: Array<string>): void - The array of strings is the result of splitting the input value by the given delimiters */
+  /** A callback which is called when the user enters something in the input and then confirms the input with some action like Enter key or Tab. */
   onManuallyInput: PropTypes.func,
 
   /** A callback which is called when options dropdown is shown */
@@ -236,15 +230,15 @@ MultiSelect.propTypes = {
   /** A callback which is called when options dropdown is hidden */
   onOptionsHide: PropTypes.func,
 
-  /** A callback which is called when the user selects an option from the list.
-   * `onSelect(option: Option): void` - Option is the original option from the provided `options` prop.
-   */
+  /** A callback which is called when the user selects an option from the list. `onSelect(option: Option): void` - Option is the original option from the provided options prop. */
   onSelect: PropTypes.func,
+
+  /** Allows adding your own custom Input component instead of the one that is used by default internally. */
   customInput: PropTypes.elementType
     ? PropTypes.oneOfType([PropTypes.func, PropTypes.elementType])
     : PropTypes.oneOfType([PropTypes.func]),
 
-  /** a node to display as input suffix when the dropdown is closed*/
+  /** A node to display as input suffix when the dropdown is closed */
   customSuffix: PropTypes.node,
 
   /** When set to true this component is disabled */
@@ -253,15 +247,12 @@ MultiSelect.propTypes = {
   /** When set to false, the input will not be cleared on blur */
   clearOnBlur: PropTypes.bool,
 
-  /** A callback function to be called when a tag should be removed.
-   * The expected callback signature is `onRemoveTag(tagId: number | string) => void`.
-   */
+  /** A callback function to be called when a tag should be removed. The expected callback signature is `onRemoveTag(tagId: number | string) => void.` */
   onRemoveTag: PropTypes.func,
 };
 
 MultiSelect.defaultProps = {
   ...InputWithOptions.defaultProps,
-  highlight: true,
   predicate: () => true,
   tags: [],
   delimiters: [','],
