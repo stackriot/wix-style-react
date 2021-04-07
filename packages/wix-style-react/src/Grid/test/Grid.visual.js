@@ -3,6 +3,9 @@ import { storiesOf } from '@storybook/react';
 import { Container, Row, Col } from '..';
 import Text from '../../Text';
 import ExampleAutoAdjustedRow from '../docs/ExampleAutoAdjustedRow';
+import ExampleTwoHalfWidthRows from '../docs/ExampleTwoHalfWidthRows';
+import ExampleTwoHalfWidthRowsFluid from '../docs/ExampleTwoHalfWidthRowsFluid';
+import ExampleFixedWidthGrid from '../docs/ExampleFixedWidthGrid';
 
 const block = (
   <div
@@ -55,6 +58,18 @@ tests.forEach(test => {
     </Container>
   ));
 });
+
+storiesOf('Grid', module).add('2 half width rows', () => (
+  <ExampleTwoHalfWidthRows />
+));
+
+storiesOf('Grid', module).add('2 half width rows (fluid container)', () => (
+  <ExampleTwoHalfWidthRowsFluid />
+));
+
+storiesOf('Grid', module).add('Fixed width grid', () => (
+  <ExampleFixedWidthGrid />
+));
 
 storiesOf('Grid', module).add('Auto adjusted', () => (
   <ExampleAutoAdjustedRow />
