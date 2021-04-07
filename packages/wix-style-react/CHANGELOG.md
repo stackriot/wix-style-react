@@ -14,6 +14,11 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
+## Next
+
+### Changed
+- BusinessDashboard Theme | <Card /> - decreased content bottom padding [#7004](https://github.com/wix/wix-style-react/pull/7004)
+
 ## 9.98.0 - 2021-04-06
 ### Changed
 - BusinessDashboard Theme | < IconButton /> - Changed inverted hover color [#7006](https://github.com/wix/wix-style-react/pull/7006)
