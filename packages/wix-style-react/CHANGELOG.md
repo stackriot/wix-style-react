@@ -24,6 +24,7 @@ Types of changes:
 - BusinessDashboard Theme | `<IconButton />` - Changed colors [#6968](https://github.com/wix/wix-style-react/pull/6968)
 - BusinessDashboard Theme | `<Popover>` - Changed colors [#6991](https://github.com/wix/wix-style-react/pull/6991)
 - BusinessDashboard Theme | `<Button />` - Added light primary skin [#6973](https://github.com/wix/wix-style-react/pull/6973)
+- BusinessDashboard Theme | `<Button />` - Changed min width [#6967](https://github.com/wix/wix-style-react/pull/6967)
 
 ### Added
 - `<SidePanel />` - added width prop [#7002](https://github.com/wix/wix-style-react/pull/7002)
