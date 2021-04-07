@@ -99,6 +99,29 @@ export default {
           }),
 
           example({
+            title: 'Custom Width',
+            text: 'A simple examples of panel with a customized width',
+            source: `
+<Box direction="vertical" gap="5">
+  <SidePanel width="250px">  
+    <SidePanel.Content>
+      <Box background="#fafafa" height="200px" align="center" verticalAlign="middle">
+        content goes here
+      </Box>
+    </SidePanel.Content>
+  </SidePanel>
+  <SidePanel width={600}>  
+    <SidePanel.Content>
+      <Box background="#fafafa" height="200px" align="center" verticalAlign="middle">
+        content goes here
+      </Box>
+    </SidePanel.Content>
+  </SidePanel>
+</Box>
+`,
+          }),
+
+          example({
             title: 'Custom Header title element',
             text:
               'Change the header text to be a custom element, for example a search-bar',
