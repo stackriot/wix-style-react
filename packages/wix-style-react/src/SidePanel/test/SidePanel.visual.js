@@ -1,4 +1,5 @@
 import React from 'react';
+import { visualize } from 'storybook-snapper';
 import { storiesOf } from '@storybook/react';
 import SidePanel from '../SidePanel';
 import Box from '../../Box';
@@ -69,19 +70,31 @@ const tests = [
   },
 ];
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, header, content, footer }) => {
-    storiesOf(`SidePanel${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <div style={{ backgroundColor: '#eee', padding: '10px' }}>
-          <SidePanel>
-            {header || simpleHeader()}
-            {content || <SidePanel.Content>{dummyContent()}</SidePanel.Content>}
-            {footer || simpleFooter()}
-          </SidePanel>
-        </div>
-      ),
-    );
-  });
-});
+export const runTests = (
+  { themeName, testWithTheme } = { testWithTheme: i => i },
+) => {
+  visualize(
+    `${themeName ? `${themeName}|` : ''}${SidePanel.displayName}`,
+    () => {
+      tests.forEach(({ describe, its }) => {
+        its.forEach(({ it, header, content, footer }) => {
+          storiesOf(`SidePanel${describe ? '/' + describe : ''}`, module).add(
+            it,
+            () =>
+              testWithTheme(
+                <div style={{ backgroundColor: '#eee', padding: '10px' }}>
+                  <SidePanel>
+                    {header || simpleHeader()}
+                    {content || (
+                      <SidePanel.Content>{dummyContent()}</SidePanel.Content>
+                    )}
+                    {footer || simpleFooter()}
+                  </SidePanel>
+                </div>,
+              ),
+          );
+        });
+      });
+    },
+  );
+};

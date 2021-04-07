@@ -27,6 +27,7 @@ import * as divider from './components/Divider';
 import * as circularProgressBar from './components/CircularProgressBar';
 import * as linearProgressBar from './components/LinearProgressBar';
 import * as listItemSelect from './components/ListItemSelect';
+import * as sidepanel from './components/SidePanel';
 import * as sidebar from './components/Sidebar';
 import * as listItemActions from './components/ListItemAction';
 import * as popoverMenu from './components/PopoverMenu';
@@ -36,6 +37,7 @@ import * as emptyState from './components/EmptyState';
 import * as modal from './components/Modal';
 import * as trendIndicator from './components/TrendIndicator';
 import * as closeButton from './components/CloseButton';
+import * as infoIcon from './components/InfoIcon';
 import * as tag from './components/Tag';
 import * as checkbox from './components/Checkbox';
 import * as thumbnail from './components/Thumbnail';
@@ -141,6 +143,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
             source: sidebar.playground,
           }),
           example({
+            text: TextComponent('SidePanel'),
+            source: sidepanel.playground,
+          }),
+          example({
             text: TextComponent('Card'),
             source: card.playground,
           }),
@@ -183,6 +189,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('CloseButton'),
             source: closeButton.playground,
+          }),
+          example({
+            text: TextComponent('InfoIcon'),
+            source: infoIcon.playground,
           }),
           example({
             text: TextComponent('Tag'),

@@ -1,0 +1,22 @@
+:import {
+  -st-from: "../../../../../SidePanel/Header/Header.st.css";
+  -st-default: SidePanelHeader;
+}
+
+.root {
+  -st-extends: SidePanelHeader;
+  padding: 0px;
+}
+:import {
+  -st-from: '../../../foundations/colors.st.css';
+  -st-named: D10;
+}
+
+.root::titleContainer {
+  padding: 20px 12px 0px 20px;
+  vertical-align: middle;
+}
+
+.root::closeButton {
+    color: value(D10);
+}

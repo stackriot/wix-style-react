@@ -1,0 +1,33 @@
+:import {
+  -st-from: "../../../../../SidePanel/Content/Content.st.css";
+  -st-default: SidePanelContent;
+}
+
+:import {
+  -st-from: '../../../foundations/colors.st.css';
+  -st-named: D40, D55;
+}
+
+.root {
+  -st-extends: SidePanelContent;
+  padding: 24px 20px 24px 20px;
+}
+
+.root:noPadding {
+  padding: 0;
+}
+
+.root::-webkit-scrollbar {
+  width: 12px;
+}
+
+.root::-webkit-scrollbar-thumb {
+  background-color: value(D55);
+  border-width: 4px;
+  border-radius: 14px;
+}
+
+.root::-webkit-scrollbar-thumb:hover,
+.root::-webkit-scrollbar-thumb:active {
+  background-color: value(D40);
+}

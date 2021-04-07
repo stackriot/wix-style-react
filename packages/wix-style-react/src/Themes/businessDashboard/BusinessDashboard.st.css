@@ -57,6 +57,11 @@
 }
 
 :import {
+  -st-from: "../../InfoIcon/InfoIcon.st.css";
+  -st-default: InfoIcon;
+}
+
+:import {
   -st-from: "../../Card/Header/Header.st.css";
   -st-default: CardHeader;
 }
@@ -99,6 +104,16 @@
 :import {
   -st-from: "../../Sidebar/Sidebar.st.css";
   -st-default: Sidebar;
+}
+
+:import {
+  -st-from: "../../SidePanel/Header/Header.st.css";
+  -st-default: SidePanelHeader;
+}
+
+:import {
+  -st-from: "../../SidePanel/Content/Content.st.css";
+  -st-default: SidePanelContent;
 }
 
 :import {
@@ -243,6 +258,11 @@
 }
 
 :import {
+  -st-from: "./components/InfoIcon.st.css";
+  -st-default: InfoIconOverrides;
+}
+
+:import {
   -st-from: "./components/Card/Header.st.css";
   -st-default: CardHeaderOverrides;
 }
@@ -310,6 +330,16 @@
 :import {
   -st-from: "./components/SidebarSectionTitle.st.css";
   -st-default: SidebarSectionTitleOverrides;
+}
+
+:import {
+  -st-from: "./components/SidePanel/Header/Header.st.css";
+  -st-default: SidePanelHeaderOverrides;
+}
+
+:import {
+  -st-from: "./components/SidePanel/Content/Content.st.css";
+  -st-default: SidePanelContentOverrides;
 }
 
 :import {
@@ -410,6 +440,9 @@
   IconButton {
     -st-mixin: IconButtonOverrides();
   }
+  InfoIcon {
+    -st-mixin: InfoIconOverrides();
+  }
   CardHeader {
     -st-mixin: CardHeaderOverrides();
   }
@@ -448,6 +481,12 @@
   }
   SidebarSectionItem {
     -st-mixin: SidebarSectionItemOverrides();
+  }
+  SidePanelHeader {
+    -st-mixin: SidePanelHeaderOverrides();
+  }
+  SidePanelContent {
+    -st-mixin: SidePanelContentOverrides();
   }
   ListItemSelect {
     -st-mixin: ListItemSelectOverrides();
