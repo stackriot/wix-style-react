@@ -87,6 +87,18 @@ export const playground = `
       </Button>
     </Box>  
   </Layout>
+  <Layout cols={4} gap="10px" alignItems="center">
+    <Box padding="3px" backgroundColor="D60">
+      <Button priority="primary" size="small" skin="light" >
+        Primary light
+      </Button>
+    </Box>  
+    <Box padding="3px" backgroundColor="D80">
+      <Button priority="primary" skin="light" disabled>
+        Primary light
+      </Button>
+    </Box>  
+  </Layout>  
 </ThemeProvider>
 </div>
 `;

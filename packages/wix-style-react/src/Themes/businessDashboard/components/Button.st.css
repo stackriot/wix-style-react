@@ -48,6 +48,33 @@
   color: value(D10-40);
 }
 
+/* Skin light primary */
+.root:skin(light):priority(primary) {
+  -st-mixin: bold;
+
+  background-color: value(D80);
+  border-color: value(D80);
+  color: value(B10);
+}
+
+.root:skin(light):priority(primary):hover {
+  background-color: value(B50);
+  border-color: value(B50);
+  color: value(B05);
+}
+
+.root:skin(light):priority(primary):active {
+  background-color: value(B10);
+  border-color: value(B10);
+  color: value(D80);
+}
+
+.root:skin(light):priority(primary):disabled {
+  background-color: value(D70);
+  border-color: value(D70);
+  color: value(D10-40);
+}
+
 
 /* Skin: standard - secondary */
 
