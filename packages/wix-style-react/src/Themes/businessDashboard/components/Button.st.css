@@ -15,6 +15,7 @@
 
 .root {
   -st-extends: Button;
+  min-width: 40px;
 }
 
 .root:focus-visible {
