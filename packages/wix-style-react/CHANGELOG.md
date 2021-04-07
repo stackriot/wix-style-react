@@ -22,6 +22,9 @@ Types of changes:
 - BusinessDashboard Theme | `<SidePanel>`  - Changed spacings and colors [#6971](https://github.com/wix/wix-style-react/pull/6971)
 - BusinessDashboard Theme | `<SectionHelper>` - override styles [#6950](https://github.com/wix/wix-style-react/pull/6950)
 
+### Added
+- `<SidePanel />` - added width prop [#7002](https://github.com/wix/wix-style-react/pull/7002)
+
 ## 9.98.0 - 2021-04-06
 ### Changed
 - BusinessDashboard Theme | < IconButton /> - Changed inverted hover color [#7006](https://github.com/wix/wix-style-react/pull/7006)
