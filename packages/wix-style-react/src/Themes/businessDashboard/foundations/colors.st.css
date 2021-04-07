@@ -44,10 +44,15 @@
   /* Destructive */
   R10: #EE4437;
   R20: #F1695F;
+  R40: #FDE3E1;
   R50: #FDECEB;
 
   /* Orange */
   O10: #F96132;
+
+  /* Yellow */
+  Y30: #FFD988;
+  Y50: #FFF7E2;
 
   /* Categories */
   A2: #5A48F5;

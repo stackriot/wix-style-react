@@ -211,6 +211,11 @@
   -st-default: TableListItem;
 }
 
+:import {
+  -st-from: "../../SectionHelper/SectionHelper.st.css";
+  -st-default: SectionHelper;
+}
+
 /* Overrides */
 :import {
   -st-from: "./components/Button.st.css";
@@ -412,6 +417,11 @@
   -st-default: TableListItemOverrides;
 }
 
+:import {
+  -st-from: "./components/SectionHelper.st.css";
+  -st-default: SectionHelperOverrides;
+}
+
 @st-scope .root {
   Button {
     -st-mixin: ButtonOverrides();
@@ -526,6 +536,9 @@
   }
   TableListItem {
     -st-mixin: TableListItemOverrides();
+  }
+  SectionHelper {
+    -st-mixin: SectionHelperOverrides();
   }
 }
 

@@ -30,6 +30,7 @@ import { runTests as ThumbnailTests } from '../../../Thumbnail/test/Thumbnail.vi
 import { runTests as VerticalTabsItemTests } from '../../../VerticalTabsItem/test/VerticalTabsItem.visual';
 import { runTests as CustomModalLayoutTests } from '../../../CustomModalLayout/test/CustomModalLayout.visual';
 import { runTests as TableListItemTests } from '../../../TableListItem/test/TableListItem.visual';
+import { runTests as SectionHelper } from '../../../SectionHelper/test/SectionHelper.visual';
 
 import { ThemeProvider } from '../../..';
 
@@ -72,3 +73,4 @@ ThumbnailTests({ themeName, testWithTheme });
 VerticalTabsItemTests({ themeName, testWithTheme });
 CustomModalLayoutTests({ themeName, testWithTheme });
 TableListItemTests({ themeName, testWithTheme });
+SectionHelper({ themeName, testWithTheme });
