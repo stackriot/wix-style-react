@@ -1,0 +1,30 @@
+:import {
+  -st-from: "../../../Popover/Popover.st.css";
+  -st-default: Popover;
+}
+
+:import {
+  -st-from: "../../../Foundation/stylable/shadows.st.css";
+  -st-named: shadow30;
+}
+
+:import {
+  -st-from: "../foundations/colors.st.css";
+  -st-named: D20;
+}
+
+.root {
+  -st-extends: Popover;
+}
+
+.root:theme(dark)::popoverContent {
+  background: value(D20);
+}
+
+.root:theme(dark)::arrow {
+  border-color: transparent value(D20) value(D20) transparent;
+}
+.root::popoverContent {
+  box-shadow: value(shadow30);
+}
+

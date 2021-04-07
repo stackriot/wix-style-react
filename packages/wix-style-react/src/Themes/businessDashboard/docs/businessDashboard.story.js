@@ -31,6 +31,7 @@ import * as sidepanel from './components/SidePanel';
 import * as sidebar from './components/Sidebar';
 import * as listItemActions from './components/ListItemAction';
 import * as popoverMenu from './components/PopoverMenu';
+import * as popover from './components/Popover';
 import * as input from './components/Input';
 import * as search from './components/Search';
 import * as emptyState from './components/EmptyState';
@@ -158,6 +159,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('PopoverMenu'),
             source: popoverMenu.playground,
+          }),
+          example({
+            text: TextComponent('Popover'),
+            source: popover.playground,
           }),
           example({
             text: TextComponent('Badge'),

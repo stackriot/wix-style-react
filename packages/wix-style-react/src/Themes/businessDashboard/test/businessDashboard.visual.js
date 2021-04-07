@@ -31,6 +31,7 @@ import { runTests as VerticalTabsItemTests } from '../../../VerticalTabsItem/tes
 import { runTests as CustomModalLayoutTests } from '../../../CustomModalLayout/test/CustomModalLayout.visual';
 import { runTests as TableListItemTests } from '../../../TableListItem/test/TableListItem.visual';
 import { runTests as SectionHelper } from '../../../SectionHelper/test/SectionHelper.visual';
+import { runTests as PopoverTests } from '../../../Popover/test/Popover.visual';
 
 import { ThemeProvider } from '../../..';
 
@@ -74,3 +75,4 @@ VerticalTabsItemTests({ themeName, testWithTheme });
 CustomModalLayoutTests({ themeName, testWithTheme });
 TableListItemTests({ themeName, testWithTheme });
 SectionHelper({ themeName, testWithTheme });
+PopoverTests({ themeName, testWithTheme });

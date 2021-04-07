@@ -102,6 +102,11 @@
 }
 
 :import {
+  -st-from: "../../Popover/Popover.st.css";
+  -st-default: Popover;
+}
+
+:import {
   -st-from: "../../Sidebar/Sidebar.st.css";
   -st-default: Sidebar;
 }
@@ -300,6 +305,11 @@
 :import {
   -st-from: "./components/PopoverMenu.st.css";
   -st-default: PopoverMenuOverrides;
+}
+
+:import {
+  -st-from: "./components/Popover.st.css";
+  -st-default: PopoverOverrides;
 }
 
 :import {
@@ -556,6 +566,10 @@
 
   PopoverMenu.root {
     -st-mixin: PopoverMenuOverrides();
+  }
+
+  Popover.root {
+    -st-mixin: PopoverOverrides();
   }
 
   .root {
