@@ -20,7 +20,7 @@ Types of changes:
 - BusinessDashboard Theme | <Card /> - decreased content bottom padding [#7004](https://github.com/wix/wix-style-react/pull/7004)
 - BusinessDashboard Theme | <Thumbnail> - Apply overrides to all size thumbnail [#6992](https://github.com/wix/wix-style-react/pull/6992)
 - BusinessDashboard Theme | <SidePanel>  - Changed spacings and colors [#6971](https://github.com/wix/wix-style-react/pull/6971)
-- BusinessDashboard Theme | SectionHelper - override styles [#6950](https://github.com/wix/wix-style-react/pull/6950)
+- BusinessDashboard Theme | <SectionHelper> - override styles [#6950](https://github.com/wix/wix-style-react/pull/6950)
 
 ## 9.98.0 - 2021-04-06
 ### Changed
