@@ -5,7 +5,7 @@
 
 .root {
   -st-extends: Content;
-  padding: 12px 24px 24px;
+  padding: 12px 24px 16px 24px;
 }
 
 .root:emptyStateContent {
