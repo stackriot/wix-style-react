@@ -53,7 +53,7 @@
 .root:priority(secondary):hover {
   color: value(B05);
   border-color: transparent;
-  background-color: value(B50);
+  border-color: value(B05);
 }
 
 .root:priority(secondary):active {
@@ -63,8 +63,8 @@
 }
 
 .root:priority(secondary):disabled {
-  background-color: value(D70);
-  border-color: value(D70);
+  background-color: transparent;
+  border-color: value(D55);
   color: value(D10-40);
 }
 
