@@ -35,6 +35,10 @@
   color: value(selectedTextColor);
 }
 
+.root:useBmSidebarNewDesign:skin(dark):selected {
+  background-color: #42454C;
+}
+
 .root:skin(dark):selected::text {
   -st-mixin: bold;
   color: value(selectedTextColor);
@@ -44,6 +48,10 @@
 
 .root:skin(dark):hover, .root:skin(dark):hover:selected:not(:disabled) {
   background-color: value(hoveredBackgroundColor);
+}
+
+.root:useBmSidebarNewDesign:skin(dark):hover, .root:useBmSidebarNewDesign:skin(dark):hover:selected:not(:disabled) {
+  background-color: #2B2E36;
 }
 
 /* Disabled */

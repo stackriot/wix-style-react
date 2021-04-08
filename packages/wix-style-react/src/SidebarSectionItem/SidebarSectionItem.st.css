@@ -27,7 +27,7 @@
 
 .root {
   -st-extends: Focusable;
-  -st-states: selected, disabled, prefix, suffix, drillable, alwaysDisplayChevron, skin(enum(dark, light));
+  -st-states: selected, disabled, prefix, suffix, drillable, alwaysDisplayChevron, skin(enum(dark, light)), useBmSidebarNewDesign;
 
   display: flex;
   justify-content: space-between;
