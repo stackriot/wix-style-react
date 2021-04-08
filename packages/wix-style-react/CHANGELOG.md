@@ -14,6 +14,11 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
+## Next
+
+### Added
+- BusinessDashboard Theme | `<SidebarSectionItem/>` - new sidebar experiment for changing hover and active colors [#7015](https://github.com/wix/wix-style-react/pull/7015)
+
 ## 9.99.0 - 2021-04-07
 
 ### Changed
