@@ -247,19 +247,6 @@ describe('Dropdown', () => {
     });
 
     describe('Rerender', () => {
-      it('should keep value when unrelated prop updates', async () => {
-        const { driver: _driver, rerender } = render(
-          <Dropdown options={getOptions()} />,
-        );
-        const { inputDriver } = _driver;
-
-        await inputDriver.enterText('foo');
-        expect(await inputDriver.getValue()).toBe('foo');
-        rerender(<Dropdown options={getOptions()} status="error" />);
-
-        expect(await inputDriver.getValue()).toBe('foo');
-      });
-
       it('should clear selection when selectedId is updated to null', async () => {
         const { driver: _driver, rerender } = render(
           <Dropdown options={getOptions()} selectedId={0} />,
