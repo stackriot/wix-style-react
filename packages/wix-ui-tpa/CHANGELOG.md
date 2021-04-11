@@ -1,3 +1,12 @@
+# 2.34.0 (2021-04-11)
+
+
+### Bug Fixes
+
+* **Date Picker:** fix rtl arrows position in responsive designs ([#7009](https://github.com/wix/wix-style-react/issues/7009)) ([b71e759](https://github.com/wix/wix-style-react/commit/b71e759352774d9af81617a02fa187b8fbf00bd4))
+* **Dropdown:** Mobile Native Dropdown - fix style override support ([87b2784](https://github.com/wix/wix-style-react/commit/87b278493796742b1c82a3ac6ab67cd2b3a54fe3))
+
+
 ## 2.33.0 (2021-04-06)
 
 

@@ -16,11 +16,14 @@ Types of changes:
 
 ## Next
 
+## 9.100.0 - 2021-04-11
+### Fixed
+- Fix SSR document reference error
+
 ### Added
 - BusinessDashboard Theme | `<SidebarSectionItem/>` - new sidebar experiment for changing hover and active colors [#7015](https://github.com/wix/wix-style-react/pull/7015)
 
 ## 9.99.0 - 2021-04-07
-
 ### Changed
 - BusinessDashboard Theme | `<Card />` - decreased content bottom padding [#7004](https://github.com/wix/wix-style-react/pull/7004)
 - BusinessDashboard Theme | `<Thumbnail>` - Apply overrides to all size thumbnail [#6992](https://github.com/wix/wix-style-react/pull/6992)
@@ -33,7 +36,7 @@ Types of changes:
 - BusinessDashboard Theme | `<Badge>` - Changed spacings and colors [#6985](https://github.com/wix/wix-style-react/pull/6985)
 
 ### Added
-- `<SidePanel />` - added width prop [#7002](https://github.com/wix/wix-style-react/pull/7002)
+- `<SidePanel/>` - added width prop [#7002](https://github.com/wix/wix-style-react/pull/7002)
 
 ## 9.98.0 - 2021-04-06
 ### Changed
