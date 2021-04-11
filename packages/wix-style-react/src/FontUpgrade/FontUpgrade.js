@@ -9,7 +9,7 @@ class FontUpgrade extends React.PureComponent {
 
     // TODO - remove this code when Madefor supports Vietnamese
     const vietnamese =
-      document &&
+      typeof document !== 'undefined' &&
       typeof document.cookie === 'string' &&
       document.cookie.includes('wixLanguage=vi;');
 
