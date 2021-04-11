@@ -173,11 +173,11 @@
 }
 
 .calendar::header::arrowLeft:skin(light) {
-    margin-right: 0;
+    margin: 0;
 }
 
 .calendar::header::arrowRight:skin(light) {
-    margin-left: 0;
+    margin: 0;
 }
 
 .calendar::header::arrowLeft:skin(light):hover, .calendar::header::arrowRight:skin(light):hover {
