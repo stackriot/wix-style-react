@@ -18,7 +18,7 @@ Types of changes:
 
 ## 9.100.0 - 2021-04-11
 ### Fixed
-- Fix SSR document reference error
+- Fix SSR document reference error [#7020](https://github.com/wix/wix-style-react/pull/7020)
 
 ### Added
 - BusinessDashboard Theme | `<SidebarSectionItem/>` - new sidebar experiment for changing hover and active colors [#7015](https://github.com/wix/wix-style-react/pull/7015)
