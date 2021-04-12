@@ -52,6 +52,8 @@ class Input extends Component {
     this._isMounted = true;
     const { autoFocus, value } = this.props;
 
+    autoFocus && this._onFocus();
+
     /*
      * autoFocus doesn't automatically selects text like focus do.
      * Therefore we set the selection range, but in order to support prior implementation we set the start position as the end in order to place the cursor there.
