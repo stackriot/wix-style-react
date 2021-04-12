@@ -16,7 +16,7 @@ Types of changes:
 
 ## Next
 ### Fixed
-- <Input/> fix styles for autoFocus prop [#7023](https://github.com/wix/wix-style-react/pull/7023)
+- `<Input/>` - fix styles for autoFocus prop [#7023](https://github.com/wix/wix-style-react/pull/7023)
 
 ## 9.100.0 - 2021-04-11
 ### Fixed
