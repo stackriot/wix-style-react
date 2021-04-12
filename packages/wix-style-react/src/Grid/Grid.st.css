@@ -1,0 +1,19 @@
+.rowLayout {
+  -st-states: stretchViewsVertically;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.rowLayout:stretchViewsVertically .columnRoot {
+  display: flex;
+  flex-direction: column;
+}
+
+.rowRoot:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.columnRoot {
+  padding-right: 15px;
+  padding-left: 15px;
+}

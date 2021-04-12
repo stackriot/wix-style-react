@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { st, classes } from './styles.st.css';
 
-const Cell = ({ span, rows, children, vertical }) => (
+const Cell = ({ span, rows, children, vertical, className }) => (
   <div
     style={{
       gridColumn: `span ${span}`,
       gridRow: `span ${rows}`,
     }}
-    className={st(classes.root, { vertical })}
+    className={st(classes.root, { vertical }, className)}
     children={children}
   />
 );

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { classes } from './styles.st.css';
+import { st, classes } from './styles.st.css';
 import { WixStyleReactContext } from '../../WixStyleReactProvider/context';
 
 const DEFAULT_GAP = '30px';
@@ -14,6 +14,7 @@ const Layout = ({
   alignItems,
   rowHeight,
   dataHook,
+  className,
 }) => (
   <WixStyleReactContext.Consumer>
     {({ reducedSpacingAndImprovedLayout }) => (
@@ -31,7 +32,7 @@ const Layout = ({
             ? `repeat(${cols}, minmax(0, 1fr))`
             : undefined,
         }}
-        className={classes.root}
+        className={st(classes.root, className)}
         children={children}
       />
     )}
