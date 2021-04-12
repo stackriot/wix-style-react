@@ -16,11 +16,11 @@ Types of changes:
 
 ## Next
 ### Fixed
-- Fix SSR document reference error [#7020](https://github.com/wix/wix-style-react/pull/7020)
+- <Input/> fix styles for autoFocus prop [#7023](https://github.com/wix/wix-style-react/pull/7023)
 
 ## 9.100.0 - 2021-04-11
 ### Fixed
-- <Input/> fix styles for autoFocus prop [#7023](https://github.com/wix/wix-style-react/pull/7023)
+- Fix SSR document reference error [#7020](https://github.com/wix/wix-style-react/pull/7020)
 
 ### Added
 - BusinessDashboard Theme | `<SidebarSectionItem/>` - new sidebar experiment for changing hover and active colors [#7015](https://github.com/wix/wix-style-react/pull/7015)
