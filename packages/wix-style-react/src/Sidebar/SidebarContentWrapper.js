@@ -24,7 +24,9 @@ export class SidebarContentWrapper extends Component {
     this.state = {
       isScrollbarDisplayed: false,
     };
+
     this.childrenResizeObserver =
+      typeof window !== 'undefined' &&
       'ResizeObserver' in window &&
       new ResizeObserver(this._handleChildrenResize);
   }
