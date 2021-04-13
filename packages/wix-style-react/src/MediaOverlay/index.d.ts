@@ -11,6 +11,7 @@ export interface MediaOverlayProps {
   onClick?(): void;
   removeRoundedBorders?: boolean;
   className?: string;
+  borderRadius?: string | number;
 }
 
 export type MediaOverlayContentVisible = 'default' | 'hover' | 'always';
