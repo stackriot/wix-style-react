@@ -40,6 +40,9 @@ const inputDriverFactory = ({ element, eventTrigger }) => {
     mouseOut: () => ReactTestUtils.Simulate.mouseOut(input),
     clearText: () => driver.enterText(''),
     enterText: text => {
+      if (driver.getReadOnly() || driver.isDisabled()) {
+        return;
+      }
       input.value = text;
       ReactTestUtils.Simulate.change(input, {
         target: { name: getName(), type: getType(), value: text },

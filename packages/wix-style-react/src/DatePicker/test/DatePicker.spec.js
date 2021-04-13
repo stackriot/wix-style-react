@@ -380,6 +380,34 @@ describe('DatePicker', () => {
         });
       });
 
+      describe('`disableKeyboardType` prop', () => {
+        it('should allow typing in input by default', async () => {
+          const {
+            driver: { inputDriver },
+          } = render(
+            <DatePicker onChange={noop} value={new Date('03/25/2021')} />
+          );
+          await inputDriver.enterText('03/25/202');
+
+          expect(await inputDriver.getValue()).toBe('03/25/202');
+        });
+
+        it('should be readOnly when disableKeyboardType is true', async () => {
+          const {
+            driver: { inputDriver },
+          } = render(
+            <DatePicker
+              onChange={noop}
+              value={new Date('03/25/2021')}
+              disableKeyboardType
+            />,
+          );
+          expect(await inputDriver.getReadOnly()).toBe(true);
+          await inputDriver.enterText('03/25/202');
+          expect(await inputDriver.getValue()).toBe('03/25/2021');
+        });
+      });
+
       describe('with year dropdown', () => {
         it('should give a possibility to choose date from another year', async () => {
           const date = new Date(2015, 9, 2);
@@ -759,6 +787,19 @@ describe('DatePicker', () => {
         expect(await calendarDriver.isVisible()).toBe(false);
         await driver.open();
         expect(await calendarDriver.isVisible()).toBe(false);
+      });
+      it('should not allow typing when readOnly is true', async () => {
+        const {
+          driver: { inputDriver },
+        } = render(
+          <DatePicker
+            onChange={noop}
+            value={new Date('03/25/2021')}
+            readOnly
+          />,
+        );
+        await inputDriver.enterText('03/25/202');
+        expect(await inputDriver.getValue()).toBe('03/25/2021');
       });
     });
 

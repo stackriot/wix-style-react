@@ -166,6 +166,13 @@ export default {
             source: examples.clearButton,
           }),
 
+          example({
+            title: 'Disable Typing',
+            text:
+              '`<DatePicker />` allows to disable keyboard typing so that choosing a date is possible only by picking from the Calendar.',
+            source: examples.disableKeyboardType,
+          }),
+
           // TODO - disabled until https://github.com/wix/wix-style-react/issues/4157 is fixed
           // example({
           //   title: 'Range Selection',

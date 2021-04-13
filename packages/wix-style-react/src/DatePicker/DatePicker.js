@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DayPickerInput from 'react-day-picker/DayPickerInput';
 import { isSameDay, setYear, setMonth, setDate } from 'date-fns';
 import Popover from '../Popover';
 import Calendar from '../Calendar';
@@ -55,6 +54,7 @@ export default class DatePicker extends React.PureComponent {
       value: props.value || new Date(),
       isOpen: initialOpen,
       isDateInputFocusable: !props.initialOpen,
+      inputValue: props.value || '',
     };
 
     deprecationLog(
@@ -95,6 +95,24 @@ export default class DatePicker extends React.PureComponent {
 
   makeInputFocusable = () => this.setState({ isDateInputFocusable: true });
 
+  _handleInputChange = ({ dateVal, textVal }) => {
+    this._saveNewValue(dateVal);
+    this.setState({ inputValue: textVal });
+  };
+
+  componentDidUpdate = prevProps => {
+    const { value: prevValue } = prevProps;
+    const { value: newValue } = this.props;
+    if (newValue !== prevValue) {
+      if (newValue) {
+        this._saveNewValue(newValue);
+      } else {
+        this._saveNewValue(new Date());
+        this.setState({ inputValue: newValue });
+      }
+    }
+  };
+
   _saveNewValue = (value, modifiers = {}) => {
     if (modifiers.disabled) {
       return;
@@ -114,26 +132,19 @@ export default class DatePicker extends React.PureComponent {
         oldValue,
       );
 
-      this.setState({ value: newValue }, () => this.props.onChange(newValue));
+      this.setState({ value: newValue, inputValue: newValue }, () => this.props.onChange(newValue));
     }
   };
 
   _handleKeyDown = event => {
     // TODO: dirty for now
-    // tab key should move focus so can't preventDefault
-    if (event.keyCode !== 9) {
-      event.preventDefault();
-    }
 
     if (!this.state.isOpen) {
       this.openCalendar();
     }
 
-    // keyHandler(this.state.value);
+    /* keyHandler(this.state.value);*/
   };
-
-  _renderInputWithRefForward = () =>
-    React.forwardRef((props, ref) => this._renderInput({ ...props, ref }));
 
   _renderInput = () => {
     const {
@@ -141,7 +152,6 @@ export default class DatePicker extends React.PureComponent {
       disabled,
       placeholderText,
       readOnly,
-      value: initialValue,
       status,
       statusMessage,
       customInput,
@@ -152,12 +162,14 @@ export default class DatePicker extends React.PureComponent {
       size,
       clearButton,
       onClear,
+      disableKeyboardType,
     } = this.props;
     const { onFocus, ...inputPropsRest } = inputProps;
     return (
       <DateInput
         dataHook={inputDataHook}
-        value={initialValue}
+        className={classes.input}
+        value={this.state.inputValue}
         /* This line normally does nothing, because once clicked, component is already focused, hence onFocus
         kicks in and open the calendar.
         Why do we still keep this line? Backward compatibility for clients that test the component and simulate click
@@ -182,6 +194,8 @@ export default class DatePicker extends React.PureComponent {
         size={size}
         clearButton={clearButton}
         onClear={onClear}
+        onChange={this._handleInputChange}
+        disableEditing={disableKeyboardType}
         {...(customInput ? customInput.props : {})}
         {...inputPropsRest}
       />
@@ -213,6 +227,7 @@ export default class DatePicker extends React.PureComponent {
       monthDropdownAriaLabelledBy,
       yearDropdownAriaLabel,
       yearDropdownAriaLabelledBy,
+      disableKeyboardType,
     } = this.props;
 
     const { isOpen, value } = this.state;
@@ -249,7 +264,7 @@ export default class DatePicker extends React.PureComponent {
 
     return (
       <div
-        className={st(classes.root, className)}
+        className={st(classes.root, { disableKeyboardType }, className)}
         data-hook={dataHook}
         style={{ width: width }}
       >
@@ -267,10 +282,7 @@ export default class DatePicker extends React.PureComponent {
               className={classes.inputContainer}
               data-hook={dataHooks.datePickerInputContainer}
             >
-              <DayPickerInput
-                component={this._renderInputWithRefForward()}
-                keepFocus={false}
-              />
+              {this._renderInput()}
             </div>
           </Popover.Element>
           <Popover.Content>
@@ -391,4 +403,7 @@ DatePicker.propTypes = {
 
   /** Displays clear button (X) on a non-empty input and calls callback with no arguments */
   onClear: PropTypes.func,
+
+  /** Disable typing the in the input. When true, choosing a date is possible only by picking from the calendar */
+  disableKeyboardType: PropTypes.bool,
 };

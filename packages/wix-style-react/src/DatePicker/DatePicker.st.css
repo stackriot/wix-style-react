@@ -8,7 +8,13 @@
   -st-default: Calendar;
 }
 
+:import {
+  -st-from: "../Input/Input.st.css";
+  -st-default: Input;
+}
+
 .root {
+  -st-states: disableKeyboardType;
 }
 
 .popover {
@@ -16,8 +22,17 @@
   display: block;
 }
 
+.input {
+  -st-extends: Input;
+}
+
 .inputContainer {
   width: 100%;
+  cursor: text;
+}
+
+.root:disableKeyboardType .inputContainer, .root:disableKeyboardType .input::input{
+  cursor: pointer;
 }
 
 .calendar {

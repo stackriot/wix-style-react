@@ -1,39 +1,45 @@
 export const simple = `
-class DatePickerExample extends React.PureComponent {
-  state = { value: new Date() };
-
-  render() {
-    const { value } = this.state;
-    return (
-      <DatePicker
-        placeholderText="Select Date"
-        value={value}
-        onChange={value => this.setState({ value })}
-      />
-    );
-  }
+() => {
+  const [value, setState] = React.useState('');
+  return (
+    <DatePicker
+      placeholderText="Select Date"
+      value={value || new Date()}
+      onChange={value => setState(value)}
+    />
+  );
 }
 `;
 
 export const customizations = `
-<DatePicker
-  value={new Date('08/07/1986')}
-  placeholderText="Select Date"
-  onChange={event => console.log(event)}
-  dateFormatV2="d/L/yy"
-  locale='fr'
-  showMonthDropdown
-  showYearDropdown
-/>
+() => {
+  const [value, setState] = React.useState('');
+  return (
+    <DatePicker
+      value={value || new Date('08/07/1986')}
+      placeholderText="Select Date"
+      onChange={value => setState(value)}
+      dateFormatV2="d/L/yy"
+      locale='fr'
+      showMonthDropdown
+      showYearDropdown
+    />
+  )
+  }
 `;
 
 export const filterDate = `
-<DatePicker
-  value={new Date()}
-  placeholderText="Select Date"
-  onChange={event => console.log(event)}
-  filterDate={date => date < new Date()}
-/>
+() => {
+  const [value, setState] = React.useState('');
+  return (
+    <DatePicker
+      value={value ||new Date()}
+      placeholderText="Select Date"
+      onChange={value => setState(value)}
+      filterDate={date => date < new Date()}
+    />
+  )
+}
 `;
 
 export const status = `
@@ -72,14 +78,19 @@ export const status = `
 `;
 
 export const rangeSelection = `
-<DatePicker
-  value={new Date()}
-  placeholderText="Select Date Range"
-  onChange={event => console.log(event)}
-  twoMonths
-  selectionMode="range"
-  shouldCloseOnSelect={false}
-/>
+() => {
+  const [value, setState] = React.useState('');
+  return (
+    <DatePicker
+      value={value || new Date()}
+      placeholderText="Select Date Range"
+      onChange={value => setState(value)}
+      twoMonths
+      selectionMode="range"
+      shouldCloseOnSelect={false}
+    />
+)
+}
 `;
 
 export const sizes = `
@@ -115,12 +126,17 @@ export const sizes = `
 `;
 
 export const readOnly = `
-<DatePicker
-  value={new Date()}
-  placeholderText="Select Date Range"
-  onChange={event => console.log(event)}
-  readOnly
-/>
+() => {
+  const [value, setState] = React.useState('');
+  return (
+    <DatePicker
+      value={value || new Date()}
+      placeholderText="Select Date Range"
+      onChange={value => setState(value)}
+      readOnly
+    />
+  )
+}
 `;
 
 export const width = `
@@ -129,12 +145,14 @@ export const width = `
     <DatePicker
       value={new Date()}
       placeholderText="Select Date"
+      onChange={event => console.log(event)}
     />
   </Cell>
   <Cell>
     <DatePicker
       value={new Date()}
       placeholderText="Select Date"
+      onChange={event => console.log(event)}
       width="100%"
     />
   </Cell>
@@ -142,21 +160,31 @@ export const width = `
 `;
 
 export const clearButton = `
-class ClearButtonExample extends React.PureComponent {
-  state = { value: new Date() };
+() => {
+  const [value, setState] = React.useState('');
+  return (
+    <DatePicker
+      placeholderText="Select Date"
+      value={value}
+      clearButton
+      width="250px"
+      onClear={() => setState('')}
+      onChange={value => setState(value)}
+    />
+  );
+}
+`;
 
-  render() {
-    const { value } = this.state;
-    return (
-      <DatePicker
-        placeholderText="Select Date"
-        value={value}
-        clearButton
-        width="250px"
-        onClear={() => this.setState({value: ''})}
-        onChange={value => this.setState({ value })}
-      />
-    );
-  }
+export const disableKeyboardType = `
+() => {
+  const [value, setState] = React.useState('');
+  return (
+    <DatePicker
+      placeholderText="Select Date"
+      value={value || new Date()}
+      onChange={value => setState(value)}
+      disableKeyboardType
+    />
+  );
 }
 `;
