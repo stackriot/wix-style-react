@@ -24,6 +24,7 @@ export interface AnalyticsSummaryCardProps {
   chartWidth?: number;
   chartData: SparklineChartProps['data'];
   chartColorHex?: SparklineChartProps['color'];
+  chartAnimationDuration?: number;
   getChartTooltipContent?: (index: number) => React.ReactNode;
   footer?: React.ReactNode;
 }

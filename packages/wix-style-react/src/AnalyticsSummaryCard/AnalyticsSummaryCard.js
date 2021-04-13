@@ -98,6 +98,7 @@ class AnalyticsSummaryCard extends React.PureComponent {
       onChartHover,
       chartHighlightedStartingIndex,
       getChartTooltipContent,
+      chartAnimationDuration,
       footer,
       focusableOnFocus,
       focusableOnBlur,
@@ -181,6 +182,7 @@ class AnalyticsSummaryCard extends React.PureComponent {
                 height={SPARKLINE_HEIGHT}
                 highlightedStartingIndex={chartHighlightedStartingIndex}
                 getTooltipContent={getChartTooltipContent}
+                animationDuration={chartAnimationDuration}
               />
             </div>
           </div>
@@ -248,6 +250,9 @@ AnalyticsSummaryCard.propTypes = {
   /** Sets the color of the chart  */
   chartColorHex: PropTypes.string,
 
+  /** Chart animation duration  */
+  chartAnimationDuration: PropTypes.number,
+
   /** Footer - Node  */
   footer: PropTypes.node,
 };
@@ -259,6 +264,7 @@ AnalyticsSummaryCard.defaultProps = {
   onChartHover: noop,
   isTrendVisible: false,
   chartWidth: 69,
+  chartAnimationDuration: 300,
 };
 
 export default withFocusable(AnalyticsSummaryCard);
