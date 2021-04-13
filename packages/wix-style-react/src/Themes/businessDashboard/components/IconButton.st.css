@@ -20,9 +20,9 @@
 }
 
 .root:hover {
-  background-color: value(B50);
-  border-color: value(B50);
-  color: value(B05);
+  background-color: value(B05);
+  border-color: value(B05);
+  color: value(D80);
 }
 
 .root:active {
@@ -70,51 +70,58 @@
 
 /* Skin: inverted */
 
-.root:skin(inverted) {
+.root:skin(inverted),
+.root:skin(inverted):priority(secondary)
+ {
   border: none;
   background-color: value(D80);
   color: value(B10);
 }
 
-.root:skin(inverted):hover {
-  color: value(D80);
-  border-color: transparent;
-  background-color: value(B05);
-}
-
-.root:skin(inverted):active {
-  border: none;
-  background-color: value(D80);
-  color: value(B10);
-}
-
-.root:skin(inverted):disabled {
-  background-color: value(D80);
-  border-color: transparent;
-  color: value(D10-40);
-}
-
-/* Skin: inverted - Secondary */
-
-.root:skin(inverted):priority(secondary) {
-  border: none;
-  background-color: value(D80);
-  color: value(D10);
-}
-
+.root:skin(inverted):hover,
 .root:skin(inverted):priority(secondary):hover {
   color: value(D80);
   border-color: transparent;
   background-color: value(B05);
 }
 
+.root:skin(inverted):active,
 .root:skin(inverted):priority(secondary):active {
+  border: none;
+  background-color: value(D80);
+  color: value(B10);
+}
+
+.root:skin(inverted):disabled {
+  background-color: value(D70);
+  border-color: transparent;
+  color: value(D10-40);
+}
+
+/* Skin: light */
+.root:skin(light),
+.root:skin(light):priority(secondary) {
   border: none;
   background-color: value(D80);
   color: value(D10);
 }
 
-.root:skin(inverted):priority(secondary):disabled {
+.root:skin(light):hover,
+.root:skin(light):priority(secondary):hover {
+  color: value(B05);
+  border-color: transparent;
+  background-color: value(B50);
+}
+
+.root:skin(light):active,
+.root:skin(light):priority(secondary):active {
+  border: none;
+  background-color: value(D80);
+  color: value(D10);
+}
+
+.root:skin(light):disabled,
+.root:skin(light):priority(secondary):disabled {
   background-color: value(D80);
   border-color: transparent;
   color: value(D10-40);
