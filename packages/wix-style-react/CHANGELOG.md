@@ -19,7 +19,8 @@ Types of changes:
 ### Added
 - `<Tag/>` - add success theme [#7018](https://github.com/wix/wix-style-react/pull/7018)
 - `<AnalyticsSummaryCard />` - expose chart animation duration [#6987](https://github.com/wix/wix-style-react/pull/6987)
-- BusinessDashboard Theme | <Text /> - [#7026](https://github.com/wix/wix-style-react/pull/7026) 
+- BusinessDashboard Theme | <Text /> - [#7026](https://github.com/wix/wix-style-react/pull/7026)
+-  `<DatePicker />` - add typing functionality and disableKeyboardType prop [#6944](https://github.com/wix/wix-style-react/pull/6944)
 
 ## 9.101.0 - 2021-04-12
 ### Fixed
