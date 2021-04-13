@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.102.0 - 2021-04-13
 ### Added
 - `<Tag/>` - add success theme [#7018](https://github.com/wix/wix-style-react/pull/7018)
 - `<AnalyticsSummaryCard />` - expose chart animation duration [#6987](https://github.com/wix/wix-style-react/pull/6987)
