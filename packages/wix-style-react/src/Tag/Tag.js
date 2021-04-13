@@ -166,6 +166,7 @@ Tag.propTypes = {
     'warning',
     'dark',
     'neutral',
+    'success',
     'light',
     'lightOutlined',
   ]),

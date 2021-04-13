@@ -1,7 +1,7 @@
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
   -st-named: B30, B50, D10-05, D10-30, D10, D20, D60, D70, D80, Y30, Y40, R30,
-    R40, THEME-COLOR-30, THEME-COLOR-40;
+    R40, G40, G30, THEME-COLOR-30, THEME-COLOR-40;
 }
 
 :import {
@@ -12,7 +12,7 @@
 .root {
   -st-states: withRemoveButton, withThumb, disabled, clickable, hoverable,
     size(enum(tiny, small, medium, large)),
-    theme(enum(standard, error, warning, dark, neutral, light, lightOutlined));
+    theme(enum(standard, error, warning, dark, neutral, success, light, lightOutlined));
   box-sizing: border-box;
   position: relative;
   display: inline-flex;
@@ -189,6 +189,13 @@
 }
 .root:theme(neutral):hoverable:hover {
   background-color: value(D60);
+}
+
+.root:theme(success) {
+  background-color: value(G40);
+}
+.root:theme(success):hoverable:hover {
+  background-color: value(G30);
 }
 
 .root:theme(light) {

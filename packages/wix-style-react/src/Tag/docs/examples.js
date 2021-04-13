@@ -40,6 +40,10 @@ export const themes = `
           Hello World
       </Tag>
       <br/><br/>
+      <Tag theme="success" onClick={(x)=>{}} onRemove={()=>{}}>
+          Hello World
+      </Tag>
+      <br/><br/>
       <Tag theme="light" onClick={(x)=>{}} onRemove={()=>{}}>
           Hello World
       </Tag>

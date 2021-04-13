@@ -9,6 +9,7 @@ export interface TagDriver extends BaseDriver {
   isWarningTheme: () => boolean;
   isErrorTheme: () => boolean;
   isDarkTheme: () => boolean;
+  isSuccessTheme: () => boolean;
   isRemovable: () => boolean;
   removeTag: () => void;
   click: () => void;

@@ -194,11 +194,11 @@ const colorsTable = [
       },
       {
         name: 'G30',
-        description: 'Notification Border',
+        description: 'Tag (Hover), Notification Border',
       },
       {
         name: 'G40',
-        description: 'Badge',
+        description: 'Tag(Default), Badge',
       },
       {
         name: 'G50',

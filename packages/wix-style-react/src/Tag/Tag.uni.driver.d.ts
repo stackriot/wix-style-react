@@ -9,6 +9,7 @@ export interface TagUniDriver extends BaseUniDriver {
   isWarningTheme: () => Promise<boolean>;
   isErrorTheme: () => Promise<boolean>;
   isDarkTheme: () => Promise<boolean>;
+  isSuccessTheme: () => Promise<boolean>;
   isRemovable: () => Promise<boolean>;
   removeTag: () => Promise<void>;
   isThumbExists: () => Promise<boolean>;

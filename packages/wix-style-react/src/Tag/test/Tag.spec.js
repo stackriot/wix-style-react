@@ -171,6 +171,15 @@ describe('Tag', () => {
         );
         expect(await driver.isDarkTheme()).toBe(true);
       });
+
+      it('should have success theme', async () => {
+        const driver = createDriver(
+          <Tag id={id} theme="success">
+            a
+          </Tag>,
+        );
+        expect(await driver.isSuccessTheme()).toBe(true);
+      });
     });
   }
 });
