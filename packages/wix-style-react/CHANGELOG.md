@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<Tag/>` - add success theme [#7018](https://github.com/wix/wix-style-react/pull/7018) 
+
 ## 9.101.0 - 2021-04-12
 ### Fixed
 - `<Input/>` - fix styles for autoFocus prop [#7023](https://github.com/wix/wix-style-react/pull/7023)
