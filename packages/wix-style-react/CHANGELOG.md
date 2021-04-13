@@ -24,6 +24,7 @@ Types of changes:
 
 ### Changed
 - BusinessDashboard Theme | <Text /> - [#7026](https://github.com/wix/wix-style-react/pull/7026)
+- BusinessDashboard Theme | <IconButton /> - [#7021](https://github.com/wix/wix-style-react/pull/7021)
 
 ## 9.101.0 - 2021-04-12
 ### Fixed
