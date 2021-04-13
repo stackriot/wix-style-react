@@ -138,7 +138,7 @@ const javascriptFiles = [
   ['SkeletonRectangle.bundle.min.js', 8],
   ['Slider.bundle.min.js', 68],
   ['SocialButton.bundle.min.js', 42],
-  ['SocialPreview.bundle.min.js', 39],
+  ['SocialPreview.bundle.min.js', 40],
   ['SortableGrid.bundle.min.js', 32],
   ['SortableList.bundle.min.js', 30],
   ['SparklineChart.bundle.min.js', 62],
