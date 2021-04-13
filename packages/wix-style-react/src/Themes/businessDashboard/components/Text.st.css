@@ -27,7 +27,11 @@
 .root:skin(standard):light:secondary:size(tiny) {
   color: value(D40);
 }
-.root:skin(standard):size(tiny) {
+
+.root:skin(standard):size(tiny),
+.root:skin(standard):size(tiny):weight(bold),
+.root:skin(standard):size(tiny):weight(thin)
+{
   color: value(D20);
 }
 .root:skin(standard):size(tiny):light {
