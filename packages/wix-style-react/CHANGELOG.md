@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<SidebarSectionItem/>`,`<SidebarSectionTitle/>`,`<SidebarDivider/>` - sidebar experiment for reduce horizontal padding and height for sidebar items [#7025](https://github.com/wix/wix-style-react/pull/7025)
+
 ## 9.102.0 - 2021-04-13
 ### Added
 - `<Tag/>` - add success theme [#7018](https://github.com/wix/wix-style-react/pull/7018)
