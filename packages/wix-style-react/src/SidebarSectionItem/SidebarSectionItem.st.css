@@ -141,6 +141,19 @@
   margin: 9px 0 9px 0;
 }
 
+.root:useBmSidebarNewDesign {
+  min-height: 32px;
+  padding: 0 20px 0 20px;
+}
+
+.root:drillable:useBmSidebarNewDesign {
+  padding: 0 18px 0 20px;
+}
+
+.root:useBmSidebarNewDesign .text {
+  margin: 7px 0 7px 0;
+}
+
 .suffix {
   display: flex;
   flex: 1 0 auto;

@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import SidebarDivider from '../SidebarDivider';
 import Box from '../../Box';
 import { SidebarContext } from '../../Sidebar/SidebarAPI';
+import WixStyleReactProvider from "../../WixStyleReactProvider";
 
 const skins = ['dark', 'light'];
 
@@ -25,6 +26,28 @@ const tests = [
   },
 ];
 
+const testsWithWsrProvider = [
+  {
+    describe: 'useBmSidebarNewDesign',
+    its: [
+      {
+        it: 'should render item with useBmSidebarNewDesign class',
+        props: {},
+        features: {
+          useBmSidebarNewDesign: true
+        }
+      },
+      {
+        it: 'should render item without useBmSidebarNewDesign class',
+        props: {},
+        features: {
+          useBmSidebarNewDesign: false
+        }
+      }
+    ]
+  }
+];
+
 export const runTests = (
   { themeName, testWithTheme } = { testWithTheme: i => i },
 ) => {
@@ -42,6 +65,31 @@ export const runTests = (
                       <SidebarContext.Provider value={{ getSkin: () => skin }}>
                         <SidebarDivider {...props} />
                       </SidebarContext.Provider>
+                    </div>
+                  </Box>
+                ))}
+              </Box>
+            ))}
+          </React.Fragment>,
+        ),
+    ),
+  );
+  testsWithWsrProvider.forEach(({ describe, its }) =>
+    storiesOf(`${themeName ? `${themeName}|` : ''}SidebarDivider`, module).add(
+      describe,
+      () =>
+        testWithTheme(
+          <React.Fragment>
+            {its.map(({ props, features }) => (
+              <Box backgroundColor="D70">
+                {skins.map(skin => (
+                  <Box direction="vertical" marginBottom={5} marginRight={5}>
+                    <div style={{ width: '228px' }}>
+                      <WixStyleReactProvider features={{ useBmSidebarNewDesign: features.useBmSidebarNewDesign }}>
+                        <SidebarContext.Provider value={{ getSkin: () => skin }}>
+                          <SidebarDivider {...props} />
+                        </SidebarContext.Provider>
+                      </WixStyleReactProvider>
                     </div>
                   </Box>
                 ))}

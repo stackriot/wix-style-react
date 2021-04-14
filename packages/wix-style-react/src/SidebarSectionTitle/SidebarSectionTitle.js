@@ -5,6 +5,7 @@ import { st, classes } from './SidebarSectionTitle.st.css';
 import Text from '../Text';
 import { SidebarContext } from '../Sidebar/SidebarAPI';
 import { sidebarSkins } from '../Sidebar/constants';
+import {WixStyleReactContext} from "../WixStyleReactProvider/context";
 
 /** A title for the section within the sidebar */
 class SidebarSectionTitle extends React.PureComponent {
@@ -21,22 +22,26 @@ class SidebarSectionTitle extends React.PureComponent {
     const { dataHook, children } = this.props;
 
     return (
-      <SidebarContext.Consumer>
-        {context => {
-          const skin = (context && context.getSkin()) || sidebarSkins.dark;
+      <WixStyleReactContext.Consumer>
+        {({useBmSidebarNewDesign}) => (
+          <SidebarContext.Consumer>
+            {context => {
+              const skin = (context && context.getSkin()) || sidebarSkins.dark;
 
-          return (
-            <Text
-              dataHook={dataHook}
-              className={st(classes.root, { skin })}
-              size="tiny"
-              weight="bold"
-            >
-              {children}
-            </Text>
-          );
-        }}
-      </SidebarContext.Consumer>
+              return (
+                <Text
+                  dataHook={dataHook}
+                  className={st(classes.root, { skin, useBmSidebarNewDesign })}
+                  size="tiny"
+                  weight="bold"
+                >
+                  {children}
+                </Text>
+              );
+            }}
+          </SidebarContext.Consumer>
+        )}
+      </WixStyleReactContext.Consumer>
     );
   }
 }

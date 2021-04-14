@@ -14,6 +14,8 @@
 }
 
 .root {
+  -st-states: useBmSidebarNewDesign;
+
   border: 0;
   height: 1px;
   box-sizing: border-box;
@@ -33,4 +35,12 @@
 .divider:skin(dark) {
   /* Overrides the color as part of UX decision */
   background-color: value(dividerColor);
+}
+
+.root:useBmSidebarNewDesign {
+  padding: 8px 20px 9px 20px;
+}
+
+.root:useBmSidebarNewDesign.fullWidth {
+  padding: 0;
 }

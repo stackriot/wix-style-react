@@ -6,6 +6,7 @@ import Divider from '../Divider';
 import { SidebarContext } from '../Sidebar/SidebarAPI';
 import { sidebarSkins } from '../Sidebar/constants';
 import { skins as dividerSkins } from '../Divider/constants';
+import {WixStyleReactContext} from "../WixStyleReactProvider/context";
 
 /** A divider within the sidebar that supports inner and full mode */
 class SidebarDivider extends React.PureComponent {
@@ -22,28 +23,32 @@ class SidebarDivider extends React.PureComponent {
     const { dataHook, fullWidth } = this.props;
 
     return (
-      <SidebarContext.Consumer>
-        {context => {
-          const skin = (context && context.getSkin()) || sidebarSkins.dark;
+      <WixStyleReactContext.Consumer>
+        {({useBmSidebarNewDesign}) => (
+          <SidebarContext.Consumer>
+            {context => {
+              const skin = (context && context.getSkin()) || sidebarSkins.dark;
 
-          return (
-            <div
-              data-hook={dataHook}
-              data-full-width={fullWidth}
-              className={st(classes.root, fullWidth ? classes.fullWidth : '')}
-            >
-              <Divider
-                skin={
-                  skin === sidebarSkins.light
-                    ? dividerSkins.light
-                    : dividerSkins.dark
-                }
-                className={classes.divider}
-              />
-            </div>
-          );
-        }}
-      </SidebarContext.Consumer>
+              return (
+                <div
+                  data-hook={dataHook}
+                  data-full-width={fullWidth}
+                  className={st(classes.root, { useBmSidebarNewDesign }, fullWidth ? classes.fullWidth : '')}
+                >
+                  <Divider
+                    skin={
+                      skin === sidebarSkins.light
+                        ? dividerSkins.light
+                        : dividerSkins.dark
+                    }
+                    className={classes.divider}
+                  />
+                </div>
+              );
+            }}
+          </SidebarContext.Consumer>
+        )}
+      </WixStyleReactContext.Consumer>
     );
   }
 }
