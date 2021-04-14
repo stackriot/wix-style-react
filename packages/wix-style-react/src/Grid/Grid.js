@@ -80,7 +80,7 @@ const AutoAdjustedColumns = ({ children }) => {
   );
 };
 
-const Col = ({ span, children }) => {
+const Col = ({ span = 12, children }) => {
   useEffect(() => {
     deprecationLog(DEPRECATION_MESSAGE);
   }, []);
