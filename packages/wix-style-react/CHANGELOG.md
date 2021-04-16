@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.104.0 - 2021-04-16
 ### Fixed
 - `<TableActionCell/>` - fix popoverMenu prop types [#7039](https://github.com/wix/wix-style-react/pull/7039)
 - `<DatePicker/>` - set disableKeyboardType as true by default [#7045](https://github.com/wix/wix-style-react/pull/7045)
