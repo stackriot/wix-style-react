@@ -43,6 +43,7 @@ export default class DatePicker extends React.PureComponent {
       zIndex: 1,
     },
     firstDayOfWeek: 1,
+    disableKeyboardType: true,
   };
 
   constructor(props) {
@@ -60,6 +61,12 @@ export default class DatePicker extends React.PureComponent {
     deprecationLog(
       'dateFormat prop is deprecated and will be removed as part of the next major version, please use dateFormatV2',
     );
+
+    if (this.props.disableKeyboardType) {
+      deprecationLog(
+        'disableKeyboardType is set to true by default, but in next major version this will be false. Make sure to handle keyboarboard input with onChange or sets disableKeyboardType prop to false.',
+      );
+    }
   }
 
   openCalendar = () => {
@@ -132,7 +139,9 @@ export default class DatePicker extends React.PureComponent {
         oldValue,
       );
 
-      this.setState({ value: newValue, inputValue: newValue }, () => this.props.onChange(newValue));
+      this.setState({ value: newValue, inputValue: newValue }, () =>
+        this.props.onChange(newValue),
+      );
     }
   };
 
@@ -404,6 +413,6 @@ DatePicker.propTypes = {
   /** Displays clear button (X) on a non-empty input and calls callback with no arguments */
   onClear: PropTypes.func,
 
-  /** Disable typing the in the input. When true, choosing a date is possible only by picking from the calendar */
+  /** Disable typing the in the input. When true, choosing a date is possible only by picking from the calendar. Default: true.  */
   disableKeyboardType: PropTypes.bool,
 };

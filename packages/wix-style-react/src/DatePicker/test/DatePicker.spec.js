@@ -381,18 +381,22 @@ describe('DatePicker', () => {
       });
 
       describe('`disableKeyboardType` prop', () => {
-        it('should allow typing in input by default', async () => {
+        it('should be readOnly when disableKeyboardType is false', async () => {
           const {
             driver: { inputDriver },
           } = render(
-            <DatePicker onChange={noop} value={new Date('03/25/2021')} />
+            <DatePicker
+              onChange={noop}
+              disableKeyboardType={false}
+              value={new Date('03/25/2021')}
+            />,
           );
           await inputDriver.enterText('03/25/202');
 
           expect(await inputDriver.getValue()).toBe('03/25/202');
         });
 
-        it('should be readOnly when disableKeyboardType is true', async () => {
+        it('should allow typing when disableKeyboardType is true', async () => {
           const {
             driver: { inputDriver },
           } = render(
@@ -769,11 +773,11 @@ describe('DatePicker', () => {
     });
 
     describe('`readonly` prop', () => {
-      it('should be false by default', async () => {
+      it('should be true by default', async () => {
         const {
           driver: { inputDriver, driver, calendarDriver },
         } = render(<DatePicker onChange={noop} />);
-        expect(await inputDriver.getReadOnly()).toBe(false);
+        expect(await inputDriver.getReadOnly()).toBe(true);
         expect(await calendarDriver.isVisible()).toBe(false);
         await driver.open();
         expect(await calendarDriver.isVisible()).toBe(true);
