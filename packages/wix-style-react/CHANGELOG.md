@@ -15,6 +15,7 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+- `<TableActionCell/>` - fix popoverMenu prop types [#7039](https://github.com/wix/wix-style-react/pull/7039)
 
 ## 9.103.0 - 2021-04-15
 ### Added
