@@ -19,6 +19,9 @@ Types of changes:
 ### Fixed
 - `<TableActionCell/>` - fix popoverMenu prop types [#7039](https://github.com/wix/wix-style-react/pull/7039)
 
+### Docs
+- BusinessDashboard Theme | EmptyState - update example [#7030](https://github.com/wix/wix-style-react/pull/7030)
+
 ## 9.103.0 - 2021-04-15
 ### Added
 - `<SidebarSectionItem/>`,`<SidebarSectionTitle/>`,`<SidebarDivider/>` - sidebar experiment for reduce horizontal padding and height for sidebar items [#7025](https://github.com/wix/wix-style-react/pull/7025)
