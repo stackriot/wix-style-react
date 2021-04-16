@@ -9,6 +9,11 @@
 }
 
 :import {
+  -st-from: "../foundations/colors.st.css";
+  -st-named: D20;
+}
+
+:import {
   -st-from: "../foundations/spacing.st.css";
   -st-named: SP1, SP2, SP4, SP6;
 }
@@ -28,9 +33,10 @@
   margin-bottom: value(SP1);
 }
 
-.root::subtitle {
+.root::subtitle:secondary {
   font-size: 12px;
   line-height: 16px;
+  color: value(D20);
 }
 
 .root::childrenContainer {
