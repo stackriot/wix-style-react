@@ -22,6 +22,7 @@ Types of changes:
 
 ### Changed
 - BusinessDashboard Theme | EmptyState [#7036](https://github.com/wix/wix-style-react/pull/7036)
+- BusinessDashboard Theme | <PageSection /> [#6964](https://github.com/wix/wix-style-react/pull/6964)
 
 ### Docs
 - BusinessDashboard Theme | EmptyState - update example [#7030](https://github.com/wix/wix-style-react/pull/7030)
