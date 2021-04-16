@@ -12,7 +12,10 @@ type CommonTableActionCellProps = {
 };
 
 export type TableActionCellProps = CommonTableActionCellProps & {
-  popoverMenuProps?: OmitPolyfill<PopoverMenuProps, 'triggerElement'>;
+  popoverMenuProps?: OmitPolyfill<
+    PopoverMenuProps,
+    'triggerElement' | 'children' | 'dataHook' | 'className'
+  >;
 };
 
 export const TableActionCell: React.SFC<TableActionCellProps>;
