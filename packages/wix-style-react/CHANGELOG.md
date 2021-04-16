@@ -20,6 +20,9 @@ Types of changes:
 - `<TableActionCell/>` - fix popoverMenu prop types [#7039](https://github.com/wix/wix-style-react/pull/7039)
 - `<DatePicker/>` - set disableKeyboardType as true by default [#7045](https://github.com/wix/wix-style-react/pull/7045)
 
+### Changed
+- BusinessDashboard Theme | EmptyState [#7036](https://github.com/wix/wix-style-react/pull/7036)
+
 ### Docs
 - BusinessDashboard Theme | EmptyState - update example [#7030](https://github.com/wix/wix-style-react/pull/7030)
 
