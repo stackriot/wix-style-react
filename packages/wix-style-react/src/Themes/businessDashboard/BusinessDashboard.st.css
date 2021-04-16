@@ -221,6 +221,11 @@
   -st-default: SectionHelper;
 }
 
+:import {
+  -st-from: "../../PageSection/PageSection.st.css";
+  -st-default: PageSection;
+}
+
 /* Overrides */
 :import {
   -st-from: "./components/Button.st.css";
@@ -432,6 +437,11 @@
   -st-default: SectionHelperOverrides;
 }
 
+:import {
+  -st-from: "./components/PageSection.st.css";
+  -st-default: PageSectionOverrides;
+}
+
 @st-scope .root {
   Button {
     -st-mixin: ButtonOverrides();
@@ -549,6 +559,9 @@
   }
   SectionHelper {
     -st-mixin: SectionHelperOverrides();
+  }
+  PageSection {
+    -st-mixin: PageSectionOverrides();
   }
 }
 

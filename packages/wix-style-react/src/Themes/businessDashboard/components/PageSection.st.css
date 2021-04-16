@@ -1,0 +1,47 @@
+:import {
+    -st-from: "../../../PageSection/PageSection.st.css";
+    -st-default: PageSection;
+  }
+
+  :import {
+    -st-from: '../foundations/colors.st.css';
+    -st-named: D10, D50;
+  }
+
+  :import {
+    -st-from: '../foundations/typography.st.css';
+    -st-named: heading-h3;
+  }
+
+  :import {
+    -st-from: "../foundations/spacing.st.css";
+    -st-named: SP1, SP2, SP5;
+  }
+
+
+  :import {
+    -st-from: "../../../Heading/Heading.st.css";
+    -st-default: Heading;
+  }
+
+  .root {
+    -st-extends: PageSection;
+    padding-block-start: 0;
+    min-width: 624px;
+    max-width: 1254px;
+  }
+
+  .root::titleColumn Heading {
+    -st-mixin: heading-h3;
+    color: value(D10);
+    height: 32px;
+  }
+
+  .root::actionsBar {
+    padding: value(SP1) 0 value(SP2) value(SP5);
+  }
+
+  .root::divider {
+    background-color: value(D50);
+    margin-block-start: 0;
+  }

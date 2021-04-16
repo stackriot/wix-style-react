@@ -58,23 +58,30 @@ const tests = [
   },
 ];
 
-export const runTests = () => {
-  visualize(PageSection.displayName, () => {
-    tests.forEach(({ describe, its }) => {
-      story(describe, () => {
-        its.map(({ it, props }) =>
-          snap(it, () => (
-            <div>
-              <PageSectionContainer>
-                <PageSection {...commonProps} {...props} />
-              </PageSectionContainer>
-              <PageSectionContainer rtl>
-                <PageSection {...commonProps} {...props} />
-              </PageSectionContainer>
-            </div>
-          )),
-        );
+export const runTests = (
+  { themeName, testWithTheme } = { testWithTheme: i => i },
+) => {
+  visualize(
+    `${themeName ? `${themeName}|` : ''}PageSection.displayName`,
+    () => {
+      tests.forEach(({ describe, its }) => {
+        story(describe, () => {
+          its.map(({ it, props }) =>
+            snap(it, () =>
+              testWithTheme(
+                <div>
+                  <PageSectionContainer>
+                    <PageSection {...commonProps} {...props} />
+                  </PageSectionContainer>
+                  <PageSectionContainer rtl>
+                    <PageSection {...commonProps} {...props} />
+                  </PageSectionContainer>
+                </div>,
+              ),
+            ),
+          );
+        });
       });
-    });
-  });
+    },
+  );
 };

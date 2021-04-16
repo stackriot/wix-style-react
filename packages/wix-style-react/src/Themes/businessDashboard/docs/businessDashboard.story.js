@@ -46,6 +46,7 @@ import * as verticalTabsItem from './components/VerticalTabsItem';
 import * as customModalLayout from './components/CustomModalLayout';
 import * as tableListItem from './components/TableListItem';
 import * as sectionHelper from './components/SectionHelper';
+import * as pageSection from './components/PageSection';
 
 import { Category } from '../../../../stories/storiesHierarchy';
 import Box from '../../../Box';
@@ -227,6 +228,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('SectionHelper'),
             source: sectionHelper.playground,
+          }),
+          example({
+            text: TextComponent('PageSection'),
+            source: pageSection.playground,
           }),
         ],
       }),
