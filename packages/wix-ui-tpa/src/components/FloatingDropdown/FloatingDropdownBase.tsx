@@ -118,7 +118,7 @@ export class FloatingDropdownBase extends React.Component<FloatingDropdownBasePr
     if (!mobile) {
       content = (
         <TextButton
-          aria-haspopup
+          aria-haspopup={'menu'}
           aria-expanded={this.props.isExpanded}
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy || id}
