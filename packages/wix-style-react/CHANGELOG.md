@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+- `<Grid/>` - dataHook support (Container, Row, Col, AutoAdjustedColumns) [#7052](https://github.com/wix/wix-style-react/pull/7052)
 
 ## 9.104.0 - 2021-04-16
 ### Fixed
