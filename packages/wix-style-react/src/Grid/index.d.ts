@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 export interface ContainerProps {
+  dataHook?: string;
   fluid?: boolean;
   className?: string;
   stretchVertically?: boolean;
@@ -25,7 +26,9 @@ export interface ColProps {
   dataHook?: string;
 }
 
-export interface AutoAdjustedColumnsProps {}
+export interface AutoAdjustedColumnsProps {
+  dataHook?: string;
+}
 
 export const Container: React.SFC<ContainerProps>;
 export const RawContainer: React.SFC<ContainerProps>;

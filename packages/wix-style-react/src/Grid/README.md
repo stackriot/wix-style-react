@@ -62,6 +62,7 @@ export default () =>
   | ---       | ---      | ---          | ---        | ---                                                   |
   | children  | node     | -            | -          | Should only be `<Row/>`s although any node is allowed |
   | fluid     | bool     | false        | -          | disable min/max width, use for smaller grids          |
+  | dataHook  | string   | -            | -          | hook for testing purposes                             |
 
   ---
 
@@ -83,6 +84,7 @@ export default () =>
   | propName               | propType | defaultValue | isRequired | description                                    |
   | ---                    | ---      | ---          | ---        | ---                                            |
   | stretchViewsVertically | bool     | -            | -          | Make all the views in that row the same height |
+  | dataHook               | string   | -            | -          | hook for testing purposes                      |
 
 </details>
 
@@ -95,6 +97,7 @@ export default () =>
   | ---                    | ---      | ---          | ---        | ---                                            |
   | span                   | number   | -            | +          | The columns span of this column                |
   | rtl                    | bool     | -            | -          | Reverses the columns ordering                  |
+  | dataHook               | string   | -            | -          | hook for testing purposes                      |
 </details>
 
 <details>

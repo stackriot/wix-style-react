@@ -11,6 +11,7 @@ export interface LayoutProps {
 }
 
 export interface CellProps {
+  dataHook?: string;
   children?: React.ReactNode;
   span?: number;
   vertical?: boolean;

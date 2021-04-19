@@ -1,7 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
-import { AutoAdjustedColumns } from './Grid';
+import { AutoAdjustedColumns, Container, Columns, Col } from './Grid';
 import { Cell } from '../Layout';
 
 describe('Grid `<AutoAdjustedColumns/>`', () => {
@@ -37,5 +37,20 @@ describe('Grid `<AutoAdjustedColumns/>`', () => {
     expect(element.find(Cell).at(1).prop('span')).toEqual(4);
     expect(element.find(Cell).at(2).prop('span')).toEqual(4);
     expect(element.find(Cell).at(2).prop('span')).toEqual(4);
+  });
+});
+
+describe('support dataHook', () => {
+  it('for Container', () => {
+    const element = mount(<Container dataHook="test" />);
+    expect(element.find('[data-hook="test"]').exists()).toBe(true);
+  });
+  it('for Columns', () => {
+    const element = mount(<Columns dataHook="test" />);
+    expect(element.find('[data-hook="test"]').exists()).toBe(true);
+  });
+  it('for Col', () => {
+    const element = mount(<Col dataHook="test" />);
+    expect(element.find('[data-hook="test"]').exists()).toBe(true);
   });
 });

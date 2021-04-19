@@ -7,6 +7,8 @@ import { st, classes } from './Grid.st.css';
 import { mainContainerMaxWidthPx, mainContainerMinWidthPx } from './constants';
 
 const containerProps = {
+  /** hook for testing purposes */
+  dataHook: PropTypes.string,
   children: PropTypes.node,
   fluid: PropTypes.bool,
   className: PropTypes.string,
@@ -17,17 +19,22 @@ const containerProps = {
 const DEPRECATION_MESSAGE =
   'Grid is deprecated and will be removed in next major release, please use <Layout /> instead.';
 
-const Container = ({ children, fluid }) => {
+const Container = ({ children, fluid, dataHook }) => {
   useEffect(() => {
     deprecationLog(DEPRECATION_MESSAGE);
   }, []);
 
   if (fluid) {
-    return <Layout gap={0}>{children}</Layout>;
+    return (
+      <Layout gap={0} dataHook={dataHook}>
+        {children}
+      </Layout>
+    );
   }
 
   return (
     <Box
+      dataHook={dataHook}
       minWidth={mainContainerMinWidthPx}
       maxWidth={mainContainerMaxWidthPx}
       display="block"
@@ -39,13 +46,13 @@ const Container = ({ children, fluid }) => {
 
 Container.propTypes = containerProps;
 
-const Columns = ({ children, stretchViewsVertically }) => {
+const Columns = ({ children, stretchViewsVertically, dataHook }) => {
   useEffect(() => {
     deprecationLog(DEPRECATION_MESSAGE);
   }, []);
 
   return (
-    <Cell className={classes.rowRoot}>
+    <Cell dataHook={dataHook} className={classes.rowRoot}>
       <Layout
         gap={0}
         className={st(classes.rowLayout, { stretchViewsVertically })}
@@ -56,7 +63,7 @@ const Columns = ({ children, stretchViewsVertically }) => {
   );
 };
 
-const AutoAdjustedColumns = ({ children }) => {
+const AutoAdjustedColumns = ({ children, dataHook }) => {
   useEffect(() => {
     deprecationLog(DEPRECATION_MESSAGE);
   }, []);
@@ -68,7 +75,7 @@ const AutoAdjustedColumns = ({ children }) => {
   const spanSize = Math.floor(DEFAULT_MAX_SPAN / cols.length);
 
   return (
-    <Cell className={classes.rowRoot}>
+    <Cell dataHook={dataHook} className={classes.rowRoot}>
       <Layout gap={0} className={classes.rowLayout}>
         {cols.map((col, index) => (
           <Cell span={spanSize} key={index} className={classes.columnRoot}>
@@ -80,13 +87,17 @@ const AutoAdjustedColumns = ({ children }) => {
   );
 };
 
-const Col = ({ span = 12, children }) => {
+const Col = ({ span = 12, children, dataHook }) => {
   useEffect(() => {
     deprecationLog(DEPRECATION_MESSAGE);
   }, []);
 
   return (
-    <Cell span={parseInt(span)} className={classes.columnRoot}>
+    <Cell
+      dataHook={dataHook}
+      span={parseInt(span)}
+      className={classes.columnRoot}
+    >
       {children}
     </Cell>
   );
