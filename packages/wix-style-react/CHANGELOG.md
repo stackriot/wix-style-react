@@ -19,6 +19,9 @@ Types of changes:
 - `<Grid/>` - support className (Container, Row, Col), allow single Container [#7056](https://github.com/wix/wix-style-react/pull/7056)
 - `<DropdownBase />` - fix mismatch between proptypes and typesript [#7057](https://github.com/wix/wix-style-react/pull/7057)
 
+### Changed
+- `<SidebarBackButton/>` - [experiment] -  adjust back button in sidebar to be as the rest of items in experiment [#7053](https://github.com/wix/wix-style-react/pull/7053) 
+
 ## 9.105.0 - 2021-04-19
 ### Fixed
 - `<Grid/>` - dataHook support (Container, Row, Col, AutoAdjustedColumns) [#7052](https://github.com/wix/wix-style-react/pull/7052)
