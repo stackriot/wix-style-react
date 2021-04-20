@@ -38,9 +38,9 @@ class DropdownBase extends React.PureComponent {
      */
     dynamicWidth: PropTypes.bool,
     /** The minimum width applied to the list */
-    minWidth: PropTypes.number,
+    minWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The maximum width applied to the list */
-    maxWidth: PropTypes.number,
+    maxWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** maximum height of dropdown box */
     maxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 
