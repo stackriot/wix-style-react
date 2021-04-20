@@ -20,7 +20,8 @@ Types of changes:
 - `<DropdownBase />` - fix mismatch between proptypes and typesript [#7057](https://github.com/wix/wix-style-react/pull/7057)
 
 ### Changed
-- `<SidebarBackButton/>` - [experiment] -  adjust back button in sidebar to be as the rest of items in experiment [#7053](https://github.com/wix/wix-style-react/pull/7053) 
+- `<SidebarBackButton/>` - [experiment] -  adjust back button in sidebar to be as the rest of items in experiment [#7053](https://github.com/wix/wix-style-react/pull/7053)
+- BusinessDashboard Theme | `<CheckToggle/>` - check toggle override styles [#7035](https://github.com/wix/wix-style-react/pull/7035)
 
 ## 9.105.0 - 2021-04-19
 ### Fixed
