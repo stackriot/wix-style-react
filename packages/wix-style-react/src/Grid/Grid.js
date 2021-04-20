@@ -19,14 +19,14 @@ const containerProps = {
 const DEPRECATION_MESSAGE =
   'Grid is deprecated and will be removed in next major release, please use <Layout /> instead.';
 
-const Container = ({ children, fluid, dataHook }) => {
+const Container = ({ children, fluid, dataHook, className }) => {
   useEffect(() => {
     deprecationLog(DEPRECATION_MESSAGE);
   }, []);
 
   if (fluid) {
     return (
-      <Layout gap={0} dataHook={dataHook}>
+      <Layout gap={0} dataHook={dataHook} cols={1} className={className}>
         {children}
       </Layout>
     );
@@ -38,21 +38,24 @@ const Container = ({ children, fluid, dataHook }) => {
       minWidth={mainContainerMinWidthPx}
       maxWidth={mainContainerMaxWidthPx}
       display="block"
+      className={className}
     >
-      <Layout gap={0}>{children}</Layout>
+      <Layout gap={0} cols={1}>
+        {children}
+      </Layout>
     </Box>
   );
 };
 
 Container.propTypes = containerProps;
 
-const Columns = ({ children, stretchViewsVertically, dataHook }) => {
+const Columns = ({ children, stretchViewsVertically, dataHook, className }) => {
   useEffect(() => {
     deprecationLog(DEPRECATION_MESSAGE);
   }, []);
 
   return (
-    <Cell dataHook={dataHook} className={classes.rowRoot}>
+    <Cell dataHook={dataHook} className={st(classes.rowRoot, {}, className)}>
       <Layout
         gap={0}
         className={st(classes.rowLayout, { stretchViewsVertically })}
@@ -87,7 +90,7 @@ const AutoAdjustedColumns = ({ children, dataHook }) => {
   );
 };
 
-const Col = ({ span = 12, children, dataHook }) => {
+const Col = ({ span = 12, children, dataHook, className }) => {
   useEffect(() => {
     deprecationLog(DEPRECATION_MESSAGE);
   }, []);
@@ -96,7 +99,7 @@ const Col = ({ span = 12, children, dataHook }) => {
     <Cell
       dataHook={dataHook}
       span={parseInt(span)}
-      className={classes.columnRoot}
+      className={st(classes.columnRoot, {}, className)}
     >
       {children}
     </Cell>
