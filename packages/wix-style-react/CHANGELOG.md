@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Fixed
 - `<Grid/>` - support className (Container, Row, Col), allow single Container [#7056](https://github.com/wix/wix-style-react/pull/7056)
+- `<DropdownBase />` - fix mismatch between proptypes and typesript [#7057](https://github.com/wix/wix-style-react/pull/7057)
 
 ## 9.105.0 - 2021-04-19
 ### Fixed
