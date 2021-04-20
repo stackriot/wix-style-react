@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+- `<Grid/>` - support className (Container, Row, Col), allow single Container [#7056](https://github.com/wix/wix-style-react/pull/7056)
+
 ## 9.105.0 - 2021-04-19
 ### Fixed
 - `<Grid/>` - dataHook support (Container, Row, Col, AutoAdjustedColumns) [#7052](https://github.com/wix/wix-style-react/pull/7052)
