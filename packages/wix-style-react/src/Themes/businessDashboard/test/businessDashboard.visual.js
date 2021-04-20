@@ -32,6 +32,7 @@ import { runTests as CustomModalLayoutTests } from '../../../CustomModalLayout/t
 import { runTests as TableListItemTests } from '../../../TableListItem/test/TableListItem.visual';
 import { runTests as SectionHelper } from '../../../SectionHelper/test/SectionHelper.visual';
 import { runTests as PopoverTests } from '../../../Popover/test/Popover.visual';
+import { runTests as CheckToggleTests } from '../../../CheckToggle/test/CheckToggle.visual';
 import { runTests as PageSectionTests } from '../../../PageSection/test/PageSection.visual';
 
 import { ThemeProvider } from '../../..';
@@ -77,4 +78,5 @@ CustomModalLayoutTests({ themeName, testWithTheme });
 TableListItemTests({ themeName, testWithTheme });
 SectionHelper({ themeName, testWithTheme });
 PopoverTests({ themeName, testWithTheme });
+CheckToggleTests({ themeName, testWithTheme });
 PageSectionTests({ themeName, testWithTheme });

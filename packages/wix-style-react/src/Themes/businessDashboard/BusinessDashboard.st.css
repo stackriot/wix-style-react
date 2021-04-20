@@ -222,6 +222,11 @@
 }
 
 :import {
+  -st-from: "../../CheckToggle/CheckToggle.st.css";
+  -st-default: CheckToggle;
+}
+  
+:import {  
   -st-from: "../../PageSection/PageSection.st.css";
   -st-default: PageSection;
 }
@@ -438,6 +443,11 @@
 }
 
 :import {
+  -st-from: "./components/CheckToggle.st.css";
+  -st-default: CheckToggleOverrides;
+}
+
+:import {  
   -st-from: "./components/PageSection.st.css";
   -st-default: PageSectionOverrides;
 }
@@ -560,6 +570,11 @@
   SectionHelper {
     -st-mixin: SectionHelperOverrides();
   }
+
+  CheckToggle {
+    -st-mixin: CheckToggleOverrides();
+  }
+    
   PageSection {
     -st-mixin: PageSectionOverrides();
   }

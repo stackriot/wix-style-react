@@ -46,6 +46,7 @@ import * as verticalTabsItem from './components/VerticalTabsItem';
 import * as customModalLayout from './components/CustomModalLayout';
 import * as tableListItem from './components/TableListItem';
 import * as sectionHelper from './components/SectionHelper';
+import * as checkToggle from './components/CheckToggle';
 import * as pageSection from './components/PageSection';
 
 import { Category } from '../../../../stories/storiesHierarchy';
@@ -228,6 +229,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('SectionHelper'),
             source: sectionHelper.playground,
+          }),
+          example({
+            text: TextComponent('CheckToggle'),
+            source: checkToggle.playground,
           }),
           example({
             text: TextComponent('PageSection'),
