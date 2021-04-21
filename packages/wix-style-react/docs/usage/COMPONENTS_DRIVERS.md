@@ -132,8 +132,8 @@ describe('App', () => {
 ```
 
 ## Supported platforms
-The library currently supplies fully supported drivers for `jsdom` testing environment and several testkis for `protractor` and `puppeteer`.
-In the upcoming months, all drivers will be available across the above platforms, thanks to using [Unidriver](https://github.com/wix-incubator/unidriver).
+The library currently supplies fully supported drivers for `jsdom`, `enzyme`, `puppeteer` and `protractor`. We also support pure `unidrivers`
+for reuse in other component libraries.
 
 For example, puppeteer drivers should be consumed like this:
 
@@ -142,6 +142,12 @@ import { InputTestkit } from 'wix-style-react/dist/testkit/puppeteer';
 
 const inputDriver = await InputTestkit({dataHook: 'title-changer-input', page}); //puppeteer page instance
 await inputDriver.enterText('hello world');
+```
+
+Pure unidrivers are exposed through path:
+
+```js
+import { InputUniDriver } from 'wix-style-react/dist/testkit/unidriver';
 ```
 
 ## Drivers APIs

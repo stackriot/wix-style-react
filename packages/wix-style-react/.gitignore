@@ -48,3 +48,4 @@ testkit/protractor.d.ts
 testkit/protractor.js
 testkit/puppeteer.d.ts
 testkit/puppeteer.js
+testkit/unidriver.js

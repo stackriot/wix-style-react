@@ -1,0 +1,34 @@
+const load = module => {
+  const MODULE_META_KEYS = ['__esModule'];
+
+  const moduleFields = Object.keys(module).reduce((total, key) => {
+    if (!MODULE_META_KEYS.includes(key)) {
+      return total.concat(module[key]);
+    }
+    return total;
+  }, []);
+
+  let defaultOrFirstExport;
+  if (module.default) {
+    defaultOrFirstExport = module.default;
+  } else if (moduleFields.length === 1) {
+    defaultOrFirstExport = moduleFields[0];
+  } else {
+    defaultOrFirstExport = module;
+  }
+  return defaultOrFirstExport;
+};
+
+<% components
+        .filter(component => !component.noTestkit)
+        .filter(component => !component.manualExport)
+        .filter(component => !component.noUnidriver)
+.map(component => {
+  const componentName = component.exportName || utils.toPascal(component.name);
+  const driverPath = component.unidriverPath || [
+    '../src',
+    component.name,
+    component.name + '.uni.driver'
+  ].join('\/');
+%>
+export const <%= componentName %>UniDriver = (load(require('<%= driverPath %>')));<% }) %>
