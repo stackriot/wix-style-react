@@ -26,6 +26,8 @@
     defaultMainTextColor: color-5;
     defaultLineThemeMainBackgroundColor: transparent;
     defaultMainTextFont: "{theme: 'Body-M', size: '16px'}";
+    defaultMainLabelFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.4'}";
+    defaultMainLabelTextColor: color-5;
 }
 
 /*Overrides*/
@@ -50,6 +52,16 @@
       @default {theme: 'Body-M', size: '16px'}
     */
     MainTextFont: --overridable;
+    /*
+      The font of the label
+      @default {theme: 'Body-M', size: '14px', lineHeight: '1.4'}
+    */
+    MainLabelFont: --overridable;
+    /*
+      The color of the label. 60% opacity when disabled
+      @default color-5
+    */
+    MainLabelTextColor: --overridable;
 }
 
 :vars {
@@ -57,6 +69,8 @@
     mainBackgroundColor: color(fallback(value(MainBackgroundColor), value(defaultMainBackgroundColor)));
     mainTextColor: color(fallback(value(MainTextColor), value(defaultMainTextColor)));
     mainTextFont: fallback(font(value(MainTextFont)), font(value(defaultMainTextFont)));
+    mainLabelTextColor: color(fallback(value(MainLabelTextColor), value(defaultMainLabelTextColor)));
+    mainLabelFont: fallback(font(value(MainLabelFont)), font(value(defaultMainLabelFont)));
 }
 
 :vars {
@@ -91,13 +105,18 @@
 :vars {
     /*Disabled*/
     colorDisabled: applyOpacity(value(mainTextColor), 0.6);
+    colorLabelDisabled: applyOpacity(value(mainLabelTextColor), 0.6);
     backgroundColorDisabled: value(mainBackgroundColor);
     borderColorDisabled: applyOpacity(value(mainBorderColor), 0.6);
 }
 
 .root {
+    -st-states: disabled, error, success;
+}
+
+.input {
     -st-extends: Input;
-    -st-states: error, success, theme(enum(line, box));
+    -st-states: theme(enum(line, box));
     box-sizing: border-box;
     border-color: value(borderColor);
     border: value(border);
@@ -111,46 +130,46 @@
     padding: 0;
 }
 
-.root:hover {
+.input:hover {
     border-color: value(borderColorHover);
     background-color: value(backgroundColorHover);
 }
 
-.root:focus {
+.input:focus {
     border-color: value(borderColorFocus);
     background-color: value(backgroundColorFocus);
 }
 
-.root:disabled {
+.root:disabled .input {
     border-color: value(borderColorDisabled);
     background-color: value(backgroundColorDisabled);
 }
 
-.root:success {
+.root:success .input {
     border-color: value(successBorderColor);
 }
 
-.root:hover:success {
+.root:success .input:hover {
     border-color: value(successBorderColorHover);
 }
 
-.root:focus:success {
+.root:success .input:focus {
     border-color: value(successBorderColorFocus);
 }
 
-.root:error {
+.root:error .input {
     border-color: value(errorBorderColor);
 }
 
-.root:hover:error {
+.root:error .input:hover {
     border-color: value(errorBorderColorHover);
 }
 
-.root:focus:error {
+.root:error .input:focus {
     border-color: value(errorBorderColorFocus);
 }
 
-.root:theme(line) {
+.input:theme(line) {
     border-top: none;
     border-left: none;
     border-right: none;
@@ -158,7 +177,7 @@
     background-color: color(fallback(value(MainBackgroundColor), value(defaultLineThemeMainBackgroundColor)));
 }
 
-.root::nativeInput {
+.input::nativeInput {
     width: 100%;
     font: value(mainTextFont);
     font-size: 16px;
@@ -173,33 +192,33 @@
     min-width: 0;
 }
 
-.root:theme(line)::nativeInput {
+.input:theme(line)::nativeInput {
     padding-left: 0;
     padding-right: 0;
 }
 
-.root:hover::nativeInput {
+.input:hover::nativeInput {
     color: value(colorHover);
 }
 
-.root:disabled::nativeInput {
+.input:disabled::nativeInput {
     color: value(colorDisabled);
 }
 
-.root:focus::nativeInput {
+.input:focus::nativeInput {
     outline: 0;
     color: value(colorFocus);
 }
 
-.root::nativeInput::selection {
+.input::nativeInput::selection {
     background: applyOpacity(value(mainTextColor), 0.2);
 }
 
-.root:theme(line) .suffixWrapper {
+.input:theme(line) .suffixWrapper {
     padding: 0;
 }
 
-.root:theme(box) .suffixWrapper {
+.input:theme(box) .suffixWrapper {
     padding-left: 12px;
     padding-right: 12px;
 }
@@ -266,8 +285,18 @@
 }
 
 /* Placeholder color */
-.root::nativeInput::-webkit-input-placeholder,
-.root::nativeInput::placeholder
+.input::nativeInput::-webkit-input-placeholder,
+.input::nativeInput::placeholder
 {
     color: value(colorPlaceholder);
+}
+
+.label {
+    font: value(mainLabelFont);
+    color: value(mainLabelTextColor);
+    margin-bottom: 8px;
+}
+
+.root:disabled .label {
+    color: value(colorLabelDisabled);
 }

@@ -110,6 +110,17 @@ describe('TextField', () => {
       expect(notEmptyStateDriver.hasEmptyState()).toBe(false);
     });
 
+    it('should have label', function () {
+      const driver = createDriver(<TextField label={'label'} />);
+      expect(driver.isLabelExists()).toBe(true);
+      expect(driver.getLabelText()).toBe('label');
+    });
+
+    it('should not have label', function () {
+      const driver = createDriver(<TextField />);
+      expect(driver.isLabelExists()).toBe(false);
+    });
+
     it('should onChange', function () {
       const onChange = jest.fn();
       const driver = createDriver(

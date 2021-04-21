@@ -96,11 +96,13 @@ function snapTest({
   error = false,
   suffix = null,
   withClearButton = false,
+  label = '',
 }) {
   snap(
     `${theme}${success ? '/success' : ''}${error ? '/error' : ''}${
       suffix ? '/suffix' : ''
-    }${withClearButton ? '/withClearButton' : ''}/${mouseAction}`,
+    }${withClearButton ? '/withClearButton' : ''}/${mouseAction}
+    ${label ? '/withLabel' : ''}`,
     (done) => (
       <TextFieldAsyncVisual onDone={done} hover={hover} focus={focus} dir={dir}>
         <TextField
@@ -112,6 +114,7 @@ function snapTest({
           value={'Some value'}
           suffix={suffix}
           withClearButton={withClearButton}
+          label={label}
         />
       </TextFieldAsyncVisual>
     ),
@@ -177,6 +180,14 @@ visualize('TextField', () => {
             error: true,
             suffix: <Calendar />,
             withClearButton: true,
+          });
+          snapTest({
+            theme,
+            mouseAction,
+            focus,
+            hover,
+            dir,
+            label: 'label',
           });
         });
       });

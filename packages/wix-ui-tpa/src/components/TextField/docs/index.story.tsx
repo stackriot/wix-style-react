@@ -46,6 +46,10 @@ export default {
 
   exampleProps: {
     theme: Object.values(TextFieldTheme),
+    label: [
+      { label: 'With Label', value: 'label text:' },
+      { label: 'Without Label', value: '' },
+    ],
     value: [
       { label: 'Empty', value: '' },
       { label: 'Short', value: 'Text' },
@@ -74,6 +78,10 @@ export default {
           }),
           divider(),
           ...[
+            {
+              title: 'With label',
+              source: examples.withLabel,
+            },
             {
               title: 'Placeholder',
               source: examples.placeholder,
@@ -117,6 +125,10 @@ export default {
             {
               title: 'Line theme',
               source: examples.lineTheme,
+            },
+            {
+              title: 'Line theme With Label',
+              source: examples.lineThemeWithLabel,
             },
             {
               title: 'Line theme success',
@@ -175,6 +187,11 @@ export default {
                     wixParam: 'textFont',
                     defaultFont: 'arial',
                   },
+                  {
+                    label: 'Label font',
+                    wixParam: 'labelFont',
+                    defaultFont: 'arial',
+                  },
                 ],
                 colors: [
                   {
@@ -190,6 +207,11 @@ export default {
                   {
                     label: 'Border color',
                     wixParam: 'textFieldBorderColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Label color',
+                    wixParam: 'labelTextColor',
                     defaultColor: 'color-5',
                   },
                 ],

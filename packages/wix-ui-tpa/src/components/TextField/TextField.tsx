@@ -46,6 +46,8 @@ export interface TPATextFieldProps extends TPAComponentProps {
   clearButtonAriaLabel?: string;
   /** Identifies the element that labels the clear button element. Optional. */
   clearButtonAriaLabelledby?: string;
+  /** a label that appears on top of the input. Optional. */
+  label?: string;
 }
 
 interface DefaultProps {
@@ -166,6 +168,7 @@ export class TextField extends React.Component<TextFieldProps> {
       clearButtonAriaLabel,
       clearButtonAriaLabelledby,
       errorTooltipPlacement,
+      label,
       ...restProps
     } = this.props;
 
@@ -178,8 +181,7 @@ export class TextField extends React.Component<TextFieldProps> {
     };
 
     return (
-      <CoreInput
-        {...dataObject}
+      <div
         className={st(
           classes.root,
           {
@@ -190,12 +192,24 @@ export class TextField extends React.Component<TextFieldProps> {
           },
           className,
         )}
-        ref={this.TextFieldRef}
-        suffix={this._getSuffix()}
-        error={error}
-        {...restProps}
-        disabled={disabled}
-      />
+      >
+        {label && (
+          <div data-hook={DATA_HOOKS.LABEL} className={classes.label}>
+            {label}
+          </div>
+        )}
+        <CoreInput
+          {...dataObject}
+          className={st(classes.input, {
+            theme,
+          })}
+          ref={this.TextFieldRef}
+          suffix={this._getSuffix()}
+          error={error}
+          {...restProps}
+          disabled={disabled}
+        />
+      </div>
     );
   }
 }

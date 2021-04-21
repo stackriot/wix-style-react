@@ -1,5 +1,9 @@
 export const importExample = `import { TextField } from 'wix-ui-tpa/TextField';`;
 
+export const withLabel = `
+<TextField label="label" placeholder="Placeholder Text"/>
+`;
+
 export const placeholder = `
 <TextField placeholder="Placeholder Text"/>
 `;
@@ -87,6 +91,10 @@ export const customSuffixAndErrorWithClearButton = `
 
 export const lineTheme = `
 <TextField theme="line"  value="Test text" />
+`;
+
+export const lineThemeWithLabel = `
+<TextField label="label" placeholder="Placeholder Text" theme="line" />
 `;
 
 export const lineThemeSuccess = `

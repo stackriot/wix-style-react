@@ -28,6 +28,15 @@ export const textFieldDriverFactory = ({ element, eventTrigger }) => {
     return getDataAttributeValue(THEME);
   }
 
+  function getLabelText() {
+    return element.querySelector(`[data-hook="${DATA_HOOKS.LABEL}"]`)
+      .textContent;
+  }
+
+  function isLabelExists() {
+    return !!element.querySelector(`[data-hook="${DATA_HOOKS.LABEL}"]`);
+  }
+
   function isSuccessValue() {
     return getDataAttributeBooleanValue(SUCCESS);
   }
@@ -75,6 +84,12 @@ export const textFieldDriverFactory = ({ element, eventTrigger }) => {
     },
     getErrorMessage() {
       return getErrorMessage();
+    },
+    getLabelText() {
+      return getLabelText();
+    },
+    isLabelExists() {
+      return isLabelExists();
     },
     isFocused() {
       return isFocused();
