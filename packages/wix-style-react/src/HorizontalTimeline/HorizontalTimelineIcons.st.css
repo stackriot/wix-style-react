@@ -1,6 +1,6 @@
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
-  -st-named: D20, D40, R10;
+  -st-named: D20, D40, R10, B10, B30;
 }
 
 :import {
@@ -13,10 +13,20 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
+  margin: 0 4px;
 }
 
 .completeIcon {
+  -st-states: skin(enum(dark, standard));
   fill: value(D20);
+  margin: 0 4px;
+}
+
+.completeIcon:skin(standard) {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: value(B10);
 }
 
 .errorIcon {
@@ -24,15 +34,41 @@
 }
 
 .upcomingIcon {
+  -st-states: skin(enum(dark, standard));
   -st-extends: baseIcon;
   border: 2px solid value(D40);
+  margin: 0 4px;
+}
+
+.upcomingIcon:skin(standard) {
+  width: 10px;
+  height: 10px;
+}
+
+.boundaryIcon {
+  -st-states: skin(enum(dark, standard));
+  width: 2px;
+  height: 12px;
+  background-color: value(D20);
+  margin: 0 4px;
+}
+
+.boundaryIcon:skin(standard) {
+  background-color: value(B10);
 }
 
 .activeIcon {
+  -st-states: skin(enum(dark, standard));
   -st-extends: baseIcon;
   display: flex;
   position: relative;
   border: 2px solid value(D20);
+  margin: 0 4px;
+}
+
+.activeIcon:skin(standard) {
+  background-color: value(B30);
+  border: none;
 }
 
 .activeIcon::before {
@@ -45,6 +81,13 @@
   animation-name: bounce;
   animation-duration: 1000ms;
   animation-iteration-count: infinite;
+}
+
+.activeIcon:skin(standard)::before {
+  background-color: value(B10);
+  animation-name: none;
+  height: 8px;
+  width: 8px;
 }
 
 @keyframes bounce {

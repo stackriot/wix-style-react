@@ -11,22 +11,22 @@ describe(HorizontalTimeline.displayName, () => {
   const items = [
     {
       label: 'active-icon',
-      skin: 'dark',
+      line: 'filled',
       icon: <HorizontalTimeline.ActiveIcon />,
     },
     {
       label: 'default-icon',
-      skin: 'dark',
+      line: 'filled',
       icon: <HorizontalTimeline.DefaultIcon />,
     },
     {
       label: 'complete-icon',
-      skin: 'dark',
+      line: 'filled',
       icon: <HorizontalTimeline.CompleteIcon />,
     },
     {
       label: 'destructive-icon',
-      skin: 'dark',
+      line: 'filled',
       icon: <HorizontalTimeline.DestructiveIcon />,
     },
   ];
@@ -45,5 +45,12 @@ describe(HorizontalTimeline.displayName, () => {
     const { driver } = render(<HorizontalTimeline items={items} />);
 
     expect(await driver.getLabel(0)).toEqual(items[0].label);
+  });
+
+  it('should be able to get skin', async () => {
+    const skin = 'standard';
+    const { driver } = render(<HorizontalTimeline skin={skin} items={items} />);
+
+    expect(await driver.getSkin()).toEqual(skin);
   });
 });

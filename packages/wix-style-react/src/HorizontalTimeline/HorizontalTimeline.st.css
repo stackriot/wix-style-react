@@ -1,16 +1,45 @@
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
-  -st-named: D20, D50;
+  -st-named: D20, D50, B10;
 }
 
 .root {
+  -st-states: skin(enum(dark, standard));
   display: table;
   table-layout: fixed;
   width: 100%;
 }
 
+.root .line:line(dashed) {
+  margin-right: 2px;
+  height: 0;
+  background-color: transparent;
+  border-bottom: 1px dashed value(D50);
+}
+
+.root:skin(dark) .line:skin(dark):line(dashed) {
+  background-color: value(D20);
+  border-color: transparent;
+  margin: 0;
+}
+
+.root:skin(dark) .line:line(filled) {
+  background-color: value(D20);
+}
+
+.root:skin(standard) .line:line(filled) {
+  background-color: value(B10);
+}
+
 .column {
   display: table-cell;
+  vertical-align: baseline;
+}
+
+.column:first-child .item .line:first-child,
+.column:last-child .item .line:last-child {
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .item {
@@ -18,15 +47,14 @@
   flex-direction: column;
 }
 
-.topRow {
+.lineIconLine {
   display: flex;
   align-items: center;
 }
 
-.iconWrapper {
+.icon {
   display: flex;
   box-sizing: border-box;
-  width: 24px;
   height: 24px;
   align-items: center;
   justify-content: center;
@@ -34,27 +62,36 @@
 }
 
 .line {
+  -st-states: skin(enum(dark, light)), line(enum(filled, dashed));
   height: 1px;
   flex-grow: 1;
-  -st-states: skin(enum(dark, light));
-}
-
-.line:skin(light) {
-  background-color: value(D50);
-}
-
-.line:skin(dark) {
-  background-color: value(D20);
-}
-
-.column:first-child .line:first-child,
-.column:last-child .line:last-child {
-  background: none;
 }
 
 .label {
+  -st-states: alignLabel(enum(center, start));
   box-sizing: border-box;
-  width: 100%;
-  padding: 3px 6px 6px 6px;
+  padding-top: 3px;
+  padding-bottom: 6px;
+  display: flex;
+}
+
+.label:alignLabel(center) {
+  padding-left: 6px;
+  padding-right: 6px;
   justify-content: center;
+}
+
+.label:alignLabel(start) {
+  justify-content: flex-start;
+  padding-left: 0;
+  padding-right: 6px;
+  margin-left: calc(100%/2);
+}
+
+.column:last-child .label:alignLabel(start) {
+  margin-left: 0;
+  justify-content: flex-end;
+  padding-right: 0;
+  padding-left: 6px;
+  margin-right: calc(100%/2);
 }
