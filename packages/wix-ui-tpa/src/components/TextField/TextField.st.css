@@ -119,7 +119,6 @@
     -st-states: theme(enum(line, box));
     box-sizing: border-box;
     border-color: value(borderColor);
-    border: value(border);
     border-radius: 0;
     transition: border-color .1s ease-in;
     background-color: value(mainBackgroundColor);
@@ -130,18 +129,36 @@
     padding: 0;
 }
 
+.input:theme(box) {
+    border: value(border);
+}
+
+.input:theme(line) {
+    border-bottom: value(border);
+    background-color: color(fallback(value(MainBackgroundColor), value(defaultLineThemeMainBackgroundColor)));
+}
+
 .input:hover {
     border-color: value(borderColorHover);
+}
+
+.input:theme(box):hover {
     background-color: value(backgroundColorHover);
 }
 
 .input:focus {
     border-color: value(borderColorFocus);
+}
+
+.input:theme(box):focus {
     background-color: value(backgroundColorFocus);
 }
 
 .root:disabled .input {
     border-color: value(borderColorDisabled);
+}
+
+.root:disabled .input:theme(box) {
     background-color: value(backgroundColorDisabled);
 }
 
@@ -167,14 +184,6 @@
 
 .root:error .input:focus {
     border-color: value(errorBorderColorFocus);
-}
-
-.input:theme(line) {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    padding: 0;
-    background-color: color(fallback(value(MainBackgroundColor), value(defaultLineThemeMainBackgroundColor)));
 }
 
 .input::nativeInput {
