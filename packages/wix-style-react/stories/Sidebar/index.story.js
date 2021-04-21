@@ -6,17 +6,14 @@ import {
   table,
   importExample,
   columns,
-  code as baseCode,
+  code,
 } from 'wix-storybook-utils/Sections';
 import LinkTo from '@storybook/addon-links/react';
 
 import { storySettings } from './storySettings';
 import * as examples from './examples';
-import allComponents from '../utils/allComponents';
-import { Category } from '../storiesHierarchy';
 
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
+import { Category } from '../storiesHierarchy';
 
 export default {
   category: storySettings.category,

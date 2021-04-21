@@ -1,6 +1,6 @@
 import React from 'react';
 import { storySettings } from './storySettings';
-import allComponents from '../utils/allComponents';
+
 import {
   header,
   title,
@@ -8,7 +8,7 @@ import {
   table,
   importExample,
   columns,
-  example as baseExample,
+  example,
 } from 'wix-storybook-utils/Sections';
 import LinkTo from '@storybook/addon-links/react';
 import * as examples from './examples';
@@ -35,9 +35,6 @@ const commonProps = {
     </IconButton>
   ),
 };
-
-const example = config =>
-  baseExample({ components: { ...allComponents, PopoverMenu }, ...config });
 
 export default {
   category: storySettings.category,

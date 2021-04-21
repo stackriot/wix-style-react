@@ -16,20 +16,17 @@ import {
   title,
   columns,
   divider,
-  code as baseCode,
+  code,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import ComposerHeader from '..';
 import compound from './compound.md';
 
 import * as examples from './examples';
-
-const code = config => baseCode({ components: allComponents, ...config });
 
 const size = 'medium';
 

@@ -11,18 +11,12 @@ import {
   importExample,
   divider,
   title,
-  example as baseExample,
+  example,
 } from 'wix-storybook-utils/dist/src/Sections';
 import * as examples from './examples';
-import allComponents from '../../../stories/utils/allComponents';
+
 import { commonPopoverPropsExample } from '../../../stories/utils/playgroundUtils';
 import { convertTokens } from '@date-fns/upgrade/v2';
-
-const example = config =>
-  baseExample({
-    components: allComponents,
-    ...config,
-  });
 
 const defaultValue = new Date('2017/05/01');
 const today = new Date();

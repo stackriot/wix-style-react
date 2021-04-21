@@ -8,7 +8,7 @@ import { avatarColorList } from '../constants';
 
 import {
   api,
-  example as baseExample,
+  example,
   description,
   divider,
   header,
@@ -20,12 +20,9 @@ import {
   title,
 } from 'wix-storybook-utils/dist/src/Sections';
 
-import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
 import { CounterBadge } from '../..';
 import Box from '../../Box';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const IMG_REAL_URL = 'https://randomuser.me/api/portraits/women/39.jpg';
 const IMG_INVALID_URL = 'https://1234.me/4321.jpg';

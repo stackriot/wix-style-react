@@ -5,7 +5,7 @@ import Playground from 'wix-storybook-utils/Playground';
 import LayoutList from 'wix-ui-icons-common/LayoutList';
 import LayoutListWithPanel from 'wix-ui-icons-common/LayoutListWithPanel';
 
-import allComponents, { themes } from '../utils/allComponents';
+import playgroundComponents, { themes } from '../../.storybook/playground';
 import exampleCode from '!raw-loader!./example';
 
 import { Category } from '../storiesHierarchy';
@@ -28,7 +28,7 @@ const PlaygroundWrapper = () => {
         compact={layout === 'horizontal'}
         initiallyOpen={layout === 'horizontal'}
         initialCode={exampleCode}
-        scope={allComponents}
+        scope={playgroundComponents}
         formatSnippetUrl={id => `${window.parent.location.href}&snippet=${id}`}
       />
 

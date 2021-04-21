@@ -8,19 +8,17 @@ import {
   title,
   columns,
   divider,
-  code as baseCode,
+  code,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import Swatches from '..';
 import * as examples from './examples';
 
-const code = config => baseCode({ components: allComponents, ...config });
 const colors3 = ['cyan', 'yellow', 'pink'];
 const colors6 = ['cyan', 'yellow', 'pink', '#fff', 'rgb(0, 0, 0)', '#aeaeae'];
 

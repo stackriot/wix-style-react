@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   header,
   tabs,
@@ -7,17 +6,13 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
-  playground,
+  example,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import AnalyticsLayout from '..';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

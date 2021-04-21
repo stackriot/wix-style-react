@@ -8,21 +8,19 @@ import {
   title,
   columns,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import FixedExample from '!raw-loader!./FixedPositionExample';
 
 import SidePanel from '..';
 import compoundReadmeApi from '../COMPOUND_README.API.md';
 import Box from '../../Box';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const importDeclaration = `
 import { SidePanel } from 'wix-style-react';
@@ -103,14 +101,14 @@ export default {
             text: 'A simple examples of panel with a customized width',
             source: `
 <Box direction="vertical" gap="5">
-  <SidePanel width="250px">  
+  <SidePanel width="250px">
     <SidePanel.Content>
       <Box background="#fafafa" height="200px" align="center" verticalAlign="middle">
         content goes here
       </Box>
     </SidePanel.Content>
   </SidePanel>
-  <SidePanel width={600}>  
+  <SidePanel width={600}>
     <SidePanel.Content>
       <Box background="#fafafa" height="200px" align="center" verticalAlign="middle">
         content goes here

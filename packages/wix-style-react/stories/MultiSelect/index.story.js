@@ -9,18 +9,15 @@ import {
   table,
   importExample,
   columns,
-  example as baseExample,
+  example,
 } from 'wix-storybook-utils/Sections';
 import LinkTo from '@storybook/addon-links/react';
 import * as examples from './examples';
 
 import { storySettings } from './storySettings';
 import { Category } from '../storiesHierarchy';
-import allComponents from '../utils/allComponents';
 
 import { Layout, Cell, FormField } from 'wix-style-react';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

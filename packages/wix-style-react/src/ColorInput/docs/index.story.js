@@ -10,18 +10,15 @@ import {
   importExample,
   header,
   title,
-  example as baseExample,
+  example,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import ColorInput from '..';
 import { placements } from '../../Popover';
-import allComponents from '../../../stories/utils/allComponents';
 
 import usage from './Usage.md';
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

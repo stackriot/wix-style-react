@@ -10,14 +10,13 @@ import {
   title,
   columns,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import ModalMobileLayout from '..';
 import { ModalWrapperExample } from './examples/ModalWrapper';
@@ -83,8 +82,6 @@ const footerExamples = [
   },
   { label: 'No footer', value: '' },
 ];
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

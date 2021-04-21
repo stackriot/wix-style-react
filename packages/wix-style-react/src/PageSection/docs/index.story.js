@@ -3,12 +3,12 @@ import {
   header,
   tabs,
   tab,
-  code as baseCode,
+  code,
   description,
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -16,13 +16,10 @@ import {
 } from 'wix-storybook-utils/Sections';
 import * as examples from './examples';
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import TextButton from '../../TextButton';
 import { Add } from 'wix-ui-icons-common';
 import PageSection from '..';
-
-const example = config => baseExample({ components: allComponents, ...config });
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

@@ -7,20 +7,17 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import PulseAnimation from '..';
 import Button from '../../Button';
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const exampleChildren = [
   {

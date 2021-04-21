@@ -7,15 +7,14 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
-  code as baseCode,
+  code,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 import {
@@ -29,8 +28,6 @@ import {
 } from 'wix-style-react';
 
 import MarketingPageLayout from '..';
-
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

@@ -11,17 +11,14 @@ import {
   api,
   testkit,
   title,
-  example as baseExample,
+  example,
   doDont,
 } from 'wix-storybook-utils/Sections';
 
 import readmeTestkit from '../README.TESTKIT.md';
-import allComponents from '../../../stories/utils/allComponents';
 
 import { storySettings } from './storySettings';
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

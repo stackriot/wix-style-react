@@ -12,7 +12,6 @@ import {
   playground,
   example as baseExample,
 } from 'wix-storybook-utils/Sections';
-import allComponents from '../../../stories/utils/allComponents';
 import sortableItemsListExample from '!raw-loader!./examples/SortableItemsList';
 import sortableItemsListWithDragHandleExample from '!raw-loader!./examples/SortableItemsListWithDragHandle';
 import classNames from 'classnames';
@@ -22,7 +21,7 @@ import SortableList from '..';
 import { storySettings } from './storySettings';
 
 const example = config =>
-  baseExample({ components: { ...allComponents, classNames }, ...config });
+  baseExample({ components: { classNames }, ...config });
 
 export default {
   category: storySettings.category,

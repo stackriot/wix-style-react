@@ -7,18 +7,15 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   code,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 import * as examples from './examples';
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import WixStyleReactProvider from '..';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,
@@ -59,7 +56,6 @@ export default {
             title: 'Heading',
             description: '',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.heading,
           }),
@@ -67,7 +63,6 @@ export default {
             title: 'Layout',
             description: '',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.layout,
           }),
@@ -75,7 +70,6 @@ export default {
             title: 'Page Header',
             description: '',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.pageHeader,
           }),
@@ -83,7 +77,6 @@ export default {
             title: 'Page Section',
             description: '',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.pageSection,
           }),
@@ -91,39 +84,38 @@ export default {
             title: 'Card',
             description: '',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.card,
           }),
           code({
             title: 'Table',
-            description: ' `<TableToolbar/>` and `<Table.Titlebar/>` components have few remaining spacing bugs, they will be fixed in <a href="https://jira.wixpress.com/browse/DSM-1783" target="_blank">this task</a>.',
+            description:
+              ' `<TableToolbar/>` and `<Table.Titlebar/>` components have few remaining spacing bugs, they will be fixed in <a href="https://jira.wixpress.com/browse/DSM-1783" target="_blank">this task</a>.',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.table,
           }),
           code({
             title: 'Table row sizes',
-            description: 'WSR version 9.0 — `rowVerticalPadding` default value is `medium`.<br> WSR version 10.0 — `rowVerticalPadding` default value will be `small`. Value `large` will be <b>removed</b>. ',
+            description:
+              'WSR version 9.0 — `rowVerticalPadding` default value is `medium`.<br> WSR version 10.0 — `rowVerticalPadding` default value will be `small`. Value `large` will be <b>removed</b>. ',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.tableRows,
           }),
           code({
             title: 'Table List item',
-            description: 'WSR version 9.0 — `verticalPadding` default value is `medium`.<br> WSR version 10.0 — `verticalPadding` default value will be `small`. ',
+            description:
+              'WSR version 9.0 — `verticalPadding` default value is `medium`.<br> WSR version 10.0 — `verticalPadding` default value will be `small`. ',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.tableListItem,
           }),
           code({
             title: 'Accordion',
-            description: 'WSR version 9.0 — `size` default value is `large`.<br> WSR version 10.0 — `size` default value will be `small`. Value `large` will be <b>removed</b>, `medium` and `tiny` sizes will be introduced in <a href="https://jira.wixpress.com/browse/DSM-1782" target="_blank">this task.</a>',
+            description:
+              'WSR version 9.0 — `size` default value is `large`.<br> WSR version 10.0 — `size` default value will be `small`. Value `large` will be <b>removed</b>, `medium` and `tiny` sizes will be introduced in <a href="https://jira.wixpress.com/browse/DSM-1782" target="_blank">this task.</a>',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.accordion,
           }),
@@ -131,39 +123,38 @@ export default {
             title: 'Selectable Accordion',
             description: '',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.selectableAccordion,
           }),
           code({
             title: 'Statistics Widget',
-            description: 'WSR version 9.0 — `size` default value is `large`.<br> WSR version 10.0 — `size` default value will be `tiny`. ',
+            description:
+              'WSR version 9.0 — `size` default value is `large`.<br> WSR version 10.0 — `size` default value will be `tiny`. ',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.statisticsWidget,
           }),
           code({
             title: 'Marketing Layout',
-            description: 'WSR version 9.0 — `size` default value is `small`.<br> WSR version 10.0 — `size` default value will remain `small`. Value `large` will be <b>removed</b>. ',
+            description:
+              'WSR version 9.0 — `size` default value is `small`.<br> WSR version 10.0 — `size` default value will remain `small`. Value `large` will be <b>removed</b>. ',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.marketingLayout,
           }),
           code({
             title: 'Announcement Modal Layout',
-            description: 'WSR version 9.0 — `illustration` size is `L1`.<br> WSR version 10.0 — `illustration` size will be `L0`. ',
+            description:
+              'WSR version 9.0 — `illustration` size is `L1`.<br> WSR version 10.0 — `illustration` size will be `L0`. ',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.announcementModalLayout,
           }),
           code({
             title: 'Form Field',
-            description: 'WSR version 9.0 — `labelSize` default value is `medium`.<br> WSR version 10.0 — `labelSize` default value will be `small`. Value `medium` will be <b>removed</b>. ',
+            description:
+              'WSR version 9.0 — `labelSize` default value is `medium`.<br> WSR version 10.0 — `labelSize` default value will be `small`. Value `medium` will be <b>removed</b>. ',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.formField,
           }),
@@ -171,7 +162,6 @@ export default {
             title: 'Color Picker',
             description: '',
             autoRender: true,
-            components: allComponents,
             compact: true,
             source: examples.colorPicker,
           }),

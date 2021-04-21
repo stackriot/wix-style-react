@@ -8,21 +8,19 @@ import {
   title,
   columns,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 import SidebarHeader from '..';
 import Box from '../../Box';
 import LinearProgressBar from '../../LinearProgressBar';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const titleExamples = [
   { label: 'Short', value: 'Site Name' },

@@ -11,7 +11,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from './storySettings';
-import { editorXComponents } from '../../../../stories/utils/allComponents';
+import { editorXComponents } from '../../../../.storybook/playground';
 import SectionHelper from '../../../SectionHelper';
 
 import * as examples from './examples';

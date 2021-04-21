@@ -16,14 +16,14 @@ import LinkTo from '@storybook/addon-links/react';
 import { storySettings } from './storySettings';
 import SectionHelper from '../../SectionHelper';
 import GoogleAddressInput from '..';
-import allComponents from '../../../stories/utils/allComponents';
+
 import { Category } from '../../../stories/storiesHierarchy';
 
 import clients from '../../clients';
 import GoogleAPILoader from '../../../stories/utils/GoogleAPILoader';
 
 const example = config =>
-  baseExample({ components: { ...allComponents, GoogleAPILoader }, ...config });
+  baseExample({ components: { GoogleAPILoader }, ...config });
 
 const basicExample = `
 () => {

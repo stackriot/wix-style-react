@@ -6,20 +6,17 @@ import {
   description,
   importExample,
   title,
-  columns,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import VerticalTabs from '..';
 import * as examples from './verticalTabsExample';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const exampleChildren = [
   {

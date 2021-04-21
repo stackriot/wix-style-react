@@ -7,21 +7,17 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
-  code as baseCode,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
-import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
 
 import { storySettings } from './storySettings';
 
 import CalendarPanelFooter, { defaultDateToStringOptions } from '..';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.kind,

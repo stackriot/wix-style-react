@@ -7,10 +7,9 @@ import {
   columns,
   divider,
   title,
-  code as baseCode,
+  code,
 } from 'wix-storybook-utils/Sections';
 import LinkTo from '@storybook/addon-links/react';
-import allComponents from '../../../stories/utils/allComponents';
 
 import { Category } from '../../../stories/storiesHierarchy';
 
@@ -24,8 +23,6 @@ import HeadingExamplesRaw from '!raw-loader!./HeadingExamples';
 
 import TextExamples from './TextExamples';
 import TextExamplesRaw from '!raw-loader!./TextExamples';
-
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: Category.FOUNDATION,

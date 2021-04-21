@@ -8,7 +8,7 @@ import {
   title,
   columns,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -23,11 +23,9 @@ import SimpleExample from '!raw-loader!./examples/Simple';
 import FullWidthContentExample from '!raw-loader!./examples/FullWidthContent';
 import ScrollableContentExample from '!raw-loader!./examples/ScrollableContent';
 import MultipleContentExample from '!raw-loader!./examples/MultipleContent';
-import allComponents from '../../../stories/utils/allComponents';
+
 import { Category } from '../../../stories/storiesHierarchy';
 import { Box } from 'wix-style-react';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const childrenNodesExamples = [
   {

@@ -7,7 +7,7 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -15,13 +15,11 @@ import {
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 import Range from '..';
 import DatePicker from '../../DatePicker';
 import Input from '../../Input';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const dataHooks = {
   firstItem: 'first-item',

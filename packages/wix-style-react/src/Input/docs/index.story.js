@@ -11,15 +11,13 @@ import {
   testkit,
   playground,
   description,
-  example as baseExample,
+  example,
   doDont,
 } from 'wix-storybook-utils/Sections';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 import Input from '..';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.kind,
@@ -63,7 +61,8 @@ export default {
         sections: [
           description({
             title: 'Usage',
-            text: 'Input allows to insert short text values. This component is used in submit forms or to build other form components like \`<Autocomplete/>\` or \`<NumberInput/>\`.<br/>',
+            text:
+              'Input allows to insert short text values. This component is used in submit forms or to build other form components like `<Autocomplete/>` or `<NumberInput/>`.<br/>',
           }),
 
           doDont({
@@ -142,7 +141,7 @@ export default {
           example({
             title: 'Affix',
             text: `
-              Support input value with additional information added to \`prefix\` and \`suffix\` props. 
+              Support input value with additional information added to \`prefix\` and \`suffix\` props.
               Props can contain text, icons and even buttons.
             `,
             source: examples.affix,

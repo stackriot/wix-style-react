@@ -6,7 +6,7 @@ import {
   api,
   testkit,
   importExample,
-  example as baseExample,
+  example,
   header,
   tabs,
   divider,
@@ -17,18 +17,11 @@ import Thumbnail from '../Thumbnail';
 
 import * as examples from './examples';
 import thumbnailReadme from '../README.md';
-import allComponents from '../../../stories/utils/allComponents';
 
 const sizes = [
   { value: 100, label: '100' },
   { value: 300, label: '300' },
 ];
-
-const example = config =>
-  baseExample({
-    components: allComponents,
-    ...config,
-  });
 
 export default {
   category: storySettings.category,

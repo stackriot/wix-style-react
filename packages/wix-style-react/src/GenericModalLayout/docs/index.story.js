@@ -7,14 +7,14 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import { ModalWrapper } from './modalWrapper';
 import GenericModalLayout from '..';
 import * as examples from './examples';
@@ -33,8 +33,6 @@ const exampleItems = [
     value: <div style={{ backgroundColor: '#fbfba1' }}>content</div>,
   },
 ];
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

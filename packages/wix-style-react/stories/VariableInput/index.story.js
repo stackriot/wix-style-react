@@ -1,6 +1,6 @@
 import React from 'react';
 import { storySettings } from './storySettings';
-import allComponents from '../utils/allComponents';
+
 import {
   header,
   title as sectionTitle,
@@ -8,7 +8,7 @@ import {
   table,
   importExample,
   columns,
-  example as baseExample,
+  example,
 } from 'wix-storybook-utils/Sections';
 import LinkTo from '@storybook/addon-links/react';
 import * as examples from './examples';
@@ -16,8 +16,6 @@ import * as examples from './examples';
 import { Category } from '../storiesHierarchy';
 
 import { VariableInput, FormField } from 'wix-style-react';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

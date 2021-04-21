@@ -4,7 +4,7 @@ import {
   description,
   importExample,
   title,
-  example as baseExample,
+  example,
   tab,
   api,
   testkit,
@@ -15,16 +15,10 @@ import {
 import AutoComplete from '..';
 import { Layout, Cell } from '../../Layout';
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 import { createOptions } from '../../../stories/utils/playgroundUtils';
 import testkitDesc from './testkit.md';
-
-const example = config =>
-  baseExample({
-    components: allComponents,
-    ...config,
-  });
 
 const options4 = createOptions(4);
 const options10 = createOptions(10);

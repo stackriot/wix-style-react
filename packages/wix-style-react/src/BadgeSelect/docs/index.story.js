@@ -7,21 +7,19 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 import { SKIN, TYPE, SIZE } from '../../Badge/constants';
 import { commonPopoverPropsExample } from '../../../stories/utils/playgroundUtils';
 
 import BadgeSelect from '..';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const options = Object.values(SKIN).map((skin, id) => ({
   id: id.toString(),

@@ -7,8 +7,7 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
-  code as baseCode,
+  code,
   playground,
   api,
   testkit,
@@ -17,16 +16,12 @@ import {
 import { THEMES, ACTION_BUTTON_TYPES } from '../constants';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import Notification from '..';
 import Text from '../../Text';
 
 import * as examples from './examples.js';
 import CompoundComponentsRaw from '!raw-loader!./README.md';
-
-const example = config => baseExample({ components: allComponents, ...config });
-const code = config => baseCode({ components: allComponents, ...config });
 
 const exampleChildren = [
   {

@@ -8,7 +8,7 @@ import {
   title,
   columns,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -18,11 +18,8 @@ import { storySettings } from '../test/storySettings';
 
 import Palette from '..';
 import Box from '../../Box/Box';
-import allComponents from '../../../stories/utils/allComponents';
 
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const colors3 = [
   'rgb(50, 132, 144)',

@@ -7,7 +7,7 @@ import {
   description,
   importExample,
   divider,
-  example as baseExample,
+  example,
   api,
   testkit,
   playground,
@@ -19,10 +19,7 @@ import Accordion, { accordionItemBuilder } from '..';
 import RichTextInputArea from '../../RichTextInputArea';
 import { buttonTypes } from '../constants';
 
-import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const item = config =>
   accordionItemBuilder({

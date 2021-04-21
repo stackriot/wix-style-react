@@ -8,22 +8,19 @@ import {
   title,
   columns,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import BrowserPreviewWidget from '..';
 
 import { skins, browserBarSizes } from '../constants';
 
 import { Box, Text } from 'wix-style-react';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const childNode = (
   <Box padding="20px" backgroundColor="Y30">

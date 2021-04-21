@@ -3,7 +3,7 @@ import React from 'react';
 import { createAutoExampleWrapper } from '../../../stories/utils/AutoExampleWrapper';
 import {
   api,
-  example as baseExample,
+  example,
   description,
   divider,
   header,
@@ -14,10 +14,8 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/dist/src/Sections';
-import allComponents from '../../../stories/utils/allComponents';
-import * as examples from './examples';
 
-const example = config => baseExample({ components: allComponents, ...config });
+import * as examples from './examples';
 
 import { storySettings } from './storySettings';
 import Tabs from '../Tabs';

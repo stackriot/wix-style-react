@@ -6,16 +6,13 @@ import {
   description,
   importExample,
   columns,
-  code as baseCode,
+  code,
   api,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import FontUpgrade from '..';
-
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

@@ -7,7 +7,7 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -17,9 +17,6 @@ import Divider from '..';
 import Box from '../../Box';
 import * as examples from './examples';
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

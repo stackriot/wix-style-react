@@ -7,8 +7,7 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
-  code as baseCode,
+  example,
   playground,
   api,
   testkit,
@@ -17,7 +16,7 @@ import FormField from '../../FormField';
 import Input from '../../Input';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 import Collapse from '..';
@@ -33,9 +32,6 @@ const exampleChildren = [
     ),
   },
 ];
-
-const example = config => baseExample({ components: allComponents, ...config });
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

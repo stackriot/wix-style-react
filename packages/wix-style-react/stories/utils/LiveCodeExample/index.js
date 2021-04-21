@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LiveCodeExample from 'wix-storybook-utils/LiveCodeExample';
 
-import allComponents from '../allComponents';
+import playgroundComponents from '../../../.storybook/playground';
 import styles from './styles.scss';
 
 /**
@@ -47,7 +47,7 @@ const Component = props => {
       {title && <div className={styles.title}>{title}</div>}
 
       <LiveCodeExample
-        scope={{ ...allComponents, ...scope }}
+        scope={{ ...playgroundComponents, ...scope }}
         {...rest}
         initialCode={filteredCode}
       />

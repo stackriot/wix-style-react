@@ -8,21 +8,19 @@ import {
   title,
   columns,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 import SidebarSectionItem from '..';
 import Box from '../../Box';
 import CounterBadge from '../../CounterBadge';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const childrenExamples = [
   { label: 'Text', value: 'Some text' },

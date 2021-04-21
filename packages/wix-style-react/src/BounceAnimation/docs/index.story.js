@@ -7,21 +7,18 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import BounceAnimation from '..';
 import FormField from '../../FormField';
 import Input from '../../Input';
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const exampleChildren = [
   {

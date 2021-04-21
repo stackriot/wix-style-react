@@ -2,20 +2,18 @@ import React from 'react';
 import { storySettings } from './storySettings';
 import {
   tab,
-  code as baseCode,
+  code,
   importExample,
   api,
   testkit,
   playground,
   description,
 } from 'wix-storybook-utils/Sections';
-import allComponents from '../../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 import MessageBoxFunctionalLayout from '../MessageBoxFunctionalLayout';
 import SectionHelper from '../../../SectionHelper';
-
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

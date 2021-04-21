@@ -5,7 +5,7 @@ import {
   tab,
   description,
   importExample,
-  example as baseExample,
+  example,
   divider,
   title,
   api,
@@ -25,10 +25,7 @@ import Date from 'wix-ui-icons-common/Date';
 import { placements } from '../../Popover';
 import Button from '../../Button';
 
-import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const options = [
   {

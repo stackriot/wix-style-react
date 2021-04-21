@@ -8,14 +8,14 @@ import {
   title,
   columns,
   divider,
-  code as baseCode,
+  code,
   api,
   testkit,
   playground,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import Stepper from '..';
 import { Type, StepType, FitMode } from '../constants';
 import responsiveExample from '!raw-loader!./examples/responsive';
@@ -24,8 +24,6 @@ import fitModesExample from '!raw-loader!./examples/fitModes';
 import stepperTypeExample from '!raw-loader!./examples/stepperTypes';
 import cardExample from '!raw-loader!./examples/card';
 import composerHeaderExample from '!raw-loader!./examples/composerHeader';
-
-const code = config => baseCode({ components: allComponents, ...config });
 
 const steps = [
   { text: 'First step', type: StepType.Completed },

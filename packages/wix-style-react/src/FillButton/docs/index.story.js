@@ -8,22 +8,20 @@ import {
   title,
   columns,
   divider,
-  code as baseCode,
+  code,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import Box from '../../Box';
 
 import * as examples from './examples';
 
 import FillButton from '..';
 import { commonTooltipPropsExample } from '../../../stories/utils/playgroundUtils';
-
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

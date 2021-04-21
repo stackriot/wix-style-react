@@ -7,7 +7,7 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -15,7 +15,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 import AvatarGroup from '..';
 
@@ -62,7 +62,6 @@ const avatarItems = [
     name: 'Patti Smith',
   },
 ];
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

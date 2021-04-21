@@ -12,21 +12,18 @@ import {
   testkit,
   importExample,
   divider,
-  example as baseExample,
+  example,
   title,
 } from 'wix-storybook-utils/Sections';
 import * as examples from './examples';
 
 import { Layout } from '../../Layout';
-import allComponents from '../../../stories/utils/allComponents';
 
 import { storySettings } from './storySettings';
 
 import themes from './themes.md';
 import sizes from './sizes.md';
 import { commonTooltipPropsExample } from '../../../stories/utils/playgroundUtils';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.kind,

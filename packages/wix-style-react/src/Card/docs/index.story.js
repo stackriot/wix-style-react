@@ -3,7 +3,7 @@ import {
   tabs,
   tab,
   title,
-  code as baseCode,
+  code,
   description,
   importExample,
   header,
@@ -13,16 +13,8 @@ import {
 import Card from '..';
 
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import CompoundComponentsRaw from '!raw-loader!./CompoundComponents.md';
-
-const code = config =>
-  baseCode({
-    components: allComponents,
-    compact: false,
-    ...config,
-  });
 
 export default {
   category: storySettings.category,

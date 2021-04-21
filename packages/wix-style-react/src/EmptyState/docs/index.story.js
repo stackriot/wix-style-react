@@ -7,7 +7,7 @@ import {
   importExample,
   title,
   divider,
-  code as baseCode,
+  code,
   playground,
   api,
   testkit,
@@ -17,10 +17,9 @@ import EmptyState from '..';
 import { Add, Download, StatusComplete } from 'wix-ui-icons-common';
 import ImagePlaceholder from '../../../stories/utils/ImagePlaceholder';
 import { TextButton } from 'wix-style-react';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
-const code = config => baseCode({ components: allComponents, ...config });
 const singleAction = <TextButton prefixIcon={<Add />}>New Item</TextButton>;
 
 const twoActions = (

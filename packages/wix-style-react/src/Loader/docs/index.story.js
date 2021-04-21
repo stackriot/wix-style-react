@@ -3,7 +3,7 @@ import { Category } from '../../../stories/storiesHierarchy';
 import Loader from '..';
 import {
   api,
-  example as baseExample,
+  example,
   description,
   divider,
   header,
@@ -14,11 +14,9 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/dist/src/Sections';
-import allComponents from '../../../stories/utils/allComponents';
+
 import React from 'react';
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: Category.COMPONENTS,

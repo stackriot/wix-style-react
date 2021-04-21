@@ -60,6 +60,7 @@ module.exports = ({ config }) => {
               },
             },
             unifiedTestkit: true,
+            playgroundComponentsPath: path.resolve(__dirname, './playground')
           },
         },
       }),

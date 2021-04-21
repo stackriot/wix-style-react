@@ -14,19 +14,9 @@ import {
   tabs,
   testkit,
   title,
-  example as baseExample,
-  code as baseCode,
+  example,
 } from 'wix-storybook-utils/Sections';
 import * as examples from './examples';
-import allComponents from '../../../stories/utils/allComponents';
-
-const example = config => baseExample({ components: allComponents, ...config });
-
-const code = config =>
-  baseCode({
-    components: allComponents,
-    ...config,
-  });
 
 const labelExamples = [
   { label: 'Simple string', value: 'Hello World!' },

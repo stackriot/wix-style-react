@@ -14,17 +14,14 @@ import {
   description,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
   columns,
 } from 'wix-storybook-utils/Sections';
 
-import allComponents from '../../../../stories/utils/allComponents';
 import { Category } from '../../../../stories/storiesHierarchy';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const image = <Image width="102" height="102" />;
 

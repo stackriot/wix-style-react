@@ -13,7 +13,7 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import Tooltip from '..';
-import allComponents from '../../../stories/utils/allComponents';
+
 import AddItem from '../../AddItem';
 import { placements } from '../../Popover';
 import Text from '../../Text';
@@ -23,16 +23,6 @@ import * as examples from './examples';
 import Readme from './README.TESTKIT.md';
 import usage from './Usage.md';
 import Box from '../../Box';
-
-const liveCode = config =>
-  code({
-    previewProps: {
-      style: { backgroundColor: '#f0f4f7' },
-    },
-    compact: true,
-    components: allComponents,
-    ...config,
-  });
 
 export default {
   category: storySettings.category,
@@ -111,13 +101,13 @@ export default {
           title('Floating Behaviour'),
 
           columns([
-            liveCode({
+            code({
               title: 'Flip: Enabled (default) & Fixed: Disabled (default)',
               subtitle:
                 'Focus target element (TAB) and scroll viewport to see behaviour',
               source: examples.flip,
             }),
-            liveCode({
+            code({
               title: 'Flip: Disabled & Fixed: Disabled (default)',
               subtitle:
                 'Focus target element (TAB) and scroll viewport to see behaviour',
@@ -125,7 +115,7 @@ export default {
             }),
           ]),
           columns([
-            liveCode({
+            code({
               title: 'Flip: Enabled (default) & Fixed: Enabled',
               subtitle:
                 'Focus target element (TAB) and scroll viewport to see behaviour',
@@ -136,13 +126,13 @@ export default {
           title('Accessibility'),
 
           columns([
-            liveCode({
+            code({
               title: 'Focus behaviour',
               subtitle:
                 'The tooltip content appears on keyboard focus for native focusable html elements like: `<button>` or `<input>` or any focusable wix-style-react component.',
               source: examples.focus,
             }),
-            liveCode({
+            code({
               title: 'ARIA guidelines',
               subtitle:
                 'The tooltip content is bound to tooltip trigger element by aria-describedby prop. VoiceOver users will get tooltips content information as soon as target element is focused.',
@@ -153,31 +143,31 @@ export default {
           title('Attachment to DOM'),
 
           columns([
-            liveCode({
+            code({
               title: 'Append to: parent',
               subtitle: `If you inspect the content, you'll see it is attached to a new div next to the target element.`,
               source: examples.parent,
             }),
-            liveCode({
+            code({
               title: 'Append to: window',
               subtitle: `If you inspect the content, you'll see it is attached to a new <div/> under the body.`,
               source: examples.window,
             }),
           ]),
           columns([
-            liveCode({
+            code({
               title: 'Append to: viewport',
               subtitle: `This is similar to window as it also appends the content to a new <div/> under the body, but also set its boundary to the viewport.`,
               source: examples.viewport,
             }),
-            liveCode({
+            code({
               title: 'Append to: scrollparent',
               subtitle: `If you inspect the content, you'll see it is attached to a new div under the list container.`,
               source: examples.scrollParent,
             }),
           ]),
           columns([
-            liveCode({
+            code({
               title:
                 "Append to: `(elm) => elm.getAttribute('attribute') === value`",
               subtitle: `Attach to custom parent element. Pass function that will accept element and return boolean whether given DOM element satisfies the provided testing function.`,
@@ -188,7 +178,7 @@ export default {
           title('Correct position for `block` elements'),
 
           columns([
-            liveCode({
+            code({
               title: 'Wrap with `<Box inline>`',
               subtitle:
                 'Given element with `display: block;`, Tooltip might be displayed in wrong position. To fix, wrap with `<Box inline>`',

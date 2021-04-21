@@ -2,8 +2,7 @@ import Skeleton from '..';
 import { Category } from '../../../stories/storiesHierarchy';
 import {
   api,
-  example as baseExample,
-  columns,
+  example,
   description,
   divider,
   header,
@@ -14,12 +13,10 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/dist/src/Sections';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 import React from 'react';
 import SectionHelper from '../../SectionHelper';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const exampleContent = [
   {

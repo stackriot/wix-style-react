@@ -6,26 +6,16 @@ import {
   columns,
   title,
   divider,
-  code as baseLiveCode,
+  example,
 } from 'wix-storybook-utils/Sections';
 import LinkTo from '@storybook/addon-links/react';
-import allComponents from '../utils/allComponents';
+
 import * as examples from './examples';
 
 import { storySettings } from './storySettings';
 
 import { Category } from '../storiesHierarchy';
 import { Slider } from 'wix-style-react';
-
-const liveCode = config =>
-  baseLiveCode({
-    compact: true,
-    components: allComponents,
-    ...config,
-  });
-
-const example = ({ source, ...rest }) =>
-  columns([description({ ...rest }), liveCode({ source })]);
 
 class SlideWithState extends React.Component {
   state = {

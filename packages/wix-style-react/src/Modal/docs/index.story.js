@@ -8,7 +8,7 @@ import {
   columns,
   title,
   playground,
-  example as baseExample,
+  example,
   description,
   importExample,
   testkit,
@@ -17,11 +17,8 @@ import {
 
 import { storySettings } from '../test/storySettings';
 
-import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
 import { Modal, Box, Button } from 'wix-style-react';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,
@@ -65,7 +62,8 @@ export default {
           columns([
             description({
               title: 'Usage',
-              text: 'Modal controls the overlay layout that appears on call functions. It’s a container for components like \`CustomModalLayout\`, \`ModalPreviewLayout\` and others.',
+              text:
+                'Modal controls the overlay layout that appears on call functions. It’s a container for components like `CustomModalLayout`, `ModalPreviewLayout` and others.',
             }),
           ]),
 

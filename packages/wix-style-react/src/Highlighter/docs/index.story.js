@@ -6,7 +6,7 @@ import {
   description,
   importExample,
   divider,
-  example as baseExample,
+  example,
   api,
   testkit,
   playground,
@@ -14,10 +14,8 @@ import {
 
 import Highlighter from '..';
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
-import * as examples from './examples';
 
-const example = config => baseExample({ components: allComponents, ...config });
+import * as examples from './examples';
 
 export default {
   category: storySettings.category,

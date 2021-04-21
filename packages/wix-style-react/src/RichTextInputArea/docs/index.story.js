@@ -6,7 +6,7 @@ import {
   api,
   title,
   importExample,
-  example as baseExample,
+  example,
   playground,
   description,
   testkit,
@@ -14,7 +14,7 @@ import {
 
 import RichTextInputArea from '..';
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import testkitReadme from './README.TESTKIT.md';
 
 import SetValueExample from '!raw-loader!./examples/SetValue';
@@ -24,8 +24,6 @@ import ErrorExample from '!raw-loader!./examples/Error';
 import DisabledExample from '!raw-loader!./examples/Disabled';
 import PlaceholderExample from '!raw-loader!./examples/Placeholder';
 import SpellCheckingExample from '!raw-loader!./examples/SpellChecking';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

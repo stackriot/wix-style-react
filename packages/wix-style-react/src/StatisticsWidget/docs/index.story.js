@@ -7,15 +7,14 @@ import {
   title,
   columns,
   divider,
-  code as baseCode,
-  example as baseExample,
+  code,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import StatisticsWidget from '..';
 
@@ -34,9 +33,6 @@ import InteractiveCard from '!raw-loader!./examples/InteractiveCard';
 import TinyValues from '!raw-loader!./examples/TinyValues';
 import EmptyValues from '!raw-loader!./examples/EmptyValues';
 import AlignItems from '!raw-loader!./examples/AlignItems';
-
-const code = config => baseCode({ components: allComponents, ...config });
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

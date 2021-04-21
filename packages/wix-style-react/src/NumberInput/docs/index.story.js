@@ -7,14 +7,12 @@ import {
   playground,
   header,
   tabs,
-  example as baseExample,
+  example,
 } from 'wix-storybook-utils/Sections';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 import { NumberInput } from 'wix-style-react';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

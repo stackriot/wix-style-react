@@ -10,14 +10,13 @@ import {
   header,
   tabs,
   doDont,
-  example as baseExample,
+  example,
   divider,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from './storySettings';
 import Box from '..';
 import * as examples from './examples';
-import allComponents from '../../../stories/utils/allComponents';
 
 const childrenExamples = [
   {
@@ -70,9 +69,6 @@ const childrenExamples = [
   },
 ];
 
-const example = config =>
-  baseExample({ components: allComponents, compact: true, ...config });
-
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
@@ -107,7 +103,8 @@ export default {
         sections: [
           description({
             title: 'Usage',
-            text: 'Box allows to layout, align, space and style its children elements. It’s a container that can wrap and apply CSS styles to one or more elements inside of it.',
+            text:
+              'Box allows to layout, align, space and style its children elements. It’s a container that can wrap and apply CSS styles to one or more elements inside of it.',
           }),
 
           doDont({

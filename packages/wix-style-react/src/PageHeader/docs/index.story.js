@@ -4,7 +4,7 @@ import Breadcrumbs from '../../Page/test/examples/Breadcrumbs';
 import { storySettings } from './storySettings';
 import {
   api,
-  example as baseExample,
+  example,
   description,
   divider,
   header,
@@ -15,11 +15,9 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/dist/src/Sections';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 import { Button } from 'wix-style-react';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

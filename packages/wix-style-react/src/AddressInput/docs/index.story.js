@@ -15,7 +15,7 @@ import {
 import LinkTo from '@storybook/addon-links/react';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 import AddressInput from '..';
@@ -41,7 +41,6 @@ const options = predictions.map(addressInputItemBuilder);
 const example = config =>
   baseExample({
     components: {
-      ...allComponents,
       options,
     },
     ...config,

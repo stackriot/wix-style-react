@@ -1,6 +1,6 @@
 import React from 'react';
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 import exampleCharCount from '!raw-loader!./exampleCharCount';
 import {
@@ -10,7 +10,7 @@ import {
   tabs,
   tab,
   api,
-  example as baseExample,
+  example,
   importExample,
   playground,
   testkit,
@@ -83,8 +83,6 @@ const childrenExamples = [
 
   { label: 'ToggleSwitch', value: <ToggleSwitch /> },
 ];
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.kind,

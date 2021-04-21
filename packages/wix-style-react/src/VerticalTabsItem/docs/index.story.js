@@ -8,7 +8,7 @@ import {
   title,
   columns,
   divider,
-  code as baseCode,
+  code,
   playground,
   api,
   testkit,
@@ -17,9 +17,6 @@ import {
 import VerticalTabsItem from '..';
 import { storySettings } from './storySettings';
 import icons from '../../../stories/utils/icons-for-story';
-import allComponents from '../../../stories/utils/allComponents';
-
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

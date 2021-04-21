@@ -8,7 +8,7 @@ import {
   title,
   divider,
   code,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -18,7 +18,7 @@ import cloneDeep from 'lodash/cloneDeep';
 
 import { storySettings } from '../test/storySettings';
 import TimeTableHeaderExample from './examples/header';
-import allComponents from '../../../stories/utils/allComponents';
+
 import structureExample from '!raw-loader!./examples/structure';
 import disabledExample from '!raw-loader!./examples/disabled';
 import customContentExample from '!raw-loader!./examples/customContent';
@@ -26,8 +26,6 @@ import customContentExample from '!raw-loader!./examples/customContent';
 import TimeTable from '..';
 import Box from '../../Box';
 import { defaultColumns } from './playgroundData';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,
@@ -103,7 +101,6 @@ export default {
               "Item's content can render any content with complex logic. Example below demonstrates how it can be used with a `<Popover/>` or `<Badge/>`.",
             source: customContentExample,
             compact: true,
-            components: allComponents,
           }),
         ],
       }),

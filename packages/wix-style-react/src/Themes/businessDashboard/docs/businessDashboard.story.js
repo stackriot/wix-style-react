@@ -11,7 +11,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import LinkTo from '@storybook/addon-links/react';
 import { storySettings } from './storySettings';
-import { businessDashboardComponents } from '../../../../stories/utils/allComponents';
+import { businessDashboardComponents } from '../../../../.storybook/playground';
 import SectionHelper from '../../../SectionHelper';
 import * as carousel from './components/Carousel';
 import * as buttons from './components/Button';

@@ -6,11 +6,10 @@ import {
   columns,
   table,
   importExample,
-  code as baseCode,
+  code,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from './storySettings';
-import allComponents from '../utils/allComponents';
 
 import * as examples from './examples';
 
@@ -19,9 +18,6 @@ import ExampleSplitLayoutRaw from '!raw-loader!./ExampleSplitLayout';
 import ExampleGalleryLayoutRaw from '!raw-loader!./ExampleGalleryLayout';
 import ExampleEmptyStateRaw from '!raw-loader!./ExampleEmptyState';
 import { Category } from '../storiesHierarchy';
-
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: storySettings.category,

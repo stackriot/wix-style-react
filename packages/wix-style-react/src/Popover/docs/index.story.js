@@ -7,8 +7,8 @@ import {
   description,
   importExample,
   divider,
-  code as baseCode,
-  example as baseExample,
+  code,
+  example,
   api,
   testkit,
   playground,
@@ -22,16 +22,7 @@ import Calendar from '../../Calendar';
 import FormField from '../../FormField';
 import Box from '../../Box';
 
-import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
-const code = config =>
-  baseCode({
-    components: allComponents,
-    compact: true,
-    ...config,
-  });
 
 const children = [
   {
