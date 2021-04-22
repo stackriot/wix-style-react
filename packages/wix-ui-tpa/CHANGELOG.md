@@ -1,28 +1,37 @@
+# 2.38.0 (2021-04-22)
+
+
+### Bug Fixes
+
+* **FloatingDropdownBase:** change aria-haspopup prop value ([#7046](https://github.com/wix/wix-style-react/issues/7046)) ([1663ecb](https://github.com/wix/wix-style-react/commit/1663ecb2f2fe9fe4f61bd2c2803972c5c56313c8))
+* **TextField:** fix the theme line Webpack style plugin bug. ([#7054](https://github.com/wix/wix-style-react/issues/7054)) ([e5da194](https://github.com/wix/wix-style-react/commit/e5da194c6cb6ec2a2a05883965e94ce25ea0d843))
+
+
+### Features
+
+* **TextField:** add-label ([#7041](https://github.com/wix/wix-style-react/issues/7041)) ([eb5e335](https://github.com/wix/wix-style-react/commit/eb5e335a4668a27cd779c016507ffe6f1efc77f0))
+* **SectionNotification:** add size prop and wired type ([32169f7](https://github.com/wix/wix-style-react/commit/32169f740b2d35bd5520bf770060a66d31ecca25))
+
+
+
 # 2.37.0 (2021-04-15)
 
 
 ### Bug Fixes
 
-* **Date Picker:** fix rtl arrows position in responsive designs ([#7009](https://github.com/wix/wix-style-react/issues/7009)) ([b71e759](https://github.com/wix/wix-style-react/commit/b71e759352774d9af81617a02fa187b8fbf00bd4))
-* **Dropdown:** Mobile Native Dropdown - fix style override support ([87b2784](https://github.com/wix/wix-style-react/commit/87b278493796742b1c82a3ac6ab67cd2b3a54fe3))
+* **Checkbox:** fix stylable extend functionality ([da58dec](https://github.com/wix/wix-style-react/commit/da58dec188a881d6a46138ddc215f68511661c17))
+
+
+### Features
+
+* **Image:** added image failure design ([e3ef76b](https://github.com/wix/wix-style-react/commit/e3ef76b46bef4e1a4084a15f61a9402885dab7fc))
+
 
 
 # 2.36.0 (2021-04-13)
 
 
-### Bug Fixes
-
-* **Date Picker:** fix rtl arrows position in responsive designs ([#7009](https://github.com/wix/wix-style-react/issues/7009)) ([b71e759](https://github.com/wix/wix-style-react/commit/b71e759352774d9af81617a02fa187b8fbf00bd4))
-* **Dropdown:** Mobile Native Dropdown - fix style override support ([87b2784](https://github.com/wix/wix-style-react/commit/87b278493796742b1c82a3ac6ab67cd2b3a54fe3))
-
-
 # 2.35.0 (2021-04-12)
-
-
-### Bug Fixes
-
-* **Date Picker:** fix rtl arrows position in responsive designs ([#7009](https://github.com/wix/wix-style-react/issues/7009)) ([b71e759](https://github.com/wix/wix-style-react/commit/b71e759352774d9af81617a02fa187b8fbf00bd4))
-* **Dropdown:** Mobile Native Dropdown - fix style override support ([87b2784](https://github.com/wix/wix-style-react/commit/87b278493796742b1c82a3ac6ab67cd2b3a54fe3))
 
 
 # 2.34.0 (2021-04-11)
@@ -31,16 +40,14 @@
 ### Bug Fixes
 
 * **Date Picker:** fix rtl arrows position in responsive designs ([#7009](https://github.com/wix/wix-style-react/issues/7009)) ([b71e759](https://github.com/wix/wix-style-react/commit/b71e759352774d9af81617a02fa187b8fbf00bd4))
-* **Dropdown:** Mobile Native Dropdown - fix style override support ([87b2784](https://github.com/wix/wix-style-react/commit/87b278493796742b1c82a3ac6ab67cd2b3a54fe3))
 
 
 ## 2.33.0 (2021-04-06)
 
 
-### Bug Fixes
+### Features
 
-* **Dropdown:** Mobile Native Dropdown - fix style override support ([87b2784](https://github.com/wix/wix-style-react/commit/87b278493796742b1c82a3ac6ab67cd2b3a54fe3))
-
+* **Dialog:** createPortal ([88c52ae](https://github.com/wix/wix-style-react/commit/88c52ae55699d0daec87ae6136376efd18083454))
 
 # 2.32.0 (2021-04-05)
 

@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.107.0 - 2021-04-22
 ### Changed
 - `<HorizontalTimeline />` - add new props to component(skin, alignLabel, line, skin for icons, new icons) [#7049](https://github.com/wix/wix-style-react/pull/7049)
 
