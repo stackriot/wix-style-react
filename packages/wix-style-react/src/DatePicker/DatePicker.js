@@ -115,8 +115,8 @@ export default class DatePicker extends React.PureComponent {
         this._saveNewValue(newValue);
       } else {
         this._saveNewValue(new Date());
-        this.setState({ inputValue: newValue });
       }
+      this.setState({ inputValue: newValue });
     }
   };
 
@@ -139,9 +139,7 @@ export default class DatePicker extends React.PureComponent {
         oldValue,
       );
 
-      this.setState({ value: newValue, inputValue: newValue }, () =>
-        this.props.onChange(newValue),
-      );
+      this.setState({ value: newValue }, () => this.props.onChange(newValue));
     }
   };
 

@@ -686,6 +686,19 @@ describe('DatePicker', () => {
     });
 
     describe('`onChange` prop', () => {
+      it('should change value on rerender', async () => {
+        const {
+          driver: { inputDriver },
+          rerender,
+        } = render(
+          <DatePicker value={new Date(2017, 9, 2)} onChange={() => ({})} />,
+        );
+        expect(await inputDriver.getValue()).toBe('10/02/2017');
+        rerender(
+          <DatePicker value={new Date(2017, 9, 3)} onChange={() => ({})} />,
+        );
+        expect(await inputDriver.getValue()).toBe('10/03/2017');
+      });
       it('should be called on available day click', async () => {
         const onChange = jest.fn();
         const value = new Date(2017, 7, 1);
