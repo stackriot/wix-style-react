@@ -1,7 +1,7 @@
 export const importExample = `
   import { SectionNotification } from 'wix-ui-tpa/SectionNotification';
 `;
-import { NOTIFICATION_TYPE } from '../types';
+import { NOTIFICATION_TYPE, NOTIFICATION_SIZE } from '../types';
 
 const errorIcon = `<Error />`;
 
@@ -27,6 +27,44 @@ export const example = Object.values(NOTIFICATION_TYPE).reduce(
   },
   { desktop: {}, mobile: {} },
 );
+
+export const sizesExample = Object.values(NOTIFICATION_SIZE).reduce(
+  (acc, size) => {
+    return {
+      ...acc,
+      [size]: getSectionNotificationSized(size),
+    };
+  },
+  {},
+);
+
+function getSectionNotificationSized(size: NOTIFICATION_SIZE) {
+  return `
+    <>
+      <SectionNotification type="${NOTIFICATION_TYPE.default}" size="${size}">
+        <SectionNotification.Text>${exampleText.notification}</SectionNotification.Text>
+      </SectionNotification>
+
+      <br />
+
+      <SectionNotification type="${NOTIFICATION_TYPE.wired}" size="${size}">
+        <SectionNotification.Text>${exampleText.notification}</SectionNotification.Text>
+      </SectionNotification>
+
+      <br />
+
+      <SectionNotification type="${NOTIFICATION_TYPE.alert}" size="${size}">
+        <SectionNotification.Text>${exampleText.notification}</SectionNotification.Text>
+      </SectionNotification>
+
+      <br />
+
+      <SectionNotification type="${NOTIFICATION_TYPE.error}" size="${size}">
+        <SectionNotification.Text>${exampleText.notification}</SectionNotification.Text>
+      </SectionNotification>
+    </>
+  `;
+}
 
 function getSectionNotification(
   type: NOTIFICATION_TYPE,

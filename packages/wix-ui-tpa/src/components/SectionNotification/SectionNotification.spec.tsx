@@ -65,6 +65,16 @@ describe('SectionNotification', () => {
     expect(await driver.isAlert()).toBe(true);
   });
 
+  it('should render notification of type Wired', async () => {
+    const driver = createDriver(
+      <SectionNotification type={NOTIFICATION_TYPE.wired}>
+        <SectionNotification.Text>{props.text}</SectionNotification.Text>
+      </SectionNotification>,
+    );
+
+    expect(await driver.isWired()).toBe(true);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

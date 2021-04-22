@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   NOTIFICATION_TYPE,
+  NOTIFICATION_SIZE,
   SectionNotificationDefaultProps,
   SectionNotificationProps,
 } from './types';
@@ -15,6 +16,7 @@ export class SectionNotification extends React.Component<SectionNotificationProp
   static displayName = 'SectionNotification';
   static defaultProps: SectionNotificationDefaultProps = {
     type: NOTIFICATION_TYPE.default,
+    size: NOTIFICATION_SIZE.regular,
   };
 
   static Text = SectionNotificationText;
@@ -22,9 +24,10 @@ export class SectionNotification extends React.Component<SectionNotificationProp
   static Button = SectionNotificationButton;
 
   render() {
-    const { children, type, className } = this.props;
+    const { children, type, className, size } = this.props;
     const isError = type === NOTIFICATION_TYPE.error;
     const isAlert = type === NOTIFICATION_TYPE.alert;
+    const isWired = type === NOTIFICATION_TYPE.wired;
 
     const contents = [];
     const buttons = [];
@@ -44,18 +47,27 @@ export class SectionNotification extends React.Component<SectionNotificationProp
             <div
               className={st(
                 classes.root,
-                { error: isError, alert: isAlert, rtl },
+                {
+                  error: isError,
+                  alert: isAlert,
+                  rtl,
+                  size,
+                  wired: isWired,
+                },
                 className,
               )}
               role="alert"
               data-error={isError}
               data-alert={isAlert}
+              data-wired={isWired}
               aria-live="assertive"
               data-hook={this.props['data-hook']}
             >
               <div className={classes.main}>
                 <div className={classes.contentsWrapper}>{contents}</div>
-                <div className={classes.buttonsWrapper}>{buttons}</div>
+                {buttons ? (
+                  <div className={classes.buttonsWrapper}>{buttons}</div>
+                ) : null}
               </div>
             </div>
           );

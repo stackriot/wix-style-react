@@ -11,6 +11,7 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { BUTTON_PRIORITY, NOTIFICATION_TYPE, SectionNotification } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
@@ -18,6 +19,10 @@ import { ReactComponent as ErrorIcon } from '../../../assets/icons/Error.svg';
 import * as examples from './examples';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
+import { NOTIFICATION_SIZE } from '../types';
+import { SectionNotificationWiringExample } from './SectionNotificationWiringExample';
+import * as SectionNotificationRawSource from '!raw-loader!./SectionNotificationWiringExample.tsx';
+import * as SectionNotificationCSSRawSource from '!raw-loader!./SectionNotificationWiringExample.st.css';
 
 const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -78,6 +83,7 @@ export default {
   }),
   exampleProps: {
     type: Object.values(NOTIFICATION_TYPE),
+    size: Object.values(NOTIFICATION_SIZE),
     children,
   },
   dataHook: 'storybook-SectionNotification',
@@ -104,6 +110,15 @@ export default {
             }))
             .map(code),
 
+          title('Sizes'),
+
+          ...Object.values(NOTIFICATION_SIZE)
+            .map((size) => ({
+              title: size,
+              source: examples.sizesExample[size],
+            }))
+            .map(code),
+
           title('Mobile Examples'),
 
           ...Object.values(NOTIFICATION_TYPE)
@@ -118,6 +133,31 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              title: 'Settings Panel',
+              example: <SectionNotificationWiringExample />,
+              rawSource: SectionNotificationRawSource,
+              rawCSSSource: SectionNotificationCSSRawSource,
+              params: {
+                colors: [
+                  {
+                    label: 'Background Color',
+                    wixParam: 'backgroundColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Text Color',
+                    wixParam: 'textColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
         { title: 'Playground', sections: [playground()] },
       ].map(tab),
     ]),

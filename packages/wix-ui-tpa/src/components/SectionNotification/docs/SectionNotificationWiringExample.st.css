@@ -1,0 +1,11 @@
+:import {
+  -st-from: "../SectionNotification.st.css";
+  -st-default: TPASectionNotification;
+}
+
+.root {
+  -st-mixin: TPASectionNotification(
+      BackgroundColor '"--backgroundColor"',
+      TextColor '"--textColor"'
+  );
+}

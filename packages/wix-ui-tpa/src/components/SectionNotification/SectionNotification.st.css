@@ -13,16 +13,21 @@
     BorderRadius: 2px;
     BorderWidth: 1px;
 
-    MainVerticalPadding: 16px;
-    MainHorizontalPadding: 12px;
+    /* The paddings are 9px and 5px, because we need to keep the height 52px and 44px */
+    MainVerticalPadding: 9px;
+    MainCompactVerticalPadding: 5px;
+    MainLeftPadding: 12px;
+    MainRightPadding: 16px;
     ContentPadding: 8px;
 
     TextMinWidth: 200px;
     DefaultTextColor: #000000;
+    DefaultWiredTextColor: color(color-5);
     FontSize: 14px;
     LineHeight: 20px;
 
     DefaultBackgroundColor: applyOpacity(#000000, 0.05);
+    DefaultWiredBackgroundColor: applyOpacity(color(color-5), 0.05);
     ErrorBackgroundColor: applyOpacity(value(errorColor), 0.1);
     AlertBackgroundColor: applyOpacity(#FFB600, 0.1);
 }
@@ -36,10 +41,12 @@
 :vars {
     MainBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
     MainTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+    WiredTextColor: color(fallback(value(TextColor), value(DefaultWiredTextColor)));
+    WiredBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultWiredBackgroundColor)));
 }
 
 .root {
-    -st-states: error, alert, rtl;
+    -st-states: error, alert, wired, rtl, size(enum(regular, compact));
     width: 100%;
     height: 100%;
     display: flex;
@@ -54,7 +61,7 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    padding: calc(value(MainVerticalPadding) / 2) calc(value(MainHorizontalPadding) / 2);
+    padding: value(MainVerticalPadding) value(MainRightPadding) value(MainVerticalPadding) value(MainLeftPadding);
 
     background-color: value(MainBackgroundColor);
     border: value(BorderWidth) solid applyOpacity(#FFFFFF, 0.4);
@@ -69,7 +76,7 @@
     display: flex;
     flex-direction: row;
     flex: 1;
-    padding: calc(value(MainVerticalPadding) / 2) calc(value(MainHorizontalPadding) / 2);
+    padding: 6px 0;
 }
 
 .buttonsWrapper {
@@ -77,7 +84,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: calc(value(MainVerticalPadding) / 2) calc(value(ContentPadding) / 2);
+    margin: value(MainVerticalPadding) value(ContentPadding);
 }
 
 .buttonsWrapper:empty {
@@ -86,6 +93,7 @@
 
 .icon {
     transform: translateX(calc(-1 * (value(ContentPadding) / 2)));
+    height: 20px;
 }
 
 .root:rtl .icon {
@@ -117,4 +125,27 @@
 
 .root:alert .main {
     background-color: value(AlertBackgroundColor);
+}
+
+.root:wired {
+    background-color: applyOpacity(#FFFFFF, 0);
+}
+
+.root:wired .main {
+    background-color: value(WiredBackgroundColor);
+    color: value(WiredTextColor);
+}
+
+.root:wired .icon path {
+    stroke: value(WiredTextColor);
+}
+
+.root:size(compact) .main {
+    padding-top: value(MainCompactVerticalPadding);
+    padding-bottom: value(MainCompactVerticalPadding);
+}
+
+.root:size(compact) .buttonsWrapper {
+    margin-top: value(MainCompactVerticalPadding);
+    margin-bottom: value(MainCompactVerticalPadding);
 }
