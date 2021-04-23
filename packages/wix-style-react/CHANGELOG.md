@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Fixed
 - `<DatePicker/>` - value prop on re-render does not update [#7062](https://github.com/wix/wix-style-react/pull/7062)
+- `<HorizontalTimeline />` - fix icons props and align label [#7066](https://github.com/wix/wix-style-react/pull/7066)
 
 ## 9.107.0 - 2021-04-22
 ### Changed
