@@ -21,10 +21,14 @@ export interface HorizontalTimelineProps {
   items?: HorizontalTimelineItem[];
 }
 
+interface HorizontalTimelineIcon {
+  skin?: HorizontalTimelineItemSkin;
+}
+
 export default class HorizontalTimeline extends React.PureComponent<HorizontalTimelineProps> {
-  static DefaultIcon: React.FC;
-  static ActiveIcon: React.FC;
+  static DefaultIcon: React.FC<HorizontalTimelineIcon>;
+  static ActiveIcon: React.FC<HorizontalTimelineIcon>;
   static DestructiveIcon: React.FC;
-  static CompleteIcon: React.FC;
-  static BoundaryIcon: React.FC;
+  static CompleteIcon: React.FC<HorizontalTimelineIcon>;
+  static BoundaryIcon: React.FC<HorizontalTimelineIcon>;
 }

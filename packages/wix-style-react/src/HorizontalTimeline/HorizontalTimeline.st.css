@@ -85,7 +85,7 @@
   justify-content: flex-start;
   padding-left: 0;
   padding-right: 6px;
-  margin-left: calc(100%/2);
+  transform: translateX(calc(100%/2));
 }
 
 .column:last-child .label:alignLabel(start) {
@@ -93,5 +93,5 @@
   justify-content: flex-end;
   padding-right: 0;
   padding-left: 6px;
-  margin-right: calc(100%/2);
+  transform: translateX(calc(100%/-2));
 }
