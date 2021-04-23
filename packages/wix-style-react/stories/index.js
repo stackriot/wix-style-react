@@ -87,7 +87,7 @@ require('../src/IconButton/docs/index.story');
 require('../src/Image/docs/index.story');
 require('../src/ImageViewer/docs/index.story');
 require('../src/InfoIcon/docs/index.story');
-require('../src/Input/docs/index.story');
+require('../src/Input/docs/Input.story');
 require('../src/InputArea/docs/index.story');
 require('../src/InputWithLabel/docs/index.story');
 require('../src/InputWithOptions/docs/index.story');

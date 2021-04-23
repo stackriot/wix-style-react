@@ -1,4 +1,4 @@
-export const size = `
+export const _size = `
 <StorybookComponents.Stack flexDirection="column">
   <Input size="large" placeholder="Large" />
   <Input size="medium" placeholder="Medium" />
@@ -6,7 +6,7 @@ export const size = `
 </StorybookComponents.Stack>;
 `;
 
-export const border = `
+export const _border = `
 <StorybookComponents.Stack flexDirection="column">
   <Input border="default" placeholder="Default" />
   <Input border="round" placeholder="Round" />
@@ -14,7 +14,7 @@ export const border = `
 </StorybookComponents.Stack>;
 `;
 
-export const status = `
+export const _status = `
 <StorybookComponents.Stack flexDirection="column">
   <Input status="error" placeholder="Error" />
   <Input status="warning" placeholder="Warning" />
@@ -22,7 +22,7 @@ export const status = `
 </StorybookComponents.Stack>;
 `;
 
-export const statusMessage = `
+export const _statusMessage = `
 <Input
   placeholder="Hover the mouse on status icon"
   status="error"
@@ -31,14 +31,14 @@ tooltipPlacement="top-end"
 />;
 `;
 
-export const readOnlyAndDisabled = `
+export const _readOnlyAndDisabled = `
 <StorybookComponents.Stack flexDirection="column">
   <Input readOnly defaultValue="Read Only" />
   <Input disabled defaultValue="Disabled" />
 </StorybookComponents.Stack>;
 `;
 
-export const affix = `
+export const _affix = `
 <StorybookComponents.Stack flexDirection="column">
   <Input
     prefix={<Input.Affix>Prefix</Input.Affix>}
@@ -63,7 +63,7 @@ export const affix = `
 </StorybookComponents.Stack>;
 `;
 
-export const clearButton = `
+export const _clearButton = `
 () => {
   const [inputText, setInputText] = React.useState(
     'Click clear button to erase this value',
@@ -80,7 +80,7 @@ export const clearButton = `
 };
 `;
 
-export const textOverflow = `
+export const _textOverflow = `
 <Input
   textOverflow="ellipsis"
   border="bottomLine"
@@ -88,7 +88,7 @@ export const textOverflow = `
 />;
 `;
 
-export const compoundInput = `
+export const _compoundInput = `
 () => {
   const [value, setValue] = React.useState('');
   
@@ -131,7 +131,7 @@ export const compoundInput = `
 };
 `;
 
-export const inputAsTitle = `
+export const _inputAsTitle = `
 () => {
   const renderCard = (imageSrc, inputValue) => (
     <Card>

@@ -60,7 +60,10 @@ module.exports = ({ config }) => {
               },
             },
             unifiedTestkit: true,
-            playgroundComponentsPath: path.resolve(__dirname, './playground')
+            playgroundComponentsPath: path.resolve(__dirname, './playground'),
+            feedbackText: `You can help us improve this component by providing feedback,
+              asking questions or leaving any  other comments via \`#wix-style-ux\` or \`#wix-style-react\` Slack channels or GitHub.
+              Found a bug? Please report it to: <a href="https://goo.gl/forms/wrVuHnyBrEISXUPF2" target="_blank">goo.gl/forms/wrVuHnyBrEISXUPF2</a>`,
           },
         },
       }),
