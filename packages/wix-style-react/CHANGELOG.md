@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+- `<SidebarSectionItem/>` [Testkit] - add `isSelected()` and `isDisabled()` methods [#7068](https://github.com/wix/wix-style-react/pull/7068)
+
 ## 9.108.0 - 2021-04-23
 ### Fixed
 - `<DatePicker/>` - value prop on re-render does not update [#7062](https://github.com/wix/wix-style-react/pull/7062)
