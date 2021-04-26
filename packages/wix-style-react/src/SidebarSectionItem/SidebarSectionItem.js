@@ -62,6 +62,7 @@ class SidebarSectionItem extends React.PureComponent {
               return (
                 <button
                   data-hook={dataHook}
+                  data-selected={selected}
                   onClick={!disabled ? onClick : undefined}
                   onFocus={focusableOnFocus}
                   onBlur={focusableOnBlur}

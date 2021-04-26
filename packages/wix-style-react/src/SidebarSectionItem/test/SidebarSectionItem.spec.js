@@ -23,6 +23,8 @@ describe('SidebarSectionItem', () => {
     expect(await driver.exists()).toBe(true);
     expect(await driver.hasPrefix()).toBe(false);
     expect(await driver.hasSuffix()).toBe(false);
+    expect(await driver.isDisabled()).toBe(false);
+    expect(await driver.isSelected()).toBe(false);
   });
 
   it('should render the text when passing `children` prop', async () => {
@@ -53,6 +55,7 @@ describe('SidebarSectionItem', () => {
 
     expect(await driver.hasChevron()).toBe(true);
   });
+
   it('should render the chevron when passing `drillable` and `alwaysDisplayChevron` without hover', async () => {
     const { driver } = render(
       <SidebarSectionItem drillable alwaysDisplayChevron>
@@ -62,6 +65,16 @@ describe('SidebarSectionItem', () => {
 
     expect(await driver.hasChevron()).toBe(true);
   });
+
+  it('should driver return isSelect() if it\'s is', async() => {
+    const {driver} = render(
+      <SidebarSectionItem selected={true}>
+        {sampleText}
+      </SidebarSectionItem>
+    );
+
+    expect(await driver.isSelected()).toBe(true);
+  })
 
   describe('Disabled', () => {
     it('should not invoke `onClick` when clicking', async () => {
@@ -81,12 +94,22 @@ describe('SidebarSectionItem', () => {
       const { driver } = render(
         <SidebarSectionItem disabled drillable>
           {sampleText}
-        </SidebarSectionItem>,
+        </SidebarSectionItem>
       );
 
       await driver.hover();
 
       expect(await driver.hasChevron()).toBe(false);
+    });
+
+    it('should render disabled button', async () => {
+      const {driver} = render(
+        <SidebarSectionItem disabled={true}>
+          {sampleText}
+        </SidebarSectionItem>
+      );
+
+      expect(await driver.isDisabled()).toBe(true);
     });
   });
 
