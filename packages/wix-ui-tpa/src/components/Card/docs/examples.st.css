@@ -3,6 +3,11 @@
   -st-default: Card;
 }
 
+:import {
+  -st-from: '../../NewCard/NewCard.st.css';
+  -st-named: container;
+}
+
 .root {
   -st-extends: Card;
 
@@ -21,11 +26,42 @@
   height: auto;
 }
 
-.stacked, .stacked .info, .stacked .media {
+.stacked,
+.stacked .info,
+.stacked .media {
   width: 400px;
 }
 
 .wrap .media img {
   width: 100%;
   height: auto;
+}
+
+.root.ratio .info {
+  -st-mixin: container(
+    Ratio 80
+  );
+}
+
+.root.ratio .media {
+  -st-mixin: container(
+    Ratio 20
+  );
+}
+
+.root.ratio2 .info {
+  -st-mixin: container(
+    Ratio 40
+  );
+}
+
+.root.ratio2 .media {
+  -st-mixin: container(
+    Ratio 60
+  );
+}
+
+.root.ratio .media img {
+  height: 100% !important;
+  object-fit: cover;
 }

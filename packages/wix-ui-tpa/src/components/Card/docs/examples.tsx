@@ -45,3 +45,27 @@ export const minWidthExample = `
     </div>
   </div>
 `;
+
+export const withRatioExample = `() => (
+  <Card upgrade className={st(classes.root, {}, classes.ratio)}>
+    <Card.Container className={classes.media}>{${mediaImage}}</Card.Container>
+    <Card.Container className={classes.info}>
+      <>
+        <Text typography={TYPOGRAPHY.smallTitle} tagName={'h3'}>My Product</Text>
+        <Text typography={TYPOGRAPHY.runningText} className={classes.text}>${loremIpsum}</Text>
+      </>
+    </Card.Container>
+  </Card>
+)`;
+
+export const withRatioExample2 = `() => (
+  <Card upgrade className={st(classes.root, {}, classes.ratio2)}>
+    <Card.Container className={classes.media}>{${mediaImage}}</Card.Container>
+    <Card.Container className={classes.info}>
+      <>
+        <Text typography={TYPOGRAPHY.smallTitle} tagName={'h3'}>My Product</Text>
+        <Text typography={TYPOGRAPHY.runningText} className={classes.text}>${loremIpsum}</Text>
+      </>
+    </Card.Container>
+  </Card>
+)`;

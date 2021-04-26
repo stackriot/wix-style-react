@@ -34,6 +34,37 @@ const CardVisual = (props) => {
   );
 };
 
+const NewCard = (props) => {
+  return (
+    <Card
+      className={classnames(classes.root, {
+        [classes.ratio20_80]: props.ratio20_80,
+        [classes.stacked40_60]: props.ratio40_60,
+      })}
+      upgrade
+      {...props}
+    >
+      <Card.Container className={classes.media}>
+        <img
+          src={IMAGE_SRC}
+          alt="My product"
+          width={'100%'}
+          height={'auto'}
+          style={{ verticalAlign: 'middle', opacity: 0.5 }}
+        />
+      </Card.Container>
+      <Card.Container className={classes.info}>
+        <Text>Info part</Text>
+      </Card.Container>
+    </Card>
+  );
+};
+
+visualize('Card', () => {
+  snap('Card ration 20/80', <NewCard ratio20_80 />);
+  snap('Card ration 40/60', <NewCard ratio40_60 />);
+});
+
 visualize('Deprecated Card', () => {
   snap('default', <CardVisual />);
   snap('with style overrides', <CardVisual withOverride />);

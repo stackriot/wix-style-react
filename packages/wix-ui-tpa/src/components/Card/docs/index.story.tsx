@@ -105,6 +105,22 @@ export default {
           ),
           example(
             {
+              title: 'Ratio Example',
+              description: 'Card containers ratio can be changed. 20/80',
+              source: examples.withRatioExample,
+            },
+            exampleStyles,
+          ),
+          example(
+            {
+              title: 'Ratio Example',
+              description: 'Card containers ratio can be changed 60/40',
+              source: examples.withRatioExample2,
+            },
+            exampleStyles,
+          ),
+          example(
+            {
               title: 'Container Wrapping',
               description: 'Card containers can wrap when constrained by width',
               source: examples.minWidthExample,
