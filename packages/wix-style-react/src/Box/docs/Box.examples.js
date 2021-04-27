@@ -1,4 +1,4 @@
-export const structure = `
+export const _structure = `
 <Box>
   <StorybookComponents.Placeholder>
     Content
@@ -6,7 +6,7 @@ export const structure = `
 </Box>;
 `;
 
-export const dimensions = `
+export const _dimensions = `
 <StorybookComponents.Stack flexDirection="column">
   <Box width="100%" height="100px">
     <StorybookComponents.Placeholder>Width 100%, Height 100px</StorybookComponents.Placeholder>
@@ -17,7 +17,7 @@ export const dimensions = `
 </StorybookComponents.Stack>;
 `;
 
-export const direction = `
+export const _direction = `
 <StorybookComponents.Stack flexDirection="column">
   <Box direction="horizontal">
     <StorybookComponents.Placeholder>Horizontal</StorybookComponents.Placeholder>
@@ -32,7 +32,7 @@ export const direction = `
 </StorybookComponents.Stack>;
 `;
 
-export const gap = `
+export const _gap = `
 <StorybookComponents.Stack flexDirection="column">
   <Box gap="SP1">
     <StorybookComponents.Placeholder>6px gap</StorybookComponents.Placeholder>
@@ -47,7 +47,7 @@ export const gap = `
 </StorybookComponents.Stack>;
 `;
 
-export const horizontalAlignment = `
+export const _horizontalAlignment = `
 <StorybookComponents.Stack>
   <StorybookComponents.Placeholder>
     <Box align="left">Left</Box>
@@ -67,7 +67,7 @@ export const horizontalAlignment = `
 </StorybookComponents.Stack>;
 `;
 
-export const verticalAlignment = `
+export const _verticalAlignment = `
 <StorybookComponents.Stack>
   <StorybookComponents.Placeholder height="50px">
     <Box verticalAlign="top" height="100%">Top</Box>
@@ -87,7 +87,7 @@ export const verticalAlignment = `
 </StorybookComponents.Stack>;
 `;
 
-export const padding = `
+export const _padding = `
 <StorybookComponents.Stack>
   <StorybookComponents.Placeholder>
     <Box padding="SP4">Equal Padding</Box>
@@ -108,7 +108,7 @@ export const padding = `
 </StorybookComponents.Stack>;
 `;
 
-export const margin = `
+export const _margin = `
 <StorybookComponents.Stack>
   <StorybookComponents.Placeholder>
     <Box>No margin</Box>
@@ -119,7 +119,7 @@ export const margin = `
 </StorybookComponents.Stack>;
 `;
 
-export const color = `
+export const _color = `
 <StorybookComponents.Stack>
   <Box padding="SP4" margin="SP2" backgroundColor="D80" color="D10">Dark Text</Box>
   <Box padding="SP4" margin="SP2" backgroundColor="D10" color="D80">Light Text</Box>
@@ -129,7 +129,7 @@ export const color = `
 </StorybookComponents.Stack>;
 `;
 
-export const border = `
+export const _border = `
 <StorybookComponents.Stack>
   <Box padding="SP6" margin="SP1" border="1px solid" borderColor="D50" borderRadius={0}></Box>
   <Box padding="SP6" margin="SP1" border="2px dotted" borderColor="D40" borderRadius={6}></Box>
@@ -138,7 +138,7 @@ export const border = `
 </StorybookComponents.Stack>;
 `;
 
-export const inline = `
+export const _inline = `
 <StorybookComponents.Stack flexDirection="column">
   <Text>
     This is a sentence with an action at the end of it.
@@ -155,7 +155,7 @@ export const inline = `
 </StorybookComponents.Stack>;
 `;
 
-export const eventItem = `
+export const _eventItem = `
 () => {
   const renderImage = () => (
     <Box
@@ -208,7 +208,7 @@ export const eventItem = `
   }
 `;
 
-export const listItems = `
+export const _listItems = `
 () => {
   const options = [
     {

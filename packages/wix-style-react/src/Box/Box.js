@@ -239,19 +239,19 @@ Box.propTypes = {
   padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets padding on the top.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a or a value in pixels */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   paddingTop: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets padding on the right.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a or a value in pixels */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   paddingRight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets padding on the bottom.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a or a value in pixels */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   paddingBottom: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets padding on the left.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a or a value in pixels */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   paddingLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets margin on all sides.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
@@ -259,19 +259,19 @@ Box.propTypes = {
   margin: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets margin on the top.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a or a value in pixels */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   marginTop: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets margin on the right.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a or a value in pixels */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   marginRight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets margin on the bottom.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a or a value in pixels */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   marginBottom: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets margin on the left.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a or a value in pixels */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   marginLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets the minimum width of the box in pixels */
   minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
