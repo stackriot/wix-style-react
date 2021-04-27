@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 
 import React from 'react';
-import TextButton from '../../../TextButton/TextButton';
+import TextButton from '../../TextButton/TextButton';
 import { MultiSelect } from 'wix-style-react';
 
 const options = [

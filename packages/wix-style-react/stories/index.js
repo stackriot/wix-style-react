@@ -109,7 +109,7 @@ require('../src/Modal/docs/index.story');
 require('../src/ModalMobileLayout/docs/index.story');
 require('../src/ModalPreviewLayout/docs/index.story');
 require('../src/ModalSelectorLayout/docs/index.story');
-require('../src/MultiSelect/docs/index.story');
+require('../src/MultiSelect/docs/MultiSelect.story');
 require('../src/MultiSelectCheckbox/docs/index.story');
 require('../src/NoBorderInput/docs/index.story');
 require('../src/Notification/docs/index.story');

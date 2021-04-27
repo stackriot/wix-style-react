@@ -1,4 +1,4 @@
-export const size = `
+export const _size = `
 () => {
   const tags = [
     {
@@ -28,7 +28,7 @@ export const size = `
 };
 `;
 
-export const action = `
+export const _action = `
 <MultiSelect
   options={[
     { id: '1', value: 'tag 1' },
@@ -39,7 +39,7 @@ export const action = `
 />
 `;
 
-export const selectMode = `
+export const _selectMode = `
 () => {
   const [tags, setTags] = React.useState([]);
 
@@ -62,7 +62,7 @@ export const selectMode = `
 };
 `;
 
-export const manualInput = `
+export const _manualInput = `
 () => {
   const [tags, setTags] = React.useState([]);
 
@@ -79,7 +79,7 @@ export const manualInput = `
 };
 `;
 
-export const autocomplete = `
+export const _autocomplete = `
 () => {
   const [value, setValue] = React.useState('');
 
@@ -108,7 +108,7 @@ export const autocomplete = `
 };
 `;
 
-export const reorder = `
+export const _reorder = `
 () => {
   const [tags, setTags] = React.useState([
     { id: 1, label: 'One' },
@@ -130,7 +130,7 @@ export const reorder = `
 `;
 
 // handle tag removes too
-export const suggestions = `
+export const _suggestions = `
 () => {
   const [value, setValue] = React.useState('');
   const [tags, setTags] = React.useState([]);
