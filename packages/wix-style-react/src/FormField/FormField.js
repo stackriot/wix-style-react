@@ -100,6 +100,9 @@ class FormField extends React.Component {
      */
     id: PropTypes.string,
 
+    /** The id of the label */
+    labelId: PropTypes.string,
+
     /** used for testing */
     dataHook: PropTypes.string,
   };
@@ -192,12 +195,13 @@ class FormField extends React.Component {
     (labelPlacement === PLACEMENT.left || labelPlacement === PLACEMENT.right);
 
   _renderLabel = ({ trimLongText, labelSize }) => {
-    const { label, id } = this.props;
+    const { label, id, labelId } = this.props;
 
     return (
       <Text
         size={labelSize}
         htmlFor={id}
+        id={labelId}
         tagName={'label'}
         dataHook={dataHooks.label}
         ellipsis={trimLongText}
