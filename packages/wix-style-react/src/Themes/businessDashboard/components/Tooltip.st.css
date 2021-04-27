@@ -17,7 +17,8 @@
   -st-extends: Tooltip;
 }
 
-.root::popoverContent {
+.root::popoverContent,
+.root:size(small)::popoverContent {
   background: value(D20);
 }
 
@@ -33,6 +34,8 @@
 
 /* Popover Arrow  */
 .root::popover .arrow,
-.root::popover[data-placement] .arrow {
+.root:size(small)::popover .arrow,
+.root::popover[data-placement] .arrow,
+.root:size(small)::popover[data-placement] .arrow {
   border-color: transparent value(D20) value(D20) transparent;
 }

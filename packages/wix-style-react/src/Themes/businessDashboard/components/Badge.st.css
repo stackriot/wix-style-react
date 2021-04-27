@@ -5,7 +5,7 @@
 
 :import {
   -st-from: "../foundations/colors.st.css";
-  -st-named: O10, D20, D70, G20, Y10, P10, Y30, B40, R40;
+  -st-named: O10, D20, D70, G20, G40, Y10, P10, Y30, B40, R40;
 }
 
 :vars {
@@ -72,7 +72,21 @@
   border-color: value(B40);
   background-color: value(B40);
 }
+
 .root:skin(neutralDanger) {
   border-color: value(R40);
   background-color: value(R40);
+}
+
+.root:skin(neutralSuccess) {
+  border-color: value(G40);
+  background-color: value(G40);
+}
+
+.root:skin(warningLight)::text,
+.root:skin(neutralLight)::text,
+.root:skin(neutralSuccess)::text,
+.root:skin(neutralStandard)::text,
+.root:skin(neutralDanger)::text {
+  color: value(D20);
 }

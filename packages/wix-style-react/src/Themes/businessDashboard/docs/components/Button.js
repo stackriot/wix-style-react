@@ -22,12 +22,6 @@ export const playground = `
     <Box padding="3px" backgroundColor="D80">
       <Button size="medium" disabled>Medium</Button>
     </Box>
-    <Box padding="3px" backgroundColor="D80">
-      <Button priority="secondary" size="small" disabled>Secondary</Button>
-    </Box>
-    <Box padding="3px" backgroundColor="D80">
-      <Button priority="secondary" disabled>Secondary</Button>
-    </Box>
   </Layout>
   <Layout cols={4} gap="10px" alignItems="center">
     <Box padding="3px" backgroundColor="D60">
@@ -48,29 +42,29 @@ export const playground = `
       <Button size="small" prefixIcon={<Icons.ChevronDownSmall />}>
         Prefix
       </Button>
-    </Box>  
+    </Box>
     <Box padding="3px" backgroundColor="D80">
       <Button priority="secondary" size="small" prefixIcon={<Icons.ChevronDownSmall />}>
         Prefix
       </Button>
-    </Box>  
+    </Box>
     <Box padding="3px" backgroundColor="D80">
       <Button size="small" suffixIcon={<Icons.ChevronDownSmall />}>
         Suffix
       </Button>
-    </Box>  
+    </Box>
     <Box padding="3px" backgroundColor="D80">
       <Button priority="secondary" size="small" suffixIcon={<Icons.ChevronDownSmall />}>
         Suffix
       </Button>
-    </Box>  
+    </Box>
   </Layout>
   <Layout cols={4} gap="10px" alignItems="center">
     <Box padding="3px" backgroundColor="D80">
       <Button size="small" disabled prefixIcon={<Icons.ChevronDownSmall />}>
         Prefix
       </Button>
-    </Box>  
+    </Box>
     <Box padding="3px" backgroundColor="D80">
       <Button priority="secondary" size="small" disabled prefixIcon={<Icons.ChevronDownSmall />}>
         Prefix
@@ -80,25 +74,25 @@ export const playground = `
       <Button size="small" disabled suffixIcon={<Icons.ChevronDownSmall />}>
         Suffix
       </Button>
-    </Box>  
+    </Box>
     <Box padding="3px" backgroundColor="D80">
       <Button priority="secondary" disabled size="small" suffixIcon={<Icons.ChevronDownSmall />}>
         Suffix
       </Button>
-    </Box>  
+    </Box>
   </Layout>
   <Layout cols={4} gap="10px" alignItems="center">
     <Box padding="3px" backgroundColor="D60">
       <Button priority="primary" size="small" skin="light" >
         Primary light
       </Button>
-    </Box>  
-    <Box padding="3px" backgroundColor="D80">
-      <Button priority="primary" skin="light" disabled>
+    </Box>
+    <Box padding="3px" backgroundColor="D60">
+      <Button priority="primary" skin="light">
         Primary light
       </Button>
-    </Box>  
-  </Layout>  
+    </Box>
+  </Layout>
 </ThemeProvider>
 </div>
 `;
