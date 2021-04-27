@@ -20,6 +20,9 @@ Types of changes:
 - `<SidebarSectionItem/>` [Testkit] - add `isSelected()` and `isDisabled()` methods [#7068](https://github.com/wix/wix-style-react/pull/7068)
 - `<FormField />` - expose labelId prop [#7081](https://github.com/wix/wix-style-react/pull/7081)
 
+### Changed
+-  BusinessDashboard Theme | Small UI Fixes [#7063](https://github.com/wix/wix-style-react/pull/7063)
+
 ## 9.108.0 - 2021-04-23
 ### Fixed
 - `<DatePicker/>` - value prop on re-render does not update [#7062](https://github.com/wix/wix-style-react/pull/7062)
