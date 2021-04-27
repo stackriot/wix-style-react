@@ -1,4 +1,4 @@
-export const structure = `
+export const _structure = `
 <HorizontalTimeline
   items={[
     { label: 'Item 1' },
@@ -8,7 +8,7 @@ export const structure = `
 />
 `;
 
-export const alignLabel = `
+export const _alignLabel = `
  <StorybookComponents.Stack flexDirection="column">
       <HorizontalTimeline
         items={[
@@ -38,7 +38,7 @@ export const alignLabel = `
     </StorybookComponents.Stack>
 `;
 
-export const skin = `
+export const _skin = `
 <StorybookComponents.Stack flexDirection="column">
   <HorizontalTimeline
     skin='dark'
@@ -81,7 +81,7 @@ export const skin = `
 </StorybookComponents.Stack>;
 `;
 
-export const line = `
+export const _line = `
 <HorizontalTimeline
   items={[
     { label: 'Item 1', line: 'filled' },
@@ -93,7 +93,7 @@ export const line = `
 />
 `;
 
-export const icons = `
+export const _icons = `
 <HorizontalTimeline
   items={[
     {
@@ -120,7 +120,7 @@ export const icons = `
 />
 `;
 
-export const common = `
+export const _common = `
 <HorizontalTimeline
   items={[
     {
@@ -141,5 +141,4 @@ export const common = `
     },
   ]}
 />;
-
 `;

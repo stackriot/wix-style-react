@@ -82,7 +82,7 @@ require('../src/GooglePreview/docs/index.story');
 require('../src/Grid/docs');
 require('../src/Heading/docs/index.story');
 require('../src/Highlighter/docs/index.story');
-require('../src/HorizontalTimeline/docs/index.story');
+require('../src/HorizontalTimeline/docs/HorizontalTimeline.story');
 require('../src/IconButton/docs/index.story');
 require('../src/Image/docs/index.story');
 require('../src/ImageViewer/docs/index.story');
