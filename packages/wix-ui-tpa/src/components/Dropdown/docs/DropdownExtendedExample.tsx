@@ -37,6 +37,16 @@ export const DropdownExtendedExample: React.FC = () => {
       </div>
 
       <div>
+        <h3>Dropdown with label</h3>
+        <Dropdown
+          className={classes.root}
+          initialSelectedId="0"
+          label={'A label'}
+          options={optionsWithSections}
+        />
+      </div>
+
+      <div>
         <h3>Dropdown with error</h3>
         <Dropdown
           className={classes.root}

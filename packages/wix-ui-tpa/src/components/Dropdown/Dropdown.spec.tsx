@@ -64,6 +64,16 @@ describe('Dropdown', () => {
     expect(await driver.getAriaLabelledBy()).toBe(ariaLabelledByContent);
   });
 
+  it('should have label for id attribute', async () => {
+    const labelForId = 'Wubba lubba';
+    const driver = createDriver(<Dropdown label="label" options={[]} />);
+
+    const labelForInput = await driver.getLabelForInput();
+    const dropdownId = await driver.getDropdownId();
+
+    expect(labelForInput).toEqual(dropdownId);
+  });
+
   it('should use contentId when received by props', async () => {
     const optionsContainerId = 'the-best-id-ever';
     const options = new Array(5).fill(null).map((el, i) => ({

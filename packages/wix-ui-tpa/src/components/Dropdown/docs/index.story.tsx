@@ -203,6 +203,11 @@ export default {
                     wixParam: 'mainItemTextDisabledColor',
                     defaultColor: 'color-3',
                   },
+                  {
+                    label: 'Label color',
+                    wixParam: 'mainLabelColor',
+                    defaultColor: 'color-5',
+                  },
                 ],
                 fonts: [
                   {
@@ -217,6 +222,13 @@ export default {
                     wixParam: 'mainItemTextFont',
                     defaultFont: 'arial',
                     size: 16,
+                    fixedSize: false,
+                  },
+                  {
+                    label: 'Label text Font',
+                    wixParam: 'mainLabelFont',
+                    defaultFont: 'arial',
+                    size: 14,
                     fixedSize: false,
                   },
                 ],

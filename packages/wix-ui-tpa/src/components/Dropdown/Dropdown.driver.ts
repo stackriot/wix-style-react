@@ -28,6 +28,8 @@ interface BaseDropdownDriver {
   getErrorMessageContent(): Promise<string>;
   click(): Promise<void>;
   getAriaActivedescendant(): Promise<string | null>;
+  getDropdownId(): Promise<string | null>;
+  getLabelForInput(): Promise<string | null>;
   getAriaExpanded(): Promise<string | null>;
   getAriaLabel(): Promise<string | null>;
   getAriaLabelledBy(): Promise<string | null>;
@@ -59,6 +61,9 @@ const regularDriver = (
   const getDropdownBase = async () => {
     return base.$(`[data-hook="${DATA_HOOKS.base}"]`);
   };
+  const getLabel = async () => {
+    return base.$(`[data-hook="${DATA_HOOKS.label}"]`);
+  };
 
   return {
     isDisabled: async () =>
@@ -67,6 +72,8 @@ const regularDriver = (
       (await getDropdownBase()).attr('aria-activedescendant'),
     getAriaExpanded: async () =>
       (await getDropdownBase()).attr('aria-expanded'),
+    getLabelForInput: async () => (await getLabel()).attr('for'),
+    getDropdownId: async () => (await getDropdownBase()).attr('id'),
     getAriaLabel: async () => (await getDropdownBase()).attr('aria-label'),
     getAriaLabelledBy: async () =>
       (await getDropdownBase()).attr('aria-labelledby'),
@@ -99,6 +106,9 @@ const nativeDriver = (
   base: UniDriver,
   baseUniDriver: BaseUniDriver,
 ): BaseDropdownDriver => {
+  const getLabel = async () => {
+    return base.$(`[data-hook="${DATA_HOOKS.label}"]`);
+  };
   const getNativeOptions = () =>
     base.$$(`option:not([data-hook="${DATA_HOOKS.placeholderOption}"])`);
   const warnUnsupportedFunction = (fnName: string) => {
@@ -115,8 +125,10 @@ const nativeDriver = (
       (await getDropdownNativeSelect(base)).attr('aria-label'),
     getAriaLabelledBy: async () =>
       (await getDropdownNativeSelect(base)).attr('aria-labelledby'),
+    getDropdownId: async () => (await getDropdownNativeSelect(base)).attr('id'),
     getAriaActivedescendant: async () =>
       warnUnsupportedFunction('getAriaActivedescendant'),
+    getLabelForInput: async () => (await getLabel()).attr('for'),
     getAriaExpanded: async () => warnUnsupportedFunction('getAriaExpanded'),
     click: async () => warnUnsupportedFunction('click'),
     areOptionsShown: async () => warnUnsupportedFunction('areOptionsShown'),
@@ -162,6 +174,8 @@ export const dropdownDriverFactory = (base: UniDriver): DropdownDriver => {
     getAriaActivedescendant: async () =>
       (await getDriver()).getAriaActivedescendant(),
     getAriaExpanded: async () => (await getDriver()).getAriaExpanded(),
+    getDropdownId: async () => (await getDriver()).getDropdownId(),
+    getLabelForInput: async () => (await getDriver()).getLabelForInput(),
     getAriaLabel: async () => (await getDriver()).getAriaLabel(),
     getAriaLabelledBy: async () => (await getDriver()).getAriaLabelledBy(),
     click: async () => (await getDriver()).click(),
