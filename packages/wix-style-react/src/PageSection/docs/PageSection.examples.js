@@ -1,4 +1,4 @@
-export const divider = `
+export const _divider = `
 <PageSection
   title="Automations"
   showDivider
@@ -6,7 +6,7 @@ export const divider = `
 
 `;
 
-export const textOverflow = `
+export const _textOverflow = `
 <PageSection
   title="Track Your Workflows on Simple Boards"
   subtitle="Manage any work process from start to finish. Track leads, contacts & orders on a simple board."
@@ -14,14 +14,14 @@ export const textOverflow = `
 />
 `;
 
-export const subtitle = `
+export const _subtitle = `
 <PageSection
   title="Marketing Tools"
   subtitle="Check out just a few of the marketing apps you can use to grow your business"
 />
 `;
 
-export const structure = `
+export const _structure = `
 <PageSection
   title="Section Title"
   actionsBar={<StorybookComponents.Placeholder width='300px'>Actions Bar</StorybookComponents.Placeholder>}
@@ -29,7 +29,7 @@ export const structure = `
 
 `;
 
-export const commonUseCases = `
+export const _commonUseCases = `
 <Page>
   <Page.Header
     title="Marketing Integrations"
