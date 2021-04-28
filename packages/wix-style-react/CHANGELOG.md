@@ -14,7 +14,7 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## Next
+## 9.109.0 - 2021-04-28
 
 ### Added
 - `<SidebarSectionItem/>` [Testkit] - add `isSelected()` and `isDisabled()` methods [#7068](https://github.com/wix/wix-style-react/pull/7068)
