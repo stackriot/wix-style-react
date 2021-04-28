@@ -255,7 +255,10 @@
     "path": "src/InfoIcon"
   },
   "Input": {
-    "path": "src/Input"
+    "path": "src/Input",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
   },
   "InputArea": {
     "path": "src/InputArea"

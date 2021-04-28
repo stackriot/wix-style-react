@@ -20,6 +20,10 @@ import * as exampleStyles from './examples.st.css';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import * as CardWiringExampleRawSource from '!raw-loader!./CardWiringExample.tsx';
+import * as CardWiringExampleCSSRawSource from '!raw-loader!./CardWiringExample.st.css';
+import { CardWiringExample } from './CardWiringExample';
 
 const example = (config, extraContext = {}) =>
   baseExample({
@@ -135,6 +139,29 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              title: 'Card style extension',
+              example: <CardWiringExample />,
+              rawSource: CardWiringExampleRawSource,
+              rawCSSSource: CardWiringExampleCSSRawSource,
+              params: {
+                numbers: [
+                  {
+                    label: 'Media Container Ratio',
+                    wixParam: 'containerRatio',
+                    defaultNumber: 50,
+                    min: 33,
+                    max: 66,
+                    unit: '%',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],
