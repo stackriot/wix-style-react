@@ -8,11 +8,21 @@ export const TextFieldExtendedExample: React.FunctionComponent<TextFieldProps> =
 ) => (
   <>
     <h3>Theme Box:</h3>
-    <TextField {...props} className={classes.root} />
+    <TextField
+      {...props}
+      className={classes.root}
+      maxLength={10}
+      showCharCount
+    />
 
     <h3 style={{ marginTop: '50px' }}>Theme Line:</h3>
     <TextField
-      {...{ ...props, theme: TextFieldTheme.Line }}
+      {...{
+        ...props,
+        theme: TextFieldTheme.Line,
+        maxLength: 10,
+        showCharCount: true,
+      }}
       className={classes.root}
     />
 

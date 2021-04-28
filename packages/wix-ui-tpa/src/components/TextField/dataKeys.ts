@@ -8,4 +8,5 @@ export const DATA_HOOKS = {
   LABEL: 'label',
   SUCCESS_ICON: 'success-Icon',
   CUSTOM_SUFFIX: 'custom-suffix',
+  CHAR_COUNT: 'char-count',
 };

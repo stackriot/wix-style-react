@@ -9,7 +9,9 @@
       MainTextColor '"--textFieldTextColor"',
       MainBorderColor '"--textFieldBorderColor"',
       MainTextFont '"--textFont"',
-      MainLabelFont "--labelFont",
-      MainLabelTextColor "--labelTextColor"
+      MainLabelFont '"--labelFont"',
+      MainLabelTextColor '"--labelTextColor"',
+      CharCountFont '"--textFieldCharCountFont"',
+      CharCountColor '"--textFieldCharCountColor"'
   );
 }

@@ -117,5 +117,34 @@ export const textFieldDriverFactory = ({ element, eventTrigger }) => {
     focus() {
       return inputDriver.getInput().focus();
     },
+
+    getText() {
+      return inputDriver.getValue();
+    },
+
+    /**
+     * Gets the max length
+     * @return {Promise<string>}
+     */
+    getMaxLength() {
+      return parseInt(getDataAttributeValue('maxLength'), 10);
+    },
+
+    /**
+     * Whether the charCount exists and displayed
+     * @return {Promise<boolean>}
+     */
+    isCharCountExist() {
+      return !!element.querySelector(`[data-hook="${DATA_HOOKS.CHAR_COUNT}"]`);
+    },
+
+    /**
+     * Gets the ratio of characters used and the total character limit
+     * @return {Promise<string>}
+     */
+    getCharCountText() {
+      return element.querySelector(`[data-hook="${DATA_HOOKS.CHAR_COUNT}"]`)
+        .textContent;
+    },
   };
 };

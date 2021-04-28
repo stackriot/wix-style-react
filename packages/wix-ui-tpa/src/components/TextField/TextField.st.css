@@ -28,6 +28,8 @@
     defaultMainTextFont: "{theme: 'Body-M', size: '16px'}";
     defaultMainLabelFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.4'}";
     defaultMainLabelTextColor: color-5;
+    defaultCharCountFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.4'}";
+    defaultCharCountColor: color-4;
 }
 
 /*Overrides*/
@@ -62,6 +64,16 @@
       @default color-5
     */
     MainLabelTextColor: --overridable;
+    /*
+      The font of the char count
+      @default {theme: 'Body-M', size: '14px', lineHeight: '1.4'}
+    */
+    CharCountFont: --overridable;
+    /*
+      The color of the char count
+      @default color-4
+    */
+    CharCountColor: --overridable;
 }
 
 :vars {
@@ -71,6 +83,8 @@
     mainTextFont: fallback(font(value(MainTextFont)), font(value(defaultMainTextFont)));
     mainLabelTextColor: color(fallback(value(MainLabelTextColor), value(defaultMainLabelTextColor)));
     mainLabelFont: fallback(font(value(MainLabelFont)), font(value(defaultMainLabelFont)));
+    mainCharCountFont: fallback(font(value(CharCountFont)), font(value(defaultCharCountFont)));
+    mainCharCountColor: color(fallback(value(CharCountColor), value(defaultCharCountColor)));
 }
 
 :vars {
@@ -308,4 +322,12 @@
 
 .root:disabled .label {
     color: value(colorLabelDisabled);
+}
+
+.charCount {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+    font: value(mainCharCountFont);
+    color: value(mainCharCountColor);
 }

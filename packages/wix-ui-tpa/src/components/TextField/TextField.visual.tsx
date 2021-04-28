@@ -97,12 +97,15 @@ function snapTest({
   suffix = null,
   withClearButton = false,
   label = '',
+  maxLength = null,
+  showCharCount = false,
 }) {
   snap(
-    `${theme}${success ? '/success' : ''}${error ? '/error' : ''}${
-      suffix ? '/suffix' : ''
-    }${withClearButton ? '/withClearButton' : ''}/${mouseAction}
-    ${label ? '/withLabel' : ''}`,
+    `${theme}${success ? '/success' : ''}${error ? '/error' : ''}
+    ${suffix ? '/suffix' : ''}${withClearButton ? '/withClearButton' : ''}
+    ${showCharCount && maxLength ? '/withCharCount' : ''}${
+      label ? '/withLabel' : ''
+    }/${mouseAction}`,
     (done) => (
       <TextFieldAsyncVisual onDone={done} hover={hover} focus={focus} dir={dir}>
         <TextField
@@ -115,6 +118,8 @@ function snapTest({
           suffix={suffix}
           withClearButton={withClearButton}
           label={label}
+          maxLength={maxLength}
+          showCharCount={showCharCount}
         />
       </TextFieldAsyncVisual>
     ),
@@ -188,6 +193,15 @@ visualize('TextField', () => {
             hover,
             dir,
             label: 'label',
+          });
+          snapTest({
+            theme,
+            mouseAction,
+            focus,
+            hover,
+            dir,
+            maxLength: 5,
+            showCharCount: true,
           });
         });
       });

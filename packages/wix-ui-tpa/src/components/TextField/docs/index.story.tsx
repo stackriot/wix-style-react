@@ -41,15 +41,14 @@ export default {
   componentProps: (setState, getState) => ({
     'data-hook': 'storybook-TextField',
     value: '',
+    label: '',
+    maxLength: 10,
+    showCharCount: false,
     onChange: ({ target: { value } }) => setState({ value }),
   }),
 
   exampleProps: {
     theme: Object.values(TextFieldTheme),
-    label: [
-      { label: 'With Label', value: 'label text:' },
-      { label: 'Without Label', value: '' },
-    ],
     value: [
       { label: 'Empty', value: '' },
       { label: 'Short', value: 'Text' },
@@ -123,6 +122,10 @@ export default {
               source: examples.customSuffixAndErrorWithClearButton,
             },
             {
+              title: 'Character Count',
+              source: examples.charCount,
+            },
+            {
               title: 'Line theme',
               source: examples.lineTheme,
             },
@@ -163,6 +166,10 @@ export default {
                 'Line theme Custom Suffix and Error Status With Clear Button',
               source: examples.lineThemeCustomSuffixAndErrorWithClearButton,
             },
+            {
+              title: 'Line theme Character Count',
+              source: examples.lineThemeCharCount,
+            },
           ].map(code),
         ],
       }),
@@ -192,6 +199,11 @@ export default {
                     wixParam: 'labelFont',
                     defaultFont: 'arial',
                   },
+                  {
+                    label: 'CharCount font',
+                    wixParam: 'textFieldCharCountFont',
+                    defaultFont: 'arial',
+                  },
                 ],
                 colors: [
                   {
@@ -213,6 +225,11 @@ export default {
                     label: 'Label color',
                     wixParam: 'labelTextColor',
                     defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'CharCount color',
+                    wixParam: 'textFieldCharCountColor',
+                    defaultColor: 'color-4',
                   },
                 ],
               },
