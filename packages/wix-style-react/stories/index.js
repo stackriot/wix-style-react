@@ -105,7 +105,7 @@ require('../src/MediaOverlay/docs/index.story');
 require('../src/MessageBox/FunctionalLayout/docs/index.story');
 require('../src/MessageModalLayout/docs/index.story');
 require('../src/MobilePreviewWidget/docs/index.story');
-require('../src/Modal/docs/index.story');
+require('../src/Modal/docs/Modal.story');
 require('../src/ModalMobileLayout/docs/index.story');
 require('../src/ModalPreviewLayout/docs/index.story');
 require('../src/ModalSelectorLayout/docs/index.story');

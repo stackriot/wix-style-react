@@ -1,4 +1,4 @@
-export const structure = `
+export const _structure = `
 () => {
   const [isModalOpened, setModalOpened] = React.useState(false);
 
@@ -33,7 +33,7 @@ export const structure = `
 };
 `;
 
-export const sideMargins = `
+export const _sideMargins = `
 () => {
   const [isModalOpened, setModalOpened] = React.useState(false);
   const [currentScreen, setCurrentScreen] = React.useState(null);
@@ -88,7 +88,7 @@ export const sideMargins = `
 };
 `;
 
-export const modalWithForm = `
+export const _modalWithForm = `
 () => {
   const [isModalOpened, setModalOpened] = React.useState(false);
 
