@@ -9,7 +9,7 @@
 }
 
 .root {
-  -st-states: reducedSpacingAndImprovedLayout, size(enum(tiny, small, medium, large)), alignItems(enum(center, stretch)), badge, hiddenBadge, inverted, withActions, withImageBackground;
+  -st-states: reducedSpacingAndImprovedLayout, size(enum(tiny, small, medium, large)), alignItems(enum(center, stretch)), badge, hiddenBadge, inverted, withActions, withImageBackground, direction(enum(horizontal, vertical));
   writing-mode: horizontal-tb;
 }
 
@@ -53,6 +53,11 @@
   padding-block-end: 30px;
   padding-inline-start: 60px;
   padding-inline-end: 30px;
+}
+
+.root:size(medium):direction(vertical),
+.root:size(large):direction(vertical) {
+  padding-inline-start: 30px;
 }
 
 .root:inverted {
