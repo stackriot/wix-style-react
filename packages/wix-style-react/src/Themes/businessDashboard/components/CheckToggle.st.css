@@ -1,0 +1,74 @@
+:import {
+  -st-from: "../../../CheckToggle/CheckToggle.st.css";
+  -st-default: CheckToggle;
+}
+
+:import {
+  -st-from: '../foundations/colors.st.css';
+  -st-named: B05, B10, B50, D10-40, D80
+}
+
+.root {
+  -st-extends: CheckToggle;
+  background-color: value(D80);
+  height: 16px;
+  width: 16px;
+}
+
+/* Focused */
+.root:focus-visible {
+  box-shadow: 0 0 0 3px value(B50);
+}
+
+/* Disabled Checked */
+.root:skin(standard):checked:disabled span {
+  border: none;
+  background-color: value(D10-40);
+}
+
+.root:skin(standard):checked:disabled svg {
+  transform: unset;
+  background-color: unset;
+  border-radius: 100%;
+  height: 16px;
+  width: 16px;
+}
+
+/* Disabled UnChecked */
+.root:skin(standard):not(:checked):disabled span {
+  transform: unset;
+  border-color: value(D10-40);
+  height: 14px;
+  width: 14px;
+}
+
+/* Enabled Checked */
+.root:skin(standard):checked:not(:disabled) span {
+  align-items: center;
+  border: none;
+}
+
+.root:skin(standard):checked:not(:disabled) svg {
+  transform: unset;
+  background-color: value(B10);
+  border-radius: 100%;
+  height: 16px;
+  width: 16px;
+}
+
+/* Enabled UnChecked */
+.root:skin(standard):not(:checked):not(:disabled) span {
+  transform: unset;
+  border-color: value(B10);
+  height: 14px;
+  width: 14px;
+}
+
+/* Hover */
+.root:skin(standard):checked:not(:disabled):hover svg {
+  background-color: value(B05);
+}
+
+.root:skin(standard):not(:checked):not(:disabled):hover span {
+  background-color: value(B50);
+}

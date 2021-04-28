@@ -6,13 +6,12 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
 } from 'wix-storybook-utils/Sections';
 import AllIcons from 'wix-ui-icons-common/dist/es/stories/general/GeneralCategoryList';
 import API_Table from 'wix-ui-icons-common/dist/es/stories/APITable';
 import TextButton from '../../src/TextButton';
 
-import allComponents from '../utils/allComponents';
 import { foundationSymbols } from '../symbolsComponentsMapping/symbols';
 import { Category } from '../storiesHierarchy';
 import * as examples from './examples';
@@ -20,8 +19,6 @@ import SectionHelper from '../../src/SectionHelper';
 import Box from '../../src/Box';
 
 const packageURL = 'https://www.npmjs.com/package/wix-ui-icons-common';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: Category.FOUNDATION,

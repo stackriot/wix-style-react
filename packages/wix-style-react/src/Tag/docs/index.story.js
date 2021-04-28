@@ -4,7 +4,7 @@ import Tag from '..';
 import { createAutoExampleWrapper } from '../../../stories/utils/AutoExampleWrapper';
 import {
   api,
-  example as baseExample,
+  example,
   description,
   divider,
   header,
@@ -15,10 +15,8 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/dist/src/Sections';
-import allComponents from '../../../stories/utils/allComponents';
-import * as examples from './examples';
 
-const example = config => baseExample({ components: allComponents, ...config });
+import * as examples from './examples';
 
 const GREEN_THUMB = (
   <div

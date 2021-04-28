@@ -43,10 +43,6 @@ const componentActualUrl = {
     Category.COMPONENTS,
     'PageSection',
   ),
-  [layoutComponentsNames.Layout]: linkTo(
-    `${Category.COMPONENTS}/Layout`,
-    'Usage',
-  ),
   [layoutComponentsNames.CardHeader]: linkTo(Category.COMPONENTS, 'Card'),
   [layoutComponentsNames.CardContent]: linkTo(Category.COMPONENTS, 'Card'),
   [layoutComponentsNames.CardDivider]: linkTo(Category.COMPONENTS, 'Card'),

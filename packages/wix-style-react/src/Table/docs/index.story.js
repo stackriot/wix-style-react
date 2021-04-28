@@ -14,7 +14,7 @@ import {
 
 import { Table } from '..';
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import { createFetchEndpoint } from '../../../stories/utils/createFetchEndpoint';
 import compoundReadmeApi from './COMPOUND_README.API.md';
 import contextReadmeApi from './CONTEXT_README.API.md';
@@ -45,7 +45,6 @@ import TableVirtualizationExample from '!raw-loader!./examples/21_TableVirtualiz
 const code = config =>
   baseCode({
     components: {
-      ...allComponents,
       fetch: createFetchEndpoint('/mockApi', data, [
         { firstName: 'Meghan', lastName: 'Bishop' },
         { firstName: 'Sara', lastName: 'Porter' },

@@ -369,6 +369,44 @@ describe('DropdownBase', () => {
       expect(await driver.isDropdownShown()).toBe(false);
     });
 
+    it('should call onShow', async () => {
+      const onShow = jest.fn();
+      const { args } = createUncontrolledDriver(null, {
+        onShow,
+      });
+
+      args.open();
+      expect(onShow).toHaveBeenCalledTimes(1);
+
+      args.close();
+      expect(onShow).toHaveBeenCalledTimes(1);
+
+      args.toggle();
+      expect(onShow).toHaveBeenCalledTimes(2);
+
+      args.toggle();
+      expect(onShow).toHaveBeenCalledTimes(2);
+    });
+
+    it('should call onHide', async () => {
+      const onHide = jest.fn();
+      const { args } = createUncontrolledDriver(null, {
+        onHide,
+      });
+
+      args.open();
+      expect(onHide).toHaveBeenCalledTimes(0);
+
+      args.close();
+      expect(onHide).toHaveBeenCalledTimes(1);
+
+      args.toggle();
+      expect(onHide).toHaveBeenCalledTimes(1);
+
+      args.toggle();
+      expect(onHide).toHaveBeenCalledTimes(2);
+    });
+
     describe('keyDown handling', () => {
       it('should delegate the event to the DropdownLayout', async () => {
         const { args, driver } = createUncontrolledDriver();

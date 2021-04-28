@@ -11,18 +11,12 @@ import {
   importExample,
   divider,
   title,
-  example as baseExample,
+  example,
 } from 'wix-storybook-utils/dist/src/Sections';
 import * as examples from './examples';
-import allComponents from '../../../stories/utils/allComponents';
+
 import { commonPopoverPropsExample } from '../../../stories/utils/playgroundUtils';
 import { convertTokens } from '@date-fns/upgrade/v2';
-
-const example = config =>
-  baseExample({
-    components: allComponents,
-    ...config,
-  });
 
 const defaultValue = new Date('2017/05/01');
 const today = new Date();
@@ -164,6 +158,13 @@ export default {
             text:
               '`<DatePicker />` supports displaying a clear button to a non empty `<DatePicker />`.',
             source: examples.clearButton,
+          }),
+
+          example({
+            title: 'Disable Typing',
+            text:
+              '`<DatePicker />` allows to disable keyboard typing so that choosing a date is possible only by picking from the Calendar.',
+            source: examples.disableKeyboardType,
           }),
 
           // TODO - disabled until https://github.com/wix/wix-style-react/issues/4157 is fixed

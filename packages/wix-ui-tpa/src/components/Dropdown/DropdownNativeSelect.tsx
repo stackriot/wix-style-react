@@ -21,6 +21,7 @@ interface DropdownNativeSelectProps extends TPAComponentProps {
   errorMessage?: string;
   'aria-label'?: string;
   'aria-labelledby'?: string;
+  id?: string;
   name?: string;
 }
 
@@ -93,8 +94,9 @@ export class DropdownNativeSelect extends React.Component<DropdownNativeSelectPr
       selectedOption,
       error,
       errorMessage,
-      ['aria-label']: ariaLabel,
-      ['aria-labelledby']: ariaLabelledBy,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledBy,
+      ['id']: dropdownId,
       className,
       name,
     } = this.props;
@@ -125,6 +127,7 @@ export class DropdownNativeSelect extends React.Component<DropdownNativeSelectPr
           {...this.getDataAttributes()}
           defaultValue={''}
           {...(selectedOption && { value: selectedOption.id })}
+          id={dropdownId}
           onChange={(e) => this.onSelect(e)}
           data-hook={DATA_HOOKS.nativeSelect}
           aria-label={ariaLabel}

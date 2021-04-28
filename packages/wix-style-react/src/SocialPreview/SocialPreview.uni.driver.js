@@ -12,5 +12,11 @@ export const socialPreviewDriverFactory = base => {
     /** Get SocialPreview description */
     getDescription: async () =>
       base.$('[data-hook="socialPreview-description"]').text(),
+
+    /** Get SocialPreview skin */
+    getSkin: () => base.attr('data-skin'),
+
+    /** Get SocialPreview size */
+    getSize: () => base.attr('data-size'),
   };
 };

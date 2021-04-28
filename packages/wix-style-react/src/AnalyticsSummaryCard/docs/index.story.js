@@ -8,14 +8,13 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 import IconButton from '../../IconButton';
 import Refresh from 'wix-ui-icons-common/Refresh';
 import AnalyticsSummaryCard from '..';
@@ -26,7 +25,6 @@ const chartData = [
   { label: new Date('Thu Sep 5 2020'), value: 17 },
   { label: new Date('Thu Sep 6 2020'), value: 18 },
 ];
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

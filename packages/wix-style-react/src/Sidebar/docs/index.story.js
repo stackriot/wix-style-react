@@ -9,12 +9,12 @@ import {
   divider,
   code,
   testkit,
-  example as baseExample,
+  example,
   api,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import SimpleSidebarRaw from '!raw-loader!./SimpleExample';
 import InnerMenuExampleRaw from '!raw-loader!./InnerMenuExample';
 import SidebarItemContext from './SidebarItemContextExample';
@@ -33,8 +33,6 @@ const { Item, BackButton, PersistentFooter, PersistentHeader } = Sidebar;
 ### For advanced usages:
 import { SidebarContextConsumer, SidebarItemContextConsumer } from 'wix-style-react';
 `;
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

@@ -6,12 +6,12 @@ import {
   description,
   importExample,
   title,
-  divider,
+  divider as sectionDivider,
   example as baseExample,
 } from 'wix-storybook-utils/Sections';
 import LinkTo from '@storybook/addon-links/react';
 import { storySettings } from './storySettings';
-import { businessDashboardComponents } from '../../../../stories/utils/allComponents';
+import { businessDashboardComponents } from '../../../../.storybook/playground';
 import SectionHelper from '../../../SectionHelper';
 import * as carousel from './components/Carousel';
 import * as buttons from './components/Button';
@@ -23,24 +23,31 @@ import * as tooltips from './components/Tooltip';
 import * as card from './components/Card';
 import * as badge from './components/Badge';
 import * as loader from './components/Loader';
+import * as divider from './components/Divider';
 import * as circularProgressBar from './components/CircularProgressBar';
 import * as linearProgressBar from './components/LinearProgressBar';
 import * as listItemSelect from './components/ListItemSelect';
+import * as sidepanel from './components/SidePanel';
 import * as sidebar from './components/Sidebar';
 import * as listItemActions from './components/ListItemAction';
 import * as popoverMenu from './components/PopoverMenu';
+import * as popover from './components/Popover';
 import * as input from './components/Input';
 import * as search from './components/Search';
 import * as emptyState from './components/EmptyState';
 import * as modal from './components/Modal';
 import * as trendIndicator from './components/TrendIndicator';
 import * as closeButton from './components/CloseButton';
+import * as infoIcon from './components/InfoIcon';
 import * as tag from './components/Tag';
 import * as checkbox from './components/Checkbox';
 import * as thumbnail from './components/Thumbnail';
 import * as verticalTabsItem from './components/VerticalTabsItem';
 import * as customModalLayout from './components/CustomModalLayout';
 import * as tableListItem from './components/TableListItem';
+import * as sectionHelper from './components/SectionHelper';
+import * as checkToggle from './components/CheckToggle';
+import * as pageSection from './components/PageSection';
 
 import { Category } from '../../../../stories/storiesHierarchy';
 import Box from '../../../Box';
@@ -89,7 +96,7 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
   </ThemeProvider>
 );
           `),
-          divider(),
+          sectionDivider(),
           title('Playground'),
           example({
             text: TextComponent('Button'),
@@ -102,6 +109,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('CircularProgressBar'),
             source: circularProgressBar.playground,
+          }),
+          example({
+            text: TextComponent('Divider'),
+            source: divider.playground,
           }),
           example({
             text: TextComponent('LinearProgressBar'),
@@ -136,6 +147,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
             source: sidebar.playground,
           }),
           example({
+            text: TextComponent('SidePanel'),
+            source: sidepanel.playground,
+          }),
+          example({
             text: TextComponent('Card'),
             source: card.playground,
           }),
@@ -146,6 +161,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('PopoverMenu'),
             source: popoverMenu.playground,
+          }),
+          example({
+            text: TextComponent('Popover'),
+            source: popover.playground,
           }),
           example({
             text: TextComponent('Badge'),
@@ -180,6 +199,10 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
             source: closeButton.playground,
           }),
           example({
+            text: TextComponent('InfoIcon'),
+            source: infoIcon.playground,
+          }),
+          example({
             text: TextComponent('Tag'),
             source: tag.playground,
           }),
@@ -202,6 +225,18 @@ import { theme } from 'wix-style-react/themes/businessDashboard';
           example({
             text: TextComponent('TableListItem'),
             source: tableListItem.playground,
+          }),
+          example({
+            text: TextComponent('SectionHelper'),
+            source: sectionHelper.playground,
+          }),
+          example({
+            text: TextComponent('CheckToggle'),
+            source: checkToggle.playground,
+          }),
+          example({
+            text: TextComponent('PageSection'),
+            source: pageSection.playground,
           }),
         ],
       }),

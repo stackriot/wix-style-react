@@ -9,6 +9,7 @@
   D20: #333850;
   D30: #595D70;
   D40: #868AA5;
+  D50: #B6C1CD;
   D55: #CFD1DC;
   D60: #DFE5EB;
   D70: #ECEFF3;
@@ -19,7 +20,7 @@
   B10: #116DFF;
   B20: #418AFF;
   B30: #7CAFFF;
-  B40: #C3DAFF;
+  B40: #D3E4FF;
   B50: #E8F1FF;
   B60: #F8FAFF;
   D80: #FFFFFF;
@@ -38,15 +39,25 @@
   /* Success */
   G10: #51B77B;
   G20: #51B77B;
-  G40: #C8E8D6;
+  G40: #CDF2CF;
 
   /* Destructive */
   R10: #EE4437;
   R20: #F1695F;
+  R40: #FDE3E1;
   R50: #FDECEB;
+  R40: #FDE3E1;
+
+  /* Warning */
+  Y10: #F9aD4D;
+  Y30: #FFD988;
 
   /* Orange */
   O10: #F96132;
+
+  /* Yellow */
+  Y30: #FFD988;
+  Y50: #FFF7E2;
 
   /* Categories */
   A2: #5A48F5;
@@ -67,6 +78,6 @@
   darkScrollbarThumbHoverColor: #b8b9bc;
 
   /* Shadows */
-  S4: calc_rgba(value(D10), 0.2);
-  S5: calc_rgba(value(D10), 0.16);
+  S4: calc_rgba(value(D10), 0.16);
+  S5: calc_rgba(value(D10), 0.2);
 }

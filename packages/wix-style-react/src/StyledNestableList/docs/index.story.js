@@ -3,7 +3,7 @@ import {
   api,
   description,
   divider,
-  example as baseExample,
+  example,
   header,
   importExample,
   playground,
@@ -14,14 +14,11 @@ import {
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import StyledNestableList from '..';
 import { getCollapsedExampleSource, getSource } from './getExampleSource';
 import { getSimpleExampleItems } from './examplesConstants';
 import SectionHelper from '../../SectionHelper';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

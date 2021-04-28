@@ -51,6 +51,13 @@ export const CAPITALIZED_MONTH_LANGUAGES = [
   'no',
   'pt',
 ];
+const FIRST_WEEKDAY = {
+  vi: 0,
+};
+
+const WEEKDAY_SHORT = {
+  vi: 'iiiii',
+};
 
 export function capitalizeFirstLetter(str) {
   if (!str) {
@@ -116,7 +123,7 @@ export const formatDateV2 = (date, dateFormatV2, locale) =>
     locale: getLocale(locale),
   });
 
-export default locale => ({
+export default (locale, firstDayOfWeek) => ({
   formatMonthTitle: date =>
     capitalizeMonth(
       format(date, 'LLLL yyyy', {
@@ -125,10 +132,13 @@ export default locale => ({
       locale,
     ),
 
-  formatWeekdayShort: index =>
-    format(setDay(new Date(), index), 'iiiiii', {
+  formatWeekdayShort: index => {
+    const shortWeekdayFormat = WEEKDAY_SHORT[locale] || 'iiiiii';
+
+    return format(setDay(new Date(), index), shortWeekdayFormat, {
       locale: getLocale(locale),
-    }),
+    });
+  },
 
   formatWeekdayLong: index =>
     format(setDay(new Date(), index), 'iiii', {
@@ -149,4 +159,5 @@ export default locale => ({
         locale,
       ),
     ),
+  getFirstDayOfWeek: () => FIRST_WEEKDAY[locale] ?? firstDayOfWeek,
 });

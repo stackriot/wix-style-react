@@ -7,7 +7,7 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -15,7 +15,7 @@ import {
 
 import Box from '../../Box';
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import basicExample from '!raw-loader!./examples/basic';
 import sizeExample from '!raw-loader!./examples/size';
 import inlineTextExample from '!raw-loader!./examples/inlineText';
@@ -24,7 +24,6 @@ import InfoIcon from '..';
 import { commonTooltipPropsExample } from '../../../stories/utils/playgroundUtils';
 
 const content = 'Tooltip content!';
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

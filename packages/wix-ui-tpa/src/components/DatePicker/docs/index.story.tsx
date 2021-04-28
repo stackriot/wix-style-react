@@ -101,11 +101,19 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Simple Usage', source: examples.basicExample },
+            {
+              title: 'Simple Usage',
+              description:
+                'The DatePicker component design could be customized. The supported day font size are between 14px to 24px.',
+              source: examples.basicExample,
+            },
             {
               title: 'Responsiveness',
               description:
-                'The DatePicker width is defined according to the container width.',
+                'The DatePicker width is defined according to the container width and adds padding between the cells accordingly.' +
+                'It also has a minimum width which is calculated according to the font-size. ' +
+                'This min-width definition ensures that the DatePicker would not shrink more than its actual minimum size. (Minimum width calculation is: 280em / 14). ' +
+                'The supported font sizes are between 14px to 24px.',
               source: examples.responsiveExample,
             },
             {
@@ -203,16 +211,11 @@ export default {
                     size: 16,
                   },
                   {
-                    label: 'Weekday Font',
-                    wixParam: 'customWeekdayFont',
-                    defaultFont: 'arial',
-                    size: 14,
-                  },
-                  {
                     label: 'Day Font',
                     wixParam: 'customDayFont',
                     defaultFont: 'arial',
                     size: 14,
+                    minSize: 14,
                   },
                 ],
                 numbers: [

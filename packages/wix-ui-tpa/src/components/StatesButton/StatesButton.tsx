@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 import { st, classes } from './StatesButton.st.css';
 import { Button, ButtonProps } from '../Button';
 import { TPAComponentProps } from '../../types';
@@ -71,7 +70,7 @@ export class StatesButton extends React.Component<StatesButtonProps> {
 
   private renderCheck() {
     return (
-      <div className={classNames(classes.successIcon)}>
+      <div className={classes.successIcon}>
         <Check size="1em" data-hook={'checkIcon'} />
       </div>
     );

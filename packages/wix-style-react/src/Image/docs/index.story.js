@@ -8,7 +8,7 @@ import {
   title,
   columns,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -16,7 +16,7 @@ import {
 
 import Box from '../../Box';
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import {
   sourceExample,
   sizeExample,
@@ -28,8 +28,6 @@ import {
 } from './examples/examples';
 
 import Image from '..';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

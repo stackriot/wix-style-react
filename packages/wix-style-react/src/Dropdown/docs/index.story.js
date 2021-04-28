@@ -5,10 +5,9 @@ import {
   columns,
   importExample,
   title,
-  example as baseExample,
+  example,
   tab,
   api,
-  testkit,
   playground,
   tabs,
   divider,
@@ -16,11 +15,9 @@ import {
 import Dropdown from '..';
 import { Layout, Cell } from '../../Layout';
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 import testkitDesc from './testkit.md';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const options = [
   { id: 0, value: 'Option 1' },

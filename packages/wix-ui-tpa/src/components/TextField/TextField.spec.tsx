@@ -110,6 +110,17 @@ describe('TextField', () => {
       expect(notEmptyStateDriver.hasEmptyState()).toBe(false);
     });
 
+    it('should have label', function () {
+      const driver = createDriver(<TextField label={'label'} />);
+      expect(driver.isLabelExists()).toBe(true);
+      expect(driver.getLabelText()).toBe('label');
+    });
+
+    it('should not have label', function () {
+      const driver = createDriver(<TextField />);
+      expect(driver.isLabelExists()).toBe(false);
+    });
+
     it('should onChange', function () {
       const onChange = jest.fn();
       const driver = createDriver(
@@ -164,6 +175,31 @@ describe('TextField', () => {
     it('should not have custom suffix', function () {
       const emptyStateDriver = createDriver(<TextField value="hello" />);
       expect(emptyStateDriver.hasCustomSuffix()).toBe(false);
+    });
+
+    it('should have maxLength attribute', () => {
+      const maxLength = 2;
+      const driver = createDriver(<TextField maxLength={maxLength} />);
+
+      expect(driver.getMaxLength()).toEqual(maxLength);
+    });
+
+    it('should show charCount as numOfChars/maxLength', async function () {
+      const maxLength = 5;
+      const value = 'abc';
+
+      const driver = createDriver(
+        <TextField maxLength={maxLength} showCharCount value={value} />,
+      );
+      expect(driver.isCharCountExist()).toBe(true);
+      expect(await driver.getCharCountText()).toBe(
+        `${value.length}/${maxLength}`,
+      );
+    });
+
+    it('should not show charCount if maxLength is not passed', async function () {
+      const driver = createDriver(<TextField showCharCount />);
+      expect(driver.isCharCountExist()).toBe(false);
     });
   });
 });

@@ -12,33 +12,41 @@ const commonProps = {
   onClose: () => undefined,
 };
 
-storiesOf('SectionHelper', module)
-  .add('Appearances', () => (
-    <Layout>
-      {Object.values(Appearance).map(appearance => (
-        <Cell key={appearance}>
-          <SectionHelper
-            appearance={appearance}
-            actionText="I understand the consequences"
-            title="Look at this important message!"
-            children="This is a very important message"
-            onAction={() => undefined}
-            showCloseButton
-            onClose={() => undefined}
-          />
-        </Cell>
-      ))}
-    </Layout>
-  ))
-  .add('Padding: with/without CloseButton', () => (
-    <div style={{ width: '250px' }}>
-      <Layout>
-        <Cell>
-          <SectionHelper {...commonProps} showCloseButton />
-        </Cell>
-        <Cell>
-          <SectionHelper {...commonProps} showCloseButton={false} />
-        </Cell>
-      </Layout>
-    </div>
-  ));
+export const runTests = (
+  { themeName, testWithTheme } = { testWithTheme: i => i },
+) => {
+  storiesOf(`${themeName ? `${themeName}|` : ''}SectionHelper`, module)
+    .add('Appearances', () =>
+      testWithTheme(
+        <Layout>
+          {Object.values(Appearance).map(appearance => (
+            <Cell key={appearance}>
+              <SectionHelper
+                appearance={appearance}
+                actionText="I understand the consequences"
+                title="Look at this important message!"
+                children="This is a very important message"
+                onAction={() => undefined}
+                showCloseButton
+                onClose={() => undefined}
+              />
+            </Cell>
+          ))}
+        </Layout>,
+      ),
+    )
+    .add('Padding: with/without CloseButton', () =>
+      testWithTheme(
+        <div style={{ width: '250px' }}>
+          <Layout>
+            <Cell>
+              <SectionHelper {...commonProps} showCloseButton />
+            </Cell>
+            <Cell>
+              <SectionHelper {...commonProps} showCloseButton={false} />
+            </Cell>
+          </Layout>
+        </div>,
+      ),
+    );
+};

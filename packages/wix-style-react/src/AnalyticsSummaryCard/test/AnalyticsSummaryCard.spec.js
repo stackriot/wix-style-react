@@ -55,11 +55,81 @@ describe(AnalyticsSummaryCard.displayName, () => {
     expect(onClick).toBeCalled();
   });
 
-  it('should click CTA', async () => {
-    const onCTAClick = jest.fn();
-    const { driver } = render(getAnalyticsComponent({ onCTAClick }));
+  it('should show value', async () => {
+    const valueText = 'test value';
+    const { driver } = render(getAnalyticsComponent({ value: valueText }));
+    expect(await driver.getValue()).toBe(valueText);
+  });
 
-    await driver.clickCTA();
-    expect(onCTAClick).toBeCalled();
+  it('should show value tooltip', async () => {
+    const tooltipText = 'test value tooltip';
+    const { driver } = render(
+      getAnalyticsComponent({ valueTooltip: tooltipText }),
+    );
+    expect(await driver.getValueTooltipText()).toBe(tooltipText);
+  });
+
+  it('should show title', async () => {
+    const titleText = 'test title';
+    const { driver } = render(getAnalyticsComponent({ title: titleText }));
+    expect(await driver.getTitle()).toBe(titleText);
+  });
+
+  it('should show title tooltip', async () => {
+    const tooltipText = 'test title tooltip';
+    const { driver } = render(
+      getAnalyticsComponent({ titleTooltip: tooltipText }),
+    );
+    expect(await driver.getTitleTooltipText()).toBe(tooltipText);
+  });
+
+  describe('CTA', () => {
+    it('should show CTA', async () => {
+      const { driver } = render(getAnalyticsComponent());
+      expect(await driver.CTAExists()).toBe(true);
+    });
+
+    it('should not show CTA while loading', async () => {
+      const { driver } = render(getAnalyticsComponent({ isLoading: true }));
+      expect(await driver.CTAExists()).toBe(false);
+    });
+
+    it('should click CTA', async () => {
+      const onCTAClick = jest.fn();
+      const { driver } = render(getAnalyticsComponent({ onCTAClick }));
+
+      await driver.clickCTA();
+      expect(onCTAClick).toBeCalled();
+    });
+  });
+
+  describe('trend', () => {
+    it('should show trend given isTrendVisible is true', async () => {
+      const trendValue = 10;
+      const { driver } = render(
+        getAnalyticsComponent({ isTrendVisible: true, trend: trendValue }),
+      );
+      expect(await driver.trendExists()).toBe(true);
+      expect(await driver.getTrendvalue()).toBe(trendValue);
+    });
+
+    it('should not show trend given isTrendVisible is false', async () => {
+      const { driver } = render(
+        getAnalyticsComponent({ isTrendVisible: false }),
+      );
+      expect(await driver.trendExists()).toBe(false);
+    });
+  });
+
+  describe('loader', () => {
+    it('should show Loader given isLoading is true', async () => {
+      const { driver } = render(getAnalyticsComponent({ isLoading: true }));
+      expect(await driver.isLoading()).toBe(true);
+    });
+
+    it('should not show Loader given isLoading is false', async () => {
+      const { driver } = render(getAnalyticsComponent({ isLoading: false }));
+      expect(await driver.isLoading()).toBe(false);
+    });
   });
 });

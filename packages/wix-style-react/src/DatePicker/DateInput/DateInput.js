@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CalendarIcon from 'wix-ui-icons-common/Date';
 import Input from '../../Input';
 import { formatDate, formatDateV2 } from '../../LocaleUtils';
+import { legacyParse } from '@date-fns/upgrade/v2';
 
 class DateInput extends React.PureComponent {
   static displayName = 'DateInput';
@@ -16,6 +17,10 @@ class DateInput extends React.PureComponent {
 
     if (!value) {
       return '';
+    }
+
+    if (typeof value === 'string') {
+      return value;
     }
 
     if (dateFormatV2) {
@@ -37,8 +42,19 @@ class DateInput extends React.PureComponent {
     return formatDateV2(value, DateInput.defaultDateFormatV2, locale);
   };
 
+  _handleInputChange = event => {
+    const { onChange } = this.props;
+    const val = event.target.value;
+    const dateObjectFormat = legacyParse(val);
+    const newVal = {
+      dateVal: !isNaN(dateObjectFormat) ? dateObjectFormat : new Date(),
+      textVal: val,
+    };
+    onChange(newVal);
+  };
+
   render() {
-    const { value: initialValue, customInput, ...rest } = this.props;
+    const { value: initialValue, customInput, onChange, ...rest } = this.props;
     const _inputProps = {
       value: this._formatDateValue(),
       prefix: (
@@ -47,6 +63,7 @@ class DateInput extends React.PureComponent {
         </Input.IconAffix>
       ),
       autoSelect: false,
+      onChange: this._handleInputChange,
       ...rest,
       ...(customInput ? customInput.props : {}),
     };

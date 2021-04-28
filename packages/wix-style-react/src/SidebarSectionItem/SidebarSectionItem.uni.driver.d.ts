@@ -6,4 +6,6 @@ export interface SidebarSectionItemUniDriver extends BaseUniDriver {
   getPrefix: () => UniDriver;
   getSuffix: () => UniDriver;
   hover: () => Promise<void>;
+  isSelected: () => Promise<boolean>;
+  isDisabled: () => Promise<boolean>;
 }

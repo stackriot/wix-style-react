@@ -213,10 +213,15 @@ class VariableInput extends React.PureComponent {
 
   /** Insert variable at the input cursor position */
   insertVariable = value => {
-    const { variableParser } = this.props;
+    const {
+      variableParser,
+      variableTemplate: { prefix, suffix },
+    } = this.props;
     const { editorState } = this.state;
-    const text = variableParser(value) || value;
-    const newState = EditorUtilities.insertEntity(editorState, { text, value });
+    const text = variableParser(value);
+    const newState = text
+      ? EditorUtilities.insertEntity(editorState, { text, value })
+      : EditorUtilities.insertText(editorState, `${prefix}${value}${suffix} `);
     this._setEditorState(newState, () => {
       this._onSubmit();
     });

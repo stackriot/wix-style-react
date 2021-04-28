@@ -8,20 +8,17 @@ import {
   title,
   columns,
   divider,
-  code as baseCode,
+  code,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import * as examples from './examples';
 
 import FillPreview from '..';
-
-const liveCode = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,
@@ -78,20 +75,20 @@ export default {
 
           title('Examples'),
 
-          liveCode({
+          code({
             title: 'Simple',
             subtitle:
               'Component supports hex colors, gradients, image urls and svg through `fill` prop.',
             source: examples.simple,
           }),
 
-          liveCode({
+          code({
             title: 'States',
             subtitle: 'Component supports selected state and disabled.',
             source: examples.states,
           }),
 
-          liveCode({
+          code({
             title: 'Interactive',
             description: 'Interactive example.',
             source: examples.fullInteractive,

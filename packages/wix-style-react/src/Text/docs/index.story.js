@@ -10,11 +10,11 @@ import {
   importExample,
   divider,
   testkit,
-  example as baseExample,
+  example,
   title,
 } from 'wix-storybook-utils/Sections';
 import Text, { SIZES, SKINS, WEIGHTS } from '..';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 import { storySettings } from '../test/storySettings';
@@ -22,8 +22,6 @@ import { Layout, Cell } from '../../Layout';
 import SectionHelper from '../../SectionHelper';
 import { Category } from '../../../stories/storiesHierarchy';
 import LinkTo from '@storybook/addon-links/react';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

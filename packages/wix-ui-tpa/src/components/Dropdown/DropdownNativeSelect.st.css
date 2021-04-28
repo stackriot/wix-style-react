@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-named: color, fallback;
 }
 
 :import {
@@ -26,25 +26,59 @@
 
 :vars {
     BorderHoverColor: color-5;
+    DefaultButtonTextColor: 'value(inputColor)';
+    DefaultButtonTextDisabledColor: 'value(colorDisabled)';
+    DefaultButtonBorderColor: 'value(borderColor)';
+    DefaultBorderDisabledColor: 'value(colorDisabled)';
+    DefaultBackgroundColor: 'value(backgroundColor)';
+}
+
+/*Overrides*/
+:vars {
+    /*
+        The button’s text color
+    */
+    MainButtonTextColor: --overridable;
+    /*
+        The disabled button’s text color
+    */
+    MainButtonTextDisabledColor: --overridable;
+    /*
+        The button's border color
+    */
+    MainButtonBorderColor: --overridable;
+    /*
+        The disabled button's border color
+    */
+    MainBorderDisabledColor: --overridable;
+    /*
+        The button's background color
+        @default color-1
+    */
+    MainBackgroundColor: --overridable;
 }
 
 :vars {
     borderHoverColor: color(value(BorderHoverColor));
+    CurrentButtonTextColor: color(fallback(value(MainButtonTextColor), value(DefaultButtonTextColor)));
+    CurrentButtonTextDisabledColor: color(fallback(value(MainButtonTextDisabledColor), value(DefaultButtonTextDisabledColor)));
+    CurrentButtonBorderColor: color(fallback(value(MainButtonBorderColor), value(DefaultButtonBorderColor)));
+    CurrentBorderDisabledColor: color(fallback(value(MainBorderDisabledColor), value(DefaultBorderDisabledColor)));
+    CurrentBackgroundColor: color(fallback(value(MainBackgroundColor), value(DefaultBackgroundColor)));
 }
 
 .wrapper {
     position: relative;
     min-width: 68px;
-    background-color: value(backgroundColor);
 }
 
 .root {
     -st-extends: TPAButton;
     -st-mixin: TPAButton(
-            MainBackgroundColor 'value(backgroundColor)',
-            MainBorderWidth '1px',
-            MainBorderColor 'value(borderColor)',
-            MainTextColor 'value(inputColor)'
+        MainBackgroundColor 'value(DefaultBackgroundColor)',
+        MainBorderWidth '1px',
+        MainBorderColor 'value(DefaultButtonBorderColor)',
+        MainTextColor 'value(DefaultButtonTextColor)'
     );
     -st-states: disabled, error, placeholder, rtl, icon;
     display: flex;
@@ -52,8 +86,18 @@
     box-sizing: border-box;
     outline: none;
     appearance: none;
+    opacity: 1;
     -webkit-appearance: none;
     -moz-appearance: none;
+}
+
+.root.overrideStyleParams {
+    -st-mixin: TPAButton(
+        MainBackgroundColor 'value(CurrentBackgroundColor)',
+        MainBorderWidth '1px',
+        MainBorderColor 'value(CurrentButtonBorderColor)',
+        MainTextColor 'value(CurrentButtonTextColor)'
+    );
 }
 
 .root:mobile {
@@ -75,6 +119,9 @@
     border-color: value(errorColor);
 }
 
+.overrideStyleParams {
+    -st-extends: root;
+}
 
 .root:placeholder {
     color: value(colorPlaceholder);
@@ -82,26 +129,39 @@
 
 .root:disabled {
     cursor: default;
-    background-color: value(backgroundColor);
-    color: value(colorDisabled);
-    border-color: value(colorDisabled);
+    color: value(DefaultButtonTextDisabledColor) !important;
+    border-color: value(DefaultBorderDisabledColor) !important;
 }
 
 .root:disabled:hover {
-    border-color: value(colorDisabled);
+    border-color: value(DefaultButtonTextDisabledColor) !important;
 }
 
 .root:disabled ~ .arrowIcon {
-    color: value(colorDisabled);
+    color: value(DefaultButtonTextDisabledColor) !important;
+}
+
+.root:disabled.overrideStyleParams {
+    color: value(CurrentButtonTextDisabledColor) !important;
+    border-color: value(CurrentBorderDisabledColor) !important;
+}
+
+.root:disabled.overrideStyleParams ~ .arrowIcon {
+    color: value(CurrentButtonTextDisabledColor) !important;
+    border-color: value(CurrentBorderDisabledColor) !important;
 }
 
 .arrowIcon {
-    color: value(inputColor);
+    color: value(DefaultButtonTextColor);
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 0;
     pointer-events: none;
+}
+
+.root.overrideStyleParams ~ .arrowIcon {
+    color: value(CurrentButtonTextColor);
 }
 
 .arrowIcon path {
@@ -136,21 +196,6 @@
 
 .root:not(:rtl) ~ .errorIconWrapper {
     right: 32px;
-}
-
-.optionIcon {
-    position: absolute;
-    display: flex;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.root:rtl ~ .optionIcon {
-    right: 7px;
-}
-
-.root:not(:rtl) ~ .optionIcon {
-    left: 7px;
 }
 
 .errorIconWrapper {

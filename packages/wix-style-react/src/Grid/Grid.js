@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
-import classNames from 'classnames';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-
-import styles from './Grid.scss';
+import deprecationLog from '../utils/deprecationLog';
+import { Layout, Cell } from '../Layout';
+import Box from '../Box';
+import { st, classes } from './Grid.st.css';
+import { mainContainerMaxWidthPx, mainContainerMinWidthPx } from './constants';
 
 const containerProps = {
+  /** hook for testing purposes */
+  dataHook: PropTypes.string,
   children: PropTypes.node,
   fluid: PropTypes.bool,
   className: PropTypes.string,
@@ -12,160 +16,101 @@ const containerProps = {
   stretchVertically: PropTypes.bool,
 };
 
-const RawContainer = ({ children, fluid, className, stretchVertically }) => (
-  <div
-    className={classNames(styles.rawContainer, className, {
-      [styles.fluidContainer]: fluid,
-      [styles.stretchVertically]: stretchVertically,
-    })}
-    children={children}
-  />
-);
+const DEPRECATION_MESSAGE =
+  'Grid is deprecated and will be removed in next major release, please use <Layout /> instead.';
 
-RawContainer.propTypes = containerProps;
+const Container = ({ children, fluid, dataHook, className }) => {
+  useEffect(() => {
+    deprecationLog(DEPRECATION_MESSAGE);
+  }, []);
 
-const Container = ({ children, fluid, className, stretchVertically }) => (
-  <div
-    className={classNames(styles.wixContainer, className, {
-      [styles.fluidContainer]: fluid,
-      [styles.stretchVertically]: stretchVertically,
-    })}
-    children={children}
-  />
-);
+  if (fluid) {
+    return (
+      <Layout gap={0} dataHook={dataHook} cols={1} className={className}>
+        {children}
+      </Layout>
+    );
+  }
+
+  return (
+    <Box
+      dataHook={dataHook}
+      minWidth={mainContainerMinWidthPx}
+      maxWidth={mainContainerMaxWidthPx}
+      display="block"
+      className={className}
+    >
+      <Layout gap={0} cols={1}>
+        {children}
+      </Layout>
+    </Box>
+  );
+};
 
 Container.propTypes = containerProps;
 
-class Columns extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-    rtl: PropTypes.bool,
-    stretchViewsVertically: PropTypes.bool,
-    dataHook: PropTypes.string,
-  };
+const Columns = ({ children, stretchViewsVertically, dataHook, className }) => {
+  useEffect(() => {
+    deprecationLog(DEPRECATION_MESSAGE);
+  }, []);
 
-  static defaultProps = {
-    stretchViewsVertically: false,
-  };
+  return (
+    <Cell dataHook={dataHook} className={st(classes.rowRoot, {}, className)}>
+      <Layout
+        gap={0}
+        className={st(classes.rowLayout, { stretchViewsVertically })}
+      >
+        {children}
+      </Layout>
+    </Cell>
+  );
+};
 
-  render() {
-    const {
-      className,
-      rtl,
-      stretchViewsVertically,
-      dataHook,
-      children,
-    } = this.props;
+const AutoAdjustedColumns = ({ children, dataHook }) => {
+  useEffect(() => {
+    deprecationLog(DEPRECATION_MESSAGE);
+  }, []);
 
-    const rowClasses = classNames(styles.row, className, {
-      [styles.rtl]: rtl,
-      [styles.stretch_vertically_row]: stretchViewsVertically,
-    });
+  const DEFAULT_MAX_SPAN = 12;
+  const cols = Array.isArray(children)
+    ? children.filter(child => Boolean(child))
+    : [children];
+  const spanSize = Math.floor(DEFAULT_MAX_SPAN / cols.length);
 
-    return (
-      <div className={rowClasses} data-hook={dataHook} children={children} />
-    );
-  }
-}
-
-class AutoAdjustedColumns extends Component {
-  DEFAULT_MAX_SPAN = 12;
-
-  static propTypes = {
-    children: PropTypes.node,
-  };
-
-  render() {
-    const children = this.props.children;
-    const cols = Array.isArray(children)
-      ? children.filter(child => Boolean(child))
-      : [children];
-    const spanSize = Math.floor(this.DEFAULT_MAX_SPAN / cols.length);
-
-    return (
-      <div className={classNames(styles.row, styles.flexContainer)}>
+  return (
+    <Cell dataHook={dataHook} className={classes.rowRoot}>
+      <Layout gap={0} className={classes.rowLayout}>
         {cols.map((col, index) => (
-          <Col span={spanSize} key={index} children={col} />
+          <Cell span={spanSize} key={index} className={classes.columnRoot}>
+            {col}
+          </Cell>
         ))}
-      </div>
-    );
-  }
-}
+      </Layout>
+    </Cell>
+  );
+};
 
-class Col extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-    span: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    rtl: PropTypes.bool,
-    xs: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    sm: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    md: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    lg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    xl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    dataHook: PropTypes.string,
-  };
+const Col = ({ span = 12, children, dataHook, className }) => {
+  useEffect(() => {
+    deprecationLog(DEPRECATION_MESSAGE);
+  }, []);
 
-  static defaultProps = {
-    span: 12,
-  };
-
-  isVisibleHidden(str) {
-    return str === 'hidden' || str === 'visible';
-  }
-
-  isLegalCol(numStr) {
-    if (numStr && !this.isVisibleHidden(numStr)) {
-      const num = Number(numStr);
-      return Number.isInteger(num) && num > 0 && num <= 12;
-    }
-    return false;
-  }
-
-  render() {
-    const {
-      children,
-      className,
-      span,
-      rtl,
-      xs,
-      sm,
-      md,
-      lg,
-      xl,
-      dataHook,
-    } = this.props;
-
-    const colClesses = {
-      [styles[`colXs${span}`]]: this.isLegalCol(span),
-      [styles[`colXs${xs}`]]: this.isLegalCol(xs),
-      [styles[`colSm${sm}`]]: this.isLegalCol(sm),
-      [styles[`colMd${md}`]]: this.isLegalCol(md),
-      [styles[`colLg${lg}`]]: this.isLegalCol(lg),
-      [styles[`colXl${xl}`]]: this.isLegalCol(xl),
-    };
-    const columnClasses = classNames(className, styles.col, {
-      [styles.rtl]: rtl,
-      [styles[`${xs}Xs`]]: this.isVisibleHidden(xs),
-      [styles[`${sm}Sm`]]: this.isVisibleHidden(sm),
-      [styles[`${md}Md`]]: this.isVisibleHidden(md),
-      [styles[`${lg}Lg`]]: this.isVisibleHidden(lg),
-      ...colClesses,
-      [styles.legalCol]: Object.values(colClesses).includes(true),
-    });
-
-    return (
-      <div className={columnClasses} data-hook={dataHook} children={children} />
-    );
-  }
-}
+  return (
+    <Cell
+      dataHook={dataHook}
+      span={parseInt(span)}
+      className={st(classes.columnRoot, {}, className)}
+    >
+      {children}
+    </Cell>
+  );
+};
 
 export {
   Container,
-  RawContainer,
-  Columns,
+  Container as RawContainer,
   Columns as Row,
+  Columns,
   AutoAdjustedColumns,
   AutoAdjustedColumns as AutoAdjustedRow,
   Col,

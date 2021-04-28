@@ -14,14 +14,12 @@ import {
 import Help from 'wix-ui-icons-common/Help';
 import CloseButton from '..';
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import * as examples from './examples';
 
 const Link = ({ children, ...rest }) => <a {...rest}>{children}</a>;
 
-const example = config =>
-  baseExample({ components: { ...allComponents, Link }, ...config });
+const example = config => baseExample({ components: { Link }, ...config });
 
 export default {
   category: storySettings.category,

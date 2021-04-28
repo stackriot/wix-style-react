@@ -12,54 +12,48 @@ import Tag from '../Tag';
 import { entityTypes, dataHooks } from './constants';
 import { classes } from './VariableInput.st.css';
 
-/** Insert text in current cursor position */
-const insertText = (editorState, text) => {
-  const newContent = Modifier.insertText(
-    editorState.getCurrentContent(),
-    editorState.getSelection(),
-    text,
-  );
-  // update our state with the new editor content
-  return EditorState.push(editorState, newContent, 'insert-characters');
-};
-/** Insert new entity in current cursor position, with the given text and value */
-const insertEntity = (editorState, { text, value }) => {
+const insertContent = (editorState, selectionOffset, modifyFn) => {
   let contentState = editorState.getCurrentContent();
   let selectionState = editorState.getSelection();
   if (!selectionState.isCollapsed()) {
-    // Remove selection range when adding a tag
-    contentState = Modifier.removeRange(
-      contentState,
-      selectionState,
-      'backward',
-    );
+    // Remove selection range when adding content
+    contentState = Modifier.removeRange(contentState, selectionState, 'backward');
     selectionState = contentState.getSelectionAfter();
   }
-  contentState = contentState.createEntity(entityTypes.variable, 'IMMUTABLE', {
-    value,
-    text,
-  });
-  const entityKey = contentState.getLastCreatedEntityKey();
-  contentState = Modifier.insertText(contentState, selectionState, ' '); // space after entity
-  contentState = Modifier.insertText(
-    contentState,
-    selectionState,
-    ` ${text} `,
-    null,
-    entityKey,
-  );
-  const newEditorState = EditorState.push(
-    editorState,
-    contentState,
-    'insert-characters',
-  );
+  const newContent = modifyFn(contentState, selectionState);
+  const newEditorState = EditorState.push(editorState, newContent, 'insert-characters');
   const newSelection = newEditorState.getSelection();
   return _moveSelectionTo(
     newEditorState,
     newSelection.getAnchorKey(),
-    newSelection.getAnchorOffset() + 1,
+    newSelection.getAnchorOffset() + selectionOffset,
   );
 };
+
+/** Insert text in current cursor position */
+const insertText = (editorState, text) =>
+  insertContent(editorState, 0, (contentState, selectionState) =>
+    Modifier.insertText(contentState, selectionState, text));
+
+/** Insert new entity in current cursor position, with the given text and value */
+const insertEntity = (editorState, { text, value }) =>
+  insertContent(editorState, 1, (contentState, selectionState) => {
+    contentState = contentState.createEntity(entityTypes.variable, 'IMMUTABLE', {
+      value,
+      text,
+    });
+    const entityKey = contentState.getLastCreatedEntityKey();
+    contentState = Modifier.insertText(contentState, selectionState, ' '); // space after entity
+    contentState = Modifier.insertText(
+      contentState,
+      selectionState,
+      ` ${text} `,
+      null,
+      entityKey,
+    );
+    return contentState;
+  });
+
 const _escapeRegExp = text => text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 /** Get variable with given prefix and suffix in the given string */
 const getMatchesInString = (str, prefix, suffix) => {

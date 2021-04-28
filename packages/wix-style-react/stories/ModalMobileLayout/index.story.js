@@ -1,13 +1,13 @@
 import React from 'react';
 import { Category } from '../storiesHierarchy';
 import { storySettings } from './storySettings';
-import allComponents from '../utils/allComponents';
+
 import {
   header,
   title,
   description,
   columns,
-  example as baseExample,
+  example,
   importExample,
   divider,
 } from 'wix-storybook-utils/Sections';
@@ -16,8 +16,6 @@ import * as examples from './examples';
 
 import HeaderComponent from '../../src/ModalMobileLayout/docs/examples/Plain';
 import { MobileModalTemplates } from './MobileModalTemplates';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export const propsVariationExamples = [
   example({

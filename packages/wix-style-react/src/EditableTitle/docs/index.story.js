@@ -6,7 +6,7 @@ import {
   api,
   description,
   divider,
-  example as baseExample,
+  example,
   header,
   importExample,
   playground,
@@ -15,10 +15,8 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/dist/src/Sections';
-import allComponents from '../../../stories/utils/allComponents';
-import * as examples from './examples';
 
-const example = config => baseExample({ components: allComponents, ...config });
+import * as examples from './examples';
 
 export default {
   category: storySettings.category,

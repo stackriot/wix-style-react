@@ -7,7 +7,7 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -15,14 +15,11 @@ import {
 
 import * as examples from './examples';
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import TableListItem from '..';
 
 import { VERTICAL_PADDING } from '../TableListItem';
 import Button from '../../Button';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

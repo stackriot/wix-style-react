@@ -7,20 +7,18 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 import { Button, TextButton } from '../../index';
 
 import CopyClipboard from '..';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const childrenExample = [
   {

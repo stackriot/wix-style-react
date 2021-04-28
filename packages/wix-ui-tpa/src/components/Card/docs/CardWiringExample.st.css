@@ -1,0 +1,28 @@
+:import {
+    -st-from: '../../NewCard/NewCard.st.css';
+    -st-named: container;
+}
+
+.root {
+    max-width: 100%;
+    border: 1px solid #000;
+    height: 380px;
+}
+
+.media, .info {
+    max-height: 100%;
+}
+
+.media {
+    -st-mixin: container(
+            Ratio '"unit(fallback(--containerRatio, 50), %)"'
+    );
+}
+
+.info {
+    padding: 30px;
+    flex-shrink: 1;
+    -st-mixin: container(
+            Ratio '"calculate(100 - unit(fallback(--containerRatio, 50), %))"'
+    );
+}

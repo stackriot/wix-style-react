@@ -16,6 +16,7 @@ export const tagUniDriverFactory = base => {
     isWarningTheme: async () => (await base.attr(dataAttr.THEME)) === 'warning',
     isErrorTheme: async () => (await base.attr(dataAttr.THEME)) === 'error',
     isDarkTheme: async () => (await base.attr(dataAttr.THEME)) === 'dark',
+    isSuccessTheme: async () => (await base.attr(dataAttr.THEME)) === 'success',
     isRemovable: () => removeButton.exists(),
     removeTag: () => removeButton.click(),
     click: () => base.click(),

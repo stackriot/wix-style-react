@@ -9,19 +9,16 @@ import {
   importExample,
   title,
   divider,
-  code as baseCode,
+  code,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import CarouselWIP from '..';
 import SectionHelper from '../../SectionHelper';
-
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

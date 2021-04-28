@@ -55,6 +55,7 @@ function datePickerWithAllProps() {
       readOnly
       clearButton
       onClear={()=>{}}
+      disableKeyboardType
     />
   );
 }

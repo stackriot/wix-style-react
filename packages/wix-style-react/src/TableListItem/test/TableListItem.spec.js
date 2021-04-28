@@ -29,8 +29,8 @@ describe('TableListItem', () => {
         />,
       );
 
-      expect(await driver.getColumTextAt(0)).toContain(values[0]);
-      expect(await driver.getColumTextAt(1)).toContain(values[1]);
+      expect(await driver.getColumnTextAt(0)).toContain(values[0]);
+      expect(await driver.getColumnTextAt(1)).toContain(values[1]);
     });
 
     it('should display px, fr and % types correctly', async () => {

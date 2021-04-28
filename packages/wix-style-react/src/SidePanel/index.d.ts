@@ -10,6 +10,7 @@ export interface SidePanelProps {
   className?: string;
   onCloseButtonClick?: () => void;
   children?: React.ReactNode;
+  width?: string | number;
 }
 
 export default class SidePanel extends React.PureComponent<SidePanelProps> {

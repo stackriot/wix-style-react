@@ -27,6 +27,11 @@
 }
 
 :import {
+  -st-from: "../../Divider/Divider.st.css";
+  -st-default: Divider;
+}
+
+:import {
   -st-from: "../../LinearProgressBar/LinearProgressBar.st.css";
   -st-default: LinearProgressBar;
 }
@@ -49,6 +54,11 @@
 :import {
   -st-from: "../../IconButton/IconButton.st.css";
   -st-default: IconButton;
+}
+
+:import {
+  -st-from: "../../InfoIcon/InfoIcon.st.css";
+  -st-default: InfoIcon;
 }
 
 :import {
@@ -92,8 +102,23 @@
 }
 
 :import {
+  -st-from: "../../Popover/Popover.st.css";
+  -st-default: Popover;
+}
+
+:import {
   -st-from: "../../Sidebar/Sidebar.st.css";
   -st-default: Sidebar;
+}
+
+:import {
+  -st-from: "../../SidePanel/Header/Header.st.css";
+  -st-default: SidePanelHeader;
+}
+
+:import {
+  -st-from: "../../SidePanel/Content/Content.st.css";
+  -st-default: SidePanelContent;
 }
 
 :import {
@@ -191,6 +216,21 @@
   -st-default: TableListItem;
 }
 
+:import {
+  -st-from: "../../SectionHelper/SectionHelper.st.css";
+  -st-default: SectionHelper;
+}
+
+:import {
+  -st-from: "../../CheckToggle/CheckToggle.st.css";
+  -st-default: CheckToggle;
+}
+  
+:import {  
+  -st-from: "../../PageSection/PageSection.st.css";
+  -st-default: PageSection;
+}
+
 /* Overrides */
 :import {
   -st-from: "./components/Button.st.css";
@@ -205,6 +245,11 @@
 :import {
   -st-from: "./components/Checkbox.st.css";
   -st-default: CheckboxOverrides;
+}
+
+:import {
+  -st-from: "./components/Divider.st.css";
+  -st-default: DividerOverrides;
 }
 
 :import {
@@ -230,6 +275,11 @@
 :import {
   -st-from: "./components/IconButton.st.css";
   -st-default: IconButtonOverrides;
+}
+
+:import {
+  -st-from: "./components/InfoIcon.st.css";
+  -st-default: InfoIconOverrides;
 }
 
 :import {
@@ -268,6 +318,11 @@
 }
 
 :import {
+  -st-from: "./components/Popover.st.css";
+  -st-default: PopoverOverrides;
+}
+
+:import {
   -st-from: "./components/DropdownLayout.st.css";
   -st-default: DropdownLayoutOverrides;
 }
@@ -300,6 +355,16 @@
 :import {
   -st-from: "./components/SidebarSectionTitle.st.css";
   -st-default: SidebarSectionTitleOverrides;
+}
+
+:import {
+  -st-from: "./components/SidePanel/Header/Header.st.css";
+  -st-default: SidePanelHeaderOverrides;
+}
+
+:import {
+  -st-from: "./components/SidePanel/Content/Content.st.css";
+  -st-default: SidePanelContentOverrides;
 }
 
 :import {
@@ -372,6 +437,21 @@
   -st-default: TableListItemOverrides;
 }
 
+:import {
+  -st-from: "./components/SectionHelper.st.css";
+  -st-default: SectionHelperOverrides;
+}
+
+:import {
+  -st-from: "./components/CheckToggle.st.css";
+  -st-default: CheckToggleOverrides;
+}
+
+:import {  
+  -st-from: "./components/PageSection.st.css";
+  -st-default: PageSectionOverrides;
+}
+
 @st-scope .root {
   Button {
     -st-mixin: ButtonOverrides();
@@ -379,11 +459,12 @@
   CircularProgressBar {
     -st-mixin: CircularProgressBarOverrides();
   }
-
   Checkbox {
     -st-mixin: CheckboxOverrides();
   }
-
+  Divider {
+    -st-mixin: DividerOverrides();
+  }
   LinearProgressBar {
     -st-mixin: LinearProgressBarOverrides();
   }
@@ -398,6 +479,9 @@
   }
   IconButton {
     -st-mixin: IconButtonOverrides();
+  }
+  InfoIcon {
+    -st-mixin: InfoIconOverrides();
   }
   CardHeader {
     -st-mixin: CardHeaderOverrides();
@@ -438,6 +522,12 @@
   SidebarSectionItem {
     -st-mixin: SidebarSectionItemOverrides();
   }
+  SidePanelHeader {
+    -st-mixin: SidePanelHeaderOverrides();
+  }
+  SidePanelContent {
+    -st-mixin: SidePanelContentOverrides();
+  }
   ListItemSelect {
     -st-mixin: ListItemSelectOverrides();
   }
@@ -477,6 +567,17 @@
   TableListItem {
     -st-mixin: TableListItemOverrides();
   }
+  SectionHelper {
+    -st-mixin: SectionHelperOverrides();
+  }
+
+  CheckToggle {
+    -st-mixin: CheckToggleOverrides();
+  }
+    
+  PageSection {
+    -st-mixin: PageSectionOverrides();
+  }
 }
 
 /* Portaled node support
@@ -493,6 +594,10 @@
 
   PopoverMenu.root {
     -st-mixin: PopoverMenuOverrides();
+  }
+
+  Popover.root {
+    -st-mixin: PopoverOverrides();
   }
 
   .root {

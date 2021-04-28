@@ -39,9 +39,9 @@ export const dropdownLayoutDriverFactory = base => {
     await base.$(
       `[data-hook=${await getOptionsContainerDataHook()}] [data-hook="${dataHook}"]`,
     );
-  const options = () =>
+  const options = async () =>
     base
-      .$$(`[data-hook=${DATA_HOOKS.DROPDOWN_LAYOUT_OPTIONS}] > *`)
+      .$$(`[data-hook=${await getOptionsContainerDataHook()}] > *`)
       .map(i => i);
 
   const optionsLength = async () => (await options()).length;

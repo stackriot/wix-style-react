@@ -7,21 +7,20 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 import { Add } from 'wix-ui-icons-common';
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 import CardFolderTabs from '..';
 import Card from '../../Card';
 import EmptyState from '../../EmptyState';
 import TextButton from '../../TextButton';
 
-const example = config => baseExample({ components: allComponents, ...config });
 const children = [
   <CardFolderTabs.Tab id="1" name="Selected tab">
     <Card>

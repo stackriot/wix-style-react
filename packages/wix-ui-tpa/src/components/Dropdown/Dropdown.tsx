@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
 import { TPAComponentsContext } from '../TPAComponentsConfig';
-import { Text, TYPOGRAPHY } from '../Text';
 import { DropdownBase } from './DropdownBase';
 import { DropdownError } from './DropdownError';
 import { DropdownOption, DropdownOptionProps } from './DropdownOption';
@@ -68,6 +67,7 @@ interface State {
  * */
 export class Dropdown extends React.Component<DropdownProps, State> {
   private readonly contentId: string;
+  private readonly labelForId: string;
   static displayName = 'Dropdown';
   static contextType = TPAComponentsContext;
   static defaultProps: DefaultProps = {
@@ -84,6 +84,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     this.contentId = props.optionsContainerId
       ? props.optionsContainerId
       : uniqueId('dropdown-options-container_');
+    this.labelForId = uniqueId('label-for-id_');
   }
 
   componentDidMount(): void {
@@ -260,6 +261,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
           error={error}
           upgrade={upgrade}
           rtl={rtl}
+          id={this.labelForId}
           aria-activedescendant={ariaActivedescendant}
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
@@ -295,9 +297,13 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         data-hook={this.props['data-hook']}
       >
         {label && (
-          <Text className={classes.label} typography={TYPOGRAPHY.runningText}>
+          <label
+            data-hook={DATA_HOOKS.label}
+            htmlFor={this.labelForId}
+            className={classes.label}
+          >
             {label}
-          </Text>
+          </label>
         )}
         {this.shouldRenderNativeSelect()
           ? this.renderNativeSelect()

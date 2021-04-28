@@ -7,19 +7,16 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import Proportion from '..';
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const IMG_URL =
   'https://upload.wikimedia.org/wikipedia/commons/b/b2/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project.jpg';

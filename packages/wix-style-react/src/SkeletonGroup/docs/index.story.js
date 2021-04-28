@@ -7,14 +7,13 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import * as examples from './examples';
 import SkeletonGroup from '..';
@@ -23,8 +22,6 @@ import SkeletonLine from '../../SkeletonLine';
 import SkeletonRectangle from '../../SkeletonRectangle';
 import { Layout, Cell } from '../../Layout';
 import Box from '../../Box';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const exampleLayout = [
   <Layout>

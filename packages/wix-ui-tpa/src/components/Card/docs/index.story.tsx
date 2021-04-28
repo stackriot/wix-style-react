@@ -20,6 +20,10 @@ import * as exampleStyles from './examples.st.css';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import * as CardWiringExampleRawSource from '!raw-loader!./CardWiringExample.tsx';
+import * as CardWiringExampleCSSRawSource from '!raw-loader!./CardWiringExample.st.css';
+import { CardWiringExample } from './CardWiringExample';
 
 const example = (config, extraContext = {}) =>
   baseExample({
@@ -105,6 +109,22 @@ export default {
           ),
           example(
             {
+              title: 'Ratio Example',
+              description: 'Card containers ratio can be changed. 20/80',
+              source: examples.withRatioExample,
+            },
+            exampleStyles,
+          ),
+          example(
+            {
+              title: 'Ratio Example',
+              description: 'Card containers ratio can be changed 60/40',
+              source: examples.withRatioExample2,
+            },
+            exampleStyles,
+          ),
+          example(
+            {
               title: 'Container Wrapping',
               description: 'Card containers can wrap when constrained by width',
               source: examples.minWidthExample,
@@ -119,6 +139,29 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              title: 'Card style extension',
+              example: <CardWiringExample />,
+              rawSource: CardWiringExampleRawSource,
+              rawCSSSource: CardWiringExampleCSSRawSource,
+              params: {
+                numbers: [
+                  {
+                    label: 'Media Container Ratio',
+                    wixParam: 'containerRatio',
+                    defaultNumber: 50,
+                    min: 33,
+                    max: 66,
+                    unit: '%',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],

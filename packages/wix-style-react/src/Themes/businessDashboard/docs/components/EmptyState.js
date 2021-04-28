@@ -40,7 +40,7 @@ export const playground = `
       theme={'section'}
       subtitle="You don't have any items yet"
     >
-      {<TextButton size="tiny" weight="normal" priority="secondary" prefixIcon={<Icons.Add />}>Add New Item</TextButton>}
+      {<TextButton size="tiny" weight="normal" prefixIcon={<Icons.AddSmall />}>Add New Item</TextButton>}
     </EmptyState>
   </Box>
   </ThemeProvider>

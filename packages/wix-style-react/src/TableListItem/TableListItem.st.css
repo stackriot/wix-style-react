@@ -6,6 +6,7 @@
 :import {
   -st-from: "../TableActionCell/TableActionCell.st.css";
   -st-default: TableActionCell;
+  -st-named: onHover, notOnHover;
 }
 
 :vars {
@@ -130,6 +131,7 @@
   color: value(D50);
 }
 
+/* TODO: this needs to be covered by visual tests */
 /* `onHover` HoverSlot */
 .root TableActionCell::hoverSlot.onHover {
   visibility: hidden;
@@ -146,4 +148,9 @@
 
 .root:hover TableActionCell::hoverSlot.notOnHover {
   visibility: hidden;
+}
+
+/* Placeholder icon */
+.root:hover TableActionCell::placeholderIcon {
+  display: none;
 }

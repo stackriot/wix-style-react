@@ -48,6 +48,7 @@
 :import {
     -st-from: "./DropdownNativeSelect.st.css";
     -st-default: DropdownNativeSelect;
+    -st-named: overrideStyleParams as overrideStyleParamsDropdownNativeSelectMixin
 }
 
 :import {
@@ -76,6 +77,9 @@
     DefaultItemTextColor: color-5;
     DefaultItemTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5'}";
     DefaultItemTextDisabledColor: color-3;
+    DefaultLabelColor: color-5;
+    DefaultLabelFont: "{theme: 'Body-M', size: '14px'}";
+    DefaultLabelMobileFont: "{theme: 'Body-M', size: '12px'}";
 }
 
 /*Overrides*/
@@ -140,6 +144,16 @@
         @default color-3
     */
     MainItemTextDisabledColor: --overridable;
+    /*
+        Label text font
+        @default "{theme: 'Body-M', size: '14px'}"
+    */
+    MainLabelFont: --overridable;
+    /*
+        Label color
+        @default color-5
+    */
+    MainLabelColor: --overridable;
 }
 
 :vars {
@@ -155,6 +169,9 @@
     CurrentItemTextColor: color(fallback(value(MainItemTextColor), value(DefaultItemTextColor)));
     CurrentItemTextFont: fallback(font(value(MainItemTextFont)), font(value(MainTextFont)), font(value(DefaultTextFont)));
     CurrentItemTextDisabledColor: color(fallback(value(MainItemTextDisabledColor), value(DefaultItemTextDisabledColor)));
+    CurrentLabelFont: fallback(font(value(MainLabelFont)), font(value(DefaultLabelFont)));
+    CurrentLabelMobileFont: fallback(font(value(MainLabelFont)), font(value(DefaultLabelMobileFont)));
+    CurrentLabelColor: color(fallback(value(MainLabelColor), value(DefaultLabelColor)));
 }
 
 
@@ -162,18 +179,22 @@
     -st-states: alignment(enum(center)), mobile, error;
 }
 
-.root:mobile .label {
-    -st-mixin: TPAText(
-        MainTextFont "{theme: 'Body-M', size: '12px'}"
-    );
-}
-
 .label {
-    -st-mixin: TPAText(
-        MainTextFont "{theme: 'Body-M', size: '14px'}"
-    );
+    color: value(CurrentLabelColor);
+    font: value(CurrentLabelFont);
     display: block;
     margin-bottom: 8px;
+}
+.root:mobile .label {
+    font: value(CurrentLabelMobileFont);
+}
+.root.overrideStyleParams .label {
+    color: value(CurrentLabelColor);
+    font: value(CurrentLabelFont);
+}
+
+.root:mobile.overrideStyleParams .label {
+    font: value(CurrentLabelMobileFont);
 }
 
 .dropdownBase {
@@ -202,6 +223,23 @@
 
 .dropdownNativeSelect {
     -st-extends: DropdownNativeSelect;
+    -st-mixin: overrideStyleParamsDropdownNativeSelectMixin(
+        MainButtonTextColor value(DefaultButtonTextColor),
+        MainButtonTextDisabledColor value(DefaultButtonTextDisabledColor),
+        MainButtonBorderColor value(DefaultButtonBorderColor),
+        MainBorderDisabledColor value(DefaultBorderDisabledColor),
+        MainBackgroundColor value(DefaultBackgroundColor),
+    );
+}
+
+.root.overrideStyleParams .dropdownNativeSelect {
+    -st-mixin: overrideStyleParamsDropdownNativeSelectMixin(
+        MainButtonTextColor value(CurrentButtonTextColor),
+        MainButtonTextDisabledColor value(CurrentButtonTextDisabledColor),
+        MainButtonBorderColor value(CurrentButtonBorderColor),
+        MainBorderDisabledColor value(CurrentBorderDisabledColor),
+        MainBackgroundColor value(CurrentBackgroundColor),
+    );
 }
 
 .dropdownError {
@@ -220,7 +258,7 @@
 }
 
 .dropdown .dropdownBase {
-    color: value(DefaultButtonTextColor) !important;
+     color: value(DefaultButtonTextColor) !important;
     border-width: value(DefaultBorderWidth) !important;
     background: value(DefaultBackgroundColor) !important;
     font: font(value(DefaultTextFont)) !important;
@@ -235,14 +273,16 @@
     border-color: applyOpacity(color(value(DefaultButtonBorderColor)), 1) !important;
 }
 
-.root.overrideStyleParams .dropdown .dropdownBase {
+.root.overrideStyleParams .dropdown .dropdownBase
+{
     color: value(CurrentButtonTextColor) !important;
     border-width: value(CurrentBorderWidth) !important;
     background: value(CurrentBackgroundColor) !important;
     font: value(CurrentTextFont) !important;
 }
 
-.root.overrideStyleParams .dropdown .dropdownBase:not(:error) {
+.root.overrideStyleParams .dropdown .dropdownBase:not(:error)
+{
     border-color: applyOpacity(color(value(CurrentButtonBorderColor)), 0.6) !important;
 }
 
@@ -260,13 +300,13 @@
 }
 
 .dropdown .dropdownBase::root:disabled {
-    color: value(DefaultButtonTextDisabledColor);
-    border-color: value(DefaultBorderDisabledColor);
+    color: value(DefaultButtonTextDisabledColor) !important;
+    border-color: value(DefaultBorderDisabledColor) !important;
 }
 
 .root.overrideStyleParams .dropdown .dropdownBase::root:disabled {
-    color: value(CurrentButtonTextDisabledColor);
-    border-color: value(CurrentBorderDisabledColor);
+    color: value(CurrentButtonTextDisabledColor) !important;
+    border-color: value(CurrentBorderDisabledColor) !important;
 }
 
 .dropdown .dropdownBase::root:placeholder {

@@ -7,21 +7,19 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import { TYPES } from '../constants';
 import SelectableAccordion from '..';
 import * as examples from './examples';
 import FormField from '../../FormField';
 import Dropdown from '../../Dropdown';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const item = config => ({
   title: 'Item',

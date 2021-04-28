@@ -7,7 +7,7 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -25,22 +25,12 @@ import skinExample from '!raw-loader!./examples/skin';
 import hoverSkinExample from '!raw-loader!./examples/hoverSkin';
 import Proportion from '../../Proportion';
 import Box from '../../Box';
-import PopoverMenu from '../../PopoverMenu';
+
 import { galleryItemWithHoverActions } from './examples/content';
 import HeaderExample from './examples/header';
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import MediaOverlay from '..';
-
-const example = config =>
-  baseExample({
-    components: {
-      ...allComponents,
-      PopoverMenu,
-    },
-    ...config,
-  });
 
 export default {
   category: storySettings.category,

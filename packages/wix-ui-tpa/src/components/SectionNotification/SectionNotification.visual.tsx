@@ -3,7 +3,7 @@ import * as React from 'react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { SectionNotification, SectionNotificationProps } from './';
-import { NOTIFICATION_TYPE } from './types';
+import { NOTIFICATION_TYPE, NOTIFICATION_SIZE } from './types';
 
 interface SectionNotificationVisualProps {
   mobile: boolean;
@@ -53,6 +53,7 @@ function getTests({
   icon = null,
   buttons = [],
   isMobile = false,
+  size = NOTIFICATION_SIZE.regular,
 }) {
   return Object.values(NOTIFICATION_TYPE).map((type) => ({
     it: `${description} - ${type}`,
@@ -62,6 +63,7 @@ function getTests({
       text: textSample,
       icon,
       buttons,
+      size,
     },
   }));
 }
@@ -71,6 +73,10 @@ const tests = [
     describe: 'desktop',
     its: [
       ...getTests({ description: 'Basic' }),
+      ...getTests({
+        description: 'Basic compact',
+        size: NOTIFICATION_SIZE.compact,
+      }),
       ...getTests({ description: 'With icon', icon: <ErrorIcon /> }),
       ...getTests({ description: 'With button', buttons: ['Approve'] }),
       ...getTests({
@@ -84,6 +90,11 @@ const tests = [
     describe: 'mobile',
     its: [
       ...getTests({ description: 'Basic', isMobile: true }),
+      ...getTests({
+        description: 'Basic compact',
+        isMobile: true,
+        size: NOTIFICATION_SIZE.compact,
+      }),
       ...getTests({
         description: 'With icon',
         icon: <ErrorIcon />,

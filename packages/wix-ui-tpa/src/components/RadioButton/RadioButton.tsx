@@ -179,7 +179,7 @@ export class RadioButton extends React.Component<
         <div
           data-hook={RADIOBUTTON_DATA_HOOKS.LabelWrapper}
           className={classnames(classes.label, {
-            [classes.suffixed]: suffix,
+            [classes.suffixed]: !!suffix,
           })}
         >
           {label}

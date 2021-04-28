@@ -9,6 +9,8 @@ export interface ImageProps extends TPAComponentProps {
   height?: number;
   /** The alternative text description of the image. Allowing better SEO when the image has meaning of content */
   alt?: string;
+  /** The error message that is shown when we failed to load the image */
+  errorMessage?: string;
   /** A callback to be called when the image is loaded */
   onLoad?: React.EventHandler<React.SyntheticEvent>;
   /** A callback to be called if error occurs while loading */

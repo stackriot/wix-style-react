@@ -4,9 +4,9 @@ import { TooltipCommonProps } from '../../common';
 export interface HeaderProps {
   children?: React.ReactNode;
   className?: string;
-  title?: string | React.ReactNode;
+  title?: React.ReactNode;
   infoTooltipProps?: TooltipCommonProps;
-  infoTooltipContent?: string;
+  infoTooltipContent?: React.ReactNode;
   showDivider?: boolean;
 }
 export default class Header extends React.PureComponent<HeaderProps> {}

@@ -23,6 +23,7 @@ const tagDriverFactory = ({ element }) => {
     isWarningTheme: () => element.getAttribute(dataAttr.THEME) === 'warning',
     isErrorTheme: () => element.getAttribute(dataAttr.THEME) === 'error',
     isDarkTheme: () => element.getAttribute(dataAttr.THEME) === 'dark',
+    isSuccessTheme: () => element.getAttribute(dataAttr.THEME) === 'success',
     isRemovable: () => !!getRemoveButton(),
     removeTag,
     click: () => ReactTestUtils.Simulate.click(element),

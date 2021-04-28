@@ -59,6 +59,9 @@ class MediaOverlay extends React.PureComponent {
 
     /** clear borders radius when displayed in sharp-edges containers */
     removeRoundedBorders: PropTypes.bool,
+
+    /** Border radius of the Media Overlay element box. */
+    borderRadius: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
   static defaultProps = {
@@ -244,6 +247,7 @@ class MediaOverlay extends React.PureComponent {
       onClick,
       removeRoundedBorders,
       className,
+      borderRadius,
     } = this.props;
     const isMediaImageUrl = typeof media === 'string';
     const Component = onClick ? 'button' : 'div';
@@ -262,7 +266,10 @@ class MediaOverlay extends React.PureComponent {
         )}
         data-skin={skin}
         data-hoverskin={this._getHoverSkin()}
-        style={{ backgroundImage: isMediaImageUrl && `url(${media})` }}
+        style={{
+          backgroundImage: isMediaImageUrl && `url(${media})`,
+          borderRadius,
+        }}
       >
         {!isMediaImageUrl && React.isValidElement(media) && media}
         {this._renderSingleSkinLayer()}

@@ -69,6 +69,21 @@ const tests = [
           removeRoundedBorders: true,
         },
       },
+      {
+        it: 'With border radius',
+        props: {
+          media: (
+            <div
+              style={{
+                height: '100%',
+                background:
+                  'linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12)',
+              }}
+            />
+          ),
+          borderRadius: '12px 12px 0 0',
+        },
+      },
     ],
   },
   {

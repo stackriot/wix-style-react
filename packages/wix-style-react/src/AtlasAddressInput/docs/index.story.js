@@ -7,7 +7,7 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -18,16 +18,10 @@ import * as examples from './examples';
 import migrationMarkdown from './MIGRATION.md';
 import SectionHelper from '../../SectionHelper';
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import { Category } from '../../../stories/storiesHierarchy';
 
 import AtlasAddressInput from '..';
-
-const example = config =>
-  baseExample({
-    components: allComponents,
-    ...config,
-  });
 
 export default {
   category: storySettings.category,

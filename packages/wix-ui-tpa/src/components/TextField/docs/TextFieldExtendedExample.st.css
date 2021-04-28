@@ -8,6 +8,10 @@
       MainBackgroundColor '"--textFieldBackgroundColor"',
       MainTextColor '"--textFieldTextColor"',
       MainBorderColor '"--textFieldBorderColor"',
-      MainTextFont '"--textFont"'
+      MainTextFont '"--textFont"',
+      MainLabelFont '"--labelFont"',
+      MainLabelTextColor '"--labelTextColor"',
+      CharCountFont '"--textFieldCharCountFont"',
+      CharCountColor '"--textFieldCharCountColor"'
   );
 }

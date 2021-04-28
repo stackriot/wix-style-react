@@ -20,7 +20,7 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/dist/src/Sections';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 const exampleAffixesIcons = [
@@ -36,7 +36,7 @@ const exampleAffixesIcons = [
 
 const code = config =>
   baseCode({
-    components: { ...allComponents, SIZE, SKIN, TYPE },
+    components: { SIZE, SKIN, TYPE },
     compact: true,
     ...config,
   });

@@ -8,19 +8,17 @@ import {
   title,
   columns,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 import Search from '..';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const options = Array(26)
   .fill(0)

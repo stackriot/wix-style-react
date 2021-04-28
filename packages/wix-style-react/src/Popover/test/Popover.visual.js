@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { visualize } from 'storybook-snapper';
 import { storiesOf } from '@storybook/react';
 import More from 'wix-ui-icons-common/More';
 import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
@@ -73,17 +74,24 @@ const tests = [
   },
 ];
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props, componentDidMount }) => {
-    storiesOf(`Popover${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <InteractivePopover
-          {...defaultProps}
-          {...props}
-          componentDidMount={componentDidMount}
-        />
-      ),
-    );
+export const runTests = (
+  { themeName, testWithTheme } = { testWithTheme: i => i },
+) => {
+  visualize(`${themeName ? `${themeName}|` : ''}${Popover.displayName}`, () => {
+    tests.forEach(({ describe, its }) => {
+      its.forEach(({ it, props, componentDidMount }) => {
+        storiesOf(`Popover${describe ? '/' + describe : ''}`, module).add(
+          it,
+          () =>
+            testWithTheme(
+              <InteractivePopover
+                {...defaultProps}
+                {...props}
+                componentDidMount={componentDidMount}
+              />,
+            ),
+        );
+      });
+    });
   });
-});
+};

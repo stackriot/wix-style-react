@@ -4,7 +4,7 @@ import { ReactComponent as left } from '../../assets/icons/ArrowLeft.svg';
 import { ReactComponent as top } from '../../assets/icons/ArrowTop.svg';
 import { ReactComponent as bottom } from '../../assets/icons/ArrowBottom.svg';
 
-export function getArrowByPlacement(placement: Placement) {
+export function getArrowByPlacement(placement: Placement): React.ComponentType {
   if (placement.indexOf('top') === 0) {
     return top;
   }

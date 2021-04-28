@@ -7,14 +7,13 @@ import {
   columns,
   title,
   playground,
-  example as baseExample,
+  example,
   description,
   importExample,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 import BreadcrumbsThemes from '!raw-loader!./examples/BreadcrumbsThemes';
 
 import StandardBreadcrumbs from '!raw-loader!./examples/StandardBreadcrumbs';
@@ -23,8 +22,6 @@ import BreadcrumbsOnClickCallback from '!raw-loader!./examples/BreadcrumbsOnClic
 import BreadcrumbsEllipsis from '!raw-loader!./examples/BreadcrumbsEllipsis';
 import ControlledBreadcrumbs from '!raw-loader!./examples/ControlledBreadcrumbs';
 import { Breadcrumbs } from 'wix-style-react';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const items = [
   {

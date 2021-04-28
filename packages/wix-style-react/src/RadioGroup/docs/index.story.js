@@ -11,12 +11,9 @@ import {
   tabs,
   testkit,
   title,
-  example as baseExample,
+  example,
 } from 'wix-storybook-utils/Sections';
 import * as examples from './examples';
-import allComponents from '../../../stories/utils/allComponents';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 import { storySettings } from './storySettings';
 

@@ -3,7 +3,7 @@ import React from 'react';
 
 import {
   api,
-  code as baseLiveCode,
+  example,
   columns,
   description,
   divider,
@@ -21,7 +21,6 @@ import Edit from 'wix-ui-icons-common/Edit';
 import Delete from 'wix-ui-icons-common/Delete';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import PopoverMenu from '..';
 
@@ -32,10 +31,6 @@ import testkitDesc from './testkit.md';
 import compound from './compound.md';
 
 import * as examples from './examples';
-
-const liveCode = config =>
-  baseLiveCode({ components: { ...allComponents, PopoverMenu }, ...config });
-const example = props => liveCode(props);
 
 const commonProps = {
   appendTo: 'window',

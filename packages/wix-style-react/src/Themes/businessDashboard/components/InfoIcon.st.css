@@ -1,0 +1,16 @@
+:import {
+  -st-from: "../../../InfoIcon/InfoIcon.st.css";
+  -st-default: InfoIcon;
+}
+
+:import {
+  -st-from: '../foundations/colors.st.css';
+  -st-named: B10, D80;
+}
+
+.root {
+  -st-extends: InfoIcon;
+  border: none;
+  background-color: value(D80);
+  color: value(B10);
+}

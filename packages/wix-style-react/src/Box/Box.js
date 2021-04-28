@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { st, classes } from './Box.st.css';
+import { st, classes, vars } from './Box.st.css';
 import { stVars as spacingStVars } from '../Foundation/stylable/spacing.st.css';
 import { stVars as colorsStVars } from '../Foundation/stylable/colors.st.css';
 import { filterObject } from '../utils/filterObject';
@@ -49,6 +49,7 @@ const formatSizeValue = value => {
 
 const Box = ({
   dataHook,
+  gap,
   children,
   className,
   style,
@@ -193,6 +194,7 @@ const Box = ({
 
     // All other props which are passed (without those that are specified above)
     ...nativeStyles,
+    [vars['gap']]: formatSingleSpacingValue(gap),
   };
 
   // Filter undefined values
@@ -215,7 +217,7 @@ const Box = ({
 Box.displayName = 'Box';
 
 Box.propTypes = {
-  /** Any element to be rendered inside */
+  /** Allows to render any component as a child item */
   children: PropTypes.node,
   /** Define styles through a classname */
   className: PropTypes.string,
@@ -227,25 +229,29 @@ Box.propTypes = {
   align: PropTypes.oneOf(Object.keys(horizontalAlignmentValues)),
   /** Defines how the children are aligned according to the Y axis */
   verticalAlign: PropTypes.oneOf(Object.keys(verticalAlignmentValues)),
+  /** Sets the gaps/gutters between flex items.
+   * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
+   * a spacing token (SP1, SP2, etc.) */
+  gap: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets padding on all sides.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
    * a spacing token (SP1, SP2, etc.) or a string of space-separated values ("3px 3px") */
   padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets padding on the top.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a string of space-separated values ("3px 3px") */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   paddingTop: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets padding on the right.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a string of space-separated values ("3px 3px") */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   paddingRight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets padding on the bottom.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a string of space-separated values ("3px 3px") */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   paddingBottom: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets padding on the left.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a string of space-separated values ("3px 3px") */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   paddingLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets margin on all sides.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
@@ -253,31 +259,31 @@ Box.propTypes = {
   margin: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets margin on the top.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a string of space-separated values ("3px 3px") */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   marginTop: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets margin on the right.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a string of space-separated values ("3px 3px") */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   marginRight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets margin on the bottom.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a string of space-separated values ("3px 3px") */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   marginBottom: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets margin on the left.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
-   * a spacing token (SP1, SP2, etc.) or a string of space-separated values ("3px 3px") */
+   * a spacing token (SP1, SP2, etc.) or a value in pixels */
   marginLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** Sets the minimum width of the box (pixels) */
+  /** Sets the minimum width of the box in pixels */
   minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** Sets the maximum width of the box (pixels) */
+  /** Sets the maximum width of the box in pixels */
   maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** Sets the width of the box (pixels) */
+  /** Sets the width of the box in pixels */
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** Sets the minimum height of the box (pixels) */
+  /** Sets the minimum height of the box in pixels */
   minHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** Sets the maximum height of the box (pixels) */
+  /** Sets the maximum height of the box in pixels */
   maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** Sets the height of the box (pixels) */
+  /** Sets the height of the box in pixels */
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Sets a text color by a key from the color palette or natively supported value (Hex, RGB, etc.) */
   color: PropTypes.string,
@@ -293,7 +299,7 @@ Box.propTypes = {
   borderBottomColor: PropTypes.string,
   /** Sets a border left color by a key from the color palette or natively supported value (Hex, RGB, etc.) */
   borderLeftColor: PropTypes.string,
-  /** Applied as data-hook HTML attribute that can be used in the tests */
+  /** Accepts HTML attributes that can be used in the tests */
   dataHook: PropTypes.string,
 };
 

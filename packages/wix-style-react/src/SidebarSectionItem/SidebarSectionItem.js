@@ -9,6 +9,7 @@ import Text from '../Text';
 import { SidebarContext } from '../Sidebar/SidebarAPI';
 import { sidebarSkins } from '../Sidebar/constants';
 import { FontUpgradeContext } from '../FontUpgrade/context';
+import { WixStyleReactContext } from '../WixStyleReactProvider/context';
 
 /** An item for the section within the sidebar */
 class SidebarSectionItem extends React.PureComponent {
@@ -53,67 +54,79 @@ class SidebarSectionItem extends React.PureComponent {
       focusableOnBlur,
     } = this.props;
     return (
-      <SidebarContext.Consumer>
-        {context => {
-          const skin = (context && context.getSkin()) || sidebarSkins.dark;
-          return (
-            <button
-              data-hook={dataHook}
-              onClick={!disabled ? onClick : undefined}
-              onFocus={focusableOnFocus}
-              onBlur={focusableOnBlur}
-              disabled={disabled}
-              type="button"
-              tabIndex="0"
-              className={st(
-                classes.root,
-                {
-                  selected,
-                  disabled,
-                  prefix: Boolean(prefix),
-                  suffix: Boolean(suffix),
-                  drillable,
-                  skin,
-                  alwaysDisplayChevron,
-                },
-                className,
-              )}
-            >
-              {prefix && (
-                <span data-hook={dataHooks.prefix} className={classes.prefix}>
-                  {prefix}
-                </span>
-              )}
-              <span className={classes.textWrapper}>
-                <FontUpgradeContext.Consumer>
-                  {({ active }) => (
-                    <Text
-                      className={classes.text}
-                      size="small"
-                      weight={active ? 'normal' : 'bold'}
-                      secondary={skin === sidebarSkins.light}
-                      light={skin === sidebarSkins.dark}
-                      skin={disabled && 'disabled'}
+      <WixStyleReactContext.Consumer>
+        {({ useBmSidebarNewDesign }) => (
+          <SidebarContext.Consumer>
+            {context => {
+              const skin = (context && context.getSkin()) || sidebarSkins.dark;
+              return (
+                <button
+                  data-hook={dataHook}
+                  data-selected={selected}
+                  onClick={!disabled ? onClick : undefined}
+                  onFocus={focusableOnFocus}
+                  onBlur={focusableOnBlur}
+                  disabled={disabled}
+                  type="button"
+                  tabIndex="0"
+                  className={st(
+                    classes.root,
+                    {
+                      selected,
+                      disabled,
+                      prefix: Boolean(prefix),
+                      suffix: Boolean(suffix),
+                      drillable,
+                      skin,
+                      alwaysDisplayChevron,
+                      useBmSidebarNewDesign,
+                    },
+                    className,
+                  )}
+                >
+                  {prefix && (
+                    <span
+                      data-hook={dataHooks.prefix}
+                      className={classes.prefix}
                     >
-                      {children}
-                    </Text>
+                      {prefix}
+                    </span>
                   )}
-                </FontUpgradeContext.Consumer>
-              </span>
-              {!disabled && (suffix || drillable) && (
-                <span data-hook={dataHooks.suffix} className={classes.suffix}>
-                  {suffix || (
-                    <ChevronRight
-                      data-hook="chevron"
-                      className={classes.chevron}
-                    />
+                  <span className={classes.textWrapper}>
+                    <FontUpgradeContext.Consumer>
+                      {({ active }) => (
+                        <Text
+                          className={classes.text}
+                          size="small"
+                          weight={active ? 'normal' : 'bold'}
+                          secondary={skin === sidebarSkins.light}
+                          light={skin === sidebarSkins.dark}
+                          skin={disabled && 'disabled'}
+                        >
+                          {children}
+                        </Text>
+                      )}
+                    </FontUpgradeContext.Consumer>
+                  </span>
+                  {!disabled && (suffix || drillable) && (
+                    <span
+                      data-hook={dataHooks.suffix}
+                      className={classes.suffix}
+                    >
+                      {suffix || (
+                        <ChevronRight
+                          data-hook="chevron"
+                          className={classes.chevron}
+                        />
+                      )}
+                    </span>
                   )}
-                </span>
-              )}
-            </button>
-          );
-        }}
-      </SidebarContext.Consumer>
+                </button>
+              );
+            }}
+          </SidebarContext.Consumer>
+        )}
+      </WixStyleReactContext.Consumer>
     );
   }
 }

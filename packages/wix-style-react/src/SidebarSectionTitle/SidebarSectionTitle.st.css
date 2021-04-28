@@ -21,7 +21,7 @@
 
 .root {
   -st-extends: Text;
-  -st-states: skin(enum(dark, light));
+  -st-states: skin(enum(dark, light)), useBmSidebarNewDesign;
 
   display: block;
   padding: 9px 24px;
@@ -41,4 +41,8 @@
 .root:size(tiny):weight(bold) {
   color: value(D40);
   line-height: 18px;
+}
+
+.root:useBmSidebarNewDesign {
+  padding: 6px 20px;
 }

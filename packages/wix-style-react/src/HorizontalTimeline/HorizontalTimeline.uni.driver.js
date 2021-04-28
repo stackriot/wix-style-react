@@ -1,4 +1,5 @@
-import { baseUniDriverFactory, findByHook } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from '../../test/utils/unidriver';
+import { textUniDriverFactory } from '../Text/Text.uni.driver';
 import { dataHooks } from './constants';
 
 export const horizontalTimelineDriverFactory = (base, body) => {
@@ -10,10 +11,18 @@ export const horizontalTimelineDriverFactory = (base, body) => {
      * @param {number} timeline item index
      * @returns {Promise<string>} timeline item label text at index
      */
-    getLabel: async idx =>
-      await findByHook(
-        base,
-        `${dataHooks.horizontalTimelineLabel}-${idx}`,
-      ).text(),
+    getLabel: async idx => {
+      return textUniDriverFactory(
+        base.$(`[data-hook="${dataHooks.horizontalTimelineLabel}-${idx}"]`),
+        body,
+      ).getText()
+    }
+      ,
+
+    /**
+     * Gets skin type
+     * @return {Promise<'dark' | 'standard'>}
+     */
+    getSkin: async () => await base.attr('data-skin'),
   };
 };

@@ -5,7 +5,7 @@ import {
   tab,
   description,
   importExample,
-  example as baseExample,
+  example,
   api,
   header,
   tabs,
@@ -16,10 +16,8 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { storySettings } from '../test/storySettings';
 import SegmentedToggle from '..';
-import allComponents from '../../../stories/utils/allComponents';
-import * as examples from './examples';
 
-const example = config => baseExample({ components: allComponents, ...config });
+import * as examples from './examples';
 
 const exampleChildren = [
   {

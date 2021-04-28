@@ -5,7 +5,7 @@ import {
   tab,
   description,
   importExample,
-  example as baseExample,
+  example,
   title,
   divider,
   playground,
@@ -14,14 +14,11 @@ import {
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import * as examples from './examples';
 
 import SocialButton from '..';
 import { icons } from '../constants';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

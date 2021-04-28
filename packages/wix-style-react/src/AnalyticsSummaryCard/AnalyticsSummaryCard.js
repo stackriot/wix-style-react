@@ -56,8 +56,13 @@ class AnalyticsSummaryCard extends React.PureComponent {
     const { title, titleTooltip } = this.props;
 
     return (
-      <Tooltip placement="top" content={titleTooltip} disabled={!titleTooltip}>
-        <span>{title}</span>
+      <Tooltip
+        placement="top"
+        content={titleTooltip}
+        disabled={!titleTooltip}
+        dataHook={dataHooks.analyticsSummaryCardTitleTooltip}
+      >
+        <span data-hook={dataHooks.analyticsSummaryCardTitle}>{title}</span>
       </Tooltip>
     );
   };
@@ -67,15 +72,27 @@ class AnalyticsSummaryCard extends React.PureComponent {
 
     if (valueTooltip) {
       return (
-        <Tooltip placement="top" content={valueTooltip}>
-          <Text tagName="span" weight="bold">
+        <Tooltip
+          placement="top"
+          content={valueTooltip}
+          dataHook={dataHooks.analyticsSummaryCardValueTooltip}
+        >
+          <Text
+            tagName="span"
+            weight="bold"
+            dataHook={dataHooks.analyticsSummaryCardValue}
+          >
             {value}
           </Text>
         </Tooltip>
       );
     } else {
       return (
-        <Text tagName="span" weight="bold">
+        <Text
+          tagName="span"
+          weight="bold"
+          dataHook={dataHooks.analyticsSummaryCardValue}
+        >
           {value}
         </Text>
       );
@@ -98,6 +115,7 @@ class AnalyticsSummaryCard extends React.PureComponent {
       onChartHover,
       chartHighlightedStartingIndex,
       getChartTooltipContent,
+      chartAnimationDuration,
       footer,
       focusableOnFocus,
       focusableOnBlur,
@@ -126,7 +144,10 @@ class AnalyticsSummaryCard extends React.PureComponent {
         {/* Loader */}
         {isLoading && (
           <div className={classes.loader}>
-            <Loader size="tiny" />
+            <Loader
+              dataHook={dataHooks.analyticsSummaryCardLoader}
+              size="tiny"
+            />
           </div>
         )}
 
@@ -159,6 +180,7 @@ class AnalyticsSummaryCard extends React.PureComponent {
               {this._renderValue()}
               {isTrendVisible && (
                 <TrendIndicator
+                  dataHook={dataHooks.analyticsSummaryCardTrend}
                   className={classes.trend}
                   value={trend}
                   inverted={invertedTrend}
@@ -181,6 +203,7 @@ class AnalyticsSummaryCard extends React.PureComponent {
                 height={SPARKLINE_HEIGHT}
                 highlightedStartingIndex={chartHighlightedStartingIndex}
                 getTooltipContent={getChartTooltipContent}
+                animationDuration={chartAnimationDuration}
               />
             </div>
           </div>
@@ -208,6 +231,9 @@ AnalyticsSummaryCard.propTypes = {
 
   /** Text Value */
   value: PropTypes.string,
+
+  /** Text for value tooltip*/
+  valueTooltip: PropTypes.string,
 
   /** A number to be displayed as the trend, a positive number will be green with an arrow facing up and a negative number will be red with an arrow facing down */
   trend: PropTypes.number,
@@ -248,6 +274,9 @@ AnalyticsSummaryCard.propTypes = {
   /** Sets the color of the chart  */
   chartColorHex: PropTypes.string,
 
+  /** Chart animation duration  */
+  chartAnimationDuration: PropTypes.number,
+
   /** Footer - Node  */
   footer: PropTypes.node,
 };
@@ -259,6 +288,7 @@ AnalyticsSummaryCard.defaultProps = {
   onChartHover: noop,
   isTrendVisible: false,
   chartWidth: 69,
+  chartAnimationDuration: 300,
 };
 
 export default withFocusable(AnalyticsSummaryCard);

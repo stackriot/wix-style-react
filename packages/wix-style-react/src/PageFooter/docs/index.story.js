@@ -7,30 +7,20 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
-  code as baseCode,
+  example,
+  code,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import Pagination from '../../Pagination';
 import Box from '../../Box';
 import PageFooter from '..';
 import { Button } from '../..';
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
-const code = ({ title, text, source }) =>
-  baseCode({
-    components: allComponents,
-    compact: true,
-    title,
-    description: text,
-    source,
-  });
 
 const exampleComponents = [
   {

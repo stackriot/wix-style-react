@@ -18,14 +18,12 @@ import {
 import { Layout } from '../..';
 import Button from '..';
 
-import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
 import skins from './Skins.md';
 
 const Link = ({ children, ...rest }) => <a {...rest}>{children}</a>;
 
-const example = config =>
-  baseExample({ components: { ...allComponents, Link }, ...config });
+const example = config => baseExample({ components: { Link }, ...config });
 
 export default {
   category: storySettings.category,

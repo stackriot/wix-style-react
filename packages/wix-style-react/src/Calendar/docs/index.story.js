@@ -6,7 +6,7 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -18,16 +18,12 @@ import Calendar from '..';
 
 import { storySettings } from './storySettings';
 
-import allComponents from '../../../stories/utils/allComponents';
-
 import {
   ExampleYearMonths,
   ExampleStandard,
   ExampleIndication,
   ExampleA11Y,
 } from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,
@@ -82,10 +78,22 @@ export default {
       'no',
       'nl',
       'da',
-      'zh',
       'th',
       'cs',
+      'zh',
       'uk',
+      'ar',
+      'bg',
+      'el',
+      'fi',
+      'he',
+      'hi',
+      'hu',
+      'id',
+      'ms',
+      'ro',
+      'lt',
+      'vi',
     ],
     firstDayOfWeek: [
       {

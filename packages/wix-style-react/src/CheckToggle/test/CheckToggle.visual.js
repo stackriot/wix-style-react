@@ -9,4 +9,10 @@ const options = {
   skipUndefinedValue: true,
 };
 
-storyOfAllPermutations(Story, CheckToggle, options);
+export const runTests = (
+  { themeName, testWithTheme } = { testWithTheme: i => i },
+) => {
+  options.themeName = themeName;
+  options.testWithTheme = testWithTheme;
+  storyOfAllPermutations(Story, CheckToggle, options);
+};

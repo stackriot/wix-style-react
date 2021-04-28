@@ -16,6 +16,8 @@ export interface DropdownBaseProps {
   onClickOutside?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  onShow?: () => void;
+  onHide?: () => void;
   onSelect?: (option: DropdownLayoutValueOption) => void;
   dynamicWidth?: boolean;
   maxWidth?: React.CSSProperties['maxWidth'];

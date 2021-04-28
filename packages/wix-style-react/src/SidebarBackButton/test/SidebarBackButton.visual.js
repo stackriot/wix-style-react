@@ -4,6 +4,7 @@ import SidebarBackButton from '../SidebarBackButton';
 import Box from '../../Box';
 import { SidebarContext } from '../../Sidebar/SidebarAPI';
 import { sidebarSkins } from '../../Sidebar/constants';
+import WixStyleReactProvider from "../../WixStyleReactProvider";
 
 const tests = [
   {
@@ -15,6 +16,25 @@ const tests = [
       },
     ],
   },
+  {
+    describe: 'useBmSidebarNewDesign',
+    its: [
+      {
+        it: 'should render item with useBmSidebarNewDesign class',
+        props: {},
+        features: {
+          useBmSidebarNewDesign: true
+        }
+      },
+      {
+        it: 'should render item without useBmSidebarNewDesign class',
+        props: {},
+        features: {
+          useBmSidebarNewDesign: false
+        }
+      }
+    ]
+  }
 ];
 
 const skins = Object.values(sidebarSkins);
@@ -23,7 +43,7 @@ export const runTests = (
   { themeName, testWithTheme } = { testWithTheme: i => i },
 ) => {
   tests.forEach(({ describe, its }) => {
-    its.forEach(({ it }) => {
+    its.forEach(({ it, features}) => {
       storiesOf(
         `${themeName ? `${themeName}|` : ''}SidebarBackButton${
           describe ? '/' + describe : ''
@@ -40,9 +60,16 @@ export const runTests = (
               key={skin}
             >
               <div style={{ width: '228px', margin: '16px' }}>
-                <SidebarContext.Provider value={{ getSkin: () => skin }}>
-                  <SidebarBackButton>Go Back</SidebarBackButton>
-                </SidebarContext.Provider>
+                {describe === 'useBmSidebarNewDesign' &&
+                <WixStyleReactProvider features={{ useBmSidebarNewDesign: features.useBmSidebarNewDesign }}>
+                  <SidebarContext.Provider value={{ getSkin: () => skin }}>
+                    <SidebarBackButton>Go Back</SidebarBackButton>
+                  </SidebarContext.Provider>
+                </WixStyleReactProvider>}
+                {describe !== 'useBmSidebarNewDesign' &&
+                  <SidebarContext.Provider value={{ getSkin: () => skin }}>
+                    <SidebarBackButton>Go Back</SidebarBackButton>
+                  </SidebarContext.Provider>}
               </div>
             </Box>
           )),

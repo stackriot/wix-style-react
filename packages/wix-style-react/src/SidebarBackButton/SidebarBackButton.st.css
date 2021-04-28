@@ -41,7 +41,7 @@
 
 .root {
   -st-extends: Focusable;
-  -st-states: skin(enum(dark, light));
+  -st-states: skin(enum(dark, light)), useBmSidebarNewDesign;
   cursor: pointer;
   box-sizing: border-box;
   border: none;
@@ -70,6 +70,10 @@
 }
 .root:focus-visible {
   box-shadow: inset 0 0 0 3px value(F00);
+}
+
+.root:useBmSidebarNewDesign {
+  padding: 16px 20px 8px 12px;
 }
 
 .arrow {

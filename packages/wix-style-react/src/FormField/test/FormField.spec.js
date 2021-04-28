@@ -324,4 +324,18 @@ describe('FormField', () => {
       expect(forAttrValue).toEqual(id);
     });
   });
+
+  describe('`labelId` prop', () => {
+    const labelId = 'six';
+
+    it('should be added to label as `id` value', () => {
+      const wrapper = mount(renderFormField({ labelId, label }));
+      const forAttrValue = wrapper
+        .find('label')
+        .getDOMNode()
+        .getAttribute('id');
+
+      expect(forAttrValue).toEqual(labelId);
+    });
+  });
 });

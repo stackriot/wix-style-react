@@ -380,6 +380,38 @@ describe('DatePicker', () => {
         });
       });
 
+      describe('`disableKeyboardType` prop', () => {
+        it('should be readOnly when disableKeyboardType is false', async () => {
+          const {
+            driver: { inputDriver },
+          } = render(
+            <DatePicker
+              onChange={noop}
+              disableKeyboardType={false}
+              value={new Date('03/25/2021')}
+            />,
+          );
+          await inputDriver.enterText('03/25/202');
+
+          expect(await inputDriver.getValue()).toBe('03/25/202');
+        });
+
+        it('should allow typing when disableKeyboardType is true', async () => {
+          const {
+            driver: { inputDriver },
+          } = render(
+            <DatePicker
+              onChange={noop}
+              value={new Date('03/25/2021')}
+              disableKeyboardType
+            />,
+          );
+          expect(await inputDriver.getReadOnly()).toBe(true);
+          await inputDriver.enterText('03/25/202');
+          expect(await inputDriver.getValue()).toBe('03/25/2021');
+        });
+      });
+
       describe('with year dropdown', () => {
         it('should give a possibility to choose date from another year', async () => {
           const date = new Date(2015, 9, 2);
@@ -654,6 +686,19 @@ describe('DatePicker', () => {
     });
 
     describe('`onChange` prop', () => {
+      it('should change value on rerender', async () => {
+        const {
+          driver: { inputDriver },
+          rerender,
+        } = render(
+          <DatePicker value={new Date(2017, 9, 2)} onChange={() => ({})} />,
+        );
+        expect(await inputDriver.getValue()).toBe('10/02/2017');
+        rerender(
+          <DatePicker value={new Date(2017, 9, 3)} onChange={() => ({})} />,
+        );
+        expect(await inputDriver.getValue()).toBe('10/03/2017');
+      });
       it('should be called on available day click', async () => {
         const onChange = jest.fn();
         const value = new Date(2017, 7, 1);
@@ -741,11 +786,11 @@ describe('DatePicker', () => {
     });
 
     describe('`readonly` prop', () => {
-      it('should be false by default', async () => {
+      it('should be true by default', async () => {
         const {
           driver: { inputDriver, driver, calendarDriver },
         } = render(<DatePicker onChange={noop} />);
-        expect(await inputDriver.getReadOnly()).toBe(false);
+        expect(await inputDriver.getReadOnly()).toBe(true);
         expect(await calendarDriver.isVisible()).toBe(false);
         await driver.open();
         expect(await calendarDriver.isVisible()).toBe(true);
@@ -759,6 +804,19 @@ describe('DatePicker', () => {
         expect(await calendarDriver.isVisible()).toBe(false);
         await driver.open();
         expect(await calendarDriver.isVisible()).toBe(false);
+      });
+      it('should not allow typing when readOnly is true', async () => {
+        const {
+          driver: { inputDriver },
+        } = render(
+          <DatePicker
+            onChange={noop}
+            value={new Date('03/25/2021')}
+            readOnly
+          />,
+        );
+        await inputDriver.enterText('03/25/202');
+        expect(await inputDriver.getValue()).toBe('03/25/2021');
       });
     });
 

@@ -18,6 +18,7 @@ interface DropdownBaseProps {
   'aria-activedescendant'?: string;
   'aria-label'?: string;
   'aria-labelledby'?: string;
+  id?: string;
   upgrade: boolean;
   rtl: boolean;
 }
@@ -31,6 +32,7 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
     upgrade,
     className,
     isExpanded,
+    ['id']: dropdownId,
     ['aria-label']: ariaLabel,
     ['aria-labelledby']: ariaLabelledBy,
     ['aria-activedescendant']: ariaActivedescendant,
@@ -51,6 +53,7 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
       disabled={disabled}
       aria-activedescendant={ariaActivedescendant}
       aria-expanded={isExpanded}
+      id={dropdownId}
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy}
       role="listbox"

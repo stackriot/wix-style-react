@@ -298,7 +298,7 @@ export default class Calendar extends React.PureComponent {
     const value = Calendar.parseValue(this.props.value);
 
     const month = this.state.month;
-    const localeUtils = localeUtilsFactory(locale);
+    const localeUtils = localeUtilsFactory(locale, firstDayOfWeek);
     const { from, to } = value || {};
     const singleDay = !from && !to && value;
 
@@ -328,15 +328,15 @@ export default class Calendar extends React.PureComponent {
     }
 
     return {
-      disabledDays: excludePastDates
-        ? { before: new Date() }
-        : date => !filterDate(new Date(date)),
+      disabledDays: [
+        date => !filterDate(new Date(date)),
+        excludePastDates ? { before: new Date() } : {},
+      ],
       initialMonth: month,
       initialYear: month,
       selectedDays,
       month,
       year: month,
-      firstDayOfWeek,
       locale: typeof locale === 'string' ? locale : '',
       fixedWeeks: true,
       onKeyDown: this._handleKeyDown,

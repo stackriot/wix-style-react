@@ -7,18 +7,16 @@ import {
   description,
   playground,
   importExample,
-  example as baseExample,
+  example,
   title,
   header,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import FloatingNotification from '..';
 import { TYPES } from '../constants';
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const trashLabel = { label: 'Trash' };
 const linkProps = {

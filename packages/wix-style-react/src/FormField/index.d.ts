@@ -16,6 +16,7 @@ export interface FormFieldProps {
   infoTooltipProps?: TooltipCommonProps;
   suffix?: React.ReactNode;
   id?: string;
+  labelId?: string;
   dataHook?: string;
 }
 

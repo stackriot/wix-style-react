@@ -39,6 +39,7 @@ function BoxWithAllProps() {
       direction="horizontal"
       height={80}
       inline
+      gap="10px"
       margin="10px"
       marginBottom="10px"
       marginLeft="10px"

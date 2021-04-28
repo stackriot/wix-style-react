@@ -37,6 +37,10 @@ const sampleSources = [
     label: 'Relative URI of a Media Item',
     value: 'c5f754_91bd6af05038434a894097cd967c721a~mv2.jpg',
   },
+  {
+    label: 'Broken URL',
+    value: 'https://dummy-image-url.com/dummy.jpg',
+  },
 ];
 
 const dataHook = 'storybook-Image';

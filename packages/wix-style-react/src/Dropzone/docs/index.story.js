@@ -7,21 +7,16 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
-  code as baseCode,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import Dropzone from '..';
 import Box from '../../Box';
-
-const example = config => baseExample({ components: allComponents, ...config });
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

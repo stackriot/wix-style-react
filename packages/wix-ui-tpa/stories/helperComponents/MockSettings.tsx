@@ -45,6 +45,7 @@ export interface IWixFontParam {
   wixParam: string;
   defaultFont: string;
   size?: number;
+  minSize?: number;
   fixedSize?: boolean;
 }
 
@@ -56,6 +57,7 @@ export interface IWixColorParam {
 }
 
 const DEFAULT_FONT_SIZE = 14;
+const DEFAULT_MIN_FONT_SIZE = 12;
 
 const DEFAULT_EXAMPLES = [
   {
@@ -459,28 +461,32 @@ export class MockSettings extends React.PureComponent<
         </h2>
         <div className={styles.fontPickerContainer}>
           <ul className={styles.pickerList}>
-            {this.props.wixFontParams.map(({ label, wixParam, fixedSize }) => (
-              <li key={wixParam}>
-                <label>{label}</label>
-                <FontFamilyPicker
-                  fonts={DEFAULT_EXAMPLES}
-                  value={this.state.selectedFont[wixParam].value}
-                  getMissingFontName={this.getMissingFontName}
-                  onChange={(selectedFont) =>
-                    this.onFontChange(selectedFont, wixParam)
-                  }
-                />
-                {!fixedSize ? (
-                  <Slider
-                    value={this.state.selectedFont[wixParam].size}
-                    unit="px"
-                    min={12}
-                    max={24}
-                    onChange={(value) => this.onFontSizeChange(value, wixParam)}
+            {this.props.wixFontParams.map(
+              ({ label, wixParam, fixedSize, minSize }) => (
+                <li key={wixParam}>
+                  <label>{label}</label>
+                  <FontFamilyPicker
+                    fonts={DEFAULT_EXAMPLES}
+                    value={this.state.selectedFont[wixParam].value}
+                    getMissingFontName={this.getMissingFontName}
+                    onChange={(selectedFont) =>
+                      this.onFontChange(selectedFont, wixParam)
+                    }
                   />
-                ) : null}
-              </li>
-            ))}
+                  {!fixedSize ? (
+                    <Slider
+                      value={this.state.selectedFont[wixParam].size}
+                      unit="px"
+                      min={minSize || DEFAULT_MIN_FONT_SIZE}
+                      max={24}
+                      onChange={(value) =>
+                        this.onFontSizeChange(value, wixParam)
+                      }
+                    />
+                  ) : null}
+                </li>
+              ),
+            )}
           </ul>
         </div>
       </div>

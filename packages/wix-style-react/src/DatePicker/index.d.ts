@@ -30,6 +30,7 @@ export interface DatePickerProps extends CalendarProps {
   readOnly?: boolean;
   clearButton?: boolean;
   onClear?: React.MouseEventHandler<HTMLInputElement>;
+  disableKeyboardType?: boolean;
 }
 
 export default class DatePicker extends React.PureComponent<DatePickerProps> {

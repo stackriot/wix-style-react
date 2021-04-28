@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { visualize, story, snap } from 'storybook-snapper';
+import { TPAComponentsProvider } from '../TPAComponentsConfig';
 
 import { DatePicker } from './';
 import { classes } from './DatePicker.visual.st.css';
@@ -153,6 +154,20 @@ visualize('DatePicker', () => {
         onChange={() => {}}
         today={new Date('2019/12/17')}
       />,
+    );
+    snap(
+      'responsive rtl',
+      <div dir="rtl">
+        <TPAComponentsProvider value={{ rtl: true }}>
+          <VisualTestDatePicker
+            locale="he"
+            firstDayOfWeek={0}
+            width="600px"
+            value={new Date('2019/12/15')}
+            onChange={() => {}}
+          />
+        </TPAComponentsProvider>
+      </div>,
     );
   });
 });

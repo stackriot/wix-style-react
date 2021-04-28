@@ -1,8 +1,6 @@
 import {
   api,
-  example as baseExample,
-  columns,
-  description,
+  example,
   divider,
   header,
   importExample,
@@ -16,14 +14,10 @@ import {
 import CardGalleryItem from '..';
 import { storySettings } from './storySettings';
 import componentProps from './exampleProps';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
-import PopoverMenu from '../../PopoverMenu';
 
 const { category, storyName } = storySettings;
-
-const example = config =>
-  baseExample({ components: { ...allComponents, PopoverMenu }, ...config });
 
 export default {
   category,

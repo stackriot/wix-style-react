@@ -69,3 +69,11 @@ npx --no-install wuf export-testkits \
   --definitions .wuf/testkits/definitions.js \
   --template .wuf/testkits/puppeteer-typescript.template.ejs \
   --output testkit/puppeteer.d.ts
+
+
+# unidriver testkits
+wuf export-testkits \
+  --components .wuf/components.json \
+  --definitions .wuf/testkits/definitions.js \
+  --template .wuf/testkits/unidriver.template.ejs \
+  --output testkit/unidriver.js

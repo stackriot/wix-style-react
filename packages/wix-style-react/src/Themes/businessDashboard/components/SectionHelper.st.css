@@ -1,0 +1,76 @@
+:import {
+  -st-from: '../../../Foundation/stylable/typography.st.css';
+  -st-named: text-tiny-thin, text-tiny-bold
+}
+
+:import {
+  -st-from: "../foundations/spacing.st.css";
+  -st-named: SP1, SP3, SP5, SP8;
+}
+
+:import {
+  -st-from: "../../../SectionHelper/SectionHelper.st.css";
+  -st-default: SectionHelper;
+}
+
+:import {
+  -st-from: "../../../Text/Text.st.css";
+  -st-default: Text;
+}
+
+:import {
+  -st-from: '../foundations/colors.st.css';
+  -st-named: B50, R50, Y50, D20
+}
+
+.root {
+  -st-extends: SectionHelper;
+}
+
+.root {
+  padding: value(SP3) value(SP5);;
+  border-radius: value(SP1);
+}
+
+.root:withCloseBtn {
+  padding: value(SP3) value(SP8) value(SP3) value(SP5);
+}
+
+:global([dir='rtl']) .root:withCloseBtn {
+  padding: value(SP3) value(SP5) value(SP3) value(SP8);
+}
+
+.root:appearance(warning) {
+  background-color: value(Y50);
+  border: none;
+}
+
+.root:appearance(standard) {
+  background-color: value(B50);
+  border: none;
+}
+
+.root:appearance(danger) {
+  background-color: value(R50);
+  border: none;
+}
+
+.root::title {
+  margin-bottom: value(SP1);
+}
+
+.root::title Text {
+  -st-mixin: text-tiny-bold;
+  color: value(D20)
+}
+
+.root::content Text { 
+  -st-mixin: text-tiny-thin;
+  color: value(D20)
+}
+
+.root::close {
+  position: absolute;
+  top: value(SP1);
+  right: value(SP1);
+}

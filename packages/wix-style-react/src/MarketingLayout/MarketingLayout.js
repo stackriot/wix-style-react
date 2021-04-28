@@ -142,24 +142,22 @@ class MarketingLayout extends React.PureComponent {
 
   _renderContent = () => {
     const { direction, size } = this.props;
-    const { content } = cellSpansBySize[size];
     const isVertical = direction === DIRECTIONS.vertical;
-
-    const contentCell = this._renderContentCell(content);
 
     return (
       <Layout gap={size === SIZES.tiny ? '24px' : '30px'}>
         {isVertical
-          ? this._renderVerticalCells({ contentCell })
-          : this._renderHorizontalCells({ contentCell })}
+          ? this._renderVerticalCells()
+          : this._renderHorizontalCells()}
       </Layout>
     );
   };
 
-  _renderHorizontalCells({ contentCell }) {
+  _renderHorizontalCells() {
     const { inverted, size } = this.props;
-    const { image, spacer } = cellSpansBySize[size];
+    const { image, spacer, content } = cellSpansBySize[size];
 
+    const contentCell = this._renderContentCell(content);
     const spacerCell = size !== SIZES.tiny && this._renderSpacerCell(spacer);
     const imageCell = this._renderImageCell(image);
 
@@ -168,9 +166,10 @@ class MarketingLayout extends React.PureComponent {
       : [contentCell, spacerCell, imageCell];
   }
 
-  _renderVerticalCells({ contentCell }) {
+  _renderVerticalCells() {
     const { inverted, image } = this.props;
     const imageCell = image && this._renderImageCell(12);
+    const contentCell = this._renderContentCell(12);
     return inverted ? [contentCell, imageCell] : [imageCell, contentCell];
   }
 
@@ -184,6 +183,7 @@ class MarketingLayout extends React.PureComponent {
       actions,
       dataHook,
       imageBackgroundColor,
+      direction,
     } = this.props;
 
     if (size === SIZES.large) {
@@ -205,6 +205,7 @@ class MarketingLayout extends React.PureComponent {
               withActions: !!actions,
               withImageBackground: !!imageBackgroundColor,
               reducedSpacingAndImprovedLayout,
+              direction,
             })}
             data-hook={dataHook}
           >

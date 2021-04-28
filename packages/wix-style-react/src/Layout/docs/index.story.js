@@ -7,17 +7,16 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
 } from 'wix-storybook-utils/Sections';
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import { Layout, Cell } from '..';
 import { style, classes } from './styles.st.css';
 import * as examples from './examples';
 
-const example = config => baseExample({ components: allComponents, ...config });
 const GreyBox = ({ children, height }) => (
   <div
     className={style(classes.greyBox)}

@@ -16,8 +16,168 @@ Types of changes:
 
 ## Next
 
+### Fixed
+- `<AutoCompleteWithLabel/>` - fix suffix align [#7084](https://github.com/wix/wix-style-react/pull/7084)
+
+### Added
+- `<AnalyticsSummaryCard />` -  add additional testkit methods [#7071](https://github.com/wix/wix-style-react/pull/7071)
+
+## 9.109.0 - 2021-04-28
+
+### Added
+- `<SidebarSectionItem/>` [Testkit] - add `isSelected()` and `isDisabled()` methods [#7068](https://github.com/wix/wix-style-react/pull/7068)
+- `<FormField />` - expose labelId prop [#7081](https://github.com/wix/wix-style-react/pull/7081)
+
+### Changed
+-  BusinessDashboard Theme | Small UI Fixes [#7063](https://github.com/wix/wix-style-react/pull/7063)
+-  `<MarketingLayout/>` - changing paddings according to specs [#7076](https://github.com/wix/wix-style-react/pull/7076)
+
+### Fixed
+- `<VariableInput/>` - make insertVariable add text when variableParser returns false [#7082](https://github.com/wix/wix-style-react/pull/7082)
+
+## 9.108.0 - 2021-04-23
+### Fixed
+- `<DatePicker/>` - value prop on re-render does not update [#7062](https://github.com/wix/wix-style-react/pull/7062)
+- `<HorizontalTimeline />` - fix icons props and align label [#7066](https://github.com/wix/wix-style-react/pull/7066)
+
+## 9.107.0 - 2021-04-22
+### Changed
+- `<HorizontalTimeline />` - add new props to component(skin, alignLabel, line, skin for icons, new icons) [#7049](https://github.com/wix/wix-style-react/pull/7049)
+
+## 9.106.0 - 2021-04-21
+### Fixed
+- `<Grid/>` - support className (Container, Row, Col), allow single Container [#7056](https://github.com/wix/wix-style-react/pull/7056)
+- `<DropdownBase />` - fix mismatch between proptypes and typesript [#7057](https://github.com/wix/wix-style-react/pull/7057)
+
+### Changed
+- `<SidebarBackButton/>` - [experiment] -  adjust back button in sidebar to be as the rest of items in experiment [#7053](https://github.com/wix/wix-style-react/pull/7053)
+- BusinessDashboard Theme | `<CheckToggle/>` - check toggle override styles [#7035](https://github.com/wix/wix-style-react/pull/7035)
+
+### Added
+- [wsr] Expose unidrivers for our users [#7048](https://github.com/wix/wix-style-react/pull/7048)
+
+## 9.105.0 - 2021-04-19
+### Fixed
+- `<Grid/>` - dataHook support (Container, Row, Col, AutoAdjustedColumns) [#7052](https://github.com/wix/wix-style-react/pull/7052)
+
+## 9.104.0 - 2021-04-16
+### Fixed
+- `<TableActionCell/>` - fix popoverMenu prop types [#7039](https://github.com/wix/wix-style-react/pull/7039)
+- `<DatePicker/>` - set disableKeyboardType as true by default [#7045](https://github.com/wix/wix-style-react/pull/7045)
+
+### Changed
+- BusinessDashboard Theme | EmptyState [#7036](https://github.com/wix/wix-style-react/pull/7036)
+- BusinessDashboard Theme | <PageSection /> [#6964](https://github.com/wix/wix-style-react/pull/6964)
+
+### Docs
+- BusinessDashboard Theme | EmptyState - update example [#7030](https://github.com/wix/wix-style-react/pull/7030)
+
+## 9.103.0 - 2021-04-15
+### Added
+- `<SidebarSectionItem/>`,`<SidebarSectionTitle/>`,`<SidebarDivider/>` - sidebar experiment for reduce horizontal padding and height for sidebar items [#7025](https://github.com/wix/wix-style-react/pull/7025)
+
+### Fixed
+- `<Grid/>` - add default span value for col [#7038](https://github.com/wix/wix-style-react/pull/7038)
+
+## 9.102.0 - 2021-04-13
+### Added
+- `<Tag/>` - add success theme [#7018](https://github.com/wix/wix-style-react/pull/7018)
+- `<AnalyticsSummaryCard />` - expose chart animation duration [#6987](https://github.com/wix/wix-style-react/pull/6987)
+-  `<DatePicker />` - add typing functionality and disableKeyboardType prop [#6944](https://github.com/wix/wix-style-react/pull/6944)
+-  `<MediaOverlay />` - add borderRadius property [#7028](https://github.com/wix/wix-style-react/pull/7028)
+
+### Changed
+- BusinessDashboard Theme | `<Text />` - [#7026](https://github.com/wix/wix-style-react/pull/7026)
+- BusinessDashboard Theme | `<IconButton />` - [#7021](https://github.com/wix/wix-style-react/pull/7021)
+
+## 9.101.0 - 2021-04-12
+### Fixed
+- `<Input/>` - fix styles for autoFocus prop [#7023](https://github.com/wix/wix-style-react/pull/7023)
+- `<SidebarContentWrapper/>` - support SSR [#7024](https://github.com/wix/wix-style-react/pull/7024)
+
+### Changed
+- `<Grid/>` - remove bootstrap dependency and use `<Layout/>` internally [#7011](https://github.com/wix/wix-style-react/pull/7011)
+
+## 9.100.0 - 2021-04-11
+### Fixed
+- Fix SSR document reference error [#7020](https://github.com/wix/wix-style-react/pull/7020)
+
+### Added
+- BusinessDashboard Theme | `<SidebarSectionItem/>` - new sidebar experiment for changing hover and active colors [#7015](https://github.com/wix/wix-style-react/pull/7015)
+
+## 9.99.0 - 2021-04-07
+### Changed
+- BusinessDashboard Theme | `<Card />` - decreased content bottom padding [#7004](https://github.com/wix/wix-style-react/pull/7004)
+- BusinessDashboard Theme | `<Thumbnail>` - Apply overrides to all size thumbnail [#6992](https://github.com/wix/wix-style-react/pull/6992)
+- BusinessDashboard Theme | `<SidePanel>`  - Changed spacings and colors [#6971](https://github.com/wix/wix-style-react/pull/6971)
+- BusinessDashboard Theme | `<SectionHelper>` - override styles [#6950](https://github.com/wix/wix-style-react/pull/6950)
+- BusinessDashboard Theme | `<IconButton />` - Changed colors [#6968](https://github.com/wix/wix-style-react/pull/6968)
+- BusinessDashboard Theme | `<Popover>` - Changed colors [#6991](https://github.com/wix/wix-style-react/pull/6991)
+- BusinessDashboard Theme | `<Button />` - Added light primary skin [#6973](https://github.com/wix/wix-style-react/pull/6973)
+- BusinessDashboard Theme | `<Button />` - Changed min width [#6967](https://github.com/wix/wix-style-react/pull/6967)
+- BusinessDashboard Theme | `<Badge>` - Changed spacings and colors [#6985](https://github.com/wix/wix-style-react/pull/6985)
+
+### Added
+- `<SidePanel/>` - added width prop [#7002](https://github.com/wix/wix-style-react/pull/7002)
+
+## 9.98.0 - 2021-04-06
+### Changed
+- BusinessDashboard Theme | < IconButton /> - Changed inverted hover color [#7006](https://github.com/wix/wix-style-react/pull/7006)
+
+### Fixed
+- `<Page.Sticky/>` - fix `style` prop proptype [#7007](https://github.com/wix/wix-style-react/pull/7007)
+-`<AnalyticsSummaryCard />` - fix typo in isTrendVisible types [#7001](https://github.com/wix/wix-style-react/pull/7001)
+
+## 9.97.0 - 2021-04-05
+### Deprecated
+- `<Grid/>` - deprecate component
+
+## 9.96.0 - 2021-03-31
+### Added
+- `<Calendar/>` - vietnamese localization [#6990](https://github.com/wix/wix-style-react/pull/6990)
+
+## 9.95.0 - 2021-03-30
+### Changed
+- Typography - [Temporary] Use Arial for vietnamese (instead of Madefor)
+
+### Fixed
+- `<ListItemAction/>` - remove unexpected title attribute tooltip [#6974](https://github.com/wix/wix-style-react/pull/6974)
+- `<TableListItem/>` - cannot stretch value to 100% [#6960](https://github.com/wix/wix-style-react/pull/6960)
+
+### Added
+- `<DropdownBase/>` - add onShow, onHide props [#6978](https://github.com/wix/wix-style-react/pull/6978)
+
+## 9.94.0 - 2021-03-26
+### Fixed
+- `<DatePicker/>` - props excludePastDates and filterDate collide bugfix [#6956](https://github.com/wix/wix-style-react/pull/6956)
+- `<TableListItem/>` - Fix TableActionCell visibility on hover [#6972](https://github.com/wix/wix-style-react/pull/6972)
+
+### Changed
+-  Themes | Business Dashboard - Button - update inverted button hover [#6957](https://github.com/wix/wix-style-react/pull/6957)
+
+## 9.93.0 - 2021-03-22
+### Added
+- `<SocialPreview/>` - add support for twitter preview [#6922](https://github.com/wix/wix-style-react/pull/6922)
+- BusinessDashboard Theme | Override Divider dark skin - [#6946](https://github.com/wix/wix-style-react/pull/6946)
+
+## 9.92.0 - 2021-03-18
+### Added
+- `<Box/>` -  add gap prop [#6929](https://github.com/wix/wix-style-react/pull/6929)
+
+### Fixed
+- `<DropdownLayout />` - fix uni driver when using infinite scroll [#6937](https://github.com/wix/wix-style-react/pull/6937)
+- Themes | Business Dashboard - Fix theme margin rule [#6934](https://github.com/wix/wix-style-react/pull/6934)
+
+### Changed
+- `<SidePanel.Header/>` - Changed tooltip content from string to node [#6938](https://github.com/wix/wix-style-react/pull/6938)
+- `<PageSection />` - changed title from string to node [#6942](https://github.com/wix/wix-style-react/pull/6942)
+
+## 9.91.0 - 2021-03-17
 ### Added
 - `<SelectableAccordion />` -  add disabled property to items list [#6928](https://github.com/wix/wix-style-react/pull/6928)
+
+### Changed
+- `<Page/>` - change default min and max width according to new spec [#6794](https://github.com/wix/wix-style-react/pull/6794)
 
 ## 9.90.0 - 2021-03-16
 ### Added

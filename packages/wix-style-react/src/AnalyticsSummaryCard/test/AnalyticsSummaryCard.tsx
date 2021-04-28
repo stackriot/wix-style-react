@@ -21,7 +21,7 @@ const props = {
   trend: 12,
   invertedTrend: false,
   isLoading: false,
-  isTrendVisibile: true,
+  isTrendVisible: true,
   ctaButton:
     <IconButton size="tiny">
       Icon

@@ -7,19 +7,17 @@ import {
   importExample,
   title,
   divider,
-  code as baseCode,
+  code,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 import { TableToolbar } from '..';
 import API from '!raw-loader!./README.md';
 import Box from '../../Box';
 import SectionHelper from '../../SectionHelper';
-
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

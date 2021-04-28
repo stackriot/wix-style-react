@@ -8,19 +8,17 @@ import {
   title,
   columns,
   divider,
-  code as baseCode,
+  code,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import Swatches from '..';
 import * as examples from './examples';
 
-const code = config => baseCode({ components: allComponents, ...config });
 const colors3 = ['cyan', 'yellow', 'pink'];
 const colors6 = ['cyan', 'yellow', 'pink', '#fff', 'rgb(0, 0, 0)', '#aeaeae'];
 
@@ -92,7 +90,7 @@ export default {
           code({
             title: 'Columns',
             subtitle:
-              "Swatches uses `grid` layout with default `12px` gap. Each swatch preserves square proportion and adjust based on the number of columns, grid gap and container's width. ",
+              "Swatches uses Layout with default `12px` gap. Each swatch preserves square proportion and adjust based on the number of columns, gap and container's width. ",
             source: examples.columns,
           }),
 

@@ -7,19 +7,15 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
-  code as baseCode,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 import { storySettings } from '../test/storySettings';
 import Box from '../../Box';
-import allComponents from '../../../stories/utils/allComponents';
-import SparklineChart from '..';
 
-const example = config => baseExample({ components: allComponents, ...config });
-const code = config => baseCode({ components: allComponents, ...config });
+import SparklineChart from '..';
 
 const data = [
   { label: new Date('Thu Sep 4 2020'), value: 3 },

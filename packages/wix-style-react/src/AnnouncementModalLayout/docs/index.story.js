@@ -6,7 +6,7 @@ import {
   description,
   importExample,
   title,
-  example as baseExample,
+  example,
   divider,
   playground,
   api,
@@ -14,7 +14,6 @@ import {
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import AnnouncementModalLayout from '..';
 
@@ -26,8 +25,6 @@ import NoIllustrationExample from '!raw-loader!./examples/NoIllustrationExample'
 import ThemeExample from '!raw-loader!./examples/ThemeExample';
 import HelpButtonExample from '!raw-loader!./examples/HelpButtonExample';
 import Text from '../../Text';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

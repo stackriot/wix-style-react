@@ -46,6 +46,12 @@ export interface TPATextFieldProps extends TPAComponentProps {
   clearButtonAriaLabel?: string;
   /** Identifies the element that labels the clear button element. Optional. */
   clearButtonAriaLabelledby?: string;
+  /** a label that appears on top of the input. Optional. */
+  label?: string;
+  /** Limits the number of characters that could be written. Optional. */
+  maxLength?: number;
+  /** Whether to display the character count. In order to show the charCount you must pass the maxLength prop. Optional. */
+  showCharCount?: boolean;
 }
 
 interface DefaultProps {
@@ -166,6 +172,10 @@ export class TextField extends React.Component<TextFieldProps> {
       clearButtonAriaLabel,
       clearButtonAriaLabelledby,
       errorTooltipPlacement,
+      label,
+      maxLength,
+      showCharCount,
+      value,
       ...restProps
     } = this.props;
 
@@ -178,8 +188,7 @@ export class TextField extends React.Component<TextFieldProps> {
     };
 
     return (
-      <CoreInput
-        {...dataObject}
+      <div
         className={st(
           classes.root,
           {
@@ -190,12 +199,31 @@ export class TextField extends React.Component<TextFieldProps> {
           },
           className,
         )}
-        ref={this.TextFieldRef}
-        suffix={this._getSuffix()}
-        error={error}
-        {...restProps}
-        disabled={disabled}
-      />
+      >
+        {label && (
+          <div data-hook={DATA_HOOKS.LABEL} className={classes.label}>
+            {label}
+          </div>
+        )}
+        <CoreInput
+          {...dataObject}
+          className={st(classes.input, {
+            theme,
+          })}
+          value={value}
+          maxLength={maxLength}
+          ref={this.TextFieldRef}
+          suffix={this._getSuffix()}
+          error={error}
+          {...restProps}
+          disabled={disabled}
+        />
+        {maxLength && showCharCount && (
+          <div data-hook={DATA_HOOKS.CHAR_COUNT} className={classes.charCount}>
+            <div dir="ltr">{`${value.length}/${maxLength}`}</div>
+          </div>
+        )}
+      </div>
     );
   }
 }

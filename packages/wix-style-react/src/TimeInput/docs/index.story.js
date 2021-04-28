@@ -7,20 +7,18 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 import TimeInput from '..';
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import LockLocked from 'wix-ui-icons-common/LockLocked';
 import Input from '../../Input';
 import * as examples from './examples';
 import { Cell, Layout } from '../../Layout';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const exampleStatus = [
   {

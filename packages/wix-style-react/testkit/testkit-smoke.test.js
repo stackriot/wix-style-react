@@ -14,6 +14,7 @@ import TESTKIT_DEFINITIONS from '../.wuf/testkits/definitions';
 
 import * as reactTestUtilsTestkitFactories from './index';
 import * as enzymeTestkitFactories from './enzyme';
+import * as unidriverFactories from './unidriver';
 
 const noop = () => {};
 const lowerFirst = a => a.charAt(0).toLowerCase().concat(a.slice(1));
@@ -125,6 +126,17 @@ const EXPORT_ASSERTS = {
         ));
     });
   },
+
+  unidriver: (name, noUnidriver) => {
+    if (noUnidriver) {
+      return;
+    }
+    const driver = `${name}UniDriver`;
+    describe('Unidriver exports', () => {
+      it(`Unidriver exported - <${name}/>`, () =>
+        expect(typeof unidriverFactories[driver]).toBe('function'));
+    });
+  },
 };
 
 Object.keys({
@@ -157,6 +169,10 @@ Object.keys({
       definition.noUnidriver,
     );
     EXPORT_ASSERTS.enzyme(
+      definition.exportName || name,
+      definition.noUnidriver,
+    );
+    EXPORT_ASSERTS.unidriver(
       definition.exportName || name,
       definition.noUnidriver,
     );

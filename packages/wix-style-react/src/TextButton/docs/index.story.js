@@ -17,14 +17,13 @@ import TextButton from '..';
 import { Layout } from '../../Layout';
 import { storySettings } from '../test/storySettings';
 import icons from '../../../stories/utils/icons-for-story';
-import allComponents from '../../../stories/utils/allComponents';
+
 import testkit from '!raw-loader!./testkit.md';
 import * as examples from './examples';
 
 const Link = ({ children, ...rest }) => <a {...rest}>{children}</a>;
 
-const example = config =>
-  baseExample({ components: { ...allComponents, Link }, ...config });
+const example = config => baseExample({ components: { Link }, ...config });
 
 export default {
   category: storySettings.category,

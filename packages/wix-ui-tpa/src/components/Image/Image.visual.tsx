@@ -9,6 +9,7 @@ import {
   LoadingBehaviorOptions,
   ResizeOptions,
 } from './types';
+import { TPAComponentsProvider } from '../TPAComponentsConfig';
 
 const stories: { name: string; src: string; invalidSrc: string }[] = [
   {
@@ -29,28 +30,22 @@ type ImageWithWrapperProps = ImageProps & {
 };
 
 class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
-  state = { hasError: false };
-
-  async _onError(onError) {
-    this.setState({ hasError: true }, async () => {
-      await delay(500);
-      onError();
-    });
+  async _handleError(onError) {
+    await delay(500);
+    onError();
   }
 
   render() {
     const { onError, wrapperStyle, ...imageProps } = this.props;
-    const { hasError } = this.state;
     const style = {
       width: 480,
       height: 360,
-      ...(hasError && { border: '1px solid red' }),
       ...wrapperStyle,
     };
 
     return (
       <div style={style}>
-        <Image {...imageProps} onError={() => this._onError(onError)} />
+        <Image {...imageProps} onError={() => this._handleError(onError)} />
       </div>
     );
   }
@@ -249,5 +244,18 @@ visualize('Image', () => {
         ));
       });
     });
+  });
+
+  story(stories[1].name, () => {
+    snap('with seo', (done) => (
+      <TPAComponentsProvider value={{ seo: true }}>
+        <ImageWithWrapper
+          src={stories[1].src}
+          width={480}
+          height={360}
+          onLoad={done}
+        />
+      </TPAComponentsProvider>
+    ));
   });
 });

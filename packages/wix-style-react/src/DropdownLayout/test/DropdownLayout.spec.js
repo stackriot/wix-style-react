@@ -157,6 +157,53 @@ describe('DropdownLayout', () => {
       expect(onSelect).toBeCalledWith(options[3], false);
     });
 
+    describe('driver', () => {
+      it('should return correct number of options when use infiniteScroll', async () => {
+        const driver = createDriver(
+          <DropdownLayout
+            options={options}
+            infiniteScroll
+            loadMore={() => {}}
+          />,
+        );
+
+        expect(await driver.optionsLength()).toBe(options.length);
+      });
+
+      it('should return correct array of options elements when use infiniteScroll', async () => {
+        const driver = createDriver(
+          <DropdownLayout
+            options={options}
+            infiniteScroll
+            loadMore={() => {}}
+          />,
+        );
+
+        expect((await driver.options()).length).toBe(options.length);
+      });
+
+      it('should return correct content of options when use infiniteScroll', async () => {
+        const options = [
+          { id: 0, value: 'Option 1' },
+          { id: 1, value: 'Option 2' },
+          { id: 2, value: 'Option 3' },
+          { id: 3, value: 'Option 4' },
+        ];
+
+        const driver = createDriver(
+          <DropdownLayout
+            options={options}
+            infiniteScroll
+            loadMore={() => {}}
+          />,
+        );
+
+        expect(await driver.optionsContent()).toEqual(
+          options.map(option => option.value),
+        );
+      });
+    });
+
     describe('onSelect', () => {
       describe('with infiniteScroll', () => {
         it('should call onSelect with true value when clicking on a selected option if infinite scroll enabled', async () => {

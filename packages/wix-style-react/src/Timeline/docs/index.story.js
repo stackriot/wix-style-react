@@ -7,20 +7,16 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
-  code as baseCode,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 import Timeline from '..';
-
-const example = config => baseExample({ components: allComponents, ...config });
-const code = config => baseCode({ components: allComponents, ...config });
 
 const oneItem = [{ label: 'Item 1' }];
 const twoItems = [...oneItem, { label: 'Item 2' }];

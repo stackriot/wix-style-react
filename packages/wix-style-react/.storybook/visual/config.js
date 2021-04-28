@@ -7,6 +7,12 @@ import './stories.scss';
 
 function loadStories() {
   let req;
+
+  try {
+    require('../../.wuf/requires-for-visual-tests.js');
+    return;
+  } catch (e) {}
+
   switch (process.env.STORYBOOK_VISUAL) {
     // Test only base components
     case 'base':

@@ -2,9 +2,9 @@ import SectionHelper from '..';
 import { storySettings } from './storySettings';
 import {
   api,
-  code as baseCode,
+  code,
   columns,
-  example as baseExample,
+  example,
   description,
   divider,
   header,
@@ -16,11 +16,6 @@ import {
   title,
 } from 'wix-storybook-utils/dist/src/Sections';
 import * as examples from './examples';
-import React from 'react';
-import allComponents from '../../../stories/utils/allComponents';
-
-const example = config => baseExample({ components: allComponents, ...config });
-const code = config => baseCode({ components: allComponents, ...config });
 
 const titleExamples = [
   { label: 'short text', value: 'Look at this important message!' },

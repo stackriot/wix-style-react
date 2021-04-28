@@ -12,13 +12,11 @@ import {
   playground,
   api,
   testkit,
-  example as baseExample,
+  example,
 } from 'wix-storybook-utils/Sections';
-import allComponents from '../../../stories/utils/allComponents';
+
 import MultiSelectCheckbox from '..';
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

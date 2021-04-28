@@ -10,16 +10,14 @@ import {
   title,
   divider,
   playground,
-  example as baseExample,
+  example,
 } from 'wix-storybook-utils/Sections';
-import allComponents from '../../../stories/utils/allComponents';
+
 import * as examples from './examples';
 
 import Slider from '..';
 
 import { storySettings } from './storySettings';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 class SlideWithState extends React.Component {
   state = {

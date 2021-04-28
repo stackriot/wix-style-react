@@ -9,6 +9,7 @@ import { sidebarSkins } from '../Sidebar/constants';
 
 import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable';
 import { FontUpgradeContext } from '../FontUpgrade/context';
+import {WixStyleReactContext} from "../WixStyleReactProvider/context";
 
 /**  button with an animated back arrow */
 class SidebarBackButton extends React.PureComponent {
@@ -43,44 +44,49 @@ class SidebarBackButton extends React.PureComponent {
     } = this.props;
 
     return (
-      <SidebarContext.Consumer>
-        {context => {
-          const skin = (context && context.getSkin()) || sidebarSkins.dark;
-          return (
-            <button
-              className={st(
-                classes.root,
-                {
-                  skin,
-                },
-                className,
-              )}
-              data-hook={dataHook}
-              onClick={onClick}
-              onFocus={focusableOnFocus}
-              onBlur={focusableOnBlur}
-              type="button"
-              tabIndex="0"
-            >
-              <ChevronLeft
-                className={st(classes.arrow, { animated: animateArrow })}
-              />
-              <FontUpgradeContext.Consumer>
-                {({ active: isMadefor }) => (
-                  <Text
-                    weight={isMadefor ? 'normal' : 'bold'}
-                    size="small"
-                    secondary={skin === sidebarSkins.light}
-                    light={skin === sidebarSkins.dark}
-                  >
-                    {children}
-                  </Text>
-                )}
-              </FontUpgradeContext.Consumer>
-            </button>
-          );
-        }}
-      </SidebarContext.Consumer>
+      <WixStyleReactContext.Consumer>
+        {({useBmSidebarNewDesign}) => (
+          <SidebarContext.Consumer>
+            {context => {
+              const skin = (context && context.getSkin()) || sidebarSkins.dark;
+              return (
+                <button
+                  className={st(
+                    classes.root,
+                    {
+                      skin,
+                      useBmSidebarNewDesign
+                    },
+                    className,
+                  )}
+                  data-hook={dataHook}
+                  onClick={onClick}
+                  onFocus={focusableOnFocus}
+                  onBlur={focusableOnBlur}
+                  type="button"
+                  tabIndex="0"
+                >
+                  <ChevronLeft
+                    className={st(classes.arrow, { animated: animateArrow })}
+                  />
+                  <FontUpgradeContext.Consumer>
+                    {({ active: isMadefor }) => (
+                      <Text
+                        weight={isMadefor ? 'normal' : 'bold'}
+                        size="small"
+                        secondary={skin === sidebarSkins.light}
+                        light={skin === sidebarSkins.dark}
+                      >
+                        {children}
+                      </Text>
+                    )}
+                  </FontUpgradeContext.Consumer>
+                </button>
+              );
+            }}
+          </SidebarContext.Consumer>
+        )}
+      </WixStyleReactContext.Consumer>
     );
   }
 }

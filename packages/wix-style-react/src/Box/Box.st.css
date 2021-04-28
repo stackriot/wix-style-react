@@ -3,6 +3,18 @@
     alignItems(enum(left, center, right, space-between)),
     justifyContent(enum(top, middle, bottom, space-between));
   display: flex;
+  gap: var(--gap);
+}
+
+/* Detect if the browser is safari */
+@supports not (appearance: auto) {
+  .root {
+    gap: 0;
+    margin: calc(var(--gap) / -2) calc(var(--gap) / -2);
+  }
+  .root > * {
+    margin: calc(var(--gap) / 2) calc(var(--gap) / 2);
+  }
 }
 
 .root:inline {

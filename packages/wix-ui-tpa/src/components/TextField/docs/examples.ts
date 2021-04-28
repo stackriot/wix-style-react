@@ -1,5 +1,9 @@
 export const importExample = `import { TextField } from 'wix-ui-tpa/TextField';`;
 
+export const withLabel = `
+<TextField label="label" placeholder="Placeholder Text"/>
+`;
+
 export const placeholder = `
 <TextField placeholder="Placeholder Text"/>
 `;
@@ -85,8 +89,37 @@ export const customSuffixAndErrorWithClearButton = `
     }
 `;
 
+export const charCount = `
+    class TextFieldExample extends React.Component {
+      state = {
+        value: 'Test',
+      };
+    
+      _onChange = (e) => this.setState({value: e.target.value })
+    
+      render() {
+        const { value } = this.state;
+        
+        return (
+          <TextField
+              theme="box"
+              placeholder="No more than 5 chars pls"
+              value={value}
+              onChange={this._onChange}
+              maxLength="10"
+              showCharCount="true"
+          />
+        );
+      }
+    }
+`;
+
 export const lineTheme = `
 <TextField theme="line"  value="Test text" />
+`;
+
+export const lineThemeWithLabel = `
+<TextField label="label" placeholder="Placeholder Text" theme="line" />
 `;
 
 export const lineThemeSuccess = `
@@ -162,6 +195,31 @@ export const lineThemeCustomSuffixAndErrorWithClearButton = `
               errorMessage="TestError"
               suffix={<Calendar />}
               onChange={this._onChange}
+          />
+        );
+      }
+    }
+`;
+
+export const lineThemeCharCount = `
+    class TextFieldExample extends React.Component {
+      state = {
+        value: 'Test',
+      };
+    
+      _onChange = (e) => this.setState({value: e.target.value })
+    
+      render() {
+        const { value } = this.state;
+        
+        return (
+          <TextField
+              theme="line"
+              placeholder="No more than 5 chars pls"
+              value={value}
+              onChange={this._onChange}
+              maxLength="10"
+              showCharCount="true"
           />
         );
       }

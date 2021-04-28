@@ -20,11 +20,9 @@ import * as examples from './examples';
 import { storySettings } from '../test/storySettings';
 
 import ListItemAction from '..';
-import allComponents from '../../../stories/utils/allComponents';
 
 const Link = ({ children, ...rest }) => <a {...rest}>{children}</a>;
-const example = config =>
-  baseExample({ components: { ...allComponents, Link }, ...config });
+const example = config => baseExample({ components: { Link }, ...config });
 
 export default {
   category: storySettings.category,

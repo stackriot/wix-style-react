@@ -2,13 +2,13 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { getTestStoryKind } from '../../../stories/storiesHierarchy';
-import { storySettings, testStories } from '../docs/storySettings';
+import { storySettings, testStories } from './storySettings';
 import { RTLWrapper } from '../../../stories/utils/RTLWrapper';
 import MultiSelect from '..';
 
-import ExampleReorderable from '../docs/tests/Reorderable';
-import TestTabsSwitches from '../docs/tests/TestTabsSwitches';
-import StateSelection from '../docs/tests/StateSelection';
+import ExampleReorderable from './Reorderable';
+import TestTabsSwitches from './TestTabsSwitches';
+import StateSelection from './StateSelection';
 
 const kind = getTestStoryKind({
   category: storySettings.category,

@@ -67,24 +67,38 @@ describe('VariableInput', () => {
     });
   });
   describe('insertVariable', () => {
-    it('should invoke `onSubmit` with variable after insert variable', async () => {
-      const text = 'Some text';
+    it('should add variable text to content if variable is valid in parser', async () => {
       let myRef = null;
       const driver = createDriver(
         <VariableInput
+          variableParser={variableParser}
           ref={ref => {
             myRef = ref;
           }}
         />,
       );
       expect(await driver.getContent()).toBe('');
-      myRef.insertVariable(text);
-      expect(await driver.getContent()).toBe(` ${text}  `);
+      myRef.insertVariable(variableEntity.value);
+      expect(await driver.getContent()).toBe(' Page name  ');
     });
-
-    it('should have same displayed content as the state', async () => {
+    it('should add wrapped variable value to content if variable is not valid in parser', async () => {
+      let myRef = null;
+      const driver = createDriver(
+        <VariableInput
+          variableParser={variableParser}
+          ref={ref => {
+            myRef = ref;
+          }}
+        />,
+      );
+      expect(await driver.getContent()).toBe('');
+      myRef.insertVariable('unknown.variable');
+      expect(await driver.getContent()).toBe(`{{unknown.variable}} `);
+    });
+  });
+  describe('typing text with variables', () => {
+    it('should add variable text to content', async () => {
       let stateValue;
-      const expectedHtmlValue = `/🤔{{${variableEntity.value}}}/🤔{{${variableEntity.value}}}`;
       const driver = createDriver(
         <VariableInput
           variableParser={variableParser}
@@ -93,7 +107,7 @@ describe('VariableInput', () => {
       );
 
       await driver.click();
-      await driver.enterText(expectedHtmlValue);
+      await driver.enterText(`/🤔{{${variableEntity.value}}}/🤔{{${variableEntity.value}}}`);
       await driver.blur();
 
       expect(await driver.getContent()).toBe('/🤔 Page name /🤔 Page name ');
@@ -132,7 +146,6 @@ describe('VariableInput', () => {
       );
       expect(await driver.getContent()).toBe('');
       myRef.insertVariable(text);
-      expect(await driver.getContent()).toBe(` ${text}  `);
       expect(callback).toHaveBeenCalledWith(expectedHtmlValue);
     });
     it('should invoke `onSubmit` with variable after `setValue`', async () => {

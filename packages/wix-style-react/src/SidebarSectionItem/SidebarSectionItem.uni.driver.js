@@ -14,5 +14,7 @@ export default base => {
     getSuffix: () => getSuffix(base),
 
     hover: () => base.hover(),
+    isSelected: async () => (await base.attr('data-selected')) === 'true',
+    isDisabled: async () => (await base.attr('disabled')) !== null,
   };
 };

@@ -7,14 +7,14 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   api,
   testkit,
   playground,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import StructureExampleRaw from '!raw-loader!./examples/Structure';
 import SizesExampleRaw from '!raw-loader!./examples/Sizes';
 import CustomizingTagsExampleRaw from '!raw-loader!./examples/CustomizingTags';
@@ -22,8 +22,6 @@ import UsageExampleRaw from '!raw-loader!./examples/Usage';
 import CollapsableExampleRaw from '!raw-loader!./examples/Collapsable';
 
 import TagList from '..';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const exampleTags = [
   {

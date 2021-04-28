@@ -8,21 +8,18 @@ import {
   title,
   columns,
   divider,
-  code as baseCode,
+  code,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import MobilePreviewWidget from '..';
 
 import Box from '../../Box';
 import Text from '../../Text';
-
-const code = config => baseCode({ components: allComponents, ...config });
 
 const childrenNodesExamples = [
   {

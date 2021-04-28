@@ -7,7 +7,7 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
@@ -17,13 +17,11 @@ import {
 
 import LinkTo from '@storybook/addon-links/react';
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import { Category } from '../../../stories/storiesHierarchy';
 import * as examples from './examples';
 import DropdownLayout from '..';
 import { createOptions } from '../../../stories/utils/playgroundUtils.js';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const options = createOptions(10);
 

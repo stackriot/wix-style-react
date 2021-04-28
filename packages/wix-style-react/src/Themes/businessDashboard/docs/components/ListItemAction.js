@@ -8,7 +8,7 @@ export const playground = `
           id: 0,
           skin: 'dark',
           size: 'small',
-          prefixIcon: <Icons.Edit />,
+          prefixIcon: <Icons.EditSmall />,
           title: 'skin dark',
         }),
         listItemActionBuilder({
@@ -16,7 +16,7 @@ export const playground = `
           skin: 'dark',
           size: 'small',
           disabled: true,
-          prefixIcon: <Icons.Edit />,
+          prefixIcon: <Icons.EditSmall />,
           title: 'skin dark disabled',
         }),
         listItemActionBuilder({
@@ -27,7 +27,7 @@ export const playground = `
         listItemActionBuilder({
           id: 4,
           size: 'small',
-          prefixIcon: <Icons.Edit />,
+          prefixIcon: <Icons.EditSmall />,
           title: 'standard',
         }),
         listItemSectionBuilder({
@@ -37,25 +37,25 @@ export const playground = `
           id: 5,
           size: 'small',
           skin: 'standard',
-          prefixIcon: <Icons.Edit />,
+          prefixIcon: <Icons.EditSmall />,
           title: 'standard disabled',
         }),
         listItemActionBuilder({
           id: 6,
           size: 'small',
-          prefixIcon: <Icons.Edit />,
+          prefixIcon: <Icons.EditSmall />,
           title: 'standard',
         }),
         listItemActionBuilder({
           id: 7,
           size: 'small',
-          prefixIcon: <Icons.Edit />,
+          prefixIcon: <Icons.EditSmall />,
           title: 'standard',
         }),
         listItemActionBuilder({
           id: 8,
           size: 'small',
-          prefixIcon: <Icons.Edit />,
+          prefixIcon: <Icons.EditSmall />,
           title: 'standard',
         }),
       ]}

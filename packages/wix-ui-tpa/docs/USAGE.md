@@ -86,14 +86,15 @@ The main difference is that this approach mixes only the override classes instea
 For more on how to override wix-ui-tpa's components' styles properly, read [here](HOW_TO_OVERRIDE_STYLES_PROPERLY.md)
 
 ### Common configuration and widget state - `TPAComponentsProvider`
-Some components might have special behaviours and designs on `mobile` and `rtl` views.  
+Some components might have special behaviours and designs on `mobile`, `rtl` & `seo` views.  
+
 To support this, add the `TPAComponentsProvider` to the root of your application:
 ```typescript jsx
 import React from 'react';
 import { TPAComponentsProvider } from 'wix-ui-tpa/TPAComponentsConfig';
 
 export const App: React.FC = () => (
-  <TPAComponentsProvider value={{mobile: isMobile, rtl: isRtl}}>
+  <TPAComponentsProvider value={{mobile: isMobile, rtl: isRtl, seo: isSeo}}>
     <MyStunningApplication/>
   </TPAComponentsProvider>
 );

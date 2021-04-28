@@ -10,9 +10,13 @@ import { dataHooks } from './constants';
 import HoverSlot from './HoverSlot';
 import { classes } from './TableActionCell.st.css';
 import { TooltipCommonProps } from '../common/PropTypes/TooltipCommon';
+import { placements } from '../Popover';
 
 /* eslint-disable react/prop-types */
-const renderPrimaryAction = ({ text, skin, onClick, disabled, prefixIcon, suffixIcon }, size) => (
+const renderPrimaryAction = (
+  { text, skin, onClick, disabled, prefixIcon, suffixIcon },
+  size,
+) => (
   <Button
     disabled={disabled}
     skin={skin}
@@ -218,7 +222,64 @@ TableActionCell.propTypes = {
   alwaysShowSecondaryActions: PropTypes.bool,
 
   /** Props being passed to the secondary actions' <PopoverMenu/> */
-  popoverMenuProps: PropTypes.shape(PopoverMenu.propTypes),
+  popoverMenuProps: PropTypes.shape({
+    /** The maximum width applied to the list */
+    maxWidth: PropTypes.number,
+
+    /** The minimum width applied to the list */
+    minWidth: PropTypes.number,
+
+    /** The maximum height value applied to the list */
+    maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+    /** Popover content z-index */
+    zIndex: PropTypes.number,
+
+    /** Moves popover content relative to the parent by x or y */
+    moveBy: PropTypes.shape({ x: PropTypes.number, y: PropTypes.number }),
+
+    /** The Popover's placement:
+     *  * auto-start
+     *  * auto
+     *  * auto-end
+     *  * top-start
+     *  * top
+     *  * top-end
+     *  * right-start
+     *  * right
+     *  * right-end
+     *  * bottom-end
+     *  * bottom
+     *  * bottom-start
+     *  * left-end
+     *  * left
+     *  * left-start
+     */
+    placement: PropTypes.oneOf(placements),
+
+    /** Changing text size */
+    textSize: PropTypes.oneOf(['small', 'medium']),
+
+    /** Enables text ellipsis on tight containers */
+    ellipsis: PropTypes.bool,
+
+    /** The Popover's appendTo */
+    appendTo: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+
+    /**
+     * Whether to enable the flip behaviour. This behaviour is used to flip the `<Popover/>`'s placement
+     * when it starts to overlap the target element (`<Popover.Element/>`).
+     */
+    flip: PropTypes.bool,
+    /**
+     * Whether to enable the fixed behaviour. This behaviour is used to keep the `<Popover/>` at it's
+     * original placement even when it's being positioned outside the boundary.
+     */
+    fixed: PropTypes.bool,
+
+    /** Whether to show the Popover's arrow */
+    showArrow: PropTypes.bool,
+  }),
 
   /** Size of actions */
   size: PropTypes.oneOf(['small', 'medium']),

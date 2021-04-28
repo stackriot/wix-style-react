@@ -518,6 +518,23 @@ describe('Calendar', () => {
 
         expect(await driver.isDayActive(new Date())).toBe(true);
       });
+
+      it('when combined with filterDate prop disable more than one range of date', async () => {
+        const today = new Date(2021, 2, 17);
+        const yesterday = new Date(2021, 2, 16);
+        const tomorrow = new Date(2021, 2, 18);
+        const { driver } = render(
+          <Calendar
+            {...defaultProps}
+            value={today}
+            filterDate={date => date < new Date()}
+            excludePastDates
+          />,
+        );
+
+        expect(await driver.isDayActive(yesterday)).toBe(false);
+        expect(await driver.isDayActive(tomorrow)).toBe(false);
+      });
     });
 
     describe('Auto Focus', () => {
@@ -784,6 +801,32 @@ describe('Calendar', () => {
         );
 
         expect(await driver.getNthWeekDayName(0)).toEqual('Su');
+      });
+
+      it('should set sunday as first day of the week for vi locale', async () => {
+        const { driver } = render(
+          <Calendar value={{}} onChange={() => {}} locale="vi" />,
+        );
+
+        expect(await driver.getNthWeekDayName(0)).toEqual('CN');
+      });
+    });
+
+    describe('formatWeekdayShort', () => {
+      it('should set iiiiii as short weekday format by default', async () => {
+        const { driver } = render(
+          <Calendar value={{}} onChange={() => {}} locale="lt" />,
+        );
+
+        expect(await driver.getNthWeekDayName(0)).toEqual('Pr');
+      });
+
+      it('should set iiiii as short weekday format for vi locale', async () => {
+        const { driver } = render(
+          <Calendar value={{}} onChange={() => {}} locale="vi" />,
+        );
+
+        expect(await driver.getNthWeekDayName(1)).toEqual('T2');
       });
     });
 

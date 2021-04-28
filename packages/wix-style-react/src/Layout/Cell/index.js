@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { st, classes } from './styles.st.css';
 
-const Cell = ({ span, rows, children, vertical }) => (
+const Cell = ({ span, rows, children, vertical, className, dataHook }) => (
   <div
+    data-hook={dataHook}
     style={{
       gridColumn: `span ${span}`,
       gridRow: `span ${rows}`,
     }}
-    className={st(classes.root, { vertical })}
+    className={st(classes.root, { vertical }, className)}
     children={children}
   />
 );
@@ -16,6 +17,9 @@ const Cell = ({ span, rows, children, vertical }) => (
 Cell.displayName = 'Cell';
 
 Cell.propTypes = {
+  /** hook for testing purposes */
+  dataHook: PropTypes.string,
+
   /** any node to be rendered inside */
   children: PropTypes.node,
 

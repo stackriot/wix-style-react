@@ -2,6 +2,7 @@ import React from 'react';
 import businessDashboardTheme from '../BusinessDashboard';
 import { runTests as ButtonTests } from '../../../Button/test/Button.visual';
 import { runTests as CircularProgressBarTests } from '../../../CircularProgressBar/test/CircularProgressBar.visual';
+import { runTests as DividerTests } from '../../../Divider/test/Divider.visual';
 import { runTests as LinearProgressBarTests } from '../../../LinearProgressBar/test/LinearProgressBar.visual';
 import { runTests as HeadingTests } from '../../../Heading/test/Heading.visual';
 import { runTests as TextTests } from '../../../Text/test/Text.visual';
@@ -29,6 +30,10 @@ import { runTests as ThumbnailTests } from '../../../Thumbnail/test/Thumbnail.vi
 import { runTests as VerticalTabsItemTests } from '../../../VerticalTabsItem/test/VerticalTabsItem.visual';
 import { runTests as CustomModalLayoutTests } from '../../../CustomModalLayout/test/CustomModalLayout.visual';
 import { runTests as TableListItemTests } from '../../../TableListItem/test/TableListItem.visual';
+import { runTests as SectionHelper } from '../../../SectionHelper/test/SectionHelper.visual';
+import { runTests as PopoverTests } from '../../../Popover/test/Popover.visual';
+import { runTests as CheckToggleTests } from '../../../CheckToggle/test/CheckToggle.visual';
+import { runTests as PageSectionTests } from '../../../PageSection/test/PageSection.visual';
 
 import { ThemeProvider } from '../../..';
 
@@ -44,6 +49,7 @@ const testWithTheme = test => {
 ButtonTests({ themeName, testWithTheme });
 CircularProgressBarTests({ themeName, testWithTheme });
 LinearProgressBarTests({ themeName, testWithTheme });
+DividerTests({ themeName, testWithTheme });
 HeadingTests({ themeName, testWithTheme });
 TextTests({ themeName, testWithTheme });
 TextButtonTests({ themeName, testWithTheme });
@@ -70,3 +76,7 @@ ThumbnailTests({ themeName, testWithTheme });
 VerticalTabsItemTests({ themeName, testWithTheme });
 CustomModalLayoutTests({ themeName, testWithTheme });
 TableListItemTests({ themeName, testWithTheme });
+SectionHelper({ themeName, testWithTheme });
+PopoverTests({ themeName, testWithTheme });
+CheckToggleTests({ themeName, testWithTheme });
+PageSectionTests({ themeName, testWithTheme });

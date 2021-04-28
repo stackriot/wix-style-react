@@ -17,5 +17,7 @@
             MainItemTextColor '"--mainItemTextColor"',
             MainItemTextFont '"--mainItemTextFont"',
             MainItemTextDisabledColor '"--mainItemTextDisabledColor"',
+            MainLabelColor '"--mainLabelColor"',
+            MainLabelFont '"--mainLabelFont"',
     );
 }

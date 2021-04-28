@@ -8,20 +8,17 @@ import {
   title,
   columns,
   divider,
-  code as baseCode,
+  code,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import LinearProgressBar from '..';
 
 import * as examples from './examples';
-
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

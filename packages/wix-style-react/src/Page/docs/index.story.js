@@ -6,16 +6,16 @@ import {
   playground,
   testkit,
   title,
-  code as baseCode,
+  code,
   description,
   importExample,
   header,
   divider,
-  example as baseExample,
+  example,
 } from 'wix-storybook-utils/Sections';
 import Page from '..';
 import { storySettings } from './storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import {
   header as headerExample,
   tail as tailExample,
@@ -25,15 +25,6 @@ import {
 import { classes } from '../test/examples/PageStory.st.css';
 import ChildrenReadme from './Children.md';
 import * as examples from './examples';
-
-const code = config =>
-  baseCode({
-    components: allComponents,
-    compact: false,
-    ...config,
-  });
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,
@@ -116,9 +107,9 @@ export default {
           }),
 
           example({
-            title: 'Page containing a grid of cards',
+            title: 'Page containing a layout of cards',
             text:
-              'A common use case will be a Page containing Card components arranged by Grid components',
+              'A common use case will be a Page containing Card components arranged by Layout components',
             source: examples.gridOfCards,
           }),
 

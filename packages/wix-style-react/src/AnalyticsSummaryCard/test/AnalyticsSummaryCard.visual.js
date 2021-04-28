@@ -18,7 +18,7 @@ const commonProps = {
   value: '1,9K',
   valueTooltip: '1,943',
   trend: 12,
-  isTrendVisibile: false,
+  isTrendVisible: false,
   invertedTrend: false,
   isLoading: false,
   ctaButton: (
@@ -46,7 +46,7 @@ const tests = [
       {
         it: 'should show trend',
         props: {
-          isTrendVisibile: true,
+          isTrendVisible: true,
         },
       },
       {

@@ -22,10 +22,14 @@ class SidePanel extends React.PureComponent {
 
     /** SidePanel.Header, SidePanel.Content, SidePanel.Footer, SidePanel.Divider or Any element to be rendered inside */
     children: PropTypes.node,
+
+    /** Width of the SidePanel */
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
   static defaultProps = {
     onCloseButtonClick: () => null,
+    width: '420px',
   };
 
   sidePanelContext = {
@@ -33,10 +37,14 @@ class SidePanel extends React.PureComponent {
   };
 
   render() {
-    const { dataHook, children, className } = this.props;
+    const { dataHook, children, className, width } = this.props;
     return (
       <SidePanelContext.Provider value={this.sidePanelContext}>
-        <div className={st(classes.root, className)} data-hook={dataHook}>
+        <div
+          className={st(classes.root, className)}
+          data-hook={dataHook}
+          style={{ width: width }}
+        >
           {children}
         </div>
       </SidePanelContext.Provider>

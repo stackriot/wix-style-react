@@ -62,7 +62,6 @@
 }
 
 .root {
-    -st-extends: Checkbox;
     -st-states: box, checked, disabled, error;
 
     display: inline-flex;
@@ -76,28 +75,6 @@
     box-sizing: inherit;
 }
 
-.root::childContainer {
-    display: flex;
-    flex: 1;
-    align-items: center;
-}
-
-.root::box {
-    line-height: 0;
-    display: flex;
-}
-
-.root::box::after {
-    content: '';
-    width: 12px;
-}
-
-.core {
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
 .root:box {
     display: flex;
     background-color: color(value(CurrentBoxColor));
@@ -107,7 +84,30 @@
     padding: 0 16px;
 }
 
-.root:box::childContainer {
+.core {
+    -st-extends: Checkbox;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.core::childContainer {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.core::box {
+    line-height: 0;
+    display: flex;
+}
+
+.core::box::after {
+    content: '';
+    width: 12px;
+}
+
+.root:box .core::childContainer {
     padding: 15px 0;
 }
 

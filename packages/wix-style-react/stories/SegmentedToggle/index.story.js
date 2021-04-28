@@ -7,13 +7,12 @@ import {
   columns,
   table,
   title,
-  example as baseExample,
+  example,
 } from 'wix-storybook-utils/Sections';
 
 import LockLocked from 'wix-ui-icons-common/LockLocked';
 import LockUnlocked from 'wix-ui-icons-common/LockUnlocked';
 import LinkTo from '@storybook/addon-links/react';
-import allComponents from '../utils/allComponents';
 
 import * as examples from './examples';
 import { Category } from '../storiesHierarchy';
@@ -34,8 +33,6 @@ const BasicExample = () => (
     </Cell>
   </Layout>
 );
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

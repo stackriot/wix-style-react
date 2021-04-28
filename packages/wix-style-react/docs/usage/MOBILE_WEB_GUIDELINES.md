@@ -34,18 +34,6 @@ Notice that using `react-responsive`'s `useMediaQuery` hook requires React v16.8
   </Page>
   ```
 
-- Use [`<Container/>`](https://wix-style-react.com/?path=/story/components-api-components--grid)'s `fluid` prop to make the grid container be completely fluid.
-
-  > Why? The grid container has default `minWidth` and `maxWidth` which might not be suitable for small or large viewports.
-
-  ```jsx
-  <Container fluid>
-    <Row>
-      <Col>Content</Col>
-    </Row>
-  </Container>
-  ```
-
 - Use [`<ModalMobileLayout/>`](https://wix-style-react.com/?path=/story/components-api-components--modalmobilelayout) to display a fluid modal layout.
 
   > Why? This modal layout adapts to all viewport sizes.
@@ -58,20 +46,16 @@ Notice that using `react-responsive`'s `useMediaQuery` hook requires React v16.8
   />
   ```
 
-- Use [`Grid's family`](https://wix-style-react.com/?path=/story/components-api-components--grid) to display a fluid grid (instead of [`<Box/>`](https://wix-style-react.com/?path=/story/components-api-components--box) or [`<Layout/>`](https://wix-style-react.com/?path=/story/components-api-components--layout)).
+- Use [`Layout's family`](https://wix-style-react.com/?path=/story/components-api-components--layout) to display a fluid grid (instead of [`<Box/>`](https://wix-style-react.com/?path=/story/components-api-components--box)).
 
-  > Why? The grid's family provides a pretty strict (but simple) structure of API for creating a two-dimensional layout (which means, grid). Using `<Layout/>` for this case is possible but not ideal, because we don't use its main benefit (flexibility) while it arrives with less structural API (no columns, just cells), so the meaning might be less intuitive. In contrast, `<Box/>` is a one-dimensional layout that doesn't fit this case at all (we could combine two `<Box/>` to make a grid but there are no actual benefits but rather just redundant complexity).
+  > Why? The Layout's family provides API for creating a two-dimensional layout. In contrast, `<Box/>` is a one-dimensional layout that doesn't fit this case at all (we could combine two `<Box/>` to make a grid but there are no actual benefits but rather just redundant complexity).
 
   ```jsx
-  <Container fluid>
-    <Row>
-      <Col>Header</Col>
-    </Row>
-    <Row>
-      <Col span={6}>Left</Col>
-      <Col span={6}>Right</Col>
-    </Row>
-  </Container>
+  <Layout>
+    <Cell>Header</Cell>
+    <Cell span={6}>Left</Cell>
+    <Cell span={6}>Right</Cell>
+  </Layout>
   ```
 
 - Use [`<Button/>`](https://wix-style-react.com/?path=/story/components-api-components--button)'s `fullWidth` prop to make the button be completely fluid (as necessary).
@@ -156,9 +140,9 @@ Notice that using `react-responsive`'s `useMediaQuery` hook requires React v16.8
   }
   ```
 
-- Use [`<Layout/>`](https://wix-style-react.com/?path=/story/components-api-components--layout) to display a responsive grid (instead of [`Grid's family`](https://wix-style-react.com/?path=/story/components-api-components--grid)).
+- Use [`<Layout/>`](https://wix-style-react.com/?path=/story/components-api-components--layout) to display a responsive grid.
 
-  > Why? `<Layout/>` is much flexible than Grid's family, which makes it easier to restructure (no columns, just cells) - especially when we need to change the amount of columns and the gap using media query.
+  > Why? `<Layout/>` is flexible, which makes it easy to restructure - especially when we need to change the amount of columns and the gap using media query.
 
   ```jsx
   import { useMediaQuery } from "react-responsive";

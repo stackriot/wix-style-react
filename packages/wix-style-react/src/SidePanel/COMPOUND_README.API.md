@@ -1,13 +1,17 @@
 ## Sidebar
-
 ### `<SidePanel.Header/>`
 Render a header in the `sidePnael`.
 
 | propName | propType | defaultValue | isRequired | description |
 |----------|----------|--------------|------------|-------------|
-| `className` | string | | | class name |
 | `children` | node | | | any element to be rendered inside under title |
+| `className` | string | | | class name |
+| `title` | node | | | any element |
+| `infoTooltipContent` | node | | | any element |
 | `showDivider` | boolean | true | | show divider |
+| `title` | node or string | | | string or any element |
+| `infoTooltipContent` | string | | | text for title tooltip |
+| `infoTooltipProps` | node | | | Tooltip props |
 
 ### `<SidePanel.Content/>`
 Render a content in the `sidePnael`.
@@ -25,9 +29,6 @@ Render a footer in the `sidePnael`.
 |----------|----------|--------------|------------|-------------|
 | `className` | string | | | class name |
 | `children` | node | | | any element to be rendered inside under title |
-| `title` | node or string | | | string or any element |
-| `infoTooltipContent` | string | | | text for title tooltip |
-| `infoTooltipProps` | node | | | Tooltip props |
 | `showDivider` | boolean | true | | show divider |
 | `noPadding` | boolean | false | | remove padding |
 

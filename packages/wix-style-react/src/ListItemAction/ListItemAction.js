@@ -140,7 +140,7 @@ class ListItemActionComponent extends React.PureComponent {
     } = this.props;
 
     // since we're spreading the "rest" props, we don't want to pass
-    const { selected, hovered, ellipsis, ...rest } = others;
+    const { selected, hovered, ellipsis, title, ...rest } = others;
 
     return (
       <FontUpgradeContext.Consumer>

@@ -27,7 +27,7 @@
 
 .root {
   -st-extends: Focusable;
-  -st-states: selected, disabled, prefix, suffix, drillable, alwaysDisplayChevron, skin(enum(dark, light));
+  -st-states: selected, disabled, prefix, suffix, drillable, alwaysDisplayChevron, skin(enum(dark, light)), useBmSidebarNewDesign;
 
   display: flex;
   justify-content: space-between;
@@ -139,6 +139,19 @@
   display: block;
   word-break: break-word;
   margin: 9px 0 9px 0;
+}
+
+.root:useBmSidebarNewDesign {
+  min-height: 32px;
+  padding: 0 20px 0 20px;
+}
+
+.root:drillable:useBmSidebarNewDesign {
+  padding: 0 18px 0 20px;
+}
+
+.root:useBmSidebarNewDesign .text {
+  margin: 7px 0 7px 0;
 }
 
 .suffix {

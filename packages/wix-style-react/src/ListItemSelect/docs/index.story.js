@@ -18,13 +18,13 @@ import {
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import ListItemSelect from '..';
 import Box from '../../Box';
 
 const example = config =>
   baseExample({
-    components: { ...allComponents, Star, Download, Hint },
+    components: { Star, Download, Hint },
     ...config,
   });
 

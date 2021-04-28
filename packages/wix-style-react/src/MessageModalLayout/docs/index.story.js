@@ -7,14 +7,13 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
 
 import MessageModalLayout from '..';
 import Checkbox from '../../Checkbox';
@@ -26,8 +25,6 @@ import IllustrationExample from '!raw-loader!./examples/IllustrationExample';
 import DestructiveThemeExample from '!raw-loader!./examples/DestructiveThemeExample';
 import ThemeExample from '!raw-loader!./examples/ThemeExample';
 import HelpButtonExample from '!raw-loader!./examples/HelpButtonExample';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,

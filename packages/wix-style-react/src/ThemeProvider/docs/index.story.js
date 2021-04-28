@@ -14,7 +14,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import { floatingPanelsComponents } from '../../../stories/utils/allComponents';
+import { floatingPanelsComponents } from '../../../.storybook/playground';
 
 import ThemeProvider from '..';
 import ToggleSwitch from '../../ToggleSwitch';

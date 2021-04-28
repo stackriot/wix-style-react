@@ -4,7 +4,7 @@
   "sideEffects": [
     "./stories/**/*.*"
   ],
-  "version": "2.29.0",
+  "version": "2.38.0",
   "module": "./dist/es/src/index.js",
   "description": "Components for Wix Tpa applications",
   "author": {
@@ -33,7 +33,6 @@
     "-----build": "",
     "prebuild": "npm run update-components",
     "build": "yoshi build && npm run copy-styleable-formatters && npm run generate-stylable-index && npm run storybook:build",
-    "build:perfer-bundles": "npm run build --prefix .perfer",
     "postbuild": "import-path --path src/components --dts",
     "copy-styleable-formatters": "cp src/common/formatters.st.js dist/src/common && cp src/common/formatters.st.js dist/es/src/common",
     "generate-stylable-index": "stc --srcDir=\"./dist/src/components\" --diagnostics --indexFile=index.st.css",
@@ -42,13 +41,12 @@
     "-----test": "",
     "pretest": "./scripts/ensure-build.sh",
     "test": "npm run test:basic && npm run test:visual",
-    "test:basic": "if [ \"$agentType\" == \"pullrequest\" ]; then npm run storybook:release ;fi && npm run lint && npm run test:unit && npm run autotools && npm run test:perfer-bundles",
+    "test:basic": "if [ \"$agentType\" == \"pullrequest\" ]; then npm run storybook:release ;fi && npm run lint && npm run test:unit && npm run autotools",
     "test:watch": "yoshi test --jest --watch",
     "test:unit": "yoshi test --jest",
     "test:e2e": "yoshi test --protractor",
     "test:visual": "if test \"$EYES_API_KEY\"; then npm run test:visual:local ; fi",
     "test:visual:local": "eyes-storybook -c ./.storybook-test -s ./.storybook-test/public",
-    "test:perfer-bundles": "npm run build:perfer-bundles && perfer --verbose --chunked --json",
     "autotools": "npm run autotools:sanity && npm run autotools:a11y",
     "autotools:sanity": "autotools-sanity",
     "autotools:a11y": "autotools-a11y",
@@ -58,9 +56,6 @@
     "start": "STORYBOOK_BASE_UI_VERSION=$(node ./scripts/base-ui-version.js) npm run storybook",
     "storybook": "start-storybook -p 6006 -s ./src/assets,./.storybook/public",
     "eyes-storybook-debug": "start-storybook --ci -c ./.storybook-test -p 6007 -s ./src/assets,./.storybook-test/public",
-    "-----publish": "",
-    "postpublish": "npm run install && npm run build && npm run storybook:release && git clone git@github.com:wix/wix-style-react.git . && npm run git:tag ",
-    "git:tag": "node scripts/tag.js",
     "-----generator": "",
     "generate": "wuf generate --codemods .wuf/generator/codemods --templates .wuf/generator/templates --output src/components",
     "postgenerate": "npm run update-components",
@@ -69,7 +64,12 @@
     "-----release": "",
     "storybook:release": "npx janet deploy --ci || exit 0",
     "release-candidate": "node scripts/rc.js",
-    "changelog": "conventional-changelog --preset angular -l wix-ui-tpa -t WUT-v -i CHANGELOG.md -s --commit-path=."
+    "changelog": "conventional-changelog --preset angular -l wix-ui-tpa -t WUT-v -i CHANGELOG.md -s --commit-path=.",
+    "-----publish": "",
+    "postpublish": "npx npm-run-all --continue-on-error --parallel --aggregate-output postpublish:storybook postpublish:tag",
+    "postpublish:storybook": "npm run install && npm run storybook:build && npm run storybook:release",
+    "postpublish:tag": "git clone git@github.com:wix/wix-style-react.git . && npm run git:tag",
+    "git:tag": "node scripts/tag.js"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^3.12.2",
@@ -86,7 +86,8 @@
   },
   "devDependencies": {
     "@wix/wix-base-ui": "^3.949.0",
-    "wix-storybook-utils": "^3.0.139"
+    "wix-storybook-utils": "^3.0.139",
+    "wix-ui-framework": "^3.5.2"
   },
   "husky": {
     "hooks": {

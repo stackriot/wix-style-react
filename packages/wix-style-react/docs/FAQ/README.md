@@ -20,7 +20,7 @@ Please create a pull request with the solution if it worth sharing.
     - [`TypeError: document.x is not a function`](#typeerror-documentx-is-not-a-function)
   - [How can I get colors and fonts to use in my project?](#how-can-i-get-colors-and-fonts-to-use-in-my-project)
   - [How does look the Dropdown family?](#how-does-look-the-dropdown-family)
-  - [What are the differences between `<Box/>`, Grid's family and Layout's family?](#what-are-the-differences-between-box-grids-family-and-layouts-family)
+  - [What are the differences between `<Box/>` and Layout's family?](#what-are-the-differences-between-box-and-layouts-family)
 - [Contributing issues](#%f0%9f%92%81%e2%80%8d%e2%99%82%ef%b8%8f-contributing-issues)
   - [Created a PR but the build is failing on CI, should I do something?](#created-a-pr-but-the-build-is-failing-on-ci-should-i-do-something)
   - [How can I run only one test locally?](#how-can-i-run-only-one-test-locally)
@@ -152,13 +152,12 @@ component for using correct colors and fonts.
 
 ![](../assets/dropdown-family-diagram.png)
 
-### What are the differences between `<Box/>`, Grid's family and Layout's family?
+### What are the differences between `<Box/>` and Layout's family?
 
 In short:
 
 - `<Box/>` is a one-dimensional component that contains children and allows layouting them in a particular direction (horizontally or vertically). Mostly useful for small areas.
-- Grid is a two-dimensional component family that layouts children into rows that are divided by 12 columns at most. Mostly useful for medium/large areas.
-- Layout is a flexible component family that layouts children by cells that are placed into rows automatically. It's flexible compared to Grid because we can control stuff like the maximum amount of rows and gaps. Mostly useful for medium/large areas.
+- Layout is a flexible component family that layouts children by cells that are placed into rows automatically. It's flexible - we can control stuff like the maximum amount of rows and gaps. Mostly useful for medium/large areas.
 
 Check out [this](../usage/LAYOUTING.md) guide to learn more about layouting.
 

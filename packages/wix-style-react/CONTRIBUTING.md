@@ -11,10 +11,12 @@ cd wix-style-react
 npm install
 ```
 
+This repository is a monorepo containing multiple component libraries. Refer to [`Working With Monorepo`](../../docs/working-with-monorepo.md)
+document to get familiar with the principles of this monorepo.
+
 Let's get the storybook running locally
 ```bash
-cd packages/wix-style-react
-npm start
+npm run wsr start
 ```
 
 ## Creating a new component

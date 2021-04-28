@@ -5,7 +5,7 @@
 
 :import {
   -st-from: "../foundations/colors.st.css";
-  -st-named: O10, D20;
+  -st-named: O10, D20, D70, G20, G40, Y10, P10, Y30, B40, R40;
 }
 
 :vars {
@@ -19,14 +19,18 @@
 
 .root {
   border-radius: 2px;
-  padding: 2px 8px;
-  line-height: 16px;
+  padding: 4px 8px;
   height: 20px;
+}
+
+.root span {
+  line-height: 1.2;
 }
 
 .root:size(small) {
   height: value(smallHeight);
   padding: value(smallPadding);
+  padding: 2px 8px;
 }
 
 .root:skin(urgent) {
@@ -37,4 +41,52 @@
 .root:skin(general) {
   border-color: value(D20);
   background-color: value(D20);
+}
+
+.root:skin(success) {
+  border-color: value(G20);
+  background-color: value(G20);
+}
+
+.root:skin(warning) {
+  border-color: value(Y10);
+  background-color: value(Y10);
+}
+
+.root:skin(premium) {
+  border-color: value(P10);
+  background-color: value(P10);
+}
+
+.root:skin(neutralLight) {
+  border-color: value(D70);
+  background-color: value(D70);
+}
+
+.root:skin(warningLight) {
+  border-color: value(Y30);
+  background-color: value(Y30);
+}
+
+.root:skin(neutralStandard) {
+  border-color: value(B40);
+  background-color: value(B40);
+}
+
+.root:skin(neutralDanger) {
+  border-color: value(R40);
+  background-color: value(R40);
+}
+
+.root:skin(neutralSuccess) {
+  border-color: value(G40);
+  background-color: value(G40);
+}
+
+.root:skin(warningLight)::text,
+.root:skin(neutralLight)::text,
+.root:skin(neutralSuccess)::text,
+.root:skin(neutralStandard)::text,
+.root:skin(neutralDanger)::text {
+  color: value(D20);
 }

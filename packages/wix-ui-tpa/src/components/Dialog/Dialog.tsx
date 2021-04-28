@@ -6,6 +6,7 @@ import { IconButton } from '../IconButton';
 import { ReactComponent as CloseIcon } from '../../assets/icons/Close.svg';
 import { TPAComponentProps } from '../../types';
 import { st, classes } from './Dialog.st.css';
+import { createPortal } from 'react-dom';
 
 export interface DialogProps extends TPAComponentProps {
   /** Whether the modal is opened */
@@ -36,6 +37,8 @@ export interface DialogProps extends TPAComponentProps {
   wiredToSiteColors?: boolean;
   /** Determines whether Dialog should open in a non-fullscreen mode on mobile */
   notFullscreenOnMobile?: boolean;
+  /** In case the variable set to true, Dialog should be rendered under the document.body DOM node */
+  appendToBody?: boolean;
 }
 
 interface DefaultProps {
@@ -70,9 +73,10 @@ export class Dialog extends React.Component<DialogProps> {
       closeButtonAriaLabelledby,
       wiredToSiteColors,
       notFullscreenOnMobile,
+      appendToBody,
     } = this.props;
 
-    return (
+    const dialogComponent = (
       <TPAComponentsConsumer>
         {({ mobile, rtl }) => (
           <div
@@ -131,5 +135,9 @@ export class Dialog extends React.Component<DialogProps> {
         )}
       </TPAComponentsConsumer>
     );
+
+    return appendToBody && typeof document !== 'undefined'
+      ? createPortal(dialogComponent, document.body)
+      : dialogComponent;
   }
 }

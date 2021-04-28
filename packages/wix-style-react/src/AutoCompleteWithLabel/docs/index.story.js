@@ -7,19 +7,17 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+
 import AutoCompleteWithLabel from '..';
 import * as examples from './examples';
 import { createOptions } from '../../../stories/utils/playgroundUtils';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const options4 = createOptions(4);
 const options10 = createOptions(10);

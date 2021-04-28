@@ -10,19 +10,15 @@ import {
   testkit,
   importExample,
   divider,
-  example as baseExample,
+  example,
   title,
 } from 'wix-storybook-utils/Sections';
 
 import * as examples from './examples';
 
-import allComponents from '../../../stories/utils/allComponents';
-
 import { storySettings } from './storySettings';
 
 import SelectorList from '..';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 const dataSource = (searchQuery, offset, limit) =>
   new Promise(resolve =>

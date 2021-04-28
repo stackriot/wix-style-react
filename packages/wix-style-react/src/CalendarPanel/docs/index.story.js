@@ -7,12 +7,12 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
+  example,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
-import allComponents from '../../../stories/utils/allComponents';
+
 import { addDays, addMonths, startOfMonth, endOfMonth } from 'date-fns';
 import { storySettings } from './storySettings';
 import CalendarPanelFooter, {
@@ -22,8 +22,6 @@ import CalendarPanelFooter, {
 import CalendarPanel from '..';
 
 import * as examples from './examples';
-
-const example = config => baseExample({ components: allComponents, ...config });
 
 // We don't actually show today because tests are done on the auto-example and we want them to be consistent.
 const TODAY = new Date(2018, 0, 10);

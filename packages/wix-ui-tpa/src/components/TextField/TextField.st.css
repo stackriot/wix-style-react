@@ -26,6 +26,10 @@
     defaultMainTextColor: color-5;
     defaultLineThemeMainBackgroundColor: transparent;
     defaultMainTextFont: "{theme: 'Body-M', size: '16px'}";
+    defaultMainLabelFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.4'}";
+    defaultMainLabelTextColor: color-5;
+    defaultCharCountFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.4'}";
+    defaultCharCountColor: color-4;
 }
 
 /*Overrides*/
@@ -50,6 +54,26 @@
       @default {theme: 'Body-M', size: '16px'}
     */
     MainTextFont: --overridable;
+    /*
+      The font of the label
+      @default {theme: 'Body-M', size: '14px', lineHeight: '1.4'}
+    */
+    MainLabelFont: --overridable;
+    /*
+      The color of the label. 60% opacity when disabled
+      @default color-5
+    */
+    MainLabelTextColor: --overridable;
+    /*
+      The font of the char count
+      @default {theme: 'Body-M', size: '14px', lineHeight: '1.4'}
+    */
+    CharCountFont: --overridable;
+    /*
+      The color of the char count
+      @default color-4
+    */
+    CharCountColor: --overridable;
 }
 
 :vars {
@@ -57,6 +81,10 @@
     mainBackgroundColor: color(fallback(value(MainBackgroundColor), value(defaultMainBackgroundColor)));
     mainTextColor: color(fallback(value(MainTextColor), value(defaultMainTextColor)));
     mainTextFont: fallback(font(value(MainTextFont)), font(value(defaultMainTextFont)));
+    mainLabelTextColor: color(fallback(value(MainLabelTextColor), value(defaultMainLabelTextColor)));
+    mainLabelFont: fallback(font(value(MainLabelFont)), font(value(defaultMainLabelFont)));
+    mainCharCountFont: fallback(font(value(CharCountFont)), font(value(defaultCharCountFont)));
+    mainCharCountColor: color(fallback(value(CharCountColor), value(defaultCharCountColor)));
 }
 
 :vars {
@@ -91,16 +119,20 @@
 :vars {
     /*Disabled*/
     colorDisabled: applyOpacity(value(mainTextColor), 0.6);
+    colorLabelDisabled: applyOpacity(value(mainLabelTextColor), 0.6);
     backgroundColorDisabled: value(mainBackgroundColor);
     borderColorDisabled: applyOpacity(value(mainBorderColor), 0.6);
 }
 
 .root {
+    -st-states: disabled, error, success;
+}
+
+.input {
     -st-extends: Input;
-    -st-states: error, success, theme(enum(line, box));
+    -st-states: theme(enum(line, box));
     box-sizing: border-box;
     border-color: value(borderColor);
-    border: value(border);
     border-radius: 0;
     transition: border-color .1s ease-in;
     background-color: value(mainBackgroundColor);
@@ -111,54 +143,64 @@
     padding: 0;
 }
 
-.root:hover {
-    border-color: value(borderColorHover);
-    background-color: value(backgroundColorHover);
+.input:theme(box) {
+    border: value(border);
 }
 
-.root:focus {
-    border-color: value(borderColorFocus);
-    background-color: value(backgroundColorFocus);
-}
-
-.root:disabled {
-    border-color: value(borderColorDisabled);
-    background-color: value(backgroundColorDisabled);
-}
-
-.root:success {
-    border-color: value(successBorderColor);
-}
-
-.root:hover:success {
-    border-color: value(successBorderColorHover);
-}
-
-.root:focus:success {
-    border-color: value(successBorderColorFocus);
-}
-
-.root:error {
-    border-color: value(errorBorderColor);
-}
-
-.root:hover:error {
-    border-color: value(errorBorderColorHover);
-}
-
-.root:focus:error {
-    border-color: value(errorBorderColorFocus);
-}
-
-.root:theme(line) {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    padding: 0;
+.input:theme(line) {
+    border-bottom: value(border);
     background-color: color(fallback(value(MainBackgroundColor), value(defaultLineThemeMainBackgroundColor)));
 }
 
-.root::nativeInput {
+.input:hover {
+    border-color: value(borderColorHover);
+}
+
+.input:theme(box):hover {
+    background-color: value(backgroundColorHover);
+}
+
+.input:focus {
+    border-color: value(borderColorFocus);
+}
+
+.input:theme(box):focus {
+    background-color: value(backgroundColorFocus);
+}
+
+.root:disabled .input {
+    border-color: value(borderColorDisabled);
+}
+
+.root:disabled .input:theme(box) {
+    background-color: value(backgroundColorDisabled);
+}
+
+.root:success .input {
+    border-color: value(successBorderColor);
+}
+
+.root:success .input:hover {
+    border-color: value(successBorderColorHover);
+}
+
+.root:success .input:focus {
+    border-color: value(successBorderColorFocus);
+}
+
+.root:error .input {
+    border-color: value(errorBorderColor);
+}
+
+.root:error .input:hover {
+    border-color: value(errorBorderColorHover);
+}
+
+.root:error .input:focus {
+    border-color: value(errorBorderColorFocus);
+}
+
+.input::nativeInput {
     width: 100%;
     font: value(mainTextFont);
     font-size: 16px;
@@ -173,33 +215,33 @@
     min-width: 0;
 }
 
-.root:theme(line)::nativeInput {
+.input:theme(line)::nativeInput {
     padding-left: 0;
     padding-right: 0;
 }
 
-.root:hover::nativeInput {
+.input:hover::nativeInput {
     color: value(colorHover);
 }
 
-.root:disabled::nativeInput {
+.input:disabled::nativeInput {
     color: value(colorDisabled);
 }
 
-.root:focus::nativeInput {
+.input:focus::nativeInput {
     outline: 0;
     color: value(colorFocus);
 }
 
-.root::nativeInput::selection {
+.input::nativeInput::selection {
     background: applyOpacity(value(mainTextColor), 0.2);
 }
 
-.root:theme(line) .suffixWrapper {
+.input:theme(line) .suffixWrapper {
     padding: 0;
 }
 
-.root:theme(box) .suffixWrapper {
+.input:theme(box) .suffixWrapper {
     padding-left: 12px;
     padding-right: 12px;
 }
@@ -266,8 +308,26 @@
 }
 
 /* Placeholder color */
-.root::nativeInput::-webkit-input-placeholder,
-.root::nativeInput::placeholder
+.input::nativeInput::-webkit-input-placeholder,
+.input::nativeInput::placeholder
 {
     color: value(colorPlaceholder);
+}
+
+.label {
+    font: value(mainLabelFont);
+    color: value(mainLabelTextColor);
+    margin-bottom: 8px;
+}
+
+.root:disabled .label {
+    color: value(colorLabelDisabled);
+}
+
+.charCount {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+    font: value(mainCharCountFont);
+    color: value(mainCharCountColor);
 }
