@@ -19,6 +19,9 @@ Types of changes:
 ### Fixed
 - `<AutoCompleteWithLabel/>` - fix suffix align [#7084](https://github.com/wix/wix-style-react/pull/7084)
 
+### Added
+- `<AnalyticsSummaryCard />` -  add additional testkit methods [#7071](https://github.com/wix/wix-style-react/pull/7071)
+
 ## 9.109.0 - 2021-04-28
 
 ### Added
