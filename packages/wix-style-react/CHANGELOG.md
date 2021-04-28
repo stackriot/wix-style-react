@@ -19,6 +19,7 @@ Types of changes:
 ### Added
 - `<SidebarSectionItem/>` [Testkit] - add `isSelected()` and `isDisabled()` methods [#7068](https://github.com/wix/wix-style-react/pull/7068)
 - `<FormField />` - expose labelId prop [#7081](https://github.com/wix/wix-style-react/pull/7081)
+- `<VariableInput/>` = make insertVariable add text when variableParser returns false [#7082](https://github.com/wix/wix-style-react/pull/7082)
 
 ### Changed
 -  BusinessDashboard Theme | Small UI Fixes [#7063](https://github.com/wix/wix-style-react/pull/7063)
