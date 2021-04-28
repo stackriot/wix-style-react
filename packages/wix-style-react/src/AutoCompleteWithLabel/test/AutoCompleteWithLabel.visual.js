@@ -47,6 +47,15 @@ const tests = [
           statusMessage: 'Field is required',
         },
       },
+      {
+        it: 'suffix',
+        props: {
+          suffix: [
+            <React.Fragment>Suffix1</React.Fragment>,
+            <React.Fragment>Suffix2</React.Fragment>,
+          ],
+        },
+      },
     ],
   },
 ];
